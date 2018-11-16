@@ -1,0 +1,61 @@
+h1 {
+	color: #fff;
+	text-align: center;
+	font-size: 30px;
+}
+
+.loginName {
+	width: 93%;
+	margin-top: 20px;
+	height: 35px;
+	border-radius: 3px;
+	border-width: 0px;
+	height: 40px;
+	padding-left: 7%;
+	font-size: 16px;
+}
+
+.password {
+	width: 93%;
+	margin-top: 14px;
+	height: 35px;
+	border-radius: 3px;
+	border-width: 0px;
+	height: 40px;
+	padding-left: 7%;
+	font-size: 16px;
+}
+
+.button {
+	width: 100%;
+	margin-top: 14px;
+	height: 34px;
+	color: #fff;
+	background-color: #333333;
+	border-radius: 3px;
+	border-width: 0px;
+	height: 40px;
+	font-size: 16px;
+}
+
+.verification{
+	width: 60%;
+	margin-top: 14px;
+	height: 35px;
+	border-radius: 3px;
+	border-width: 0px;
+	height: 40px;
+	padding-left: 7%;
+	font-size: 16px;
+}
+.code{
+	width:30%;
+	margin-top: 14px;
+	height: 35px;
+	border-radius: 3px;
+	border-width: 0px;
+	height: 40px;
+	float:right;
+	font-size: 16px;
+	line-height:40px;
+}

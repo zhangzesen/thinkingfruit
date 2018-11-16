@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ysdevelop.shiro.mapper.PermissionDao">
+
+	<!-- 获取权限数据的总条数 -->
+	<select id="getCountByQuery" resultType="java.lang.Integer">
+		select count(`id`)
+		from
+		`t_thinkingfruit_mall_permission`
+		<where>
+			<if test="queryMap.permissionName != null and queryMap.permissionName != ''">
+				`name` like CONCAT('%',#{queryMap.permissionName},'%')
+			</if>
+			
+			<if test="queryMap.permissionUrl != null and queryMap.permissionUrl != ''">
+				and `url` like CONCAT('%',#{queryMap.permissionUrl},'%')
+			</if>
+		</where>
+	</select>
+
+	<!-- 通过权限id字段查询子权限数据总数 -->
+	<select id="getTreeCountByQuery" resultType="java.lang.Integer">
+		select count(tp.`id`)
+		from
+		`t_thinkingfruit_mall_permission` tp
+		where tp.`id` = #{id} or tp.`parentId` = #{id}
+	</select>
+
+	<!-- 通过权限id字段查询子权限数据做分页处理 -->
+	<select id="treePaginationPermission" resultType="com.ysdevelop.shiro.entity.Permission">
+		select
+		`id`,`name`,`url`,`parentId`,`href`,`level`,`description`,`createTime`,`updateTime`
+		from `t_thinkingfruit_mall_permission`
+		where `id` = #{id} or `parentId` = #{id}
+		limit
+		#{pagination.start},#{pagination.pageSize}
+	</select>
+
+	<!-- 获取权限数据并进行分页处理 -->
+	<select id="paginationPermission" resultType="com.ysdevelop.shiro.entity.Permission">
+		select
+		`id`,`name`,`url`,`parentId`,`href`,`level`,`description`,`createTime`,`updateTime`
+		from `t_thinkingfruit_mall_permission`
+		<where>
+			<if test="queryMap.permissionName != null and queryMap.permissionName != ''">
+				`name` like CONCAT('%',#{queryMap.permissionName},'%')
+			</if>
+			
+			<if test="queryMap.permissionUrl != null and queryMap.permissionUrl != ''">
+				and `url` like CONCAT('%',#{queryMap.permissionUrl},'%')
+			</if>
+		</where>
+		limit
+		#{pagination.start},#{pagination.pageSize}
+	</select>
+
+	<!-- 添加新的权限 -->
+	<insert id="addPermission">
+		insert into
+		`t_thinkingfruit_mall_permission`(
+		`name`,`url`,
+		`parentId`,`href`,`level`,
+		`description`,`createTime`
+		)
+		values(#{permission.name},#{permission.url},
+		#{permission.parentId},#{permission.href},
+		#{permission.level},#{permission.description},#{permission.createTime}
+		)
+	</insert>
+
+	<!-- 通过权限URL查找permission对象 -->
+	<select id="findPermissionByUrl" resultType="com.ysdevelop.shiro.entity.Permission">
+		select
+		`id`,`name`,`url`,`parentId`,`href`,`level`,`description`,`createTime`,`updateTime`
+		from `t_thinkingfruit_mall_permission`
+		where
+		`url` = #{url}
+	</select>
+
+	<!-- 查询所有的权限数据,包装为节点对象集合 -->
+	<select id="findPermissionListToString" resultType="com.ysdevelop.common.entity.TreeNodes">
+		select
+		`id` as id,
+		`name` as name,
+		`parentId` as parentId,
+		`href` as href
+		from `t_thinkingfruit_mall_permission`
+	</select>
+	
+	<!-- 通过roleId查找角色所拥有的权限 -->
+	<select id="findPermissionListByRoleId" resultType="com.ysdevelop.shiro.entity.Permission">
+		select
+		tp.`id` as id,
+		tp.`name` as name,
+		tp.`parentId` as parentId,
+		tp.`href` as href
+		from 
+		`t_thinkingfruit_mall_permission` tp,
+		`t_thinkingfruit_mall_role_permission` trp
+		where 
+		trp.`permissionId` = tp.`id`
+		and trp.`roleId` = #{id}
+	</select>
+	
+	<!-- 查询所有权限 -->
+	<select id="findPermissionList" resultType="com.ysdevelop.shiro.entity.Permission">
+		select
+		`id` as id,
+		`name` as name,
+		`parentId` as parentId,
+		`href` as href
+		from `t_thinkingfruit_mall_permission`
+	</select>
+	
+	<!-- 根据字段id重新该权限数据 -->
+	<select id="getPermissionById" resultType="com.ysdevelop.shiro.entity.Permission">
+		select
+		`id`,`name`,`url`,`parentId`,`href`,`level`,`description`,`createTime`,`updateTime`
+		from `t_thinkingfruit_mall_permission`
+		where
+		`id` = #{id}
+	</select>
+	
+	<!-- 根据用户登录名获取权限的url -->
+	<select id="listByUserName" resultType="String">
+		select
+		p.`url`
+		from
+		`t_thinkingfruit_mall_permission` p
+		left join `t_thinkingfruit_mall_role_permission` rp on rp.`permissionId` = p.`id`
+		left join `t_thinkingfruit_mall_user` u on u.`roleId` = rp.`roleId`
+		where 
+		u.`loginName` = #{name}
+	</select>
+	
+	<!-- 根据用户id获取权限的url -->
+	<select id="listByUserId" resultType="String">
+		select
+		p.`url`
+		from
+		`t_thinkingfruit_mall_permission` p
+		left join `t_thinkingfruit_mall_role_permission` rp on rp.`permissionId` = p.`id`
+		left join `t_thinkingfruit_mall_user` u on u.`roleId` = rp.`roleId`
+		where 
+		u.`id` = #{id}
+	</select>
+	
+	<!-- 异步修改指定ID的权限详情  -->
+	<update id="updatePermissionById" >
+		update `t_thinkingfruit_mall_permission`
+		<set>
+			<if test="permission.name != null and permission.name != ''">
+				`name` = #{permission.name},
+			</if>
+			
+			<if test="permission.url != null and permission.url != ''">
+				`url` = #{permission.url},
+			</if>
+			
+			<if test="permission.parentId != null">
+				`parentId` = #{permission.parentId},
+			</if>
+			
+			<if test="permission.href != null and permission.href != ''">
+				`href` = #{permission.href},
+			</if>
+			
+			<if test="permission.level != null">
+				`level` = #{permission.level},
+			</if>
+			
+			<if test="permission.description != null and permission.description != ''">
+				`description` = #{permission.description},
+			</if>
+			
+			<if test="permission.updateTime != null">
+				`updateTime` = #{permission.updateTime},
+			</if>
+		</set>
+		where 
+		`id` = #{id}
+	</update>
+	
+	<!-- 删除权限 -->
+	<delete id="deletePermissionById">
+		delete from
+		`t_thinkingfruit_mall_permission`
+		where 
+		`id` = #{id}
+	</delete>
+	
+</mapper>

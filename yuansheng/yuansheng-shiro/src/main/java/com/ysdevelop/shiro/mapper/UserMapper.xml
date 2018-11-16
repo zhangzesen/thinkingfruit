@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ysdevelop.shiro.mapper.UserDao">
+	<!-- 通过登录名获取用户 -->
+	<select id="getUserByName" resultType="com.ysdevelop.shiro.entity.User">
+		select
+		t.`id` as id,
+		t.`pswd` as pswd,
+		t.`loginName` as loginName,
+		t.`nickname` as nickname,
+		t.`sex` as sex,
+		t.`provName` as provName,
+		t.`cityName` as cityName,
+		t.`townName` as townName,
+		t.`roleId` as roleId,
+		t.`salt` as salt,
+		t.`mobile` as mobile,
+		t.`email` as email,
+		t.`createTime` as createTime,
+		t.`loginOutTime` as loginOutTime,
+		t.`lastTime` as lastTime,
+		t.`status` as status,
+		t.`cityId`,
+		t.`provinceId`,
+		t1.`name` as roleName
+		from
+		`t_thinkingfruit_mall_user` t
+		left join `t_thinkingfruit_mall_role` t1 on t1.`id` = t.`roleId` 
+		where t.`loginName` = #{name}
+		and t.`status` = 0
+	</select>
+
+	<!-- 获取用户数据的总条数 -->
+	<select id="getCountByQuery" resultType="java.lang.Integer">
+		select count(`id`)
+		from
+		`t_thinkingfruit_mall_user`
+		<where>
+			<if test="queryMap.nicknameStr != null and queryMap.nicknameStr != ''">
+				`nickname` like CONCAT(CONCAT('%',#{queryMap.nicknameStr}),'%')
+			</if>
+			
+			<if test="queryMap.loginNameStr != null and queryMap.loginNameStr != ''">
+				and `loginName` like CONCAT(CONCAT(#{queryMap.loginNameStr},'%'),'%')
+			</if>
+			
+			<if test="queryMap.startTime != null">
+				and `createTime` &gt;= #{queryMap.startTime}
+			</if>
+			
+			<if test="queryMap.endTime != null">
+				and `createTime` &lt;= #{queryMap.endTime}
+			</if>
+			
+			and `status` = 0
+		</where>
+	</select>
+
+	<!-- 显示用户详情并进行分页处理 -->
+	<select id="paginationUser" resultType="com.ysdevelop.shiro.entity.User">
+		select
+		t.`id` as id,
+		t.`pswd` as pswd,
+		t.`loginName` as loginName,
+		t.`nickname` as nickname,
+		CASE t.`sex` 
+		WHEN '0' THEN '男'
+		WHEN '1' THEN '女'
+		ELSE '' END
+		as sexStr,
+		t.`provName` as provName,
+		t.`cityName` as cityName,
+		t.`townName` as townName,
+		t.`roleId` as roleId,
+		t.`salt` as salt,
+		t.`mobile` as mobile,
+		t.`email` as email,
+		t.`createTime` as createTime,
+		t.`loginOutTime` as loginOutTime,
+		t.`lastTime` as lastTime,
+		t.`status` as status,
+		t.`cityId`,
+		t.`provinceId`,
+		t1.`name` as roleName
+		from
+		`t_thinkingfruit_mall_user` t
+		left join `t_thinkingfruit_mall_role` t1 on t1.`id` = t.`roleId` 
+		<where>
+			<if test="queryMap.nicknameStr != null and queryMap.nicknameStr != ''">
+				t.`nickname` like CONCAT('%',CONCAT(#{queryMap.nicknameStr},'%'))
+			</if>
+			
+			<if test="queryMap.loginNameStr != null and queryMap.loginNameStr != ''">
+				and t.`loginName` like CONCAT('%',CONCAT(#{queryMap.loginNameStr},'%'))
+			</if>
+			
+			<if test="queryMap.startTime != null and queryMap.startTime != ''">
+				and t.`createTime` &gt;= #{queryMap.startTime}
+			</if>
+			
+			<if test="queryMap.endTime != null and queryMap.endTime != ''">
+				and t.`createTime` &lt;= #{queryMap.endTime}
+			</if>
+			
+			and t.`status` = 0
+		</where>
+		limit
+		#{pagination.start},#{pagination.pageSize}
+	</select>
+
+	<!-- 通过用户ID查询用户详情 -->
+	<select id="getUserById" resultType="com.ysdevelop.shiro.entity.User">
+		select
+		t.`id` as id,
+		t.`pswd` as pswd,
+		t.`loginName` as loginName,
+		t.`nickname` as nickname,
+		t.`sex` as sex,
+		t.`provName` as provName,
+		t.`cityName` as cityName,
+		t.`townName` as townName,
+		t.`roleId` as roleId,
+		t.`salt` as salt,
+		t.`mobile` as mobile,
+		t.`email` as email,
+		t.`createTime` as createTime,
+		t.`loginOutTime` as loginOutTime,
+		t.`lastTime` as lastTime,
+		t.`status` as status,
+		t.`cityId`,
+		t.`provinceId`,
+		t1.`name` as roleName
+		from
+		`t_thinkingfruit_mall_user` t
+		left join `t_thinkingfruit_mall_role` t1 on t1.`id` = t.`roleId` 
+		where
+		t.`id` = #{id}
+	</select>
+
+	<!-- 通过角色名称查询角色详情 -->
+	<select id="findRoleByName" resultType="com.ysdevelop.shiro.entity.Role">
+		select
+		`id`,`name`,`description`,`createTime`,`updateTime`
+		from
+		`t_thinkingfruit_mall_role`
+		where
+		`name` = #{name}
+	</select>
+
+	<!-- 通过指定的id字段修改用户详细信息 -->
+	<update id="updateUserById">
+		update `t_thinkingfruit_mall_user`
+		<set>
+			<if test="user.loginName != null">
+				`loginName` = #{user.loginName},
+			</if>
+
+			<if test="user.nickname != null">
+				`nickname` = #{user.nickname},
+			</if>
+			
+			<if test="user.sex != null">
+				`sex` = #{user.sex},
+			</if>
+			
+			<if test="user.provName != null">
+				`provName` = #{user.provName},
+			</if>
+			
+			<if test="user.cityName != null">
+				`cityName` = #{user.cityName},
+			</if>
+			
+			<if test="user.townName != null">
+				`townName` = #{user.townName},
+			</if>
+			
+			<if test="user.roleId != null">
+				`roleId` = #{user.roleId},
+			</if>
+			
+			<if test="user.mobile != null">
+				`mobile` = #{user.mobile},
+			</if>
+			
+			<if test="user.email != null">
+				`email` = #{user.email},
+			</if>
+			
+			<if test="user.provinceId != null">
+				`provinceId` = #{user.provinceId},
+			</if>
+			
+			<if test="user.cityId != null">
+				`cityId` = #{user.cityId},
+			</if>
+		</set>
+		where
+		`id` = #{id}
+	</update>
+
+	<!-- 添加用户 -->
+	<insert id="addUser">
+		insert into
+		`t_thinkingfruit_mall_user`(
+			`nickname`,`loginName`,`pswd`,`sex`,
+			`provName`,`cityName`,`townName`,`status`,
+			`roleId`,`salt`,`createTime`,`mobile`,`email`,`cityId`,`provinceId`
+		)
+		values
+		(
+			#{user.nickname},#{user.loginName},#{user.pswd},#{user.sex},
+			#{user.provName},#{user.cityName},#{user.townName},#{user.status},
+			#{user.roleId},#{user.salt},#{user.createTime},#{user.mobile},#{user.email},#{user.cityId},#{user.provinceId}
+		)
+	</insert>
+	
+	<!-- 删除用户，修改用户状态 -->
+	<update id="deleteUserById">
+		update `t_thinkingfruit_mall_user`
+		set
+		`status` = 1
+		where 
+		`id` = #{id}
+	</update>
+	
+	<!-- 修改用户个人密码 -->
+	<update id="updateUserPassword">
+		update `t_thinkingfruit_mall_user`
+		set
+		`pswd` = #{user.pswd},
+		`salt` = #{user.salt}
+		where 
+		`id` = #{user.id}
+	</update>
+	
+	<!-- 获取所有用户的id -->
+	<select id="findUserIdList" resultType="Long">
+		select
+		`id`
+		from
+		`t_thinkingfruit_mall_user`
+	</select>
+	
+	<!-- 获取所有用户 -->
+	<select id="listUser" resultType="com.ysdevelop.shiro.entity.User">
+		select
+		t.`id` as id,
+		t.`pswd` as pswd,
+		t.`loginName` as loginName,
+		t.`nickname` as nickname,
+		t.`sex` as sex,
+		t.`provName` as provName,
+		t.`cityName` as cityName,
+		t.`townName` as townName,
+		t.`roleId` as roleId,
+		t.`salt` as salt,
+		t.`mobile` as mobile,
+		t.`email` as email,
+		t.`lastTime` as lastTime,
+		t.`status` as status,
+		t.`cityId`,
+		t.`provinceId`
+		from
+		`t_thinkingfruit_mall_user` t
+	</select>
+	
+	<!-- 根据角色id查询用户 -->
+	<select id="getUserByRoleId" resultType="com.ysdevelop.shiro.entity.User">
+		select
+		t.`id` as id,
+		t.`pswd` as pswd,
+		t.`loginName` as loginName,
+		t.`nickname` as nickname,
+		t.`sex` as sex,
+		t.`provName` as provName,
+		t.`cityName` as cityName,
+		t.`townName` as townName,
+		t.`roleId` as roleId,
+		t.`salt` as salt,
+		t.`mobile` as mobile,
+		t.`email` as email,
+		t.`lastTime` as lastTime,
+		t.`status` as status,
+		t.`cityId`,
+		t.`provinceId`
+		from
+		`t_thinkingfruit_mall_user` t
+		where
+		t.`roleId` = #{roleId}
+	</select>
+	
+</mapper>

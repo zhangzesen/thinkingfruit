@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ysdevelop.shiro.mapper.RoleDao">
+
+	<!-- 获取角色数据的总条数 -->
+	<select id="getCountByQuery" resultType="java.lang.Integer">
+		select count(`id`)
+		from
+		`t_thinkingfruit_mall_role`
+	</select>
+
+	<!-- 显示角色详情并进行分页处理 -->
+	<select id="paginationRole" resultType="com.ysdevelop.shiro.entity.Role">
+		select
+		`id`,`name`,`description`,`createTime`,`updateTime`
+		from
+		`t_thinkingfruit_mall_role`
+		<where>
+			<if test="queryMap.roleName != null and queryMap.roleName != ''">
+				`name` like CONCAT('%',#{queryMap.roleName},'%')
+			</if>
+			
+			<if test="queryMap.roleDescription != null and queryMap.roleDescription != ''">
+				and `description` like CONCAT('%',#{queryMap.roleDescription},'%')
+			</if>
+		</where>
+		limit
+		#{pagination.start},#{pagination.pageSize}
+	</select>
+
+	<!-- 通过角色ID查询角色详情 -->
+	<select id="getRoleById" resultType="com.ysdevelop.shiro.entity.Role">
+		select
+		`id`,`name`,`description`,`createTime`,`updateTime`
+		from
+		`t_thinkingfruit_mall_role`
+		where
+		`id` = #{id}
+	</select>
+
+	<!-- 通过角色名称查询角色详情 -->
+	<select id="findRoleByName" resultType="com.ysdevelop.shiro.entity.Role">
+		select
+		`id`,`name`,`description`,`createTime`,`updateTime`
+		from
+		`t_thinkingfruit_mall_role`
+		where
+		`name` = #{name}
+	</select>
+
+	<!-- 修改角色信息 -->
+	<update id="updateRoleById">
+		update `t_thinkingfruit_mall_role`
+		<set>
+			<if test="role.name != null">
+				`name` = #{role.name},
+			</if>
+
+			<if test="role.description != null">
+				`description` = #{role.description},
+			</if>
+
+			<if test="role.updateTime != null">
+				`updateTime` = #{role.updateTime},
+			</if>
+		</set>
+		where
+		`id` = #{id}
+	</update>
+
+	<!-- 根据角色ID删除与该角色相关联的角色权限表中的相应数据 -->
+	<delete id="deleteRolePermissionByRoleId">
+		delete from
+		`t_thinkingfruit_mall_role_permission`
+		where
+		`roleId` = #{id}
+	</delete>
+
+	<!-- 批量添加角色相关联的角色权限表数据 -->
+	<insert id="addRolePermission">
+		insert into `t_thinkingfruit_mall_role_permission`(`roleId`,`permissionId`)
+		values
+		<foreach collection="ids" item="pid" separator=",">
+			(#{id},#{pid})
+		</foreach>
+	</insert>
+
+	<!-- 添加角色 -->
+	<insert id="addRole" keyProperty="id" useGeneratedKeys="true" parameterType="com.ysdevelop.shiro.entity.Role">
+		insert into
+		`t_thinkingfruit_mall_role`(`name`,`description`,`createTime`)
+		values
+		(#{name},#{description},#{createTime})
+	</insert>
+	
+	<!-- 查询所有角色 -->
+	<select id="findRoleList" resultType="com.ysdevelop.shiro.entity.Role">
+		select
+		`id`,`name`,`description`,`createTime`,`updateTime`
+		from
+		`t_thinkingfruit_mall_role`
+	</select>
+	
+	<!-- 通过用户名查询该用户的角色 -->
+	<select id="getRoleByUserName" resultType="String">
+		select
+		r.`name`
+		from
+		`t_thinkingfruit_mall_role` r
+		left join `t_thinkingfruit_mall_user` u on u.`roleId` = r.`id`
+		where u.`loginName` = #{name}
+	</select>
+	
+	<select id="listByUserId" resultType="String">
+		select
+		r.`name`
+		from
+		`t_thinkingfruit_mall_role` r
+		left join `t_thinkingfruit_mall_user` u on u.`roleId` = r.`id`
+		where u.`id` = #{id}
+	</select>
+	
+	<!-- 根据字段角色ID删除角色  -->
+	<select id="deleteRoleById">
+		delete from 
+		`t_thinkingfruit_mall_role`
+		where 
+		`id` = #{id}
+	</select>
+
+</mapper>

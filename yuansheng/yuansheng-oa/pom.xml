@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <parent>
+    <groupId>com.ysdevelop</groupId>
+    <artifactId>yuansheng</artifactId>
+    <version>1.0.0</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>yuansheng-oa</artifactId>
+   <packaging>war</packaging>
+  <name>yuansheng-oa Maven Webapp</name>
+  <build>
+    <finalName>yuansheng-oa</finalName>
+  </build>
+</project>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ysdevelop.common.mapper.SystemErrorLogDao">
+	
+	<select id="getCountByQuyer" resultType="java.lang.Integer">
+		select count(t.`id`)
+		from `t_yscms_systemerrorlog` t
+		<where>
+			1=1
+			<if test="ip!=null and ip!=''">
+				and t.`ip` =#{ip}
+			</if>
+			<if test="osAndbroswer!=null and osAndbroswer!=''">
+				and t.`osAndbroswer` like CONCAT('%',#{osAndbroswer},'%')
+			</if>
+			<if test="requestUrl!=null and requestUrl!=''">
+				and t.`requestUrl` like CONCAT('%',#{requestUrl},'%')
+			</if>
+			<if test="requestMethod!=null and requestMethod!=''">
+				and t.`requestMethod` like CONCAT('%',#{requestMethod},'%')
+			</if>
+			<if test="exceptionMessage!=null and exceptionMessage!=''">
+				and t.`exceptionMessage` like CONCAT('%',#{exceptionMessage},'%')
+			</if>
+			<if test="startTime!=null and startTime!=''">
+				<![CDATA[ and t.`createTime` > #{startTime} ]]>
+			</if>
+			<if test="endTime !=null and endTime!=''">
+				<![CDATA[ and t.`createTime` < #{endTime} ]]>
+			</if>
+		</where>
+	</select>
+
+	<select id="paginationByQuery" resultType="com.ysdevelop.common.entity.system.SystemErrorLog">
+		select 
+		t.`id` as `id`,
+		t.`ip` as `ip`,
+		t.`osAndbroswer` as `osAndbroswer`,
+		t.`requestUrl` as `requestUrl`,
+		t.`requestMethod` as `requestMethod`,
+		t.`exceptionMessage` as `exceptionMessage`,
+		t.`createTime` as `createTime`
+		from `t_yscms_systemerrorlog` t
+		<where>
+			1=1
+			<if test="systemErrorLog.ip!=null and systemErrorLog.ip!=''">
+				and t.`ip` =#{systemErrorLog.ip}
+			</if>
+			<if test="systemErrorLog.osAndbroswer!=null and systemErrorLog.osAndbroswer!=''">
+				and t.`osAndbroswer` like CONCAT('%',#{systemErrorLog.osAndbroswer},'%')
+			</if>
+			<if test="systemErrorLog.requestUrl!=null and systemErrorLog.requestUrl!=''">
+				and t.`requestUrl` like CONCAT('%',#{systemErrorLog.requestUrl},'%')
+			</if>
+			<if test="systemErrorLog.requestMethod!=null and systemErrorLog.requestMethod!=''">
+				and t.`requestMethod` like CONCAT('%',#{systemErrorLog.requestMethod},'%')
+			</if>
+			<if test="systemErrorLog.exceptionMessage!=null and systemErrorLog.exceptionMessage!=''">
+				and t.`exceptionMessage` like CONCAT('%',#{systemErrorLog.exceptionMessage},'%')
+			</if>
+			<if test="systemErrorLog.startTime!=null and systemErrorLog.startTime!=''">
+				<![CDATA[ and t.`createTime` >#{systemErrorLog.startTime} ]]>
+			</if>
+			<if test="systemErrorLog.endTime!=null and systemErrorLog.endTime!=''">
+				<![CDATA[ and t.`createTime` <#{systemErrorLog.endTime} ]]>
+			</if>
+			order by t.`createTime` desc
+			limit
+			#{pagination.start},#{pagination.pageSize}
+		</where>
+	</select>
+	
+	<delete id="deleteByIds">
+		delete from `t_yscms_systemerrorlog`
+		where id in
+		<foreach collection="list" item="id" separator="," open="(" close=")" index="">
+			#{id}
+		</foreach>
+	</delete>
+	
+	<insert id="addSystemErrorLog">
+		insert into `t_yscms_systemerrorlog`
+		(`ip`,`osAndbroswer`,`requestUrl`,`requestMethod`,`exceptionMessage`,`createTime`)
+		values
+		(#{ip},#{osAndbroswer},#{requestUrl},#{requestMethod},#{exceptionMessage},#{createTime})
+	</insert>
+</mapper>
