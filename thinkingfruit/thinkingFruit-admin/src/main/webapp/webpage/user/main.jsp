@@ -90,7 +90,7 @@
 						
 							<li name="left_mall"
 								class="layui-nav-item content_commodity edging"><a
-								name="left_a" id="commodityManagement" href="" target="main">
+								name="left_a" id="commodityManagement" href="<%=basePath%>/commodity" target="main">
 									<i class="layui-icon">&#xe62a;</i> <cite>商品管理</cite>
 							</a></li>
 						

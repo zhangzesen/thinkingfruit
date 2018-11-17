@@ -32,15 +32,14 @@ var commodity_index_ops = {
 				    	{ type:'checkbox'}
 	                    ,{field: 'id', title: '编号',align: 'center', width: 70}
 				        , {field: 'name', title: '商品名', align: 'center'}
-				        , {field: 'coverImagePath', title: '分类图片', align: 'center',templet:'<div><img src="'+WEB_ROOT+'{{d.coverImagePath}}"></div>'}
-				        , {field: 'commoditySpecation', title: '商品规格', align: 'center'}
+				        , {field: 'coverImagePath', title: '展示图片', align: 'center',templet:'<div><img src="'+WEB_ROOT+'{{d.coverImagePath}}"></div>'}
+				        , {field: 'sales', title: '商品销量', align: 'center'}
+				        , {field: 'stock', title: '商品库存', align: 'center'}
 				        , {field: 'description', title: '商品卖点',align: 'center'}
-				        , {field: 'commodityPrice', title: '商品价格',align: 'center'}
-				        , {field: 'index', title: '商品顺序',align: 'center'}
 				        , {fixed: 'right', title: '操作', width: 250,height: 40, align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
 				    ]]
 				    , id: 'dataCheck'
-				    , url: WEB_ROOT + "/commodity/pagination?categoryId="+categoryId
+				    , url: WEB_ROOT + "/commodity/pagination"
 				    , method: 'get'
 				    , page: true
 				    , limit: 10 //默认采用30t
@@ -61,14 +60,12 @@ var commodity_index_ops = {
 				$(".btn-serach").on('click',function(){						
 					var name = $("input[ name='name']").val();
 					var description = $("input[ name='description']").val();
-					var commoditySpecation = $("input[ name='commoditySpecation']").val();
 					
 					tableIns.reload({
 							where: { //设定异步数据接口的额外参数，任意设
 								name: name,
 								description: description,
-								commoditySpecation : commoditySpecation,
-								categoryId:categoryId
+								commoditySpecation : commoditySpecation
 							}
 							,page: {
 							  curr: 1 //重新从第 1 页开始
@@ -101,7 +98,7 @@ var commodity_index_ops = {
 										if (res.code == 0) {
 											callback = function() {
 												console.log(categoryId);
-												window.location.href = WEB_ROOT + '/commodity?categoryId=' + categoryId;
+												window.location.href = WEB_ROOT + '/commodity';
 											}
 										}
 										common_ops.alert(res.msg, callback);
@@ -113,7 +110,7 @@ var commodity_index_ops = {
 						common_ops.confirm(msg, callback);
 					}else{
 						//修改商品信息
-						window.location.href = WEB_ROOT + '/commodity/set?id='+id +"&categoryId=" + categoryId;
+						window.location.href = WEB_ROOT + '/commodity/set?id='+id;
 					}				
 				});
 				

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkingFruit.admin.mapper.CommodityDao">
+    <insert id="addCommodity" useGeneratedKeys="true" keyProperty="id" parameterType="com.thinkingFruit.admin.entity.Commodity">
+        insert into `t_smurfs_mall_commodity`(`name`,`videoPath`,`coverImagePath`,`qrBackgroundImagePath`,`previewImagePath`,`detailsImagePath`, `description`,`categoryId`,`stock`,`approvalNumber`,`isNew`,`isDeclaration`,`isburst`,`isSpecial`,`isPeas`,`createTime`,`index`)
+        values(#{name},#{videoPath},#{coverImagePath},#{qrBackgroundImagePath},#{previewImagePathCollection},#{detailsImagePathCollection},#{description},#{categoryId},#{stock},#{approvalNumber},#{isNew},#{isDeclaration},#{isburst},#{isSpecial},#{isPeas},now(),#{index})
+    </insert>
+     
+    <select id="paginationCommodity" resultType="com.thinkingFruit.admin.entity.Commodity">
+        select 
+        c.`id` as `id`,
+        c.`name` as `name`,
+        c.`coverImagePath` as `coverImagePath`,
+        c.`sales` as `sales`,
+        c.`stock` as `stock`,
+        c.`description` as `description`
+        from `t_thinkingfruit_mall_commodity` as c 
+        <if test="queryMap.name != null and queryMap.name != ''">
+           and c.`name` like CONCAT('%',#{queryMap.name},'%')
+        </if>
+        <if test="queryMap.description != null and queryMap.description != ''">
+           and c.`description` like CONCAT('%',#{queryMap.description},'%')
+        </if>
+    </select>
+     
+    <update id="deleteCommodityById">
+        update `t_smurfs_mall_commodity`
+        set `status` = 1
+        where `id` = #{id}
+    </update>
+    
+    <select id="findCommodityById" resultType="com.thinkingFruit.admin.entity.Commodity">
+        select s.`id`,c.`name`,c.`videoPath`,c.`coverImagePath`,c.`qrBackgroundImagePath`,c.`previewImagePath` as previewImagePathCollection,c.`detailsImagePath` as detailsImagePathCollection,c.`description`,c.`categoryId`,c.`stock`,c.`approvalNumber`,c.`isNew`,c.`isDeclaration`,c.`isburst`,c.`isSpecial`,c.`isPeas`,s.`commodityId`,s.`commoditySpecation`,s.`commoditySpecationStock`,s.`commodityPrice`,s.`consumerCommodityPrice`,s.`wholesaleCommodityPrice`,s.`wholesaleSecondCommodityPrice`,s.`agentCommodityPriceAgent`,s.`agentSecondCommodityPriceAgent`,s.`peas`,c.`index`
+        from `t_smurfs_mall_commodity` as c 
+        left join `t_smurfs_mall_commodity_specation` as s
+        on c.`id` = s.`commodityId`
+        where s.`id` = #{id}
+    </select>
+
+    <update id="editCommodity">
+        update `t_smurfs_mall_commodity`
+        <set>
+           `name` = #{commodity.name},
+           `videoPath` = #{commodity.videoPath},
+           `coverImagePath` = #{commodity.coverImagePath},
+           `qrBackgroundImagePath` = #{commodity.qrBackgroundImagePath},
+           `previewImagePath` = #{commodity.previewImagePathCollection},
+           `detailsImagePath` = #{commodity.detailsImagePathCollection},
+           `description` = #{commodity.description},
+           `approvalNumber` = #{commodity.approvalNumber},
+           `isNew` = #{commodity.isNew},
+           `isDeclaration` = #{commodity.isDeclaration},
+           `isburst` = #{commodity.isburst},
+           `isSpecial` = #{commodity.isSpecial},
+           `isPeas` = #{commodity.isPeas},
+           `index` = #{commodity.index}
+        </set>
+        where `id` = #{commodity.id}
+    </update>
+    
+</mapper>

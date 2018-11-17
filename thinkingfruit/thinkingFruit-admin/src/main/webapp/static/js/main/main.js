@@ -1,7 +1,7 @@
 isLogin = false;
 var user_main_ops = {
 	init : function() {
-		this.inintComponent();
+//		this.inintComponent();
 //		this.initMessageWebscoket();
 		this.eventBind();
 		this.inintMessageRedis();
@@ -205,37 +205,7 @@ var user_main_ops = {
 				layer.close(loading);
 			});
 			
-			// 商品树
-			$('.content_commodity').click(function() {
-				loading = layer.load(2, {
-					shade : [ 0.2, '#000' ]
-				// 0.2透明度的白色背景
-				});
-				$('#content_commodity_tree').empty();
-				$.ajax({
-					url : WEB_ROOT+"/commodity/tree",
-					dataType : "json",
-					type : "post",
-					success : function(treeMenu) {
-						layui.tree({
-							elem : '#content_commodity_tree' // 传入元素选择器
-							,
-							skin : 'white',
-							target : 'main',
-							nodes : [ {
-								"name" : "商品树",
-								"href" : null,
-								"children" : treeMenu,
-								"id" : 1
-							} ]
-						});
-					}
-				});
-				$('.left_menu_ul').addClass('hide');
-				$('.content_commodity_container').removeClass('hide');
-				layer.close(loading);
-			});
-
+			
 			// 退出登陆
 			$('.logout_btn').click(function() {
 				loading = layer.load(2, {
