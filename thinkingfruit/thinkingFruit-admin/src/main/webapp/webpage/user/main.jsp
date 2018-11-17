@@ -87,27 +87,6 @@
 							style="height: 55px;"><a
 							style="line-height: 57px; font-size: 18px;">商城管理</a></li>
 						
-							<li class="layui-nav-item edging"><a
-								href="<%=basePath%>/category" target="main"><i
-									class="layui-icon">&#xe60f;</i>商品分类管理</a>
-								<dl class="layui-nav-child left-dl">
-									<dd>
-										<li name="left_mall" class="layui-nav-item edging"
-											style="background-color: #fff; border-top: 1px solid #cccccc;"><a
-											name="left_a" href="<%=basePath%>/category" target="main">
-												<i class="layui-icon">&#xe671;</i><cite>商品一级分类</cite>
-										</a></li>
-									</dd>
-									<dd>
-										<li name="left_mall" class="layui-nav-item"
-											style="background-color: #fff;"><a name="left_a"
-											href="<%=basePath%>/secondCategory" target="main"> <i
-												class="layui-icon">&#xe671;</i><cite>商品二级分类</cite>
-										</a></li>
-									</dd>
-								</dl></li>
-						
-
 						
 							<li name="left_mall"
 								class="layui-nav-item content_commodity edging"><a
