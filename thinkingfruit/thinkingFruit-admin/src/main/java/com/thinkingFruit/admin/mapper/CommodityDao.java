@@ -6,7 +6,6 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 
 import com.thinkingFruit.admin.entity.Commodity;
-import com.ysdevelop.common.page.Pagination;
 
 public interface CommodityDao {
 	
@@ -35,10 +34,9 @@ public interface CommodityDao {
 	/**
 	 * 	查询该分类下所有的商品信息
 	 * @param queryMap
-	 * @param pagination
 	 * @return 商品集合
 	 */
-	List<Commodity> paginationCommodity(@Param("queryMap")Map<String, String> queryMap, @Param("pagination")Pagination<Commodity> pagination);
+	List<Commodity> paginationCommodity(@Param("queryMap")Map<String, String> queryMap);
 	
 	/**
 	 * 	根据规格id查询商品信息

@@ -55,9 +55,14 @@
 		<weixin-java-pay.version>2.9.0</weixin-java-pay.version>
 		<xfire-core.version>1.2.6</xfire-core.version>
 		<bcprov-jdk16.version>1.46</bcprov-jdk16.version>
+		<pagehelper.version>4.1.4</pagehelper.version>
 	</properties>
 	<dependencies>
-
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper</artifactId>
+			<version>${pagehelper.version}</version>
+		</dependency>
 		<!-- SPRING start -->
 		<dependency>
 			<groupId>org.springframework</groupId>

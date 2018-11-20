@@ -8,11 +8,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.thinkingFruit.admin.entity.Commodity;
 import com.thinkingFruit.admin.mapper.CommodityDao;
 import com.thinkingFruit.admin.service.CommodityService;
 import com.ysdevelop.common.exception.WebServiceException;
-import com.ysdevelop.common.page.Pagination;
 import com.ysdevelop.common.result.CodeMsg;
 /**
  * @author zhangzesen
@@ -36,17 +37,27 @@ public class CommodityServiceImpl implements CommodityService {
 	 */
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public Pagination<Commodity> paginationCommodity(Pagination<Commodity> pagination, Map<String, String> queryMap) {
-		Integer page = null;
-		Integer limit = null;
-		if (queryMap == null || (page = Integer.valueOf(queryMap.get("page"))) == null || (limit = Integer.valueOf(queryMap.get("limit"))) == null) {
+	public PageInfo<Commodity> paginationCommodity(Map<String, String> queryMap) {
+		
+		if (queryMap == null) {
 			throw new WebServiceException(CodeMsg.SERVER_ERROR);
 		}
-		pagination.setPageNum(page);
-		pagination.setPageSize(limit);
-		List<Commodity> commodityItems = commodityDao.paginationCommodity(queryMap, pagination);
-		pagination.setItems(commodityItems);
-		return pagination;
+		// 获取分页条件的
+		String pageSize = queryMap.get("limit");
+		String pageNum = queryMap.get("page");
+		if (pageSize == null || pageNum == null) {
+			throw new WebServiceException(CodeMsg.SERVER_ERROR);
+		}
+		Integer integerPageSize = Integer.parseInt(pageSize);
+		Integer integerPageNum = Integer.parseInt(pageNum);
+		// 调用存储过程实现树形分类
+		
+		PageHelper.startPage(integerPageNum, integerPageSize, Boolean.TRUE);
+		List<Commodity> commodity = commodityDao.paginationCommodity(queryMap);
+		
+		
+		PageInfo<Commodity> pageInfo = new PageInfo<>(commodity);
+		return pageInfo;
 	}
 	
 	/**

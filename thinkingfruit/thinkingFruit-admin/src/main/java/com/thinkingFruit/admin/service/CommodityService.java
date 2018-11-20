@@ -2,8 +2,8 @@ package com.thinkingFruit.admin.service;
 
 import java.util.Map;
 
+import com.github.pagehelper.PageInfo;
 import com.thinkingFruit.admin.entity.Commodity;
-import com.ysdevelop.common.page.Pagination;
 
 
 /**
@@ -25,11 +25,10 @@ public interface CommodityService {
 
 	/**
 	 * 	查询所有的商品信息
-	 * @param pagination
 	 * @param queryMap
 	 * @return 商品
 	 */
-	Pagination<Commodity> paginationCommodity(Pagination<Commodity> pagination, Map<String, String> queryMap);
+	PageInfo<Commodity> paginationCommodity(Map<String, String> queryMap);
 	
 	/**
 	 *	 根据商品id删除商品信息

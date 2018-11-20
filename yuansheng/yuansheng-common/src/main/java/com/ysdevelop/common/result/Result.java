@@ -1,5 +1,6 @@
 package com.ysdevelop.common.result;
 
+
 /**
  * 
  * @author OldHuang
@@ -17,7 +18,7 @@ public class Result<T> {
 	private int code;
 	private String msg;
 	// layui 分页需要返回一个总的记录数(总的条目数)
-	private int count;
+	private long count;
 	private T data;
 	
 	/**
@@ -37,7 +38,7 @@ public class Result<T> {
 	/**
 	 * 成功时候的调用,data设置
 	 * */
-	public static <T> Result<T> successPaginationData(T data, Integer count) {
+	public static <T> Result<T> successPaginationData(T data, Long count) {
 		return new Result<T>("操作成功", data, count);
 	}
 	
@@ -58,7 +59,7 @@ public class Result<T> {
 		this.data = data;
 	}
 	
-	private Result(String msg, T data, Integer count) {
+	private Result(String msg, T data, Long count) {
 		this.data = data;
 		this.msg = msg;
 		this.count = count;
@@ -107,17 +108,13 @@ public class Result<T> {
 		this.data = data;
 	}
 
-	public int getCount() {
+	public long getCount() {
 		return count;
 	}
 
-	public void setCount(int count) {
+	public void setCount(long count) {
 		this.count = count;
 	}
-
-	
-	
-	
 
 	
 	

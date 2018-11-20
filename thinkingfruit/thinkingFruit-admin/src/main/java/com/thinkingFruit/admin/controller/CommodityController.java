@@ -1,5 +1,6 @@
 package com.thinkingFruit.admin.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageInfo;
 import com.thinkingFruit.admin.entity.Commodity;
 import com.thinkingFruit.admin.service.CommodityService;
-import com.ysdevelop.common.page.Pagination;
 import com.ysdevelop.common.result.Result;
 import com.ysdevelop.common.utils.HttpUtils;
 import com.ysdevelop.common.utils.JSONHelper;
@@ -52,10 +53,10 @@ public class CommodityController {
 	 */
 	@RequestMapping(value = "/pagination", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
 	@ResponseBody
-	public String pagination(HttpServletRequest request,Pagination<Commodity> pagination){
+	public Result<List<Commodity>> pagination(HttpServletRequest request){
 		Map<String, String> queryMap = HttpUtils.getParameterMap(request);
-		commodityService.paginationCommodity(pagination,queryMap);
-		return JSONHelper.bean2json(Result.successPaginationData(pagination.getItems(), pagination.getTotalItemsCount()));
+		PageInfo<Commodity> pageInfo=commodityService.paginationCommodity(queryMap);
+		return Result.successPaginationData(pageInfo.getList(), pageInfo.getTotal());
 	}
 	
 	/**
