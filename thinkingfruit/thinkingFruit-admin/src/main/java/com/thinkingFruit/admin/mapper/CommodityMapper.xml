@@ -1,11 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.thinkingFruit.admin.mapper.CommodityDao">
+    <!-- 添加商品 -->
     <insert id="addCommodity" useGeneratedKeys="true" keyProperty="id" parameterType="com.thinkingFruit.admin.entity.Commodity">
-        insert into `t_smurfs_mall_commodity`(`name`,`videoPath`,`coverImagePath`,`qrBackgroundImagePath`,`previewImagePath`,`detailsImagePath`, `description`,`categoryId`,`stock`,`approvalNumber`,`isNew`,`isDeclaration`,`isburst`,`isSpecial`,`isPeas`,`createTime`,`index`)
-        values(#{name},#{videoPath},#{coverImagePath},#{qrBackgroundImagePath},#{previewImagePathCollection},#{detailsImagePathCollection},#{description},#{categoryId},#{stock},#{approvalNumber},#{isNew},#{isDeclaration},#{isburst},#{isSpecial},#{isPeas},now(),#{index})
+        insert into `t_thinkingfruit_mall_commodity`(`name`,`coverImagePath`, `description`,`stock`,`sales`,`approvalNumber`,`status`,`firstPrice`,`secondPrice`,`thirdPrice`,`fourthPrice`,`fifthPrice`,`createTime`)
+        values(#{name},#{coverImagePath},#{description},#{stock},0,#{approvalNumber},0,#{firstPrice},#{secondPrice},#{thirdPrice},#{fourthPrice},#{fifthPrice},now())
     </insert>
-     
+     <!-- 添加商品详情图片 -->
+    <insert id="addCommoditydDetailsImage">
+    	insert into t_thinkingfruit_mall_commodity_images(`imagePath`,`imageStatus`,`status`,`commodityId`,`createTime`)
+    	values
+    	<foreach collection="detailsImagePath" index="index" item="imagePath" separator=",">
+			(#{imagePath},
+			1,
+			0,
+			#{id},
+			now())
+		</foreach>
+    </insert>
+    <!-- 添加商品轮播图片 -->
+    <insert id="addCommoditydPreviewImage">
+    	insert into t_thinkingfruit_mall_commodity_images(`imagePath`,`imageStatus`,`status`,`commodityId`,`createTime`)
+    	values
+    	<foreach collection="previewImagePath" index="index" item="imagePath" separator=",">
+			(#{imagePath},
+			0,
+			0,
+			#{id},
+			now())
+		</foreach>
+    </insert>
+    <!-- 查询所有商品 -->
     <select id="paginationCommodity" resultType="com.thinkingFruit.admin.entity.Commodity">
         select 
         c.`id` as `id`,
@@ -15,47 +40,76 @@
         c.`stock` as `stock`,
         c.`description` as `description`
         from `t_thinkingfruit_mall_commodity` as c 
+        <where>
+			1 = 1
         <if test="queryMap.name != null and queryMap.name != ''">
            and c.`name` like CONCAT('%',#{queryMap.name},'%')
         </if>
         <if test="queryMap.description != null and queryMap.description != ''">
            and c.`description` like CONCAT('%',#{queryMap.description},'%')
         </if>
+        and c.`status`=0
+        </where>
     </select>
-     
+     <!-- 删除商品 -->
     <update id="deleteCommodityById">
-        update `t_smurfs_mall_commodity`
+        update `t_thinkingfruit_mall_commodity`
         set `status` = 1
         where `id` = #{id}
     </update>
-    
+    <!-- 查询商品详情 -->
     <select id="findCommodityById" resultType="com.thinkingFruit.admin.entity.Commodity">
-        select s.`id`,c.`name`,c.`videoPath`,c.`coverImagePath`,c.`qrBackgroundImagePath`,c.`previewImagePath` as previewImagePathCollection,c.`detailsImagePath` as detailsImagePathCollection,c.`description`,c.`categoryId`,c.`stock`,c.`approvalNumber`,c.`isNew`,c.`isDeclaration`,c.`isburst`,c.`isSpecial`,c.`isPeas`,s.`commodityId`,s.`commoditySpecation`,s.`commoditySpecationStock`,s.`commodityPrice`,s.`consumerCommodityPrice`,s.`wholesaleCommodityPrice`,s.`wholesaleSecondCommodityPrice`,s.`agentCommodityPriceAgent`,s.`agentSecondCommodityPriceAgent`,s.`peas`,c.`index`
-        from `t_smurfs_mall_commodity` as c 
-        left join `t_smurfs_mall_commodity_specation` as s
-        on c.`id` = s.`commodityId`
-        where s.`id` = #{id}
+        select 
+        c.`id` as `id` ,
+        c.`name` as `name`,
+        c.`coverImagePath` as `coverImagePath`,
+        c.`description` as `description`,
+        c.`stock` as `stock`,
+        c.`approvalNumber` as `approvalNumber`,
+        c.`fifthPrice` as `fifthPrice`,
+        c.`fourthPrice` as `fourthPrice`,
+        c.`thirdPrice` as `thirdPrice`,
+        c.`secondPrice` as `secondPrice`,
+        c.`firstPrice` as `firstPrice`
+        from `t_thinkingfruit_mall_commodity` as c 
+        where c.`id` = #{id}
     </select>
-
+	
+	<!-- 通过商品id查询商品图片 -->
+	<select id="findCommodityImagesById" resultType="String">
+		select 
+		`i`.imagePath as `imagePath`
+		from `t_thinkingfruit_mall_commodity_images` as `i`
+		where `i`.status=0 
+		and `i`.imageStatus =#{imageStatus}
+		and `i`.commodityId=#{id}
+		
+	</select>
+	<!-- 修改商品 -->
     <update id="editCommodity">
-        update `t_smurfs_mall_commodity`
+        update `t_thinkingfruit_mall_commodity`
         <set>
-           `name` = #{commodity.name},
-           `videoPath` = #{commodity.videoPath},
-           `coverImagePath` = #{commodity.coverImagePath},
-           `qrBackgroundImagePath` = #{commodity.qrBackgroundImagePath},
-           `previewImagePath` = #{commodity.previewImagePathCollection},
-           `detailsImagePath` = #{commodity.detailsImagePathCollection},
-           `description` = #{commodity.description},
-           `approvalNumber` = #{commodity.approvalNumber},
-           `isNew` = #{commodity.isNew},
-           `isDeclaration` = #{commodity.isDeclaration},
-           `isburst` = #{commodity.isburst},
-           `isSpecial` = #{commodity.isSpecial},
-           `isPeas` = #{commodity.isPeas},
-           `index` = #{commodity.index}
+           `name` = #{name},
+           `coverImagePath` = #{coverImagePath},
+           `description` = #{description},
+           `approvalNumber` = #{approvalNumber},
+           `stock` = #{stock},
+           `fifthPrice` = #{fifthPrice},
+           `fourthPrice` = #{fourthPrice},
+           `thirdPrice` = #{thirdPrice},
+           `secondPrice` = #{secondPrice},
+           `firstPrice` = #{firstPrice}
         </set>
-        where `id` = #{commodity.id}
+        where `id` = #{id}
     </update>
     
+    <!-- 删除商品图片 -->
+    <update id="deleteCommodityImagesById">
+        update `t_thinkingfruit_mall_commodity_images`
+        <set>
+           `status` = 1,
+           `updateTime` = now(),
+        </set>
+        where `id` = #{id}
+    </update>
 </mapper>

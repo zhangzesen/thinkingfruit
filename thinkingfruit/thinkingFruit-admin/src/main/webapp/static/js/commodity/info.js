@@ -8,67 +8,36 @@ var commodity_info_ops = {
 			
 		},
 		inintComponent:function(){
-			var specationId = common_ops.g_getQueryString("id");
-			
+			//获取商品id
+			var id = common_ops.g_getQueryString("id");
 			$.ajax({
 				url:WEB_ROOT + "/commodity/info",
 				data:{
-					specationId:specationId
+					id:id
 				},
 				type:'get',
 				dataType:'json',
 				success:function(res){
 					$("input[name='name']").val(res.data.name);
-					$("input[name='videoPath']").val(res.data.videoPath);
-					$("input[name='coverImagePath']").val(res.data.coverImagePath);
-					$("input[name='previewImagePath']").val(res.data.previewImagePathCollection);
-					$("input[name='detailsImagePath']").val(res.data.detailsImagePathCollection);
 					$("textarea[name='description']").val(res.data.description);
-					$("input[name='commoditySpecation']").val(res.data.commoditySpecation);
-					$("input[name='commoditySpecationStock']").val(res.data.commoditySpecationStock);
-					$("input[name='commodityPrice']").val(res.data.commodityPrice);
-					$("input[name='consumerCommodityPrice']").val(res.data.consumerCommodityPrice);
-					$("input[name='wholesaleCommodityPrice']").val(res.data.wholesaleCommodityPrice);
-					$("input[name='agentCommodityPriceAgent']").val(res.data.agentCommodityPriceAgent);  
-					$("input[name='wholesaleSecondCommodityPrice']").val(res.data.wholesaleSecondCommodityPrice);
-					$("input[name='agentSecondCommodityPriceAgent']").val(res.data.agentSecondCommodityPriceAgent);
+					$("input[name='fifthPrice']").val(res.data.fifthPrice)
+					$("input[name='fourthPrice']").val(res.data.fourthPrice);
+					$("input[name='thirdPrice']").val(res.data.thirdPrice);
+					$("input[name='secondPrice']").val(res.data.secondPrice);
+					$("input[name='firstPrice']").val(res.data.firstPrice);
+					$("input[name='stock']").val(res.data.stock);
 					$("input[name='approvalNumber']").val(res.data.approvalNumber);
-					$("input[name='peas']").val(res.data.peas);
-					$("input[name='index']").val(res.data.index);
+					$("input[name='coverImagePath']").val(res.data.coverImagePath);
 					
-					//添加视频
-					$("#video").attr("src",WEB_ROOT+res.data.videoPath);
-					console.log("video:"+WEB_ROOT+res.data.videoPath);
-//					http://localhost:8080/smurfs-admin/upload/video/commodity/1528957379348.mp4
+					//添加展示图片
+					$("img[name='cover']").attr("src", WEB_ROOT+res.data.coverImagePath);
 					
-					//添加图片
-					$("img[name='cover']").attr("src", WEB_ROOT+res.data.coverImagePath)
-					
-					$("img[name='qrBackground']").attr("src", WEB_ROOT+res.data.qrBackgroundImagePath)
-					
-					for (var i = 0; i < res.data.previewImagePath.length; i++) {
-						$("#preview").append("<img alt='' border='none' name='preview' src='"+WEB_ROOT+res.data.previewImagePath[i]+"' style='max-width:100px;'>");
+					for (var i = 0; i < res.data.previewImagePaths.length; i++) {
+						$("#preview").append("<img alt='' border='none' name='preview' src='"+WEB_ROOT+res.data.previewImagePaths[i]+"' style='max-width:100px;'>");
 					}
 					
-					for (var i = 0; i < res.data.detailsImagePath.length; i++) {
-						$("#details").append("<img alt='' border='none' name='details' src='"+WEB_ROOT+res.data.detailsImagePath[i]+"' style='max-width:100px;'>");
-					}
-					
-					//特殊分类
-					if(res.data.isNew == 0){
-						$("#isNew").attr("checked",true);
-					}
-					if(res.data.isDeclaration == 0){
-						$("#isDeclaration").attr("checked",true);
-					}
-					if(res.data.isSpecial == 0){
-						$("#isSpecial").attr("checked",true);
-					}
-					if(res.data.isPeas == 0){
-						$("#isPeas").attr("checked",true);
-					}
-					if(res.data.isburst == 0){
-						$("#isburst").attr("checked",true);
+					for (var i = 0; i < res.data.detailsImagePaths.length; i++) {
+						$("#details").append("<img alt='' border='none' name='details' src='"+WEB_ROOT+res.data.detailsImagePaths[i]+"' style='max-width:100px;'>");
 					}
 					layui.use('form', function() {
 				        var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功

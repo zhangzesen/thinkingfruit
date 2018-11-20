@@ -1,5 +1,7 @@
 package com.thinkingFruit.admin.entity;
 
+import java.util.List;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.ysdevelop.common.validator.IsPrice;
@@ -16,106 +18,107 @@ import com.ysdevelop.common.validator.IsPrice;
 public class Commodity {
 	
 	/**
-	 * 商品id
+	 * 	商品id
 	 */
 	private Long id;
 	
 	/**
-	 * 商品名
+	 *	 商品名
 	 */
 	@NotEmpty(message="商品名不能为空")
 	private String name;
 	
 	
 	/**
-	 * 商品展示图
+	 * 	商品展示图
 	 */
 	@NotEmpty(message="请选择商品展示图片")
 	private String coverImagePath;
 	
-	/**
-	 * 商品轮播图id
-	 */
-	private Long previewImageId;
 	
 	/**
-	 * 商品轮播图
+	 *	 商品轮播图集合
 	 */
-	private String[] previewImagePath;
+	private List<String> previewImagePaths;
 	
 	/**
-	 * 商品详情图id
+	 * 	商品详情图集合
 	 */
-	private Long detailsImageId;
+	private List<String> detailsImagePaths;// 商品详情图
 	
 	/**
-	 * 商品详情图
+	 *	 商品详情图
 	 */
-	private String[] detailsImagePath;// 商品详情图
+	private String detailsImagePath;
 	
 	/**
-	 * 商品描述
+	 *	 商品轮播图
+	 */
+	private String previewImagePath;
+	
+	/**
+	 *	 商品描述
 	 */
 	@NotEmpty(message="请输入商品卖点")
 	private String description;
 	
 	/**
-	 * 商品销量
+	 * 	商品销量
 	 */
-	private Integer sales;
+	private Long sales;
 	
 	/**
-	 * 商品联创价
+	 * 	商品联创价
 	 */
 	@IsPrice
 	private Double firstPrice;
 	
 	/**
-	 * 商品春事价
+	 * 	商品春事价
 	 */
 	@IsPrice
 	private Double secondPrice;
 	
 	/**
-	 * 商品总监价
+	 * 	商品总监价
 	 */
 	@IsPrice
 	private Double thirdPrice;
 	
 	/**
-	 * 商品svip价
+	 * 	商品svip价
 	 */
 	@IsPrice
 	private Double fourthPrice;
 	
 	/**
-	 * 商品vip价
+	 * 	商品vip价
 	 */
 	@IsPrice
 	private Double fifthPrice;
 	
 	/**
-	 * 商品库存
+	 *	 商品库存
 	 */
-	private Integer stock;
+	private Long stock;
 	
 	/**
-	 * 商品批准文号
+	 * 	商品批准文号
 	 */
 	private String approvalNumber;
 	
 	/**
-	 * 开始时间
+	 * 	开始时间
 	 */
 	private String createTime;
 	
 	/**
-	 * 结束时间
+	 * 	结束时间
 	 */
 	private String updateTime;
 	
 	/**
-	 * 商品状态，0代表激活，1代表注销
+	 *	 商品状态，0代表激活，1代表注销
 	 */
 	private Integer status;
 
@@ -143,36 +146,21 @@ public class Commodity {
 		this.coverImagePath = coverImagePath;
 	}
 
-	public Long getPreviewImageId() {
-		return previewImageId;
+
+	public List<String> getPreviewImagePaths() {
+		return previewImagePaths;
 	}
 
-	public void setPreviewImageId(Long previewImageId) {
-		this.previewImageId = previewImageId;
+	public void setPreviewImagePaths(List<String> previewImagePaths) {
+		this.previewImagePaths = previewImagePaths;
 	}
 
-	public String[] getPreviewImagePath() {
-		return previewImagePath;
+	public List<String> getDetailsImagePaths() {
+		return detailsImagePaths;
 	}
 
-	public void setPreviewImagePath(String[] previewImagePath) {
-		this.previewImagePath = previewImagePath;
-	}
-
-	public Long getDetailsImageId() {
-		return detailsImageId;
-	}
-
-	public void setDetailsImageId(Long detailsImageId) {
-		this.detailsImageId = detailsImageId;
-	}
-
-	public String[] getDetailsImagePath() {
-		return detailsImagePath;
-	}
-
-	public void setDetailsImagePath(String[] detailsImagePath) {
-		this.detailsImagePath = detailsImagePath;
+	public void setDetailsImagePaths(List<String> detailsImagePaths) {
+		this.detailsImagePaths = detailsImagePaths;
 	}
 
 	public String getDescription() {
@@ -182,12 +170,12 @@ public class Commodity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	public Integer getSales() {
+	
+	public Long getSales() {
 		return sales;
 	}
 
-	public void setSales(Integer sales) {
+	public void setSales(Long sales) {
 		this.sales = sales;
 	}
 
@@ -230,12 +218,12 @@ public class Commodity {
 	public void setFifthPrice(Double fifthPrice) {
 		this.fifthPrice = fifthPrice;
 	}
-
-	public Integer getStock() {
+	
+	public Long getStock() {
 		return stock;
 	}
 
-	public void setStock(Integer stock) {
+	public void setStock(Long stock) {
 		this.stock = stock;
 	}
 
@@ -271,5 +259,19 @@ public class Commodity {
 		this.status = status;
 	}
 	
-	
+	public String getDetailsImagePath() {
+		return detailsImagePath;
+	}
+
+	public void setDetailsImagePath(String detailsImagePath) {
+		this.detailsImagePath = detailsImagePath;
+	}
+
+	public String getPreviewImagePath() {
+		return previewImagePath;
+	}
+
+	public void setPreviewImagePath(String previewImagePath) {
+		this.previewImagePath = previewImagePath;
+	}
 }

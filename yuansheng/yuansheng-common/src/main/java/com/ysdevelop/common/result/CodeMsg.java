@@ -48,7 +48,8 @@ public class CodeMsg {
 	//商品
 	public static CodeMsg SPECATION_EXIST = new CodeMsg(500010,"该商品规格已存在");
 	public static CodeMsg COMMODITYNAME_EXIST = new CodeMsg(500022,"该商品名已存在");
-	
+	public static CodeMsg COMMODITYNAME_ERROR = new CodeMsg(500023,"添加商品失败");
+	public static CodeMsg COMMODITYNAME_UPDATE_ERROR = new CodeMsg(500025,"修改商品失败");
 	//服务
 	public static CodeMsg MINISTRY_EXIST = new CodeMsg(500024,"该商品名已存在");
 

@@ -3,7 +3,6 @@ package com.thinkingFruit.admin.controller;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -85,9 +84,9 @@ public class CommodityController {
 	 * @param commodity 商品
 	 * @return 添加成功返回到index界面
 	 */
-	@RequestMapping(value = "", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public Result<String> add(@Valid Commodity commodity){
+	public Result<String> add(Commodity commodity){
 		commodityService.addCommodity(commodity);
 		return Result.success("添加成功");
 	}

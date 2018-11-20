@@ -31,11 +31,6 @@ body{overflow-y: scroll;}
 									value=""
 									placeholder="请输入商品卖点" autocomplete="off" class="layui-input">
 						</div>
-						<div class="layui-input-inline xbs768">
-							<input type="text" name="commoditySpecation"
-								value="" placeholder="请输入商品规格"
-								autocomplete="off" class="layui-input">
-						</div>
 						<div class="layui-input-inline xbs768" style="width: 80px">
 							<button class="layui-btn btn-serach" lay-submit=""
 								lay-filter="sreach">

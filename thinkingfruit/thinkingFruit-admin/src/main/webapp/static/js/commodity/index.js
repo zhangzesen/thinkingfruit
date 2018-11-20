@@ -29,8 +29,7 @@ var commodity_index_ops = {
 				var tableIns = table.render({
 				    elem: '#dateTable'                  //指定原始表格元素选择器（推荐id选择器）  //容器高度
 				    , cols: [[                          //标题栏
-				    	{ type:'checkbox'}
-	                    ,{field: 'id', title: '编号',align: 'center', width: 70}
+	                    {field: 'id', title: '编号',align: 'center', width: 70}
 				        , {field: 'name', title: '商品名', align: 'center'}
 				        , {field: 'coverImagePath', title: '展示图片', align: 'center',templet:'<div><img src="'+WEB_ROOT+'{{d.coverImagePath}}"></div>'}
 				        , {field: 'sales', title: '商品销量', align: 'center'}
@@ -64,8 +63,7 @@ var commodity_index_ops = {
 					tableIns.reload({
 							where: { //设定异步数据接口的额外参数，任意设
 								name: name,
-								description: description,
-								commoditySpecation : commoditySpecation
+								description: description
 							}
 							,page: {
 							  curr: 1 //重新从第 1 页开始
@@ -97,7 +95,6 @@ var commodity_index_ops = {
 										var callback = null;
 										if (res.code == 0) {
 											callback = function() {
-												console.log(categoryId);
 												window.location.href = WEB_ROOT + '/commodity';
 											}
 										}
