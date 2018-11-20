@@ -14,67 +14,67 @@ package com.ysdevelop.common.result;
  * @version
  * 
  */
-public class Result<T> {
+public class Results<T> {
 	private int code;
 	private String msg;
 	// layui 分页需要返回一个总的记录数(总的条目数)
-	private int count;
+	private long count;
 	private T data;
 	
 	/**
 	 *  成功时候的调用
 	 * */
-	public static  <T> Result<T> success(String msg){
-		return new Result<T>(msg);
+	public static  <T> Results<T> success(String msg){
+		return new Results<T>(msg);
 	}
 	
 	/**
 	 *  成功时候的调用,data设置
 	 * */
-	public static  <T> Result<T> successData(T data){
-		return new Result<T>(data);
+	public static  <T> Results<T> successData(T data){
+		return new Results<T>(data);
 	}
 	
 	/**
 	 * 成功时候的调用,data设置
 	 * */
-	public static <T> Result<T> successPaginationData(T data, Integer count) {
-		return new Result<T>("操作成功", data, count);
+	public static <T> Results<T> successPaginationData(T data, Long count) {
+		return new Results<T>("操作成功", data, count);
 	}
 	
 	/**
 	 *  失败时候的调用
 	 * */
-	public static  <T> Result<T> error(CodeMsg codeMsg){
-		return new Result<T>(codeMsg);
+	public static  <T> Results<T> error(CodeMsg codeMsg){
+		return new Results<T>(codeMsg);
 	}
 	
-	private Result(){
+	private Results(){
 		
 	}
 	
-	private Result(int code, String msg, T data) {
+	private Results(int code, String msg, T data) {
 		this.code = code;
 		this.msg = msg;
 		this.data = data;
 	}
 	
-	private Result(String msg, T data, Integer count) {
+	private Results(String msg, T data, Long count) {
 		this.data = data;
 		this.msg = msg;
 		this.count = count;
 	}
 		
-	private Result(T data) {
+	private Results(T data) {
 		this.data = data;
 	}
 	
-	private Result(String msg){
+	private Results(String msg){
 		this.msg = msg;
 	}
 	
 	
-	private Result(CodeMsg codeMsg){
+	private Results(CodeMsg codeMsg){
 		if(codeMsg!=null){
 			this.code = codeMsg.getCode();
 			this.msg = codeMsg.getMsg();
@@ -108,14 +108,13 @@ public class Result<T> {
 		this.data = data;
 	}
 
-	public int getCount() {
+	public long getCount() {
 		return count;
 	}
 
-	public void setCount(int count) {
+	public void setCount(long count) {
 		this.count = count;
 	}
-
 
 	
 	

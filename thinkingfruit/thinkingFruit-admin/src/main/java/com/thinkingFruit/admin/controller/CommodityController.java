@@ -16,6 +16,7 @@ import com.github.pagehelper.PageInfo;
 import com.thinkingFruit.admin.entity.Commodity;
 import com.thinkingFruit.admin.service.CommodityService;
 import com.ysdevelop.common.result.Result;
+import com.ysdevelop.common.result.Results;
 import com.ysdevelop.common.utils.HttpUtils;
 import com.ysdevelop.common.utils.JSONHelper;
 
@@ -53,10 +54,10 @@ public class CommodityController {
 	 */
 	@RequestMapping(value = "/pagination", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
 	@ResponseBody
-	public Result<List<Commodity>> pagination(HttpServletRequest request){
+	public Results<List<Commodity>> pagination(HttpServletRequest request){
 		Map<String, String> queryMap = HttpUtils.getParameterMap(request);
 		PageInfo<Commodity> pageInfo=commodityService.paginationCommodity(queryMap);
-		return Result.successPaginationData(pageInfo.getList(), pageInfo.getTotal());
+		return Results.successPaginationData(pageInfo.getList(), pageInfo.getTotal());
 	}
 	
 	/**
