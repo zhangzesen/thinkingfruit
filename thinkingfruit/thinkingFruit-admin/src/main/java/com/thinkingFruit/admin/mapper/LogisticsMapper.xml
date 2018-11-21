@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkingFruit.admin.mapper.LogisticsDao">
+	<!-- 获取所有物流 -->
+	<select id="getLogistics" resultType="com.thinkingFruit.admin.entity.Logistics">
+		select `id`,`logisticsNo`,`express`
+		from `t_thinkingfruit_mall_logistics`
+	</select>
+
+</mapper>

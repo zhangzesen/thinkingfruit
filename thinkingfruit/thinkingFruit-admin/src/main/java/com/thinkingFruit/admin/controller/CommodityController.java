@@ -52,7 +52,7 @@ public class CommodityController {
 	 * @param pagination
 	 * @return 所有商品分页
 	 */
-	@RequestMapping(value = "/pagination", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
+	@RequestMapping(value = "/pagination", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public Results<List<Commodity>> pagination(HttpServletRequest request){
 		Map<String, String> queryMap = HttpUtils.getParameterMap(request);
@@ -107,7 +107,7 @@ public class CommodityController {
 	 * @param id 商品id
 	 * @return 返回商品详情
 	 */
-	@RequestMapping(value = "/info", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
+	@RequestMapping(value = "/info", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String info(Long id){
 		Commodity commodityInfo = commodityService.findCommodityById(id);

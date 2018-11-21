@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkingFruit.admin.mapper.OrderDao">
+	<!--查看所有订单-->
+	<select id="list" resultType="com.thinkingFruit.admin.entity.Order">
+		select
+		`o`.id as `id`,
+		`o`.orderNo as `orderNo`,
+		`o`.orderMemberName as `orderMemberName`,
+		`o`.sendMethod as `sendMethod`,
+		`o`.orderStatus as `orderStatus`,
+		`o`.mobile as `mobile`,
+		`o`.orderMemberId as `orderMemberId`,
+		`o`.expressNo as `expressNo`,
+		`freightPrice` as `freightPrice`
+		from
+		`t_thinkingfruit_mall_order` as `o`
+		<where>
+			1 = 1
+			<if test="queryMap.orderStatus !=null">
+				and o.`orderStatus` =#{queryMap.orderStatus}
+			</if>
+			<if test="queryMap.startTime != null and queryMap.startTime != ''">
+                <![CDATA[ and `o`.createTime > #{queryMap.startTime} ]]>
+			</if>
+			<if test="queryMap.endTime != null and queryMap.endTime != ''">
+                <![CDATA[ and `o`.createTime < #{queryMap.endTime} ]]>
+		 	</if>
+			<if test="queryMap.orderNo !=null and queryMap.orderNo != ''">
+				and o.`orderNo` =#{queryMap.orderNo}
+			</if>
+		 	<if test="queryMap.orderMemberName !=null and queryMap.orderMemberName != ''">
+				and o.`orderMemberName` like CONCAT('%',#{queryMap.orderMemberName},'%')
+			</if>
+			and orderStatus!=3
+		</where>
+	</select>	
+	<!--查询单个订单-->
+    <select id="getById" resultType="com.thinkingFruit.admin.entity.Order">
+       select
+        `o`.orderNo as `orderNo`,
+        `o`.orderMemberId as `orderMemberId`,
+        `o`.orderMemberName as `orderMemberName`,
+        `o`.sendMethod as `sendMethod`,
+        `o`.province as `province`,
+        `o`.city as `city`,
+        `o`.diatrict as `diatrict`,
+        `o`.address as `address`,
+        `o`.mobile as `mobile`,
+        `o`.expressNo as `expressNo`,
+        `o`.confirmTime as `confirmTime`,
+        `o`.orderStatus as `orderStatus`,     
+        `o`.remark as `remark`,
+        `o`.freightPrice as `freightPrice`,
+        `o`.commodityId as `commodityId`,
+        `o`.logistics as `logistics`,
+        `o`.commodityCount as `commodityCount`,
+        `c`.name as `commodityName`
+		from
+		`t_thinkingfruit_mall_order` as `o`
+        left join `t_thinkingfruit_mall_commodity` as `c`
+        on `c`.id=`o`.commodityId
+		where `o`.id = #{id}
+    </select>
+    
+    <!-- 发货 -->
+    <update id="updateOrderStatus" parameterType="com.thinkingFruit.admin.entity.Order">
+		update `t_thinkingfruit_mall_order`
+	    <set>
+	    orderStatus = 1 ,
+	    expressNo = #{expressNo},
+	    logistics = #{logistics},
+	    updateTime = now()
+	    </set> 
+	    where `id` = #{id}
+	</update>
+	
+	<!-- 取消订单 -->
+	<update id="cancelOrder" parameterType="com.thinkingFruit.admin.entity.Order">
+		update `t_thinkingfruit_mall_order`
+	    <set>
+	    orderStatus = 3 ,
+	    updateTime = now()
+	    </set> 
+	    where `id` = #{id}
+	</update>
+	
+	<!-- 导出excel -->
+	<select id="findOrderExcl" resultType="com.thinkingFruit.admin.entity.Order">
+		select 
+		r.`id` as `id`,
+		r.`orderNo` as `orderNo`,
+		r.`orderMemberName` as `orderMemberName`,
+		r.`orderMemberId` as `orderMemberId`,
+		r.`mobile` as `mobile`,
+		r.`province` as `province`,
+		r.`city` as `city`,
+		r.`diatrict` as `diatrict`,
+		r.`address` as `address`,
+		r.`remark` as `remark`,
+		r.`sendMethod` as `sendMethod`,
+		r.`orderStatus` as `orderStatus`,
+		r.`freightPrice` as `freightPrice`,
+		r.`confirmTime` as `confirmTime`,
+		r.`expressNo` as `expressNo`,
+		m.`name` as commodityName,
+		r.`commodityCount` as commodityCount
+		from `t_thinkingfruit_mall_order` as `r` 
+		left join `t_thinkingfruit_mall_commodity` as `m`
+		on r.`commodityId` = m.`id`
+		<where>
+			1=1
+			<if test="queryMap.startTime != null and queryMap.startTime != ''">
+		  <![CDATA[ and r.`createTime` > #{queryMap.startTime} ]]>
+			</if>
+			<if test="queryMap.endTime != null and queryMap.endTime != ''">
+		 <![CDATA[ and r.`createTime` < #{queryMap.endTime} ]]>
+			</if>
+			<if test="queryMap.orderStatus != null and queryMap.orderStatus != '' and queryMap.orderStatus !='undefined'">
+				and r.`orderStatus` = #{queryMap.orderStatus}
+			</if>
+			<if test="queryMap.orderNo != null and queryMap.orderNo != ''">
+				and r.`orderNo` = #{queryMap.orderNo}
+			</if>
+		</where>
+		order by r.`createTime` desc
+	</select>
+</mapper>

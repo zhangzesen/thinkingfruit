@@ -59,7 +59,8 @@ public class CodeMsg {
 	public static CodeMsg ORDERID_EXCL = new CodeMsg(500014,"EXCL无数据");
 	public static CodeMsg IS_DELIVERY = new CodeMsg(500030,"订单已派送或无法派送");
 	public static CodeMsg DELIVER_FAIL = new CodeMsg(500031,"订单发货失败");
-	
+	public static CodeMsg CANCEL_FAIL = new CodeMsg(500031,"订单取消失败");
+
 	//统计
 	public static CodeMsg NEWMEMBER_EXIST = new CodeMsg(500012,"新增会员数量为空");
 	
