@@ -24,18 +24,27 @@ import com.ysdevelop.common.utils.JSONHelper;
 @Controller
 @RequestMapping(value="member")
 public class MemberController {
-	
+	/**
+	 * @author wulei
+	 *
+	 * @date 2018年11月19日
+	 *
+	 * @package com.thinkingFruit.admin.controller
+	 *
+	 * @description 会员页面
+	 */
 	@Autowired
 	MemberService memberService;
-	
-//	@Autowired
-//	OrderService orderService;
-	
+	/**
+	 *首页跳转
+	 * */
 	@RequestMapping(value="",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
 	public String index(){
 		return "member/index";
 	}
-	//首页列表详情
+	/**
+	 *首页列表详情
+	 * */
 	@RequestMapping(value="/pagination",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String pagination(HttpServletRequest request,Pagination<Member> pagination){
@@ -43,8 +52,9 @@ public class MemberController {
 		memberService.paginationCategory(pagination,queryMap);
 		return JSONHelper.bean2json(Result.successPaginationData(pagination.getItems(), pagination.getTotalItemsCount()));
 	}
-	
-	// 跳转到修改界面
+	/**
+	 *跳转会员修改页面
+	 * */
 	@RequestMapping(value = "/set", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
 	public String set(@RequestParam(value = "id", required = false) Long id) {
 		return "member/set";

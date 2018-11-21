@@ -6,6 +6,15 @@ import com.thinkingFruit.admin.entity.News;
 import com.ysdevelop.common.page.Pagination;
 
 public interface NewsService {
+	/**
+	 * @author wulei
+	 *
+	 * @date 2018年11月21日
+	 *
+	 * @package com.thinkingFruit.admin.service
+	 *
+	 * @description 新闻发布
+	 */
 
 	//查询与遍历新闻
 	Pagination<News> paginationNews(Pagination<News> pagination, Map<String, String> queryMap);

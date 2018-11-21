@@ -10,7 +10,15 @@ import com.ysdevelop.common.page.Pagination;
 
 
 public interface MemberDao {
-
+	/**
+	 * @author wulei
+	 *
+	 * @date 2018年11月21日
+	 *
+	 * @package com.thinkingFruit.admin.mapper
+	 *
+	 * @description 代理会员
+	 */
 
 	//查询与遍历出所对应的数量
 	Integer getCountByQuery(@Param(value="queryMap")Map<String, String> queryMap,@Param(value="nicknameReplace")byte[] nicknameReplace);

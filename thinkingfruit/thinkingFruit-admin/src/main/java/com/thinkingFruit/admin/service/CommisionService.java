@@ -7,7 +7,15 @@ import com.thinkingFruit.admin.entity.Commision;
 import com.ysdevelop.common.page.Pagination;
 
 public interface CommisionService {
-
+	/**
+	 * @author wulei
+	 *
+	 * @date 2018年11月21日
+	 *
+	 * @package com.thinkingFruit.admin.service
+	 *
+	 * @description 佣金列表
+	 */
 	//遍历与查询佣金信息
 	Pagination<Commision> paginationCommision(Pagination<Commision> pagination, Map<String, String> queryMap);
 

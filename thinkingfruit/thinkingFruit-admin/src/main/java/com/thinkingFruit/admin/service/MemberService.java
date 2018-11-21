@@ -7,6 +7,15 @@ import com.ysdevelop.common.page.Pagination;
 
 
 public interface MemberService {
+	/**
+	 * @author wulei
+	 *
+	 * @date 2018年11月21日
+	 *
+	 * @package com.thinkingFruit.admin.service
+	 *
+	 * @description 代理列表
+	 */
 
 	//查询与遍历
 	Pagination<Member> paginationCategory(Pagination<Member> pagination, Map<String, String> queryMap);

@@ -16,7 +16,15 @@ import com.ysdevelop.common.result.CodeMsg;
 
 @Service(value="commisionRankingServiceImpl")
 public class CommisionRankingServiceImpl implements CommisionRankingService{
-	
+	/**
+	 * @author wulei
+	 *
+	 * @date 2018年11月21日
+	 *
+	 * @package com.thinkingFruit.admin.service
+	 *
+	 * @description 佣金排名
+	 */
 	@Autowired
 	CommisionRankingDao commisionRankingDao;
 

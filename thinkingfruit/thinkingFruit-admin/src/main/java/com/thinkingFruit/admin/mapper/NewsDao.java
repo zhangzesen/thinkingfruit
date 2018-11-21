@@ -10,6 +10,15 @@ import com.thinkingFruit.admin.entity.News;
 import com.ysdevelop.common.page.Pagination;
 
 public interface NewsDao {
+	/**
+	 * @author wulei
+	 *
+	 * @date 2018年11月21日
+	 *
+	 * @package com.thinkingFruit.admin.mapper
+	 *
+	 * @description 新闻
+	 */
 
 	//查询与遍历新闻
 	List<News> paginationNews(@Param("queryMap") Map<String, String> queryMap,@Param("pagination") Pagination<News> pagination);

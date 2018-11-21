@@ -22,23 +22,38 @@ import com.ysdevelop.common.utils.JSONHelper;
 @Controller
 @RequestMapping(value="news")
 public class NewsController {
-	
+	/**
+	 * @author wulei
+	 *
+	 * @date 2018年11月21日
+	 *
+	 * @package com.thinkingFruit.admin.controller
+	 *
+	 * @description 发布文章
+	 */
 	@Autowired
 	NewsService newsService;
-	
-	//跳转到新闻列表
+	/**
+	 * 跳转新闻index
+	 * @return
+	 */
 	@RequestMapping(value = "", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
 	public String newsIndex() {
 		return "news/index";
 	}
-	
-	//跳转到新闻列表
+	/**
+	 *跳转新闻设置
+	 * @return
+	 */
 	@RequestMapping(value = "/set", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
 	public String set() {
 		return "news/set";
 	}
 	
-	//获取数据(包括查询)
+	/**
+	 * 新闻列表
+	 * @return
+	 */
 	@RequestMapping(value = "/pagination", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String pagination(HttpServletRequest request,Pagination<News> pagination){
@@ -46,32 +61,40 @@ public class NewsController {
 		newsService.paginationNews(pagination,queryMap);
 		return JSONHelper.bean2json(Result.successPaginationData(pagination.getItems(), pagination.getTotalItemsCount()));
 	}
-	
-	//删除新闻
+	/**
+	 * 删除新闻
+	 * @return
+	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public Result<String> deleteNews(@RequestParam(value = "id", required = false)Long id){
 		newsService.deleteNews(id);
 		return Result.success("删除成功");
 	}
-	
-	//添加新闻
+	/**
+	 *添加新闻
+	 * @return
+	 */
 	@RequestMapping(value = "", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public Result<String> addNews(@Valid News news){
 		newsService.addNews(news);
 		return Result.success("添加成功");
 	}
-	
-	//根据id查询新闻信息
+	/**
+	 * 根据id查询新闻信息
+	 * @return
+	 */
 	@RequestMapping(value = "/info", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String info(@RequestParam(value = "id", required = false)Long id){
 		News news = newsService.findNewsById(id);
 		return JSONHelper.bean2json(Result.successData(news));
 	}
-	
-	//修改新闻信息
+	/**
+	 * 修改新闻信息
+	 * @return
+	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public Result<String> edit(@Valid News news){

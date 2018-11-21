@@ -32,6 +32,15 @@ import com.ysdevelop.common.utils.Constant.FileType;
 @Controller
 @RequestMapping(value = "/upload")
 public class UploadFileController {
+	/**
+	 * @author zhangzesen
+	 *
+	 * @date 2018年11月15日
+	 *
+	 * @package com.thinkingFruit.admin.controller
+	 *
+	 * @description 上传图片
+	 */
 	Logger logger = Logger.getLogger(this.getClass());
 
 	@RequestMapping(value = "/image", method = RequestMethod.POST, produces = "text/json;charset=UTF-8")

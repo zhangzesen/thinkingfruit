@@ -20,15 +20,30 @@ import com.ysdevelop.common.utils.JSONHelper;
 @Controller
 @RequestMapping(value="ranking")
 public class CommisionRankingController {
+	/**
+	 * @author wulei
+	 *
+	 * @date 2018年11月21日
+	 *
+	 * @package com.thinkingFruit.admin.controller
+	 *
+	 * @description 佣金排名
+	 */
 	
 	@Autowired
 	CommisionRankingService commisionRankingService;
-	
+	/**
+	 * 跳转index
+	 * @return
+	 */
 	@RequestMapping(value = "", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
 	public String CommisionRanking(){
 		return "commisionRanking/index";
 	}
-	
+	/**
+	 * 佣金排名表
+	 * @return
+	 */
 	@RequestMapping(value = "/pagination", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String pagination(HttpServletRequest request,Pagination<Commision> pagination){
