@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkingFruit.admin.mapper.CommisionRankingDao">
+
+<select id="getCountByQuery" resultType="java.lang.Integer">
+	select count(`memberId`)
+	from (SELECT p.`memberId`,p.`nickname`,SUM(p.`commision`) as personTotalCommision,m.`name`
+          FROM `t_thinkingfruit_mall_commision_person` as p LEFT JOIN `t_thinkingfruit_mall_member` as m on p.`memberId` = m.`id`
+          GROUP BY p.`memberId`
+          ORDER BY personTotalCommision DESC)bal
+	where 1=1
+	<if test="queryMap.nickname != null and queryMap.nickname != ''">
+	    and `nickname` like CONCAT('%',#{queryMap.nickname},'%')
+	</if>
+	<if test="queryMap.name != null and queryMap.name != ''">
+	    and `name` like CONCAT('%',#{queryMap.name},'%')
+	</if>
+	<if test="queryMap.memberId != null and queryMap.memberId != ''">
+	    and `memberId` = #{queryMap.memberId}
+	</if>  
+</select>
+
+<select id="pagination" resultType="com.thinkingFruit.admin.entity.Commision">
+    SELECT p.`memberId`,p.`nickname`,SUM(p.`commision`) as personTotalCommision,m.`name`
+    FROM `t_thinkingfruit_mall_commision_person` as p LEFT JOIN `t_thinkingfruit_mall_member` as m on p.`memberId` = m.`id`
+    where 1=1
+	<if test="queryMap.nickname != null and queryMap.nickname != ''">
+	    and p.`nickname` like CONCAT('%',#{queryMap.nickname},'%')
+	</if>
+	<if test="queryMap.name != null and queryMap.name != ''">
+	    and m.`name` like CONCAT('%',#{queryMap.name},'%')
+	</if>
+	<if test="queryMap.memberId != null and queryMap.memberId != ''">
+	    and p.`memberId` = #{queryMap.memberId}
+	</if> 
+    GROUP BY p.`memberId`
+    ORDER BY personTotalCommision DESC
+    LIMIT #{pagination.start},#{pagination.pageSize}
+</select>
+
+</mapper>
