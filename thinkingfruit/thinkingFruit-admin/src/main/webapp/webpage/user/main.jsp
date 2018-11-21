@@ -197,22 +197,11 @@
 					</a></li>
 
 
-				<li name="left_mall" class="layui-nav-item edging"><a
-						name="left_a" href="javascript:;" target="main"> <i
-							class="layui-icon">&#xe62e;</i> <cite>权限树</cite>
-					<span class="layui-nav-more"></span>
-					</a>
-						<dl class="layui-nav-child">
-							<dd class="">
-								<a href="/demo/grid.html" target="main">系统管理</a>
-							</dd>
-							<dd class="">
-								<a href="/demo/admin.html" target="main">商城管理</a>
-							</dd>
-							<dd class="">
-								<a href="/demo/admin.html" target="main">首页管理</a>
-							</dd>
-						</dl> </a></li>
+							<li name="left_system"
+								class="layui-nav-item content_manage edging"><a
+								name="left_a" href="<%=basePath%>/permission/infoson?id=0"
+								target="main"> <i class="layui-icon">&#xe62e;</i> <cite>权限树</cite>
+							</a></li>
 
 
 					<li name="left_system" class="layui-nav-item user edging"><a
@@ -221,6 +210,14 @@
 					</a></li>
 
 				</ul>
+				<div class="content_manage_container left_menu_ul hide">
+					<div class="content_manage_title">返回</div>
+					<div id="content_manage_tree"></div>
+				</div>
+				<div class="content_commodity_container left_menu_ul hide">
+					<div class="content_commodity_title edging">返回</div>
+					<div id="content_commodity_tree"></div>
+				</div>
 			</div>
 		</div>
 

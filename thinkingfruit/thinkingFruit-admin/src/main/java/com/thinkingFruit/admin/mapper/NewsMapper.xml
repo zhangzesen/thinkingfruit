@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkingFruit.admin.mapper.NewsDao">
+
+<select id="getCountByQuery" resultType="java.lang.Integer">
+   select count(`id`)
+   from `t_thinkingfruit_mall_news`
+   where 1=1
+   <if test="queryMap.title != null and queryMap.title != ''">
+      and `title` like CONCAT('%',#{queryMap.title},'%')
+   </if>
+   <if test="queryMap.startTime != null and queryMap.startTime != ''">
+      <![CDATA[ and `createTime` > #{queryMap.startTime} ]]>
+			</if>
+			<if test="queryMap.endTime != null and queryMap.endTime != ''">
+       <![CDATA[ and `createTime` < #{queryMap.endTime} ]]>
+   </if>
+</select>
+
+<select id="paginationNews" resultType="com.thinkingFruit.admin.entity.News">
+   select `id`,`name`,`title`,`description`,`coverImagePath`,`content`,`createTime`
+   from `t_thinkingfruit_mall_news`
+   where 1=1 
+   <if test="queryMap.title != null and queryMap.title != ''">
+      and `title` like CONCAT('%',#{queryMap.title},'%')
+   </if>
+   <if test="queryMap.startTime != null and queryMap.startTime != ''">
+      <![CDATA[ and `createTime` > #{queryMap.startTime} ]]>
+			</if>
+			<if test="queryMap.endTime != null and queryMap.endTime != ''">
+       <![CDATA[ and `createTime` < #{queryMap.endTime} ]]>
+   </if>
+</select>
+
+<delete id="deleteNews">
+   delete from `t_thinkingfruit_mall_news`
+   where `id` = #{id}
+</delete>
+
+<insert id="addNews">
+   insert into `t_thinkingfruit_mall_news`(`name`,`title`,`description`,`coverImagePath`,`content`,`createTime`)
+   values(#{news.name},#{news.title},#{news.description},#{news.coverImagePath},#{news.content},now())
+</insert>
+
+<select id="findNewsById" resultType="com.thinkingFruit.admin.entity.News">
+   select `id`,`name`,`title`,`description`,`coverImagePath`,`content`,`createTime`
+   from `t_thinkingfruit_mall_news`
+   where `id` = #{id}
+</select>
+
+<update id="editNews">
+   update `t_thinkingfruit_mall_news`
+   <set>
+      `name` = #{news.name},
+      `title` = #{news.title},
+      `description` = #{news.description},
+      `coverImagePath` = #{news.coverImagePath},
+      `content` = #{news.content}
+   </set>
+   where `id` = #{news.id}
+</update>
+   
+</mapper>
