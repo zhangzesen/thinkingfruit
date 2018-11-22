@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageInfo;
-import com.thinkingFruit.admin.entity.Order;
+import com.thinkingFruit.admin.entity.PurchaseOrder;
 import com.thinkingFruit.admin.service.OrderService;
 import com.ysdevelop.common.result.Result;
 import com.ysdevelop.common.result.Results;
@@ -39,81 +39,80 @@ import com.ysdevelop.common.utils.HttpUtils;
  *
  * @package com.thinkingFruit.admin.controller
  *
- * @description 订单
+ * @description 交易订单
  */
 @Controller
-@RequestMapping(value="/order")
-public class OrderController {
-
+@RequestMapping(value="/purchase")
+public class PurchaseOrderController {
+	
 	@Autowired
 	OrderService orderService;
 	
 	/**
-	 * 	跳到订单首页
+	 * 	跳到交易订单首页
 	 * @return
 	 */
 	@RequestMapping(value = "", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
 	public String orderIndex(){
-		return "order/index";
+		return "purchaseOrder/index";
 	}
 	
 	/**
-	 * 	跳到订单详情页或取消页或发货页
-	 * @return
-	 */
-	@RequestMapping(value = "/set", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
-	public String info(){
-		return "order/info";
-	}
-	
-	/**
-	 * 	获取订单分页
+	 * 	获取购买订单分页
 	 * @param request
 	 * @return 订单集合
 	 */
 	@RequestMapping(value = "/pagination", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
 	@ResponseBody
-	public Results<List<Order>> pagination(HttpServletRequest request){		
+	public Results<List<PurchaseOrder>> pagination(HttpServletRequest request){		
 		Map<String, String> queryMap = HttpUtils.getParameterMap(request);
-		PageInfo<Order> pageInfo =orderService.paginationOrder(queryMap);
+		PageInfo<PurchaseOrder> pageInfo =orderService.paginationPurchaseOrder(queryMap);
 		return Results.successPaginationData(pageInfo.getList(), pageInfo.getTotal());
 	}
 	
-
 	/**
-	 * 	获取订单详情
-	 * @param id 订单id
-	 * @return 订单
+	 * 跳转到查看详情，发货购买订单界面
+	 * @return
+	 */
+	@RequestMapping(value = "/set", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
+	public String info(){
+		return "purchaseOrder/info";
+	}
+	
+	/**
+	 * 查看购买订单详情
+	 * @param id
+	 * @return 购买订单
 	 */
 	@RequestMapping(value = "/info", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public Results<Order> info(@RequestParam(value = "id") Long id){
-		Order order = orderService.findOrderById(id);
+	public Results<PurchaseOrder> info(@RequestParam(value = "id") Long id){
+		PurchaseOrder order = orderService.findPurchaseOrderById(id);
 		return Results.successData(order);
 	}
 	
 	/**
-	 * 	发货
-	 * @param order 订单
-	 * @return 成功跳转到订单首页
+	 * 购买订单发货
+	 * @param id 订单id
+	 * @return
 	 */
 	@RequestMapping(value = "/deliver", method = RequestMethod.PUT, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public Result<String> edit(Order order){
-		orderService.updateOrderStatus(order);
+	public Result<String> edit(@RequestParam(value = "id") Long id){
+		orderService.updatePurchaseOrderStatus(id);
 		return Result.success("发货成功");
 	}
 	
 	/**
 	 * 取消订单
-	 * @param order 订单
-	 * @return 取消成功返回订单首页
+	 * @param id 订单id
+	 * @return
 	 */
 	@RequestMapping(value = "/cancel", method = RequestMethod.PUT, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public Result<String> cancel(Order order){
-		orderService.cancalOrder(order);
-		return Result.success("取消成功");
+	public Result<String> cancel(@RequestParam(value = "id") Long id){
+		orderService.cancelPurchaseOrderStatus(id);
+		return Result.success("取消订单成功");
 	}
 	
 	/**
@@ -146,12 +145,16 @@ public class OrderController {
 		}
 		
 		Map<String, String> queryMap = HttpUtils.getParameterMap(request);
-		System.out.println(queryMap.get("orderNo")+queryMap.get("startTime")+queryMap.get("nickName")+queryMap.get("orderStatus"));
-		List<Order> reports = orderService.findOrderExcl(queryMap);
-		ExportExcel<Order> reportExcel = new ExportExcel<>();
+		System.out.println(queryMap.get("orderNo")+"=="+queryMap.get("startTime")+"=="+queryMap.get("orderMemberName")+"=="+queryMap.get("orderStatus"));
+		System.out.println("queryMap"+queryMap);
+		List<PurchaseOrder> reports = orderService.findPurchaseOrderExcl(queryMap);
+		for (PurchaseOrder purchaseOrder : reports) {
+			System.out.println("id"+purchaseOrder.getId()+"====="+purchaseOrder.getOrderNo());
+		}
+		ExportExcel<PurchaseOrder> reportExcel = new ExportExcel<>();
 //		reports.get(0).getOrderItems().get(0).getCommodityName();
-		String[] headers = { "ID", "订单号", "收件人", "手机号", "地址" ,"备注","订单状态","商品名","商品数量"};
-		String[] paramaters = { "id", "orderNo", "orderMemberName", "mobile", "allAddress","remark","orderStatus","commodityName","commodityCount" };
+		String[] headers = { "ID", "订单号", "代理人", "代理等级", "邀请者id" ,"分佣","订单状态","商品名","商品数量","创建时间"};
+		String[] paramaters = { "id", "orderNo", "orderMemberName", "memberLevelName", "inviterId","superiorProportion","orderStatus","commodityName","commodityCount","createTime" };
 		reportExcel.exportExcel("报表列表", headers, paramaters, reports, out);
 		if (out != null) {
 			out.close();
@@ -163,5 +166,4 @@ public class OrderController {
 		exportFileHeaders.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 		return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), exportFileHeaders, HttpStatus.CREATED);
 	}
-	
 }

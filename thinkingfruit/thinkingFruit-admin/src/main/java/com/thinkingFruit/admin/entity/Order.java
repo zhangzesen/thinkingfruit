@@ -4,6 +4,15 @@ import java.util.Date;
 
 import com.ysdevelop.common.entity.BaseEntity;
 
+/**
+ * @author zhangzesen
+ *
+ * @date 2018年11月21日
+ *
+ * @package com.thinkingFruit.admin.entity
+ *
+ * @description 订单
+ */
 public class Order extends BaseEntity{
 	
 	/**

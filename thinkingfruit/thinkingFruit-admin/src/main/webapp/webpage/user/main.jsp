@@ -95,12 +95,20 @@
 					</a></li>
 
 
-
 					<li name="left_mall" class="layui-nav-item edging"><a
-						name="left_a" href="<%=basePath%>/order" target="main"> <i
-							class="layui-icon">&#xe63c;</i> <cite>订单列表</cite>
+						name="left_a" href="javascript:;" target="main"> <i
+							class="layui-icon">&#xe65e;</i><cite>订单列表</cite>
+					<span class="layui-nav-more"></span>
 					       </a>
-						</li>
+						<dl class="layui-nav-child">
+							<dd class="">
+								<a href="<%=basePath%>/order" target="main">提货订单</a>
+							</dd>
+							<dd class="">
+								<a href="<%=basePath%>/purchase" target="main">购买订单</a>
+							</dd>
+						</dl>
+					</li>
 
 
 
