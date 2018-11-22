@@ -15,6 +15,7 @@ import com.thinkingFruit.admin.mapper.CommodityDao;
 import com.thinkingFruit.admin.service.CommodityService;
 import com.ysdevelop.common.exception.WebServiceException;
 import com.ysdevelop.common.result.CodeMsg;
+import com.ysdevelop.common.utils.Constant;
 /**
  * @author zhangzesen
  *
@@ -30,7 +31,6 @@ public class CommodityServiceImpl implements CommodityService {
 	@Autowired
 	CommodityDao commodityDao;
 	
-	private int isZero=0;
 	
 	/**
 	 * 	查看所有商品
@@ -71,7 +71,7 @@ public class CommodityServiceImpl implements CommodityService {
 		}
 		//添加商品
 		Integer addCommodity = commodityDao.addCommodity(commodity);
-		if(addCommodity==isZero) {
+		if(addCommodity==Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.COMMODITYNAME_ERROR);
 		}
 		Long id = commodity.getId();
@@ -86,7 +86,7 @@ public class CommodityServiceImpl implements CommodityService {
 		Integer addCommoditydPreviewImage = commodityDao.addCommoditydPreviewImage(id,previewImagePath);
 		//添加商品详情图
 		Integer addCommoditydDetailsImage = commodityDao.addCommoditydDetailsImage(id,detailsImagePath);
-		if(addCommoditydPreviewImage==isZero||addCommoditydDetailsImage==isZero) {
+		if(addCommoditydPreviewImage==Constant.DEFALULT_ZERO_INT||addCommoditydDetailsImage==Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.COMMODITYNAME_ERROR);
 		}
 		
@@ -139,7 +139,7 @@ public class CommodityServiceImpl implements CommodityService {
 		Long id = commodity.getId();
 		//先删除商品图片
 		Integer deleteCommodityImagesById = commodityDao.deleteCommodityImagesById(id);
-		if(deleteCommodityImagesById==isZero) {
+		if(deleteCommodityImagesById==Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.COMMODITYNAME_UPDATE_ERROR);
 		}
 		System.out.println("====================="+id);
@@ -152,7 +152,7 @@ public class CommodityServiceImpl implements CommodityService {
 		//重新添加商品图片
 		Integer addCommoditydPreviewImage = commodityDao.addCommoditydPreviewImage(id,previewImagePath);
 		Integer addCommoditydDetailsImage = commodityDao.addCommoditydDetailsImage(id,detailsImagePath);
-		if(addCommoditydPreviewImage==isZero||addCommoditydDetailsImage==isZero) {
+		if(addCommoditydPreviewImage==Constant.DEFALULT_ZERO_INT||addCommoditydDetailsImage==Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.COMMODITYNAME_UPDATE_ERROR);
 		}
 	}

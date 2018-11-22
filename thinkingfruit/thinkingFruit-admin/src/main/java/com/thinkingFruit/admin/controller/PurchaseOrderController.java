@@ -98,8 +98,8 @@ public class PurchaseOrderController {
 	 */
 	@RequestMapping(value = "/deliver", method = RequestMethod.PUT, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public Result<String> edit(@RequestParam(value = "id") Long id){
-		orderService.updatePurchaseOrderStatus(id);
+	public Result<String> edit(@RequestParam(value = "id") Long id,@RequestParam(value = "commodityCount")Long commodityCount){
+		orderService.updatePurchaseOrderStatus(id,commodityCount);
 		return Result.success("发货成功");
 	}
 	
@@ -110,8 +110,8 @@ public class PurchaseOrderController {
 	 */
 	@RequestMapping(value = "/cancel", method = RequestMethod.PUT, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public Result<String> cancel(@RequestParam(value = "id") Long id){
-		orderService.cancelPurchaseOrderStatus(id);
+	public Result<String> cancel(@RequestParam(value = "id") Long id,@RequestParam(value = "commodityCount")Long commodityCount){
+		orderService.cancelPurchaseOrderStatus(id,commodityCount);
 		return Result.success("取消订单成功");
 	}
 	

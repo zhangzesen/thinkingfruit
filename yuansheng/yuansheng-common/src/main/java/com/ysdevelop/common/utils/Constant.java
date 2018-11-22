@@ -52,6 +52,14 @@ public class Constant {
 	 */
 	public static final String REDIS_SHIRO_AUTH = "com.ysdevelop.shiro.realm.UserRealm.authenticationCache";
 	
+	public static final int DEFALULT_ZERO_INT = 0;
+	
+	public static final int DEFALULT_ONE_INT = 1;
+	
+	public static final int DEFALULT_TWO_INT = 2;
+	
+	public static final int DEFALULT_THREE_INT = 3;
+	
 	/**
 	 * 是否类型
 	 */

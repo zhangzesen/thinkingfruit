@@ -15,6 +15,7 @@ import com.thinkingFruit.admin.mapper.OrderDao;
 import com.thinkingFruit.admin.service.OrderService;
 import com.ysdevelop.common.exception.WebServiceException;
 import com.ysdevelop.common.result.CodeMsg;
+import com.ysdevelop.common.utils.Constant;
 
 /**
  * @author zhangzesen
@@ -79,7 +80,7 @@ public class OrderServiceImpl implements OrderService{
 			throw new WebServiceException(CodeMsg.SERVER_ERROR);
 		}
 		Integer updateOrderStatus = orderDao.updateOrderStatus(order);
-		if(updateOrderStatus==0) {
+		if(updateOrderStatus==Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.DELIVER_FAIL);
 		}
 	}
@@ -94,7 +95,7 @@ public class OrderServiceImpl implements OrderService{
 			throw new WebServiceException(CodeMsg.SERVER_ERROR);
 		}
 		Integer cancelOrder =orderDao.cancelOrder(order.getId());
-		if(cancelOrder==0) {
+		if(cancelOrder==Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.CANCEL_FAIL);
 		}
 	}
@@ -159,12 +160,17 @@ public class OrderServiceImpl implements OrderService{
 	 */
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public void updatePurchaseOrderStatus(Long id) {
+	public void updatePurchaseOrderStatus(Long id,Long commodityCount) {
 		if (id == null) {
 			throw new WebServiceException(CodeMsg.SERVER_ERROR);
 		}
+		//订单发货
 		Integer update=orderDao.updatePurchaseOrderStatus(id);
-		if(update==0) {
+		System.out.println("update"+update);
+		//添加销量
+		Integer addSales=orderDao.addSales(id,commodityCount);
+		System.out.println("addSales"+addSales);
+		if(update==Constant.DEFALULT_ZERO_INT||addSales==Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.DELIVER_FAIL);
 		}
 	}
@@ -174,12 +180,15 @@ public class OrderServiceImpl implements OrderService{
 	 */
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public void cancelPurchaseOrderStatus(Long id) {
+	public void cancelPurchaseOrderStatus(Long id,Long commodityCount) {
 		if (id == null) {
 			throw new WebServiceException(CodeMsg.SERVER_ERROR);
 		}
+		//取消订单
 		Integer update=orderDao.cancelPurchaseOrderStatus(id);
-		if(update==0) {
+		//减少销量
+		Integer reduceSales=orderDao.reduceSales(id,commodityCount);
+		if(update==Constant.DEFALULT_ZERO_INT||reduceSales==Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.CANCEL_FAIL);
 		}		
 	}

@@ -11,6 +11,7 @@ var order_info_ops={
 				
 				//var id = $("input[name='id']").val();
 				var id = common_ops.g_getQueryString("id");
+				var commodityCount=$("input[name='commodityCount']").val();
 				console.log("参数："+id);
 				$(".layui-input-block .layui-btn").addClass('layui-btn-disabled');
 				var type =common_ops.g_getQueryString("type");
@@ -18,7 +19,8 @@ var order_info_ops={
 	  				url:WEB_ROOT + "/purchase/deliver",
 		  			type:'PUT',
 		  			data:{
-						id:id
+						id:id,
+						commodityCount:commodityCount
 					},
 		  			dataType:'json'
 	  			}).done(function(res){

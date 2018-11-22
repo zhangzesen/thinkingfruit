@@ -249,4 +249,24 @@
 		</where>
 		order by r.`createTime` desc
 	</select>
+	
+	<!-- 增加销量 -->
+    <update id="addSales">
+		update `t_thinkingfruit_mall_commodity`
+	    <set>
+	    sales = sales + #{commodityCount},
+	    updateTime = now()
+	    </set> 
+	    where id = (select `p`.commodityId from `t_thinkingfruit_mall_order_purchase` as `p` where `p`.id=#{id})
+	</update>
+	
+	<!-- 减少销量 -->
+    <update id="reduceSales">
+		update `t_thinkingfruit_mall_commodity`
+	    <set>
+	    sales = sales - #{commodityCount},
+	    updateTime = now()
+	    </set> 
+	    where id = (select `p`.commodityId from `t_thinkingfruit_mall_order_purchase` as `p` where `p`.id=#{id})
+	</update>
 </mapper>

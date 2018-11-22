@@ -69,13 +69,13 @@ public interface OrderService {
 	 * 交易订单发货
 	 * @param id 交易订单id
 	 */
-	void updatePurchaseOrderStatus(Long id);
+	void updatePurchaseOrderStatus(Long id,Long commodityCount);
 	
 	/**
 	 * 交易订单取消
 	 * @param id 交易订单id
 	 */
-	void cancelPurchaseOrderStatus(Long id);
+	void cancelPurchaseOrderStatus(Long id,Long commodityCount);
 	
 	/**
 	 * 获取excel所需交易订单

@@ -76,14 +76,14 @@ public interface OrderDao {
 	 * @param id 交易订单id
 	 * @return
 	 */
-	Integer updatePurchaseOrderStatus(Long id);
+	Integer updatePurchaseOrderStatus(@Param(value="id")Long id);
 	
 	/**
 	 * 取消联创交易订单
 	 * @param id 交易订单
 	 * @return
 	 */
-	Integer cancelPurchaseOrderStatus(Long id);
+	Integer cancelPurchaseOrderStatus(@Param(value="id")Long id);
 	
 	/**
 	 * 获取excel所有的订单
@@ -91,5 +91,21 @@ public interface OrderDao {
 	 * @return 订单集合
 	 */
 	List<PurchaseOrder> findPurchaseOrderExcl(@Param(value="queryMap")Map<String, String> queryMap);
+	
+	/**
+	 * 增加销量
+	 * @param id 商品id
+	 * @param commodityCount 商品数量
+	 * @return
+	 */
+	Integer addSales(@Param(value="id")Long id,@Param(value="commodityCount")Long commodityCount);
+	
+	/**
+	 * 减少销量
+	 * @param id 商品id
+	 * @param commodityCount 商品数量
+	 * @return
+	 */
+	Integer reduceSales(@Param(value="id")Long id,@Param(value="commodityCount")Long commodityCount);
 	
 }

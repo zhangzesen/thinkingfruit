@@ -12,6 +12,8 @@ var order_index_ops = {
 			table.on('tool(table-data)', function(obj) {
 				var data = obj.data;
 				var id = data.id;
+				var commodityCount=data.commodityCount;
+				console.log("commodityCount"+commodityCount);
 				if(obj.event == 'detail'){
 					//查看详情
 					window.location.href = WEB_ROOT + '/purchase/set?id='+id+'&type=detail';
@@ -21,7 +23,8 @@ var order_index_ops = {
 		  				url:WEB_ROOT + "/purchase/cancel",
 			  			type:'PUT',
 			  			data:{
-							id:id
+							id:id,
+							commodityCount:commodityCount
 						},
 			  			dataType:'json'
 		  			}).done(function(res){
@@ -98,7 +101,6 @@ var order_index_ops = {
 
 			           //得到数据总量
 			           console.log(count);
-			           
 			           	$("[data-field='memberLevel']").children().each(function(){  
 			        	   if($(this).text()=='1'){  
 			                  $(this).text("联创");
