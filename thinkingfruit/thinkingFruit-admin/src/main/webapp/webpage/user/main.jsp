@@ -170,18 +170,16 @@
 
 
 					<li name="left_mall" class="layui-nav-item edging"><a
-						name="left_a" href="<%=basePath%>/businessApplication"
-						target="main"> <i class="layui-icon">&#xe705;</i> <cite>规则设置</cite>
-							<span class="layui-nav-more"></span>
-					</a>
+						name="left_a" href="javascript:;" target="main"> <i
+							class="layui-icon">&#xe65e;</i><cite>设置</cite>
+					<span class="layui-nav-more"></span>
+					       </a>
 						<dl class="layui-nav-child">
 							<dd class="">
-								<a href="/demo/grid.html">栅格</a>
+								<a href="<%=basePath%>/site" target="main">分佣比例</a>
 							</dd>
-							<dd class="">
-								<a href="/demo/admin.html">后台布局</a>
-							</dd>
-						</dl> </a></li>
+						</dl>
+					</li>
 				</ul>
 
 

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkingFruit.admin.mapper.SiteDao">
+	<!--查看所有级别信息-->
+	<select id="list" resultType="com.thinkingFruit.admin.entity.CommissionRatio">
+		select
+		`l`.id as `id`,
+		`l`.level as `level`,
+		`l`.levelName as `levelName`,
+		`l`.levelingDiscount as `levelingDiscount`,
+		`l`.crossLevelDiscount as `crossLevelDiscount`,
+		`l`.reverseLevelDiscount as `reverseLevelDiscount`,
+		`l`.createTime as `createTime`,
+		`l`.updateTime as `updateTime`
+		from
+		`t_thinkingfruit_mall_member_level` as `l`
+	</select>	
+	
+	<!-- 查询单个级别信息 -->
+	<select id="getById" resultType="com.thinkingFruit.admin.entity.CommissionRatio">
+		select
+		`l`.id as `id`,
+		`l`.level as `level`,
+		`l`.levelName as `levelName`,
+		`l`.levelingDiscount as `levelingDiscount`,
+		`l`.crossLevelDiscount as `crossLevelDiscount`,
+		`l`.reverseLevelDiscount as `reverseLevelDiscount`,
+		`l`.createTime as `createTime`,
+		`l`.updateTime as `updateTime`
+		from
+		`t_thinkingfruit_mall_member_level` as `l`
+		where `l`.id=#{id}
+	</select>
+	
+	<!-- 修改级别信息 -->
+	 <update id="updateCommissionRatio">
+		update `t_thinkingfruit_mall_member_level`
+	    <set>
+	    `levelName` =#{levelName},
+	    `levelingDiscount` =#{levelingDiscount},
+	    `crossLevelDiscount` =#{crossLevelDiscount},
+	    `reverseLevelDiscount` =#{reverseLevelDiscount},
+	    `updateTime` = now()
+	    </set> 
+	    where `id` = #{id}
+	</update>
+</mapper>

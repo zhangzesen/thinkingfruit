@@ -74,7 +74,8 @@ public class CodeMsg {
 	public static CodeMsg SHOP_EXIST = new CodeMsg(500019,"店铺id不能为空");
 	public static CodeMsg SHOP_LEASTPRICE = new CodeMsg(500020,"店铺最低价不能为空");
 	public static CodeMsg SHOP_NO = new CodeMsg(500021,"店铺最低价只能为数字或小数位数过多");
-	
+	public static CodeMsg UPDATE_COMMISSION_RATIO_ERROR = new CodeMsg(500022,"邀请奖/分佣修改失败");
+
 	//用户
 	public static CodeMsg PARENT_ID_EQUAL = new CodeMsg(500023,"上级ID不能与自己ID相同");
 	public static CodeMsg PEAS_NOT_NULL = new CodeMsg(500025,"充值的豆豆值不能为空");
