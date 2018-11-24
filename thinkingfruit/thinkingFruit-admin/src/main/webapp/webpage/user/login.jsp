@@ -35,9 +35,11 @@
 			<div class="classification">
 				<div class="label">验证码</div>
 				<input type="verification" class="verification" name="verification" autocomplete="off"
-					style="width: 250px;float: left;" placeholder="请输入验证码">	
+					style="width: 250px;float: left;" placeholder="请输入验证码">
+					<div class="code">	
 				<img src="<%=basePath%>/randCodeImage" alt="captche" title='点击切换' id="qrcode"
 						onclick="this.src='<%=basePath%>/randCodeImage?id='+Math.random()">
+						</div>
 			<div class="clear"></div>	
 			</div>
 			<input id="login" class="button" type="button" value="登录">		

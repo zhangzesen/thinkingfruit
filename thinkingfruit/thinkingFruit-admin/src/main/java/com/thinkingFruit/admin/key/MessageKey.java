@@ -1,3 +1,4 @@
+
 package com.thinkingFruit.admin.key;
 
 import com.ysdevelop.common.redis.BasePrefix;

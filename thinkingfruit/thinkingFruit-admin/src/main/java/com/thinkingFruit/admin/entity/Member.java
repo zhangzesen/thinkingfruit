@@ -108,11 +108,9 @@ public class Member{
 		return nicknameStr;
 	}
 
-	public void setNicknameStr() {
-		this.nicknameStr = new String(nickname);
+	public void setNicknameStr(String nicknameStr) {
+		this.nicknameStr = nicknameStr;
 	}
-	
-	
 
 	public byte[] getParentMemberName() {
 		return parentMemberName;

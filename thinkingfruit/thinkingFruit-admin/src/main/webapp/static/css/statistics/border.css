@@ -1,8 +1,8 @@
 /* 第一列 */
 .top-table{width: 30%; box-sizing: border-box; float: left; margin: 1%;}
 .bottom-table{width: 46%; box-sizing: border-box; float: left; margin: 1%; margin-top: 0px !important;}
-.bottom-left-table{width: 60%; box-sizing: border-box; float: left; margin: 1%; margin-top: 0px !important;}
-.bottom-right-table{width: 32%; box-sizing: border-box; float: left; margin: 1%; height:740px; margin-top: 0px !important;}
+.bottom-left-table{width: 100%; box-sizing: border-box; float: left; margin: 1%; margin-top: 0px !important;}
+.bottom-right-table{width: 100%; box-sizing: border-box; float: left; margin: 1%; height:740px; margin-top: 0px !important;}
 /* 任务 */
 .top-table .task-pie{width: 40%; box-sizing: border-box; float: left;}
 .task-pie #task-pie{width: 130px; height: 230px; position: relative;}

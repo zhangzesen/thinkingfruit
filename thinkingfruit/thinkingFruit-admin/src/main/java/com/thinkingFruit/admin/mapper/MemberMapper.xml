@@ -30,7 +30,7 @@
 	select m.`id`,m.`gender`,m.`mobile`,m.`nickname`,m.`name`,m.`country`,m.`province`,m.`city`,m.`status`,m.`avatar`,m.`parentMemberId`,m.`identityNo`,
 	m.`inviterId`,l.`level`
 	from `t_thinkingfruit_mall_member`as m left join `t_thinkingfruit_mall_member_level`as l
-	on m.`id` = l.`memberId`
+	on m.`id` = l.`id`
 	<where>
 	   1=1
 	   <if test="nicknameReplace !=null and nicknameReplace != ''">
@@ -75,7 +75,7 @@
     m.`updateTime`,
     l.`level`
     from `t_thinkingfruit_mall_member` as m left join `t_thinkingfruit_mall_member_level`as l
-	on m.`id` = l.`memberId`
+	on m.`id` = l.`id`
     where m.`id` = #{id}
 </select>
 <!--通过ID修改用户级别和父id-->
@@ -93,7 +93,7 @@
         `level` = #{member.level},
         `updateTime` = now()
     </set>
-    where `memberId` = #{member.id}
+    where `id` = #{member.id}
 </update>
 <!--通过id删除代理-->
 <update id="deleteById">

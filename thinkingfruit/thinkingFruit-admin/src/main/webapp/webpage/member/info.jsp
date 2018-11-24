@@ -69,9 +69,9 @@
 				</div>
 			
 				<div class="layui-form-item">
-					<label class="layui-form-label">推荐人id</label>
+					<label class="layui-form-label">上级id</label>
 					<div class="layui-input-inline input-custom-width">
-						<input type="text" name="inviterId" 
+						<input type="text" name="parentMemberId" 
 							value="" autocomplete="off" readonly="readonly"
 							class="layui-input">
 					</div>

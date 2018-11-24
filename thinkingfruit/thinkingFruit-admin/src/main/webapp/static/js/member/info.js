@@ -20,6 +20,7 @@ var member_info_ops = {
 				},
 				dataType:'json',
 				success:function(res){
+					console.log(res)
 					$("input[name='nicknameStr']").attr("value",res.data.nicknameStr);
 					$("input[name='gender']").attr("value",res.data.gender);
 					$("input[name='mobile']").attr("value",res.data.mobile);
@@ -27,7 +28,7 @@ var member_info_ops = {
 					$("input[name='city']").attr("value",res.data.city);
 					$("input[name='identityNo']").attr("value",res.data.identityNo);
 					$("input[name='level']").attr("value",res.data.level);
-					$("input[name='parentMemberName']").attr("value",res.data.parentMemberNameStr);
+					$("input[name='parentMemberId']").attr("value",res.data.parentMemberId);
 				}
 			})
 		}

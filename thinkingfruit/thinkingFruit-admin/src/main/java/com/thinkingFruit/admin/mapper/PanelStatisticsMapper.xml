@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkingFruit.admin.mapper.PanelStatisticsDao">
+
+	<insert id="addStatistics">
+		 insert into `t_thinkingfruit_mall_panel_statistics`
+	    (`memberTotal`,`transactionTotal`,`orderTotal`,`commisionTotal`,`createTime`,`day`,`month`) 
+	    values (ifnull(
+	    (select count(`id`)	from `t_thinkingfruit_mall_member`
+		WHERE DATEDIFF(`createTime`,NOW())=-1),0),
+	    ifnull((SELECT SUM(orderTotalPrice) FROM `t_thinkingfruit_mall_order`
+		WHERE DATEDIFF(`confirmTime`,NOW())=-1 and orderStatus=3),0),
+		ifnull((select count(`id`)	from `t_thinkingfruit_mall_order` as `r`
+		WHERE DATEDIFF(`confirmTime`,NOW())=-1 and orderStatus=3),0),
+		ifnull((select sum(c.`commision`)	from `t_thinkingfruit_mall_order` as `r` left join 
+		`t_thinkingfruit_mall_commision` as `c` on r.`orderNo` = c.`orderNo`
+		WHERE DATEDIFF(r.`confirmTime`,NOW())=-1 and r.`orderStatus`=3),0),
+		now(),DAY (DATE_ADD(NOW() ,Interval -1 day)),
+		MONTH (DATE_ADD(NOW() ,Interval -1 day)))
+	</insert>
+	
+	<select id="findStatisticsAll" resultType="com.thinkingFruit.admin.entity.PanelStatistics">
+			SELECT *from(	select `id`,`memberTotal`,`transactionTotal`,`orderTotal`,`createTime`,`day`
+		from `t_thinkingfruit_mall_panel_statistics` order BY `createTime` DESC LIMIT 0, 10)tal 
+		ORDER BY `createTime` 
+	</select>
+	
+	<select id="findStatisticsTotal" resultType="com.thinkingFruit.admin.entity.PanelStatistics">
+		SELECT SUM(`memberTotal`) as memberTotal,
+		SUM(`transactionTotal`) as transactionTotal,
+		SUM(`orderTotal`) as orderTotal,
+		SUM(`commisionTotal`) as commisionTotal
+		FROM `t_thinkingfruit_mall_panel_statistics`
+	</select>
+	
+	<select id="dayStatistics" resultType="com.thinkingFruit.admin.entity.PanelStatistics">
+		select `memberTotal`,`commisionTotal`
+		from `t_thinkingfruit_mall_panel_statistics` 
+		WHERE DAY(`createTime`)=DAY(NOW()) 
+		and Month(`createTime`) = Month(now()) 
+		and YEAR(`createTime`) = YEAR(now())
+	</select>
+	
+	<select id="monthStatistics" resultType="com.thinkingFruit.admin.entity.PanelStatistics">
+		select SUM(`commisionTotal`) as `commisionTotal`
+		from `t_thinkingfruit_mall_panel_statistics` 
+		WHERE `month`=MONTH(NOW()) and YEAR(`createTime`) = YEAR(now())
+	</select>
+		
+	<select id="getOrderTotalByProvince" parameterType="String" 
+		resultType="Long">
+		select count(`id`) from `t_thinkingfruit_mall_order` 
+		where `province` like CONCAT('%',#{province},'%')
+	</select>
+	
+	<select id="getGuest" resultType="Long">
+		SELECT COUNT(`id`) FROM `t_thinkingfruit_mall_member` WHERE `discount` = 20
+	</select>
+	
+	<select id="getAgent" resultType="Long">
+		SELECT COUNT(`id`) FROM `t_thinkingfruit_mall_member` WHERE `discount` > 20
+	</select>
+
+</mapper>
