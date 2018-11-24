@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkingFruit.admin.mapper.MessageDao">
+
+<select id="getCountByQuery" resultType="java.lang.Integer">
+	select count(`id`)
+	from `t_thinkingfruit_mall_message`
+	<where>
+	1=1
+	<if test="queryMap.content != null and queryMap.content != ''">
+	    and `content` like CONCAT('%',#{queryMap.content},'%')
+	</if>
+	<if test="queryMap.startTime != null and queryMap.startTime != ''">
+		<![CDATA[ and `createTime` > #{queryMap.startTime} ]]>
+	</if>
+	<if test="queryMap.endTime != null and queryMap.endTime != ''">
+		<![CDATA[ and `createTime` < #{queryMap.endTime} ]]>
+	</if>
+	</where> 
+</select>
+
+<select id="paginationMessage" resultType="com.thinkingFruit.admin.entity.Message">
+	select `id`,`content`,`createTime`
+	from `t_thinkingfruit_mall_message`
+	<where> 
+	1=1
+	<if test="queryMap.content != null and queryMap.content != ''">
+	    and `content` like CONCAT('%',#{queryMap.content},'%')
+	</if>
+	<if test="queryMap.startTime != null and queryMap.startTime != ''">
+		<![CDATA[ and `createTime` > #{queryMap.startTime} ]]>
+	</if>
+	<if test="queryMap.endTime != null and queryMap.endTime != ''">
+		<![CDATA[ and `createTime` < #{queryMap.endTime} ]]>
+	</if>
+	</where>
+	order by `id` desc
+	limit
+	#{pagination.start},#{pagination.pageSize}
+</select>
+
+<delete id="deleteMessageById">
+	delete from `t_thinkingfruit_mall_message`
+	where `id` = #{id}
+</delete>
+
+<delete id="deleteBatch">
+    delete from `t_thinkingfruit_mall_message`
+    where `id` in 
+    <foreach item="messageId" collection="messageIds" separator=","
+		open="(" close=")" index="">
+		#{messageId}
+	</foreach>
+</delete>
+
+<insert id="addMessage">
+    insert into `t_thinkingfruit_mall_message`(`content`,`createTime`)
+    value(#{content},now())
+</insert>
+
+</mapper>
