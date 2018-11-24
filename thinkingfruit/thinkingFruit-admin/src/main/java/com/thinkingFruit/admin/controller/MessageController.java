@@ -21,6 +21,15 @@ import com.ysdevelop.common.result.Result;
 import com.ysdevelop.common.utils.HttpUtils;
 import com.ysdevelop.common.utils.JSONHelper;
 
+/**
+ * @author zhangzesen
+ *
+ * @date 2018年11月24日
+ *
+ * @package com.thinkingFruit.admin.controller
+ *
+ * @description 消息
+ */
 @Controller
 @RequestMapping(value="/message")
 public class MessageController {
@@ -31,11 +40,21 @@ public class MessageController {
 	@Autowired
 	private RedisService redisService;
 	
+	/**
+	 * 跳转到消息首页
+	 * @return
+	 */
 	@RequestMapping(value = "", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
 	public String index(){
 		return "message/index";
 	}
 	
+	/**
+	 * 获取消息分页
+	 * @param request
+	 * @param pagination
+	 * @return
+	 */
 	@RequestMapping(value = "/pagination", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String pagination(HttpServletRequest request,Pagination<Message> pagination){
@@ -44,7 +63,11 @@ public class MessageController {
 		return JSONHelper.bean2json(Result.successPaginationData(pagination.getItems(), pagination.getTotalItemsCount()));
 	}
 	
-	// 消息的删除
+	/**
+	 * 消息的删除
+	 * @param id 消息id
+	 * @return
+	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public Result<String> del(@RequestParam(value = "id", required = false) Long id) {
@@ -52,7 +75,11 @@ public class MessageController {
 		return Result.success("删除成功");
 	}
 	
-	// 批量删除项目
+	/**
+	 * 批量删除项目
+	 * @param messageIds 消息id集合
+	 * @return
+	 */
 	@RequestMapping(value = "batch", method = RequestMethod.DELETE, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public Result<String> deleteBatch(@RequestParam(value = "messageIds[]", required = false) List<Long> messageIds) {
@@ -60,7 +87,10 @@ public class MessageController {
 		return Result.success("删除成功");
 	}
 	
-	//redis轮询
+	/**
+	 * redis轮询
+	 * @return
+	 */
 	@RequestMapping(value = "/redisPolling", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String redisPolling(){

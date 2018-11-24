@@ -100,7 +100,8 @@ var message_index_ops={
 										var callback = null;
 										if (res.code == 0) {
 											callback = function() {
-												window.location.href = WEB_ROOT + 'message';
+												console.log("zzz");
+												window.location.href = WEB_ROOT + '/message';
 											}
 										}
 										common_ops.alert(res.msg, callback);

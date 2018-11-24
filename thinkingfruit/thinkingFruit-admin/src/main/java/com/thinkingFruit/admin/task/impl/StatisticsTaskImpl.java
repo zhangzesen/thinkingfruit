@@ -22,13 +22,13 @@ public class StatisticsTaskImpl implements StatisticsTask{
 	@Autowired
 	RedisService redisService;
 	
-	@Scheduled(cron="0 0 2 * * ?")
+	@Scheduled(cron="0 */1 * * * ?")
 	@Override
 	public void addStatistics(){
 		panelStatisticsService.addStatistics();
 	}
 	//存入缓存
-	@Scheduled(cron="0 5 2 * * ?")
+	@Scheduled(cron="0 */2 * * * ?")
 	@Override
 	public void depositCache() {
 		
@@ -44,7 +44,7 @@ public class StatisticsTaskImpl implements StatisticsTask{
 				
 	}
 	//初始化
-	@Scheduled(cron="0 47 11 * * ?")
+	@Scheduled(cron="0 30 5 * * ?")
 	@Override
 	public void initialization() {
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.thinkingFruit.admin.mapper.MessageDao">
-
+<!-- 查询与遍历出所对应的数量 -->
 <select id="getCountByQuery" resultType="java.lang.Integer">
 	select count(`id`)
 	from `t_thinkingfruit_mall_message`
@@ -19,6 +19,7 @@
 	</where> 
 </select>
 
+<!-- 查询与遍历出所对应的信息 -->
 <select id="paginationMessage" resultType="com.thinkingFruit.admin.entity.Message">
 	select `id`,`content`,`createTime`
 	from `t_thinkingfruit_mall_message`
@@ -39,11 +40,13 @@
 	#{pagination.start},#{pagination.pageSize}
 </select>
 
+<!--根据id删除消息  -->
 <delete id="deleteMessageById">
 	delete from `t_thinkingfruit_mall_message`
 	where `id` = #{id}
 </delete>
 
+<!-- 批量删除 -->
 <delete id="deleteBatch">
     delete from `t_thinkingfruit_mall_message`
     where `id` in 
@@ -53,9 +56,19 @@
 	</foreach>
 </delete>
 
+<!-- 添加信息 -->
 <insert id="addMessage">
     insert into `t_thinkingfruit_mall_message`(`content`,`createTime`)
     value(#{content},now())
 </insert>
 
+<!-- 批量添加消息 -->
+<insert id="addMessageList" parameterType="com.thinkingFruit.admin.entity.Message">
+	insert into `t_thinkingfruit_mall_message`(`content`,`createTime`)
+	values
+	<foreach collection="list" index="index" item="contents" separator=",">
+		(#{contents.content},
+		now())
+	</foreach>
+</insert>
 </mapper>

@@ -107,5 +107,9 @@ public interface OrderDao {
 	 * @return
 	 */
 	Integer reduceSales(@Param(value="id")Long id,@Param(value="commodityCount")Long commodityCount);
+
+	List<Order> findUnreceivedOrder();
+
+	void updateBatchByOrders(@Param("order")List<Order> orders);
 	
 }

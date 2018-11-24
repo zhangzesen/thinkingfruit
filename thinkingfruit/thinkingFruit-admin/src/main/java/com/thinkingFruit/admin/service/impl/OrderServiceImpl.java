@@ -207,5 +207,16 @@ public class OrderServiceImpl implements OrderService{
 		return orders;
 	}
 
+	@Override
+	public List<Order> findUnreceivedOrder() {
+		List<Order> orders=orderDao.findUnreceivedOrder();
+		return orders;
+	}
+
+	@Override
+	public void updateBatchByOrders(List<Order> orders) {
+		orderDao.updateBatchByOrders(orders);
+	}
+
 
 }

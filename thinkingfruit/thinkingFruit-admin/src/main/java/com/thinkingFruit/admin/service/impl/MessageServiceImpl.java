@@ -23,7 +23,9 @@ public class MessageServiceImpl implements MessageService{
 	
 	@Autowired
 	private RedisService redisService;
-	
+	/**
+	 * 查询所有的消息
+	 */
 	@Override
 	public Pagination<Message> paginationMessage(Pagination<Message> pagination, Map<String, String> queryMap) {
 		Integer page = null;
@@ -42,17 +44,26 @@ public class MessageServiceImpl implements MessageService{
 		
 		return pagination;
 	}
-
+	
+	/**
+	 * 根据id删除消息
+	 */
 	@Override
 	public void deleteMessageById(Long id) {
 		messageDao.deleteMessageById(id);
 	}
-
+	
+	/**
+	 * 批量删除
+	 */
 	@Override
 	public void deleteBatch(List<Long> messageIds) {
 		messageDao.deleteBatch(messageIds);
 	}
-
+	
+	/**
+	 * 添加消息
+	 */
 	@Override
 	public void addMessage(String content,Object arg) {
 		messageDao.addMessage(content);

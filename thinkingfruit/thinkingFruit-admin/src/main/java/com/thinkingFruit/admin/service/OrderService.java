@@ -84,4 +84,8 @@ public interface OrderService {
 	 */
 	List<PurchaseOrder> findPurchaseOrderExcl(Map<String, String> queryMap);
 
+	List<Order> findUnreceivedOrder();
+
+	void updateBatchByOrders(List<Order> orders);
+
 }

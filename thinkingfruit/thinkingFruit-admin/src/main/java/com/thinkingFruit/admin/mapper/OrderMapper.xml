@@ -70,7 +70,7 @@
 	    orderStatus = 1 ,
 	    expressNo = #{expressNo},
 	    logistics = #{logistics},
-	    updateTime = now()
+	    confirmTime = now()
 	    </set> 
 	    where `id` = #{id}
 	</update>
@@ -268,5 +268,29 @@
 	    updateTime = now()
 	    </set> 
 	    where id = (select `p`.commodityId from `t_thinkingfruit_mall_order_purchase` as `p` where `p`.id=#{id})
+	</update>
+	
+	<select id="findUnreceivedOrder" resultType="com.thinkingFruit.admin.entity.Order">
+       select
+       	`o`.id as `id`,	
+        `o`.orderNo as `orderNo`,
+        `o`.orderStatus as `orderStatus`,     
+        `o`.confirmTime as `confirmTime`
+		from
+		`t_thinkingfruit_mall_order` as `o`
+		where `o`.id = #{id}
+    </select>
+	
+	<update id="updateBatchByOrders">
+		update `t_thinkingfruit_mall_order`
+	    <set>
+	    orderStatus=2,
+	    updateTime = now()
+	    </set> 
+	    where `id` in
+		<foreach item="order" collection="list" separator="," open="(" 
+			close=")" index="">
+			#{order.id}
+		</foreach>
 	</update>
 </mapper>
