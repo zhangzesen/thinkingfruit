@@ -20,7 +20,7 @@
     <context:component-scan base-package="com.ysdevelop.weixin.server.ws"/>
 	-->	
 	<context:annotation-config />
-	<context:component-scan base-package="com.allElement.**.controller,com.allElement.api.controller,com.ysdevelop.**.controller">
+	<context:component-scan base-package="com.thinkingFruit.**.controller,com.ysdevelop.**.controller">
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>

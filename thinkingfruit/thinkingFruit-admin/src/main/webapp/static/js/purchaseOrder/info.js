@@ -117,11 +117,15 @@ var order_info_ops={
 					     break;
 					   }
 					   
-					   atime = res.data.createTime;
+					   var atime = res.data.createTime;
 					   console.log(dateFtt("yyyy-MM-dd hh:mm:ss",new Date(atime)));
 					   $("input[name='createTime']").val(dateFtt("yyyy-MM-dd hh:mm:ss",new Date(atime)));
-					   
-
+					   atime = res.data.confirmTime;
+					   if(res.data.confirmTime!=null){
+						   $("input[name='confirmTime']").val(dateFtt("yyyy-MM-dd hh:mm:ss",new Date(atime)));
+					   }else{
+						   $("input[name='confirmTime']").val("暂未发货");
+					   }
 					   
 				   }
 			   });

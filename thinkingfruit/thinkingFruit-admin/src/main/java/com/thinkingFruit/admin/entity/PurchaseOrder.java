@@ -1,5 +1,7 @@
 package com.thinkingFruit.admin.entity;
 
+import java.util.Date;
+
 import com.ysdevelop.common.entity.BaseEntity;
 
 /**
@@ -88,6 +90,21 @@ public class PurchaseOrder extends BaseEntity{
 	 * 	上级分佣比例
 	 */
 	private Double superiorProportion;
+	
+	/**
+	 * 订单完成时间
+	 */
+	private Date confirmTime;
+	
+	
+	
+	public Date getConfirmTime() {
+		return confirmTime;
+	}
+
+	public void setConfirmTime(Date confirmTime) {
+		this.confirmTime = confirmTime;
+	}
 
 	public String getOrderNo() {
 		return orderNo;

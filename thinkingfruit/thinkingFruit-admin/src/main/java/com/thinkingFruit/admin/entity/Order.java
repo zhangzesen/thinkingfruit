@@ -11,7 +11,7 @@ import com.ysdevelop.common.entity.BaseEntity;
  *
  * @package com.thinkingFruit.admin.entity
  *
- * @description 订单
+ * @description 提货订单
  */
 public class Order extends BaseEntity{
 	

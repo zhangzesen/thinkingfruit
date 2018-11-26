@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -76,7 +77,7 @@ public class CommodityController {
 	 */
 	@RequestMapping(value = "/edit",method = RequestMethod.PUT,produces="application/json;charset=UTF-8")
 	@ResponseBody
-	public Result<String> edit(Commodity commodity){
+	public Result<String> edit(@Valid Commodity commodity){
 		commodityService.editCommodity(commodity);
 		return Result.success("修改成功");
 	}
@@ -88,7 +89,7 @@ public class CommodityController {
 	 */
 	@RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public Result<String> add(Commodity commodity){
+	public Result<String> add(@Valid Commodity commodity){
 		commodityService.addCommodity(commodity);
 		return Result.success("添加成功");
 	}

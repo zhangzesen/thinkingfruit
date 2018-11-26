@@ -191,7 +191,8 @@
         `o`.inviterId as `inviterId`,
         `o`.inviterProportion as `inviterProportion`,
         `o`.superiorProportion as `superiorProportion`,
-        `o`.createTime as `createTime`
+        `o`.createTime as `createTime`,
+        `o`.confirmTime as `confirmTime`
 		from
 		`t_thinkingfruit_mall_order_purchase` as `o`
 		where `o`.id = #{id}
@@ -202,7 +203,7 @@
 		update `t_thinkingfruit_mall_order_purchase`
 	    <set>
 	    orderStatus = 2 ,
-	    updateTime = now()
+	    confirmTime = now()
 	    </set> 
 	    where `id` = #{id}
 	</update>
@@ -226,7 +227,8 @@
 		r.`inviterProportion` as `inviterProportion`,
 		r.`superiorProportion` as `superiorProportion`,
 		r.`createTime` as `createTime`,
-		r.`memberLevelName` as `memberLevelName`
+		r.`memberLevelName` as `memberLevelName`,
+		r.`confirmTime` as `confirmTime`
 		from `t_thinkingfruit_mall_order_purchase` as `r` 
 		<where>
 			1=1

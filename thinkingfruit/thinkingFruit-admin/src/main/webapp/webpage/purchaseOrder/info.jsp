@@ -117,6 +117,14 @@ width:300px;
 									</div>
 								</div>
 								
+								<div class="layui-form-item">
+									<label class="layui-form-label">发货时间</label>
+									<div class="layui-input-inline input-custom-width">
+										<input type="text" name="confirmTime" readonly="readonly"
+											autocomplete="off" class="layui-input">
+									</div>
+								</div>
+								
 								<input name="orderStatusNo" value="" hidden="hidden">
 								<div class="layui-form-item" id="btn">
 									<div class="layui-input-block" id="button">

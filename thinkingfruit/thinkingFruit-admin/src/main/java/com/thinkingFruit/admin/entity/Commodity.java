@@ -39,11 +39,13 @@ public class Commodity {
 	/**
 	 *	 商品轮播图集合
 	 */
+	@NotEmpty(message="轮播图不能为空")
 	private List<String> previewImagePaths;
 	
 	/**
 	 * 	商品详情图集合
 	 */
+	@NotEmpty(message="商品详情图不能为空")
 	private List<String> detailsImagePaths;// 商品详情图
 	
 	/**
@@ -71,30 +73,35 @@ public class Commodity {
 	 * 	商品联创价
 	 */
 	@IsPrice
+	@NotEmpty(message="价格不能为空")
 	private Double firstPrice;
 	
 	/**
 	 * 	商品春事价
 	 */
 	@IsPrice
+	@NotEmpty(message="价格不能为空")
 	private Double secondPrice;
 	
 	/**
 	 * 	商品总监价
 	 */
 	@IsPrice
+	@NotEmpty(message="价格不能为空")
 	private Double thirdPrice;
 	
 	/**
 	 * 	商品svip价
 	 */
 	@IsPrice
+	@NotEmpty(message="价格不能为空")
 	private Double fourthPrice;
 	
 	/**
 	 * 	商品vip价
 	 */
 	@IsPrice
+	@NotEmpty(message="价格不能为空")
 	private Double fifthPrice;
 	
 	/**

@@ -5,16 +5,13 @@
 	<insert id="addStatistics">
 		 insert into `t_thinkingfruit_mall_panel_statistics`
 	    (`memberTotal`,`transactionTotal`,`orderTotal`,`commisionTotal`,`createTime`,`day`,`month`) 
-	    values (ifnull(
-	    (select count(`id`)	from `t_thinkingfruit_mall_member`
-		WHERE DATEDIFF(`createTime`,NOW())=-1),0),
-	    ifnull((SELECT SUM(orderTotalPrice) FROM `t_thinkingfruit_mall_order`
-		WHERE DATEDIFF(`confirmTime`,NOW())=-1 and orderStatus=3),0),
-		ifnull((select count(`id`)	from `t_thinkingfruit_mall_order` as `r`
-		WHERE DATEDIFF(`confirmTime`,NOW())=-1 and orderStatus=3),0),
-		ifnull((select sum(c.`commision`)	from `t_thinkingfruit_mall_order` as `r` left join 
+	    values (
+	    (select count(`id`)	from `t_thinkingfruit_mall_member` WHERE DATEDIFF(`createTime`,NOW())),
+	    (SELECT SUM(orderTotalPrice) FROM `t_thinkingfruit_mall_order_purchase` WHERE DATEDIFF(`confirmTime`,NOW())),
+		(select count(`id`)	from `t_thinkingfruit_mall_order_purchase` as `r` WHERE DATEDIFF(`confirmTime`,NOW())),
+        (select sum(c.`commision`) from `t_thinkingfruit_mall_order_purchase` as `r` left join 
 		`t_thinkingfruit_mall_commision` as `c` on r.`orderNo` = c.`orderNo`
-		WHERE DATEDIFF(r.`confirmTime`,NOW())=-1 and r.`orderStatus`=3),0),
+		WHERE DATEDIFF(r.`confirmTime`,NOW())),
 		now(),DAY (DATE_ADD(NOW() ,Interval -1 day)),
 		MONTH (DATE_ADD(NOW() ,Interval -1 day)))
 	</insert>
@@ -53,12 +50,10 @@
 		where `province` like CONCAT('%',#{province},'%')
 	</select>
 	
-	<select id="getGuest" resultType="Long">
-		SELECT COUNT(`id`) FROM `t_thinkingfruit_mall_member` WHERE `discount` = 20
-	</select>
+	
 	
 	<select id="getAgent" resultType="Long">
-		SELECT COUNT(`id`) FROM `t_thinkingfruit_mall_member` WHERE `discount` > 20
+		SELECT COUNT(`id`) FROM `t_thinkingfruit_mall_member` where `status`=1
 	</select>
 
 </mapper>

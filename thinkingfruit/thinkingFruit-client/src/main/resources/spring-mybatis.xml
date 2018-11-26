@@ -16,7 +16,7 @@
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
-                <value>classpath:thinkFruit-admin.properties</value>
+                <value>classpath:thinkingFruit-admin.properties</value>
                 <value>classpath:yuansheng-common.properties</value>
                 <!--  
                 <value>classpath:yuansheng-rabbitmq.properties</value>

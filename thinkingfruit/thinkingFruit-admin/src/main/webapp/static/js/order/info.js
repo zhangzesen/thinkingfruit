@@ -134,6 +134,7 @@ var order_info_ops={
 					   $("input[name='expressNo']").attr("value",res.data.expressNo);
 					   $("input[name='commodityName']").attr("value",res.data.commodityName);
 					   $("input[name='commodityCount']").attr("value",res.data.commodityCount);
+					   $("select[name='logistics']").attr("value",res.data.logistics);
 					   if(res.data.sendMethod==0){
 						   $("input[name='sendMethod']").val("邮寄");
 					   }else if(res.data.sendMethod==1){
@@ -156,8 +157,12 @@ var order_info_ops={
 					   $("input[name='freightPrice']").attr("value",res.data.freightPrice);
 					   atime = res.data.confirmTime;
 					   console.log(dateFtt("yyyy-MM-dd hh:mm:ss",new Date(atime)));
-					   $("input[name='confirmTime']").val(dateFtt("yyyy-MM-dd hh:mm:ss",new Date(atime)));
-					   
+					   if(res.data.orderStatus==0){
+						   $("input[name='confirmTime']").val("未发货");
+					   }else{
+						   $("input[name='confirmTime']").val(dateFtt("yyyy-MM-dd hh:mm:ss",new Date(atime)));
+						   
+					   }
 
 					   
 				   }
