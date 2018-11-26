@@ -21,7 +21,7 @@ var statistics_index_ops = {
 			   dataType:'json',
 			   async:false,
 			   success:function(res){
-				   console.dir("统计的数据--》"+res);
+				   console.dir(res.data);
 					//总
 				   $(".memberTotal").text(res.data.allTotal.memberTotal);
 				   $(".transactionTotal").text(res.data.allTotal.transactionTotal);
@@ -31,6 +31,7 @@ var statistics_index_ops = {
 				   $(".guest").text(res.data.guest);
 				   //日
 				   $(".newMember").text(res.data.dayStatistics.memberTotal);
+				   console.log("res.data.newMember:"+res.data.dayStatistics.memberTotal);
 				   $(".commisionTotalDay").text(res.data.dayStatistics.commisionTotal);
 				   //月
 				   $(".commisionTotalMonth").text(res.data.monthStatistics.commisionTotal);

@@ -15,6 +15,15 @@ import com.ysdevelop.common.page.Pagination;
 import com.ysdevelop.common.redis.RedisService;
 import com.ysdevelop.common.result.CodeMsg;
 
+/**
+ * @author zhangzesen
+ *
+ * @date 2018年11月26日
+ *
+ * @package com.thinkingFruit.admin.service.impl
+ *
+ * @description 消息
+ */
 @Service
 public class MessageServiceImpl implements MessageService{
 

@@ -10,6 +10,15 @@ import com.thinkingFruit.admin.mapper.LogisticsDao;
 import com.thinkingFruit.admin.service.LogisticsService;
 
 
+/**
+ * @author zhangzesen
+ *
+ * @date 2018年11月26日
+ *
+ * @package com.thinkingFruit.admin.service.impl
+ *
+ * @description 物流
+ */
 @Service
 public class LogisticsServiceImpl implements LogisticsService{
 

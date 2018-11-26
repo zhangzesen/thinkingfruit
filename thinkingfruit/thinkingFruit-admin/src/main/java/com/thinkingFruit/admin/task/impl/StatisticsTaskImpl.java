@@ -22,13 +22,13 @@ public class StatisticsTaskImpl implements StatisticsTask{
 	@Autowired
 	RedisService redisService;
 	
-	@Scheduled(cron="0 */1 * * * ?")
+	@Scheduled(cron="0 0 2 * * ?")
 	@Override
 	public void addStatistics(){
 		panelStatisticsService.addStatistics();
 	}
 	//存入缓存
-	@Scheduled(cron="0 */2 * * * ?")
+	@Scheduled(cron="0 5 2 * * ?")
 	@Override
 	public void depositCache() {
 		
@@ -39,12 +39,11 @@ public class StatisticsTaskImpl implements StatisticsTask{
 		statistics.put("allTotal", panelStatisticsService.findStatisticsTotal());//总订单量总交易金额总会员数
 		statistics.put("map", panelStatisticsService.findOrderTotalByProvince(Constant.province));//地图
 		statistics.put("agent", panelStatisticsService.getAgent());//代理
-		
 		redisService.set(StatisticsKey.statisticsKey, "statistics",statistics);
 				
 	}
 	//初始化
-	@Scheduled(cron="0 30 5 * * ?")
+	@Scheduled(cron="0 47 11 * * ?")
 	@Override
 	public void initialization() {
 

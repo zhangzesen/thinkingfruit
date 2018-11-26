@@ -14,6 +14,15 @@ import com.thinkingFruit.admin.service.OrderService;
 import com.thinkingFruit.admin.task.OrderTask;
 import com.ysdevelop.common.utils.Constant;
 
+/**
+ * @author zhangzesen
+ *
+ * @date 2018年11月26日
+ *
+ * @package com.thinkingFruit.admin.task.impl
+ *
+ * @description 定时任务
+ */
 @Component
 public class OrderTaskImpl implements OrderTask{
 

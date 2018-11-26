@@ -7,6 +7,15 @@ import org.apache.ibatis.annotations.Param;
 
 import com.thinkingFruit.admin.entity.Commodity;
 
+/**
+ * @author zhangzesen
+ *
+ * @date 2018年11月26日
+ *
+ * @package com.thinkingFruit.admin.mapper
+ *
+ * @description 商品
+ */
 public interface CommodityDao {
 	
 	/**

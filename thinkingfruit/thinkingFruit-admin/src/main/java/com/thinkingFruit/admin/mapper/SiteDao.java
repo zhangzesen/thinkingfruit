@@ -5,6 +5,15 @@ import java.util.Map;
 
 import com.thinkingFruit.admin.entity.CommissionRatio;
 
+/**
+ * @author zhangzesen
+ *
+ * @date 2018年11月26日
+ *
+ * @package com.thinkingFruit.admin.mapper
+ *
+ * @description 设置分佣/邀请比例
+ */
 public interface SiteDao {
 	/**
 	 * 获取所有级别的分佣/邀请比例集合

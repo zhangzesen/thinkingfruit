@@ -16,6 +16,15 @@ import com.ysdevelop.common.result.Result;
 import com.ysdevelop.common.utils.JSONHelper;
 
 
+/**
+ * @author wulei
+ *
+ * @date 2018年11月26日
+ *
+ * @package com.thinkingFruit.admin.controller
+ *
+ * @description 统计
+ */
 @Controller
 @RequestMapping(value = "statistics")
 public class PanelStatisticsController {
