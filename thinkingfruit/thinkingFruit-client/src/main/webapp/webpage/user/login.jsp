@@ -4,50 +4,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="<%=basePath%>/static/css/user/login.css">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>思维果实登录</title>
-</head>
-<body>
-	<div class="container">
-	    <form class="formarea">
-		<div class="header">
-			<a href="#"> <img src="<%=basePath%>/static/icon/icon.png"> 思维果实
-			</a>
-			<div id="option">登录</div>
-		</div>
-		<div class="center">
-			<div>
-			
-			<div class="classification">
-				<div class="label">登录名</div>
-				<input type="text" class="loginName" name="loginName"
-				  required="true"	placeholder="注册时填写的手机号">
-				<div class="clear"></div>
-			</div>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>thinkingFruit</title>
 
-			<div class="classification">
-				<div class="label">登录密码</div>
-				<input type="password" required="true" minlength="8" maxlength="20" class="password" name="password" placeholder="请输入密码">
-				<div class="clear"></div>
-			</div>
-			
-			<div class="classification">
-				<div class="label">验证码</div>
-				<input type="verification" class="verification" name="verification" autocomplete="off"
-					style="width: 250px;float: left;" placeholder="请输入验证码">
-					<div class="code">	
-				<img src="<%=basePath%>/randCodeImage" alt="captche" title='点击切换' id="qrcode"
-						onclick="this.src='<%=basePath%>/randCodeImage?id='+Math.random()">
-						</div>
-			<div class="clear"></div>	
-			</div>
-			<input id="login" class="button" type="button" value="登录">		
-		</div>
-		</form>
+<link rel="stylesheet" href="<%=basePath%>/static/css/login/style.css" />
+
+<body>
+
+<div class="login-container">
+	<h1>爱因思果用户登录</h1>
+	
+	<div class="connect">
+		<p>把精彩留给自己</p>
 	</div>
-	<jsp:include page="/context/js-tags.jsp" />
-	<script type="text/javascript"
-		src="<%=basePath%>/static/js/user/login.js"></script>
+	
+	<form action="" method="post" id="loginForm">
+		<div>
+			<input type="text" name="username" class="username" placeholder="用户名" autocomplete="off"/>
+		</div>
+		<div>
+			<input type="password" name="password" class="password" placeholder="密码" oncontextmenu="return false" onpaste="return false" />
+		</div>
+		<button id="submit" type="submit">登 陆</button>
+	</form>
+
+	<a href="register.html">
+		<button type="button" class="register-tis">还有没有账号？</button>
+	</a>
+	
+</div>
+
+<script src="<%=basePath%>/static/js/user/login/jquery.min.js"></script>
+<script src="<%=basePath%>/static/js/user/login/common.js"></script>
+<!--背景图片自动更换-->
+<script src="<%=basePath%>/static/js/user/login/supersized.3.2.7.min.js"></script>
+<script src="<%=basePath%>/static/js/user/login/supersized-init.js"></script>
+<!--表单验证-->
+<script src="<%=basePath%>/static/js/user/login/jquery.validate.min.js"></script>
+
 </body>
 </html>
