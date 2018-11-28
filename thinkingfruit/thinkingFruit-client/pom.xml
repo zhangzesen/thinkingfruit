@@ -20,11 +20,6 @@
 		<artifactId>yuansheng-shiro</artifactId>
 		<version>1.0.0</version>
 	</dependency>
-	<dependency>
-		<groupId>com.thinkingFruit</groupId>
-		<artifactId>thinkingFruit-admin</artifactId>
-		<version>1.0.0</version>
-	</dependency>
   </dependencies>
   
   <build>
