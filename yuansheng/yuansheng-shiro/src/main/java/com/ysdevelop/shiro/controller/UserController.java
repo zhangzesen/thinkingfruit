@@ -52,6 +52,7 @@ public class UserController {
 	public String login() {
 		return "user/login";
 	}
+	
 
 	/** 用户登录 **/
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
