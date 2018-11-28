@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<jsp:include page="/context/js-tags.jsp" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>thinkingFruit</title>
@@ -19,37 +20,44 @@
 	
 	<form action="" method="post" id="registerForm">
 		<div>
-			<input type="text" name="username" class="username" placeholder="您的用户名" autocomplete="off"/>
+			<input type="text" name="loginName" class="username" placeholder="您的用户名" autocomplete="off"/>
 		</div>
 		<div>
-			<input type="password" name="password" class="password" placeholder="输入密码" oncontextmenu="return false" onpaste="return false" />
+			<input type="password" name="loginPassword" class="password" placeholder="输入密码" oncontextmenu="return false" onpaste="return false" />
 		</div>
 		<div>
 			<input type="password" name="confirm_password" class="confirm_password" placeholder="再次输入密码" oncontextmenu="return false" onpaste="return false" />
 		</div>
 		<div>
-			<input type="text" name="phone_number" class="phone_number" placeholder="输入手机号码" autocomplete="off" id="number"/>
+			<input type="text" name="mobile" class="mobile" placeholder="请输入手机号" autocomplete="off" />
 		</div>
 		<div>
-			<input type="email" name="email" class="email" placeholder="输入邮箱地址" oncontextmenu="return false" onpaste="return false" />
+			<input type="text" name="inviterId" class="inviterId" placeholder="请输入邀请者id" autocomplete="off" />
 		</div>
-
-		<button id="submit" type="submit">注 册</button>
+		<div class="classification">
+			<div class="label">验证码</div>
+				<input type="verification" class="verification" name="verification" autocomplete="off"
+					style="width: 250px;float: left;" placeholder="请输入验证码">
+				<div class="code">	
+					<img src="<%=basePath%>/randCodeImage" alt="captche" title='点击切换' id="qrcode"
+						onclick="this.src='<%=basePath%>/randCodeImage?id='+Math.random()">
+				</div>
+			<div class="clear"></div>	
+		</div>
+		<button id="submit" type="button">注册</button>
 	</form>
-	<a href="index.html">
-		<button type="button" class="register-tis">已经有账号？</button>
-	</a>
-
+	<button id="login" type="button" class="register-tis" >已经有账号？</button>
 </div>
 
 
-<script src="<%=basePath%>/static/js/user/login/jquery.min.js"></script>
-<script src="<%=basePath%>/static/js/user/login/common.js"></script>
+<script type="text/javascript" src="<%=basePath%>/static/js/user/loginStyle/jquery.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/static/js/user/loginStyle/common.js"></script>
 <!--背景图片自动更换-->
-<script src="<%=basePath%>/static/js/user/login/supersized.3.2.7.min.js"></script>
-<script src="<%=basePath%>/static/js/user/login/supersized-init.js"></script>
+<script type="text/javascript" src="<%=basePath%>/static/js/user/loginStyle/supersized.3.2.7.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/static/js/user/loginStyle/supersized-init.js"></script>
 <!--表单验证-->
-<script src="<%=basePath%>/static/js/user/login/jquery.validate.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/static/js/user/loginStyle/jquery.validate.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/static/js/user/register.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkingFruit.client.mapper.AgentDao">
+	<!-- 通过登录名获取用户 -->
+	<select id="getAgentByName" resultType="com.thinkingFruit.client.entity.Agent">
+		select
+		t.`id` as `id`,
+		t.`mobile` as `mobile`,
+		t.`loginName` as `loginName`,
+		t.`pswd` as `pswd`,
+		t.`gender` as `gender`,
+		t.`salt` as `salt`,
+		t.`name` as `name`,
+		t.`nickname` as `nickname`,
+		t.`avatar` as `avatar`,
+		t.`inviterId` as `inviterId`,
+		t.`province` as `province`,
+		t.`city` as `city`,
+		t.`town` as `town`,
+		t.`identityNo` as `identityNo`,
+		t.`createTime` as `createTime`,
+		t.`updateTime` as `updateTime`,
+		t.`memberLevelId` as `memberLevelId`,
+		t.`status` as `status`
+		from
+		`t_thinkingfruit_mall_member` t
+		where t.`loginName` = #{loginName}
+		and t.`status` = 1
+	</select>
+
+
+	<!-- 通过用户ID查询用户详情 -->
+	<select id="getAgentById" resultType="com.thinkingFruit.client.entity.Agent">
+		select
+		t.`id` as `id`,
+		t.`mobile` as `mobile`,
+		t.`loginName` as `loginName`,
+		t.`pswd` as `pswd`,
+		t.`gender` as `gender`,
+		t.`salt` as `salt`,
+		t.`name` as `name`,
+		t.`nickname` as `nickname`,
+		t.`avatar` as `avatar`,
+		t.`inviterId` as `inviterId`,
+		t.`province` as `province`,
+		t.`city` as `city`,
+		t.`town` as `town`,
+		t.`identityNo` as `identityNo`,
+		t.`createTime` as `createTime`,
+		t.`updateTime` as `updateTime`,
+		t.`memberLevelId` as `memberLevelId`,
+		t.`status` as `status`
+		from
+		`t_thinkingfruit_mall_member` t
+		where
+		t.`id` = #{id}
+	</select>
+
+
+	<!-- 添加用户 -->
+	<insert id="addAgent">
+		insert into
+		`t_thinkingfruit_mall_member`(
+			`loginName`,`gender`,`mobile`,`pswd`,`salt`,
+			`name`,`nickname`,`avatar`,`inviterId`,`inviterUpperId`,
+			`province`,`city`,`town`,`identityNo`,`createTime`,`memberLevelId`,`status`
+		)
+		values
+		(
+			#{loginName},#{gender},#{mobile},#{pswd},#{salt},
+			#{name},#{nickname},#{avatar},#{inviterId},#{inviterUpperId},
+			#{province},#{city},#{town},#{identityNo},now(),#{memberLevelId},0
+		)
+	</insert>
+	
+	
+</mapper>

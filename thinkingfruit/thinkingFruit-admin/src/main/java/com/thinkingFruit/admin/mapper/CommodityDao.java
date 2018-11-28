@@ -81,5 +81,7 @@ public interface CommodityDao {
 	 * @param commodity 商品
 	 */
 	void editCommodity(@Param("commodity")Commodity commodity);
+
+	List<Commodity> clientListCommodity();
 	
 }

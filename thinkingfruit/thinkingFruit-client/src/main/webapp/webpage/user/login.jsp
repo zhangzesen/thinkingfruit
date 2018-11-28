@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<jsp:include page="/context/js-tags.jsp" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>thinkingFruit</title>
@@ -21,27 +22,35 @@
 	
 	<form action="" method="post" id="loginForm">
 		<div>
-			<input type="text" name="username" class="username" placeholder="用户名" autocomplete="off"/>
+			<input type="text" name="loginName" class="username" placeholder="用户名" autocomplete="off"/>
 		</div>
 		<div>
 			<input type="password" name="password" class="password" placeholder="密码" oncontextmenu="return false" onpaste="return false" />
 		</div>
-		<button id="submit" type="submit">登 陆</button>
+		<div class="classification">
+			
+				<input type="verification" class="verification" name="verification" autocomplete="off"
+					style="width: 250px;float: left;" placeholder="请输入验证码">
+				<div class="code">	
+					<img src="<%=basePath%>/randCodeImage" alt="captche" title='点击切换' id="qrcode"
+						onclick="this.src='<%=basePath%>/randCodeImage?id='+Math.random()">
+				</div>
+			<div class="clear"></div>	
+		</div>
+		<button id="submit" type="button">登 陆</button>
 	</form>
+	<button id="register" type="button" class="register-tis" >还有没有账号？</button>
 
-	<a href="register.html">
-		<button type="button" class="register-tis">还有没有账号？</button>
-	</a>
 	
 </div>
 
-<script src="<%=basePath%>/static/js/user/login/jquery.min.js"></script>
-<script src="<%=basePath%>/static/js/user/login/common.js"></script>
+<script type="text/javascript" src="<%=basePath%>/static/js/user/loginStyle/jquery.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/static/js/user/loginStyle/common.js"></script>
 <!--背景图片自动更换-->
-<script src="<%=basePath%>/static/js/user/login/supersized.3.2.7.min.js"></script>
-<script src="<%=basePath%>/static/js/user/login/supersized-init.js"></script>
+<script type="text/javascript" src="<%=basePath%>/static/js/user/loginStyle/supersized.3.2.7.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/static/js/user/loginStyle/supersized-init.js"></script>
 <!--表单验证-->
-<script src="<%=basePath%>/static/js/user/login/jquery.validate.min.js"></script>
-
+<script type="text/javascript" src="<%=basePath%>/static/js/user/loginStyle/jquery.validate.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/static/js/user/login.js"></script>
 </body>
 </html>

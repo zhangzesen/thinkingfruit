@@ -156,5 +156,12 @@ public class CommodityServiceImpl implements CommodityService {
 			throw new WebServiceException(CodeMsg.COMMODITYNAME_UPDATE_ERROR);
 		}
 	}
+	
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public List<Commodity> clientListCommodity() {
+		List<Commodity> clientListCommodity=commodityDao.clientListCommodity();
+		return clientListCommodity;
+	}
 
 }
