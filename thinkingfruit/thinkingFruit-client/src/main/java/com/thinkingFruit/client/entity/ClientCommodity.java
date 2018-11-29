@@ -103,9 +103,22 @@ public class ClientCommodity {
 	 *	 商品状态，0代表激活，1代表注销
 	 */
 	private Integer status;
+	
+	/**
+	 * 	当前介个
+	 */
+	private Double price;
 
 	public Long getId() {
 		return id;
+	}
+	
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 
 	public void setId(Long id) {

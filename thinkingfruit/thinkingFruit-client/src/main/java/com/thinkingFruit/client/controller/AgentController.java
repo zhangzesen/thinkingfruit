@@ -3,6 +3,7 @@ package com.thinkingFruit.client.controller;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,7 +51,8 @@ public class AgentController {
 		if(!passwordAgentHelper.checkPassword(agentByName, agent.getPswd())) {
 			throw new WebServiceException(CodeMsg.PASSWORD_WRONG);
 		}
-		
+		HttpSession session = request.getSession();
+		session.setAttribute("agentId", agentByName.getId());
 		return Result.success("登录成功");
 	}
 	

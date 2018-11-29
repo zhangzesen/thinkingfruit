@@ -2,6 +2,8 @@ package com.thinkingFruit.client.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,9 +43,20 @@ public class HomePageController {
 	
 	@RequestMapping(value = "/details", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public Results<ClientCommodity> details(Long id){
-		System.out.println("id"+id);
-		ClientCommodity findCommodityById = clientCommodityService.findCommodityById(id);
+	public Results<ClientCommodity> details(HttpServletRequest request,Long id){
+		ClientCommodity findCommodityById = clientCommodityService.findCommodityById(request,id);
+		return Results.successData(findCommodityById);
+	}
+	
+	@RequestMapping(value="/set",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
+	public String set(){
+		return "home/set";
+	}
+	
+	@RequestMapping(value = "/purchase", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Results<ClientCommodity> purchase(HttpServletRequest request,Long id){
+		ClientCommodity findCommodityById = clientCommodityService.findCommodityById(request,id);
 		return Results.successData(findCommodityById);
 	}
 }

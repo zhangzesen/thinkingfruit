@@ -2,6 +2,8 @@ package com.thinkingFruit.client.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.thinkingFruit.client.entity.ClientCommodity;
 
 
@@ -20,6 +22,6 @@ public interface ClientCommodityService {
 	List<ClientCommodity> ClientCommodityList();
 	
 	
-	ClientCommodity findCommodityById(Long id);
+	ClientCommodity findCommodityById(HttpServletRequest request, Long id);
 	
 }
