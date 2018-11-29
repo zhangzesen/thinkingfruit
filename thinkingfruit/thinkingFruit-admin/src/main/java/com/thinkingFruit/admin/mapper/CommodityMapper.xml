@@ -18,18 +18,6 @@
 			now())
 		</foreach>
     </insert>
-    <!-- 添加商品轮播图片 -->
-    <insert id="addCommoditydPreviewImage">
-    	insert into t_thinkingfruit_mall_commodity_images(`imagePath`,`imageStatus`,`status`,`commodityId`,`createTime`)
-    	values
-    	<foreach collection="previewImagePath" index="index" item="imagePath" separator=",">
-			(#{imagePath},
-			0,
-			0,
-			#{id},
-			now())
-		</foreach>
-    </insert>
     <!-- 查询所有商品 -->
     <select id="paginationCommodity" resultType="com.thinkingFruit.admin.entity.Commodity">
         select 
@@ -52,20 +40,6 @@
         </where>
     </select>
     
-    <!-- 查询所有商品 -->
-    <select id="clientListCommodity" resultType="com.thinkingFruit.admin.entity.Commodity">
-        select 
-        c.`id` as `id`,
-        c.`name` as `name`,
-        c.`coverImagePath` as `coverImagePath`,
-        c.`sales` as `sales`,
-        c.`stock` as `stock`,
-        c.`description` as `description`
-        from `t_thinkingfruit_mall_commodity` as c 
-        
-        where c.`status`=0
-       
-    </select>
     
      <!-- 删除商品 -->
     <update id="deleteCommodityById">
@@ -97,7 +71,6 @@
 		`i`.imagePath as `imagePath`
 		from `t_thinkingfruit_mall_commodity_images` as `i`
 		where `i`.status=0 
-		and `i`.imageStatus =#{imageStatus}
 		and `i`.commodityId=#{id}
 		
 	</select>

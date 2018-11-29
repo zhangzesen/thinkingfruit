@@ -5,16 +5,17 @@ var home_index_ops = {
 		this.eventBind();
 	},
 	initComponent : function() {
+		var id = common_ops.g_getQueryString('id');
 		$.ajax({
-			url:WEB_ROOT + "/home/list",
+			url:WEB_ROOT + "/home/details",
 			type:'get',
+			data:{
+				id:id
+			},
 			dataType:'json',
 			success:function(res){
 				console.log(res.data);
-				for (var i = 0; i < res.data.length; i++) {
-					console.log(res.data[i].name);
-					$(".aui-content").append('<div class="aui-card-list">'+'<div class="aui-card-list-header">'+res.data[i].name+'</div>'+'<div class="aui-card-list-content">'+'<img src="'+res.data[i].coverImagePath+'"'+'value="'+res.data[i].id+'" />'+'</div>'+'</div>')
-			    }
+				$(".aui-content").append('<div class="aui-card-list">'+'<div class="aui-card-list-header">'+res.data.name+'</div>'+'<div class="aui-card-list-content">'+'<img src="'+res.data.coverImagePath+'"'+'value="'+res.data.id+'" />'+'</div>'+'</div>')
 			}
 		});
 		
@@ -31,11 +32,7 @@ var home_index_ops = {
 
 	},
 	eventBind : function() {
-		$(".aui-content").click(function(){
-			var id= $(this).find('img').attr("value");
-			alert("id"+id);
-			window.location.href = WEB_ROOT + '/home/info?id='+id;
-		});
+		
 	},
 	
 

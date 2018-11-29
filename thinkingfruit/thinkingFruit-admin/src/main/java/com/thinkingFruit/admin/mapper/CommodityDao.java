@@ -32,13 +32,6 @@ public interface CommodityDao {
 	 */
 	Integer addCommoditydDetailsImage(@Param("id")Long id,@Param("detailsImagePath")List<String> detailsImagePath);
 	
-	/**
-	 * 添加商品轮播图
-	 * @param previewImagePath 商品轮播图数组
-	 * @param id 商品id
-	 * @return
-	 */
-	Integer addCommoditydPreviewImage(@Param("id")Long id,@Param("previewImagePath")List<String> previewImagePath);
 	
 	/**
 	 * 	查询该分类下所有的商品信息
@@ -57,10 +50,9 @@ public interface CommodityDao {
 	/**
 	 *	 查询商品图片
 	 * @param id 商品id
-	 * @param imageStatus 商品类型，0表示轮播图，1表示详情图
 	 * @return
 	 */
-	List<String> findCommodityImagesById(@Param("id")Long id,@Param("imageStatus")Long imageStatus);
+	List<String> findCommodityImagesById(@Param("id")Long id);
 	
 	/**
 	 * 	根据商品id删除商品信息
@@ -81,7 +73,5 @@ public interface CommodityDao {
 	 * @param commodity 商品
 	 */
 	void editCommodity(@Param("commodity")Commodity commodity);
-
-	List<Commodity> clientListCommodity();
 	
 }

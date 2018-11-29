@@ -58,7 +58,7 @@
 			<div class="aui-card-list">
 				<div class="aui-card-list-header">商品1</div>
 				<div class="aui-card-list-content">
-					<img src="<%=basePath%>/static/images/banner/shili1.jpg" />
+					<img src="<%=basePath%>/static/images/banner/shili1.jpg"  value="8"/>
 				</div>
 			</div>
 			

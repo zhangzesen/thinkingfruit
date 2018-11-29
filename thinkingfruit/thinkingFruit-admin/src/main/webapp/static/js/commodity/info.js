@@ -32,10 +32,6 @@ var commodity_info_ops = {
 					//添加展示图片
 					$("img[name='cover']").attr("src", WEB_ROOT+res.data.coverImagePath);
 					
-					for (var i = 0; i < res.data.previewImagePaths.length; i++) {
-						$("#preview").append("<img alt='' border='none' name='preview' src='"+WEB_ROOT+res.data.previewImagePaths[i]+"' style='max-width:100px;'>");
-					}
-					
 					for (var i = 0; i < res.data.detailsImagePaths.length; i++) {
 						$("#details").append("<img alt='' border='none' name='details' src='"+WEB_ROOT+res.data.detailsImagePaths[i]+"' style='max-width:100px;'>");
 					}

@@ -36,13 +36,6 @@
 									</div>
 								</div>
 
-								<div class="layui-upload">
-									<blockquote class="layui-elem-quote layui-quote-nm"
-										style="margin-top: 10px; margin-left: 130px;">
-										轮播图预览：
-										<div class="layui-upload-list" id="preview"></div>
-									</blockquote>
-								</div>
 
 								<div class="layui-upload">
 									<blockquote class="layui-elem-quote layui-quote-nm"

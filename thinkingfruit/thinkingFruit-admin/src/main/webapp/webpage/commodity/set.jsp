@@ -55,27 +55,6 @@ color:#666!important;
 									</div>
 								</div>
 								
-								<div class="layui-form-item">
-									<div class="layui-input-inline input-custom-width layui-upload" style="margin-left: 130px;">
-										<div class="layui-box layui-upload-button"
-											style="float: left; left: 0px; border: 1px solid #D2D2D2; width: 150px; background-color: #98a3b9; text-align: center;">
-											<span class="layui-upload-icon"><i class="layui-icon"></i>商品轮播图上传</span>
-										</div>
-										<input class="layui-input image-upload" id="previewImage" name="previewImage" type="file" multiple="multiple"
-										autocomplete="off" style="opacity: 0;">
-									</div>
-									<div class="layui-input-inline input-custom-width">
-										<button class="layui-btn layui-btn-warm" name="previewReset">重置</button>
-									</div>
-								</div>
-								<div class="layui-upload">
-                                  <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;margin-left: 130px;">
-                                                                                          轮播图预览：
-                                    <div class="layui-upload-list" id="preview">
-											
-										</div>
-                                  </blockquote>
-                                </div>
                                 
                                 <div class="layui-form-item">
 									<div class="layui-input-inline input-custom-width layui-upload" style="margin-left: 130px;">

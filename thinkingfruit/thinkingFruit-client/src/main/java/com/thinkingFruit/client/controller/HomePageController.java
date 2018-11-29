@@ -1,13 +1,24 @@
 package com.thinkingFruit.client.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.thinkingFruit.client.entity.ClientCommodity;
+import com.thinkingFruit.client.service.ClientCommodityService;
+import com.ysdevelop.common.result.Results;
 
 @Controller
 @RequestMapping(value="/home")
 public class HomePageController {
-
+	
+	@Autowired
+	ClientCommodityService clientCommodityService;
+	
 	/**
 	 *首页跳转
 	 * */
@@ -16,5 +27,23 @@ public class HomePageController {
 		return "home/index";
 	}
 	
-
+	@RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Results<List<ClientCommodity>> list(){
+		List<ClientCommodity> clientCommodityList = clientCommodityService.ClientCommodityList();
+		return Results.successData(clientCommodityList);
+	}
+	
+	@RequestMapping(value="/info",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
+	public String info(){
+		return "home/info";
+	}
+	
+	@RequestMapping(value = "/details", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Results<ClientCommodity> details(Long id){
+		System.out.println("id"+id);
+		ClientCommodity findCommodityById = clientCommodityService.findCommodityById(id);
+		return Results.successData(findCommodityById);
+	}
 }

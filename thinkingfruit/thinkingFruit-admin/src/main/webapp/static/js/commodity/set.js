@@ -27,20 +27,6 @@ var commodity_set_ops = {
 					 
 					
 					 
-					//轮播图片上传
-					 upload.render({
-					    elem: '#previewImage'
-					    ,url: WEB_ROOT+'/upload/image?imageType=2'
-					    ,multiple: true
-					    ,before: function(obj){
-					      obj.preview(function(index, file, result){
-					        $('#preview').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
-					      });
-					    }
-					    ,done: function(res){
-					    	previewImagePaths.push(res.data.imagePath);
-					    }
-					  });
 					 
 					//详情图片上传
 					 upload.render({
@@ -59,12 +45,6 @@ var commodity_set_ops = {
 				});
 			   
 			    
-			   
-			    // 重置轮播图的按钮
-				$("button[name='previewReset']").click(function() {
-					$("#preview img").remove();
-					$("input[name='previewImagePath']").val('');
-				});
 			   
 				// 重置商品详情图的按钮
 				$("button[name='detailsReset']").click(function() {
@@ -91,7 +71,6 @@ var commodity_set_ops = {
 				   var type = rf.isEmpty(id) ? 'POST' : 'PUT';
 				   
 				   $(".layui-input-block .layui-btn").addClass('layui-btn-disabled');
-				   var previewImagePath=JSON.stringify(previewImagePaths);
 				   var detailsImagePath=JSON.stringify(detailsImagePaths);
 				   $.ajax({
 					   url:WEB_ROOT+ url,
@@ -105,7 +84,6 @@ var commodity_set_ops = {
 						   thirdPrice:thirdPrice,
 						   secondPrice:secondPrice,
 						   firstPrice:firstPrice,
-						   previewImagePath:previewImagePath,
 						   detailsImagePath:detailsImagePath,
 						   stock:stock,
 						   approvalNumber:approvalNumber
@@ -160,10 +138,6 @@ var commodity_set_ops = {
 						
 						//添加展示图片
 						$("img[name='cover']").attr("src", WEB_ROOT+res.data.coverImagePath);
-						
-						for (var i = 0; i < res.data.previewImagePaths.length; i++) {
-							$("#preview").append("<img alt='' border='none' name='preview' src='"+WEB_ROOT+res.data.previewImagePaths[i]+"' style='max-width:100px;'>");
-						}
 						
 						for (var i = 0; i < res.data.detailsImagePaths.length; i++) {
 							$("#details").append("<img alt='' border='none' name='details' src='"+WEB_ROOT+res.data.detailsImagePaths[i]+"' style='max-width:100px;'>");
