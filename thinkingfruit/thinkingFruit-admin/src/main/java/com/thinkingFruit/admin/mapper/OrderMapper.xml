@@ -183,13 +183,13 @@
         `o`.orderMemberName as `orderMemberName`,
         `o`.orderStatus as `orderStatus`,     
         `o`.memberLevel as `memberLevel`,
-        `o`.superiorMemberId as `superiorMemberId`,
         `o`.commodityCount as `commodityCount`,
         `o`.commodityName as `commodityName`,
         `o`.commodityPrice as `commodityPrice`,
         `o`.isFirst as `isFirst`,
         `o`.inviterId as `inviterId`,
         `o`.inviterProportion as `inviterProportion`,
+        `o`.superiorMemberId as `superiorMemberId`,
         `o`.superiorProportion as `superiorProportion`,
         `o`.createTime as `createTime`,
         `o`.confirmTime as `confirmTime`
@@ -225,11 +225,13 @@
 		r.`orderStatus` as `orderStatus`,
 		r.`inviterId` as `inviterId`,
 		r.`inviterProportion` as `inviterProportion`,
+		r.`superiorMemberId` as `superiorMemberId`,
 		r.`superiorProportion` as `superiorProportion`,
 		r.`createTime` as `createTime`,
-		r.`memberLevelName` as `memberLevelName`,
+		l.`memberLevelName` as `memberLevelName`,
 		r.`confirmTime` as `confirmTime`
 		from `t_thinkingfruit_mall_order_purchase` as `r` 
+		left join `t_thinkingfruit_mall_member_level` as `l` on `r`.memberLevel=`l`.level
 		<where>
 			1=1
 			<if test="queryMap.startTime != null and queryMap.startTime != ''">

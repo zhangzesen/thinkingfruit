@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.thinkingFruit.client.entity.Agent;
 import com.thinkingFruit.client.entity.ClientCommodity;
@@ -14,7 +15,7 @@ import com.thinkingFruit.client.mapper.AgentDao;
 import com.thinkingFruit.client.mapper.ClientCommodityDao;
 import com.thinkingFruit.client.service.ClientCommodityService;
 @Service
-public class ClientCommodityImpl implements ClientCommodityService {
+public class ClientCommodityServiceImpl implements ClientCommodityService {
 	
 	@Autowired
 	ClientCommodityDao clientCommodityDao;
@@ -22,12 +23,13 @@ public class ClientCommodityImpl implements ClientCommodityService {
 	@Autowired
 	private AgentDao agentDao;
 	
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public List<ClientCommodity> ClientCommodityList() {
 		List<ClientCommodity> clientCommodityList = clientCommodityDao.ClientCommodityList();
 		return clientCommodityList;
 	}
-
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public ClientCommodity findCommodityById(HttpServletRequest request,Long id) {
 		ClientCommodity findCommodityById = clientCommodityDao.findCommodityById(id);

@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.thinkingFruit.client.entity.ClientCommodity;
+import com.thinkingFruit.client.entity.ClientPurchaseOrder;
 import com.thinkingFruit.client.service.ClientCommodityService;
+import com.thinkingFruit.client.service.PurchaseOrderService;
 import com.ysdevelop.common.result.Results;
 
 @Controller
@@ -20,6 +22,9 @@ public class HomePageController {
 	
 	@Autowired
 	ClientCommodityService clientCommodityService;
+	
+	@Autowired
+	PurchaseOrderService purchaseOrderService;
 	
 	/**
 	 *首页跳转
@@ -55,8 +60,8 @@ public class HomePageController {
 	
 	@RequestMapping(value = "/purchase", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public Results<ClientCommodity> purchase(HttpServletRequest request,Long id){
-		ClientCommodity findCommodityById = clientCommodityService.findCommodityById(request,id);
-		return Results.successData(findCommodityById);
+	public Results<ClientCommodity> purchase(HttpServletRequest request,ClientPurchaseOrder clientPurchaseOrder){
+		purchaseOrderService.addPurchaseOrder(request,clientPurchaseOrder);
+		return Results.success("商品购买成功");
 	}
 }
