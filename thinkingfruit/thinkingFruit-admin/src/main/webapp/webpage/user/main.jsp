@@ -161,6 +161,12 @@
 						</dl>
 					</li>
 					</shiro:hasPermission>
+					<shiro:hasPermission name="news:manager ">
+					<li name="left_mall" class="layui-nav-item edging"><a
+						name="left_a" href="<%=basePath%>/cash" target="main"> <i
+							class="layui-icon">&#xe629;</i> <cite>提取</cite>
+					</a></li>
+</shiro:hasPermission>
 				</ul>
 </shiro:hasPermission>
 <shiro:hasPermission name="system:manager">

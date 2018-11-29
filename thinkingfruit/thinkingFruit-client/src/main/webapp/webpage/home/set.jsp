@@ -32,47 +32,41 @@
 		<section class="aui-scrollView">
 			<section class="aui-content">
 			<div class="aui-card-list">
-				<div class="aui-card-list-header">商品1</div>
+				
 				<div class="aui-card-list-content">
 					<img src="<%=basePath%>/static/images/banner/shili1.jpg" />
 				</div>
 			</div>
+			
+			<div class="aui-card-list-content aui-text-center">
+                <div class="aui-font-size-20">商品1</div>
+                <p class="aui-text-danger aui-margin-b-10">¥：99.00</p>
+               <div class="aui-bar aui-bar-btn" style="width:80%;" type="count" id="demo">
+        <div class="aui-bar-btn-item aui-font-size-20">
+            <i class="aui-iconfont aui-icon-minus"></i>
+        </div>
+        <div class="aui-bar-btn-item">
+            <input type="number" class="aui-input aui-text-center" id="count" value="1">
+        </div>
+        <div class="aui-bar-btn-item aui-font-size-20">
+            <i class="aui-iconfont aui-icon-plus"></i>
+        </div>
+    </div>
+            </div>
 			</section>
-			<div class="aui-course-list">
-					<div class="aui-flex-box">
-						<h5>价格：<i>¥</i><i id="price">99.00</i></h5>
-					</div>
-				
-				<div class="divHeight"></div>
-				</div>
-				<div class="aui-login-line">
-                    <h2>商品详情</h2>
-                </div>
-                <div class="aui-page-box">
-                    <p>
-                        <img src="<%=basePath%>/static/images/banner/shili1.jpg" alt="">
-                    </p>
-                    <p>
-                        <img src="<%=basePath%>/static/images/banner/shili2.jpg" alt="">
-                    </p>
-                    <p>
-                        <img src="<%=basePath%>/static/images/banner/shili3.jpg" alt="">
-                    </p>
-                     <p id="description">致力于打造更好的产品为更好的你</p>
-                </div>
-		</section>
-		<footer class="aui-footer aui-footer-fixed">
-			<a href="javascript:;" class="aui-tabBar-item aui-tabBar-item-active">
-            	<span class="aui-tabBar-item-icon">
-                	<i class="icon icon-home"></i>
-                </span>
-                <span class="aui-tabBar-item-text" id="home">首页</span>
-            </a>
-            <button class="aui-button-btn" id="purchase">
-                                                            立即购买
-            </button>
-		</footer>
-	</section>
+			<div class="aui-content-padded">
+           <div class="aui-btn aui-btn-block aui-btn-info" tapmode onclick="openDialog('text')">确认购买</div>
+            </div> 
+		    </section>
+		    
+            
+              
+	       </section>
+ 
+ 
+   
+            
+		
 	<jsp:include page="/context/js-tags.jsp" />
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/themes/jquery.min.js"></script>
@@ -81,7 +75,7 @@
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/themes/tab.js"></script>
 		<script type="text/javascript"
-		src="<%=basePath%>/static/js/home/info.js"></script>
+		src="<%=basePath%>/static/js/home/set.js"></script>
 <script>WEB_ROOT="<%=basePath%>"</script>
 </body>
 </html>

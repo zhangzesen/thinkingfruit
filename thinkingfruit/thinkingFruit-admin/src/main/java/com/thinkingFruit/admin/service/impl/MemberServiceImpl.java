@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.thinkingFruit.admin.entity.Member;
+import com.thinkingFruit.admin.entity.MemberBalance;
 import com.thinkingFruit.admin.mapper.MemberDao;
 import com.thinkingFruit.admin.service.MemberService;
 import com.ysdevelop.common.exception.WebServiceException;
 import com.ysdevelop.common.page.Pagination;
 import com.ysdevelop.common.result.CodeMsg;
+
 
 
 @Service
@@ -61,5 +63,13 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void deleteById(Long id) {
 		Integer changeCount =memberDao.deleteById(id);
+	}
+	//减少余额
+	@Override
+	public void putForward(MemberBalance memberBalance) {
+		int result = memberDao.putForward(memberBalance);
+		if(result<=0){
+			throw new WebServiceException(CodeMsg.CASH_NOT_ENOUGH);
+		}
 	}
 }

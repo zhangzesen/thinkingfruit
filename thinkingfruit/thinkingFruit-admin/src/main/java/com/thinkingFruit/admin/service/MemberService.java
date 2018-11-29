@@ -3,7 +3,9 @@ package com.thinkingFruit.admin.service;
 import java.util.Map;
 
 import com.thinkingFruit.admin.entity.Member;
+import com.thinkingFruit.admin.entity.MemberBalance;
 import com.ysdevelop.common.page.Pagination;
+
 
 
 public interface MemberService {
@@ -28,6 +30,6 @@ public interface MemberService {
    //删除代理
 	void deleteById(Long id);
 
-
-
+	//提取现金时对余额进行更新(减)
+		void putForward(MemberBalance memberBalance);
 }

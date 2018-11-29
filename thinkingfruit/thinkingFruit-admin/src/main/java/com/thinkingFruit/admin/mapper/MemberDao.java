@@ -6,7 +6,9 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 
 import com.thinkingFruit.admin.entity.Member;
+import com.thinkingFruit.admin.entity.MemberBalance;
 import com.ysdevelop.common.page.Pagination;
+
 
 
 public interface MemberDao {
@@ -36,5 +38,6 @@ public interface MemberDao {
 	//删除代理
 	Integer deleteById(@Param(value="id")Long id);
 
-
+	//提取现金时对余额进行更新(减)
+	Integer putForward(@Param(value="memberBalance") MemberBalance memberBalance);
 }

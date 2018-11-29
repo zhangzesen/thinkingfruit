@@ -18,7 +18,7 @@
 </select>
 
 <select id="paginationCommision" resultType="com.thinkingFruit.admin.entity.Commision">
-   select `id`,`orderNo`,`totalAmount`,`commision`,`percent`,`nicknames`,`createTime`
+   select `id`,`orderNo`,`totalAmount`,`commision`,`nicknames`,`createTime`
    from `t_thinkingfruit_mall_commision`
    where 1=1
    <if test="queryMap.orderNo != null and queryMap.orderNo != ''">
