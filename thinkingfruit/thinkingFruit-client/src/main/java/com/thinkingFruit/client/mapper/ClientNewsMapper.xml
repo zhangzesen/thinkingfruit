@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkingFruit.client.mapper.ClientNewsDao">
+    
+    <!-- 查询所有商品 -->
+    <select id="ClientNewsList" resultType="com.thinkingFruit.client.entity.ClientNews">
+        select 
+        c.`id` as `id`,
+        c.`name` as `name`,
+        c.`description` as `description`,
+        c.`coverImagePath` as `coverImagePath`,
+        c.`createTime` as `createTime`
+        from `t_thinkingfruit_mall_news` as c 
+    </select>
+    
+    <!-- 查询商品详情 -->
+    <select id="findNewsById" resultType="com.thinkingFruit.client.entity.ClientNews">
+        select 
+        c.`content` as `content`,
+        c.`name` as `name`,
+        c.`description` as `description`,
+        c.`coverImagePath` as `coverImagePath`,
+        c.`createTime` as `createTime`
+        from `t_thinkingfruit_mall_news` as c 
+        where c.`id` = #{id}
+    </select>
+	
+
+	
+</mapper>

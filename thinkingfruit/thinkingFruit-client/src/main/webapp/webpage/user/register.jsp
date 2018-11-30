@@ -9,8 +9,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>thinkingFruit</title>
 <link rel="stylesheet" href="<%=basePath%>/static/css/login/style.css" />
+<style type="text/css">
+.classification{
+    margin-top: 25px;
+}
+.verification{
+    width: 158px;
+    float: left;
+    margin-top: -1%;
+}
+</style>
+</head>
 <body>
-
 <div class="register-container">
 	<h1>用户注册</h1>
 	
@@ -35,9 +45,8 @@
 			<input type="text" name="inviterId" class="inviterId" placeholder="请输入邀请者id" autocomplete="off" />
 		</div>
 		<div class="classification">
-			<div class="label">验证码</div>
 				<input type="verification" class="verification" name="verification" autocomplete="off"
-					style="width: 250px;float: left;" placeholder="请输入验证码">
+					 placeholder="请输入验证码">
 				<div class="code">	
 					<img src="<%=basePath%>/randCodeImage" alt="captche" title='点击切换' id="qrcode"
 						onclick="this.src='<%=basePath%>/randCodeImage?id='+Math.random()">

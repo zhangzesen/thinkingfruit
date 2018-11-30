@@ -23,10 +23,10 @@ var home_index_ops = {
 		}),
 		$("#news").click(function(){
 			console.log("news")
-			window.location.href = WEB_ROOT+'/home/news';
+			window.location.href = WEB_ROOT+'/news';
 		}),
 		$("#my").click(function(){
-			window.location.href = WEB_ROOT+'/home/my';
+			window.location.href = WEB_ROOT+'/my';
 		});
 
 	},

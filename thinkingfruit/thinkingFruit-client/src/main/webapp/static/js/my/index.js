@@ -6,15 +6,19 @@ var my_index_ops = {
 		this.eventBind();
 	},
 	initComponent : function() {
+		
+		
+		
+		
 		$("#home").click(function(){
 			window.location.href = WEB_ROOT+'/home';
 		}),
 		$("#news").click(function(){
 			console.log("news")
-			window.location.href = WEB_ROOT+'/home/news';
+			window.location.href = WEB_ROOT+'/news';
 		}),
 		$("#my").click(function(){
-			window.location.href = WEB_ROOT+'/home/my';
+			window.location.href = WEB_ROOT+'/my';
 		});
 
 	},

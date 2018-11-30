@@ -46,16 +46,12 @@ var user_login_ops = {
 		console.log("loginName:"+loginName);
 		console.log("password:"+loginPassword);
 		console.log("verification:"+randCode);
-		console.log("mobile:"+mobile);
-		console.log("inviterId:"+inviterId);
 		$.ajax({
 			url : WEB_ROOT + "/agent/register",
 			data : {
 				loginName : loginName,
 				randCode : randCode,
-				pswd : loginPassword,
-				mobile:mobile,
-				inviterId:inviterId
+				pswd : loginPassword
 			},
 			type : 'POST',
 			dataType : 'json',
