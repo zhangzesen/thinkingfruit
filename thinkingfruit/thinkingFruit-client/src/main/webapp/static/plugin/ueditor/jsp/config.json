@@ -6,7 +6,7 @@
     "imageCompressEnable": true, 
     "imageCompressBorder": 1600, 
     "imageInsertAlign": "none", 
-    "imageUrlPrefix": "https://www.smurfsmall.com", 
+    "imageUrlPrefix": "https://www.thinkingFruit.com", 
     "imagePathFormat":"/ueditor/jsp/{yyyy}{mm}{dd}/{time}{rand:6}",
 
     

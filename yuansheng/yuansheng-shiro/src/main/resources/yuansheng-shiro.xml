@@ -95,9 +95,12 @@
 				/user/login = anon
 				/agent/**=anon
 				/home/**=anon
+				/my/**=anon
+				/news/**=anon
 				/api/** = anon
 				/randCodeImage = anon
 				/** = authc
+				
 			</value>
 		</property>
 	</bean>

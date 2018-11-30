@@ -18,6 +18,9 @@
     float: left;
     margin-top: -1%;
 }
+.layui-layer-content{
+color:black
+}
 </style>
 </head>
 <body>

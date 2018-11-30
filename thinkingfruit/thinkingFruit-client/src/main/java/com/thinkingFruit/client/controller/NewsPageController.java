@@ -25,8 +25,15 @@ public class NewsPageController {
 	 *首页跳转
 	 * */
 	@RequestMapping(value="",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
-	public String register(){
+	public String index(){
 		return "news/index";
+	}
+	/**
+	 *详情页跳转
+	 * */
+	@RequestMapping(value="info",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
+	public String info(){
+		return "news/info";
 	}
 	/**
 	 * 新闻列表
@@ -44,6 +51,7 @@ public class NewsPageController {
 	@ResponseBody
 	public Results<ClientNews> details(HttpServletRequest request,Long id){
 		ClientNews findNewsById = clientNewsService.findNewsById(request,id);
+		
 		return Results.successData(findNewsById);
 	}
 }
