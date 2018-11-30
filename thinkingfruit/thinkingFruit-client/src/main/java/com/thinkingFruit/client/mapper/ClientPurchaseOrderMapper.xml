@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.thinkingFruit.client.mapper.ClientPurchaseOrderDao">
-	
+	<insert id="addPurchaseOrder">
+		insert into
+		`t_thinkingfruit_mall_order_purchase`(
+			`orderNo`,`orderMemberId`,`memberLevel`,`orderMemberName`,
+			`commodityId`,`commodityCount`,`commodityName`,`commodityPrice`,`isFirst`,
+			`orderStatus`,`createTime`,`orderTotalPrice`
+		)
+		values
+		(
+			#{orderNo},#{orderMemberId},#{memberLevel},#{orderMemberName},
+			#{commodityId},#{commodityCount},#{commodityName},#{commodityPrice},#{isFirst},
+			1,now(),#{orderTotalPrice}
+		)
+	</insert>
 </mapper>

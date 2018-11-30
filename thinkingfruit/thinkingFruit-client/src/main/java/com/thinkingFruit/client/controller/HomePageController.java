@@ -53,11 +53,6 @@ public class HomePageController {
 		return Results.successData(findCommodityById);
 	}
 	
-	@RequestMapping(value="/set",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
-	public String set(){
-		return "home/set";
-	}
-	
 	@RequestMapping(value = "/purchase", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public Results<ClientCommodity> purchase(HttpServletRequest request,ClientPurchaseOrder clientPurchaseOrder){

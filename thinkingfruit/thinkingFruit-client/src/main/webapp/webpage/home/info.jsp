@@ -21,7 +21,22 @@
 <link href="iTunesArtwork@2x.png" sizes="114x114"
 	rel="apple-touch-icon-precomposed">
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>/static/plugin/aui/css/aui.css" />
-
+<style type="text/css">
+#info{
+    background-color: #fff;
+    margin-bottom: 0;
+}
+.aui-page-box{
+    background-color: #fff;
+        padding: 15px 0;
+}
+.aui-page-box p {
+margin:0;
+}
+input{
+outline:none;
+}
+</style>
 </head>
 <body>
 
@@ -36,16 +51,19 @@
 				<div class="aui-card-list-content">
 					<img src="<%=basePath%>/static/images/banner/shili1.jpg" />
 				</div>
+			
+			<div class="aui-card-list-footer">
+				<div><h5>价格：<i>¥</i><i id="price">0</i></h5><div>
+				<div><h5>数量：<input placeholder="输入数量"id="count"></input></h5><div>
+				<div><h5>总价：<i>¥</i><i id="priceTall">0</i></div>
+			</div>	
 			</div>
 			</section>
-			<div class="aui-course-list">
-					<div class="aui-flex-box">
-						<h5>价格：<i>¥</i><i id="price">99.00</i></h5>
-					</div>
+			
 				
-				<div class="divHeight"></div>
+				
 				</div>
-				<div class="aui-login-line">
+				<div class="aui-login-line" id="info">
                     <h2>商品详情</h2>
                 </div>
                 <div class="aui-page-box">

@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.thinkingFruit.client.entity.Agent;
 import com.thinkingFruit.client.entity.ClientPurchaseOrder;
 import com.thinkingFruit.client.mapper.AgentDao;
+import com.thinkingFruit.client.mapper.ClientPurchaseOrderDao;
 import com.thinkingFruit.client.service.PurchaseOrderService;
 import com.ysdevelop.common.utils.OrderNumberGeneratorUtil;
 @Service
@@ -17,6 +18,9 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 	
 	@Autowired
 	private AgentDao agentDao;
+	
+	@Autowired
+	private ClientPurchaseOrderDao clientPurchaseOrderDao;
 
 	
 	@Transactional(rollbackFor = Exception.class)
@@ -31,10 +35,11 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		System.out.println("orderNo"+orderNo);
 		
 		clientPurchaseOrder.setOrderNo(orderNo);
-		clientPurchaseOrder.setOrderMemberName(agentById.getName());
+		clientPurchaseOrder.setOrderMemberName(agentById.getLoginName());
 		clientPurchaseOrder.setOrderMemberId(agentById.getId());
 		clientPurchaseOrder.setMemberLevel(agentById.getMemberLevelId());
 		clientPurchaseOrder.setIsFirst(1L);
+		clientPurchaseOrderDao.addPurchaseOrder(clientPurchaseOrder);
 	}
 
 }
