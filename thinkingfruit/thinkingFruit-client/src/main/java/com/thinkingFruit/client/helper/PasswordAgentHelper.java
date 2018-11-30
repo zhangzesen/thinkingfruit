@@ -8,6 +8,15 @@ import org.apache.shiro.util.ByteSource;
 import com.thinkingFruit.client.entity.Agent;
 
 
+/**
+ * @author zhangzesen
+ *
+ * @date 2018年11月30日
+ *
+ * @package com.thinkingFruit.client.helper
+ *
+ * @description 密码的加密
+ */
 public class PasswordAgentHelper {
 
 	private RandomNumberGenerator randomNumberGenerator =new SecureRandomNumberGenerator();

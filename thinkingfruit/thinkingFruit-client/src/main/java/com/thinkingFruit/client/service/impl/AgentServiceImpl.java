@@ -13,6 +13,15 @@ import com.thinkingFruit.client.service.AgentService;
 import com.ysdevelop.common.exception.WebServiceException;
 import com.ysdevelop.common.result.CodeMsg;
 
+/**
+ * @author zhangzesen
+ *
+ * @date 2018年11月30日
+ *
+ * @package com.thinkingFruit.client.service.impl
+ *
+ * @description 代理
+ */
 @Service
 public class AgentServiceImpl implements AgentService {
 
@@ -22,15 +31,25 @@ public class AgentServiceImpl implements AgentService {
 	@Autowired
 	private PasswordAgentHelper passwordAgentHelper;
 	
+	/**
+	 * 	向数据库中添加一条代理数据
+	 * @param agent 代理
+	 */
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void addAgent(Agent agent) {
 		// 密码加密处理
 		passwordAgentHelper.encryptPassword(agent);	
 		System.out.println("agent.getLoginName()"+agent.getLoginName());
+		//添加代理
 		agentDao.addAgent(agent);
 	}
 	
+	/**
+	 * 	通过登录名查询代理详细信息
+	 * @param name 登录名
+	 * @return 代理详细信息
+	 */
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public Agent getAgentByName(String loginName) {
@@ -40,6 +59,11 @@ public class AgentServiceImpl implements AgentService {
 		return agentDao.getAgentByName(loginName);
 	}
 	
+	/**
+	 * 	通过代理id查询代理详细信息 
+	 * @param id 代理id
+	 * @return 代理
+	 */
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public Agent getAgentById(Long id) {
@@ -49,6 +73,10 @@ public class AgentServiceImpl implements AgentService {
 		return agentDao.getAgentById(id);
 	}
 	
+	/**
+	 *	 检查登录名是否已被注册
+	 * @param queryMap
+	 */
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void checkName(Map<String, String> queryMap) {

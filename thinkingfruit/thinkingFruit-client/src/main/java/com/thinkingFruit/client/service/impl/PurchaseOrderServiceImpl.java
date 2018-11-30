@@ -12,7 +12,19 @@ import com.thinkingFruit.client.entity.ClientPurchaseOrder;
 import com.thinkingFruit.client.mapper.AgentDao;
 import com.thinkingFruit.client.mapper.ClientPurchaseOrderDao;
 import com.thinkingFruit.client.service.PurchaseOrderService;
+import com.ysdevelop.common.exception.WebServiceException;
+import com.ysdevelop.common.result.CodeMsg;
+import com.ysdevelop.common.utils.Constant;
 import com.ysdevelop.common.utils.OrderNumberGeneratorUtil;
+/**
+ * @author zhangzesen
+ *
+ * @date 2018年11月30日
+ *
+ * @package com.thinkingFruit.client.service.impl
+ *
+ * @description 交易订单
+ */
 @Service
 public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 	
@@ -22,24 +34,34 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 	@Autowired
 	private ClientPurchaseOrderDao clientPurchaseOrderDao;
 
-	
+	/**
+	 * 	添加交易订单
+	 * @param request
+	 * @param clientPurchaseOrder 交易订单
+	 */
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void addPurchaseOrder(HttpServletRequest request,ClientPurchaseOrder clientPurchaseOrder) {
+		//从session域中获取代理id
 		HttpSession session = request.getSession();
 		Long agentId=(Long) session.getAttribute("agentId");
 		System.out.println("agentId"+agentId);
+		//通过代理id获取代理信息
 		Agent agentById = agentDao.getAgentById(agentId);
-		
+		//生成订单号
 		String orderNo=OrderNumberGeneratorUtil.get().toString();
 		System.out.println("orderNo"+orderNo);
-		
+		//将代理信息set进交易订单中
 		clientPurchaseOrder.setOrderNo(orderNo);
 		clientPurchaseOrder.setOrderMemberName(agentById.getLoginName());
 		clientPurchaseOrder.setOrderMemberId(agentById.getId());
 		clientPurchaseOrder.setMemberLevel(agentById.getMemberLevelId());
 		clientPurchaseOrder.setIsFirst(1L);
-		clientPurchaseOrderDao.addPurchaseOrder(clientPurchaseOrder);
+		//添加交易订单
+		Integer addPurchaseOrder = clientPurchaseOrderDao.addPurchaseOrder(clientPurchaseOrder);
+		if(addPurchaseOrder==Constant.DEFALULT_ZERO_INT) {
+			throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
+		}
 	}
 
 }

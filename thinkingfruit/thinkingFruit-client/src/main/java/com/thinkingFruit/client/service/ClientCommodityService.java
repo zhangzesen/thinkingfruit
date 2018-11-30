@@ -18,10 +18,18 @@ import com.thinkingFruit.client.entity.ClientCommodity;
  */
 public interface ClientCommodityService {
 	
-
+	/**
+	 * 	查看所有商品
+	 * @return 商品集合
+	 */
 	List<ClientCommodity> ClientCommodityList();
 	
-	
+	/**
+	 * 	查看商品详情
+	 * @param request
+	 * @param id 商品id
+	 * @return 商品
+	 */
 	ClientCommodity findCommodityById(HttpServletRequest request, Long id);
 	
 }

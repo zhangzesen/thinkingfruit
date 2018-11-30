@@ -14,6 +14,15 @@ import com.thinkingFruit.client.entity.ClientCommodity;
 import com.thinkingFruit.client.mapper.AgentDao;
 import com.thinkingFruit.client.mapper.ClientCommodityDao;
 import com.thinkingFruit.client.service.ClientCommodityService;
+/**
+ * @author zhangzesen
+ *
+ * @date 2018年11月30日
+ *
+ * @package com.thinkingFruit.client.service.impl
+ *
+ * @description 商品
+ */
 @Service
 public class ClientCommodityServiceImpl implements ClientCommodityService {
 	
@@ -23,22 +32,38 @@ public class ClientCommodityServiceImpl implements ClientCommodityService {
 	@Autowired
 	private AgentDao agentDao;
 	
+	/**
+	 * 	查看所有商品
+	 * @return 商品集合
+	 */
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public List<ClientCommodity> ClientCommodityList() {
 		List<ClientCommodity> clientCommodityList = clientCommodityDao.ClientCommodityList();
 		return clientCommodityList;
 	}
+	
+	/**
+	 * 	查看商品详情
+	 * @param request
+	 * @param id 商品id
+	 * @return 商品
+	 */
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public ClientCommodity findCommodityById(HttpServletRequest request,Long id) {
+		//通过商品id查询商品信息
 		ClientCommodity findCommodityById = clientCommodityDao.findCommodityById(id);
+		//通过商品id查询商品详情图
 		List<String> findCommodityImagesById = clientCommodityDao.findCommodityImagesById(id);
+		//将商品详情图set进商品
 		findCommodityById.setDetailsImagePaths(findCommodityImagesById);
+		//从session中获取代理id
 		HttpSession session = request.getSession();
 		System.out.println("agentId"+session.getAttribute("agentId"));
-		
+		//通过代理id查询代理信息
 		Agent agentById = agentDao.getAgentById((Long) session.getAttribute("agentId"));
+		//根据代理级别判断商品价格
 		switch (agentById.getMemberLevelId().toString()) {
         case "1":
         	findCommodityById.setPrice(findCommodityById.getFirstPrice());

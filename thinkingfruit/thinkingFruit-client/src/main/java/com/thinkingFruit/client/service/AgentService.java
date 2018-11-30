@@ -15,15 +15,29 @@ import com.thinkingFruit.client.entity.Agent;
  * @description 代理
  */
 public interface AgentService {
-	/** 向数据库中添加一条用户数据 **/
+	/**
+	 * 	向数据库中添加一条代理数据
+	 * @param agent 代理
+	 */
 	void addAgent(Agent agent);
 
-	/** 通过指定的name字段查询用户详细信息 **/
-	Agent getAgentByName(String name);
+	/**
+	 * 	通过登录名查询代理详细信息
+	 * @param name 登录名
+	 * @return 代理详细信息
+	 */
+	Agent getAgentByName(String loginName);
 
-	/** 通过指定的id字段查询用户详细信息 **/
+	/**
+	 * 	通过代理id查询代理详细信息 
+	 * @param id 代理id
+	 * @return 代理
+	 */
 	Agent getAgentById(Long id);
 
-	/** 检查用户名是否已被注册 **/
+	/**
+	 *	 检查登录名是否已被注册
+	 * @param queryMap
+	 */
 	void checkName(Map<String, String> queryMap);
 }

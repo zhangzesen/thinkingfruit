@@ -39,10 +39,6 @@ public class ClientCommodity {
 	 */
 	private String detailsImagePath;
 	
-	/**
-	 *	 商品轮播图
-	 */
-	private String previewImagePath;
 	
 	/**
 	 *	 商品描述
@@ -251,13 +247,5 @@ public class ClientCommodity {
 
 	public void setDetailsImagePath(String detailsImagePath) {
 		this.detailsImagePath = detailsImagePath;
-	}
-
-	public String getPreviewImagePath() {
-		return previewImagePath;
-	}
-
-	public void setPreviewImagePath(String previewImagePath) {
-		this.previewImagePath = previewImagePath;
 	}
 }

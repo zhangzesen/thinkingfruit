@@ -17,13 +17,24 @@ import com.thinkingFruit.client.entity.ClientCommodity;
  */
 public interface ClientCommodityDao {
 		
-	
+	/**
+	 * 	 查看所有商品
+	 * @return 商品集合
+	 */
 	List<ClientCommodity> ClientCommodityList();
 	
-	
+	/**
+	 * 	商品详情
+	 * @param id 商品id
+	 * @return 商品
+	 */
 	ClientCommodity findCommodityById(@Param("id")Long id);
 	
-	
+	/**
+	 * 	通过商品id查询商品详情图
+	 * @param id 商品id
+	 * @return 商品详情图地址
+	 */
 	List<String> findCommodityImagesById(@Param("id")Long id);
 	
 }
