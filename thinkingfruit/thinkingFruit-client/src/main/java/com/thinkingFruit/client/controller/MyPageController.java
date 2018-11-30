@@ -10,8 +10,16 @@ public class MyPageController {
 	/**
 	 *首页跳转
 	 * */
-	@RequestMapping(value="/my",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
+	@RequestMapping(value="",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
 	public String register(){
 		return "my/index";
+	}
+	
+	/**
+	 *	信息完善页面跳转
+	 * */
+	@RequestMapping(value="/information",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
+	public String information(){
+		return "my/information";
 	}
 }

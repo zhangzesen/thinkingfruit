@@ -96,6 +96,9 @@ public class AgentServiceImpl implements AgentService {
 		
 	}
 	
+	/**
+	 * 	检查代理信息是否完善
+	 */
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void checkInformation(Long id) {
