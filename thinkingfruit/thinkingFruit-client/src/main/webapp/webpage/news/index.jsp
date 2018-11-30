@@ -68,9 +68,8 @@
 		src="<%=basePath%>/static/plugin/themes/slider.js"></script>
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/themes/tab.js"></script>
-	<script type="text/javascript"
+		<script type="text/javascript"
 		src="<%=basePath%>/static/js/news/index.js"></script>
-	<script>WEB_ROOT="<%=basePath%>"
-	</script>
+<script>WEB_ROOT="<%=basePath%>"</script>
 </body>
 </html>

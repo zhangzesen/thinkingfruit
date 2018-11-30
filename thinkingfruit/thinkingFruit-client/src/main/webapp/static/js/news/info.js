@@ -1,5 +1,5 @@
 ;
-var home_index_ops = {
+var news_info_ops = {
 	init : function() {
 		this.initComponent();
 		this.eventBind();
@@ -7,7 +7,7 @@ var home_index_ops = {
 	initComponent : function() {
 		var id = common_ops.g_getQueryString('id');
 		$.ajax({
-			url:WEB_ROOT + "/home/details",
+			url:WEB_ROOT + "/news/details",
 			type:'get',
 			data:{
 				id:id
@@ -15,17 +15,8 @@ var home_index_ops = {
 			dataType:'json',
 			success:function(res){
 				console.log(res.data);
-				$(".aui-content").append('<div class="aui-card-list">'+'<div class="aui-card-list-header">'+res.data.name+'</div>'+'<div class="aui-card-list-content">'+'<img src="'+res.data.coverImagePath+'"'+'value="'+res.data.id+'" />'+'</div>'+'</div>')
-				$(".aui-course-list #price").text(res.data.price);
-				for (var i = 0; i < res.data.detailsImagePaths.length; i++) {
-					console.log("detailsImagePaths==="+res.data.detailsImagePaths[i]);
-					$(".aui-page-box").append('<p><img src="'+res.data.detailsImagePaths[i]+'/>"</p>');
-				}
-				$(".aui-page-box #description").text(res.data.description);
-				$('#count').bind('input propertychange', function() {
-		            $('#priceTall').html($(this).val()*res.data.price);
-		        });
-
+				console.log("11111"+res.data.content);
+				$(".aui-scrollView").append(res.data.content)
 			}
 		});
 		
@@ -33,8 +24,12 @@ var home_index_ops = {
 			window.location.href = WEB_ROOT+'/home';
 		});
 		
-		$(".aui-footer #purchase").click(function(){
-			window.location.href = WEB_ROOT+'/home/set';
+		$(".aui-footer #news").click(function(){
+			window.location.href = WEB_ROOT+'/news';
+		});
+		
+		$(".aui-footer #my").click(function(){
+			window.location.href = WEB_ROOT+'/my';
 		});
 	},
 	eventBind : function() {
@@ -45,5 +40,5 @@ var home_index_ops = {
 }
 
 $(function() {
-	home_index_ops.init();
+	news_info_ops.init();
 })
