@@ -40,4 +40,10 @@ public interface AgentService {
 	 * @param queryMap
 	 */
 	void checkName(Map<String, String> queryMap);
+	
+	/**
+	 *	 检查代理信息是否完善
+	 * @param id
+	 */
+	void checkInformation(Long id);
 }

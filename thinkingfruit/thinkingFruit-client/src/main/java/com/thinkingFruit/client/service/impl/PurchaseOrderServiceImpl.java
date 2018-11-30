@@ -11,6 +11,7 @@ import com.thinkingFruit.client.entity.Agent;
 import com.thinkingFruit.client.entity.ClientPurchaseOrder;
 import com.thinkingFruit.client.mapper.AgentDao;
 import com.thinkingFruit.client.mapper.ClientPurchaseOrderDao;
+import com.thinkingFruit.client.service.AgentService;
 import com.thinkingFruit.client.service.PurchaseOrderService;
 import com.ysdevelop.common.exception.WebServiceException;
 import com.ysdevelop.common.result.CodeMsg;
@@ -33,6 +34,9 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 	
 	@Autowired
 	private ClientPurchaseOrderDao clientPurchaseOrderDao;
+	
+	@Autowired
+	private AgentService agentService;
 
 	/**
 	 * 	添加交易订单
@@ -46,6 +50,9 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		HttpSession session = request.getSession();
 		Long agentId=(Long) session.getAttribute("agentId");
 		System.out.println("agentId"+agentId);
+		//判断信息是否完善
+		agentService.checkInformation(agentId);
+		
 		//通过代理id获取代理信息
 		Agent agentById = agentDao.getAgentById(agentId);
 		//生成订单号

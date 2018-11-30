@@ -95,6 +95,23 @@ public class AgentServiceImpl implements AgentService {
 		}
 		
 	}
+	
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public void checkInformation(Long id) {
+		Agent agentById = agentDao.getAgentById(id);
+		
+		if(id==null) {
+			throw new WebServiceException(CodeMsg.MEMBER_NOREGISTER);
+		}else {
+			if(agentById==null) {
+				throw new WebServiceException(CodeMsg.SERVER_ERROR);
+			}else if(agentById.getName()==null||"".equals(agentById.getName())||agentById.getName().isEmpty()){
+				throw new WebServiceException(CodeMsg.INFORMATION_NOT_NULL);
+			}
+		}
+		
+	}
 
 
 }

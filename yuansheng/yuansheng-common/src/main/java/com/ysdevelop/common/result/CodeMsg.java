@@ -37,7 +37,8 @@ public class CodeMsg {
 	public static CodeMsg CASH_NOT_ENOUGH = new CodeMsg(500054, "用户余额不足，无法完成提现");
 	public static CodeMsg NAME_NOT_NULL = new CodeMsg(500055, "姓名不能为空");
 	public static CodeMsg IDENTITYNO_NOT_NULL = new CodeMsg(500056, "身份证号不能为空");
-	
+	public static CodeMsg INFORMATION_NOT_NULL = new CodeMsg(500056, "信息未完善，请先完善信息");
+
 	
 	//分类
 	public static CodeMsg CLASSNAME_EMPTY = new CodeMsg(500007,"分类名不能为空");
