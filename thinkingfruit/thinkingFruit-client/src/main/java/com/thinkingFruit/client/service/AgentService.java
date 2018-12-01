@@ -46,4 +46,10 @@ public interface AgentService {
 	 * @param id
 	 */
 	void checkInformation(Long id);
+	
+	/**
+	 * 	修改/完善个人信息
+	 * @param agent 代理
+	 */
+	void updateInformation(Agent agent);
 }

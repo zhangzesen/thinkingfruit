@@ -11,12 +11,8 @@
 		t.`gender` as `gender`,
 		t.`salt` as `salt`,
 		t.`name` as `name`,
-		t.`nickname` as `nickname`,
 		t.`avatar` as `avatar`,
 		t.`inviterId` as `inviterId`,
-		t.`province` as `province`,
-		t.`city` as `city`,
-		t.`town` as `town`,
 		t.`identityNo` as `identityNo`,
 		t.`createTime` as `createTime`,
 		t.`updateTime` as `updateTime`,
@@ -39,12 +35,8 @@
 		t.`gender` as `gender`,
 		t.`salt` as `salt`,
 		t.`name` as `name`,
-		t.`nickname` as `nickname`,
 		t.`avatar` as `avatar`,
 		t.`inviterId` as `inviterId`,
-		t.`province` as `province`,
-		t.`city` as `city`,
-		t.`town` as `town`,
 		t.`identityNo` as `identityNo`,
 		t.`createTime` as `createTime`,
 		t.`updateTime` as `updateTime`,
@@ -62,16 +54,32 @@
 		insert into
 		`t_thinkingfruit_mall_member`(
 			`loginName`,`gender`,`mobile`,`pswd`,`salt`,
-			`name`,`nickname`,`avatar`,`inviterId`,`inviterUpperId`,
-			`province`,`city`,`town`,`identityNo`,`createTime`,`memberLevelId`,`status`
+			`name`,`avatar`,`inviterId`,`inviterUpperId`,
+			`identityNo`,`createTime`,`memberLevelId`,`status`
 		)
 		values
 		(
 			#{loginName},#{gender},#{mobile},#{pswd},#{salt},
-			#{name},#{nickname},#{avatar},#{inviterId},#{inviterUpperId},
-			#{province},#{city},#{town},#{identityNo},now(),#{memberLevelId},0
+			#{name},#{avatar},#{inviterId},#{inviterUpperId},
+			#{identityNo},now(),#{memberLevelId},0
 		)
 	</insert>
 	
-	
+	<update id="updateInformation" parameterType="com.thinkingFruit.client.entity.Agent" >
+	    update `t_thinkingfruit_mall_member` as `m`
+	    <trim prefix="set" suffixOverrides="," suffix="where `m`.id = #{id}">
+			<if test="mobile != null and mobile != '' ">
+				m.`mobile` = #{mobile},
+			</if>
+			<if test="gender != null ">
+				m.`gender` = #{gender},
+			</if>
+			<if test="name != null and name != '' ">
+				m.`name` = #{name},
+			</if>
+			<if test="identityNo != null and identityNo != '' ">
+				m.`identityNo` = #{identityNo},
+			</if>
+		</trim>
+	</update>
 </mapper>

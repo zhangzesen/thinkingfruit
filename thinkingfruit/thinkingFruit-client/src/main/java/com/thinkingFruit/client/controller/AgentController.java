@@ -52,7 +52,7 @@ public class AgentController {
 	 * @param agent 代理
 	 * @return
 	 */
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = RequestMethod.POST , produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public Result<String> doLogin(HttpServletRequest request, Agent agent) {
 		//判断验证码
@@ -64,6 +64,9 @@ public class AgentController {
 		}
 		//通过登录名获取代理信息
 		Agent agentByName = agentService.getAgentByName(agent.getLoginName());
+		if(agentByName==null) {
+			throw new WebServiceException(CodeMsg.UNREGISTERED);
+		}
 		if(!passwordAgentHelper.checkPassword(agentByName, agent.getPswd())) {
 			throw new WebServiceException(CodeMsg.PASSWORD_WRONG);
 		}
@@ -79,7 +82,7 @@ public class AgentController {
 	 * @param agent 代理
 	 * @return
 	 */
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	@RequestMapping(value = "/register", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public Result<String> register(HttpServletRequest request, Agent agent) {
 		//判断验证码
@@ -95,5 +98,14 @@ public class AgentController {
 		//添加代理
 		agentService.addAgent(agent);
 		return Result.success("注册成功");
+	}
+	
+	@RequestMapping(value = "/information", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Result<Agent> information(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		System.out.println("agentId"+session.getAttribute("agentId"));
+		Agent agentById = agentService.getAgentById((Long)session.getAttribute("agentId"));
+		return Result.successData(agentById);
 	}
 }

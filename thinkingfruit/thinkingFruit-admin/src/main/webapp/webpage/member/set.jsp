@@ -23,22 +23,22 @@ color:#666!important;
 				    <div class="layui-form-item">
 						<label class="layui-form-label">修改级别</label>
 						<div class="layui-input-block" style="width: 300px; text-align: center;">
-							<select name="level" lay-filter="reportType" required="true" diyCheck="请选择等级">
+							<select name="memberLevelId" lay-filter="reportType" required="true" diyCheck="请选择等级">
 								<option value="">请选择级别</option>
-								<option value="0">联创</option>
-								<option value="1">春事</option>
-								<option value="2">总监</option>
-								<option value="3">svip</option>
-								<option value="4">vip</option>
+								<option value="1">联创</option>
+								<option value="2">春事</option>
+								<option value="3">总监</option>
+								<option value="4">svip</option>
+								<option value="5">vip</option>
 							</select>
 						</div>
 					</div>
 					
 					<div class="layui-form-item">
-						<label class="layui-form-label">上级ID</label>
+						<label class="layui-form-label">邀请者ID</label>
 						<div class="layui-input-inline input-custom-width">
-							<input type="text" name="parentMemberId"
-								value="" autocomplete="off" placeholder="请输入上级ID(在本系统中用户所对应的ID)"
+							<input type="text" name="inviterId"
+								value="" autocomplete="off" placeholder="请输入邀请者ID(在本系统中用户所对应的ID)"
 								class="layui-input" onkeyup="value=value.replace(/[^\d]/g,'')">
 						</div>
 					</div>

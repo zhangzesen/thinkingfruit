@@ -7,14 +7,8 @@
 	from `t_thinkingfruit_mall_member`as m
 	<where>
 	   1=1
-	   <if test="nicknameReplace !=null and nicknameReplace != ''">
-	      and m.`nickname` like CONCAT('%',#{nicknameReplace},'%')
-	   </if>
-	   <if test="queryMap.country !=null and queryMap.country != ''">
-	      and m.`country` like CONCAT('%',#{queryMap.country},'%')
-	   </if>
-	   <if test="queryMap.city !=null and queryMap.city != ''">
-	      and m.`city` like CONCAT('%',#{queryMap.city},'%')
+	   <if test="queryMap.loginName !=null and queryMap.loginName != ''">
+	      and m.`loginName` like CONCAT('%',#{queryMap.loginName},'%')
 	   </if>
 	   <if test="queryMap.startTime != null and queryMap.startTime != ''">
       <![CDATA[ and m.`createTime` > #{queryMap.startTime} ]]>
@@ -25,22 +19,15 @@
 	    
 	</where>
 </select>
-
-<select id="paginationSecondCategory" resultType="com.thinkingFruit.admin.entity.Member">
-	select m.`id`,m.`gender`,m.`mobile`,m.`nickname`,m.`name`,m.`country`,m.`province`,m.`city`,m.`status`,m.`avatar`,m.`parentMemberId`,m.`identityNo`,
-	m.`inviterId`,l.`level`
-	from `t_thinkingfruit_mall_member`as m left join `t_thinkingfruit_mall_member_level`as l
-	on m.`id` = l.`id`
+<!-- 查询所有代理 -->
+<select id="paginationMember" resultType="com.thinkingFruit.admin.entity.Member">
+	select m.`id`,m.`gender`,m.`mobile`,m.`loginName`,m.`name`,m.`status`,m.`avatar`,m.`inviterUpperId`,m.`identityNo`,
+	m.`inviterId`,m.`memberLevelId`
+	from `t_thinkingfruit_mall_member`as m 
 	<where>
 	   1=1
-	   <if test="nicknameReplace !=null and nicknameReplace != ''">
-	      and m.`nickname` like CONCAT('%',#{nicknameReplace},'%')
-	   </if>
-	   <if test="queryMap.country !=null and queryMap.country != ''">
-	      and m.`country` like CONCAT('%',#{queryMap.country},'%')
-	   </if>
-	   <if test="queryMap.city !=null and queryMap.city != ''">
-	      and m.`city` like CONCAT('%',#{queryMap.city},'%')
+	   <if test="queryMap.loginName !=null and queryMap.loginName != ''">
+	      and m.`loginName` like CONCAT('%',#{queryMap.loginName},'%')
 	   </if>
 	   <if test="queryMap.startTime != null and queryMap.startTime != ''">
       <![CDATA[ and m.`createTime` > #{queryMap.startTime} ]]>
@@ -48,52 +35,41 @@
 	   <if test="queryMap.endTime != null and queryMap.endTime != ''">
       <![CDATA[ and m.`createTime` < #{queryMap.endTime} ]]>
 	   </if>
-	   <if test="queryMap.level!=null and queryMap.level != ''">
-	      and l.`level` like CONCAT('%',#{queryMap.level},'%')
+	   <if test="queryMap.memberLevelId!=null and queryMap.memberLevelId != ''">
+	      and m.`memberLevelId` =#{queryMap.memberLevelId}
 	   </if>
-	   and `m`.status =0 or 1
+	   and `m`.status !=3
 	</where>
-	limit
-	#{pagination.start},#{pagination.pageSize}
 </select>
 
-<!--根据id查询需要的代理信息-->
-<select id="memberLevelIdById" resultType="com.thinkingFruit.admin.entity.Member">
-    select m.`memberLevelId`,
-    m.`parentMemberId`,
+<!--根据id查询代理详情-->
+<select id="memberById" resultType="com.thinkingFruit.admin.entity.Member">
+    select
+    m.`id`,
+    m.`loginName`,
+    m.`memberLevelId`,
+    m.`inviterUpperId`,
     m.`gender`,
     m.`mobile`,
     m.`name`,
-    m.`nickname`,
     m.`avatar`,
     m.`inviterId`,
-    m.`country`,
-    m.`province`,
-    m.`city`,
     m.`identityNo`,
     m.`status`,
-    m.`updateTime`,
-    l.`level`
-    from `t_thinkingfruit_mall_member` as m left join `t_thinkingfruit_mall_member_level`as l
-	on m.`id` = l.`id`
+    m.`updateTime`
+    from `t_thinkingfruit_mall_member` as m 
     where m.`id` = #{id}
 </select>
-<!--通过ID修改用户级别和父id-->
+<!--修改代理邀请者id，和邀请者上级id及代理级别-->
 <update id="updataById">
     update `t_thinkingfruit_mall_member`
     <set>
-        `parentMemberId` = #{member.parentMemberId},
-        `updateTime` = now()
+        `inviterId` = #{inviterId},
+        `updateTime` = now(),
+        `inviterUpperId`=#{inviterUpperId},
+        `memberLevelId` = #{memberLevelId},
     </set>
-    where `id` = #{member.id}
-</update>
-<update id="updataById1">
-    update `t_thinkingfruit_mall_member_level`
-    <set>
-        `level` = #{member.level},
-        `updateTime` = now()
-    </set>
-    where `id` = #{member.id}
+    where `id` = #{id}
 </update>
 <!--通过id删除代理-->
 <update id="deleteById">

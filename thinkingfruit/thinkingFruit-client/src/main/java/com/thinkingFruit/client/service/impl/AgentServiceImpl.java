@@ -12,6 +12,7 @@ import com.thinkingFruit.client.mapper.AgentDao;
 import com.thinkingFruit.client.service.AgentService;
 import com.ysdevelop.common.exception.WebServiceException;
 import com.ysdevelop.common.result.CodeMsg;
+import com.ysdevelop.common.utils.Constant;
 
 /**
  * @author zhangzesen
@@ -42,6 +43,12 @@ public class AgentServiceImpl implements AgentService {
 		passwordAgentHelper.encryptPassword(agent);	
 		System.out.println("agent.getLoginName()"+agent.getLoginName());
 		//添加代理
+		if(agent.getInviterId()==Constant.DEFALULT_ZERO_INT) {
+			agent.setInviterUpperId(0L);
+		}else {
+			Agent agentById = agentDao.getAgentById(agent.getInviterId());
+			agent.setInviterUpperId(agentById.getInviterId());
+		}
 		agentDao.addAgent(agent);
 	}
 	
@@ -114,6 +121,21 @@ public class AgentServiceImpl implements AgentService {
 			}
 		}
 		
+	}
+	
+	/**
+	 * 	修改/完善个人信息
+	 */
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public void updateInformation(Agent agent) {
+		if (agent == null) {
+			throw new WebServiceException(CodeMsg.SERVER_ERROR);
+		}
+		Integer update= agentDao.updateInformation(agent);
+		if(update==Constant.DEFALULT_ZERO_INT) {
+			throw new WebServiceException(CodeMsg.INFORMATION_UPDATE_ERROR);
+		}
 	}
 
 

@@ -7,35 +7,49 @@ import org.apache.ibatis.annotations.Param;
 
 import com.thinkingFruit.admin.entity.Member;
 import com.thinkingFruit.admin.entity.MemberBalance;
-import com.ysdevelop.common.page.Pagination;
 
 
-
+/**
+ * @author	zhangzesen
+ *
+ * @package	com.thinkingFruit.admin.controller
+ *
+ * @date	2018年11月30日
+ *
+ * @description	代理
+ * 
+ */
 public interface MemberDao {
-	/**
-	 * @author wulei
-	 *
-	 * @date 2018年11月21日
-	 *
-	 * @package com.thinkingFruit.admin.mapper
-	 *
-	 * @description 代理会员
-	 */
 
 	//查询与遍历出所对应的数量
 	Integer getCountByQuery(@Param(value="queryMap")Map<String, String> queryMap,@Param(value="nicknameReplace")byte[] nicknameReplace);
 
-	//查询与遍历出所对应的信息
-	List<Member> paginationSecondCategory(@Param(value="queryMap")Map<String, String> queryMap, @Param(value="pagination")Pagination<Member> pagination,@Param(value="nicknameReplace")byte[] nicknameReplace);
+	/**
+	 * 查询所有代理
+	 * @param queryMap
+	 * @return 代理集合
+	 */
+	List<Member> paginationMember(@Param(value="queryMap")Map<String, String> queryMap);
 
-	//查询折扣信息
-	Member memberLevelIdById(@Param(value="id")Long id);
+	/**
+	 * 查询代理信息
+	 * @param id 代理id
+	 * @return 代理
+	 */
+	Member memberById(@Param(value="id")Long id);
 
-    //修改代理信息
-	Integer updataById(@Param(value="member") Member member);
-	Integer updataById1(@Param(value="member") Member member);
+    /**
+     * 修改代理信息
+     * @param member 代理
+     * @return
+     */
+	Integer updataById(Member member);
 
-	//删除代理
+	/**
+	 * 删除代理
+	 * @param id 代理id
+	 * @return
+	 */
 	Integer deleteById(@Param(value="id")Long id);
 
 	//提取现金时对余额进行更新(减)

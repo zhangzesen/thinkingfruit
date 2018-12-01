@@ -31,29 +31,21 @@ body{overflow-y: scroll;}
 								value="" placeholder="截止日" name="endTime">
 						</div>
 						<div class="layui-input-inline xbs768">
-							<input type="text" name="nicknameStr" value=""
-								placeholder="昵称" autocomplete="off" class="layui-input">
-						</div>
-						<div class="layui-input-inline xbs768">
-							<input type="text" name="country" value=""
-								placeholder="请输入省" autocomplete="off" class="layui-input">
-						</div>
-						<div class="layui-input-inline xbs768" >
-							<input type="text" name="city" value=""
-								placeholder="请输入市" autocomplete="off" class="layui-input">
+							<input type="text" name="loginName" value=""
+								placeholder="登录名" autocomplete="off" class="layui-input">
 						</div>
 						<br/>
 						<br/>
 						<br/>	
 					<form class="layui-form" action="">
 						<div class="layui-input-inline xbs768">
-							<select id="level" name="level" lay-filter="discount">
+							<select id="memberLevelId" name="memberLevelId" lay-filter="discount">
 								<option value="">请选择级别</option>
-								<option value="0">联创</option>
-								<option value="1">春事</option>
-								<option value="2">总监</option>
-								<option value="3">svip</option>
-								<option value="4">vip</option>
+								<option value="1">联创</option>
+								<option value="2">春事</option>
+								<option value="3">总监</option>
+								<option value="4">SVIP</option>
+								<option value="5">VIP</option>
 							</select>
 						</div>
 					</form>
@@ -78,7 +70,7 @@ body{overflow-y: scroll;}
 	<jsp:include page="/context/js-tags.jsp" />
 	<script id="barOption" type="text/html">
    {{#
-    var barOption ="<a class='layui-btn layui-btn-small layui-btn-warm look_btn' title='查看' lay-event='detail'><i class='layui-icon'>&#xe615;</i></a>";
+    var barOption ="<a class='layui-btn layui-btn-small layui-btn-warm look_btn' title='查看' lay-event='info'><i class='layui-icon'>&#xe615;</i></a>";
     barOption+="<a class='layui-btn layui-btn-small edit_btn' title='修改' lay-event='edit'><i class='layui-icon'>&#xe642;</i></a>";
     barOption+= "<a class='layui-btn layui-btn-small layui-btn-normal add_btn' title='删除' lay-event='delete'><i class='layui-icon'>&#xe640;</i></a>";
     return barOption;

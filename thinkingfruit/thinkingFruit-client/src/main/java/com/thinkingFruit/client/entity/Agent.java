@@ -23,8 +23,6 @@ import com.ysdevelop.common.validator.IsMobile;
 public class Agent extends BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	/** 昵称 */
-	private String nickname;
 	/** 登录名 */
 	@NotBlank(message = "登录名不能为空")
 	private String loginName;
@@ -63,12 +61,6 @@ public class Agent extends BaseEntity implements Serializable {
 	private String identityNo;
 	/** 代理等级id **/
 	private Long memberLevelId;
-	public String getNickname() {
-		return nickname;
-	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
 	public String getLoginName() {
 		return loginName;
 	}

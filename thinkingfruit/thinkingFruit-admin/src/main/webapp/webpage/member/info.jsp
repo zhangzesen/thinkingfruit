@@ -14,10 +14,26 @@
 				<li class="layui-this">会员详情</li>
 			</ul>
 		    <div class="layui-form" style="margin-top: 10px;">
-				<div class="layui-form-item">
-					<label class="layui-form-label">昵称</label>
+		    	<div class="layui-form-item">
+					<label class="layui-form-label">id</label>
 					<div class="layui-input-inline input-custom-width">
-						<input type="text" name="nicknameStr" 
+						<input type="text" name="id" 
+							value="" autocomplete="off" readonly="readonly"
+							class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">登录名</label>
+					<div class="layui-input-inline input-custom-width">
+						<input type="text" name="loginName" 
+							value="" autocomplete="off" readonly="readonly"
+							class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">真实姓名</label>
+					<div class="layui-input-inline input-custom-width">
+						<input type="text" name="name" 
 							value="" autocomplete="off" readonly="readonly"
 							class="layui-input">
 					</div>
@@ -41,37 +57,36 @@
 					</div>
 				</div>
 				
-				<div class="layui-form-item">
-					<label class="layui-form-label">省</label>
-					<div class="layui-input-inline input-custom-width">
-						<input type="text" name="country" 
-							value="" autocomplete="off" readonly="readonly"
-							class="layui-input">
-					</div>
-				</div>
-				
-				<div class="layui-form-item">
-					<label class="layui-form-label">市</label>
-					<div class="layui-input-inline input-custom-width">
-						<input type="text" name="city" 
-							value="" autocomplete="off" readonly="readonly"
-							class="layui-input">
-					</div>
-				</div>
 				
 				<div class="layui-form-item">
 						<label class="layui-form-label">身份证</label>
 						<div class="layui-input-inline input-custom-width">
 							<input type="text" name="identityNo"
-								value="" autocomplete="off" placeholder="请输入身份证"
+								value="" autocomplete="off"
 								class="layui-input">
 					    </div>
 				</div>
-			
+				
 				<div class="layui-form-item">
-					<label class="layui-form-label">上级id</label>
+					<label class="layui-form-label">邀请者id</label>
 					<div class="layui-input-inline input-custom-width">
-						<input type="text" name="parentMemberId" 
+						<input type="text" name="inviterId" 
+							value="" autocomplete="off" readonly="readonly"
+							class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+						<label class="layui-form-label">邀请者上级id</label>
+						<div class="layui-input-inline input-custom-width">
+							<input type="text" name="inviterUpperId"
+								value="" autocomplete="off"
+								class="layui-input">
+					    </div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">代理级别</label>
+					<div class="layui-input-inline input-custom-width">
+						<input type="text" name="memberLevelId" 
 							value="" autocomplete="off" readonly="readonly"
 							class="layui-input">
 					</div>

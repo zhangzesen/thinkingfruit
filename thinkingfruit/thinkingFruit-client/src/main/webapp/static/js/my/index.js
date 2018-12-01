@@ -6,7 +6,9 @@ var my_index_ops = {
 		this.eventBind();
 	},
 	initComponent : function() {
-		
+		$("#information").click(function(){
+			window.location.href = WEB_ROOT+'/my/information';
+		}),
 		
 		
 		

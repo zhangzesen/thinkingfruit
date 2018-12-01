@@ -44,59 +44,49 @@
 					<h4>我的订单</h4>
 				</div>
 				<div class="aui-flex-arrow">
-					<a style="color:#333;" href="order.html">全部订单</a>
+					<p>全部订单</p>
 				</div>
 			</div>
 			<div class="aui-layout">
-				<a href="order.html" class="aui-layout-item">
 					<div class="aui-layout-icon">
 						<img src="themes/img/icon/icon-item-001.png" alt="">
 					</div>
 					<div class="aui-layout-text">待审核</div>
-				</a> <a href="order.html" class="aui-layout-item">
 					<div class="aui-layout-icon">
 						<img src="themes/img/icon/icon-item-002.png" alt="">
 					</div>
 					<div class="aui-layout-text">待发货</div>
-				</a> <a href="order.html" class="aui-layout-item">
 					<div class="aui-layout-icon">
 						<img src="themes/img/icon/icon-item-003.png" alt="">
 					</div>
 					<div class="aui-layout-text">待收货</div>
-				</a> <a href="order.html" class="aui-layout-item">
 					<div class="aui-layout-icon">
 						<img src="themes/img/icon/icon-item-004.png" alt="">
 					</div>
 					<div class="aui-layout-text">需确认订单</div>
-				</a>
 
 			</div>
 			<div class="divHeight"></div>
 			<div class="aui-course-list">
-				<a href="address.html" class="aui-flex b-line">
 					<div class="aui-course-icon">
 						<img src="themes/img/icon/icon-ad-001.png" alt="">
 					</div>
 					<div class="aui-flex-box">
 						<h5>收货地址</h5>
 					</div>
-				</a> <a href="user-set.html" class="aui-flex b-line">
 					<div class="aui-course-icon">
 						<img src="themes/img/icon/icon-ad-002.png" alt="">
 					</div>
-					<div class="aui-flex-box">
+					<div class="aui-flex-box" id="information">
 						<h5>用户设置</h5>
 					</div>
-				</a> <a href="about.html" class="aui-flex">
 					<div class="aui-course-icon">
 						<img src="themes/img/icon/icon-ad-003.png" alt="">
 					</div>
 					<div class="aui-flex-box">
 						<h5>关于我们</h5>
 					</div>
-				</a>
 				<div class="divHeight"></div>
-				<a href="" class="aui-flex b-line">
 					<div class="aui-course-icon">
 						<img src="themes/img/icon/icon-ad-004.png" alt="">
 					</div>
@@ -104,7 +94,6 @@
 						<h5>佣金详情</h5>
 					</div>
 
-				</a> <a href="" class="aui-flex b-line">
 					<div class="aui-course-icon">
 						<img src="themes/img/icon/icon-ad-004.png" alt="">
 					</div>
@@ -112,10 +101,8 @@
 						<h5>提现</h5>
 					</div>
 
-				</a>
 
 				<div class="divHeight"></div>
-				<a href="" target="_blank" class="aui-flex b-line">
 					<div class="aui-course-icon">
 						<img src="themes/img/icon/icon-ad-006.png" alt="">
 					</div>
@@ -123,7 +110,6 @@
 						<h5>我的团队</h5>
 					</div>
 
-				</a>
 				<div class="divHeight"></div>
 			</div>
 

@@ -12,21 +12,21 @@ var member_set_ops={
 			console.log("even")
 			$(".layui-input-block .layui-btn").on("click",function(){
 					
-				var level = $("select[name='level']").val();
-				var parentMemberId = $("input[name='parentMemberId']").val();
+				var memberLevelId = $("select[name='memberLevelId']").val();
+				var inviterId = $("input[name='inviterId']").val();
+				console.log("inviterId"+inviterId);
+				console.log("memberLevelId"+memberLevelId);
 				var id = common_ops.g_getQueryString("id");
-				console.log("level--》"+level);
-				console.log("parentMemberId--》"+parentMemberId);
 				console.log(id);
 						$(".layui-input-block .layui-btn").addClass('layui-btn-disabled');
 						$.ajax({
 							type :'PUT',
-							url : WEB_ROOT + "/member/"+id,
+							url : WEB_ROOT + "/member/update",
 							dataType : 'json',
 							data : {
 								id:id,
-								level: level,
-								parentMemberId : parentMemberId
+								memberLevelId: memberLevelId,
+								inviterId : inviterId
 							},
 							success:function(res){
 								$(".layui-input-block .layui-btn").removeClass("layui-btn-disabled");
@@ -48,7 +48,7 @@ var member_set_ops={
 			var id = common_ops.g_getQueryString("id");
 			console.log("id-->"+id);
 			$.ajax({
-				url:WEB_ROOT+'/member/selectInfo',
+				url:WEB_ROOT+'/member/details',
 				type:'get',
 				async:false,
 				data:{
@@ -57,9 +57,9 @@ var member_set_ops={
 				dataType:'json',
 				success:function(res){
 					//上级id
-					$("input[name='parentMemberId']").attr("value",res.data.parentMemberId);
+					$("input[name='inviterId']").attr("value",res.data.inviterId);
 					//级别
-					$('.layui-tab-content select[name="level"]').val(res.data.level);
+					$('.layui-tab-content select[name="memberLevelId"]').val(res.data.memberLevelId);
 					}
 				
 			})

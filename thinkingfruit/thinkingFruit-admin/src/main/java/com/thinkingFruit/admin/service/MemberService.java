@@ -2,34 +2,47 @@ package com.thinkingFruit.admin.service;
 
 import java.util.Map;
 
+import com.github.pagehelper.PageInfo;
 import com.thinkingFruit.admin.entity.Member;
 import com.thinkingFruit.admin.entity.MemberBalance;
-import com.ysdevelop.common.page.Pagination;
 
-
-
+/**
+ * @author	zhangzesen
+ *
+ * @package	com.thinkingFruit.admin.controller
+ *
+ * @date	2018年11月30日
+ *
+ * @description	代理
+ * 
+ */
 public interface MemberService {
+
 	/**
-	 * @author wulei
-	 *
-	 * @date 2018年11月21日
-	 *
-	 * @package com.thinkingFruit.admin.service
-	 *
-	 * @description 代理列表
+	 * 查询所有的代理
+	 * @param queryMap
+	 * @return 代理集合
 	 */
+	PageInfo<Member> paginationMember(Map<String, String> queryMap);
 
-	//查询与遍历
-	Pagination<Member> paginationCategory(Pagination<Member> pagination, Map<String, String> queryMap);
+	/**
+	 * 查询级别名称
+	 * @param id 代理id
+	 * @return
+	 */
+	Member memberById(Long id);
 
-	//查询级别名称
-	Member memberLevelId(Long id);
-
-    //根据id修改信息
+    /**
+     * 根据代理修改信息
+     * @param member 代理
+     */
 	void updateById(Member member);
-   //删除代理
+    /**
+     * 删除代理
+     * @param id 代理id
+     */
 	void deleteById(Long id);
 
 	//提取现金时对余额进行更新(减)
-		void putForward(MemberBalance memberBalance);
+	void putForward(MemberBalance memberBalance);
 }

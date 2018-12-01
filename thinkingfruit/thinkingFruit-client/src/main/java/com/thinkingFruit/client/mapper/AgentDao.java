@@ -35,5 +35,12 @@ public interface AgentDao {
 	 * @return 代理
 	 */
 	Agent getAgentByName(@Param("loginName") String loginName);
+	
+	/**
+	 * 	修改/完善个人信息
+	 * @param agent 代理
+	 * @return
+	 */
+	Integer updateInformation(Agent agent);
 
 }

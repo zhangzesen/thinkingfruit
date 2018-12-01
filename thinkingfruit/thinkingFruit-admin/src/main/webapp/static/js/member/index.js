@@ -23,14 +23,12 @@ var member_index_ops = {
 				       elem: '#dateTable'                  //指定原始表格元素选择器（推荐id选择器）  //容器高度
 				       , cols: [[                  //标题栏
 	                       {field: 'id', title: 'ID',align: 'center', width:70}
-				           , {field: 'nickname', title: '昵称', align: 'center',width:130}
-//				           , {field: 'gender', title: '性别',align: 'center', width:60}
-				           , {field: 'identityNo',title: '身份证',align: 'center'}
+				           , {field: 'loginName', title: '登录名', align: 'center',width:130}
+				           , {field: 'gender', title: '性别',align: 'center', width:60}
+				           , {field: 'identityNo',title: '身份证',align: 'center',width:120}
 				           , {field: 'mobile',title: '手机号',align: 'center',width:120}
-				           , {field: 'province',title: '省',align: 'center',width:80}
-				           , {field: 'city',title: '市',align: 'center',width:80}
-				           , {field: 'level',title: '级别',align: 'center',width:70}
-				           , {field: 'parentMemberId',title: '上级id',align: 'center',width:90}
+				           , {field: 'memberLevelId',title: '代理级别',align: 'center',width:100}
+				           , {field: 'inviterId',title: '上级id',align: 'center',width:90}
 				           , {fixed: 'right', title: '操作', width: 320,height: 40, align: 'center', templet: '#barOption'} 
 				       ]]
 //				       , id: 'dataCheck'
@@ -63,39 +61,22 @@ var member_index_ops = {
 				        		}
 				           });
 				           
-				           //对省份拼英进行转换
-				           $("[data-field='province']").children().each(function(){
-				        	   if($(this).text()!="省"){
-				        		   $(this).text(getCityName_ops.getCityName($(this).text().toLowerCase()));
-				        	   }
-				           });
-				           
-				           //对省份拼英进行转换
-				           $("[data-field='city']").children().each(function(){
-				        	   if($(this).text()!="市"){
-				        		   $(this).text(getCityName_ops.getCityName($(this).text().toLowerCase()));
-				        	   }
-				           });
 				           
 				       }
 				   });
 				
 					//查询信息
 				$(".btn-serach").on('click',function(){	
-					var nicknameStr = $("input[ name='nicknameStr']").val();
-					var country = $("input[ name='country']").val();
-					var city = $("input[ name='city']").val();
-					var level= $("select[ name='level']").val();
+					var loginName = $("input[ name='loginName']").val();
+					var memberLevelId= $("select[ name='memberLevelId']").val();
 						
 					var startTime = $("input[ name='startTime']").val();
 					var endTime = $("input[ name='endTime']").val();
-					console.log("搜索结果--》"+nicknameStr,country,city,level,startTime,endTime);
+					console.log("搜索结果--》"+loginName,memberLevelId,startTime,endTime);
 				    tableIns.reload({
 							where: { //设定异步数据接口的额外参数，任意设
-								nicknameStr:nicknameStr,
-								country: country,
-								city : city,
-								level : level,
+								loginName:loginName,
+								memberLevelId : memberLevelId,
 								startTime : startTime,
 								endTime : endTime
 							}
@@ -114,17 +95,17 @@ var member_index_ops = {
 						//一级分类编辑事件
 						window.location.href = WEB_ROOT + '/member/set?id='+id;
 						break;
-	                case 'detail':
-	                	window.location.href = WEB_ROOT + '/member/detail?id='+id;
+	                case 'info':
+	                	window.location.href = WEB_ROOT + '/member/info?id='+id;
 						break;	
 	                case 'delete':
 	                	var callback = {
 	                	   ok:function(){
 	       					$.ajax({
-	       						type:'POST',
-	       						url:WEB_ROOT+'/member/'+id,
+	       						type:'PUT',
+	       						url:WEB_ROOT+'/member/cancel',
 	       						data:{
-	       							_method:'delete'
+	       							id:id
 	       						}
 	       					}).done(function(res){
 	       						var msg = res.msg;
