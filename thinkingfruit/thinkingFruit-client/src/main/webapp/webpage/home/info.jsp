@@ -36,14 +36,22 @@ margin:0;
 input{
 outline:none;
 }
+ #head{
+    width: 15%;
+    float: left;}
 </style>
 </head>
 <body>
 
 	<section class="aui-flexView">
 		<header class="aui-bar aui-bar-nav aui-bar-light" style="color: black;">
-    <div class="aui-title">爱因思果</div>
-</header>
+                <a id="head" href="javascript:history.back(-1)" class="aui-navBar-item">
+                    <i class="icon icon-return"></i>
+                </a>
+                <div class="aui-center">
+                    <span class="aui-center-title">购买商品</span>
+                </div>
+            </header>
 		<section class="aui-scrollView">
 			<section class="aui-content">
 			<div class="aui-card-list">

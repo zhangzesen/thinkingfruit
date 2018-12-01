@@ -34,83 +34,90 @@
 				<div class="aui-member-user">
 					<img src="<%=basePath%>/static/plugin/aui/images/gril.jpg" alt="">
 				</div>
-				<div class="aui-member-text">
+				<div class="aui-member-text" id="name">
 					<h1>小脑斧</h1>
 					<p style="color:#333;">id：18519232894</p>
 				</div>
 			</div>
-			<div class="aui-flex b-line">
-				<div class="aui-flex-box">
-					<h4>我的订单</h4>
-				</div>
-				<div class="aui-flex-arrow">
-					<p>全部订单</p>
-				</div>
-			</div>
-			<div class="aui-layout">
-					<div class="aui-layout-icon">
-						<img src="themes/img/icon/icon-item-001.png" alt="">
-					</div>
-					<div class="aui-layout-text">待审核</div>
-					<div class="aui-layout-icon">
-						<img src="themes/img/icon/icon-item-002.png" alt="">
-					</div>
-					<div class="aui-layout-text">待发货</div>
-					<div class="aui-layout-icon">
-						<img src="themes/img/icon/icon-item-003.png" alt="">
-					</div>
-					<div class="aui-layout-text">待收货</div>
-					<div class="aui-layout-icon">
-						<img src="themes/img/icon/icon-item-004.png" alt="">
-					</div>
-					<div class="aui-layout-text">需确认订单</div>
-
-			</div>
+			
 			<div class="divHeight"></div>
 			<div class="aui-course-list">
+			<a href="<%=basePath%>/order" class="aui-flex b-line">
 					<div class="aui-course-icon">
-						<img src="themes/img/icon/icon-ad-001.png" alt="">
+						<img src="<%=basePath%>/static/images/icon/icon-ad-001.png" alt="">
+					</div>
+					<div class="aui-flex-box">
+						<h5>我的订单</h5>
+					</div>
+				</a> 
+				<div class="divHeight"></div>
+				<a href="<%=basePath%>/my/adress" class="aui-flex b-line">
+					<div class="aui-course-icon">
+						<img src="<%=basePath%>/static/images/icon/icon-ad-001.png" alt="">
 					</div>
 					<div class="aui-flex-box">
 						<h5>收货地址</h5>
 					</div>
+				</a> <a href="<%=basePath%>/my/information" class="aui-flex b-line">
 					<div class="aui-course-icon">
-						<img src="themes/img/icon/icon-ad-002.png" alt="">
+						<img src="<%=basePath%>/static/images/icon/icon-ad-002.png" alt="">
 					</div>
-					<div class="aui-flex-box" id="information">
-						<h5>用户设置</h5>
+					<div class="aui-flex-box">
+						<h5>完善信息</h5>
 					</div>
+				</a> <a href="<%=basePath%>/my/about" class="aui-flex">
 					<div class="aui-course-icon">
-						<img src="themes/img/icon/icon-ad-003.png" alt="">
+						<img src="<%=basePath%>/static/images/icon/icon-ad-003.png" alt="">
 					</div>
 					<div class="aui-flex-box">
 						<h5>关于我们</h5>
 					</div>
+				</a>
 				<div class="divHeight"></div>
+				<a href="<%=basePath%>/agent/team" class="aui-flex b-line">
 					<div class="aui-course-icon">
-						<img src="themes/img/icon/icon-ad-004.png" alt="">
-					</div>
-					<div class="aui-flex-box">
-						<h5>佣金详情</h5>
-					</div>
-
-					<div class="aui-course-icon">
-						<img src="themes/img/icon/icon-ad-004.png" alt="">
-					</div>
-					<div class="aui-flex-box">
-						<h5>提现</h5>
-					</div>
-
-
-				<div class="divHeight"></div>
-					<div class="aui-course-icon">
-						<img src="themes/img/icon/icon-ad-006.png" alt="">
+						<img src="<%=basePath%>/static/images/icon/icon-ad-004.png" alt="">
 					</div>
 					<div class="aui-flex-box">
 						<h5>我的团队</h5>
 					</div>
 
+				</a>
 				<div class="divHeight"></div>
+				<a href="<%=basePath%>/commision" class="aui-flex b-line">
+					<div class="aui-course-icon">
+						<img src="<%=basePath%>/static/images/icon/icon-ad-004.png" alt="">
+					</div>
+					<div class="aui-flex-box">
+						<h5>佣金详情</h5>
+					</div>
+
+				</a> <a href="<%=basePath%>/cash" class="aui-flex b-line">
+					<div class="aui-course-icon">
+						<img src="<%=basePath%>/static/images/icon/icon-ad-004.png" alt="">
+					</div>
+					<div class="aui-flex-box">
+						<h5>提现</h5>
+					</div>
+				</a><a href="<%=basePath%>/order/depot" class="aui-flex b-line">
+					<div class="aui-course-icon">
+						<img src="<%=basePath%>/static/images/icon/icon-ad-004.png" alt="">
+					</div>
+					<div class="aui-flex-box">
+						<h5>云仓库</h5>
+					</div>
+
+				</a>
+
+				
+				
+				<div class="divHeight"></div>
+				<a href="<%=basePath%>/user/login" target="_blank" class="aui-flex b-line">
+					<div class="aui-flex-box" style="text-align: center;">
+						<h5 style="color: #ff3366;">用户退出</h5>
+					</div>
+
+				</a>
 			</div>
 
 

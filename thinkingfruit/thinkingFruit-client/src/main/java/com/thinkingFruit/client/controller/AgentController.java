@@ -45,7 +45,13 @@ public class AgentController {
 	public String register(){
 		return "user/register";
 	}
-	
+	/**
+	 *跳转团队界面
+	 */
+	@RequestMapping(value="/team",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
+	public String agents(){
+		return "team/index";
+	}
 	/**
 	 * 	用户登录
 	 * @param request

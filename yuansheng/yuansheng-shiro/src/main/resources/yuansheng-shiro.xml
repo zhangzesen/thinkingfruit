@@ -90,11 +90,14 @@
 		<property name="unauthorizedUrl" value="/webpage/common/500.jsp"/>
 		<property name="filterChainDefinitions">
 			<value>
-				/static/** = anon
+								/static/** = anon
 				/upload/** = anon
 				/user/login = anon
 				/agent/**=anon
 				/home/**=anon
+				/order/**=anon
+				/commision/**=anon
+				/cash/**=anon
 				/my/**=anon
 				/news/**=anon
 				/api/** = anon
