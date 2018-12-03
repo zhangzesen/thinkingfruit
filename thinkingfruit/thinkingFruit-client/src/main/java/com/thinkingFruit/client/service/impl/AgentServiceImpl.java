@@ -142,8 +142,10 @@ public class AgentServiceImpl implements AgentService {
 	 * 团队列表
 	 * */
 		@Override
-		public List<Agent> agentList(){
-			List<Agent> agentList=agentDao.findAgentList();
+		public List<Agent> agentList(Long id){
+			List<Agent> agentList=agentDao.findAgentList(id);
+			Agent agent=agentDao.findinvite(id);
+			
 			return agentList;
 		}
 

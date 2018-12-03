@@ -57,5 +57,5 @@ public interface AgentService {
 	 * 团队列表
 	 * @param agent 代理
 	 */
-	List<Agent> agentList();
+	List<Agent> agentList(Long id);
 }

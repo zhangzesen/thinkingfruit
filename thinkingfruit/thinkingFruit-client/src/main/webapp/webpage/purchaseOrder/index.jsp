@@ -31,7 +31,7 @@ input{
  #head{
     width: 15%;
     float: left;}
-    #time{
+    .time{
         text-align: left;
     }
     .tab-nav-item{width:25%;}
@@ -89,7 +89,7 @@ input{
                                     </div>
                                 </div>
                                 <div class="aui-flex aui-flex-button">
-                                <div class="aui-flex-box" id="time">
+                                <div class="aui-flex-box time">
                                         <h3>时间</h3>
                                     </div>
                                     <div class="aui-flex-box">
@@ -114,6 +114,11 @@ input{
                                         <h4>共 <i>1</i> 件商品 需付款 <em>￥9.9</em></h4>
                                     </div>
                                 </div>
+                                <div class="aui-flex aui-flex-button">
+                                 <div class="aui-flex-box time">
+                                        <h3>时间</h3>
+                                    </div>
+                                    </div>
                             </div>
                         </div>
                         <div class="tab-panel-item" id="tab3">
@@ -133,6 +138,9 @@ input{
                                     </div>
                                 </div>
                                 <div class="aui-flex aui-flex-button">
+                                <div class="aui-flex-box time">
+                                        <h3>时间</h3>
+                                    </div>
                                     <div class="aui-flex-box">
                                         <button>发货</button>
                                     </div>
@@ -156,6 +164,11 @@ input{
                                         <h4>共 <i>1</i> 件商品 需付款 <em>￥9.9</em></h4>
                                     </div>
                                 </div>
+                                <div class="aui-flex aui-flex-button">
+                                <div class="aui-flex-box time">
+                                        <h3>时间</h3>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
@@ -172,7 +185,7 @@ input{
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/themes/tab.js"></script>
 	<script type="text/javascript"
-		src="<%=basePath%>/static/js/ord/index.js"></script>
+		src="<%=basePath%>/static/js/purchaseOrder/index.js"></script>
 	<script>WEB_ROOT="<%=basePath%>"
 	</script>
 </body>

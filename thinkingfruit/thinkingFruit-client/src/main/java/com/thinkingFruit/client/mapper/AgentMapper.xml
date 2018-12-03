@@ -93,13 +93,13 @@
 		t.`salt` as `salt`,
 		t.`name` as `name`,
 		t.`avatar` as `avatar`,
-		t.`inviterId` as `inviterId`,
 		t.`identityNo` as `identityNo`,
 		t.`createTime` as `createTime`,
 		t.`updateTime` as `updateTime`,
 		t.`memberLevelId` as `memberLevelId`,
 		t.`status` as `status`
 		from
-		`t_thinkingfruit_mall_member` t
+		`t_thinkingfruit_mall_member` as t
+		where  t.`inviterId` = #{id}
     </select>
 </mapper>

@@ -49,6 +49,10 @@ public interface AgentDao {
 	 * @param list
 	 * @return
 	 */
-	List<Agent> findAgentList();
+	List<Agent> findAgentList(Long id);
+     /**
+      * 查询上级
+      * */
+	Agent findinvite(Long id);
 
 }

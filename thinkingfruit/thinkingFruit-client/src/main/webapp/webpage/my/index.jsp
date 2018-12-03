@@ -42,7 +42,7 @@
 			
 			<div class="divHeight"></div>
 			<div class="aui-course-list">
-			<a href="<%=basePath%>/order" class="aui-flex b-line">
+			<a href="<%=basePath%>/purchaseOrder" class="aui-flex b-line">
 					<div class="aui-course-icon">
 						<img src="<%=basePath%>/static/images/icon/icon-ad-001.png" alt="">
 					</div>

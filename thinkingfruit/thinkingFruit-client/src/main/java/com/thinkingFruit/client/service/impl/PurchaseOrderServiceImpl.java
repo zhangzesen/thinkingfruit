@@ -1,5 +1,7 @@
 package com.thinkingFruit.client.service.impl;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -69,6 +71,12 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		if(addPurchaseOrder==Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
 		}
+	}
+
+	@Override
+	public List<ClientPurchaseOrder> purchaseOrderList(Long id) {
+       List<ClientPurchaseOrder> purchaseOrder = clientPurchaseOrderDao.findList(id);
+		return purchaseOrder;
 	}
 
 }

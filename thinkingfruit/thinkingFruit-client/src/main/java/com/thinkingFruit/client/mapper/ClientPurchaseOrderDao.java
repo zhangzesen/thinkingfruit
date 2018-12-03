@@ -1,5 +1,7 @@
 package com.thinkingFruit.client.mapper;
 
+import java.util.List;
+
 import com.thinkingFruit.client.entity.ClientPurchaseOrder;
 
 /**
@@ -19,5 +21,11 @@ public interface ClientPurchaseOrderDao {
 	 * @return 
 	 */
 	Integer addPurchaseOrder(ClientPurchaseOrder clientPurchaseOrder);
+	/**
+	 * 	订单列表
+	 * @param clientPurchaseOrder 交易订单
+	 * @return 
+	 */
+	List<ClientPurchaseOrder> findList(Long id);
 
 }

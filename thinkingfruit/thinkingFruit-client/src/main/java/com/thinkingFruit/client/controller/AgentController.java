@@ -129,8 +129,10 @@ public class AgentController {
 	 * */
 	@RequestMapping(value = "/teamList", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public Results<List<Agent>> list(){
-		List<Agent> agentList = agentService.agentList();
+	public Results<List<Agent>> list(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		Long id = (Long)session.getAttribute("agentId");
+		List<Agent> agentList = agentService.agentList(id);
 		return Results.successData(agentList);
 	}
 }
