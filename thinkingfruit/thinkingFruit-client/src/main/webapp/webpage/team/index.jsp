@@ -59,13 +59,15 @@ input{
                        
                     </ul>
                     <div class="tab-panel tab-panel-clear-line">
-                        <div class="tab-panel-item tab-active">
-                            <a href="javascript:;" class="aui-order-list">
+                        <div class="tab-panel-item tab-active" id="tab1">
+                            <div href="javascript:;" class="aui-order-list">
                                 <div class="aui-flex">
                                     <div class="aui-flex-box">
-                                        <h3>id:</h3><em>001</em>
+                                        <h3>级别：</h3>
                                     </div>
-                                    
+                                    <div class="aui-order-pay">
+                                        <p>联创</p>
+                                    </div>
                                 </div>
                                 <div class="aui-flex aui-flex-order">
                                     <div class="aui-order-img">
@@ -73,52 +75,28 @@ input{
                                     </div>
                                     <div class="aui-flex-box">
                                         <h2>梅发鹿</h2>
-                                        <h4>联系方式：<i>134324</i>佣金<em>￥9.9</em></h4>
+                                        <h4>本月佣金共 <i>1</i>元</h4>
                                     </div>
                                 </div>
-                            </a>
-                            <a href="javascript:;" class="aui-order-list">
-                                <div class="aui-flex">
+                                    <div class="aui-flex">
                                     <div class="aui-flex-box">
-                                        <h3>id:</h3><em>001</em>
+                                        <h3>团队人数：</h3>
                                     </div>
-                                    
-                                </div>
-                                <div class="aui-flex aui-flex-order">
-                                    <div class="aui-order-img">
-                                        <img src="<%=basePath%>/static/plugin/aui/images/gril.jpg" alt="">
-                                    </div>
-                                    <div class="aui-flex-box">
-                                        <h2>梅发鹿</h2>
-                                        <h4>联系方式：<i>134324</i>佣金<em>￥9.9</em></h4>
+                                    <div class="aui-order-pay">
+                                        <p>5</p>
                                     </div>
                                 </div>
-                            </a>
-                            <a href="javascript:;" class="aui-order-list">
-                                <div class="aui-flex">
-                                    <div class="aui-flex-box">
-                                        <h3>id:</h3><em>001</em>
-                                    </div>
-                                    
-                                </div>
-                                <div class="aui-flex aui-flex-order">
-                                    <div class="aui-order-img">
-                                        <img src="<%=basePath%>/static/plugin/aui/images/gril.jpg" alt="">
-                                    </div>
-                                    <div class="aui-flex-box">
-                                        <h2>梅发鹿</h2>
-                                        <h4>联系方式：<i>134324</i>佣金<em>￥9.9</em></h4>
-                                    </div>
-                                </div>
-                            </a>
+                            </div>
                         </div>
-                        <div class="tab-panel-item">
-                        <a href="javascript:;" class="aui-order-list">
+                        <div class="tab-panel-item" id="tab2">
+                       <a href="javascript:;" class="aui-order-list">
                                 <div class="aui-flex">
                                     <div class="aui-flex-box">
-                                        <h3>id:</h3><em>001</em>
+                                        <h3>级别：</h3>
                                     </div>
-                                    
+                                    <div class="aui-order-pay">
+                                        <p>联创</p>
+                                    </div>
                                 </div>
                                 <div class="aui-flex aui-flex-order">
                                     <div class="aui-order-img">
@@ -126,7 +104,15 @@ input{
                                     </div>
                                     <div class="aui-flex-box">
                                         <h2>梅发鹿</h2>
-                                        <h4>联系方式：<i>134324</i>佣金<em>￥9.9</em></h4>
+                                        <h4>本月销售额<i>100</i>元</h4>
+                                    </div>
+                                </div>
+                                    <div class="aui-flex">
+                                    <div class="aui-flex-box">
+                                        <h3>团队人数：</h3>
+                                    </div>
+                                    <div class="aui-order-pay">
+                                        <p>5</p>
                                     </div>
                                 </div>
                             </a>
@@ -144,7 +130,7 @@ input{
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/themes/tab.js"></script>
 	<script type="text/javascript"
-		src="<%=basePath%>/static/js/my/information.js"></script>
+		src="<%=basePath%>/static/js/team/index.js"></script>
 	<script>WEB_ROOT="<%=basePath%>"
 	</script>
 </body>

@@ -1,5 +1,6 @@
 package com.thinkingFruit.client.service.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -137,6 +138,13 @@ public class AgentServiceImpl implements AgentService {
 			throw new WebServiceException(CodeMsg.INFORMATION_UPDATE_ERROR);
 		}
 	}
-
+	/**
+	 * 团队列表
+	 * */
+		@Override
+		public List<Agent> agentList(){
+			List<Agent> agentList=agentDao.findAgentList();
+			return agentList;
+		}
 
 }

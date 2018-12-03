@@ -82,4 +82,24 @@
 			</if>
 		</trim>
 	</update>
+	<!--团队列表-->
+	<select id="findAgentList" resultType="com.thinkingFruit.client.entity.Agent">
+        select
+		t.`id` as `id`,
+		t.`mobile` as `mobile`,
+		t.`loginName` as `loginName`,
+		t.`pswd` as `pswd`,
+		t.`gender` as `gender`,
+		t.`salt` as `salt`,
+		t.`name` as `name`,
+		t.`avatar` as `avatar`,
+		t.`inviterId` as `inviterId`,
+		t.`identityNo` as `identityNo`,
+		t.`createTime` as `createTime`,
+		t.`updateTime` as `updateTime`,
+		t.`memberLevelId` as `memberLevelId`,
+		t.`status` as `status`
+		from
+		`t_thinkingfruit_mall_member` t
+    </select>
 </mapper>

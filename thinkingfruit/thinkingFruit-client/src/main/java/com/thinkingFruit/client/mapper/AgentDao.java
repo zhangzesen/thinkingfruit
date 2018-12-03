@@ -1,5 +1,7 @@
 package com.thinkingFruit.client.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 import com.thinkingFruit.client.entity.Agent;
@@ -42,5 +44,11 @@ public interface AgentDao {
 	 * @return
 	 */
 	Integer updateInformation(Agent agent);
+	/**
+	 * 	团队列表
+	 * @param list
+	 * @return
+	 */
+	List<Agent> findAgentList();
 
 }

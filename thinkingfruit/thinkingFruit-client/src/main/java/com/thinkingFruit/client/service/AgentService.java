@@ -1,5 +1,6 @@
 package com.thinkingFruit.client.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.thinkingFruit.client.entity.Agent;
@@ -52,4 +53,9 @@ public interface AgentService {
 	 * @param agent 代理
 	 */
 	void updateInformation(Agent agent);
+	/**
+	 * 团队列表
+	 * @param agent 代理
+	 */
+	List<Agent> agentList();
 }

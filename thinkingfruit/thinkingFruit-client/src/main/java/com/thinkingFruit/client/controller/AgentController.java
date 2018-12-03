@@ -1,5 +1,6 @@
 package com.thinkingFruit.client.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,7 @@ import com.thinkingFruit.client.service.AgentService;
 import com.ysdevelop.common.exception.WebServiceException;
 import com.ysdevelop.common.result.CodeMsg;
 import com.ysdevelop.common.result.Result;
+import com.ysdevelop.common.result.Results;
 import com.ysdevelop.common.utils.HttpUtils;
 
 /**
@@ -111,7 +113,9 @@ public class AgentController {
 		agentService.addAgent(agent);
 		return Result.success("注册成功");
 	}
-	
+	/**
+	 * 个人信息
+	 * */
 	@RequestMapping(value = "/information", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public Result<Agent> information(HttpServletRequest request) {
@@ -119,5 +123,14 @@ public class AgentController {
 		System.out.println("agentId"+session.getAttribute("agentId"));
 		Agent agentById = agentService.getAgentById((Long)session.getAttribute("agentId"));
 		return Result.successData(agentById);
+	}
+	/**
+	 * 团队列表
+	 * */
+	@RequestMapping(value = "/teamList", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Results<List<Agent>> list(){
+		List<Agent> agentList = agentService.agentList();
+		return Results.successData(agentList);
 	}
 }
