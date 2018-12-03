@@ -112,12 +112,10 @@
 				
 				
 				<div class="divHeight"></div>
-				<a href="<%=basePath%>/user/login" target="_blank" class="aui-flex b-line">
-					<div class="aui-flex-box" style="text-align: center;">
+					<div class="aui-flex-box" style="text-align: center;" id="loginOut">
 						<h5 style="color: #ff3366;">用户退出</h5>
 					</div>
 
-				</a>
 			</div>
 
 

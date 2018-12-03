@@ -37,7 +37,8 @@ public class CodeMsg {
 	public static CodeMsg CASH_NOT_ENOUGH = new CodeMsg(500054, "用户余额不足，无法完成提现");
 	public static CodeMsg NAME_NOT_NULL = new CodeMsg(500055, "姓名不能为空");
 	public static CodeMsg IDENTITYNO_NOT_NULL = new CodeMsg(500056, "身份证号不能为空");
-	public static CodeMsg INFORMATION_NOT_NULL = new CodeMsg(500056, "信息未完善，请先完善信息");
+	public static CodeMsg INFORMATION_NOT_NULL = new CodeMsg(500057, "信息未完善，请先完善信息");
+	public static CodeMsg UNREGISTERED = new CodeMsg(500058, "该用户未注册");
 
 	
 	//分类
@@ -81,6 +82,9 @@ public class CodeMsg {
 	//用户
 	public static CodeMsg PARENT_ID_EQUAL = new CodeMsg(500023,"上级ID不能与自己ID相同");
 	public static CodeMsg PEAS_NOT_NULL = new CodeMsg(500025,"充值的豆豆值不能为空");
+	public static CodeMsg INFORMATION_UPDATE_ERROR = new CodeMsg(500026,"个人信息修改/完善失败");
+	public static CodeMsg AGENT_CANCEL_ERROR = new CodeMsg(500026,"代理删除失败");
+
 	
 	// 小程序授权
 	public static CodeMsg SESSION_EXPRISE = new CodeMsg(500500,"小程序会话失效");

@@ -21,8 +21,6 @@ import com.thinkingFruit.admin.entity.MemberBalance;
  */
 public interface MemberDao {
 
-	//查询与遍历出所对应的数量
-	Integer getCountByQuery(@Param(value="queryMap")Map<String, String> queryMap,@Param(value="nicknameReplace")byte[] nicknameReplace);
 
 	/**
 	 * 查询所有代理
@@ -52,6 +50,10 @@ public interface MemberDao {
 	 */
 	Integer deleteById(@Param(value="id")Long id);
 
-	//提取现金时对余额进行更新(减)
+	/**
+	 * 提现修改代理余额
+	 * @param memberBalance 代理余额
+	 * @return
+	 */
 	Integer putForward(@Param(value="memberBalance") MemberBalance memberBalance);
 }

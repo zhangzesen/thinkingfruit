@@ -436,6 +436,5 @@
   <modules>
     <module>thinkingFruit-admin</module>
     <module>thinkingFruit-client</module>
-    <module>thinkingfruit-shiro</module>
   </modules>
 </project>

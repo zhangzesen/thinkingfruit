@@ -23,7 +23,7 @@ var cash_index_ops={
 				       elem: '#dateTable'                  //指定原始表格元素选择器（推荐id选择器）  //容器高度
 				       , cols: [[                  //标题栏
 	                       {field: 'id', title: '编号',align: 'center', width: 80}
-				           , {field: 'nicknameStr', title: '用户昵称', align: 'center'}
+				           , {field: 'loginName', title: '登录名', align: 'center'}
 				           , {field: 'cash', title: '提现金额',align: 'center'}
 				           , {field: 'account', title: '真实姓名', align: 'center'}
 				           , {field: 'openBank', title: '开户银行',align: 'center'}
@@ -74,7 +74,7 @@ var cash_index_ops={
 				   
 				 //查询信息
 				$(".btn-serach").on('click',function(){						
-					var nicknameStr = $("input[ name='nicknameStr']").val();
+					var loginName = $("input[ name='loginName']").val();
 					var status = $("select[ name='status']").val();
 					
 						
@@ -83,7 +83,7 @@ var cash_index_ops={
 						
 					tableIns.reload({
 							where: { //设定异步数据接口的额外参数，任意设
-								nicknameStr: nicknameStr,
+								loginName: loginName,
 								status: status,
 								startTime : startTime,
 								endTime : endTime

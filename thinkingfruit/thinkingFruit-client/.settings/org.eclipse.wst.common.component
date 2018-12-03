@@ -8,9 +8,6 @@
         <dependent-module archiveName="yuansheng-common-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/yuansheng-common/yuansheng-common">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="yuansheng-shiro-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/yuansheng-shiro/yuansheng-shiro">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <property name="context-root" value="thinkingFruit-client"/>
         <property name="java-output-path" value="/thinkingFruit-client/target/classes"/>
     </wb-module>

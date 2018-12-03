@@ -1,5 +1,8 @@
 package com.thinkingFruit.client.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,10 +49,23 @@ public class MyPageController {
 	public String about(){
 		return "my/about";
 	}
+	/**
+	 * 修改完善信息
+	 * @param agent 代理
+	 * @return
+	 */
 	@RequestMapping(value = "/update", method = RequestMethod.PUT, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public Results<String> update(Agent agent){
 		agentService.updateInformation(agent);
 		return Results.success("信息修改成功");
+	}
+	
+	@RequestMapping(value = "/loginOut", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Results<String> loginOut(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		session.invalidate();
+		return Results.success("用户退出成功");
 	}
 }

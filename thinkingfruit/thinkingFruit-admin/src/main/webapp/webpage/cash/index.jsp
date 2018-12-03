@@ -37,8 +37,8 @@ body{overflow-y: scroll;}
 								value="" placeholder="截止日" name="endTime">
 						</div>
 						<div class="layui-input-inline xbs768">
-								<input type="text" name="nicknameStr"
-									value="" placeholder="用户昵称" autocomplete="off" class="layui-input">
+								<input type="text" name="loginName"
+									value="" placeholder="登录名" autocomplete="off" class="layui-input">
 						</div>
 						<div class="layui-input-inline xbs768">
 							<select name="status">

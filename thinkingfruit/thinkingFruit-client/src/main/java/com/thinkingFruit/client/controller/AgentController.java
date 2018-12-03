@@ -45,6 +45,12 @@ public class AgentController {
 	public String register(){
 		return "user/register";
 	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login() {
+		return "user/login";
+	}
+	
 	/**
 	 *跳转团队界面
 	 */

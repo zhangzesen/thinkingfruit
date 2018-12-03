@@ -12,10 +12,10 @@ import com.ysdevelop.common.page.Pagination;
 public interface CashDao {
 
 	//统计出所要遍历与查询的数量
-	Integer getCountByQuery(@Param("queryMap") Map<String, String> queryMap,@Param("nicknameReplace") byte[] nicknameReplace);
+	Integer getCountByQuery(@Param("queryMap") Map<String, String> queryMap);
 
 	//遍历与查询出数据
-	List<Cash> paginationCash(@Param("queryMap") Map<String, String> queryMap,@Param("pagination") Pagination<Cash> pagination,@Param("nicknameReplace") byte[] nicknameReplace);
+	List<Cash> paginationCash(@Param("queryMap") Map<String, String> queryMap,@Param("pagination") Pagination<Cash> pagination);
 
 	//修改提现状态
 	void editCash(@Param("id")Long id);

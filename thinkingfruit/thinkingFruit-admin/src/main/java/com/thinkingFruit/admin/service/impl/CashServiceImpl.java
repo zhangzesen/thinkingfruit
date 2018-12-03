@@ -36,20 +36,9 @@ public class CashServiceImpl implements CashService {
 		pagination.setPageNum(page);
 		pagination.setPageSize(limit);
 		
-		byte[] nicknameReplace = null;
 		
-		//当查询昵称的时候，将昵称转换为二进制
-		if(queryMap.get("nicknameStr") != null){
-			nicknameReplace = queryMap.get("nicknameStr").getBytes();
-		}
-		
-		Integer totalItemsCount = cashDao.getCountByQuery(queryMap,nicknameReplace);
-		List<Cash> cashItems = cashDao.paginationCash(queryMap, pagination,nicknameReplace);
-		//将二进制昵称转化为String类型
-		for (int i = 0; i < cashItems.size(); i++) {
-			System.out.println("=="+cashItems.get(i).getNickname());
-			cashItems.get(i).setNicknameStr();
-		}
+		Integer totalItemsCount = cashDao.getCountByQuery(queryMap);
+		List<Cash> cashItems = cashDao.paginationCash(queryMap, pagination);
 		
 		pagination.setItems(cashItems);
 		pagination.setTotalItemsCount(totalItemsCount);

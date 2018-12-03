@@ -6,9 +6,10 @@ public class Cash extends BaseEntity {
 	
 	private Long memberId;//用户id
 	
-	// 会员名称
-	private byte[] nickname;// 昵称,二进制保存emoji表情
-	private String nicknameStr;// 昵称显示
+	/**
+	 * 登录名
+	 */
+	private String loginName;
 	
 	private Integer cash;//提现现金
 	
@@ -36,25 +37,6 @@ public class Cash extends BaseEntity {
 		this.account = account;
 	}
 
-	public byte[] getNickname() {
-		return nickname;
-	}
-
-	public void setNickname(byte[] nickname) {
-		this.nickname = nickname;
-	}
-
-	public String getNicknameStr() {
-		return nicknameStr;
-	}
-
-	public void setNicknameStr(String nicknameStr) {
-		this.nicknameStr = nicknameStr;
-	}
-	
-	public void setNicknameStr(){
-		this.nicknameStr = new String(nickname);
-	}
 
 	public Long getMemberId() {
 		return memberId;
@@ -66,6 +48,16 @@ public class Cash extends BaseEntity {
 
 	public Integer getCash() {
 		return cash;
+	}
+
+	
+	
+	public String getLoginName() {
+		return loginName;
+	}
+
+	public void setLoginName(String loginName) {
+		this.loginName = loginName;
 	}
 
 	public void setCash(Integer cash) {

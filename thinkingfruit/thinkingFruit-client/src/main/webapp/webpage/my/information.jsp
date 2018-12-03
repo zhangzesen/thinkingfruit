@@ -21,7 +21,24 @@
 <link href="iTunesArtwork@2x.png" sizes="114x114"
 	rel="apple-touch-icon-precomposed">
 <link rel="stylesheet" type="text/css" href="<%=basePath%>/static/plugin/aui/css/aui.css" />
-
+<style type="text/css">
+.aui-list-item {
+width:100%;
+float:none;
+}
+input{
+         text-align: right;
+ }
+ #head{
+    width: 15%;
+    float: left;}
+    button{
+ height:90%;
+ }
+ .aui-add-box{
+     margin-top: -4%;
+ }
+</style>
 </head>
 <body>
 

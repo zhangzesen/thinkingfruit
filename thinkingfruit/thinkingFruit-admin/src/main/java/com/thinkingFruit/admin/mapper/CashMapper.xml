@@ -8,9 +8,9 @@
 		left join `t_thinkingfruit_mall_member` as m 
 		on c.`memberId` = m.`id`
 		where 1=1 
-		<if test="nicknameReplace != null and nicknameReplace != ''">
-			and m.`nickname` like
-			CONCAT('%',#{nicknameReplace},'%')
+		<if test="queryMap.loginName != null and queryMap.loginName != ''">
+			and m.`loginName` like
+			CONCAT('%',#{queryMap.loginName},'%')
 		</if>
 		<if test="queryMap.status != null and queryMap.status != ''">
 			and c.`status` like
@@ -18,22 +18,22 @@
 		</if>
 		
 		<if test="queryMap.startTime != null and queryMap.startTime != ''">
-      <![CDATA[ and c.`createTime` > #{queryMap.startTime} ]]>
+      		<![CDATA[ and c.`createTime` > #{queryMap.startTime} ]]>
 		</if>
 		<if test="queryMap.endTime != null and queryMap.endTime != ''">
-       <![CDATA[ and c.`createTime` < #{queryMap.endTime} ]]>
+       		<![CDATA[ and c.`createTime` < #{queryMap.endTime} ]]>
 		</if>
 	</select>
 	
 	<select id="paginationCash" resultType="com.thinkingFruit.admin.entity.Cash">
-	    select c.`id`,c.`cash`,c.`status`,c.`bankNumber`,c.`account`,c.`createTime`,m.`nickname`,c.`openBank`
+	    select c.`id`,c.`cash`,c.`status`,c.`bankNumber`,c.`account`,c.`createTime`,m.`loginName`,c.`openBank`
 		from `t_thinkingfruit_mall_cash` as c
 		left join `t_thinkingfruit_mall_member` as m
 		on c.`memberId` = m.`id`
 		where 1=1 
-		<if test="nicknameReplace != null and nicknameReplace != ''">
-			and m.`nickname` like
-			CONCAT('%',#{nicknameReplace},'%')
+		<if test="queryMap.loginName != null and queryMap.loginName != ''">
+			and m.`loginName` like
+			CONCAT('%',#{queryMap.loginName},'%')
 		</if>
 		<if test="queryMap.status != null and queryMap.status != ''">
 			and c.`status` like

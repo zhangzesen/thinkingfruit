@@ -1,18 +1,7 @@
 ;
 var user_login_ops = {
 	init : function() {
-		this.initComponent();
 		this.eventBind();
-	},
-	initComponent : function() {
-		layui.use([ 'form', 'element' ], function() {
-			layer = layui.layer;
-			element = layui.element;
-			if (window != top) {
-				top.location.href = location.href;
-			}
-		});
-
 	},
 	eventBind : function() {
 		console.log("zzz");
