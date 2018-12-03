@@ -58,4 +58,9 @@ public interface AgentService {
 	 * @param agent 代理
 	 */
 	List<Agent> agentList(Long id);
+	/**
+	 * 寻找邀请人
+	 * @param agent 代理
+	 */
+	Agent getInvite(Long id);
 }

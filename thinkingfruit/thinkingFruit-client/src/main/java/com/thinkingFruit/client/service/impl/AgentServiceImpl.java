@@ -144,9 +144,15 @@ public class AgentServiceImpl implements AgentService {
 		@Override
 		public List<Agent> agentList(Long id){
 			List<Agent> agentList=agentDao.findAgentList(id);
-			Agent agent=agentDao.findinvite(id);
-			
 			return agentList;
 		}
+		/**
+		 * 寻找邀请人
+		 * */
+	@Override
+	public Agent getInvite(Long id) {
+		Agent agent =agentDao.findinvite(id);
+		return agent;
+	}
 
 }

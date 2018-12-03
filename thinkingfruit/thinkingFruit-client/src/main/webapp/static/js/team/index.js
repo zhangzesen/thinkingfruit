@@ -21,14 +21,24 @@ var team_index_ops = {
                     +'<div class="aui-flex-box">'+"<h3>"+res.data[i].name+"</h3>"+"</div>"+'<div class="aui-order-pay">'
                     +"<p>"+res.data[i].name+"</p>"+"</div>"+"</div>"+"</div>")
 			    }
-				$(".aui-order-list").bind("click",function(){
-					var id= $(this).find('img').attr("value");
-					alert("id"+id);
-					window.location.href = WEB_ROOT + '/agent/teamInfo?id='+id;
-					});
+			}
+		}),
+		$.ajax({
+			url:WEB_ROOT + "/agent/invite",
+			type:'get',
+			dataType:'json',
+			success:function(res){
+				console.log(res.data);
+					console.log(res.data.name);
+					$("#tab2").append('<div class="aui-order-list">'+'<div class="aui-flex">'
+                    +'<div class="aui-flex-box">'+"<h3>"+res.name+"</h3>"+"</div>"+"<div class='aui-order-pay'>"
+                    +"<p>"+res.data.name+"</p>"+"</div>"+"</div>"+"<div class='aui-flex aui-flex-order'>"+"<div class='aui-order-img'>"
+                    +'<img src="'+res.data.name+'" alt="">'+"</div>"+'<div class="aui-flex-box">'+"<h2>"+res.data.name+"</h2>"
+                    +"<h4>"+res.data.name+"<i>"+res.data.name+"</i>"+"元"+"</h4>"+"</div>"+"</div>"+'<div class="aui-flex">'
+                    +'<div class="aui-flex-box">'+"<h3>"+res.data.name+"</h3>"+"</div>"+'<div class="aui-order-pay">'
+                    +"<p>"+res.data.name+"</p>"+"</div>"+"</div>"+"</div>")
 			}
 		});
-		
 		
 
 	},

@@ -102,4 +102,13 @@
 		`t_thinkingfruit_mall_member` as t
 		where  t.`inviterId` = #{id}
     </select>
+    <!--查找上级-->
+    <select id="findinvite" resultType="com.thinkingFruit.client.entity.Agent">
+        select
+        m.`name`
+        from
+		`t_thinkingfruit_mall_order_purchase` as t left join
+		 `t_thinkingfruit_mall_member` as m on t.`orderMemberId` =m.`id`
+		where t.`inviterId` = #{id}
+    </select>
 </mapper>

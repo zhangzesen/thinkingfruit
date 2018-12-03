@@ -132,7 +132,19 @@ public class AgentController {
 	public Results<List<Agent>> list(HttpServletRequest request){
 		HttpSession session = request.getSession();
 		Long id = (Long)session.getAttribute("agentId");
+		System.out.println("id--->"+id);
 		List<Agent> agentList = agentService.agentList(id);
 		return Results.successData(agentList);
+	}
+	/**
+	 * 团队列表
+	 * */
+	@RequestMapping(value = "/invite", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Result<Agent> invite(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		Long id = (Long)session.getAttribute("agentId");
+		Agent agent = agentService.getInvite(id);
+		return Result.successData(agent);
 	}
 }

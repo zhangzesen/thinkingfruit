@@ -89,7 +89,7 @@ input{
                             </div>
                         </div>
                         <div class="tab-panel-item" id="tab2">
-                       <a href="javascript:;" class="aui-order-list">
+                       <div class="aui-order-list">
                                 <div class="aui-flex">
                                     <div class="aui-flex-box">
                                         <h3>级别：</h3>
@@ -115,7 +115,7 @@ input{
                                         <p>5</p>
                                     </div>
                                 </div>
-                            </a>
+                            </div>
                         </div>
                     </div>
                 </div>
