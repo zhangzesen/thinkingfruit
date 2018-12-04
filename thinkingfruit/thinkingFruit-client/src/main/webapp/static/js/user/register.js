@@ -32,7 +32,7 @@ var user_login_ops = {
 		});
 	},
 	login:function(){
-		window.location.href = WEB_ROOT + '/user/login';
+		window.location.href = WEB_ROOT + '/agent/login';
 	},
 	register : function(){
 		var btnTarget = $(this);
@@ -63,7 +63,7 @@ var user_login_ops = {
 				btnTarget.removeClass('layui-btn-disabled');
 				var callback = null;
 				if (res.code == 0) {
-					window.location.href = WEB_ROOT + "/user/login";
+					window.location.href = WEB_ROOT + "/agent/login";
 				} else {
 					callback = function() {
 						$(".code img").attr('src',WEB_ROOT + '/randCodeImage?id='+ Math.random());

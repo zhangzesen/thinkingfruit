@@ -50,9 +50,22 @@ public interface AgentDao {
 	 * @return
 	 */
 	List<Agent> findAgentList(Long id);
-     /**
-      * 查询上级
-      * */
+    /**
+     * 查询邀请人
+     * @param id 代理id
+     * @return 邀请人
+     */
 	Agent findinvite(Long id);
-
+	/**
+	 * 获取代理团队人数
+	 * @param id 代理id
+	 * @return 团队人数
+	 */
+	Long getTeamNumbers(Long id);
+	/**
+	 * 获取团队总销售额
+	 * @param id 代理id
+	 * @return 总销售额
+	 */
+	Double getTeamSales(Long id);
 }

@@ -41,9 +41,11 @@
 		t.`createTime` as `createTime`,
 		t.`updateTime` as `updateTime`,
 		t.`memberLevelId` as `memberLevelId`,
-		t.`status` as `status`
+		t.`status` as `status`,
+		l.`levelName` as `memberLevelName`
 		from
-		`t_thinkingfruit_mall_member` t
+		`t_thinkingfruit_mall_member` as  `t`
+		left join `t_thinkingfruit_mall_member_level` as `l` on `l`.level=`t`.memberLevelId
 		where
 		t.`id` = #{id}
 	</select>
@@ -85,30 +87,41 @@
 	<!--团队列表-->
 	<select id="findAgentList" resultType="com.thinkingFruit.client.entity.Agent">
         select
-		t.`id` as `id`,
-		t.`mobile` as `mobile`,
-		t.`loginName` as `loginName`,
-		t.`pswd` as `pswd`,
-		t.`gender` as `gender`,
-		t.`salt` as `salt`,
-		t.`name` as `name`,
-		t.`avatar` as `avatar`,
-		t.`identityNo` as `identityNo`,
-		t.`createTime` as `createTime`,
-		t.`updateTime` as `updateTime`,
-		t.`memberLevelId` as `memberLevelId`,
-		t.`status` as `status`
-		from
-		`t_thinkingfruit_mall_member` as t
-		where  t.`inviterId` = #{id}
+        m.`id` as `id`,
+        m.`name` as `name`,
+        m.`memberLevelId` as `memberLevelId`,
+        m.`avatar` as `avatar`,
+        l.`levelName` as `memberLevelName`,
+        m.`salesVolume` as `salesVolume`
+        from `t_thinkingfruit_mall_member` as `m`
+        left join `t_thinkingfruit_mall_member_level` as `l` on `l`.level=`m`.memberLevelId
+		where m.`inviterId` = #{id}
     </select>
     <!--查找上级-->
     <select id="findinvite" resultType="com.thinkingFruit.client.entity.Agent">
         select
-        m.`name`
-        from
-		`t_thinkingfruit_mall_order_purchase` as t left join
-		 `t_thinkingfruit_mall_member` as m on t.`orderMemberId` =m.`id`
-		where t.`inviterId` = #{id}
+        m.`id` as `id`,
+        m.`name` as `name`,
+        m.`memberLevelId` as `memberLevelId`,
+        m.`avatar` as `avatar`,
+        l.`levelName` as `memberLevelName`,
+        m.`salesVolume` as `salesVolume`
+        from `t_thinkingfruit_mall_member` as `m`
+        left join `t_thinkingfruit_mall_member_level` as `l` on `l`.level=`m`.memberLevelId
+		where m.`id` = #{id}
     </select>
+    
+    
+    <select id="getTeamNumbers" resultType="Long">
+		SELECT COUNT(*)+( SELECT COUNT(*) FROM `t_thinkingfruit_mall_member` as `m2` WHERE `m2`.inviterId=#{id})
+		FROM `t_thinkingfruit_mall_member` as `m`
+		WHERE `m`.inviterId IN( 
+		SELECT id FROM `t_thinkingfruit_mall_member` as `m2` 
+		WHERE `m2`.inviterId=#{id}
+		)
+	</select>
+	
+	<select id="getTeamSales" resultType="Double">
+		select sum(salesVolume) from t_thinkingfruit_mall_member where FIND_IN_SET(id,getChildrenList(#{id}))
+	</select>
 </mapper>

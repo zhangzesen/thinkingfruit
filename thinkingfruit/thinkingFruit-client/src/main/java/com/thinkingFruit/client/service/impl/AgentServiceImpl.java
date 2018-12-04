@@ -1,5 +1,6 @@
 package com.thinkingFruit.client.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -140,15 +141,24 @@ public class AgentServiceImpl implements AgentService {
 	}
 	/**
 	 * 团队列表
-	 * */
-		@Override
-		public List<Agent> agentList(Long id){
-			List<Agent> agentList=agentDao.findAgentList(id);
-			return agentList;
-		}
-		/**
-		 * 寻找邀请人
-		 * */
+	 */
+	@Override
+	public List<Agent> agentList(Long id){
+		Agent agentById = agentDao.getAgentById(id);
+		Long teamNumbers = agentDao.getTeamNumbers(id);
+		System.out.println("teamNumbers:"+teamNumbers);
+		Double teamSales = agentDao.getTeamSales(id);
+		System.out.println("teamSales:"+teamSales);
+		agentById.setTeamSales(teamSales);
+		agentById.setTeamNumbers(teamNumbers);
+		List<Agent> agentList=new ArrayList<>();
+		agentList.add(agentById);
+		agentList.addAll(agentDao.findAgentList(id));
+		return agentList;
+	}
+	/**
+	* 寻找邀请人
+	*/
 	@Override
 	public Agent getInvite(Long id) {
 		Agent agent =agentDao.findinvite(id);

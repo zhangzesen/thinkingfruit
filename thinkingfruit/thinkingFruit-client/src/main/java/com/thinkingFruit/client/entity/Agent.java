@@ -36,8 +36,8 @@ public class Agent extends BaseEntity implements Serializable {
 	private transient String pswd;
 	/** 盐值 **/
 	private String salt;
-	/** 角色id */
-	private Long avatar;
+	/** 角色头像 */
+	private String avatar;
 	/** 邀请者id */
 	@NotNull(message = "邀请者不能为空")
 	private Long inviterId;
@@ -61,6 +61,39 @@ public class Agent extends BaseEntity implements Serializable {
 	private String identityNo;
 	/** 代理等级id **/
 	private Long memberLevelId;
+	/** 代理等级名**/
+	private String memberLevelName;
+	/** 个人销售额**/
+	private Double salesVolume;
+	/** 团队总人数包括自己，下级，下下级**/
+	private Long teamNumbers;
+	/**团队销售额，包括自己及所有下级的**/
+	private Double teamSales;
+	
+	public Double getTeamSales() {
+		return teamSales;
+	}
+	public void setTeamSales(Double teamSales) {
+		this.teamSales = teamSales;
+	}
+	public Long getTeamNumbers() {
+		return teamNumbers;
+	}
+	public void setTeamNumbers(Long teamNumbers) {
+		this.teamNumbers = teamNumbers;
+	}
+	public Double getSalesVolume() {
+		return salesVolume;
+	}
+	public void setSalesVolume(Double salesVolume) {
+		this.salesVolume = salesVolume;
+	}
+	public String getMemberLevelName() {
+		return memberLevelName;
+	}
+	public void setMemberLevelName(String memberLevelName) {
+		this.memberLevelName = memberLevelName;
+	}
 	public String getLoginName() {
 		return loginName;
 	}
@@ -91,10 +124,10 @@ public class Agent extends BaseEntity implements Serializable {
 	public void setSalt(String salt) {
 		this.salt = salt;
 	}
-	public Long getAvatar() {
+	public String getAvatar() {
 		return avatar;
 	}
-	public void setAvatar(Long avatar) {
+	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
 	public Long getInviterId() {

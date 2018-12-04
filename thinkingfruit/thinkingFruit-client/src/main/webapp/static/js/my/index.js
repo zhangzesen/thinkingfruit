@@ -1,7 +1,6 @@
 ;
 var my_index_ops = {
 	init : function() {
-		console.log("123456789")
 		this.initComponent();
 		this.eventBind();
 	},

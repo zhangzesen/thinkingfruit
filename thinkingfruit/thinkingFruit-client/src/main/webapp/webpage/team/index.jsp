@@ -88,31 +88,31 @@ input{
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-panel-item" id="tab2">
+                        <div class="tab-panel-item" id="inviter">
                        <div class="aui-order-list">
+                       			<div class="aui-flex">
+                                	<div class="aui-flex-box">
+                                    	<h3>姓名：</h3>
+                                	</div>
+                                	<div class="aui-order-pay">
+                                     	<p id="name"></p>
+                                	</div>
+                                </div>
                                 <div class="aui-flex">
                                     <div class="aui-flex-box">
                                         <h3>级别：</h3>
                                     </div>
                                     <div class="aui-order-pay">
-                                        <p>联创</p>
+                                        <p id="memberLevelName"></p>
                                     </div>
                                 </div>
                                 <div class="aui-flex aui-flex-order">
                                     <div class="aui-order-img">
-                                        <img src="<%=basePath%>/static/plugin/aui/images/gril.jpg" alt="">
+                                        <img id="avatar" src="" alt="">
                                     </div>
                                     <div class="aui-flex-box">
-                                        <h2>梅发鹿</h2>
-                                        <h4>本月销售额<i>100</i>元</h4>
-                                    </div>
-                                </div>
-                                    <div class="aui-flex">
-                                    <div class="aui-flex-box">
-                                        <h3>团队人数：</h3>
-                                    </div>
-                                    <div class="aui-order-pay">
-                                        <p>5</p>
+                                        <h2></h2>
+                                        <h4>本月销售额<i id="salesVolume"></i>元</h4>
                                     </div>
                                 </div>
                             </div>
