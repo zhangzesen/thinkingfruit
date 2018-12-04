@@ -74,4 +74,10 @@ public interface CommodityDao {
 	 */
 	void editCommodity(@Param("commodity")Commodity commodity);
 	
+	/**
+	 * 获取所有商品
+	 * @return 商品集合
+	 */
+	List<Commodity> listCommodity();
+	
 }

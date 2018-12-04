@@ -52,13 +52,14 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
     /**
-     * 查询代理信息
+               * 查询代理信息
      */
 	@Override
 	public Member memberById(Long id) {
 		Member member=memberDao.memberById(id);
 		return member;
 	}
+	
 	/**
 	 * 修改代理邀请者id，和邀请者上级id及代理级别
 	 */
@@ -75,6 +76,7 @@ public class MemberServiceImpl implements MemberService {
 		memberDao.updataById(member);
 		
 	}
+	
 	/**
 	 * 删除代理
 	 */
@@ -85,13 +87,35 @@ public class MemberServiceImpl implements MemberService {
 			throw new WebServiceException(CodeMsg.AGENT_CANCEL_ERROR);
 		}
 	}
-	//减少余额
+	
+	/**
+	 * 减少余额
+	 */
 	@Override
 	public void putForward(MemberBalance memberBalance) {
 		int result = memberDao.putForward(memberBalance);
 		if(result<=0){
 			throw new WebServiceException(CodeMsg.CASH_NOT_ENOUGH);
 		}
+	}
+	
+	/**
+	 * 获取所有待审核代理
+	 */
+	@Override
+	public PageInfo<Member> paginationExamine(Map<String, String> queryMap) {
+		String pageSize = queryMap.get("limit");
+		String pageNum = queryMap.get("page");
+		if (pageSize == null || pageNum == null) {
+			throw new WebServiceException(CodeMsg.SERVER_ERROR);
+		}
+		
+		Integer integerPageSize = Integer.parseInt(pageSize);
+		Integer integerPageNum = Integer.parseInt(pageNum);
+		PageHelper.startPage(integerPageNum, integerPageSize, Boolean.TRUE);
+		List<Member> paginationMember = memberDao.paginationExamine(queryMap);
+		PageInfo<Member> pageInfo = new PageInfo<>(paginationMember);
+		return pageInfo;
 	}
 	
 }

@@ -55,15 +55,15 @@
 	<insert id="addAgent">
 		insert into
 		`t_thinkingfruit_mall_member`(
-			`loginName`,`gender`,`mobile`,`pswd`,`salt`,
-			`name`,`avatar`,`inviterId`,`inviterUpperId`,
-			`identityNo`,`createTime`,`memberLevelId`,`status`
+			`loginName`,`mobile`,`pswd`,`salt`,
+			`inviterId`,`inviterUpperId`,
+			`createTime`，`status`
 		)
 		values
 		(
-			#{loginName},#{gender},#{mobile},#{pswd},#{salt},
-			#{name},#{avatar},#{inviterId},#{inviterUpperId},
-			#{identityNo},now(),#{memberLevelId},0
+			#{loginName},#{mobile},#{pswd},#{salt},
+			#{inviterId},#{inviterUpperId},
+			now(),0
 		)
 	</insert>
 	

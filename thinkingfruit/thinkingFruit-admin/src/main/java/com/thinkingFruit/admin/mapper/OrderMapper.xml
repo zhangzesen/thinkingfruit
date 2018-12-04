@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.thinkingFruit.admin.mapper.OrderDao">
+	<!--  注册生成交易订单 -->
+	<insert id="addFirstPurchase">
+		insert into
+		`t_thinkingfruit_mall_order_purchase`(
+			`orderNo`,`orderMemberId`,`memberLevel`,`orderMemberName`,
+			`commodityId`,`commodityCount`,`commodityName`,`commodityPrice`,`isFirst`,
+			`orderStatus`,`createTime`,`orderTotalPrice`
+		)
+		values
+		(
+			#{orderNo},#{orderMemberId},#{memberLevel},#{orderMemberName},
+			#{commodityId},#{commodityCount},#{commodityName},#{commodityPrice},#{isFirst},
+			1,now(),#{orderTotalPrice}
+		)
+	</insert>
+	
 	<!--查看所有提货订单-->
 	<select id="list" resultType="com.thinkingFruit.admin.entity.Order">
 		select
@@ -275,6 +291,7 @@
 	    where id = (select `p`.commodityId from `t_thinkingfruit_mall_order_purchase` as `p` where `p`.id=#{id})
 	</update>
 	
+	<!-- 获取所有待收货订单 -->
 	<select id="findUnreceivedOrder" resultType="com.thinkingFruit.admin.entity.Order">
        select
        	`o`.id as `id`,	
@@ -283,9 +300,10 @@
         `o`.confirmTime as `confirmTime`
 		from
 		`t_thinkingfruit_mall_order` as `o`
-		where `o`.id = #{id}
+		where `o`.orderStatus = 1
     </select>
 	
+	<!--修改所有待收货订单为已收货  -->
 	<update id="updateBatchByOrders">
 		update `t_thinkingfruit_mall_order`
 	    <set>
@@ -298,4 +316,16 @@
 			#{order.id}
 		</foreach>
 	</update>
+	
+	<!--往代理仓库添加商品库存  -->
+	<insert id="addDepot">
+		insert into
+		`t_thinkingfruit_mall_depot`(
+			`commodityId`,`memberId`,`count`,`createTime`
+		)
+		values
+		(
+			#{commodityId},#{orderMemberId},#{commodityCount},now()
+		)
+	</insert>
 </mapper>

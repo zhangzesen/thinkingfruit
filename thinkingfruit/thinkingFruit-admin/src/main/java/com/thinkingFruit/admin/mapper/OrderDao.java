@@ -107,9 +107,31 @@ public interface OrderDao {
 	 * @return
 	 */
 	Integer reduceSales(@Param(value="id")Long id,@Param(value="commodityCount")Long commodityCount);
-
+	
+	/**
+	 * 获取所有待收货订单
+	 * @return 待收货订单集合
+	 */
 	List<Order> findUnreceivedOrder();
-
+	
+	/**
+	 * 修改所有待收货订单为已收货
+	 * @param orders  待收货订单集合
+	 */
 	void updateBatchByOrders(@Param("order")List<Order> orders);
+	
+	/**
+	 * 注册生成交易订单
+	 * @param purchaseOrder 交易订单
+	 * @return
+	 */
+	Integer addFirstPurchase(PurchaseOrder purchaseOrder);
+	
+	/**
+	 * 往代理仓库添加商品库存
+	 * @param purchaseOrder 交易订单
+	 * @return
+	 */
+	Integer addDepot(PurchaseOrder purchaseOrder);
 	
 }

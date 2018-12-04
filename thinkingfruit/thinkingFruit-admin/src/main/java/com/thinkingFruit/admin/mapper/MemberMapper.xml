@@ -21,7 +21,7 @@
 	   <if test="queryMap.memberLevelId!=null and queryMap.memberLevelId != ''">
 	      and m.`memberLevelId` =#{queryMap.memberLevelId}
 	   </if>
-	   and `m`.status !=3
+	   and `m`.status =1
 	</where>
 </select>
 
@@ -58,7 +58,7 @@
 <update id="deleteById">
     update `t_thinkingfruit_mall_member`
     <set>
-        `status` = 3,
+        `status` = 2,
         `updateTime` = now()
     </set>
     where `id` = #{id}
@@ -69,6 +69,34 @@
     <set>
         `balance` =`balance`- #{inviterId},
         `updateTime` = now(),
+    </set>
+    where `id` = #{id}
+</update>
+<!-- 获取所有待审核的代理列表 -->
+<select id="paginationExamine" resultType="com.thinkingFruit.admin.entity.Member">
+	select m.`id`,m.`mobile`,m.`loginName`,m.`status`,m.`inviterUpperId`,
+	m.`inviterId`
+	from `t_thinkingfruit_mall_member`as `m`
+	<where>
+	   1=1
+	   <if test="queryMap.loginName !=null and queryMap.loginName != ''">
+	      and m.`loginName` like CONCAT('%',#{queryMap.loginName},'%')
+	   </if>
+	   <if test="queryMap.startTime != null and queryMap.startTime != ''">
+      <![CDATA[ and m.`createTime` > #{queryMap.startTime} ]]>
+	   </if>
+	   <if test="queryMap.endTime != null and queryMap.endTime != ''">
+      <![CDATA[ and m.`createTime` < #{queryMap.endTime} ]]>
+	   </if>
+	   and `m`.status =0
+	</where>
+</select>
+<!-- 修改待审核的代理通过 -->
+<update id="examineUpdate">
+    update `t_thinkingfruit_mall_member`
+    <set>
+        `status` = 1,
+        `updateTime` = now()
     </set>
     where `id` = #{id}
 </update>

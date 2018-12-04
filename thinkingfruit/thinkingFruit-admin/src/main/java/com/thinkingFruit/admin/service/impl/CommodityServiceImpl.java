@@ -147,4 +147,14 @@ public class CommodityServiceImpl implements CommodityService {
 		}
 	}
 	
+	/**
+	 *  获取所有商品
+	 */
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public List<Commodity> listCommodity() {
+		List<Commodity> listCommodity=commodityDao.listCommodity();
+		return listCommodity;
+	}
+	
 }

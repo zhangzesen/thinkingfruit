@@ -63,7 +63,8 @@ public class CodeMsg {
 	public static CodeMsg DELIVER_FAIL = new CodeMsg(500031,"订单发货失败");
 	public static CodeMsg CANCEL_FAIL = new CodeMsg(500031,"订单取消失败");
 	public static CodeMsg PURCHASE_FAIL = new CodeMsg(500032,"订单购买失败");
-
+	public static CodeMsg EXAMINE_FAIL = new CodeMsg(500033,"审核失败");
+	public static CodeMsg DEPOT_FAIL = new CodeMsg(500034,"无法生成代理仓库,审核失败");
 	//统计
 	public static CodeMsg NEWMEMBER_EXIST = new CodeMsg(500012,"新增会员数量为空");
 	

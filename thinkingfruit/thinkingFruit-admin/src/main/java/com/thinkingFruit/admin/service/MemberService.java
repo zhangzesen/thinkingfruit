@@ -26,23 +26,33 @@ public interface MemberService {
 	PageInfo<Member> paginationMember(Map<String, String> queryMap);
 
 	/**
-	 * 查询级别名称
+	   * 查询级别名称
 	 * @param id 代理id
 	 * @return
 	 */
 	Member memberById(Long id);
 
     /**
-     * 根据代理修改信息
+               * 根据代理修改信息
      * @param member 代理
      */
 	void updateById(Member member);
     /**
-     * 删除代理
+               * 删除代理
      * @param id 代理id
      */
 	void deleteById(Long id);
 
-	//提取现金时对余额进行更新(减)
+	/**
+	 * 提取现金时对余额进行更新(减)
+	 * @param memberBalance
+	 */
 	void putForward(MemberBalance memberBalance);
+	
+	/**
+	 * 获取所有待审核代理
+	 * @param queryMap
+	 * @return 待审核代理分页
+	 */
+	PageInfo<Member> paginationExamine(Map<String, String> queryMap);
 }

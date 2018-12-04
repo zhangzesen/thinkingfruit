@@ -166,4 +166,16 @@ public class PurchaseOrderController {
 		exportFileHeaders.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 		return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), exportFileHeaders, HttpStatus.CREATED);
 	}
+	
+	/**
+	 * 代理审核，生成注册订单
+	 * @param purchaseOrder 交易订单
+	 * @return
+	 */
+	@RequestMapping(value = "/examineUpdate", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Result<String> examineUpdate(PurchaseOrder purchaseOrder){
+		orderService.examineUpdate(purchaseOrder);
+		return Result.success("审核通过,生成第一笔订单");
+	}
 }

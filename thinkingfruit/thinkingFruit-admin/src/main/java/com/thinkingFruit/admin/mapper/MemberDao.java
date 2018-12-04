@@ -56,4 +56,18 @@ public interface MemberDao {
 	 * @return
 	 */
 	Integer putForward(@Param(value="memberBalance") MemberBalance memberBalance);
+	
+	/**
+	 * 获取所有待审核的代理列表
+	 * @param queryMap
+	 * @return 待审核的代理集合
+	 */
+	List<Member> paginationExamine(@Param(value="queryMap")Map<String, String> queryMap);
+	
+	/**
+	 * 修改待审核的代理通过
+	 * @param orderMemberId 待审核的代理id
+	 * @return
+	 */
+	Integer examineUpdate(@Param(value="id")Long orderMemberId);
 }

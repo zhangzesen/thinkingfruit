@@ -46,6 +46,12 @@ public class MemberController {
 		return "member/index";
 	}
 	
+	@RequestMapping(value="/examine",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
+	public String examine(){
+		return "member/examine";
+	}
+	
+	
 	/**
 	 * 首页代理列表
 	 * @param request
@@ -59,6 +65,20 @@ public class MemberController {
 		return Results.successPaginationData(pageInfo.getList(), pageInfo.getTotal());
 	}
 	
+	
+	/**
+	 * 首页代理列表
+	 * @param request
+	 * @return 代理集合
+	 */
+	@RequestMapping(value="/examineList",method=RequestMethod.GET,produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public Results<List<Member>> examineList(HttpServletRequest request){
+		Map<String, String> queryMap = HttpUtils.getParameterMap(request);
+		PageInfo<Member> pageInfo= memberService.paginationExamine(queryMap);
+		return Results.successPaginationData(pageInfo.getList(), pageInfo.getTotal());
+	}
+	
 	/**
 	 * 跳转代理修改页面
 	 * @return
@@ -66,6 +86,15 @@ public class MemberController {
 	@RequestMapping(value = "/set", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
 	public String set() {
 		return "member/set";
+	}
+	
+	/**
+	 * 跳转代理审核页面
+	 * @return
+	 */
+	@RequestMapping(value = "/examineSet", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
+	public String examineSet() {
+		return "member/examineSet";
 	}
 	
 	/**

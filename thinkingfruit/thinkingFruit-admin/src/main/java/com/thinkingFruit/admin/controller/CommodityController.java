@@ -126,6 +126,14 @@ public class CommodityController {
 		commodityService.deleteCommodityById(id);
 		return Result.success("删除成功");
 	}
-	
-	
+	/**
+	 * 获取所有商品
+	 * @return 商品集合
+	 */
+	@RequestMapping(value = "/listCommodity", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Results<List<Commodity>> listCommodity(){
+		List<Commodity> listCommodity=commodityService.listCommodity();
+		return Results.successData(listCommodity);
+	}
 }

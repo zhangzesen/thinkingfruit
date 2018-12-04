@@ -34,21 +34,6 @@ body{overflow-y: scroll;}
 							<input type="text" name="loginName" value=""
 								placeholder="登录名" autocomplete="off" class="layui-input">
 						</div>
-						<br/>
-						<br/>
-						<br/>	
-					<form class="layui-form" action="">
-						<div class="layui-input-inline xbs768">
-							<select id="memberLevelId" name="memberLevelId" lay-filter="discount">
-								<option value="">请选择级别</option>
-								<option value="1">联创</option>
-								<option value="2">春事</option>
-								<option value="3">总监</option>
-								<option value="4">SVIP</option>
-								<option value="5">VIP</option>
-							</select>
-						</div>
-					</form>
 					<div class="layui-input-inline xbs768" style="width: 80px">
 							<button class="layui-btn btn-serach" lay-submit=""
 								lay-filter="sreach">
@@ -70,13 +55,11 @@ body{overflow-y: scroll;}
 	<jsp:include page="/context/js-tags.jsp" />
 	<script id="barOption" type="text/html">
    {{#
-    var barOption ="<a class='layui-btn layui-btn-small layui-btn-warm look_btn' title='查看' lay-event='info'><i class='layui-icon'>&#xe615;</i></a>";
-    barOption+="<a class='layui-btn layui-btn-small edit_btn' title='修改' lay-event='edit'><i class='layui-icon'>&#xe642;</i></a>";
-    barOption+= "<a class='layui-btn layui-btn-small layui-btn-normal add_btn' title='删除' lay-event='delete'><i class='layui-icon'>&#xe640;</i></a>";
+    var barOption ="<a class='layui-btn layui-btn-small edit_btn' title='审核' lay-event='examine'><i class='layui-icon'>&#xe642;</i></a>";
     return barOption;
    }} 
     </script>
 	<script type="text/javascript"
-		src="<%=basePath%>/static/js/member/index.js"></script>
+		src="<%=basePath%>/static/js/member/examine.js"></script>
 </body>
 </html>

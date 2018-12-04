@@ -66,6 +66,17 @@ public class Member extends BaseEntity{
 	 * 交易量
 	 */
 	private String transaction;
+	/**
+	 * 代理级别名
+	 */
+	private String memberLevelName;
+	
+	public String getMemberLevelName() {
+		return memberLevelName;
+	}
+	public void setMemberLevelName(String memberLevelName) {
+		this.memberLevelName = memberLevelName;
+	}
 	public String getLoginName() {
 		return loginName;
 	}

@@ -142,12 +142,23 @@
 					</a></li>
 </shiro:hasPermission>
 
-<shiro:hasPermission name="member:manager">
+					<shiro:hasPermission name="member:manager">
+					
 					<li name="left_mall" class="layui-nav-item edging"><a
-						name="left_a" href="<%=basePath%>/member" target="main"> <i
-							class="layui-icon">&#xe612;</i> <cite>代理列表</cite>
-					</a></li>
-</shiro:hasPermission>
+						name="left_a" href="javascript:;" target="main"> <i
+							class="layui-icon">&#xe612;</i><cite>代理管理</cite>
+					<span class="layui-nav-more"></span>
+					       </a>
+						<dl class="layui-nav-child">
+							<dd class="">
+								<a href="<%=basePath%>/member" target="main">代理列表</a>
+							</dd>
+							<dd class="">
+								<a href="<%=basePath%>/member/examine" target="main">代理审核</a>
+							</dd>
+						</dl>
+					</li>
+					</shiro:hasPermission>
 <shiro:hasPermission name="business:manager">
 					<li name="left_mall" class="layui-nav-item edging"><a
 						name="left_a" href="javascript:;" target="main"> <i

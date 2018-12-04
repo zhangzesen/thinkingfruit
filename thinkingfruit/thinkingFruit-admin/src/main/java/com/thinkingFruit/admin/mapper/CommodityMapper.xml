@@ -101,4 +101,16 @@
         </set>
         where `id` = #{id}
     </update>
+    <!-- 获取所有商品 -->
+    <select id="listCommodity" resultType="com.thinkingFruit.admin.entity.Commodity">
+        select 
+        c.`id` as `id`,
+        c.`name` as `name`,
+        c.`coverImagePath` as `coverImagePath`,
+        c.`sales` as `sales`,
+        c.`stock` as `stock`,
+        c.`description` as `description`
+        from `t_thinkingfruit_mall_commodity` as c 
+        where c.`status`=0
+    </select>
 </mapper>

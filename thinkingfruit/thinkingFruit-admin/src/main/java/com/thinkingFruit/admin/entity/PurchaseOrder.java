@@ -96,8 +96,21 @@ public class PurchaseOrder extends BaseEntity{
 	 */
 	private Date confirmTime;
 	
+	/**
+	 * 订单总价
+	 */
+	private Double orderTotalPrice;
 	
 	
+	
+	public Double getOrderTotalPrice() {
+		return orderTotalPrice;
+	}
+
+	public void setOrderTotalPrice(Double orderTotalPrice) {
+		this.orderTotalPrice = orderTotalPrice;
+	}
+
 	public Date getConfirmTime() {
 		return confirmTime;
 	}

@@ -39,6 +39,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 	
 	@Autowired
 	private AgentService agentService;
+	
 
 	/**
 	 * 	添加交易订单

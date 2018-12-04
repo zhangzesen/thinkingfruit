@@ -83,9 +83,23 @@ public interface OrderService {
 	 * @return 交易订单集合
 	 */
 	List<PurchaseOrder> findPurchaseOrderExcl(Map<String, String> queryMap);
-
+	
+	/**
+	 * 获取所有待收货订单
+	 * @return 待收货订单集合
+	 */
 	List<Order> findUnreceivedOrder();
-
+	
+	/**
+	 * 修改所有待收货订单为已收货
+	 * @param orders 待收货订单集合
+	 */
 	void updateBatchByOrders(List<Order> orders);
+	
+	/**
+	 * 往代理仓库添加商品库存，生成交易订单
+	 * @param purchaseOrder 交易订单
+	 */
+	void examineUpdate(PurchaseOrder purchaseOrder);
 
 }

@@ -1,5 +1,6 @@
 package com.thinkingFruit.admin.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.github.pagehelper.PageInfo;
@@ -48,4 +49,10 @@ public interface CommodityService {
 	 * @param commodity 商品
 	 */
 	void editCommodity(Commodity commodity);
+	
+	/**
+	 * 获取所有商品
+	 * @return 商品集合
+	 */
+	List<Commodity> listCommodity();
 }
