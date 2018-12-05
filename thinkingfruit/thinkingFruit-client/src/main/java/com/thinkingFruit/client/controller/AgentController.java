@@ -147,4 +147,20 @@ public class AgentController {
 		Agent agent = agentService.getInvite(id);
 		return Result.successData(agent);
 	}
+	
+	@RequestMapping(value = "/address", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Result<Agent> address(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		System.out.println("agentId"+session.getAttribute("agentId"));
+		Agent getAgentAddress=agentService.getAgentAddress((Long)session.getAttribute("agentId"));
+		return Result.successData(getAgentAddress);
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.PUT, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Results<String> update(Agent agent){
+		agentService.updateAgentAddress(agent);
+		return Results.success("信息修改成功");
+	}
 }

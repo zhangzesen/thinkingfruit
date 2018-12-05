@@ -17,6 +17,7 @@
 		t.`createTime` as `createTime`,
 		t.`updateTime` as `updateTime`,
 		t.`memberLevelId` as `memberLevelId`,
+		t.`inviterUpperId` as `inviterUpperId`,
 		t.`status` as `status`
 		from
 		`t_thinkingfruit_mall_member` t
@@ -37,6 +38,7 @@
 		t.`name` as `name`,
 		t.`avatar` as `avatar`,
 		t.`inviterId` as `inviterId`,
+		t.`inviterUpperId` as `inviterUpperId`,
 		t.`identityNo` as `identityNo`,
 		t.`createTime` as `createTime`,
 		t.`updateTime` as `updateTime`,
@@ -52,18 +54,29 @@
 
 
 	<!-- 添加代理 -->
-	<insert id="addAgent">
+	<insert id="addAgent" parameterType="com.thinkingFruit.client.entity.Agent" useGeneratedKeys="true" keyProperty="id">
 		insert into
 		`t_thinkingfruit_mall_member`(
 			`loginName`,`mobile`,`pswd`,`salt`,
 			`inviterId`,`inviterUpperId`,
-			`createTime`，`status`
+			`createTime`,`status`
 		)
 		values
 		(
 			#{loginName},#{mobile},#{pswd},#{salt},
 			#{inviterId},#{inviterUpperId},
 			now(),0
+		)
+	</insert>
+	
+	<insert id="addAgentAddress">
+		insert into
+		`t_thinkingfruit_mall_address`(
+			`memberId`,`createTime`
+		)
+		values
+		(
+			#{id},now()
 		)
 	</insert>
 	
@@ -124,4 +137,36 @@
 	<select id="getTeamSales" resultType="Double">
 		select sum(salesVolume) from t_thinkingfruit_mall_member where FIND_IN_SET(id,getChildrenList(#{id}))
 	</select>
+	
+	<select id="getAgentAddress" resultType="com.thinkingFruit.client.entity.Agent">
+		select
+		a.`id` as `id`,
+		a.`memberId` as `memberId`,
+		a.`province` as `province`,
+		a.`city` as `city`,
+		a.`town` as `town`,
+		a.`address` as `address`,
+		a.`createTime` as `createTime`
+		from
+		`t_thinkingfruit_mall_address` as `a`
+		where a.`memberId` = #{memberId}
+	</select>
+	
+	<update id="updateAgentAddress" parameterType="com.thinkingFruit.client.entity.Agent" >
+	    update `t_thinkingfruit_mall_address` as `a`
+	    <trim prefix="set" suffixOverrides="," suffix="where `a`.id = #{id}">
+			<if test="province != null and province != '' ">
+				a.`province` = #{province},
+			</if>
+			<if test="city != null and city != ''">
+				a.`city` = #{city},
+			</if>
+			<if test="town != null and town != '' ">
+				a.`town` = #{town},
+			</if>
+			<if test="address != null and address != '' ">
+				a.`address` = #{address},
+			</if>
+		</trim>
+	</update>
 </mapper>

@@ -39,6 +39,7 @@ public class CodeMsg {
 	public static CodeMsg IDENTITYNO_NOT_NULL = new CodeMsg(500056, "身份证号不能为空");
 	public static CodeMsg INFORMATION_NOT_NULL = new CodeMsg(500057, "信息未完善，请先完善信息");
 	public static CodeMsg UNREGISTERED = new CodeMsg(500058, "该用户未注册");
+	public static CodeMsg REGISTER_FAIL = new CodeMsg(500059, "注册失败");
 
 	
 	//分类
@@ -84,7 +85,8 @@ public class CodeMsg {
 	public static CodeMsg PARENT_ID_EQUAL = new CodeMsg(500023,"上级ID不能与自己ID相同");
 	public static CodeMsg PEAS_NOT_NULL = new CodeMsg(500025,"充值的豆豆值不能为空");
 	public static CodeMsg INFORMATION_UPDATE_ERROR = new CodeMsg(500026,"个人信息修改/完善失败");
-	public static CodeMsg AGENT_CANCEL_ERROR = new CodeMsg(500026,"代理删除失败");
+	public static CodeMsg AGENT_CANCEL_ERROR = new CodeMsg(500027,"代理删除失败");
+	public static CodeMsg ADDRESS_UPDATE_ERROR = new CodeMsg(500028,"代理地址修改失败");
 
 	
 	// 小程序授权

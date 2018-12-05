@@ -21,8 +21,9 @@ public interface AgentDao {
 	/**
 	 * 	插入一条代理数据
 	 * @param agent 代理
+	 * @return 
 	 */
-	void addAgent(Agent agent);
+	Integer addAgent(Agent agent);
 
 	/**
 	 * 	通过指定的id字段查询代理详细信息 
@@ -68,4 +69,10 @@ public interface AgentDao {
 	 * @return 总销售额
 	 */
 	Double getTeamSales(Long id);
+
+	Integer addAgentAddress(@Param("id")Long id);
+
+	Agent getAgentAddress(@Param("memberId")Long memberId);
+
+	Integer updateAgentAddress(Agent agent);
 }

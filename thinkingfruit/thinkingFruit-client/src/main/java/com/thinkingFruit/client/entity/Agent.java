@@ -53,6 +53,8 @@ public class Agent extends BaseEntity implements Serializable {
 	/** 县区 **/
 //	@NotBlank(message = "县区不能为空")
 	private String town;
+	/** 具体地址**/
+	private String address;
 	@IsMobile
 	private String mobile;
 	/** 用户状态0启用，1禁用 **/
@@ -70,6 +72,14 @@ public class Agent extends BaseEntity implements Serializable {
 	/**团队销售额，包括自己及所有下级的**/
 	private Double teamSales;
 	
+	
+	
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	public Double getTeamSales() {
 		return teamSales;
 	}

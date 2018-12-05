@@ -56,98 +56,48 @@ button{
             <li class="aui-list-item">
                 <div class="aui-list-item-inner">
                     <div class="aui-list-item-label">
-                        Text
+                       	 省
                     </div>
                     <div class="aui-list-item-input">
-                        <input type="text" placeholder="Name">
+                        <input type="text" placeholder="请输入省" id="province">
                     </div>
                 </div>
             </li>
             <li class="aui-list-item">
                 <div class="aui-list-item-inner">
                     <div class="aui-list-item-label">
-                        Password
+                       	 市
                     </div>
                     <div class="aui-list-item-input">
-                        <input type="password" placeholder="Password">
+                        <input type="text" placeholder="请输入市" id="city">
                     </div>
                 </div>
             </li>
             <li class="aui-list-item">
                 <div class="aui-list-item-inner">
                     <div class="aui-list-item-label">
-                        Text
+                        	区
                     </div>
                     <div class="aui-list-item-input">
-                        <input type="text" placeholder="Name">
+                        <input type="text" placeholder="请输入区或县" id="town">
                     </div>
                 </div>
             </li>
             <li class="aui-list-item">
                 <div class="aui-list-item-inner">
                     <div class="aui-list-item-label">
-                        Text
+                        	具体地址
                     </div>
                     <div class="aui-list-item-input">
-                        <input type="text" placeholder="Name">
-                    </div>
-                </div>
-            </li>
-            <li class="aui-list-item">
-                <div class="aui-list-item-inner">
-                    <div class="aui-list-item-label">
-                        Text
-                    </div>
-                    <div class="aui-list-item-input">
-                        <input type="text" placeholder="Name">
-                    </div>
-                </div>
-            </li>
-            <li class="aui-list-item">
-                <div class="aui-list-item-inner">
-                    <div class="aui-list-item-label">
-                        Text
-                    </div>
-                    <div class="aui-list-item-input">
-                        <input type="text" placeholder="Name">
-                    </div>
-                </div>
-            </li>
-            <li class="aui-list-item">
-                <div class="aui-list-item-inner">
-                    <div class="aui-list-item-label">
-                        Text
-                    </div>
-                    <div class="aui-list-item-input">
-                        <input type="text" placeholder="Name">
-                    </div>
-                </div>
-            </li>
-            <li class="aui-list-item">
-                <div class="aui-list-item-inner">
-                    <div class="aui-list-item-label">
-                        Text
-                    </div>
-                    <div class="aui-list-item-input">
-                        <input type="text" placeholder="Name">
-                    </div>
-                </div>
-            </li>
-            <li class="aui-list-item">
-                <div class="aui-list-item-inner">
-                    <div class="aui-list-item-label">
-                        Text
-                    </div>
-                    <div class="aui-list-item-input">
-                        <input type="text" placeholder="Name">
+                        <input type="text" placeholder="请输入具体地址" id="address">
                     </div>
                 </div>
             </li>
             </ul>
             </div>
-                    
-                </div>
-                <div class="aui-add-box">
+                
+                <input type="hidden" id="id" value=""  readonly="readonly">    
+                <div class="aui-add-box" id="update">
                     <button>保存修改</button>
                 </div>
 
@@ -155,17 +105,16 @@ button{
             </section>
         </section>
 		<footer class="aui-footer aui-footer-fixed">
-			<botton id="home" class="aui-tabBar-item "> <span
+			<button id="home" class="aui-tabBar-item "> <span
 				class="aui-tabBar-item-icon"> <i class="icon icon-home"></i>
-			</span> <span class="aui-tabBar-item-text">首页</span> </botton>
-			<botton id="news" class="aui-tabBar-item "> <span
+			</span> <span class="aui-tabBar-item-text">首页</span> </button>
+			<button id="news" class="aui-tabBar-item "> <span
 				class="aui-tabBar-item-icon"> <i class="icon icon-collage"></i>
-			</span> <span class="aui-tabBar-item-text">文章</span> </botton>
-			<botton id="my" class="aui-tabBar-item aui-tabBar-item-active">
+			</span> <span class="aui-tabBar-item-text">文章</span> </button>
+			<button id="my" class="aui-tabBar-item aui-tabBar-item-active">
 			<span class="aui-tabBar-item-icon"> <i class="icon icon-my"></i>
-			</span> <span class="aui-tabBar-item-text">我的</span> </span> </botton>
+			</span> <span class="aui-tabBar-item-text">我的</span> </button>
 		</footer>
-	</section>
 
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/themes/jquery.min.js"></script>
@@ -174,7 +123,7 @@ button{
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/themes/tab.js"></script>
 	<script type="text/javascript"
-		src="<%=basePath%>/static/js/my/information.js"></script>
+		src="<%=basePath%>/static/js/my/address.js"></script>
 	<script>WEB_ROOT="<%=basePath%>"
 	</script>
 </body>

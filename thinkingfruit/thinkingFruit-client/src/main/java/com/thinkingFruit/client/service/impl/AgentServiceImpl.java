@@ -51,7 +51,12 @@ public class AgentServiceImpl implements AgentService {
 			Agent agentById = agentDao.getAgentById(agent.getInviterId());
 			agent.setInviterUpperId(agentById.getInviterId());
 		}
-		agentDao.addAgent(agent);
+		Integer addAgent=agentDao.addAgent(agent);
+		Integer addAgentAddress=agentDao.addAgentAddress(agent.getId());
+		
+		if(addAgent==Constant.DEFALULT_ZERO_INT||addAgentAddress==Constant.DEFALULT_ZERO_INT) {
+			throw new WebServiceException(CodeMsg.REGISTER_FAIL);
+		}
 	}
 	
 	/**
@@ -142,6 +147,7 @@ public class AgentServiceImpl implements AgentService {
 	/**
 	 * 团队列表
 	 */
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public List<Agent> agentList(Long id){
 		Agent agentById = agentDao.getAgentById(id);
@@ -159,10 +165,25 @@ public class AgentServiceImpl implements AgentService {
 	/**
 	* 寻找邀请人
 	*/
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public Agent getInvite(Long id) {
 		Agent agent =agentDao.findinvite(id);
 		return agent;
+	}
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public Agent getAgentAddress(Long memberId) {
+		Agent agent=agentDao.getAgentAddress(memberId);
+		return agent;
+	}
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public void updateAgentAddress(Agent agent) {
+		Integer updateAgentAddress=agentDao.updateAgentAddress(agent);
+		if(updateAgentAddress==Constant.DEFALULT_ZERO_INT) {
+			throw new WebServiceException(CodeMsg.ADDRESS_UPDATE_ERROR);
+		}
 	}
 
 }

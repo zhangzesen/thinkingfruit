@@ -63,4 +63,8 @@ public interface AgentService {
 	 * @param agent 代理
 	 */
 	Agent getInvite(Long id);
+
+	Agent getAgentAddress(Long memberId);
+
+	void updateAgentAddress(Agent agent);
 }

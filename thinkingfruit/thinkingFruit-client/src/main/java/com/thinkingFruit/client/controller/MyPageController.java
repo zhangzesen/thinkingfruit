@@ -38,9 +38,9 @@ public class MyPageController {
 	/**
 	 *跳转地址页面
 	 * */
-	@RequestMapping(value="/adress",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
+	@RequestMapping(value="/address",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
 	public String adress(){
-		return "my/adress";
+		return "my/address";
 	}
 	/**
 	 *跳转地址页面

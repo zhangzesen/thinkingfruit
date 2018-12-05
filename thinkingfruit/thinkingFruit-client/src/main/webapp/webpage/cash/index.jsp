@@ -53,7 +53,7 @@ float:none;
             <section class="aui-scrollView">
             <div style="background:#fff;margin-bottom:10px" id="yysb">
 	    		<h4 style="height:40px;line-height:40px;text-indent:10px;color:#bbb;font-size:16px">可提现余额(元)</h4>
-	    		<p style="height:80px;line-height:60px;text-align:center;color:#666;font-size:24px">19000元</p>
+	    		<p id="balabce" style="height:80px;line-height:60px;text-align:center;color:#666;font-size:24px">19000元</p>
 	    	</div>
             <div class="aui-content aui-margin-b-15">
         <ul class="aui-list aui-form-list">
