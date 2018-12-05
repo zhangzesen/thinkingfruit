@@ -67,11 +67,22 @@
 <update id="putForward">
     update `t_thinkingfruit_mall_member`
     <set>
-        `balance` =`balance`- #{inviterId},
+        `balance` =`balance`- #{balance},
         `updateTime` = now(),
     </set>
-    where `id` = #{id}
+    where `id` = #{memberId}
 </update>
+	
+	<insert id="cashRecord">
+		insert into
+		`t_thinkingfruit_mall_member_balance`(
+			`memberId`,`balance`,`createTime`,`status`
+		)
+		values
+		(
+			#{memberId},#{balance},now(),1
+		)
+	</insert>
 <!-- 获取所有待审核的代理列表 -->
 <select id="paginationExamine" resultType="com.thinkingFruit.admin.entity.Member">
 	select m.`id`,m.`mobile`,m.`loginName`,m.`status`,m.`inviterUpperId`,

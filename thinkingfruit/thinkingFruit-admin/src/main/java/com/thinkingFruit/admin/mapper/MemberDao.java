@@ -55,7 +55,7 @@ public interface MemberDao {
 	 * @param memberBalance 代理余额
 	 * @return
 	 */
-	Integer putForward(@Param(value="memberBalance") MemberBalance memberBalance);
+	Integer putForward(MemberBalance memberBalance);
 	
 	/**
 	 * 获取所有待审核的代理列表
@@ -70,4 +70,6 @@ public interface MemberDao {
 	 * @return
 	 */
 	Integer examineUpdate(@Param(value="id")Long orderMemberId);
+
+	Integer cashRecord(MemberBalance memberBalance);
 }
