@@ -114,9 +114,31 @@ public class ClientOrder extends BaseEntity{
 	 * 	商品数量
 	 */
 	private Long commodityCount;
+	/**
+	   * 个人云仓库余额
+	 * */
+	private Long count;
+	/**
+	   * 商品图片
+	 * */
+	private String coverImagePath;
 	
-	
-	
+	public String getCoverImagePath() {
+		return coverImagePath;
+	}
+
+	public void setCoverImagePath(String coverImagePath) {
+		this.coverImagePath = coverImagePath;
+	}
+
+	public Long getCount() {
+		return count;
+	}
+
+	public void setCount(Long count) {
+		this.count = count;
+	}
+
 	public String getCommodityName() {
 		return commodityName;
 	}

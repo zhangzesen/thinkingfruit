@@ -14,4 +14,9 @@ public class CashController {
 	public String register(){
 		return "cash/index";
 	}
+	@RequestMapping(value="cashList",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
+	public String cashList(){
+		System.out.println("11111111111");
+		return "cash/cashList";
+	}
 }

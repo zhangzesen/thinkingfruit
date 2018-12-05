@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkingFruit.client.mapper.ClientOrderDao">
+	<select id="findList" resultType="com.thinkingFruit.client.entity.depot">
+	   select
+		t.`id` as `id`,
+		t.`commodityId` as `commodityId`,
+		t.`count` as `count`,
+		t.`createTime` as `createTime`,
+		c.`coverImagePath` as `coverImagePath`
+		from
+		`t_thinkingfruit_mall_depot` as t left join
+		`t_thinkingfruit_mall_commodity` as c on t.`commodityId`=c.`id`
+		where t.`memberId` = #{id}
+	</select>
+	<select id="findOrderList" resultType="com.thinkingFruit.client.entity.ClientOrder">
+	   select
+		t.`id` as `id`,
+		t.`commodityId` as `commodityId`,
+		c.`name` as `name`,
+		t.`commodityCount` as `commodityCount`,
+		t.`createTime` as `createTime`,
+		t.`orderStatus` as `orderStatus`,
+		c.`coverImagePath` as `coverImagePath`
+		from
+		`t_thinkingfruit_mall_order` as t
+		left join `t_thinkingfruit_mall_commodity` as c
+		on t.`commodityId`=c.`id`
+		where t.`orderMemberId` = #{id}
+	</select>
+	<select id="extractList" resultType="com.thinkingFruit.client.entity.ClientAddress">
+	   select
+	   m.`mobile` as mobile,
+	    t.`province` as province,
+	     t.`city` as city,
+	      t.`town` as town, 
+	       t.`address` as address,
+	         m.`name` as `memberName`
+		from
+		`t_thinkingfruit_mall_address` as t left join
+		`t_thinkingfruit_mall_member` as m on t.`memberId` =m.`id`
+		where t.`memberId` = #{memberId}
+	</select>
+</mapper>

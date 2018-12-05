@@ -31,6 +31,9 @@ input{
  #head{
     width: 15%;
     float: left;}
+    .time{
+        text-align: left;
+    }
 </style>
 </head>
 <body>
@@ -40,7 +43,7 @@ input{
                     <i class="icon icon-return"></i>
                 </a>
                 <div class="aui-center">
-                    <span class="aui-center-title">仓库信息</span>
+                    <span class="aui-center-title">提现记录</span>
                 </div>
             </header>
             <section class="aui-scrollView">
@@ -48,40 +51,68 @@ input{
                     <ul class="tab-nav b-line">
                         <li class="tab-nav-item tab-active">
                             <a href="javascript:;">
-                                <span>我的货物</span>
+                                <span>公司待确认</span>
                             </a>
                         </li>
-                        
+                        <li class="tab-nav-item">
+                            <a href="javascript:;">
+                                <span>公司已确认</span>
+                            </a>
+                        </li>
+                       
                     </ul>
                     <div class="tab-panel tab-panel-clear-line">
-                        <div class="tab-panel-item tab-active">
-                            <a href="javascript:;" class="aui-order-list">
+                        <div class="tab-panel-item tab-active" id="tab1">
+                            <div href="javascript:;" class="aui-order-list">
                                 <div class="aui-flex">
                                     <div class="aui-flex-box">
-                                        <h3>已买 </h3>
-                                    </div>
-                                    <div class="aui-order-pay">
-                                        <p>下级需求：3</p>
+                                        <h3>待结算</h3>
                                     </div>
                                 </div>
                                 <div class="aui-flex aui-flex-order">
                                     <div class="aui-order-img">
-                                        <img src="<%=basePath%>/static/images/banner/shili1.jpg" alt="">
+                                        <img src="<%=basePath%>/static/plugin/aui/images/gril.jpg" alt="">
                                     </div>
                                     <div class="aui-flex-box">
-                                        <h2>商品1</h2>
-                                        <h4>共 <i>10</i> 件商品 </h4>
+                                        <h2>银行</h2>
+                                        <h4>卡号：<i>1</i></h4>
+                                         <h4>金额：<i>1</i>元</h4>
                                     </div>
                                 </div>
-                                <div class="aui-flex aui-flex-button">
+                                     <div class="aui-flex aui-flex-button">
+                                <div class="aui-flex-box time">
+                                        <h3>时间</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-panel-item tab-active" id="tab1">
+                            <div href="javascript:;" class="aui-order-list">
+                                <div class="aui-flex">
                                     <div class="aui-flex-box">
-                                        <button class="aui-order-cancel">发货</button>
-                                        <button>补充货物</button>
+                                        <h3>已结算</h3>
                                     </div>
                                 </div>
-                            </a>
+                                <div class="aui-flex aui-flex-order">
+                                    <div class="aui-order-img">
+                                        <img src="<%=basePath%>/static/plugin/aui/images/gril.jpg" alt="">
+                                    </div>
+                                    <div class="aui-flex-box">
+                                        <h2>银行</h2>
+                                        <h4>卡号：<i>1</i></h4>
+                                         <h4>金额：<i>1</i>元</h4>
+                                    </div>
+                                </div>
+                                     <div class="aui-flex aui-flex-button">
+                                <div class="aui-flex-box time">
+                                        <h3>时间</h3>
+                                    </div>
+                                </div>
                             </div>
-                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
             </section>
         </section>
@@ -92,7 +123,7 @@ input{
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/themes/tab.js"></script>
 	<script type="text/javascript"
-		src="<%=basePath%>/static/js/my/information.js"></script>
+		src="<%=basePath%>/static/js/cash/cashList.js"></script>
 	<script>WEB_ROOT="<%=basePath%>"
 	</script>
 </body>

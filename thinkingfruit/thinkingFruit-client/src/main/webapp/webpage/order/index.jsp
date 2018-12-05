@@ -31,6 +31,9 @@ input{
  #head{
     width: 15%;
     float: left;}
+    .time{
+        text-align: left;
+    }
 </style>
 </head>
 <body>
@@ -40,7 +43,7 @@ input{
                     <i class="icon icon-return"></i>
                 </a>
                 <div class="aui-center">
-                    <span class="aui-center-title">佣金信息</span>
+                    <span class="aui-center-title">仓库信息</span>
                 </div>
             </header>
             <section class="aui-scrollView">
@@ -48,38 +51,26 @@ input{
                     <ul class="tab-nav b-line">
                         <li class="tab-nav-item tab-active">
                             <a href="javascript:;">
-                                <span>佣金</span>
+                                <span>我的货物</span>
                             </a>
                         </li>
                         <li class="tab-nav-item">
                             <a href="javascript:;">
-                                <span>邀请金</span>
+                                <span>待发货订单</span>
+                            </a>
+                        </li>
+                        <li class="tab-nav-item">
+                            <a href="javascript:;">
+                                <span>已发货订单</span>
                             </a>
                         </li>
                     </ul>
                     <div class="tab-panel tab-panel-clear-line">
-                        <div class="tab-panel-item tab-active">
-                            <a href="javascript:;" class="aui-order-list">
+                        <div class="tab-panel-item tab-active" id="tab1">
+                            <div class="aui-order-list">
                                 <div class="aui-flex">
                                     <div class="aui-flex-box">
-                                        <h3>订单号:</h3></h3>001</h3>
-                                    </div>
-                                    
-                                </div>
-                                <div class="aui-flex aui-flex-order">
-                                    <div class="aui-order-img">
-                                        <img src="<%=basePath%>/static/images/banner/shili1.jpg" alt="">
-                                    </div>
-                                    <div class="aui-flex-box">
-                                        <h2>商品1</h2>
-                                        <h4>共 <i>1</i>佣金<em>￥9.9</em></h4>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="javascript:;" class="aui-order-list">
-                                <div class="aui-flex">
-                                    <div class="aui-flex-box">
-                                        <h3>订单号:</h3></h3>001</h3>
+                                        <h3>已买入</h3>
                                     </div>
                                 </div>
                                 <div class="aui-flex aui-flex-order">
@@ -88,19 +79,26 @@ input{
                                     </div>
                                     <div class="aui-flex-box">
                                         <h2>商品1</h2>
-                                        <h4>共 <i>1</i>佣金<em>￥9.9</em></h4>
+                                        <h4>共 <i>10</i> 件商品 </h4>
                                     </div>
                                 </div>
-                            </a>
-                            
-                        </div>
-                        <div class="tab-panel-item">
-                        <a href="javascript:;" class="aui-order-list">
+                                <div class="aui-flex aui-flex-button">
+                                <div class="aui-flex-box time">
+                                        <h3>时间</h3>
+                                    </div>
+                                    <div class="aui-flex-box">
+                                        <button id="extract">提货</button>
+                                        <button id="supplement">补充货物</button>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="tab-panel-item" id="tab2">
+                            <div class="aui-order-list">
                                 <div class="aui-flex">
                                     <div class="aui-flex-box">
-                                        <h3>订单号:</h3></h3>001</h3>
+                                        <h3>已提交的订单</h3>
                                     </div>
-                                    
                                 </div>
                                 <div class="aui-flex aui-flex-order">
                                     <div class="aui-order-img">
@@ -108,15 +106,43 @@ input{
                                     </div>
                                     <div class="aui-flex-box">
                                         <h2>商品1</h2>
-                                        <h4>共 <i>1</i>邀请金<em>￥9.9</em></h4>
+                                        <h4>共 <i>10</i> 件商品 </h4>
                                     </div>
                                 </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-
+                                <div class="aui-flex aui-flex-button">
+                                <div class="aui-flex-box time">
+                                        <h3>时间</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                              <div class="tab-panel-item" id="tab3">
+                            <div class="aui-order-list">
+                                <div class="aui-flex">
+                                    <div class="aui-flex-box">
+                                        <h3>已发货的订单</h3>
+                                    </div>
+                                </div>
+                                <div class="aui-flex aui-flex-order">
+                                    <div class="aui-order-img">
+                                        <img src="<%=basePath%>/static/images/banner/shili1.jpg" alt="">
+                                    </div>
+                                    <div class="aui-flex-box">
+                                        <h2>商品1</h2>
+                                        <h4>共 <i>10</i> 件商品 </h4>
+                                    </div>
+                                </div>
+                                <div class="aui-flex aui-flex-button">
+                                <div class="aui-flex-box time">
+                                        <h3>时间</h3>
+                                    </div>
+                                    <div class="aui-flex-box">
+                                        <button>确认收货</button>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
             </section>
         </section>
 	<script type="text/javascript"
@@ -126,7 +152,7 @@ input{
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/themes/tab.js"></script>
 	<script type="text/javascript"
-		src="<%=basePath%>/static/js/my/information.js"></script>
+		src="<%=basePath%>/static/js/order/index.js"></script>
 	<script>WEB_ROOT="<%=basePath%>"
 	</script>
 </body>

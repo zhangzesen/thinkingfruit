@@ -245,7 +245,6 @@
 /* member */
 .aui-member-head {
     text-align: center;
-    background: url(../img/icon/head-bg.png) no-repeat left;
     background-size: cover;
     height: auto;
     padding-top: 2rem;
@@ -479,7 +478,7 @@
     border: 1px solid #ff1767;
 }
 
-/* 编辑地址 新建收货地址 */
+/* 缂栬緫鍦板潃 鏂板缓鏀惰揣鍦板潃 */
 .aui-Address-box {
     padding: 15px 15px 3px 15px;
     background: #fff;
@@ -636,7 +635,7 @@
     color: #999;
 }
 
-/* add address AUI素材网 免费下载网站模板 官网:http://a-ui.cn/ */
+/* add address AUI绱犳潗缃� 鍏嶈垂涓嬭浇缃戠珯妯℃澘 瀹樼綉:http://a-ui.cn/ */
 .mask-black {
     background-color: rgba(0, 0, 0, 0.4);
     position: fixed;
@@ -714,7 +713,7 @@
     -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
 }
-/* 城市列表样式 ----------------北京索引时代工作室(AUI素材网http://a-ui.cn/) */
+/* 鍩庡競鍒楄〃鏍峰紡 ----------------鍖椾含绱㈠紩鏃朵唬宸ヤ綔瀹�(AUI绱犳潗缃慼ttp://a-ui.cn/) */
 .m-cityselect {
     position: fixed;
     bottom: 0;
@@ -964,7 +963,7 @@
     align-items: center;
     width: 55px;
 }
-/* 全局弹窗样式 ----------------北京索引时代工作室(AUI素材网http://a-ui.cn/) */
+/* 鍏ㄥ眬寮圭獥鏍峰紡 ----------------鍖椾含绱㈠紩鏃朵唬宸ヤ綔瀹�(AUI绱犳潗缃慼ttp://a-ui.cn/) */
 .aui-cell-input {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
@@ -1043,7 +1042,7 @@
     font-size: 0.8rem;
 }
 
-/* 物流 */
+/* 鐗╂祦 */
 .aui-aircraft-img {
     margin-right: .8em;
     width: 45px;
@@ -1069,7 +1068,7 @@
     font-style: normal;
     color: #333;
 }
-/* 全局弹窗样式 ----------------北京索引时代工作室(AUI素材网http://a-ui.cn/) */
+/* 鍏ㄥ眬寮圭獥鏍峰紡 ----------------鍖椾含绱㈠紩鏃朵唬宸ヤ綔瀹�(AUI绱犳潗缃慼ttp://a-ui.cn/) */
 .aui-text-copy {
     border-radius: 20px;
     color: #333;
@@ -1151,7 +1150,7 @@
     top: 19px;
 }
 
-/* 填写订单   /* 全局弹窗样式 ----------------北京索引时代工作室(AUI素材网http://a-ui.cn/) */
+/* 濉啓璁㈠崟   /* 鍏ㄥ眬寮圭獥鏍峰紡 ----------------鍖椾含绱㈠紩鏃朵唬宸ヤ綔瀹�(AUI绱犳潗缃慼ttp://a-ui.cn/) */
 .aui-flex-fill .aui-flex-box h3 {
     color: #333333;
     margin-bottom: 0.3rem;
@@ -1173,7 +1172,7 @@
 .aui-flex-fill {
     position: relative;
 }
-/* 全局弹窗样式 ----------------北京索引时代工作室(AUI素材网http://a-ui.cn/) */
+/* 鍏ㄥ眬寮圭獥鏍峰紡 ----------------鍖椾含绱㈠紩鏃朵唬宸ヤ綔瀹�(AUI绱犳潗缃慼ttp://a-ui.cn/) */
 .aui-flex-fill:after {
     background-image: url("../img/icon/line.png");
     background-size: 50px;
@@ -1228,7 +1227,7 @@
 .aui-fill-region .aui-flex-box h3 {
     color: #3a3a3a;
 }
-/* 全局弹窗样式 ----------------北京索引时代工作室(AUI素材网http://a-ui.cn/) */
+/* 鍏ㄥ眬寮圭獥鏍峰紡 ----------------鍖椾含绱㈠紩鏃朵唬宸ヤ綔瀹�(AUI绱犳潗缃慼ttp://a-ui.cn/) */
 .aui-fill-text p {
     color: #646464;
     font-size: 0.8rem;
@@ -1259,7 +1258,7 @@
 .aui-fill-button {
     position: relative;
 }
-/* 全局弹窗样式 ----------------北京索引时代工作室(AUI素材网http://a-ui.cn/) */
+/* 鍏ㄥ眬寮圭獥鏍峰紡 ----------------鍖椾含绱㈠紩鏃朵唬宸ヤ綔瀹�(AUI绱犳潗缃慼ttp://a-ui.cn/) */
 
 .aui-fill-button button {
     background-image: -webkit-gradient(linear,left top,right top,from(#ff6143),to(#ff1767));
@@ -1277,7 +1276,7 @@
 .aui-footer-fill .aui-flex-box h3 {
     padding-left: 15px;
 }
-/* 全局弹窗样式 ----------------北京索引时代工作室(AUI素材网http://a-ui.cn/) */
+/* 鍏ㄥ眬寮圭獥鏍峰紡 ----------------鍖椾含绱㈠紩鏃朵唬宸ヤ綔瀹�(AUI绱犳潗缃慼ttp://a-ui.cn/) */
 .aui-footer-fill .aui-flex-box h3 em {
     text-decoration: initial;
     border: none;
@@ -1285,7 +1284,7 @@
     font-size: 0.9rem;
 }
 
-/* 订单详情   /* 全局弹窗样式 ----------------北京索引时代工作室(AUI素材网http://a-ui.cn/) */
+/* 璁㈠崟璇︽儏   /* 鍏ㄥ眬寮圭獥鏍峰紡 ----------------鍖椾含绱㈠紩鏃朵唬宸ヤ綔瀹�(AUI绱犳潗缃慼ttp://a-ui.cn/) */
 .aui-order-page-bg {
     background: url(../img/icon/order-bg.jpg) no-repeat left;
     background-size: cover;
@@ -1323,7 +1322,7 @@
     bottom: -40px;
     margin-left: -45%;
 }
-/* 全局弹窗样式 ----------------北京索引时代工作室(AUI素材网http://a-ui.cn/) */
+/* 鍏ㄥ眬寮圭獥鏍峰紡 ----------------鍖椾含绱㈠紩鏃朵唬宸ヤ綔瀹�(AUI绱犳潗缃慼ttp://a-ui.cn/) */
 .aui-order-page-white .aui-flex-fill:after {
     background-image: initial;
 }
@@ -1373,7 +1372,7 @@
     padding-left: 1.5rem;
 }
 
-/* 我的拼团  /* 全局弹窗样式 ----------------北京索引时代工作室(AUI素材网http://a-ui.cn/) */
+/* 鎴戠殑鎷煎洟  /* 鍏ㄥ眬寮圭獥鏍峰紡 ----------------鍖椾含绱㈠紩鏃朵唬宸ヤ綔瀹�(AUI绱犳潗缃慼ttp://a-ui.cn/) */
 .aui-scrollView-my .tab-nav-item {
     width: 50%;
 }
@@ -1429,12 +1428,12 @@
 .aui-flex-box-times h4 {
     color: #fff;
 }
-/* 全局弹窗样式 ----------------北京索引时代工作室(AUI素材网http://a-ui.cn/) */
+/* 鍏ㄥ眬寮圭獥鏍峰紡 ----------------鍖椾含绱㈠紩鏃朵唬宸ヤ綔瀹�(AUI绱犳潗缃慼ttp://a-ui.cn/) */
 .aui-flex-box-times .icon-time {
     background-size: 17px;
 }
 
-/* 团购邀请 */
+/* 鍥㈣喘閭�璇� */
 .aui-invite-box {
     background-image: -webkit-gradient(linear,left top,right top,from(#ff6143),to(#ff1767));
     background-image: -webkit-linear-gradient(left,#ff6143,#ff1767);
@@ -1459,7 +1458,7 @@
     text-decoration: initial;
     font-size: 0.8rem;
 }
-/* 全局弹窗样式 ----------------北京索引时代工作室(AUI素材网http://a-ui.cn/) */
+/* 鍏ㄥ眬寮圭獥鏍峰紡 ----------------鍖椾含绱㈠紩鏃朵唬宸ヤ綔瀹�(AUI绱犳潗缃慼ttp://a-ui.cn/) */
 .aui-fl-time {
     float: left;
     font-size: 14px;
@@ -1511,7 +1510,7 @@
     background: #fdfdfd;
     margin: 0 auto;
 }
-/* 全局弹窗样式 ----------------北京索引时代工作室(AUI素材网http://a-ui.cn/) */
+/* 鍏ㄥ眬寮圭獥鏍峰紡 ----------------鍖椾含绱㈠紩鏃朵唬宸ヤ綔瀹�(AUI绱犳潗缃慼ttp://a-ui.cn/) */
 .aui-invite-people .aui-tabBar-item-icon {
     width: 40px;
     height: 40px;
@@ -1548,7 +1547,7 @@
     display: block;
     -webkit-transform: scale(0.8)
 }
-/* 列表 ----------------北京索引时代工作室(AUI素材网http://a-ui.cn/) */
+/* 鍒楄〃 ----------------鍖椾含绱㈠紩鏃朵唬宸ヤ綔瀹�(AUI绱犳潗缃慼ttp://a-ui.cn/) */
 .aui-used-layout {
     background: #fff;
     position: relative;
@@ -1770,7 +1769,7 @@
     color: #ff1767;
 }
 
-/* 超值一元团  /* 全局弹窗样式 ----------------北京索引时代工作室(AUI素材网http://a-ui.cn/) */
+/* 瓒呭�间竴鍏冨洟  /* 鍏ㄥ眬寮圭獥鏍峰紡 ----------------鍖椾含绱㈠紩鏃朵唬宸ヤ綔瀹�(AUI绱犳潗缃慼ttp://a-ui.cn/) */
 .icon-share {
     background-image: url('data:image/png;base64,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');
 }
@@ -1834,7 +1833,7 @@
 .aui-flex-clear-line .aui-flex-box p {
     text-decoration: initial;
 }
-/* 倒计时样式 ----------------北京索引时代工作室(AUI素材网http://a-ui.cn/) */
+/* 鍊掕鏃舵牱寮� ----------------鍖椾含绱㈠紩鏃朵唬宸ヤ綔瀹�(AUI绱犳潗缃慼ttp://a-ui.cn/) */
 .time-item span {
     background: #ff3952;
     color: #fff;
@@ -2074,7 +2073,7 @@
     font-style: normal;
     font-size: 14px;
 }
-/* 下拉式抽屉 ----------------北京索引时代工作室(AUI素材网http://a-ui.cn/) */
+/* 涓嬫媺寮忔娊灞� ----------------鍖椾含绱㈠紩鏃朵唬宸ヤ綔瀹�(AUI绱犳潗缃慼ttp://a-ui.cn/) */
 .m-actionsheet {
     text-align: center;
     position: fixed;
@@ -2183,7 +2182,7 @@
     overflow: hidden;
     padding: 20px 0;
 }
-/* 全局弹窗样式 ----------------北京索引时代工作室(AUI素材网http://a-ui.cn/) */
+/* 鍏ㄥ眬寮圭獥鏍峰紡 ----------------鍖椾含绱㈠紩鏃朵唬宸ヤ綔瀹�(AUI绱犳潗缃慼ttp://a-ui.cn/) */
 
 .aui-coll-share-item {
     position: relative;
@@ -2421,7 +2420,7 @@
     border: none;
     padding: 0.3rem 1rem;
 }
-/* 底部信息 ----------------北京索引时代工作室(AUI素材网http://a-ui.cn/) */
+/* 搴曢儴淇℃伅 ----------------鍖椾含绱㈠紩鏃朵唬宸ヤ綔瀹�(AUI绱犳潗缃慼ttp://a-ui.cn/) */
 .aui-footer {
     width: 100%;
     position: relative;
