@@ -60,116 +60,53 @@ float:none;
             <li class="aui-list-item">
                 <div class="aui-list-item-inner">
                     <div class="aui-list-item-label">
-                        Text
+                        	提现金额
                     </div>
                     <div class="aui-list-item-input">
-                        <input type="text" placeholder="Name">
+                        <input type="text" id="cash" placeholder="请输入提现金额">
                     </div>
                 </div>
             </li>
             <li class="aui-list-item">
                 <div class="aui-list-item-inner">
                     <div class="aui-list-item-label">
-                        Password
+                        	开户银行
                     </div>
                     <div class="aui-list-item-input">
-                        <input type="password" placeholder="Password">
+                        <input type="text" id="openBank" placeholder="请输入开户银行">
                     </div>
                 </div>
             </li>
             <li class="aui-list-item">
                 <div class="aui-list-item-inner">
                     <div class="aui-list-item-label">
-                        Text
+                        	银行卡号
                     </div>
                     <div class="aui-list-item-input">
-                        <input type="text" placeholder="Name">
+                        <input type="text" id="bankNumber" placeholder="请输入银行卡号">
                     </div>
                 </div>
             </li>
             <li class="aui-list-item">
                 <div class="aui-list-item-inner">
                     <div class="aui-list-item-label">
-                        Text
+                        	备注
                     </div>
                     <div class="aui-list-item-input">
-                        <input type="text" placeholder="Name">
-                    </div>
-                </div>
-            </li>
-            <li class="aui-list-item">
-                <div class="aui-list-item-inner">
-                    <div class="aui-list-item-label">
-                        Text
-                    </div>
-                    <div class="aui-list-item-input">
-                        <input type="text" placeholder="Name">
-                    </div>
-                </div>
-            </li>
-            <li class="aui-list-item">
-                <div class="aui-list-item-inner">
-                    <div class="aui-list-item-label">
-                        Text
-                    </div>
-                    <div class="aui-list-item-input">
-                        <input type="text" placeholder="Name">
-                    </div>
-                </div>
-            </li>
-            <li class="aui-list-item">
-                <div class="aui-list-item-inner">
-                    <div class="aui-list-item-label">
-                        Text
-                    </div>
-                    <div class="aui-list-item-input">
-                        <input type="text" placeholder="Name">
-                    </div>
-                </div>
-            </li>
-            <li class="aui-list-item">
-                <div class="aui-list-item-inner">
-                    <div class="aui-list-item-label">
-                        Text
-                    </div>
-                    <div class="aui-list-item-input">
-                        <input type="text" placeholder="Name">
-                    </div>
-                </div>
-            </li>
-            <li class="aui-list-item">
-                <div class="aui-list-item-inner">
-                    <div class="aui-list-item-label">
-                        Text
-                    </div>
-                    <div class="aui-list-item-input">
-                        <input type="text" placeholder="Name">
+                        <input type="text" id="account" placeholder="备注">
                     </div>
                 </div>
             </li>
             </ul>
             </div>
                     
-                </div>
-                <div class="aui-add-box">
+                <div class="aui-add-box" id="withdrawal">
                     <button>确认提现</button>
                 </div>
 
 
             </section>
         </section>
-		<footer class="aui-footer aui-footer-fixed">
-			<botton id="home" class="aui-tabBar-item "> <span
-				class="aui-tabBar-item-icon"> <i class="icon icon-home"></i>
-			</span> <span class="aui-tabBar-item-text">首页</span> </botton>
-			<botton id="news" class="aui-tabBar-item "> <span
-				class="aui-tabBar-item-icon"> <i class="icon icon-collage"></i>
-			</span> <span class="aui-tabBar-item-text">文章</span> </botton>
-			<botton id="my" class="aui-tabBar-item aui-tabBar-item-active">
-			<span class="aui-tabBar-item-icon"> <i class="icon icon-my"></i>
-			</span> <span class="aui-tabBar-item-text">我的</span> </span> </botton>
-		</footer>
-	</section>
 
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/themes/jquery.min.js"></script>
@@ -178,7 +115,7 @@ float:none;
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/themes/tab.js"></script>
 	<script type="text/javascript"
-		src="<%=basePath%>/static/js/my/information.js"></script>
+		src="<%=basePath%>/static/js/cash/index.js"></script>
 	<script>WEB_ROOT="<%=basePath%>"
 	</script>
 </body>

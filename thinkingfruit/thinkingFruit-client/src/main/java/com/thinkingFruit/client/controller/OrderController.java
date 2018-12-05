@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -59,15 +58,15 @@ public class OrderController {
 		List<ClientOrder> ClientOrderList = clientOrderService.orderList(id);
 		return Results.successData(ClientOrderList);
 	}
-		/**
-		 *发货信息查询
-		 * */
-		@RequestMapping(value = "/extractInfo", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-		@ResponseBody
-		public Results<ClientAddress> extractInfo(HttpServletRequest request){
-			HttpSession session = request.getSession();
-			Long memberId = (Long)session.getAttribute("agentId");
-			ClientAddress ClientAddress = clientOrderService.extractList(memberId);
-			return Results.successData(ClientAddress);
-}
+	/**
+	 *发货信息查询
+	 * */
+	@RequestMapping(value = "/extractInfo", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Results<ClientAddress> extractInfo(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		Long memberId = (Long)session.getAttribute("agentId");
+		ClientAddress ClientAddress = clientOrderService.extractList(memberId);
+		return Results.successData(ClientAddress);
+	}
 }

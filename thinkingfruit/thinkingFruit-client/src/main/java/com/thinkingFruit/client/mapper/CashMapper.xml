@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkingFruit.client.mapper.CashDao">
+	<!-- 提现 -->
+	<insert id="withdrawal" parameterType="com.thinkingFruit.client.entity.Cash">
+		insert into
+		`t_thinkingfruit_mall_cash`(
+			`memberId`,`cash`,`status`,`account`,
+			`openBank`,`bankNumber`,
+			`createTime`
+		)
+		values
+		(
+			#{memberId},#{cash},0,#{account},
+			#{openBank},#{bankNumber},
+			now()
+		)
+	</insert>
+	
+	<!-- 获取提现列表 -->
+	<select id="list" resultType="com.thinkingFruit.client.entity.Cash">
+        select
+        c.`id` as `id`,
+        c.`memberId` as `memberId`,
+        c.`cash` as `cash`,
+        c.`status` as `status`,
+        c.`account` as `account`,
+        c.`bankNumber` as `bankNumber`,
+        c.`createTime` as `createTime`,
+        c.`updateTime` as `updateTime`,
+        c.`openBank` as `openBank`
+        from `t_thinkingfruit_mall_cash` as `c`
+		where c.`memberId` = #{memberId}
+    </select>
+</mapper>

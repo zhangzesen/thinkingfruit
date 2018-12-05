@@ -68,7 +68,7 @@
 			now(),0
 		)
 	</insert>
-	
+	<!-- 添加地址 -->
 	<insert id="addAgentAddress">
 		insert into
 		`t_thinkingfruit_mall_address`(
@@ -79,7 +79,7 @@
 			#{id},now()
 		)
 	</insert>
-	
+	<!-- 修改/完善个人信息 -->
 	<update id="updateInformation" parameterType="com.thinkingFruit.client.entity.Agent" >
 	    update `t_thinkingfruit_mall_member` as `m`
 	    <trim prefix="set" suffixOverrides="," suffix="where `m`.id = #{id}">
@@ -97,6 +97,7 @@
 			</if>
 		</trim>
 	</update>
+	
 	<!--团队列表-->
 	<select id="findAgentList" resultType="com.thinkingFruit.client.entity.Agent">
         select
@@ -110,6 +111,7 @@
         left join `t_thinkingfruit_mall_member_level` as `l` on `l`.level=`m`.memberLevelId
 		where m.`inviterId` = #{id}
     </select>
+    
     <!--查找上级-->
     <select id="findinvite" resultType="com.thinkingFruit.client.entity.Agent">
         select
@@ -124,7 +126,7 @@
 		where m.`id` = #{id}
     </select>
     
-    
+    <!-- 获取代理团队人数 -->
     <select id="getTeamNumbers" resultType="Long">
 		SELECT COUNT(*)+( SELECT COUNT(*) FROM `t_thinkingfruit_mall_member` as `m2` WHERE `m2`.inviterId=#{id})
 		FROM `t_thinkingfruit_mall_member` as `m`
@@ -134,10 +136,12 @@
 		)
 	</select>
 	
+	<!-- 获取团队总销售额 -->
 	<select id="getTeamSales" resultType="Double">
 		select sum(salesVolume) from t_thinkingfruit_mall_member where FIND_IN_SET(id,getChildrenList(#{id}))
 	</select>
 	
+	<!-- 获取代理地址 -->
 	<select id="getAgentAddress" resultType="com.thinkingFruit.client.entity.Agent">
 		select
 		a.`id` as `id`,
@@ -152,6 +156,7 @@
 		where a.`memberId` = #{memberId}
 	</select>
 	
+	<!-- 修改代理地址 -->
 	<update id="updateAgentAddress" parameterType="com.thinkingFruit.client.entity.Agent" >
 	    update `t_thinkingfruit_mall_address` as `a`
 	    <trim prefix="set" suffixOverrides="," suffix="where `a`.id = #{id}">

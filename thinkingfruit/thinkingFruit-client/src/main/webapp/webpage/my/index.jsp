@@ -99,6 +99,15 @@
 					<div class="aui-flex-box">
 						<h5>提现</h5>
 					</div>
+				</a>
+				
+				<a href="<%=basePath%>/cash/cashList" class="aui-flex b-line">
+					<div class="aui-course-icon">
+						<img src="<%=basePath%>/static/images/icon/icon-ad-004.png" alt="">
+					</div>
+					<div class="aui-flex-box">
+						<h5>提现记录</h5>
+					</div>
 				</a><a href="<%=basePath%>/order/depot" class="aui-flex b-line">
 					<div class="aui-course-icon">
 						<img src="<%=basePath%>/static/images/icon/icon-ad-004.png" alt="">

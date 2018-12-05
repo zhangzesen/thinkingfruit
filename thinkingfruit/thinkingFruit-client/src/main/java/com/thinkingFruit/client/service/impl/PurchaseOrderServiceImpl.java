@@ -73,11 +73,15 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 			throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
 		}
 	}
-
+	
+	/**
+	 * 获取交易订单列表
+	 */
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public List<ClientPurchaseOrder> purchaseOrderList(Long id) {
        List<ClientPurchaseOrder> purchaseOrder = clientPurchaseOrderDao.findList(id);
-		return purchaseOrder;
+       return purchaseOrder;
 	}
 
 }

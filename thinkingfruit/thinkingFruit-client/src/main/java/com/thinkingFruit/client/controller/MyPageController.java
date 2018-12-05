@@ -61,6 +61,11 @@ public class MyPageController {
 		return Results.success("信息修改成功");
 	}
 	
+	/**
+	 * 退出
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "/loginOut", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public Results<String> loginOut(HttpServletRequest request){

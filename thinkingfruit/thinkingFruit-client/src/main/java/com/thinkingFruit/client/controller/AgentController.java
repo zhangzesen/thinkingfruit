@@ -41,13 +41,17 @@ public class AgentController {
 	PasswordAgentHelper passwordAgentHelper;
 	
 	/**
-	 *首页跳转
+	 *跳转到注册
 	 * */
 	@RequestMapping(value="/register",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
 	public String register(){
 		return "user/register";
 	}
 	
+	/**
+	 * 跳转到登录
+	 * @return
+	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
 		return "user/login";
@@ -148,6 +152,11 @@ public class AgentController {
 		return Result.successData(agent);
 	}
 	
+	/**
+	 * 注册添加空地址
+	 * @param request
+	 * @return 地址信息
+	 */
 	@RequestMapping(value = "/address", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public Result<Agent> address(HttpServletRequest request) {
@@ -157,6 +166,11 @@ public class AgentController {
 		return Result.successData(getAgentAddress);
 	}
 	
+	/**
+	 * 修改地址信息
+	 * @param agent 代理
+	 * @return
+	 */
 	@RequestMapping(value = "/update", method = RequestMethod.PUT, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public Results<String> update(Agent agent){

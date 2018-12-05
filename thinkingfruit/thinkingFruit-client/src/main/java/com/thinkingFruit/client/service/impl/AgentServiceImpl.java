@@ -171,12 +171,20 @@ public class AgentServiceImpl implements AgentService {
 		Agent agent =agentDao.findinvite(id);
 		return agent;
 	}
+	
+	/**
+	 * 获取代理地址
+	 */
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public Agent getAgentAddress(Long memberId) {
 		Agent agent=agentDao.getAgentAddress(memberId);
 		return agent;
 	}
+	
+	/**
+	 * 修改代理地址
+	 */
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void updateAgentAddress(Agent agent) {

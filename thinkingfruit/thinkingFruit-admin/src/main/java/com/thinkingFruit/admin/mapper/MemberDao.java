@@ -70,6 +70,11 @@ public interface MemberDao {
 	 * @return
 	 */
 	Integer examineUpdate(@Param(value="id")Long orderMemberId);
-
+	
+	/**
+	 * 插入提现记录
+	 * @param memberBalance 提现金额和代理id
+	 * @return
+	 */
 	Integer cashRecord(MemberBalance memberBalance);
 }

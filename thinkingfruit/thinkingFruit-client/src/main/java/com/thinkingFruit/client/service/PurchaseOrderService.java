@@ -24,9 +24,9 @@ public interface PurchaseOrderService {
 	 */
 	void addPurchaseOrder(HttpServletRequest request, ClientPurchaseOrder clientPurchaseOrder);
 	/**
-	 * 	添加交易订单
+	 * 	获取交易订单列表
 	 * @param request
-	 * @param purchaseOrderList交易订单列表
+	 * @param purchaseOrderList 交易订单集合
 	 */
 	List<ClientPurchaseOrder> purchaseOrderList(Long id);
 	

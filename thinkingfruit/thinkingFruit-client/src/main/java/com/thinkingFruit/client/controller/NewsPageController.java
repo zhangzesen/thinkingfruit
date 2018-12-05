@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.thinkingFruit.client.entity.ClientCommodity;
 import com.thinkingFruit.client.entity.ClientNews;
 import com.thinkingFruit.client.service.ClientNewsService;
 import com.ysdevelop.common.result.Results;

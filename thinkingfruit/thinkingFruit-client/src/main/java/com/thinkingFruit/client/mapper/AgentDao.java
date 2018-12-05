@@ -69,10 +69,25 @@ public interface AgentDao {
 	 * @return 总销售额
 	 */
 	Double getTeamSales(Long id);
-
+	
+	/**
+	 * 添加地址
+	 * @param id 代理id
+	 * @return
+	 */
 	Integer addAgentAddress(@Param("id")Long id);
-
+	
+	/**
+	 * 获取代理地址
+	 * @param memberId 代理id
+	 * @return 代理信息
+	 */
 	Agent getAgentAddress(@Param("memberId")Long memberId);
-
+	
+	/**
+	 * 修改代理地址
+	 * @param agent 代理信息
+	 * @return
+	 */
 	Integer updateAgentAddress(Agent agent);
 }

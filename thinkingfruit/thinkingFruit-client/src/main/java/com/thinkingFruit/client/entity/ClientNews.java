@@ -1,7 +1,5 @@
 package com.thinkingFruit.client.entity;
 
-import java.util.List;
-
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.ysdevelop.common.entity.BaseEntity;
@@ -16,7 +14,7 @@ import com.ysdevelop.common.entity.BaseEntity;
  * @description 新闻实体类
  */
 public class ClientNews extends BaseEntity {
-	// 资讯名称
+		// 资讯名称
 		@NotEmpty(message="资讯名不能为空")
 		private String name;
 

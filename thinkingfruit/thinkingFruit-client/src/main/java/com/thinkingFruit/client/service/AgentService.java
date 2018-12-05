@@ -63,8 +63,17 @@ public interface AgentService {
 	 * @param agent 代理
 	 */
 	Agent getInvite(Long id);
-
+	
+	/**
+	 * 获取代理地址
+	 * @param memberId 代理id
+	 * @return 代理信息
+	 */
 	Agent getAgentAddress(Long memberId);
-
+	
+	/**
+	 * 修改代理地址
+	 * @param agent 代理信息
+	 */
 	void updateAgentAddress(Agent agent);
 }

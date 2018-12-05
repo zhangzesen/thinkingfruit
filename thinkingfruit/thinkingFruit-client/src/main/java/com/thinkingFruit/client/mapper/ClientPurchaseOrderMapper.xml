@@ -16,6 +16,8 @@
 			1,now(),#{orderTotalPrice}
 		)
 	</insert>
+	
+	<!-- 订单列表 -->
 	<select id="findList" resultType="com.thinkingFruit.client.entity.ClientPurchaseOrder">
 	   select
 		t.`id` as `id`,

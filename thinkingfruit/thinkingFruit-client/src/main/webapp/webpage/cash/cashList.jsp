@@ -63,40 +63,34 @@ input{
                     </ul>
                     <div class="tab-panel tab-panel-clear-line">
                         <div class="tab-panel-item tab-active" id="tab1">
-                            <div href="javascript:;" class="aui-order-list">
+                            <div class="aui-order-list">
                                 <div class="aui-flex">
                                     <div class="aui-flex-box">
-                                        <h3>待结算</h3>
+                                        <h3>已申请</h3>
                                     </div>
                                 </div>
                                 <div class="aui-flex aui-flex-order">
-                                    <div class="aui-order-img">
-                                        <img src="<%=basePath%>/static/plugin/aui/images/gril.jpg" alt="">
-                                    </div>
                                     <div class="aui-flex-box">
-                                        <h2>银行</h2>
-                                        <h4>卡号：<i>1</i></h4>
-                                         <h4>金额：<i>1</i>元</h4>
+                                        <h2>银行:</h2>
+                                        <h4>卡号:<i>1</i></h4>
+                                         <h4>金额:<i>1</i>元</h4>
                                     </div>
                                 </div>
-                                     <div class="aui-flex aui-flex-button">
-                                <div class="aui-flex-box time">
-                                        <h3>时间</h3>
+                                <div class="aui-flex aui-flex-button">
+                                	<div class="aui-flex-box time">
+                                        <h3>发起申请时间:</h3>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-panel-item tab-active" id="tab1">
-                            <div href="javascript:;" class="aui-order-list">
+                        <div class="tab-panel-item tab-active" id="tab2">
+                            <div  class="aui-order-list">
                                 <div class="aui-flex">
                                     <div class="aui-flex-box">
-                                        <h3>已结算</h3>
+                                        <h3>已完成</h3>
                                     </div>
                                 </div>
                                 <div class="aui-flex aui-flex-order">
-                                    <div class="aui-order-img">
-                                        <img src="<%=basePath%>/static/plugin/aui/images/gril.jpg" alt="">
-                                    </div>
                                     <div class="aui-flex-box">
                                         <h2>银行</h2>
                                         <h4>卡号：<i>1</i></h4>
@@ -105,7 +99,7 @@ input{
                                 </div>
                                      <div class="aui-flex aui-flex-button">
                                 <div class="aui-flex-box time">
-                                        <h3>时间</h3>
+                                        <h3>完成时间</h3>
                                     </div>
                                 </div>
                             </div>

@@ -46,6 +46,10 @@ public class MemberController {
 		return "member/index";
 	}
 	
+	/**
+	 * 跳转到审核界面
+	 * @return
+	 */
 	@RequestMapping(value="/examine",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
 	public String examine(){
 		return "member/examine";
