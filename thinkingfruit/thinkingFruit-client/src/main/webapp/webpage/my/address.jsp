@@ -104,17 +104,6 @@ button{
 
             </section>
         </section>
-		<footer class="aui-footer aui-footer-fixed">
-			<button id="home" class="aui-tabBar-item "> <span
-				class="aui-tabBar-item-icon"> <i class="icon icon-home"></i>
-			</span> <span class="aui-tabBar-item-text">首页</span> </button>
-			<button id="news" class="aui-tabBar-item "> <span
-				class="aui-tabBar-item-icon"> <i class="icon icon-collage"></i>
-			</span> <span class="aui-tabBar-item-text">文章</span> </button>
-			<button id="my" class="aui-tabBar-item aui-tabBar-item-active">
-			<span class="aui-tabBar-item-icon"> <i class="icon icon-my"></i>
-			</span> <span class="aui-tabBar-item-text">我的</span> </button>
-		</footer>
 
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/themes/jquery.min.js"></script>
@@ -124,7 +113,6 @@ button{
 		src="<%=basePath%>/static/plugin/themes/tab.js"></script>
 	<script type="text/javascript"
 		src="<%=basePath%>/static/js/my/address.js"></script>
-	<script>WEB_ROOT="<%=basePath%>"
-	</script>
+	<script>WEB_ROOT="<%=basePath%>"</script>
 </body>
 </html>

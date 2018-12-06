@@ -12,11 +12,11 @@ import com.ysdevelop.common.entity.BaseEntity;
  *
  * @description 仓库
  */
-public class depot extends BaseEntity{
+public class ClientDepot extends BaseEntity{
 
-	/**
-	 * 数量
-	 * */
+/**
+ * 数量
+ * */
 	private Long count;
 	/**
 	 * 会员Id

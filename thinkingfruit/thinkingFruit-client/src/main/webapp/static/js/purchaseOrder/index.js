@@ -3,7 +3,6 @@ var order_index_ops = {
 	init : function() {
 		this.initComponent();
 		this.eventBind();
-		this.getId();
 	},
 	initComponent : function() {
 		$.ajax({

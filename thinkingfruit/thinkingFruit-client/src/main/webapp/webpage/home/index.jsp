@@ -57,13 +57,6 @@
 				</div>
 				<div class="slider-pagination"></div>
 			</div>
-			<div style="background-color: #fff; margin: 0;"
-				class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
-				<ul class="layui-tab-title" style="text-align: center;">
-					<li class="layui-this">分类1</li>
-					<li>分类2</li>
-				</ul>
-			</div>
 			<section class="aui-content">
 
 				<div class="aui-card-list">

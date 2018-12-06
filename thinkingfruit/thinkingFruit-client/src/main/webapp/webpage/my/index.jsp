@@ -99,9 +99,7 @@
 					<div class="aui-flex-box">
 						<h5>提现</h5>
 					</div>
-				</a>
-				
-				<a href="<%=basePath%>/cash/cashList" class="aui-flex b-line">
+					<a href="<%=basePath%>/cash/cashList" class="aui-flex b-line">
 					<div class="aui-course-icon">
 						<img src="<%=basePath%>/static/images/icon/icon-ad-004.png" alt="">
 					</div>
@@ -117,9 +115,18 @@
 					</div>
 
 				</a>
-
-				
-				
+				<div class="divHeight"></div>
+				<div id="invite" class="aui-flex b-line">
+					<div class="aui-course-icon">
+						<img src="<%=basePath%>/static/images/icon/icon-ad-004.png" alt="">
+					</div>
+					<div class="aui-flex-box">
+						<h5>邀请好友</h5>
+					</div>
+				</div>
+                    <img src="" alt="" id="shareDiv">
+                    
+	
 				<div class="divHeight"></div>
 					<div class="aui-flex-box" style="text-align: center;" id="loginOut">
 						<h5 style="color: #ff3366;">用户退出</h5>
@@ -151,7 +158,9 @@
 		src="<%=basePath%>/static/plugin/themes/tab.js"></script>
 	<script type="text/javascript"
 		src="<%=basePath%>/static/js/my/index.js"></script>
-	<script>WEB_ROOT="<%=basePath%>"
-	</script>
+	<script>WEB_ROOT="<%=basePath%>"</script>
+	<script>memberId="<%=session.getAttribute("agentId")%>"</script>
+	<script type="text/javascript"
+		src="<%=basePath%>/static/plugin/layui/layui.all.js"></script>
 </body>
 </html>

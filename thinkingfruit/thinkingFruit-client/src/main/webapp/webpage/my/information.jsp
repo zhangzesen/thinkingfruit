@@ -44,7 +44,7 @@ input{
 
 	
         <section class="aui-flexView">
-            <header class="aui-navBar aui-navBar-fixed">
+            <header class="aui-navBar aui-navBar-fixed" style="background-color: #fff;">
                 <a href="javascript:history.back(-1)" class="aui-navBar-item">
                     <i class="icon icon-return"></i>
                 </a>
@@ -93,8 +93,8 @@ input{
                     <div class="aui-list-item-label">
                        	 性别
                     </div>
-                    <div class="aui-list-item-input">
-                        <select id="gender" lay-filter="reportType">
+                    <div class="aui-list-item-input" style="width: auto;margin: 0;">
+                        <select id="gender">
 							<option value="0">女</option>
 							<option value="1">男</option>
 						</select>
@@ -156,8 +156,8 @@ input{
                     <div class="aui-list-item-label">
                         	代理级别
                     </div>
-                    <div class="aui-list-item-input">
-                        <select id="memberLevelId" lay-filter="reportType" disabled="disabled">
+                    <div class="aui-list-item-input" style="width: auto;margin: 0;">
+                        <select id="memberLevelId" disabled="disabled">
 							<option value="1">联创</option>
 							<option value="2">春事</option>
 							<option value="3">总监</option>
@@ -178,17 +178,6 @@ input{
 
             </section>
         </section>
-		<footer class="aui-footer aui-footer-fixed">
-			<button id="home" class="aui-tabBar-item "> <span
-				class="aui-tabBar-item-icon"> <i class="icon icon-home"></i>
-			</span> <span class="aui-tabBar-item-text">首页</span> </button>
-			<button id="news" class="aui-tabBar-item "> <span
-				class="aui-tabBar-item-icon"> <i class="icon icon-collage"></i>
-			</span> <span class="aui-tabBar-item-text">文章</span> </button>
-			<button id="my" class="aui-tabBar-item aui-tabBar-item-active">
-			<span class="aui-tabBar-item-icon"> <i class="icon icon-my"></i>
-			</span> <span class="aui-tabBar-item-text">我的</span></button>
-		</footer>
 
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/themes/jquery.min.js"></script>
@@ -198,7 +187,6 @@ input{
 		src="<%=basePath%>/static/plugin/themes/tab.js"></script>
 	<script type="text/javascript"
 		src="<%=basePath%>/static/js/my/information.js"></script>
-	<script>WEB_ROOT="<%=basePath%>"
-	</script>
+	<script>WEB_ROOT="<%=basePath%>"</script>
 </body>
 </html>

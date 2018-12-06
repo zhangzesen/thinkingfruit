@@ -62,7 +62,6 @@
 		src="<%=basePath%>/static/plugin/themes/tab.js"></script>
 	<script type="text/javascript"
 		src="<%=basePath%>/static/js/my/index.js"></script>
-	<script>WEB_ROOT="<%=basePath%>"
-	</script>
+	<script>WEB_ROOT="<%=basePath%>"</script>
 </body>
 </html>

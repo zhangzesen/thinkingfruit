@@ -3,6 +3,7 @@ var my_index_ops = {
 	init : function() {
 		this.initComponent();
 		this.eventBind();
+		this.share();
 	},
 	initComponent : function() {
 		//修改完善信息
@@ -23,7 +24,6 @@ var my_index_ops = {
 				
 			});
 		}),
-		
 		$("#home").click(function(){
 			window.location.href = WEB_ROOT+'/home';
 		}),
@@ -34,8 +34,25 @@ var my_index_ops = {
 		$("#my").click(function(){
 			window.location.href = WEB_ROOT+'/my';
 		});
-
 	},
+	//二维码
+	share:function(){ 
+		$("#invite").click(function(){
+			 var html="<img src='http://qr.liantu.com/api.php?&bg=ffffff&fg=000000&text="+"http://localhost:8080/thinkingFruit-client/agent/login?memberId=" + memberId+"'>";
+        layer.open({
+              type: 1,
+              skin: '', //样式类名
+              title:false,
+              offset: 'auto',
+              area: ['300px', '300px'], //宽高
+              closeBtn: 1, //不显示关闭按钮
+              shade: 0,
+              anim: 2,
+              shadeClose: true, //开启遮罩关闭
+              content:html
+            });
+		});
+    },
 	eventBind : function() {
 		
 	},

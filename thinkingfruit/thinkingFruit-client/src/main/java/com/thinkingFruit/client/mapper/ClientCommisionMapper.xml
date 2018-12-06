@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkingFruit.client.mapper.ClientCommisionDao">
+	<select id="findCommisionList" resultType="com.thinkingFruit.client.entity.ClientCommision">
+	   select
+		t.`orderNo` as `orderNo`,
+		t.`totalAmount` as `totalAmount`,
+		t.`commision` as `commision`,
+		t.`InviteMoney` as `InviteMoney`,
+		t.`createTime` as `createTime`,
+		t.`commodityId` as `commodityId`,
+		t.`orderAmout` as `orderAmout`,
+		t.`status` as `status`,
+		c.`name` as `name`,
+		c.`coverImagePath` as `coverImagePath`
+		from
+		`t_thinkingfruit_mall_commision` as t left join
+		`t_thinkingfruit_mall_commodity` as c on t.`commodityId`=c.`id`
+		where t.`memberId` = #{id}
+	</select>
+</mapper>
