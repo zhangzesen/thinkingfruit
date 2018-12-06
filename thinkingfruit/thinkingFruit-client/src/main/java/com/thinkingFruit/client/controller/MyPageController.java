@@ -45,9 +45,9 @@ public class MyPageController {
 	/**
 	 *跳转地址页面
 	 * */
-	@RequestMapping(value="/about",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
+	@RequestMapping(value="/upgrade",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
 	public String about(){
-		return "my/about";
+		return "my/upgrade";
 	}
 	/**
 	 * 修改完善信息

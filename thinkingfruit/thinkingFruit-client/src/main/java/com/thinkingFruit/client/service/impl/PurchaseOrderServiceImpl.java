@@ -83,5 +83,13 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
        List<ClientPurchaseOrder> purchaseOrder = clientPurchaseOrderDao.findList(id);
        return purchaseOrder;
 	}
+	/**
+	 * 获取需求交易订单列表
+	 */
+	@Override
+	public List<ClientPurchaseOrder> purchaseOrderNeedList(Long id) {
+		List<ClientPurchaseOrder> purchaseNeedOrder = clientPurchaseOrderDao.findNeedList(id);
+		return purchaseNeedOrder;
+	}
 
 }

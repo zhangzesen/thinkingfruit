@@ -27,5 +27,11 @@ public interface ClientPurchaseOrderDao {
 	 * @return 
 	 */
 	List<ClientPurchaseOrder> findList(Long id);
+	/**
+	 * 	向我需求的订单列表
+	 * @param clientPurchaseOrder 交易订单
+	 * @return 
+	 */
+	List<ClientPurchaseOrder> findNeedList(Long id);
 
 }

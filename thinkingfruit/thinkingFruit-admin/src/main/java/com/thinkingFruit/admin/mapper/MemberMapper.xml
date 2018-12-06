@@ -83,10 +83,10 @@
 		#{memberId},#{balance},now(),1
 	)
 </insert>
-<!-- 获取所有待审核的代理列表 -->
+<!-- 获取所有注册待审核的代理列表 -->
 <select id="paginationExamine" resultType="com.thinkingFruit.admin.entity.Member">
 	select m.`id`,m.`mobile`,m.`loginName`,m.`status`,m.`inviterUpperId`,
-	m.`inviterId`
+	m.`inviterId`,m.`createTime`
 	from `t_thinkingfruit_mall_member`as `m`
 	<where>
 	   1=1
@@ -102,11 +102,39 @@
 	   and `m`.status =0
 	</where>
 </select>
+<!-- 获取所有升级待审核的代理列表 -->
+<select id="PaginationUpExamine" resultType="com.thinkingFruit.admin.entity.Member">
+	select m.`id`,m.`mobile`,m.`loginName`,m.`upStatus`,m.`inviterUpperId`,
+	m.`inviterId`,m.`createTime`
+	from `t_thinkingfruit_mall_member`as `m`
+	<where>
+	   1=1
+	   <if test="queryMap.loginName !=null and queryMap.loginName != ''">
+	      and m.`loginName` like CONCAT('%',#{queryMap.loginName},'%')
+	   </if>
+	   <if test="queryMap.startTime != null and queryMap.startTime != ''">
+      <![CDATA[ and m.`createTime` > #{queryMap.startTime} ]]>
+	   </if>
+	   <if test="queryMap.endTime != null and queryMap.endTime != ''">
+      <![CDATA[ and m.`createTime` < #{queryMap.endTime} ]]>
+	   </if>
+	   and `m`.upStatus=1
+	</where>
+</select>
 <!-- 修改待审核的代理通过 -->
 <update id="examineUpdate">
     update `t_thinkingfruit_mall_member`
     <set>
         `status` = 1,
+        `updateTime` = now()
+    </set>
+    where `id` = #{id}
+</update>
+<!-- 修改升级的代理通过 -->
+<update id="upExamineUpdate">
+    update `t_thinkingfruit_mall_member`
+    <set>
+        `upStatus` = 0,
         `updateTime` = now()
     </set>
     where `id` = #{id}

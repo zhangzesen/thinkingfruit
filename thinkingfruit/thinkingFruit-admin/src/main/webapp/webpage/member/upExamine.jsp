@@ -61,6 +61,6 @@ body{overflow-y: scroll;}
    }} 
     </script>
 	<script type="text/javascript"
-		src="<%=basePath%>/static/js/member/examine.js"></script>
+		src="<%=basePath%>/static/js/member/upExamine.js"></script>
 </body>
 </html>

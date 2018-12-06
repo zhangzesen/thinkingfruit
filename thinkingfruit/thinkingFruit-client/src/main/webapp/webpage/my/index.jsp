@@ -65,12 +65,12 @@
 					<div class="aui-flex-box">
 						<h5>完善信息</h5>
 					</div>
-				</a> <a href="<%=basePath%>/my/about" class="aui-flex">
+				</a> <a href="<%=basePath%>/my/upgrade" class="aui-flex">
 					<div class="aui-course-icon">
 						<img src="<%=basePath%>/static/images/icon/icon-ad-003.png" alt="">
 					</div>
 					<div class="aui-flex-box">
-						<h5>关于我们</h5>
+						<h5>升级</h5>
 					</div>
 				</a>
 				<div class="divHeight"></div>

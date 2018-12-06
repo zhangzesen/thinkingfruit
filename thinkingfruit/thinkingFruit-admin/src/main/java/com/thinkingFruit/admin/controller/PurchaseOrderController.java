@@ -178,4 +178,15 @@ public class PurchaseOrderController {
 		orderService.examineUpdate(purchaseOrder);
 		return Result.success("审核通过,生成第一笔订单");
 	}
+	/**
+	 * 代理审核，生成注册订单
+	 * @param purchaseOrder 交易订单
+	 * @return
+	 */
+	@RequestMapping(value = "/upExamineUpdate", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Result<String> upExamineUpdate(PurchaseOrder purchaseOrder){
+		orderService.upExamineUpdate(purchaseOrder);
+		return Result.success("代理升级成功");
+	}
 }

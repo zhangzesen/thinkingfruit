@@ -102,4 +102,10 @@ public interface OrderService {
 	 */
 	void examineUpdate(PurchaseOrder purchaseOrder);
 
+	/**
+	 * 往代理仓库添加商品库存，生成升级交易订单
+	 * @param purchaseOrder 交易订单
+	 */
+	void upExamineUpdate(PurchaseOrder purchaseOrder);
+
 }

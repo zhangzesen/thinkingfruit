@@ -54,7 +54,22 @@ public class MemberController {
 	public String examine(){
 		return "member/examine";
 	}
-	
+	/**
+	 * 跳转到升级审核界面
+	 * @return
+	 */
+	@RequestMapping(value="/upExamine",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
+	public String upExamine(){
+		return "member/upExamine";
+	}
+	/**
+	 * 跳转到代理邀请
+	 * @return
+	 */
+	@RequestMapping(value="/invite",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
+	public String invite(){
+		return "member/invite";
+	}
 	
 	/**
 	 * 首页代理列表
@@ -71,7 +86,7 @@ public class MemberController {
 	
 	
 	/**
-	 * 首页代理列表
+	 * 注册审核代理列表合计
 	 * @param request
 	 * @return 代理集合
 	 */
@@ -82,7 +97,18 @@ public class MemberController {
 		PageInfo<Member> pageInfo= memberService.paginationExamine(queryMap);
 		return Results.successPaginationData(pageInfo.getList(), pageInfo.getTotal());
 	}
-	
+	/**
+	 * 升级审核代理列表合计
+	 * @param request
+	 * @return 代理集合
+	 */
+	@RequestMapping(value="/upExamineList",method=RequestMethod.GET,produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public Results<List<Member>> upExamineList(HttpServletRequest request){
+		Map<String, String> queryMap = HttpUtils.getParameterMap(request);
+		PageInfo<Member> pageInfo= memberService.upPaginationUpExamine(queryMap);
+		return Results.successPaginationData(pageInfo.getList(), pageInfo.getTotal());
+	}
 	/**
 	 * 跳转代理修改页面
 	 * @return

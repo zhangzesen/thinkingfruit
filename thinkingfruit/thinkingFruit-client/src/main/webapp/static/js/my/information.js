@@ -5,6 +5,19 @@ var my_information_ops = {
 		this.eventBind();
 	},
 	initComponent : function() {
+		 layui.use('upload', function() {
+			 var upload = layui.upload;
+			//封面图片上传
+			 upload.render({
+					elem: '#set',
+					url : WEB_ROOT+'/upload/image?imageType=2',
+					done : function(res) {
+						// 上传成功返回值，必须为json格式
+						console.log("res"+res);
+						$("img[name='HeadPortrait']").attr('src',WEB_ROOT + res.data.imagePath); 
+					}
+			 });
+		 });
 		$.ajax({
 			url:WEB_ROOT+'/agent/information',
 			data:{},
@@ -39,6 +52,7 @@ var my_information_ops = {
 		});
 
 	},
+	
 	eventBind : function() {
 		$("#update").click(function(){
 			var id=$('#id').val();

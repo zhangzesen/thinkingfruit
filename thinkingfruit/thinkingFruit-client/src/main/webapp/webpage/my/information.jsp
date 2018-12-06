@@ -38,6 +38,9 @@ input{
  .aui-add-box{
      margin-top: -4%;
  }
+ .layui-upload-file{
+     display:none;
+ }
 </style>
 </head>
 <body>
@@ -56,16 +59,16 @@ input{
                 </a>
             </header>
             <section class="aui-scrollView">
-                <div class="aui-user-set-box">
-                    <a href="javascript:;" class="aui-flex b-line">
+                <div id="set" class="aui-user-set-box" style="background-color: #fff;">
+                    <div class="aui-flex b-line">
                         <div class="aui-flex-box">
                             <h5>修改头像</h5>
                         </div>
                         <div class="aui-flex-arrow">
-                            <img id="avatar" src="themes/img/user/user-logo-003.png" alt="">
+                            <img name="HeadPortrait" src="<%=basePath%>/static/plugin/aui/images/gril.jpg" alt="">
                         </div>
-                    </a>
-                    <ul class="aui-list aui-form-list">
+                    </div>
+                    </div>
             <div class="aui-content aui-margin-b-15">
         <ul class="aui-list aui-form-list">
         <li class="aui-list-item">
@@ -170,7 +173,7 @@ input{
             </ul>
             </div>
                     
-                </div>
+                
                 <div class="aui-add-box" id="update">
                     <button>保存修改</button>
                 </div>
@@ -188,5 +191,8 @@ input{
 	<script type="text/javascript"
 		src="<%=basePath%>/static/js/my/information.js"></script>
 	<script>WEB_ROOT="<%=basePath%>"</script>
+	<script type="text/javascript"
+		src="<%=basePath%>/static/plugin/layui/layui.all.js"></script>
+	
 </body>
 </html>

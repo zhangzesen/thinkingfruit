@@ -29,5 +29,11 @@ public interface PurchaseOrderService {
 	 * @param purchaseOrderList 交易订单集合
 	 */
 	List<ClientPurchaseOrder> purchaseOrderList(Long id);
+	/**
+	 * 	获取需求交易订单列表
+	 * @param request
+	 * @param purchaseOrderList 交易需求订单集合
+	 */
+	List<ClientPurchaseOrder> purchaseOrderNeedList(Long id);
 	
 }

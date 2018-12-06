@@ -38,4 +38,16 @@ public class PurchaseOrderController {
 		List<ClientPurchaseOrder> PurchaseOrderList = purchaseOrderService.purchaseOrderList(id);
 		return Results.successData(PurchaseOrderList);
 	}
+	/**
+	 * 订单列表
+	 * */
+	@RequestMapping(value = "/needList", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Results<List<ClientPurchaseOrder>> needList(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		Long id = (Long)session.getAttribute("agentId");
+		List<ClientPurchaseOrder> purchaseOrderNeedList = purchaseOrderService.purchaseOrderNeedList(id);
+		return Results.successData(purchaseOrderNeedList);
+	}
+	
 }

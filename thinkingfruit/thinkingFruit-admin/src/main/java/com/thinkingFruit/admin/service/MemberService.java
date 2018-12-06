@@ -50,9 +50,15 @@ public interface MemberService {
 	void putForward(MemberBalance memberBalance);
 	
 	/**
-	 * 获取所有待审核代理
+	 * 获取所有注册待审核代理
 	 * @param queryMap
 	 * @return 待审核代理分页
 	 */
 	PageInfo<Member> paginationExamine(Map<String, String> queryMap);
+	/**
+	 * 获取所有升级待审核代理
+	 * @param queryMap
+	 * @return 待审核代理分页
+	 */
+	PageInfo<Member> upPaginationUpExamine(Map<String, String> queryMap);
 }

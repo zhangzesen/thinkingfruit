@@ -154,12 +154,18 @@
 								<a href="<%=basePath%>/member" target="main">代理列表</a>
 							</dd>
 							<dd class="">
-								<a href="<%=basePath%>/member/examine" target="main">代理审核</a>
+								<a href="<%=basePath%>/member/examine" target="main">注册代理审核</a>
+							</dd>
+							<dd class="">
+								<a href="<%=basePath%>/member/upExamine" target="main">升级代理审核</a>
+							</dd>
+							<dd class="">
+								<a href="<%=basePath%>/member/invite" target="main">代理邀请</a>
 							</dd>
 						</dl>
 					</li>
 					</shiro:hasPermission>
-<shiro:hasPermission name="business:manager">
+<shiro:hasPermission name="user:manager">
 					<li name="left_mall" class="layui-nav-item edging"><a
 						name="left_a" href="javascript:;" target="main"> <i
 							class="layui-icon">&#xe65e;</i><cite>设置</cite>
@@ -172,7 +178,7 @@
 						</dl>
 					</li>
 					</shiro:hasPermission>
-					<shiro:hasPermission name="news:manager ">
+					<shiro:hasPermission name="user:manager">
 					<li name="left_mall" class="layui-nav-item edging"><a
 						name="left_a" href="<%=basePath%>/cash" target="main"> <i
 							class="layui-icon">&#xe629;</i> <cite>提取</cite>

@@ -36,4 +36,23 @@
 		where t.`orderMemberId` = #{id}
 		and t.`orderStatus` != 3
 	</select>
+	<!-- 订单列表 -->
+	<select id="findNeedList" resultType="com.thinkingFruit.client.entity.ClientPurchaseOrder">
+	   select
+		t.`id` as `id`,
+		t.`orderNo` as `orderNo`,
+		t.`orderMemberName` as `orderMemberName`,
+		t.`commodityCount` as `commodityCount`,
+		t.`commodityName` as `commodityName`,
+		t.`commodityId` as `commodityId`,
+		t.`orderMemberId` as `orderMemberId`,
+		t.`commodityPrice` as `commodityPrice`,
+		t.`orderStatus` as `orderStatus`,
+		t.`orderTotalPrice` as `orderTotalPrice`,
+		t.`createTime` as `createTime`
+		from
+		`t_thinkingfruit_mall_order_purchase` as t
+		where t.`inviterId` = #{id}
+		and t.`orderStatus` != 3
+	</select>
 </mapper>

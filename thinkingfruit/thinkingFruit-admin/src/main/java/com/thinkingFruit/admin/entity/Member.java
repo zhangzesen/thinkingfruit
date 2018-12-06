@@ -69,6 +69,14 @@ public class Member extends BaseEntity{
 	/**
 	 * 代理级别名
 	 */
+	private Long upStatus;
+	
+	public Long getUpStatus() {
+		return upStatus;
+	}
+	public void setUpStatus(Long upStatus) {
+		this.upStatus = upStatus;
+	}
 	private String memberLevelName;
 	
 	public String getMemberLevelName() {

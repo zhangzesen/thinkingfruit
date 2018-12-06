@@ -31,7 +31,21 @@ var order_index_ops = {
 		                    +'<div class="aui-flex-box time">'+"<h3>"+res.data[i].name+"</h3>"+"</div>"+"</div>"
 		                    +"</div>")
 				    break;
-				    case "4":
+				}
+				}
+			}
+		});
+		$.ajax({
+			url:WEB_ROOT + "/purchaseOrder/needList",
+			type:'get',
+			dataType:'json',
+			success:function(res){
+				console.log(res.data);
+				for (var i = 0; i < res.data.length; i++) {
+					console.log(res.data[i].orderStatus);
+					var status = res.data[i].orderStatus;
+					switch (status) {
+				    case "1":
 				    $("#tab3").append('<div class="aui-order-list">'+'<div class="aui-flex">'
 		                    +'<div class="aui-flex-box">'+"<h4>"+"下级"+"<i>"+res.data[i].name+"</i>"+"的需求"+"</h4>"+"</div>"+"</div>"+"<div class='aui-flex aui-flex-order'>"+"<div class='aui-order-img'>"
 		                    +'<img src="'+res.data[i].name+'" alt="">'+"</div>"+'<div class="aui-flex-box">'+"<h2>"+res.data[i].name+"</h2>"
@@ -39,7 +53,7 @@ var order_index_ops = {
 		                    +'<div class="aui-flex-box time">'+"<h3>"+res.data[i].name+"</h3>"+"</div>"+'<div class="aui-flex-box">'
 		                    +'<button class="aui-order-cancel">'+"发货"+"</button>"+"</div>"+"</div>"+"</div>")
 		            break;
-				    case "5":
+				    case "2":
 				    $("#tab4").append('<div class="aui-order-list">'+'<div class="aui-flex">'
 		                    +'<div class="aui-flex-box">'+"<h4>"+"下级"+"<i>"+res.data[i].name+"</i>"+"的需求"+"</h4>"+"</div>"+"</div>"+"<div class='aui-flex aui-flex-order'>"+"<div class='aui-order-img'>"
 		                    +'<img src="'+res.data[i].name+'" alt="">'+"</div>"+'<div class="aui-flex-box">'+"<h2>"+res.data[i].name+"</h2>"
@@ -51,7 +65,6 @@ var order_index_ops = {
 				}
 			}
 		});
-		
 		
 
 	},

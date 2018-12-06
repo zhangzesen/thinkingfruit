@@ -287,4 +287,54 @@ public class OrderServiceImpl implements OrderService{
 			throw new WebServiceException(CodeMsg.DEPOT_FAIL);
 		}
 	}
+
+	/**
+	 *  往代理仓库添加商品库存，生成交易订单
+	 */
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public void upExamineUpdate(PurchaseOrder purchaseOrder) {
+		Member memberById = memberDao.memberById(purchaseOrder.getOrderMemberId());
+		purchaseOrder.setOrderMemberName(memberById.getLoginName());
+		String orderNo=OrderNumberGeneratorUtil.get().toString();
+		System.out.println("orderNo"+orderNo);
+		purchaseOrder.setOrderNo(orderNo);
+		
+		Commodity findCommodityById = commodityDao.findCommodityById(purchaseOrder.getCommodityId());
+		purchaseOrder.setCommodityName(findCommodityById.getName());
+		
+		Double price;
+		switch (purchaseOrder.getMemberLevel().toString()) {
+        case "1":
+        	price=findCommodityById.getFirstPrice();
+			break;
+        case "2":
+        	price=findCommodityById.getSecondPrice();
+			break;
+        case "3":
+        	price=findCommodityById.getThirdPrice();
+			break;
+        case "4":
+        	price=findCommodityById.getFourthPrice();
+			break;
+        case "5":
+        	price=findCommodityById.getFifthPrice();
+			break;
+        default:
+        	price=0.0;
+			break;
+		}
+		purchaseOrder.setCommodityPrice(price);
+		purchaseOrder.setOrderTotalPrice(price*purchaseOrder.getCommodityCount());
+		purchaseOrder.setIsFirst("0");
+		Integer addFirstPurchase=orderDao.addFirstPurchase(purchaseOrder);
+		Integer examineUpdate=memberDao.upExamineUpdate(purchaseOrder.getOrderMemberId());
+		if (addFirstPurchase == Constant.DEFALULT_ZERO_INT||examineUpdate== Constant.DEFALULT_ZERO_INT) {
+			throw new WebServiceException(CodeMsg.EXAMINE_FAIL);
+		}
+		Integer addDepot=orderDao.addDepot(purchaseOrder);
+		if(addDepot== Constant.DEFALULT_ZERO_INT) {
+			throw new WebServiceException(CodeMsg.DEPOT_FAIL);
+		}
+	}
 }

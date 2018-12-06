@@ -101,7 +101,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	/**
-	 * 获取所有待审核代理
+	 * 获取所有注册待审核代理
 	 */
 	@Override
 	public PageInfo<Member> paginationExamine(Map<String, String> queryMap) {
@@ -115,6 +115,25 @@ public class MemberServiceImpl implements MemberService {
 		Integer integerPageNum = Integer.parseInt(pageNum);
 		PageHelper.startPage(integerPageNum, integerPageSize, Boolean.TRUE);
 		List<Member> paginationMember = memberDao.paginationExamine(queryMap);
+		PageInfo<Member> pageInfo = new PageInfo<>(paginationMember);
+		return pageInfo;
+	}
+    
+	/**
+	 * 获取所有升级待审核代理
+	 */
+	@Override
+	public PageInfo<Member> upPaginationUpExamine(Map<String, String> queryMap) {
+		String pageSize = queryMap.get("limit");
+		String pageNum = queryMap.get("page");
+		if (pageSize == null || pageNum == null) {
+			throw new WebServiceException(CodeMsg.SERVER_ERROR);
+		}
+		
+		Integer integerPageSize = Integer.parseInt(pageSize);
+		Integer integerPageNum = Integer.parseInt(pageNum);
+		PageHelper.startPage(integerPageNum, integerPageSize, Boolean.TRUE);
+		List<Member> paginationMember = memberDao.PaginationUpExamine(queryMap);
 		PageInfo<Member> pageInfo = new PageInfo<>(paginationMember);
 		return pageInfo;
 	}

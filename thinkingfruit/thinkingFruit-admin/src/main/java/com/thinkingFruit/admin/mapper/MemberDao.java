@@ -58,9 +58,9 @@ public interface MemberDao {
 	Integer putForward(MemberBalance memberBalance);
 	
 	/**
-	 * 获取所有待审核的代理列表
+	 * 获取所有注册待审核的代理列表
 	 * @param queryMap
-	 * @return 待审核的代理集合
+	 * @return 注册待审核的代理集合
 	 */
 	List<Member> paginationExamine(@Param(value="queryMap")Map<String, String> queryMap);
 	
@@ -77,4 +77,17 @@ public interface MemberDao {
 	 * @return
 	 */
 	Integer cashRecord(MemberBalance memberBalance);
+
+	/**
+	 * 获取所有升级待审核的代理列表
+	 * @param queryMap
+	 * @return 升级待审核的代理集合
+	 */
+	List<Member> PaginationUpExamine(@Param(value="queryMap")Map<String, String> queryMap);
+	/**
+	 * 获取所有升级待审核的代理列表
+	 * @param queryMap
+	 * @return 升级待审核的代理集合
+	 */
+	Integer upExamineUpdate(Long orderMemberId);
 }
