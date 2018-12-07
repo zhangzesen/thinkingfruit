@@ -18,4 +18,20 @@
 		`t_thinkingfruit_mall_commodity` as c on t.`commodityId`=c.`id`
 		where t.`memberId` = #{id}
 	</select>
+	
+	<!-- 添加佣金记录 -->
+	<insert id="addClientCommision" parameterType="com.thinkingFruit.client.entity.ClientCommision">
+		insert into
+		`t_thinkingfruit_mall_commision`(
+			`orderNo`,`totalAmount`,`inviterTotalMoney`,`commision`,
+			`commisionProportion`,`InviteMoney`,`commodityId`,`memberId`,`inviterId`,`inviterUpperId`,
+			`createTime`
+		)
+		values
+		(
+			#{orderNo},#{totalAmount},#{inviterTotalMoney},#{commision},
+			#{commisionProportion},#{InviteMoney},#{commodityId},#{memberId},#{inviterId},#{inviterUpperId},
+			now()
+		)
+	</insert>
 </mapper>

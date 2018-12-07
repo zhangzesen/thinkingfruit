@@ -28,8 +28,10 @@ public class PurchaseOrderController {
 		return "purchaseOrder/index";
 	}
 	/**
-	 * 订单列表
-	 * */
+	 * 	向上级购买订单列表
+	 * @param request
+	 * @return 上级购买订单列表
+	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public Results<List<ClientPurchaseOrder>> list(HttpServletRequest request){
@@ -39,8 +41,10 @@ public class PurchaseOrderController {
 		return Results.successData(PurchaseOrderList);
 	}
 	/**
-	 * 订单列表
-	 * */
+	 * 	下级向我购买订单列表
+	 * @param request
+	 * @return 下级向我购买订单列表
+	 */
 	@RequestMapping(value = "/needList", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public Results<List<ClientPurchaseOrder>> needList(HttpServletRequest request){
@@ -50,4 +54,28 @@ public class PurchaseOrderController {
 		return Results.successData(purchaseOrderNeedList);
 	}
 	
+	/**
+	 * 	确认购买订单发货
+	 * @param request
+	 * @param orderNo 订单号
+	 * @return
+	 */
+	@RequestMapping(value = "/confirm", method = RequestMethod.PUT, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Results<String> confirm(HttpServletRequest request,String orderNo){
+		purchaseOrderService.confirmPurchaseOrder(request,orderNo);
+		return Results.success("发货成功");
+	}
+	
+	/**
+	 * 	取消向上级购买订单
+	 * @param orderNo 订单号
+	 * @return
+	 */
+	@RequestMapping(value = "/cancel", method = RequestMethod.PUT, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Results<String> cancel(String orderNo){
+		purchaseOrderService.cancelPurchaseOrder(orderNo);
+		return Results.success("取消订单成功");
+	}
 }

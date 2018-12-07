@@ -30,12 +30,16 @@
 		t.`commodityPrice` as `commodityPrice`,
 		t.`orderStatus` as `orderStatus`,
 		t.`orderTotalPrice` as `orderTotalPrice`,
-		t.`createTime` as `createTime`
+		t.`createTime` as `createTime`,
+		c.`coverImagePath` as `coverImagePath`,
+		t.`updateTime` as `updateTime`
 		from
-		`t_thinkingfruit_mall_order_purchase` as t
+		`t_thinkingfruit_mall_order_purchase` as `t`
+		left join `t_thinkingfruit_mall_commodity` as `c` on `t`.commodityId=`c`.id
 		where t.`orderMemberId` = #{id}
 		and t.`orderStatus` != 3
 	</select>
+	
 	<!-- 订单列表 -->
 	<select id="findNeedList" resultType="com.thinkingFruit.client.entity.ClientPurchaseOrder">
 	   select
@@ -55,4 +59,86 @@
 		where t.`inviterId` = #{id}
 		and t.`orderStatus` != 3
 	</select>
+	
+	<!-- 获取仓库 -->
+	<select id="getDepot" resultType="com.thinkingFruit.client.entity.ClientDepot">
+	   select
+		d.`id` as `id`,
+		d.`memberId` as `memberId`,
+		d.`commodityId` as `commodityId`,
+		d.`count` as `count`,
+		d.`createTime` as `createTime`
+		from
+		`t_thinkingfruit_mall_depot` as `d`
+		where d.`memberId` = #{memberId}
+		and d.`commodityId` = #{commodityId}
+	</select>
+	
+	<!-- 修改仓库 -->
+	<update id="updateDepot" parameterType="com.thinkingFruit.client.entity.ClientDepot" >
+	    update `t_thinkingfruit_mall_depot` as `d`
+	    <trim prefix="set" suffixOverrides="," suffix="where `d`.id = #{id}">
+			<if test="count != null">
+				d.`count` = #{count},
+			</if>
+			<if test="id != null">
+				d.`updateTime` = now(),
+			</if>
+		</trim>
+	</update>
+	
+	<!-- 添加仓库 -->
+	<insert id="addDepot">
+		insert into
+		`t_thinkingfruit_mall_depot`(
+			`memberId`,`commodityId`,`count`,`createTime`
+		)
+		values
+		(
+			#{memberId},#{commodityId},#{count},now()
+		)
+	</insert>
+	
+	<!-- 获取下级向上级购买订单  -->
+	<select id="getPurchaseByorderNo" resultType="com.thinkingFruit.client.entity.ClientPurchaseOrder">
+	   select
+		p.`id` as `id`,
+		p.`orderNo` as `orderNo`,
+		p.`orderMemberId` as `orderMemberId`,
+		p.`memberLevel` as `memberLevel`,
+		p.`orderMemberName` as `orderMemberName`,
+		p.`commodityId` as `commodityId`,
+		p.`commodityCount` as `commodityCount`,
+		p.`commodityName` as `commodityName`,
+		p.`commodityPrice` as `commodityPrice`,
+		p.`orderStatus` as `orderStatus`,
+		p.`createTime` as `createTime`,
+		p.`updateTime` as `updateTime`,
+		p.`orderTotalPrice` as `orderTotalPrice`,
+		p.`inviterId` as `inviterId`,
+		p.`confirmTime` as `confirmTime`
+		from
+		`t_thinkingfruit_mall_order_purchase` as `p`
+		where p.`orderNo` = #{orderNo}
+	</select>
+	
+	<!--购买订单发货  -->
+	<update id="updatePurchaseStatus">
+		update `t_thinkingfruit_mall_order_purchase` as `p`
+	    <set>
+	    orderStatus = #{orderStatus},
+	    confirmTime=now()
+	    </set> 
+	    where `p`.orderNo = #{orderNo}
+	</update>
+	
+	<!-- 取消购买订单 -->
+	<update id="cancelPurchaseStatus">
+		update `t_thinkingfruit_mall_order_purchase` as `p`
+	    <set>
+	    orderStatus = #{orderStatus},
+	    updateTime=now()
+	    </set> 
+	    where `p`.orderNo = #{orderNo}
+	</update>
 </mapper>

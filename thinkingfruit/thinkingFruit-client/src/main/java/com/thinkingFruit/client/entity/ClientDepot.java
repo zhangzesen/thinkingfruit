@@ -14,9 +14,9 @@ import com.ysdevelop.common.entity.BaseEntity;
  */
 public class ClientDepot extends BaseEntity{
 
-/**
- * 数量
- * */
+	/**
+	 * 数量
+	 * */
 	private Long count;
 	/**
 	 * 会员Id

@@ -18,7 +18,8 @@
 		t.`updateTime` as `updateTime`,
 		t.`memberLevelId` as `memberLevelId`,
 		t.`inviterUpperId` as `inviterUpperId`,
-		t.`status` as `status`
+		t.`status` as `status`,
+		t.`upStatus` as `upStatus`
 		from
 		`t_thinkingfruit_mall_member` t
 		where t.`loginName` = #{loginName}
@@ -44,7 +45,8 @@
 		t.`updateTime` as `updateTime`,
 		t.`memberLevelId` as `memberLevelId`,
 		t.`status` as `status`,
-		l.`levelName` as `memberLevelName`
+		l.`levelName` as `memberLevelName`,
+		t.`upStatus` as `upStatus`
 		from
 		`t_thinkingfruit_mall_member` as  `t`
 		left join `t_thinkingfruit_mall_member_level` as `l` on `l`.level=`t`.memberLevelId
@@ -174,4 +176,20 @@
 			</if>
 		</trim>
 	</update>
+	
+	<select id="getAgentLevel" resultType="com.thinkingFruit.client.entity.CommissionRatio">
+		select
+		l.`id` as `id`,
+		l.`level` as `level`,
+		l.`levelName` as `levelName`,
+		l.`levelingDiscount` as `levelingDiscount`,
+		l.`crossLevelDiscount` as `crossLevelDiscount`,
+		l.`reverseLevelDiscount` as `reverseLevelDiscount`,
+		l.`createTime` as `createTime`
+		from
+		`t_thinkingfruit_mall_member_level` as `l`
+		where l.`level` = #{memberLevelId}
+	</select>
+	
+	
 </mapper>

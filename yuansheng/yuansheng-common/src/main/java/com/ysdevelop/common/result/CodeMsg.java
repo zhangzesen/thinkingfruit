@@ -66,6 +66,8 @@ public class CodeMsg {
 	public static CodeMsg PURCHASE_FAIL = new CodeMsg(500032,"订单购买失败");
 	public static CodeMsg EXAMINE_FAIL = new CodeMsg(500033,"审核失败");
 	public static CodeMsg DEPOT_FAIL = new CodeMsg(500034,"无法生成代理仓库,审核失败");
+	public static CodeMsg INVITER_DEPOT_LOW = new CodeMsg(500035,"上级仓库商品不足");
+
 	//统计
 	public static CodeMsg NEWMEMBER_EXIST = new CodeMsg(500012,"新增会员数量为空");
 	
@@ -87,6 +89,7 @@ public class CodeMsg {
 	public static CodeMsg INFORMATION_UPDATE_ERROR = new CodeMsg(500026,"个人信息修改/完善失败");
 	public static CodeMsg AGENT_CANCEL_ERROR = new CodeMsg(500027,"代理删除失败");
 	public static CodeMsg ADDRESS_UPDATE_ERROR = new CodeMsg(500028,"代理地址修改失败");
+	public static CodeMsg RANK_HIGHER_THAN_SUPERIOR = new CodeMsg(500029,"代理级别高于上级，无法购买");
 
 	
 	// 小程序授权

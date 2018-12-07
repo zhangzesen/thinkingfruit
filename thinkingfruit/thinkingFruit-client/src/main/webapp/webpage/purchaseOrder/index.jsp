@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<jsp:include page="/context/js-tags.jsp" />
 <title>爱因思果</title>
 <meta
 	content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"
@@ -76,7 +77,7 @@ input{
                             <div class="aui-order-list">
                                 <div class="aui-flex">
                                     <div class="aui-flex-box">
-                                        <h3>我的需求 </h3>
+                                        <h3>待上级确认订单 </h3>
                                     </div>
                                 </div>
                                 <div class="aui-flex aui-flex-order">
@@ -90,7 +91,7 @@ input{
                                 </div>
                                 <div class="aui-flex aui-flex-button">
                                 <div class="aui-flex-box time">
-                                        <h3>时间</h3>
+                                        <h3>购买时间</h3>
                                     </div>
                                     <div class="aui-flex-box">
                                         <button class="aui-order-cancel">取消订单</button>
@@ -102,7 +103,7 @@ input{
                             <div class="aui-order-list">
                                 <div class="aui-flex">
                                     <div class="aui-flex-box">
-                                        <h3>我的需求</h3>
+                                        <h3>上级已确认订单</h3>
                                     </div>
                                 </div>
                                 <div class="aui-flex aui-flex-order">
@@ -116,7 +117,7 @@ input{
                                 </div>
                                 <div class="aui-flex aui-flex-button">
                                  <div class="aui-flex-box time">
-                                        <h3>时间</h3>
+                                        <h3>确认时间</h3>
                                     </div>
                                     </div>
                             </div>
@@ -125,7 +126,7 @@ input{
                             <div class="aui-order-list">
                                 <div class="aui-flex">
                                     <div class="aui-flex-box">
-                                        <h4>下级<i></i>的需求</h4>
+                                        <h4>下级申请购买订单</h4>
                                     </div>
                                 </div>
                                 <div class="aui-flex aui-flex-order">
@@ -139,7 +140,7 @@ input{
                                 </div>
                                 <div class="aui-flex aui-flex-button">
                                 <div class="aui-flex-box time">
-                                        <h3>时间</h3>
+                                        <h3>购买时间</h3>
                                     </div>
                                     <div class="aui-flex-box">
                                         <button>发货</button>
@@ -149,10 +150,10 @@ input{
 
                         </div>
                         <div class="tab-panel-item" id="tab4">
-                            <div href="javascript:;" class="aui-order-list">
+                            <div  class="aui-order-list">
                                 <div class="aui-flex">
                                     <div class="aui-flex-box">
-                                       <h4>下级<i></i>的需求</h4>
+                                       <h4>已确认下级订单</h4>
                                     </div>
                                 </div>
                                 <div class="aui-flex aui-flex-order">
@@ -166,7 +167,7 @@ input{
                                 </div>
                                 <div class="aui-flex aui-flex-button">
                                 <div class="aui-flex-box time">
-                                        <h3>时间</h3>
+                                        <h3>确认时间</h3>
                                     </div>
                                 </div>
                             </div>

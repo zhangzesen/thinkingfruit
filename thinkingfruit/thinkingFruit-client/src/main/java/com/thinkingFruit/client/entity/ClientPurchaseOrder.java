@@ -22,7 +22,7 @@ public class ClientPurchaseOrder extends BaseEntity{
 	private String orderNo;
 	
 	/**
-	 * 	收件人
+	 * 	代理名
 	 */
 	private String orderMemberName;
 	
@@ -67,6 +67,11 @@ public class ClientPurchaseOrder extends BaseEntity{
 	private Double commodityPrice;
 	
 	/**
+	 * 	商品展示图
+	 */
+	private String coverImagePath;
+	
+	/**
 	 *	 订单总价
 	 */
 	private Double orderTotalPrice;
@@ -102,6 +107,14 @@ public class ClientPurchaseOrder extends BaseEntity{
 	private Date confirmTime;
 	
 	
+
+	public String getCoverImagePath() {
+		return coverImagePath;
+	}
+
+	public void setCoverImagePath(String coverImagePath) {
+		this.coverImagePath = coverImagePath;
+	}
 
 	public Double getOrderTotalPrice() {
 		return orderTotalPrice;

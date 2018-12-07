@@ -36,4 +36,17 @@ public interface PurchaseOrderService {
 	 */
 	List<ClientPurchaseOrder> purchaseOrderNeedList(Long id);
 	
+	/**
+	 * 	下级购买订单发货
+	 * @param request
+	 * @param orderNo 订单号
+	 */
+	void confirmPurchaseOrder(HttpServletRequest request,String orderNo);
+	
+	/**
+	 * 	取消向上级购买订单
+	 * @param orderNo 订单号
+	 */
+	void cancelPurchaseOrder(String orderNo);
+	
 }

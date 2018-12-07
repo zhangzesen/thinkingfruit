@@ -9,17 +9,50 @@ public class ClientCommision extends BaseEntity {
 	
 	private Double commision;// 订单佣金
 	
+	private Double commisionProportion;//佣金比例
+	
 	private Double status; //0代表佣金，1代表邀请金
 	
-	private Double orderAmout;//订单总金额  
-	
-	private Double commodityId; //商品id
+	private Long commodityId; //商品id
 	
 	private Double InviteMoney;//邀请金
 	
 	private Long memberId;//会员id
 	
+	private Long inviterId;
+	
 	private String name;//用户真实姓名
+
+	private Long inviterUpperId;
+	
+	
+	private Double inviterTotalMoney;//上级获得的总金额
+	
+	
+	
+	public Double getInviterTotalMoney() {
+		return inviterTotalMoney;
+	}
+
+	public void setInviterTotalMoney(Double inviterTotalMoney) {
+		this.inviterTotalMoney = inviterTotalMoney;
+	}
+
+	public Long getMemberId() {
+		return memberId;
+	}
+
+	public void setMemberId(Long memberId) {
+		this.memberId = memberId;
+	}
+
+	public Double getCommisionProportion() {
+		return commisionProportion;
+	}
+
+	public void setCommisionProportion(Double commisionProportion) {
+		this.commisionProportion = commisionProportion;
+	}
 
 	public String getOrderNo() {
 		return orderNo;
@@ -52,20 +85,12 @@ public class ClientCommision extends BaseEntity {
 	public void setStatus(Double status) {
 		this.status = status;
 	}
-
-	public Double getOrderAmout() {
-		return orderAmout;
-	}
-
-	public void setOrderAmout(Double orderAmout) {
-		this.orderAmout = orderAmout;
-	}
-
-	public Double getCommodityId() {
+	
+	public Long getCommodityId() {
 		return commodityId;
 	}
 
-	public void setCommodityId(Double commodityId) {
+	public void setCommodityId(Long commodityId) {
 		this.commodityId = commodityId;
 	}
 
@@ -76,13 +101,22 @@ public class ClientCommision extends BaseEntity {
 	public void setInviteMoney(Double inviteMoney) {
 		InviteMoney = inviteMoney;
 	}
-
-	public Long getMemberId() {
-		return memberId;
+	
+	
+	public Long getInviterId() {
+		return inviterId;
 	}
 
-	public void setMemberId(Long memberId) {
-		this.memberId = memberId;
+	public void setInviterId(Long inviterId) {
+		this.inviterId = inviterId;
+	}
+
+	public Long getInviterUpperId() {
+		return inviterUpperId;
+	}
+
+	public void setInviterUpperId(Long inviterUpperId) {
+		this.inviterUpperId = inviterUpperId;
 	}
 
 	public String getName() {

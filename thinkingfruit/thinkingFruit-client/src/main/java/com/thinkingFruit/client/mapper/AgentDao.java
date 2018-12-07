@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.thinkingFruit.client.entity.Agent;
+import com.thinkingFruit.client.entity.CommissionRatio;
 
 
 /**
@@ -90,4 +91,6 @@ public interface AgentDao {
 	 * @return
 	 */
 	Integer updateAgentAddress(Agent agent);
+
+	CommissionRatio getAgentLevel(Long memberLevelId);
 }
