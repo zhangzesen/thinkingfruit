@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.thinkingFruit.client.mapper.ClientOrderDao">
+<!--云仓库-->
 	<select id="findList" resultType="com.thinkingFruit.client.entity.ClientDepot">
 	   select
 		t.`id` as `id`,
@@ -13,6 +14,7 @@
 		`t_thinkingfruit_mall_commodity` as c on t.`commodityId`=c.`id`
 		where t.`memberId` = #{id}
 	</select>
+	<!--订单列表-->
 	<select id="findOrderList" resultType="com.thinkingFruit.client.entity.ClientOrder">
 	   select
 		t.`id` as `id`,
@@ -28,6 +30,7 @@
 		on t.`commodityId`=c.`id`
 		where t.`orderMemberId` = #{id}
 	</select>
+	<!--发货订单信息-->
 	<select id="extractList" resultType="com.thinkingFruit.client.entity.ClientAddress">
 	   select
 	   m.`mobile` as mobile,
@@ -41,4 +44,17 @@
 		`t_thinkingfruit_mall_member` as m on t.`memberId` =m.`id`
 		where t.`memberId` = #{memberId}
 	</select>
+	<!-- 新增订单 -->
+	<insert id="addOrder" parameterType="com.thinkingFruit.client.entity.ClientOrder">
+	  insert into `t_thinkingfruit_mall_order`(`orderNo`,`orderMemberName`,`orderMemberId`,`mobile`,`province`,`city`,`town`,`address`,`orderStatus`,`createTime`,`commodityId`,`commodityCount`) 
+	  values(#{ClientOrder.orderNo},(select m.`name` as `orderMemberName` from`t_thinkingfruit_mall_member` as m where m.`id`= #{memberId}),#{memberId},#{ClientOrder.mobile},#{ClientOrder.province},#{ClientOrder.city},#{ClientOrder.town},#{ClientOrder.address},0,now(),#{ClientOrder.commodityId},#{ClientOrder.cashCount});
+	</insert>
+	<!-- 更新个人云仓库-->
+     <update id="updateDepot" parameterType="com.thinkingFruit.client.entity.ClientOrder">
+		update `t_thinkingfruit_mall_depot`
+		set `count`=(`count`-(#{ClientOrder.cashCount}))
+		where
+		`id`=#{memberId}
+		and `commodityId`=#{ClientOrder.commodityId}
+	 </update>
 </mapper>

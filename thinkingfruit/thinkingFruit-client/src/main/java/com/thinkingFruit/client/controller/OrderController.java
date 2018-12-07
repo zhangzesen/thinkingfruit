@@ -69,4 +69,15 @@ public class OrderController {
 		ClientAddress ClientAddress = clientOrderService.extractList(memberId);
 		return Results.successData(ClientAddress);
 	}
+	/**
+	 * 订单列表
+	 * */
+	@RequestMapping(value = "/update", method = RequestMethod.PUT, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Results<String> needList(HttpServletRequest request,ClientOrder clientOrder){
+		HttpSession session = request.getSession();
+		Long memberId = (Long)session.getAttribute("agentId");
+		clientOrderService.sendOrder(clientOrder,memberId);
+		return Results.success("订单请求发货成功");
+	}
 }

@@ -9,6 +9,10 @@ import com.thinkingFruit.client.entity.ClientAddress;
 import com.thinkingFruit.client.entity.ClientOrder;
 import com.thinkingFruit.client.mapper.ClientOrderDao;
 import com.thinkingFruit.client.service.ClientOrderService;
+import com.ysdevelop.common.exception.WebServiceException;
+import com.ysdevelop.common.result.CodeMsg;
+import com.ysdevelop.common.utils.OrderNumberGeneratorUtil;
+
 /**
  * @author wulei
  *
@@ -20,32 +24,51 @@ import com.thinkingFruit.client.service.ClientOrderService;
  */
 @Service
 public class ClientOrderServiceImpl implements ClientOrderService {
-	
+
 	@Autowired
 	private ClientOrderDao clientOrderDao;
 
-    /**
-     * 查询仓库列表
-     * */
+	/**
+	 * 查询仓库列表
+	 */
 	@Override
-	public List<ClientOrder> depotList(Long id){
-       List<ClientOrder> ClientOrderList = clientOrderDao.findList(id);
-		return  ClientOrderList;
+	public List<ClientOrder> depotList(Long id) {
+		List<ClientOrder> ClientOrderList = clientOrderDao.findList(id);
+		return ClientOrderList;
 	}
 
-    /**
-     * 订单列表
-     * */
+	/**
+	 * 订单列表
+	 */
 	@Override
 	public List<ClientOrder> orderList(Long id) {
 		List<ClientOrder> ClientOrderList = clientOrderDao.findOrderList(id);
 		return ClientOrderList;
 	}
 
+	/**
+	 * 提取信息
+	 */
 	@Override
 	public ClientAddress extractList(Long memberId) {
-		ClientAddress ClientAddress=clientOrderDao.extractList(memberId);
+		ClientAddress ClientAddress = clientOrderDao.extractList(memberId);
 		return ClientAddress;
+	}
+
+	/**
+	 * 提取货物
+	 */
+	@Override
+	public void sendOrder(ClientOrder clientOrder, Long memberId) {
+		if (clientOrder == null) {
+			throw new WebServiceException(CodeMsg.SERVER_ERROR);
+		}
+		String orderNo=OrderNumberGeneratorUtil.get().toString();
+		System.out.println("CashCount---->"+clientOrder.getCashCount());
+		clientOrder.setOrderNo(orderNo);
+		System.out.println("clientOrder--->"+clientOrder.getOrderNo());
+		Integer changeCount1 = clientOrderDao.addOrder(clientOrder, memberId);
+		Integer changeCount2 = clientOrderDao.updateDepot(clientOrder, memberId);
 	}
 
 }

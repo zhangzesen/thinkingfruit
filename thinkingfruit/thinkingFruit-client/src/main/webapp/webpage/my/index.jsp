@@ -44,7 +44,7 @@
 			<div class="aui-course-list">
 				<a href="<%=basePath%>/purchaseOrder" class="aui-flex b-line">
 					<div class="aui-course-icon">
-						<img src="<%=basePath%>/static/images/icon/icon-ad-001.png" alt="">
+						<img src="<%=basePath%>/static/images/icon/4.png" alt="">
 					</div>
 					<div class="aui-flex-box">
 						<h5>我的订单</h5>
@@ -53,21 +53,21 @@
 				<div class="divHeight"></div>
 				<a href="<%=basePath%>/my/address" class="aui-flex b-line">
 					<div class="aui-course-icon">
-						<img src="<%=basePath%>/static/images/icon/icon-ad-001.png" alt="">
+						<img src="<%=basePath%>/static/images/icon/1.png" alt="">
 					</div>
 					<div class="aui-flex-box">
 						<h5>收货地址</h5>
 					</div>
 				</a> <a href="<%=basePath%>/my/information" class="aui-flex b-line">
 					<div class="aui-course-icon">
-						<img src="<%=basePath%>/static/images/icon/icon-ad-002.png" alt="">
+						<img src="<%=basePath%>/static/images/icon/5.png" alt="">
 					</div>
 					<div class="aui-flex-box">
 						<h5>完善信息</h5>
 					</div>
 				</a> <a href="<%=basePath%>/my/upgrade" class="aui-flex">
 					<div class="aui-course-icon">
-						<img src="<%=basePath%>/static/images/icon/icon-ad-003.png" alt="">
+						<img src="<%=basePath%>/static/images/icon/6.png" alt="">
 					</div>
 					<div class="aui-flex-box">
 						<h5>升级</h5>
@@ -76,7 +76,7 @@
 				<div class="divHeight"></div>
 				<a href="<%=basePath%>/agent/team" class="aui-flex b-line">
 					<div class="aui-course-icon">
-						<img src="<%=basePath%>/static/images/icon/icon-ad-004.png" alt="">
+						<img src="<%=basePath%>/static/images/icon/8.png" alt="">
 					</div>
 					<div class="aui-flex-box">
 						<h5>我的团队</h5>
@@ -86,7 +86,7 @@
 				<div class="divHeight"></div>
 				<a href="<%=basePath%>/commision" class="aui-flex b-line">
 					<div class="aui-course-icon">
-						<img src="<%=basePath%>/static/images/icon/icon-ad-004.png" alt="">
+						<img src="<%=basePath%>/static/images/icon/2.png" alt="">
 					</div>
 					<div class="aui-flex-box">
 						<h5>佣金详情</h5>
@@ -94,21 +94,21 @@
 
 				</a> <a href="<%=basePath%>/cash" class="aui-flex b-line">
 					<div class="aui-course-icon">
-						<img src="<%=basePath%>/static/images/icon/icon-ad-004.png" alt="">
+						<img src="<%=basePath%>/static/images/icon/9.png" alt="">
 					</div>
 					<div class="aui-flex-box">
 						<h5>提现</h5>
 					</div>
 					<a href="<%=basePath%>/cash/cashList" class="aui-flex b-line">
 					<div class="aui-course-icon">
-						<img src="<%=basePath%>/static/images/icon/icon-ad-004.png" alt="">
+						<img src="<%=basePath%>/static/images/icon/7.png" alt="">
 					</div>
 					<div class="aui-flex-box">
 						<h5>提现记录</h5>
 					</div>
 				</a><a href="<%=basePath%>/order/depot" class="aui-flex b-line">
 					<div class="aui-course-icon">
-						<img src="<%=basePath%>/static/images/icon/icon-ad-004.png" alt="">
+						<img src="<%=basePath%>/static/images/icon/10.png" alt="">
 					</div>
 					<div class="aui-flex-box">
 						<h5>云仓库</h5>
@@ -118,7 +118,7 @@
 				<div class="divHeight"></div>
 				<div id="invite" class="aui-flex b-line">
 					<div class="aui-course-icon">
-						<img src="<%=basePath%>/static/images/icon/icon-ad-004.png" alt="">
+						<img src="<%=basePath%>/static/images/icon/3.png" alt="">
 					</div>
 					<div class="aui-flex-box">
 						<h5>邀请好友</h5>

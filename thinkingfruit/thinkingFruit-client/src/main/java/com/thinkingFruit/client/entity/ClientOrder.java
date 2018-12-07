@@ -48,7 +48,7 @@ public class ClientOrder extends BaseEntity{
 	/**
 	 * 	区
 	 */
-	private String diatrict;
+	private String town;
 	
 	/**
 	 * 	详细地址
@@ -122,7 +122,28 @@ public class ClientOrder extends BaseEntity{
 	   * 商品图片
 	 * */
 	private String coverImagePath;
+	/**
+	   *提取货物
+	 * */
+	private Long cashCount;
 	
+	
+	public Long getCashCount() {
+		return cashCount;
+	}
+
+	public void setCashCount(Long cashCount) {
+		this.cashCount = cashCount;
+	}
+
+	public String getTown() {
+		return town;
+	}
+
+	public void setTown(String town) {
+		this.town = town;
+	}
+
 	public String getCoverImagePath() {
 		return coverImagePath;
 	}
@@ -252,13 +273,6 @@ public class ClientOrder extends BaseEntity{
 		this.city = city;
 	}
 
-	public String getDiatrict() {
-		return diatrict;
-	}
-
-	public void setDiatrict(String diatrict) {
-		this.diatrict = diatrict;
-	}
 
 	public String getAddress() {
 		return address;

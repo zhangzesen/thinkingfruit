@@ -24,26 +24,29 @@ var order_extract_ops = {
 				$('.town').val(res.data.town);
 				$('.address').val(res.data.town);
 			}
-			
 		});
 	},
 	eventBind : function() {
+		var commodityId= common_ops.g_getQueryString('commodityId');
+		var count = common_ops.g_getQueryString('count');
 		$("button").click(function(){
+			var cashCount=$('.cashCount').val();
+			console.log("cashCount"+cashCount)
 			var name=$('.name').val();
 			var mobile=$('.mobile').val();
-			var takeCount=$('.takeCount').val();
 			var province=$('.province').val();
 			var city=$('.city').val();
 			var town=$('.town').val();
 			var address=$('.address').val();
+			if(cashCount<=count){
 			$.ajax({
-				url:WEB_ROOT+'/order/send',
+				url:WEB_ROOT+'/order/update',
 				data:{
+					commodityId:commodityId,
+					cashCount:cashCount,
 					name:name,
 					mobile:mobile,
-					takeCount:takeCount,
 					province:province,
-					identityNo:identityNo,
 					city:city,
 			        town:town,
 			        address:address
@@ -51,13 +54,18 @@ var order_extract_ops = {
 				type:'PUT',
 				dataType:'json'
 			}).done(function(res){
+				alert("订单已生成，等待发货")
 				console.log(res.data);
 				if(res.code == 0){
 					window.location.href = WEB_ROOT+'/order/depot';
 				}
 				
 			});
+		}else{
+			alert("提取数量大于余额！");
+		};
 		});
+		
 	},
 	
 

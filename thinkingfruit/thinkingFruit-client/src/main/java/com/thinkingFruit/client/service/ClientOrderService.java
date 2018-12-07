@@ -40,5 +40,11 @@ public interface ClientOrderService {
 	 * @param 提货信息
 	 */
 	ClientAddress extractList(Long memberId);
+	/**
+	 * 	
+	 * @param request
+	 * @param 确认提取货物
+	 */
+	void sendOrder(ClientOrder clientOrder, Long memberId);
 	
 }

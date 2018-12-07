@@ -83,7 +83,7 @@ float:none;
                                                                           提取数量
                     </div>
                     <div class="aui-list-item-input">
-                        <input type="text" placeholder="请填写数字" class="takeCount">
+                        <input type="text" placeholder="请填写数字" class="cashCount">
                     </div>
                 </div>
             </li>

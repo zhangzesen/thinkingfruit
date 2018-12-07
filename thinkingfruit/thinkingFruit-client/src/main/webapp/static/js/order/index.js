@@ -14,6 +14,7 @@ var order_index_ops = {
 				console.log(res.data);
 				for (var i = 0; i < res.data.length; i++) {
 					console.log("res1"+res.data[i].count);
+					console.log("res2"+res.data[i].count);
 					$("#tab1").append('<div class="aui-order-list">'+'<div class="aui-flex">'
 		                    +'<div class="aui-flex-box">'+"<h3>"+"已买入"+"</h3>"+"</div>"+"</div>"+"<div class='aui-flex aui-flex-order'>"+"<div class='aui-order-img'>"
 		                    +'<img src="'+res.data[i].name+'" alt="">'+"</div>"+'<div class="aui-flex-box">'+"<h2>"+res.data[i].name+"</h2>"
@@ -27,11 +28,11 @@ var order_index_ops = {
 				})
 				$(".extract").bind("click",function(){
 					var count=$(".count").attr("value");
-					var id=$(this).attr("value");
+					var commodityId=$(this).attr("value");
 					console.log("count"+count);
-					alert("commodityId"+id);
+					alert("commodityId"+commodityId);
 					alert("count"+count);
-					window.location.href = WEB_ROOT+'/order/extract?id='+id+"&count="+count;
+					window.location.href = WEB_ROOT+'/order/extract?commodityId='+commodityId+"&count="+count;
 				})
 			}
 		}),
@@ -58,13 +59,14 @@ var order_index_ops = {
 		                    +'<div class="aui-flex-box">'+"<h3>"+"我的需求"+"</h3>"+"</div>"+"</div>"+"<div class='aui-flex aui-flex-order'>"+"<div class='aui-order-img'>"
 		                    +'<img src="'+res.data[i].name+'" alt="">'+"</div>"+'<div class="aui-flex-box">'+"<h2>"+res.data[i].name+"</h2>"
 		                    +"<h4>"+"共"+"<i>"+res.data[i].commodityCount+"</i>"+"件商品"+"</h4>"+"</div>"+"</div>"+'<div class="aui-flex aui-flex-button">'
-		                    +'<div class="aui-flex-box time">'+"<h3>"+res.data[i].name+"</h3>"+"</div>"+'<div class="aui-flex-box">'
-		                    +'<button class="Confirm" value="'+res.data[i].name+'">'+"确认收货"+"</button>"+"</div>"
+		                    +'<div class="aui-flex-box time">'+"<h3>"+res.data[i].name+"</h3>"+"</div>"
 		                    +"</div>"
 		                    +"</div>")
 				    break;
 				}
-					
+					$(".Confirm").bind("click",function(){
+						window.location.href = WEB_ROOT+'/home';
+					})
 				}
 			}
 		});
