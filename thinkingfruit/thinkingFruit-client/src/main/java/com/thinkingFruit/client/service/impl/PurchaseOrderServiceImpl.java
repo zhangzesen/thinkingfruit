@@ -67,27 +67,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		//通过代理id获取代理信息
 		Agent agentById = agentDao.getAgentById(agentId);
 				
-		//判断上级商品库存是否充足，如果是公司则默认无限
-		if(agentById.getInviterId()!=Constant.DEFALULT_ZERO_INT) {
-		//判断上级库存是否充足,充足则需要减少库存
-		ClientDepot Depot=clientPurchaseOrderDao.getDepot(agentById.getInviterId(),clientPurchaseOrder.getCommodityId());
-		if(Depot!=null&&Depot.getId()!=null) {
-			if(Depot.getCount()-clientPurchaseOrder.getCommodityCount()>=0) {
-				Depot.setMemberId(agentById.getInviterId());
-				Depot.setCommodityId(clientPurchaseOrder.getCommodityId());
-				Depot.setCount(Depot.getCount()-clientPurchaseOrder.getCommodityCount());
-				Integer updateInviterDepot=clientPurchaseOrderDao.updateDepot(Depot);
-				if(updateInviterDepot==Constant.DEFALULT_ZERO_INT) {
-					throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
-				}
-			}else {
-				throw new WebServiceException(CodeMsg.INVITER_DEPOT_LOW);
-			}
-		}else {
-			throw new WebServiceException(CodeMsg.INVITER_DEPOT_LOW);
-		}
-					
-		}
+		
 				
 		//生成订单号
 		String orderNo=OrderNumberGeneratorUtil.get().toString();
@@ -139,6 +119,29 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		agentId=(Long) session.getAttribute("agentId");
 		System.out.println("agentId"+agentId);
 		Agent agentById = agentDao.getAgentById(agentId);
+		
+		//判断上级商品库存是否充足，如果是公司则默认无限
+		if(agentById.getInviterId()!=Constant.DEFALULT_ZERO_INT) {
+		//判断上级库存是否充足,充足则需要减少库存
+		ClientDepot Depot=clientPurchaseOrderDao.getDepot(agentById.getInviterId(),clientPurchaseOrder.getCommodityId());
+		if(Depot!=null&&Depot.getId()!=null) {
+			if(Depot.getCount()-clientPurchaseOrder.getCommodityCount()>=0) {
+				Depot.setMemberId(agentById.getInviterId());
+				Depot.setCommodityId(clientPurchaseOrder.getCommodityId());
+				Depot.setCount(Depot.getCount()-clientPurchaseOrder.getCommodityCount());
+				Integer updateInviterDepot=clientPurchaseOrderDao.updateDepot(Depot);
+				if(updateInviterDepot==Constant.DEFALULT_ZERO_INT) {
+					throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
+				}
+			}else {
+				throw new WebServiceException(CodeMsg.INVITER_DEPOT_LOW);
+			}
+		}else {
+			throw new WebServiceException(CodeMsg.INVITER_DEPOT_LOW);
+		}
+							
+		}
+		
 		//判断该代理是否有该商品的仓库
 		ClientDepot clientDepot=clientPurchaseOrderDao.getDepot(agentId,clientPurchaseOrder.getCommodityId());
 		//如果该商品的库存,只需要改变该数据的库存
@@ -164,17 +167,21 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		//判断订单创建者的上级和上上级的关系
 		Long inviterId = agentById.getInviterId();
 		Long inviterUpperId = agentById.getInviterUpperId();
+		Long memberLevelId = agentById.getMemberLevelId();
+		Agent inviterById = agentDao.getAgentById(inviterId);
+		Long inviterLevelId = inviterById.getMemberLevelId();
 		//如果上上级级别比上级级别高或者平级
 		CommissionRatio commissionRatio=agentDao.getAgentLevel(agentById.getMemberLevelId());
 		ClientCommision clientCommision=new ClientCommision();
+		
 		//上级如果是公司
 		if(inviterId==Constant.DEFALULT_ZERO_INT) {
 			clientCommision.setCommisionProportion(0.0);
 			clientCommision.setCommision(0.0);
 		}else {
-			if(inviterId>inviterUpperId) {
+			if(memberLevelId>inviterLevelId) {
 				clientCommision.setCommisionProportion(commissionRatio.getCrossLevelDiscount());
-			}else if(inviterId==inviterUpperId) {
+			}else if(memberLevelId==inviterLevelId) {
 				clientCommision.setCommisionProportion(commissionRatio.getLevelingDiscount());
 			}
 			clientCommision.setCommision(clientPurchaseOrder.getOrderTotalPrice()*clientCommision.getCommisionProportion());

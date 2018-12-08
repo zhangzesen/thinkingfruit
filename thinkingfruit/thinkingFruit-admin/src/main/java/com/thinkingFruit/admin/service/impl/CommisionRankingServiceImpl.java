@@ -46,10 +46,6 @@ public class CommisionRankingServiceImpl implements CommisionRankingService{
 		Integer totalItemsCount = commisionRankingDao.getCountByQuery(queryMap);
 		List<Commision> items = commisionRankingDao.pagination(queryMap, pagination);
 		
-		//将二进制昵称转化为String类型
-		for (int i = 0; i < items.size(); i++) {
-			items.get(i).setNicknameStr();
-		}
 		
 		pagination.setItems(items);
 		pagination.setTotalItemsCount(totalItemsCount);

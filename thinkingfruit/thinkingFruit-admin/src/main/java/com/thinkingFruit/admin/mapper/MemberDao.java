@@ -67,9 +67,10 @@ public interface MemberDao {
 	/**
 	 * 修改待审核的代理通过
 	 * @param orderMemberId 待审核的代理id
+	 * @param memberLevel 
 	 * @return
 	 */
-	Integer examineUpdate(@Param(value="id")Long orderMemberId);
+	Integer examineUpdate(@Param(value="id")Long orderMemberId, @Param(value="memberLevelId")Long memberLevelId);
 	
 	/**
 	 * 插入提现记录
@@ -90,4 +91,10 @@ public interface MemberDao {
 	 * @return 升级待审核的代理集合
 	 */
 	Integer upExamineUpdate(Long orderMemberId);
+
+	Integer addBalance(@Param(value="inviterId")Long inviterId, @Param(value="balance")Double balance);
+
+	Integer cancellation(@Param(value="id")Long id);
+
+	Integer cancelUpgrade(@Param(value="id")Long id);
 }

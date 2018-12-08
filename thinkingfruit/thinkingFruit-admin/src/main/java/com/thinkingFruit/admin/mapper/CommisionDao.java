@@ -35,4 +35,6 @@ public interface CommisionDao {
 	//通过订单号来查询该笔订单佣金受益人群信息
 	List<Commision> findMemberCommisionByOrderNo(@Param("orderNo") String orderNo);
 
+	Integer addCommision(Commision commision);
+
 }

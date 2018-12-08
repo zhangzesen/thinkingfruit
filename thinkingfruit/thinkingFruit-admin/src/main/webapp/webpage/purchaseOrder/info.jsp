@@ -39,40 +39,24 @@ width:300px;
 								</div>
 								
 								<div class="layui-form-item">
-									<label class="layui-form-label">上级代理id</label>
-									<div class="layui-input-inline input-custom-width">
-										<input type="text" name="superiorMemberId" 
-											autocomplete="off" class="layui-input" readonly="readonly">
-									</div>
-								</div>
-								<div class="layui-form-item">
-									<label class="layui-form-label">是否首单</label>
-									<div class="layui-input-inline input-custom-width">
-										<input type="text" name="isFirst" 
-											autocomplete="off" class="layui-input" readonly="readonly">
-									</div>
-								</div>
-								<div class="layui-form-item">
 									<label class="layui-form-label">邀请者id</label>
 									<div class="layui-input-inline input-custom-width">
 										<input type="text" name="inviterId" 
 											autocomplete="off" class="layui-input" readonly="readonly">
 									</div>
 								</div>
-								
 								<div class="layui-form-item">
-									<label class="layui-form-label">邀请者分佣比例</label>
+									<label class="layui-form-label">邀请者上级代理id</label>
 									<div class="layui-input-inline input-custom-width">
-										<input type="text" name="inviterProportion"  
+										<input type="text" name="inviterUpperId" 
 											autocomplete="off" class="layui-input" readonly="readonly">
 									</div>
 								</div>
 								
-								
 								<div class="layui-form-item">
-									<label class="layui-form-label">上级分佣比例</label>
+									<label class="layui-form-label">邀请者上级分佣比例</label>
 									<div class="layui-input-inline input-custom-width">
-										<input type="text" name="superiorProportion" 
+										<input type="text" name="commisionProportion" 
 											autocomplete="off" class="layui-input" readonly="readonly">
 									</div>
 								</div>

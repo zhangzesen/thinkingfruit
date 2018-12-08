@@ -97,4 +97,14 @@
    where `orderNo` = #{orderNo}
 </select>
 
+	<insert id="addCommision">
+		insert into
+		`t_thinkingfruit_mall_commision`(
+			`orderNo`,`totalAmount`,`inviterTotalMoney`,`commision`,`commisionProportion`,`InviteMoney`,`commodityId`,`memberId`,`inviterId`,`inviterUpperId`,`createTime`
+		)
+		values
+		(
+			#{orderNo},#{totalAmount},#{inviterTotalMoney},#{commision},#{commisionProportion},#{InviteMoney},#{commodityId},#{memberId},#{inviterId},#{inviterUpperId},now()
+		)
+	</insert>
 </mapper>

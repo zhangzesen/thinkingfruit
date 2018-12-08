@@ -55,7 +55,7 @@ width:300px;
 								<div class="layui-form-item">
 									<label class="layui-form-label">区</label>
 									<div class="layui-input-inline input-custom-width">
-										<input type="text" name="diatrict" 
+										<input type="text" name="town" 
 											autocomplete="off" class="layui-input" readonly="readonly">
 									</div>
 								</div>
@@ -94,13 +94,6 @@ width:300px;
 									</div>
 								</div>
 								
-								<div class="layui-form-item">
-									<label class="layui-form-label">配送费用</label>
-									<div class="layui-input-inline input-custom-width">
-										<input type="text" name="freightPrice" readonly="readonly"
-											autocomplete="off" class="layui-input">
-									</div>
-								</div>
 								
 								<div class="layui-form-item">
 									<label class="layui-form-label">发货时间</label>

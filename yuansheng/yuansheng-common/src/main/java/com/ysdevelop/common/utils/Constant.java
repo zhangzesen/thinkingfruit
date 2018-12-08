@@ -22,9 +22,14 @@ public class Constant {
 	public static final Integer DEFALULT_ZERO = 0;
 
 	/**
-	 * 判断是否为0
+	 * 判断是否为1
 	 */
 	public static final Integer DEFALULT_ONE = 1;
+	
+	/**
+	 * 判断是否2
+	 */
+	public static final Integer DEFALULT_TWO = 2;
 
 	/**
 	 * ORACLE、MYSQL

@@ -75,6 +75,26 @@ var member_examine_ops = {
 						//一级分类编辑事件
 						window.location.href = WEB_ROOT + '/member/examineSet?id='+id;
 						break;
+					case 'del':
+						$.ajax({
+							type :'PUT',
+							url : WEB_ROOT + "/member/cancellation",
+							dataType : 'json',
+							data : {
+								id:id
+							},
+							success:function(res){
+								$(".layui-input-block .layui-btn").removeClass("layui-btn-disabled");
+								var callback = null;
+								if (res.code == 0) {
+									callback = function() {
+										window.location.href = WEB_ROOT + '/member/examine';
+									};
+								}
+								common_ops.alert(res.msg, callback);
+							}
+						});
+						break;
 					}
 					
 				})

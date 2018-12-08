@@ -81,9 +81,6 @@ public class CommisionServiceImpl implements CommisionService {
 
 		Integer totalItemsCount = commisionDao.getCountByQueryPerson(queryMap);
 		List<Commision> commisionItems = commisionDao.paginationCommisionPerson(queryMap, pagination);
-		for (int i = 0; i < commisionItems.size(); i++) {
-			commisionItems.get(i).setNicknameStr();
-		}
 		pagination.setItems(commisionItems);
 		pagination.setTotalItemsCount(totalItemsCount);
 

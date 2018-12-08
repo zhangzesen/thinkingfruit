@@ -64,7 +64,8 @@ var order_index_ops = {
 			           , {field: 'mobile', title: '手机号', width: 120,align: 'center'}
 			           , {field: 'sendMethod', title: '配送方式', width: 95,align: 'center'}
 			           , {field: 'orderStatus', title: '订单状态', width: 95,align: 'center'}
-			           , {field: 'freightPrice', title: '配送费用', width: 95,align: 'center'}
+			           , {field: 'commodityCount', title: '商品数量', width: 95,align: 'center'}
+			           , {field: 'createTime', title: '创建时间', width: 95,align: 'center'}
 			           , {title: '操作', /*width: 210,height: 40,*/ align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
 			       ]]
 			       , id: 'dataCheck'

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -35,6 +36,7 @@ public class MemberServiceImpl implements MemberService {
 	/**
 	 * 获取所有代理
 	 */
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public PageInfo<Member> paginationMember(Map<String, String> queryMap) {
 		String pageSize = queryMap.get("limit");
@@ -52,8 +54,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
     /**
-               * 查询代理信息
+      * 查询代理信息
      */
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public Member memberById(Long id) {
 		Member member=memberDao.memberById(id);
@@ -63,6 +66,7 @@ public class MemberServiceImpl implements MemberService {
 	/**
 	 * 修改代理邀请者id，和邀请者上级id及代理级别
 	 */
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void updateById(Member member) {
 		System.out.println("member.getInviterId()"+member.getInviterId());
@@ -80,6 +84,7 @@ public class MemberServiceImpl implements MemberService {
 	/**
 	 * 删除代理
 	 */
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void deleteById(Long id) {
 		Integer changeCount =memberDao.deleteById(id);
@@ -91,6 +96,7 @@ public class MemberServiceImpl implements MemberService {
 	/**
 	 * 减少余额
 	 */
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void putForward(MemberBalance memberBalance) {
 		int result = memberDao.putForward(memberBalance);
@@ -103,6 +109,7 @@ public class MemberServiceImpl implements MemberService {
 	/**
 	 * 获取所有注册待审核代理
 	 */
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public PageInfo<Member> paginationExamine(Map<String, String> queryMap) {
 		String pageSize = queryMap.get("limit");
@@ -122,6 +129,7 @@ public class MemberServiceImpl implements MemberService {
 	/**
 	 * 获取所有升级待审核代理
 	 */
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public PageInfo<Member> upPaginationUpExamine(Map<String, String> queryMap) {
 		String pageSize = queryMap.get("limit");
@@ -136,6 +144,24 @@ public class MemberServiceImpl implements MemberService {
 		List<Member> paginationMember = memberDao.PaginationUpExamine(queryMap);
 		PageInfo<Member> pageInfo = new PageInfo<>(paginationMember);
 		return pageInfo;
+	}
+
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public void cancellation(Long id) {
+		Integer cancellation = memberDao.cancellation(id);
+		if(cancellation==Constant.DEFALULT_ZERO_INT) {
+			throw new WebServiceException(CodeMsg.CANCEL_REGISTERED_FAIL);
+		}
+	}
+
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public void cancelUpgrade(Long id) {
+		Integer cancelUpgrade = memberDao.cancelUpgrade(id);
+		if(cancelUpgrade==Constant.DEFALULT_ZERO_INT) {
+			throw new WebServiceException(CodeMsg.CANCEL_UPGRADE_FAIL);
+		}
 	}
 	
 }

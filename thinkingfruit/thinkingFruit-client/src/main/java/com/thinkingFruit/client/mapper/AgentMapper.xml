@@ -60,13 +60,13 @@
 		insert into
 		`t_thinkingfruit_mall_member`(
 			`loginName`,`mobile`,`pswd`,`salt`,
-			`inviterId`,`inviterUpperId`,
+			`inviterId`,`inviterUpperId`,`balance`
 			`createTime`,`status`
 		)
 		values
 		(
 			#{loginName},#{mobile},#{pswd},#{salt},
-			#{inviterId},#{inviterUpperId},
+			#{inviterId},#{inviterUpperId},0
 			now(),0
 		)
 	</insert>

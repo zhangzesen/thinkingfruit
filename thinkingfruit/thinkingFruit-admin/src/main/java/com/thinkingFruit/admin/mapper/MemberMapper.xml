@@ -37,22 +37,32 @@
     m.`name`,
     m.`avatar`,
     m.`inviterId`,
+    m.`inviterUpperId`,
+    m.`balance`,
     m.`identityNo`,
     m.`status`,
+    m.`upStatus`,
     m.`updateTime`
-    from `t_thinkingfruit_mall_member` as m 
+    from `t_thinkingfruit_mall_member` as `m`
     where m.`id` = #{id}
 </select>
 <!--修改代理邀请者id，和邀请者上级id及代理级别-->
-<update id="updataById">
-    update `t_thinkingfruit_mall_member`
-    <set>
-        `inviterId` = #{inviterId},
-        `updateTime` = now(),
-        `inviterUpperId`=#{inviterUpperId},
-        `memberLevelId` = #{memberLevelId},
-    </set>
-    where `id` = #{id}
+<update id="updataById" parameterType="com.thinkingFruit.admin.entity.Member">
+    update `t_thinkingfruit_mall_member` as `m`
+    <trim prefix="set" suffixOverrides="," suffix="where `m`.id = #{id}">
+			<if test="inviterId != null ">
+				m.`inviterId` = #{inviterId},
+			</if>
+			<if test="updateTime != null and updateTime != ''">
+				m.`updateTime` = #{updateTime},
+			</if>
+			<if test="inviterUpperId != null">
+				m.`inviterUpperId` = #{inviterUpperId},
+			</if>
+			<if test="memberLevelId != null">
+				m.`memberLevelId` = #{memberLevelId},
+			</if>
+		</trim>
 </update>
 <!--通过id删除代理-->
 <update id="deleteById">
@@ -126,6 +136,7 @@
     update `t_thinkingfruit_mall_member`
     <set>
         `status` = 1,
+        `memberLevelId`=#{memberLevelId},
         `updateTime` = now()
     </set>
     where `id` = #{id}
@@ -135,6 +146,37 @@
     update `t_thinkingfruit_mall_member`
     <set>
         `upStatus` = 0,
+        `updateTime` = now()
+    </set>
+    where `id` = #{id}
+</update>
+
+<update id="addBalance">
+    update `t_thinkingfruit_mall_member` as `m`
+    <trim prefix="set" suffixOverrides="," suffix="where `m`.id = #{inviterId}">
+		<if test="balance != null ">
+			m.`balance` = m.`balance`+(#{balance}),
+		</if>
+		<if test="inviterId != null">
+			m.`updateTime` = now(),
+		</if>
+	</trim>
+</update>
+
+
+<update id="cancellation">
+    update `t_thinkingfruit_mall_member`
+    <set>
+        `status` =2,
+        `updateTime` = now()
+    </set>
+    where `id` = #{id}
+</update>
+
+<update id="cancelUpgrade">
+    update `t_thinkingfruit_mall_member`
+    <set>
+        `upStatus` =0,
         `updateTime` = now()
     </set>
     where `id` = #{id}

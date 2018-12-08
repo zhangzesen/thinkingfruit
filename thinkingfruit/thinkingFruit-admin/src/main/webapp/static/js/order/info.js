@@ -128,7 +128,7 @@ var order_info_ops={
 					   $("input[name='orderMemberName']").val(res.data.orderMemberName);
 					   $("input[name='province']").attr("value",res.data.province);
 					   $("input[name='city']").attr("value",res.data.city);
-					   $("input[name='diatrict']").attr("value",res.data.diatrict);
+					   $("input[name='town']").attr("value",res.data.town);
 					   $("input[name='address']").val(res.data.address);
 					   $("input[name='remark']").attr("value",res.data.remark);
 					   $("input[name='expressNo']").attr("value",res.data.expressNo);
@@ -154,7 +154,6 @@ var order_info_ops={
 					     break;
 					   }
 					   
-					   $("input[name='freightPrice']").attr("value",res.data.freightPrice);
 					   atime = res.data.confirmTime;
 					   console.log(dateFtt("yyyy-MM-dd hh:mm:ss",new Date(atime)));
 					   if(res.data.orderStatus==0){

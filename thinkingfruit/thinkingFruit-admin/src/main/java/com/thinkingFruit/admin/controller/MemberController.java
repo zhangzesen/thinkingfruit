@@ -172,4 +172,18 @@ public class MemberController {
 		memberService.deleteById(id);
 		return Result.success("代理注销成功");
 	}
+	
+	@RequestMapping(value = "/cancellation", method = RequestMethod.PUT, produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public Results<String> cancellation(Long id) {
+		memberService.cancellation(id);
+		return Results.success("取消代理注册成功");
+	}
+	
+	@RequestMapping(value = "/cancelUpgrade", method = RequestMethod.PUT, produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public Results<String> cancelUpgrade(Long id) {
+		memberService.cancelUpgrade(id);
+		return Results.success("取消代理升级成功");
+	}
 }

@@ -61,4 +61,8 @@ public interface MemberService {
 	 * @return 待审核代理分页
 	 */
 	PageInfo<Member> upPaginationUpExamine(Map<String, String> queryMap);
+
+	void cancellation(Long id);
+
+	void cancelUpgrade(Long id);
 }

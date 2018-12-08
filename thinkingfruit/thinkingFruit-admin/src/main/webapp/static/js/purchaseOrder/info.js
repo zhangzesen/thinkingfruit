@@ -90,16 +90,15 @@ var order_info_ops={
 					   $("input[name='id']").attr("value",res.data.id);
 					   $("input[name='orderNo']").attr("value",res.data.orderNo);
 					   $("input[name='orderMemberName']").val(res.data.orderMemberName);
-					   $("input[name='superiorMemberId']").attr("value",res.data.superiorMemberId);
+					   $("input[name='inviterUpperId']").attr("value",res.data.inviterUpperId);
 					   $("input[name='inviterId']").attr("value",res.data.inviterId);
-					   $("input[name='inviterProportion']").val(res.data.inviterProportion);
-					   $("input[name='superiorProportion']").attr("value",res.data.superiorProportion);
+					   $("input[name='commisionProportion']").attr("value",res.data.commisionProportion);
 					   $("input[name='commodityName']").attr("value",res.data.commodityName);
 					   $("input[name='commodityCount']").attr("value",res.data.commodityCount);
 					   $("input[name='commodityPrice']").attr("value",res.data.commodityPrice);
-					   console.log("id"+id);
-					   console.log("res.data.orderStatus"+res.data.orderStatus);
-					   console.log("isFirst"+res.data.isFirst);
+					   console.log("zzzzzzzz"+res.data.inviterUpperId);
+					   console.log(res.data.commisionProportion);
+					   console.log(res.data.inviterId);
 					   switch (res.data.orderStatus) {
 					   case "1":
 						   $("input[name='orderStatus']").val("已下单");

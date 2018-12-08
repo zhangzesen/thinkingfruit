@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.thinkingFruit.admin.entity.Depot;
 import com.thinkingFruit.admin.entity.Order;
 import com.thinkingFruit.admin.entity.PurchaseOrder;
 
@@ -133,5 +134,9 @@ public interface OrderDao {
 	 * @return
 	 */
 	Integer addDepot(PurchaseOrder purchaseOrder);
+
+	Integer updateDepot(Depot depot);
+
+	Depot getDepot(Long orderMemberId);
 	
 }

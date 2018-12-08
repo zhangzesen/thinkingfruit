@@ -65,11 +65,7 @@ public class PurchaseOrder extends BaseEntity{
 	 * 	商品价格
 	 */
 	private Double commodityPrice;
-	
-	/**
-	 * 	上级id
-	 */
-	private Long superiorMemberId;
+
 	
 	/**
 	 *	 是否首单，0表示首单，1表示不是，0有邀请者分佣和邀请费，1只有分佣
@@ -87,9 +83,14 @@ public class PurchaseOrder extends BaseEntity{
 	private Double inviterProportion;
 	
 	/**
-	 * 	上级分佣比例
+	 *	 邀请者上级
 	 */
-	private Double superiorProportion;
+	private Long inviterUpperId;
+	
+	/**
+	 * 	邀请者上级分佣比例
+	 */
+	private Double commisionProportion;
 	
 	/**
 	 * 订单完成时间
@@ -191,14 +192,6 @@ public class PurchaseOrder extends BaseEntity{
 		this.commodityPrice = commodityPrice;
 	}
 
-	public Long getSuperiorMemberId() {
-		return superiorMemberId;
-	}
-
-	public void setSuperiorMemberId(Long superiorMemberId) {
-		this.superiorMemberId = superiorMemberId;
-	}
-
 	public String getIsFirst() {
 		return isFirst;
 	}
@@ -223,20 +216,28 @@ public class PurchaseOrder extends BaseEntity{
 		this.inviterProportion = inviterProportion;
 	}
 
-	public Double getSuperiorProportion() {
-		return superiorProportion;
-	}
-
-	public void setSuperiorProportion(Double superiorProportion) {
-		this.superiorProportion = superiorProportion;
-	}
-
 	public String getMemberLevelName() {
 		return memberLevelName;
 	}
 
 	public void setMemberLevelName(String memberLevelName) {
 		this.memberLevelName = memberLevelName;
+	}
+
+	public Long getInviterUpperId() {
+		return inviterUpperId;
+	}
+
+	public void setInviterUpperId(Long inviterUpperId) {
+		this.inviterUpperId = inviterUpperId;
+	}
+
+	public Double getCommisionProportion() {
+		return commisionProportion;
+	}
+
+	public void setCommisionProportion(Double commisionProportion) {
+		this.commisionProportion = commisionProportion;
 	}
 	
 	

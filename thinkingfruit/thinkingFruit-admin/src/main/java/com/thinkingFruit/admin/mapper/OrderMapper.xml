@@ -7,13 +7,13 @@
 		`t_thinkingfruit_mall_order_purchase`(
 			`orderNo`,`orderMemberId`,`memberLevel`,`orderMemberName`,
 			`commodityId`,`commodityCount`,`commodityName`,`commodityPrice`,`isFirst`,
-			`orderStatus`,`createTime`,`orderTotalPrice`
+			`orderStatus`,`createTime`,`confirmTime`,`orderTotalPrice`,`inviterId`
 		)
 		values
 		(
 			#{orderNo},#{orderMemberId},#{memberLevel},#{orderMemberName},
 			#{commodityId},#{commodityCount},#{commodityName},#{commodityPrice},#{isFirst},
-			1,now(),#{orderTotalPrice}
+			2,now(),now(),#{orderTotalPrice},#{inviterId}
 		)
 	</insert>
 	
@@ -27,10 +27,13 @@
 		`o`.orderStatus as `orderStatus`,
 		`o`.mobile as `mobile`,
 		`o`.orderMemberId as `orderMemberId`,
-		`o`.expressNo as `expressNo`,
-		`freightPrice` as `freightPrice`
+		`o`.commodityCount as `commodityCount`,
+		`o`.commodityId as `commodityId`,
+		`c`.name as `commodityName`,
+		`o`.createTime as `createTime`
 		from
 		`t_thinkingfruit_mall_order` as `o`
+		left join `t_thinkingfruit_mall_commodity` as `c` on `c`.id=`o`.commodityId
 		<where>
 			1 = 1
 			<if test="queryMap.orderStatus !=null">
@@ -60,14 +63,13 @@
         `o`.sendMethod as `sendMethod`,
         `o`.province as `province`,
         `o`.city as `city`,
-        `o`.diatrict as `diatrict`,
+        `o`.town as `town`,
         `o`.address as `address`,
         `o`.mobile as `mobile`,
         `o`.expressNo as `expressNo`,
         `o`.confirmTime as `confirmTime`,
         `o`.orderStatus as `orderStatus`,     
         `o`.remark as `remark`,
-        `o`.freightPrice as `freightPrice`,
         `o`.commodityId as `commodityId`,
         `o`.logistics as `logistics`,
         `o`.commodityCount as `commodityCount`,
@@ -187,6 +189,7 @@
 				and o.`orderMemberName` like CONCAT('%',#{queryMap.orderMemberName},'%')
 			</if>
 			and orderStatus!=3
+			and inviterId=0
 		</where>
 	</select>
 	
@@ -202,16 +205,14 @@
         `o`.commodityCount as `commodityCount`,
         `o`.commodityName as `commodityName`,
         `o`.commodityPrice as `commodityPrice`,
-        `o`.isFirst as `isFirst`,
         `c`.inviterId as `inviterId`,
-        `c`.inviterDiscount as `inviterProportion`,
-        `c`.superiorMemberId as `superiorMemberId`,
-        `c`.superiorDiscount as `superiorProportion`,
+        `c`.inviterUpperId as `inviterUpperId`,
+        `c`.commisionProportion as `commisionProportion`,
         `o`.createTime as `createTime`,
         `o`.confirmTime as `confirmTime`
 		from
 		`t_thinkingfruit_mall_order_purchase` as `o`
-		left join `t_thinkingfruit_mall_commision_person` as `c` on `c`.orderNo=`o`.orderNo
+		left join `t_thinkingfruit_mall_commision` as `c` on `c`.orderNo=`o`.orderNo
 		where `o`.id = #{id}
     </select>
     
@@ -328,4 +329,25 @@
 			#{commodityId},#{orderMemberId},#{commodityCount},now()
 		)
 	</insert>
+	
+	<select id="getDepot" resultType="com.thinkingFruit.admin.entity.Depot">
+       select
+       	`d`.id as `id`,	
+        `d`.memberId as `memberId`,
+        `d`.commodityId as `commodityId`,     
+        `d`.count as `count`,
+        `d`.createTime as `createTime`
+		from
+		`t_thinkingfruit_mall_depot` as `d`
+		where `d`.memberId = #{orderMemberId}
+    </select>
+    
+    <update id="updateDepot">
+		update `t_thinkingfruit_mall_depot`
+	    <set>
+	    count = #{count},
+	    updateTime = now()
+	    </set> 
+	    where memberId =#{memberId} and commodityId=#{commodityId}
+	</update>
 </mapper>

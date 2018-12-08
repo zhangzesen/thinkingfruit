@@ -7,21 +7,48 @@ public class Commision extends BaseEntity {
 	
 	private Double totalAmount;//总金额
 	
-	private Double commision;// 订单总佣金/订单的个人佣金
+	private Double commision;// 订单佣金
 	
-	private Double percent;//佣金占总金额的百分比
+	private Double commisionProportion;//佣金比例
 	
-	private String nicknames;//收益人昵称集合
+	private Double status; //0代表佣金，1代表邀请金
 	
-	private byte[] nickname;//受益人昵称
+	private Long commodityId; //商品id
 	
-	private String nicknameStr;
-	
-	private Double personTotalCommision;//个人总佣金
+	private Double InviteMoney;//邀请金
 	
 	private Long memberId;//会员id
 	
+	private Long inviterId;
+	
+	private Long inviterUpperId;
+	
 	private String name;//用户真实姓名
+	
+	private	Double inviterTotalMoney;
+	
+	private Double percent;//佣金占总金额的百分比
+	
+	private Double personTotalCommision;//个人总佣金
+
+	
+	
+	
+	public Double getInviterTotalMoney() {
+		return inviterTotalMoney;
+	}
+
+	public void setInviterTotalMoney(Double inviterTotalMoney) {
+		this.inviterTotalMoney = inviterTotalMoney;
+	}
+
+	public Long getInviterUpperId() {
+		return inviterUpperId;
+	}
+
+	public void setInviterUpperId(Long inviterUpperId) {
+		this.inviterUpperId = inviterUpperId;
+	}
 
 	public String getName() {
 		return name;
@@ -47,24 +74,46 @@ public class Commision extends BaseEntity {
 		this.personTotalCommision = personTotalCommision;
 	}
 
-	public String getNicknameStr() {
-		return nicknameStr;
-	}
-
-	public void setNicknameStr(String nicknameStr) {
-		this.nicknameStr = nicknameStr;
-	}
 	
-	public void setNicknameStr(){
-		this.nicknameStr = new String(nickname);
+	
+	public Double getCommisionProportion() {
+		return commisionProportion;
 	}
 
-	public byte[] getNickname() {
-		return nickname;
+	public void setCommisionProportion(Double commisionProportion) {
+		this.commisionProportion = commisionProportion;
 	}
 
-	public void setNickname(byte[] nickname) {
-		this.nickname = nickname;
+	public Double getStatus() {
+		return status;
+	}
+
+	public void setStatus(Double status) {
+		this.status = status;
+	}
+
+	public Long getCommodityId() {
+		return commodityId;
+	}
+
+	public void setCommodityId(Long commodityId) {
+		this.commodityId = commodityId;
+	}
+
+	public Double getInviteMoney() {
+		return InviteMoney;
+	}
+
+	public void setInviteMoney(Double inviteMoney) {
+		InviteMoney = inviteMoney;
+	}
+
+	public Long getInviterId() {
+		return inviterId;
+	}
+
+	public void setInviterId(Long inviterId) {
+		this.inviterId = inviterId;
 	}
 
 	public String getOrderNo() {
@@ -97,14 +146,6 @@ public class Commision extends BaseEntity {
 
 	public void setPercent(Double percent) {
 		this.percent = percent;
-	}
-
-	public String getNicknames() {
-		return nicknames;
-	}
-
-	public void setNicknames(String nicknames) {
-		this.nicknames = nicknames;
 	}
 
 }

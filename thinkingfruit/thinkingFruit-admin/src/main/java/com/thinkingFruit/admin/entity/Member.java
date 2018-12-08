@@ -61,7 +61,7 @@ public class Member extends BaseEntity{
 	/**
 	 * 用户余额
 	 */
-	private String balance;
+	private Double balance;
 	/**
 	 * 交易量
 	 */
@@ -151,10 +151,11 @@ public class Member extends BaseEntity{
 	public void setMemberLevelId(Long memberLevelId) {
 		this.memberLevelId = memberLevelId;
 	}
-	public String getBalance() {
+	
+	public Double getBalance() {
 		return balance;
 	}
-	public void setBalance(String balance) {
+	public void setBalance(Double balance) {
 		this.balance = balance;
 	}
 	public String getTransaction() {

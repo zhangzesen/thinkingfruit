@@ -48,7 +48,7 @@ public class Order extends BaseEntity{
 	/**
 	 * 	区
 	 */
-	private String diatrict;
+	private String town;
 	
 	/**
 	 * 	详细地址
@@ -74,11 +74,6 @@ public class Order extends BaseEntity{
 	 * 	订单状态
 	 */
 	private String orderStatus;
-	
-	/**
-	 * 	配送费用
-	 */
-	private Double freightPrice;
 	
 	/**
 	 * 	发货时间
@@ -229,13 +224,13 @@ public class Order extends BaseEntity{
 	public void setCity(String city) {
 		this.city = city;
 	}
-
-	public String getDiatrict() {
-		return diatrict;
+	
+	public String getTown() {
+		return town;
 	}
 
-	public void setDiatrict(String diatrict) {
-		this.diatrict = diatrict;
+	public void setTown(String town) {
+		this.town = town;
 	}
 
 	public String getAddress() {
@@ -268,14 +263,6 @@ public class Order extends BaseEntity{
 
 	public void setOrderStatus(String orderStatus) {
 		this.orderStatus = orderStatus;
-	}
-
-	public Double getFreightPrice() {
-		return freightPrice;
-	}
-
-	public void setFreightPrice(Double freightPrice) {
-		this.freightPrice = freightPrice;
 	}
 
 	public Date getConfirmTime() {
