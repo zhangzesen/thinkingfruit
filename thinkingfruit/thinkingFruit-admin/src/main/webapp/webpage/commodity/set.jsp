@@ -88,17 +88,6 @@ color:#666!important;
 											class="layui-textarea"></textarea>
 									</div>
 								</div>
-								
-
-								<div class="layui-form-item">
-									<label class="layui-form-label">商品库存</label>
-									<div class="layui-input-inline input-custom-width">
-										<input type="text" name="stock"
-											value=""
-											autocomplete="off" placeholder="请输入商品库存(选填)" class="layui-input">
-									</div>
-								</div>
-								
 
 								<div class="layui-form-item">
 									<label class="layui-form-label">VIP价格</label>
@@ -163,8 +152,6 @@ color:#666!important;
 								<div class="layui-input-block" id="btn">
 									<button class="layui-btn brand-set" lay-submit=""
 										lay-filter="cate_add">立即添加</button>
-									<input onclick="history.go(-1)" type="button" value="返回"
-										class="layui-btn layui-btn-lg">
 								</div>
 							</div>
 						</div>

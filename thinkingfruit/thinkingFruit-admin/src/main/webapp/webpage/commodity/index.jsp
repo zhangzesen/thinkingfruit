@@ -12,11 +12,13 @@
 .laytable-cell-1-coverImagePath{
     height: auto;
 }
+.layui-table-cell{
+    height:40px;
+}
 body{overflow-y: scroll;}
 </style>
 </head>
 <body>
-<div class="tpl-content-wrapper">
 	<div style="margin-top: 20px;"
 		class="layui-tab layui-tab-brief main-tab-container">
 		<div class="layui-tab-content">
@@ -53,7 +55,6 @@ body{overflow-y: scroll;}
             <div id="dateTable" lay-filter="table-data"></div>
 
 		</div>
-	</div>
 	</div>
 	<jsp:include page="/context/js-tags.jsp"/>
 	<script id="barOption" type="text/html">

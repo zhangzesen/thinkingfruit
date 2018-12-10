@@ -55,16 +55,6 @@
 									</div>
 								</div>
 								
-
-								<div class="layui-form-item">
-									<label class="layui-form-label">商品库存</label>
-									<div class="layui-input-inline input-custom-width">
-										<input type="text" name="commoditySpecationStock" value=""
-											autocomplete="off" placeholder="请输入商品库存(选填)"
-											class="layui-input">
-									</div>
-								</div>
-								
 								<div class="layui-form-item">
 									<label class="layui-form-label">VIP价格</label>
 									<div class="layui-input-inline input-custom-width">

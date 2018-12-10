@@ -33,7 +33,7 @@ var commodity_index_ops = {
 				        , {field: 'name', title: '商品名', align: 'center'}
 				        , {field: 'coverImagePath', title: '展示图片', align: 'center',templet:'<div><img src="'+WEB_ROOT+'{{d.coverImagePath}}"></div>'}
 				        , {field: 'sales', title: '商品销量', align: 'center'}
-				        , {field: 'stock', title: '商品库存', align: 'center'}
+				        , {field: 'createTime', title: '创建时间', align: 'center'}
 				        , {field: 'description', title: '商品卖点',align: 'center'}
 				        , {fixed: 'right', title: '操作', width: 250,height: 40, align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
 				    ]]
