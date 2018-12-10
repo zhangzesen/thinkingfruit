@@ -45,6 +45,23 @@ width:300px;
 											autocomplete="off" class="layui-input" readonly="readonly">
 									</div>
 								</div>
+								
+								<div class="layui-form-item">
+									<label class="layui-form-label">邀请金</label>
+									<div class="layui-input-inline input-custom-width">
+										<input type="text" name="inviteMoney" 
+											autocomplete="off" class="layui-input" readonly="readonly">
+									</div>
+								</div>
+								
+								<div class="layui-form-item">
+									<label class="layui-form-label">邀请者获得的分佣</label>
+									<div class="layui-input-inline input-custom-width">
+										<input type="text" name="inviterTotalMoney" 
+											autocomplete="off" class="layui-input" readonly="readonly">
+									</div>
+								</div>
+								
 								<div class="layui-form-item">
 									<label class="layui-form-label">邀请者上级代理id</label>
 									<div class="layui-input-inline input-custom-width">
@@ -57,6 +74,14 @@ width:300px;
 									<label class="layui-form-label">邀请者上级分佣比例</label>
 									<div class="layui-input-inline input-custom-width">
 										<input type="text" name="commisionProportion" 
+											autocomplete="off" class="layui-input" readonly="readonly">
+									</div>
+								</div>
+								
+								<div class="layui-form-item">
+									<label class="layui-form-label">邀请者上级分得的佣金</label>
+									<div class="layui-input-inline input-custom-width">
+										<input type="text" name="commision" 
 											autocomplete="off" class="layui-input" readonly="readonly">
 									</div>
 								</div>

@@ -90,13 +90,17 @@ var purchaseOrder_info_ops={
 					   $("input[name='id']").attr("value",res.data.id);
 					   $("input[name='orderNo']").attr("value",res.data.orderNo);
 					   $("input[name='orderMemberName']").val(res.data.orderMemberName);
-					   $("input[name='inviterUpperId']").attr("value",res.data.inviterUpperId);
 					   $("input[name='inviterId']").attr("value",res.data.inviterId);
+					   $("input[name='inviterTotalMoney']").attr("value",res.data.inviterTotalMoney);
+					   $("input[name='inviteMoney']").attr("value",res.data.inviteMoney);
+					   $("input[name='inviterUpperId']").attr("value",res.data.inviterUpperId);
+					   $("input[name='commisionProportion']").attr("value",res.data.commisionProportion);
+					   $("input[name='commision']").attr("value",res.data.commision);
 					   $("input[name='commisionProportion']").attr("value",res.data.commisionProportion);
 					   $("input[name='commodityName']").attr("value",res.data.commodityName);
 					   $("input[name='commodityCount']").attr("value",res.data.commodityCount);
 					   $("input[name='commodityPrice']").attr("value",res.data.commodityPrice);
-					   console.log("zzzzzzzz"+res.data.inviterUpperId);
+					   console.log(res.data.inviterUpperId);
 					   console.log(res.data.commisionProportion);
 					   console.log(res.data.inviterId);
 					   switch (res.data.orderStatus) {

@@ -64,8 +64,8 @@ public class CodeMsg {
 	public static CodeMsg ORDERID_EXPRESSNO = new CodeMsg(500013,"快递号不能为空");
 	public static CodeMsg ORDERID_EXCL = new CodeMsg(500014,"EXCL无数据");
 	public static CodeMsg IS_DELIVERY = new CodeMsg(500030,"订单已派送或无法派送");
-	public static CodeMsg DELIVER_FAIL = new CodeMsg(500031,"订单发货失败");
-	public static CodeMsg CANCEL_FAIL = new CodeMsg(500031,"订单取消失败");
+	public static CodeMsg DELIVER_FAIL = new CodeMsg(500031,"订单已派送或非直属下级");
+	public static CodeMsg CANCEL_FAIL = new CodeMsg(500031,"订单已完成或非直属下级");
 	public static CodeMsg PURCHASE_FAIL = new CodeMsg(500032,"订单购买失败");
 	public static CodeMsg EXAMINE_FAIL = new CodeMsg(500033,"审核失败");
 	public static CodeMsg DEPOT_FAIL = new CodeMsg(500034,"无法生成代理仓库,审核失败");

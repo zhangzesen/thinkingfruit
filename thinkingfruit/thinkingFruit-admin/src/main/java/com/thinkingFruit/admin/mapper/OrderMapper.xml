@@ -101,6 +101,8 @@
 	    updateTime = now()
 	    </set> 
 	    where `id` = #{id}
+	    and orderStatus !=2
+	    and orderStatus!=3
 	</update>
 	
 	<!-- 取消交易订单 -->
@@ -111,6 +113,8 @@
 	    updateTime = now()
 	    </set> 
 	    where `id` = #{id}
+	    and `inviterId`=0
+	    and `orderStatus`=1
 	</update>
 	
 	<!-- 导出提货订单excel -->
@@ -205,7 +209,10 @@
         `o`.commodityName as `commodityName`,
         `o`.commodityPrice as `commodityPrice`,
         `c`.inviterId as `inviterId`,
+        `c`.inviterTotalMoney as `inviterTotalMoney`,
+        `c`.inviteMoney as `inviteMoney`,
         `c`.inviterUpperId as `inviterUpperId`,
+        `c`.commision as `commision`,
         `c`.commisionProportion as `commisionProportion`,
         `o`.createTime as `createTime`,
         `o`.confirmTime as `confirmTime`
@@ -215,7 +222,7 @@
 		where `o`.id = #{id}
     </select>
     
-    <!-- 给联创发交易订单 -->
+    <!-- 公司给直属下级发交易订单 -->
     <update id="updatePurchaseOrderStatus">
 		update `t_thinkingfruit_mall_order_purchase`
 	    <set>
@@ -223,6 +230,8 @@
 	    confirmTime = now()
 	    </set> 
 	    where `id` = #{id}
+	    and orderStatus=1
+	    and inviterId=0
 	</update>
 	
 	<!-- 导出交易excel -->

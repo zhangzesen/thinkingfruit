@@ -203,10 +203,8 @@ public class OrderServiceImpl implements OrderService{
 		}
 		//订单发货
 		Integer update=orderDao.updatePurchaseOrderStatus(id);
-		System.out.println("update"+update);
 		//添加销量
 		Integer addSales=orderDao.addSales(id,commodityCount);
-		System.out.println("addSales"+addSales);
 		if(update==Constant.DEFALULT_ZERO_INT||addSales==Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.DELIVER_FAIL);
 		}
