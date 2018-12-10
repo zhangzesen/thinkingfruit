@@ -57,17 +57,17 @@ var order_index_ops = {
 			   // 表格渲染
 			   var tableIns = table.render({
 			       elem: '#dateTable'                  //指定原始表格元素选择器（推荐id选择器）  //容器高度
-			       , cols: [[                  //标题栏
-                       {field: 'id', title: '编号',align: 'center', width: 70}
-			           , {field: 'orderNo', title: '订单号', width: 140,align: 'center'}
-			           , {field: 'orderMemberName', title: '收件人', width: 100,align: 'center'}
-			           , {field: 'mobile', title: '手机号', width: 120,align: 'center'}
-			           , {field: 'sendMethod', title: '配送方式', width: 95,align: 'center'}
-			           , {field: 'orderStatus', title: '订单状态', width: 95,align: 'center'}
-			           , {field: 'commodityCount', title: '商品数量', width: 95,align: 'center'}
-			           , {field: 'createTime', title: '创建时间', width: 95,align: 'center'}
-			           , {title: '操作', /*width: 210,height: 40,*/ align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
-			       ]]
+			    	   , cols: [[                  //标题栏
+	                       {field: 'id', title: '编号',align: 'center', width:'7%'}
+				           , {field: 'orderNo', title: '订单号', width:'11%',align: 'center'}
+				           , {field: 'orderMemberName', title: '收件人', width:'11%',align: 'center'}
+				           , {field: 'mobile', title: '手机号', width:'11%',align: 'center'}
+				           , {field: 'sendMethod', title: '配送方式', width:'7%',align: 'center'}
+				           , {field: 'orderStatus', title: '订单状态', width:'11%',align: 'center'}
+				           , {field: 'commodityCount', title: '商品数量', width:'7%',align: 'center'}
+				           , {field: 'createTime', title: '创建时间', width:'15%',align: 'center',templet:'#date_formate'}
+				           , {fixed: 'right',title: '操作',width:'20%',align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
+				       ]]
 			       , id: 'dataCheck'
 			       , url: WEB_ROOT + "/order/pagination"
 			       , method: 'get'
@@ -80,6 +80,15 @@ var order_index_ops = {
 
 			           //得到当前页码
 			           console.log(curr);
+			           
+			           //时间进行处理
+			           $("[data-field='createTime']").children().each(function(){
+			        		if($(this).text()=='[object Object]'){
+			        			var atime = res.data[$(this).parent().parent().attr("data-index")].createTime;
+			        			var time = 1900+atime.year+"-"+(atime.month+1)+"-"+atime.date+" "+atime.hours+":"+atime.minutes
+			        			$(this).text(time);  
+			        		}
+			           })
 
 			           //得到数据总量
 			           console.log(count);

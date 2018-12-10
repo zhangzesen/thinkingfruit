@@ -12,6 +12,10 @@ height:auto;
 td .layui-table-cell{
 height:auto;
 }
+.layui-table-cell{
+    height:40px;
+}
+.layui-input-inline.xbs768{margin-right:2%;}
 </style>
 </head>
 <body>

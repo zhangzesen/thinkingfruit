@@ -76,16 +76,16 @@ var purchaseOrder_index_ops = {
 			   // 表格渲染
 			   var tableIns = table.render({
 			       elem: '#dateTable'                  //指定原始表格元素选择器（推荐id选择器）  //容器高度
-			       , cols: [[                  //标题栏
-                       {field: 'id', title: '编号',align: 'center', width: 70}
-			           , {field: 'orderNo', title: '订单号', width: 140,align: 'center'}
-			           , {field: 'orderMemberName', title: '代理人', width: 100,align: 'center'}
-			           , {field: 'memberLevel', title: '代理等级', width: 120,align: 'center'}
-			           , {field: 'orderStatus', title: '订单状态', width: 95,align: 'center'}
-			           , {field: 'commodityName', title: '商品名', width: 95,align: 'center'}
-			           , {field: 'commodityCount', title: '商品数量', width: 95,align: 'center'}
-			           , {title: '操作', /*width: 210,height: 40,*/ align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
-			       ]]
+			    	   , cols: [[                  //标题栏
+	                       {field: 'id', title: '编号',align: 'center', width:'8%'}
+				           , {field: 'orderNo', title: '订单号', width:'13%',align: 'center'}
+				           , {field: 'orderMemberName', title: '代理人', width:'13%',align: 'center'}
+				           , {field: 'memberLevel', title: '代理等级', width:'12%',align: 'center'}
+				           , {field: 'orderStatus', title: '订单状态', width:'12%',align: 'center'}
+				           , {field: 'commodityName', title: '商品名', width:'13%',align: 'center'}
+				           , {field: 'commodityCount', title: '商品数量', width:'8%',align: 'center'}
+				           , {fixed: 'right',title: '操作',width:'22%',align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
+				       ]]
 			       , id: 'dataCheck'
 			       , url: WEB_ROOT + "/purchase/pagination"
 			       , method: 'get'

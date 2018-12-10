@@ -76,7 +76,7 @@
                     </shiro:hasPermission>
                     <li name="left_message" class="layui-nav-item message edging"><a
 						name="left_a" id="left_information" href="<%=basePath%>/help"
-						target="main"> <i class="layui-icon">&#xe611;</i> <cite>帮助</cite>
+						target="main"> <i class="layui-icon">&#xe60c;</i> <cite>帮助</cite>
 					</a></li>
 
 
@@ -101,7 +101,7 @@
 <shiro:hasPermission name="order:manager">
 					<li name="left_mall" class="layui-nav-item edging"><a
 						name="left_a" href="javascript:;" target="main"> <i
-							class="layui-icon">&#xe65e;</i><cite>订单列表</cite>
+							class="layui-icon">&#xe63c;</i><cite>订单列表</cite>
 					<span class="layui-nav-more"></span>
 					       </a>
 						<dl class="layui-nav-child">
@@ -168,7 +168,7 @@
 <shiro:hasPermission name="user:manager">
 					<li name="left_mall" class="layui-nav-item edging"><a
 						name="left_a" href="javascript:;" target="main"> <i
-							class="layui-icon">&#xe65e;</i><cite>设置</cite>
+							class="layui-icon">&#xe614;</i><cite>设置</cite>
 					<span class="layui-nav-more"></span>
 					       </a>
 						<dl class="layui-nav-child">

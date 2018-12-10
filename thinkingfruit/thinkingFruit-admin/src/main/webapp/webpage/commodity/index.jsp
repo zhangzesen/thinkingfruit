@@ -65,6 +65,12 @@ body{overflow-y: scroll;}
     return barOption;
    }} 
     </script>
+    <script type="text/html" id="date_formate">
+    {{#  
+     console.log("dateTime--->"+d.createTime);
+     return new Date(d.createTime).format("yyyy-MM-dd hh:mm:ss");
+    }} 
+    </script>
 	<script type="text/javascript" src="<%=basePath%>/static/js/commodity/index.js"></script>
 </body>
 </html>
