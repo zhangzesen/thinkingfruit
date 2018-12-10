@@ -137,7 +137,15 @@ public class OrderServiceImpl implements OrderService{
 		List<Order> orders = orderDao.findOrderExcl(queryMap);
 		for (Order order : orders) {
 			order.setAllAddress(order.getProvince()+order.getCity()+order.getTown()+order.getAddress());
+			if(Constant.DEFALULT_ZERO.toString().equals(order.getOrderStatus())) {
+				order.setOrderStatus("待发货");
+			}else if(Constant.DEFALULT_ONE.toString().equals(order.getOrderStatus())) {
+				order.setOrderStatus("待收货");
+			}else if(Constant.DEFALULT_TWO.toString().equals(order.getOrderStatus())) {
+				order.setOrderStatus("已完成");
+			}
 		}
+		
 		return orders;
 	}
 	
@@ -233,6 +241,13 @@ public class OrderServiceImpl implements OrderService{
 		}
 		//查出订单集合
 		List<PurchaseOrder> orders = orderDao.findPurchaseOrderExcl(queryMap);
+		for (PurchaseOrder order : orders) {
+			if(Constant.DEFALULT_ZERO.toString().equals(order.getOrderStatus())) {
+				order.setOrderStatus("下级已下单");
+			}else if(Constant.DEFALULT_ONE.toString().equals(order.getOrderStatus())) {
+				order.setOrderStatus("上级同意订单");
+			}
+		}
 		return orders;
 	}
 	

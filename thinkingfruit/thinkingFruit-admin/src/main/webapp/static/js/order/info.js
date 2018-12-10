@@ -12,11 +12,10 @@ var order_info_ops={
 				//var id = $("input[name='id']").val();
 				var id = common_ops.g_getQueryString("id");
 				console.log("参数："+id);
-				var orderStatusNo = $("input[name='orderStatusNo']").val();
 				var expressNo = $("input[name='expressNo']").val();
 				var logistics = $("select[name='logistics']").val();
+				console.log("id"+id);
 				console.log(expressNo);
-				console.log(orderStatusNo);
 				console.log(logistics);
 				$(".layui-input-block .layui-btn").addClass('layui-btn-disabled');
 				var type =common_ops.g_getQueryString("type");
@@ -34,7 +33,6 @@ var order_info_ops={
 		  			data:{
 						id:id,
 						expressNo:expressNo,
-						orderStatus:orderStatusNo,
 						logistics:logistics
 					},
 		  			dataType:'json'

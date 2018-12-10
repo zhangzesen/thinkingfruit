@@ -136,7 +136,7 @@ width:300px;
 									</div>
 								</div>
 								
-								<input name="orderStatusNo" value="" hidden="hidden">
+								
 								<div class="layui-form-item" id="btn">
 									<div class="layui-input-block" id="button">
 									</div>

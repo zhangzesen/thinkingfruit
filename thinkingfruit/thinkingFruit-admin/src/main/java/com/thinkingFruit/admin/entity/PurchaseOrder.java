@@ -83,14 +83,30 @@ public class PurchaseOrder extends BaseEntity{
 	private Double inviterProportion;
 	
 	/**
+	 * 邀请金
+	 */
+	private Double inviteMoney;
+	
+	/**
+	 * 邀请者获得的分佣
+	 */
+	private Double inviterTotalMoney;
+	
+	/**
 	 *	 邀请者上级
 	 */
 	private Long inviterUpperId;
+	
 	
 	/**
 	 * 	邀请者上级分佣比例
 	 */
 	private Double commisionProportion;
+	
+	/**
+	 * 邀请者上级分得的佣金
+	 */
+	private Double commision;
 	
 	/**
 	 * 订单完成时间
@@ -104,6 +120,30 @@ public class PurchaseOrder extends BaseEntity{
 	
 	
 	
+	public Double getInviteMoney() {
+		return inviteMoney;
+	}
+
+	public void setInviteMoney(Double inviteMoney) {
+		this.inviteMoney = inviteMoney;
+	}
+
+	public Double getInviterTotalMoney() {
+		return inviterTotalMoney;
+	}
+
+	public void setInviterTotalMoney(Double inviterTotalMoney) {
+		this.inviterTotalMoney = inviterTotalMoney;
+	}
+
+	public Double getCommision() {
+		return commision;
+	}
+
+	public void setCommision(Double commision) {
+		this.commision = commision;
+	}
+
 	public Double getOrderTotalPrice() {
 		return orderTotalPrice;
 	}

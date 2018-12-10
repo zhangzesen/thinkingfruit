@@ -86,11 +86,11 @@
 		update `t_thinkingfruit_mall_order`
 	    <set>
 	    orderStatus = 1 ,
-	    expressNo = #{expressNo},
-	    logistics = #{logistics},
+	    expressNo = #{order.expressNo},
+	    logistics = #{order.logistics},
 	    confirmTime = now()
 	    </set> 
-	    where `id` = #{id}
+	    where `id` = #{order.id}
 	</update>
 	
 	<!-- 取消提货订单 -->
@@ -123,12 +123,11 @@
 		r.`mobile` as `mobile`,
 		r.`province` as `province`,
 		r.`city` as `city`,
-		r.`diatrict` as `diatrict`,
+		r.`town` as `town`,
 		r.`address` as `address`,
 		r.`remark` as `remark`,
 		r.`sendMethod` as `sendMethod`,
 		r.`orderStatus` as `orderStatus`,
-		r.`freightPrice` as `freightPrice`,
 		r.`confirmTime` as `confirmTime`,
 		r.`expressNo` as `expressNo`,
 		m.`name` as commodityName,
@@ -226,7 +225,7 @@
 	    where `id` = #{id}
 	</update>
 	
-	<!-- 导出excel -->
+	<!-- 导出交易excel -->
 	<select id="findPurchaseOrderExcl" resultType="com.thinkingFruit.admin.entity.PurchaseOrder">
 		select 
 		r.`id` as `id`,
@@ -234,7 +233,6 @@
 		r.`orderMemberName` as `orderMemberName`,
 		r.`orderMemberId` as `orderMemberId`,
 		r.`memberLevel` as `memberLevel`,
-		r.`superiorMemberId` as `superiorMemberId`,
 		r.`commodityId` as `commodityId`,
 		r.`commodityCount` as `commodityCount`,
 		r.`commodityName` as `commodityName`,
@@ -242,14 +240,16 @@
 		r.`isFirst` as `isFirst`,
 		r.`orderStatus` as `orderStatus`,
 		r.`inviterId` as `inviterId`,
-		r.`inviterProportion` as `inviterProportion`,
-		r.`superiorMemberId` as `superiorMemberId`,
-		r.`superiorProportion` as `superiorProportion`,
+		c.`inviterTotalMoney` as `inviterTotalMoney`,
+		c.`inviteMoney` as `inviteMoney`,
+		c.`inviterUpperId` as `inviterUpperId`,
+		c.`commision` as `commision`,
 		r.`createTime` as `createTime`,
-		l.`memberLevelName` as `memberLevelName`,
+		l.`levelName` as `memberLevelName`,
 		r.`confirmTime` as `confirmTime`
 		from `t_thinkingfruit_mall_order_purchase` as `r` 
 		left join `t_thinkingfruit_mall_member_level` as `l` on `r`.memberLevel=`l`.level
+		left join `t_thinkingfruit_mall_commision` as `c` on `c`.orderNo =`r`.orderNo
 		<where>
 			1=1
 			<if test="queryMap.startTime != null and queryMap.startTime != ''">

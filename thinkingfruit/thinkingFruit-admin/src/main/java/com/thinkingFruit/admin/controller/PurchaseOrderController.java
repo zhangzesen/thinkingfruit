@@ -153,8 +153,8 @@ public class PurchaseOrderController {
 		}
 		ExportExcel<PurchaseOrder> reportExcel = new ExportExcel<>();
 //		reports.get(0).getOrderItems().get(0).getCommodityName();
-		String[] headers = { "ID", "订单号", "代理人", "代理等级", "邀请者id" ,"分佣","订单状态","商品名","商品数量","创建时间"};
-		String[] paramaters = { "id", "orderNo", "orderMemberName", "memberLevelName", "inviterId","superiorProportion","orderStatus","commodityName","commodityCount","createTime" };
+		String[] headers = { "ID", "订单号", "代理人", "代理等级", "邀请者id" ,"邀请者分佣(元)","邀请金","邀请者上级","邀请者上级佣金(元)","订单状态","商品名","商品数量","创建时间"};
+		String[] paramaters = { "id", "orderNo", "orderMemberName", "memberLevelName", "inviterId","inviterTotalMoney","inviteMoney","inviterUpperId","commision","orderStatus","commodityName","commodityCount","createTime" };
 		reportExcel.exportExcel("报表列表", headers, paramaters, reports, out);
 		if (out != null) {
 			out.close();
