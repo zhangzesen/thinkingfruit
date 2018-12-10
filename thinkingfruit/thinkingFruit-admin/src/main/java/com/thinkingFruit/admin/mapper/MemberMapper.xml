@@ -176,7 +176,7 @@
 <update id="cancelUpgrade">
     update `t_thinkingfruit_mall_member`
     <set>
-        `upStatus` =0,
+        `upStatus` =1,
         `updateTime` = now()
     </set>
     where `id` = #{id}

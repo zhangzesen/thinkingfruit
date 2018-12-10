@@ -1,5 +1,5 @@
 ;
-var order_info_ops={
+var purchaseOrder_info_ops={
 		init:function(){
 			this.inintComponent();
 			this.eventbind();
@@ -143,5 +143,5 @@ var order_info_ops={
 	   }
 };
 $(function(){
-	order_info_ops.init();
+	purchaseOrder_info_ops.init();
 })

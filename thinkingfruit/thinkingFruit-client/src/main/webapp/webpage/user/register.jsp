@@ -44,9 +44,6 @@ color:black
 		<div>
 			<input type="text" name="mobile" class="mobile" placeholder="请输入手机号" autocomplete="off" />
 		</div>
-		<div>
-			<input type="text" name="inviterId" class="inviterId" placeholder="请输入邀请者id" autocomplete="off" />
-		</div>
 		<div class="classification">
 				<input type="verification" class="verification" name="verification" autocomplete="off"
 					 placeholder="请输入验证码">

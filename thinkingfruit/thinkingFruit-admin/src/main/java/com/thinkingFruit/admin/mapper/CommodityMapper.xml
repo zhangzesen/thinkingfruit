@@ -38,6 +38,7 @@
         </if>
         and c.`status`=0
         </where>
+        order BY `c`.id
     </select>
     
     

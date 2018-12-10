@@ -45,6 +45,8 @@ public class CommodityServiceImpl implements CommodityService {
 		// 获取分页条件的
 		String pageSize = queryMap.get("limit");
 		String pageNum = queryMap.get("page");
+		System.out.println("pageSize"+pageSize);
+		System.out.println("pageNum"+pageNum);
 		if (pageSize == null || pageNum == null) {
 			throw new WebServiceException(CodeMsg.SERVER_ERROR);
 		}

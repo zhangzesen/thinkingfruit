@@ -1,5 +1,5 @@
 ;
-var member_examine_ops = {
+var member_upExamine_ops = {
 		init:function(){
 			this.eventBind();
 			this.inintComponent();
@@ -137,5 +137,5 @@ var member_examine_ops = {
 		}
 }
 $(function(){
-	member_examine_ops.init();
+	member_upExamine_ops.init();
 })

@@ -40,8 +40,7 @@ var user_login_ops = {
 		var loginPassword = $("input[name='loginPassword']").val();
 		var randCode = $("input[name='verification']").val();
 		var mobile = $("input[name='mobile']").val();
-		var inviterId = $("input[name='inviterId']").val();
-		
+		var inviterId = common_ops.g_getQueryString('memberId');
 		btnTarget.addClass('layui-btn-disabled');
 		console.log("loginName:"+loginName);
 		console.log("password:"+loginPassword);
