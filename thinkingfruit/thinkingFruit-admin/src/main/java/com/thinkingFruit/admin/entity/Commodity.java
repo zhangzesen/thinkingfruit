@@ -2,6 +2,8 @@ package com.thinkingFruit.admin.entity;
 
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.ysdevelop.common.validator.IsPrice;
@@ -37,31 +39,20 @@ public class Commodity {
 	
 	
 	/**
-	 *	 商品轮播图集合
-	 */
-	@NotEmpty(message="轮播图不能为空")
-	private List<String> previewImagePaths;
-	
-	/**
 	 * 	商品详情图集合
 	 */
-	@NotEmpty(message="商品详情图不能为空")
 	private List<String> detailsImagePaths;// 商品详情图
 	
 	/**
 	 *	 商品详情图
 	 */
+	@NotEmpty(message="商品详情图不能为空")
 	private String detailsImagePath;
-	
-	/**
-	 *	 商品轮播图
-	 */
-	private String previewImagePath;
 	
 	/**
 	 *	 商品描述
 	 */
-	@NotEmpty(message="请输入商品卖点")
+	@NotNull(message="请输入商品卖点")
 	private String description;
 	
 	/**
@@ -73,35 +64,35 @@ public class Commodity {
 	 * 	商品联创价
 	 */
 	@IsPrice
-	@NotEmpty(message="价格不能为空")
+	@NotNull(message="价格不能为空")
 	private Double firstPrice;
 	
 	/**
 	 * 	商品春事价
 	 */
 	@IsPrice
-	@NotEmpty(message="价格不能为空")
+	@NotNull(message="价格不能为空")
 	private Double secondPrice;
 	
 	/**
 	 * 	商品总监价
 	 */
 	@IsPrice
-	@NotEmpty(message="价格不能为空")
+	@NotNull(message="价格不能为空")
 	private Double thirdPrice;
 	
 	/**
 	 * 	商品svip价
 	 */
 	@IsPrice
-	@NotEmpty(message="价格不能为空")
+	@NotNull(message="价格不能为空")
 	private Double fourthPrice;
 	
 	/**
 	 * 	商品vip价
 	 */
 	@IsPrice
-	@NotEmpty(message="价格不能为空")
+	@NotNull(message="价格不能为空")
 	private Double fifthPrice;
 	
 	/**
@@ -151,15 +142,6 @@ public class Commodity {
 
 	public void setCoverImagePath(String coverImagePath) {
 		this.coverImagePath = coverImagePath;
-	}
-
-
-	public List<String> getPreviewImagePaths() {
-		return previewImagePaths;
-	}
-
-	public void setPreviewImagePaths(List<String> previewImagePaths) {
-		this.previewImagePaths = previewImagePaths;
 	}
 
 	public List<String> getDetailsImagePaths() {
@@ -272,13 +254,5 @@ public class Commodity {
 
 	public void setDetailsImagePath(String detailsImagePath) {
 		this.detailsImagePath = detailsImagePath;
-	}
-
-	public String getPreviewImagePath() {
-		return previewImagePath;
-	}
-
-	public void setPreviewImagePath(String previewImagePath) {
-		this.previewImagePath = previewImagePath;
 	}
 }

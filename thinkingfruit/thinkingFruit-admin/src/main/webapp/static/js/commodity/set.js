@@ -56,6 +56,7 @@ var commodity_set_ops = {
 			   //ajax后台添加数据
 			   $(".layui-input-block .brand-set").click(function(){
 				   //获取添加表里的数据
+				   id = common_ops.g_getQueryString("id");
 				   var name = $("input[name='name']").val();
 				   var coverImagePath = $("input[name='coverImagePath']").val();
 				   var description = $("textarea[name='description']").val();
@@ -76,6 +77,7 @@ var commodity_set_ops = {
 					   url:WEB_ROOT+ url,
 					   type:type,
 					   data:{
+						   id:id,
 						   name:name,
 						   coverImagePath:coverImagePath,
 						   description:description,

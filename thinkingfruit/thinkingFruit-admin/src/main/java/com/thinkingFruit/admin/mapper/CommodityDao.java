@@ -72,7 +72,7 @@ public interface CommodityDao {
 	 * 	修改商品表信息
 	 * @param commodity 商品
 	 */
-	void editCommodity(@Param("commodity")Commodity commodity);
+	void editCommodity(Commodity commodity);
 	
 	/**
 	 * 获取所有商品

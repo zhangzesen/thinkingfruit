@@ -82,6 +82,9 @@ public class CommodityServiceImpl implements CommodityService {
 		commodity.setDetailsImagePaths(JSON.parseArray(commodity.getDetailsImagePath(), String.class));
 
 		List<String> detailsImagePath = commodity.getDetailsImagePaths();
+		for (String string : detailsImagePath) {
+			System.out.println("string:"+string);
+		}
 		//添加商品详情图
 		Integer addCommoditydDetailsImage = commodityDao.addCommoditydDetailsImage(id,detailsImagePath);
 		if(addCommoditydDetailsImage==Constant.DEFALULT_ZERO_INT) {
@@ -132,6 +135,7 @@ public class CommodityServiceImpl implements CommodityService {
 		//修改商品
 		commodityDao.editCommodity(commodity);
 		Long id = commodity.getId();
+		System.out.println("commodityId"+id);
 		//先删除商品图片
 		Integer deleteCommodityImagesById = commodityDao.deleteCommodityImagesById(id);
 		if(deleteCommodityImagesById==Constant.DEFALULT_ZERO_INT) {
