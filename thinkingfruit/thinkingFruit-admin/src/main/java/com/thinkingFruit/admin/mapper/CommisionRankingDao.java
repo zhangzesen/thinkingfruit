@@ -6,7 +6,6 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 
 import com.thinkingFruit.admin.entity.Commision;
-import com.ysdevelop.common.page.Pagination;
 
 public interface CommisionRankingDao {
 	/**
@@ -18,8 +17,6 @@ public interface CommisionRankingDao {
 	 *
 	 * @description 个人佣金排名
 	 */
-	Integer getCountByQuery(@Param("queryMap") Map<String, String> queryMap);
-
-	List<Commision> pagination(@Param("queryMap") Map<String, String> queryMap,@Param("pagination") Pagination<Commision> pagination);
+	List<Commision> paginationCommision(@Param(value="queryMap")Map<String, String> queryMap);
 
 }

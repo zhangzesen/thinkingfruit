@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.thinkingFruit.admin.entity.Commision;
 import com.thinkingFruit.admin.mapper.CommisionDao;
 import com.thinkingFruit.admin.service.CommisionService;
@@ -26,32 +28,35 @@ public class CommisionServiceImpl implements CommisionService {
 	 */
 	@Autowired
 	CommisionDao commisionDao;
-
-	// 佣金列表
+	/**
+	 * 获取所有佣金
+	 */
 	@Override
-	public Pagination<Commision> paginationCommision(Pagination<Commision> pagination, Map<String, String> queryMap) {
-
-		Integer page = null;
-		Integer limit = null;
-		if (queryMap == null || (page = Integer.valueOf(queryMap.get("page"))) == null
-				|| (limit = Integer.valueOf(queryMap.get("limit"))) == null) {
+	public PageInfo<Commision> paginationCommision(Map<String, String> queryMap) {
+		String pageSize = queryMap.get("limit");
+		String pageNum = queryMap.get("page");
+		if (pageSize == null || pageNum == null) {
 			throw new WebServiceException(CodeMsg.SERVER_ERROR);
 		}
-		pagination.setPageNum(page);
-		pagination.setPageSize(limit);
-
-		Integer totalItemsCount = commisionDao.getCountByQuery(queryMap);
-		List<Commision> commisionItems = commisionDao.paginationCommision(queryMap, pagination);
-		pagination.setItems(commisionItems);
-		pagination.setTotalItemsCount(totalItemsCount);
-
-		return pagination;
+		
+		Integer integerPageSize = Integer.parseInt(pageSize);
+		Integer integerPageNum = Integer.parseInt(pageNum);
+		PageHelper.startPage(integerPageNum, integerPageSize, Boolean.TRUE);
+		List<Commision> paginationCommision = commisionDao.paginationCommision(queryMap);
+		PageInfo<Commision> pageInfo = new PageInfo<>(paginationCommision);
+		return pageInfo;
 	}
-
 	// 通过id查询
 	@Override
 	public Commision findCommisionById(Long id) {
-		return commisionDao.findCommisionById(id);
+		Commision commision =commisionDao.findCommisionById(id);
+		Long inviterId =commision.getInviterId();
+		Long inviterUpperId=commision.getInviterUpperId();
+		String inviterName=commisionDao.findInviterName(inviterId);
+		String inviterUpperName=commisionDao.findInviterUpperName(inviterUpperId);
+		commision.setInviterName(inviterName);
+		commision.setInviterUpperName(inviterUpperName);
+		return commision;
 	}
 
 	// 佣金总和
@@ -65,27 +70,24 @@ public class CommisionServiceImpl implements CommisionService {
 	public void addPersonCommision(List<Commision> personCommisions) {
 		commisionDao.addPersonCommision(personCommisions);
 	}
-
+    //个人佣金列表
 	@Override
-	public Pagination<Commision> paginationCommisionPerson(Pagination<Commision> pagination,
-			Map<String, String> queryMap) {
-
-		Integer page = null;
-		Integer limit = null;
-		if (queryMap == null || (page = Integer.valueOf(queryMap.get("page"))) == null
-				|| (limit = Integer.valueOf(queryMap.get("limit"))) == null) {
+	public PageInfo<Commision> personCommision(Map<String, String> queryMap) {
+		String pageSize = queryMap.get("limit");
+		String pageNum = queryMap.get("page");
+		if (pageSize == null || pageNum == null) {
 			throw new WebServiceException(CodeMsg.SERVER_ERROR);
 		}
-		pagination.setPageNum(page);
-		pagination.setPageSize(limit);
-
-		Integer totalItemsCount = commisionDao.getCountByQueryPerson(queryMap);
-		List<Commision> commisionItems = commisionDao.paginationCommisionPerson(queryMap, pagination);
-		pagination.setItems(commisionItems);
-		pagination.setTotalItemsCount(totalItemsCount);
-
-		return pagination;
+		
+		Integer integerPageSize = Integer.parseInt(pageSize);
+		Integer integerPageNum = Integer.parseInt(pageNum);
+		PageHelper.startPage(integerPageNum, integerPageSize, Boolean.TRUE);
+		List<Commision> paginationCommision = commisionDao.personCommision(queryMap);
+		
+		PageInfo<Commision> pageInfo = new PageInfo<>(paginationCommision);
+		return pageInfo;
 	}
+
 
 	@Override
 	public List<Commision> findMemberCommisionByOrderNo(String orderNo) {

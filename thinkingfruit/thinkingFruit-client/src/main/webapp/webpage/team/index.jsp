@@ -31,6 +31,9 @@ input{
  #head{
     width: 15%;
     float: left;}
+    .count{
+        text-align: left;
+    }
 </style>
 </head>
 <body>
@@ -60,7 +63,36 @@ input{
                     </ul>
                     <div class="tab-panel tab-panel-clear-line">
                         <div class="tab-panel-item tab-active" id="tab1">
-                            <div href="javascript:;" class="aui-order-list">
+                            <div class="aui-order-list">
+                                <div class="aui-flex">
+                                    <div class="aui-flex-box">
+                                        <h3>级别：</h3>
+                                    </div>
+                                    <div class="aui-order-pay">
+                                        <p id="memberLevelName"></p>
+                                    </div>
+                                </div>
+                                <div class="aui-flex aui-flex-order">
+                                    <div class="aui-order-img">
+                                        <img src="" alt="" id="avatar">
+                                    </div>
+                                    <div class="aui-flex-box">
+                                        <h2 id="name"></h2>
+                                        <h4>本月佣金共 <i id="salesVolume"></i>元</h4>
+                                    </div>
+                                </div>
+                               <div class="aui-flex aui-flex-button">
+                                	<div class="aui-flex-box count">
+                                        <h3>团队人数:<i></i></h3>
+                                    </div>
+                                    <div class="aui-flex-box time">
+                                        <h3 id="createTime">时间</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-panel-item" id="inviter">
+                        <div class="aui-order-list">
                                 <div class="aui-flex">
                                     <div class="aui-flex-box">
                                         <h3>级别：</h3>
@@ -78,41 +110,12 @@ input{
                                         <h4>本月佣金共 <i>1</i>元</h4>
                                     </div>
                                 </div>
-                                    <div class="aui-flex">
-                                    <div class="aui-flex-box">
-                                        <h3>团队人数：</h3>
+                               <div class="aui-flex aui-flex-button">
+                                	<div class="aui-flex-box count">
+                                        <h3>团队人数:<i></i></h3>
                                     </div>
-                                    <div class="aui-order-pay">
-                                        <p>5</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-panel-item" id="inviter">
-                       <div class="aui-order-list">
-                       			<div class="aui-flex">
-                                	<div class="aui-flex-box">
-                                    	<h3>姓名：</h3>
-                                	</div>
-                                	<div class="aui-order-pay">
-                                     	<p id="name"></p>
-                                	</div>
-                                </div>
-                                <div class="aui-flex">
-                                    <div class="aui-flex-box">
-                                        <h3>级别：</h3>
-                                    </div>
-                                    <div class="aui-order-pay">
-                                        <p id="memberLevelName"></p>
-                                    </div>
-                                </div>
-                                <div class="aui-flex aui-flex-order">
-                                    <div class="aui-order-img">
-                                        <img id="avatar" src="" alt="">
-                                    </div>
-                                    <div class="aui-flex-box">
-                                        <h2></h2>
-                                        <h4>本月销售额<i id="salesVolume"></i>元</h4>
+                                    <div class="aui-flex-box time">
+                                        <h3>时间</h3>
                                     </div>
                                 </div>
                             </div>

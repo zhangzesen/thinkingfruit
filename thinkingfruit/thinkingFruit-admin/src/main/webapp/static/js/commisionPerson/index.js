@@ -23,13 +23,12 @@ var commision_person_index_ops = {
 				var tableIns = table.render({
 				    elem: '#dateTable'                  //指定原始表格元素选择器（推荐id选择器）  //容器高度
 				    , cols: [[                          //标题栏
-                        {field: 'id', title: '编号',align: 'center', width: 70}
-                        , {field: 'nicknameStr', title: '昵称',align: 'center'}
-				        , {field: 'orderNo', title: '订单号', align: 'center'}
-				        , {field: 'totalAmount', title: '总金额', align: 'center'}
-				        , {field: 'commision', title: '总佣金',align: 'center'}
-				        , {field: 'createTime', title: '订单时间',align: 'center'}
-//				        , {fixed: 'right', title: '操作', width: 250,height: 40, align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
+                        {field: 'id', title: '编号',align: 'center', width:'16%'}
+                        , {field: 'inviterUpperName', title: '姓名',align: 'center', width:'16%'}
+				        , {field: 'orderNo', title: '订单号', align: 'center', width:'16%'}
+				        , {field: 'totalAmount', title: '总金额', align: 'center', width:'16%'}
+				        , {field: 'commision', title: '总佣金',align: 'center', width:'16%'}
+				        , {field: 'createTime', title: '订单时间',align: 'center', width:'20%'}
 				    ]]
 				    , url: WEB_ROOT + "/commision/person/pagination"
 				    , method: 'get'
@@ -39,7 +38,7 @@ var commision_person_index_ops = {
 				    , loading: false
 				    , done: function (res, curr, count) {
 				    	console.log(res);
-
+                          
 				        //得到当前页码
 				        console.log(curr);
 

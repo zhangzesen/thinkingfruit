@@ -23,10 +23,10 @@ var commisionRanking_index_ops = {
 				   var tableIns = table.render({
 				       elem: '#dateTable'                  //指定原始表格元素选择器（推荐id选择器）  //容器高度
 				       , cols: [[                  //标题栏
-	                       {field: 'memberId', title: '用户ID',align: 'center', width: 80}
-				           , {field: 'nicknameStr', title: '用户昵称', align: 'center'}
-				           , {field: 'name', title: '用户真实姓名', align: 'center'}
-				           , {field: 'personTotalCommision', title: '个人总佣金',align: 'center'}
+	                       {field: 'id', title: '排名',align: 'center', width:'25%'}
+	                       , {field: 'memberId', title: '用户ID',align: 'center', width:'25%'}
+				           , {field: 'name', title: '用户姓名', align: 'center', width:'25%'}
+				           , {field: 'personTotalCommision', title: '个人总佣金',align: 'center', width:'25%'}
 				       ]]
 //				       , id: 'dataCheck'
 				       , url: WEB_ROOT + "/ranking/pagination"

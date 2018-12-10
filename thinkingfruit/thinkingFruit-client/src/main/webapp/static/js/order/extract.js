@@ -62,7 +62,7 @@ var order_extract_ops = {
 				
 			});
 		}else{
-			alert("提取数量大于余额！");
+			common_ops.alert("提取数量大于余额！");
 		};
 		});
 		

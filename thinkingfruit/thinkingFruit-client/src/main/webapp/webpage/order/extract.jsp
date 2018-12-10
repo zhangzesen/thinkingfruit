@@ -148,6 +148,8 @@ float:none;
 		src="<%=basePath%>/static/plugin/themes/tab.js"></script>
 	<script type="text/javascript"
 		src="<%=basePath%>/static/js/order/extract.js"></script>
+		<script type="text/javascript"
+		src="<%=basePath%>/static/js/common/common.js"></script>
 	<script>WEB_ROOT="<%=basePath%>"
 	</script>
 </body>

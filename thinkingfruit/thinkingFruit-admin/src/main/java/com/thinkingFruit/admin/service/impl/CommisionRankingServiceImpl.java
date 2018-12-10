@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.thinkingFruit.admin.entity.Commision;
 import com.thinkingFruit.admin.mapper.CommisionRankingDao;
 import com.thinkingFruit.admin.service.CommisionRankingService;
@@ -29,27 +31,19 @@ public class CommisionRankingServiceImpl implements CommisionRankingService{
 	CommisionRankingDao commisionRankingDao;
 
 	@Override
-	public Pagination<Commision> pagination(Pagination<Commision> pagination, Map<String, String> queryMap) {
-		Integer page = null;
-		Integer limit = null;
-		if (queryMap == null || (page = Integer.valueOf(queryMap.get("page"))) == null || (limit = Integer.valueOf(queryMap.get("limit"))) == null) {
+	public PageInfo<Commision> paginationCommision(Map<String, String> queryMap) {
+		String pageSize = queryMap.get("limit");
+		String pageNum = queryMap.get("page");
+		if (pageSize == null || pageNum == null) {
 			throw new WebServiceException(CodeMsg.SERVER_ERROR);
 		}
-		pagination.setPageNum(page);
-		pagination.setPageSize(limit);
 		
-		//当查询昵称的时候，将昵称转换为二进制
-//		if(queryMap.get("nicknameStr") != null){
-//			queryMap.put("nickname", queryMap.get("nickname").getBytes().toString());
-//		}
-		
-		Integer totalItemsCount = commisionRankingDao.getCountByQuery(queryMap);
-		List<Commision> items = commisionRankingDao.pagination(queryMap, pagination);
-		
-		
-		pagination.setItems(items);
-		pagination.setTotalItemsCount(totalItemsCount);
-		return pagination;
+		Integer integerPageSize = Integer.parseInt(pageSize);
+		Integer integerPageNum = Integer.parseInt(pageNum);
+		PageHelper.startPage(integerPageNum, integerPageSize, Boolean.TRUE);
+		List<Commision> paginationCommision = commisionRankingDao.paginationCommision(queryMap);
+		PageInfo<Commision> pageInfo = new PageInfo<>(paginationCommision);
+		return pageInfo;
 	}
 
 }

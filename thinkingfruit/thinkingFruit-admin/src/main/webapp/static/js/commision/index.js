@@ -23,13 +23,14 @@ var commision_index_ops = {
 				var tableIns = table.render({
 				    elem: '#dateTable'                  //指定原始表格元素选择器（推荐id选择器）  //容器高度
 				    , cols: [[                          //标题栏
-                        {field: 'id', title: '编号',align: 'center', width: 70}
-				        , {field: 'orderNo', title: '订单号', align: 'center'}
-				        , {field: 'totalAmount', title: '总金额', align: 'center'}
-				        , {field: 'commision', title: '总佣金',align: 'center'}
-				        , {field: 'percent', title: '佣金占比',align: 'center'}
-				        , {field: 'createTime', title: '订单时间',align: 'center'}
-				        , {fixed: 'right', title: '操作', width: 250,height: 40, align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
+                        {field: 'id', title: '编号',align: 'center', width:'8%'}
+				        , {field: 'orderNo', title: '订单号', align: 'center', width:'12%'}
+				        , {field: 'totalAmount', title: '总金额', align: 'center', width:'8%'}
+				        , {field: 'name', title: '代理姓名',align: 'center', width:'12%'}
+				        , {field: 'commision', title: '上上级佣金',align: 'center', width:'12%'}
+				        , {field: 'commisionProportion', title: '佣金比例',align: 'center', width:'12%'}
+				        , {field: 'createTime', title: '订单时间',align: 'center', width:'12%'}
+				        , {fixed: 'right', title: '操作', width:'20%',height: 40, align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
 				    ]]
 				    , url: WEB_ROOT + "/commision/pagination"
 				    , method: 'get'

@@ -2,49 +2,79 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.thinkingFruit.admin.mapper.CommisionDao">
 
-<select id="getCountByQuery" resultType="java.lang.Integer">
-   select count(`id`)
-   from `t_thinkingfruit_mall_commision`
-   where 1=1
-   <if test="queryMap.orderNo != null and queryMap.orderNo != ''">
-      and `orderNo` = #{queryMap.orderNo}
-   </if>
-   <if test="queryMap.startTime != null and queryMap.startTime != ''">
-      <![CDATA[ and `createTime` > #{queryMap.startTime} ]]>
-			</if>
-			<if test="queryMap.endTime != null and queryMap.endTime != ''">
-       <![CDATA[ and `createTime` < #{queryMap.endTime} ]]>
-   </if>
-</select>
-
+<!-- 查询佣金列表 -->
 <select id="paginationCommision" resultType="com.thinkingFruit.admin.entity.Commision">
-   select `id`,`orderNo`,`totalAmount`,`commision`,`nicknames`,`createTime`
-   from `t_thinkingfruit_mall_commision`
-   where 1=1
-   <if test="queryMap.orderNo != null and queryMap.orderNo != ''">
-      and `orderNo` = #{queryMap.orderNo}
-   </if>
-   <if test="queryMap.startTime != null and queryMap.startTime != ''">
-      <![CDATA[ and `createTime` > #{queryMap.startTime} ]]>
-			</if>
-			<if test="queryMap.endTime != null and queryMap.endTime != ''">
-       <![CDATA[ and `createTime` < #{queryMap.endTime} ]]>
-   </if>
-   limit
-	#{pagination.start},#{pagination.pageSize}
+	select 
+	m.`id`,m.`orderNo`,m.`totalAmount`,m.`inviterTotalMoney`,m.`commision`,m.`createTime`,m.`commisionProportion`,
+	m.`inviterTotalMoney`,m.`InviteMoney`,t.`name` as name,m.`commodityId`,m.`memberId`,m.`inviterId`,m.`inviterUpperId`,m.`updateTime`
+	from
+	`t_thinkingfruit_mall_commision`as m
+	left join `t_thinkingfruit_mall_member` as t
+    on m.`memberId`=t.`id`
+	<where>
+	   1=1
+	   <if test="queryMap.orderNo!=null and queryMap.orderNo!= ''">
+	      and m.`orderNo` like CONCAT('%',#{queryMap.orderNo},'%')
+	   </if>
+	   <if test="queryMap.startTime != null and queryMap.startTime != ''">
+      <![CDATA[ and m.`createTime` > #{queryMap.startTime} ]]>
+	   </if>
+	   <if test="queryMap.endTime != null and queryMap.endTime != ''">
+      <![CDATA[ and m.`createTime` < #{queryMap.endTime} ]]>
+	   </if>
+	</where>
 </select>
-
+<!--根据id查询代理详情-->
 <select id="findCommisionById" resultType="com.thinkingFruit.admin.entity.Commision">
-   select `id`,`orderNo`,`totalAmount`,`commision`,`percent`,`nicknames`,`createTime`
-   from `t_thinkingfruit_mall_commision`
-   where `id` = #{id}
+    select m.`id` as `id`,m.`orderNo` as `orderNo`,m.`totalAmount` as `totalAmount`,m.`inviterTotalMoney` as `inviterTotalMoney`,m.`commision` as `commision`,m.`createTime` as `createTime`,m.`commisionProportion` as `commisionProportion`,
+	m.`inviterTotalMoney` as `inviterTotalMoney`,m.`InviteMoney` as `InviteMoney`,m.`commodityId` as `commodityId`,m.`memberId` as `memberId`,m.`inviterId` as `inviterId`,m.`inviterUpperId` as `inviterUpperId`,m.`updateTime` as `updateTime`,
+	t.`name` as name
+    from `t_thinkingfruit_mall_commision` as m 
+    left join `t_thinkingfruit_mall_member` as t
+    on m.`memberId`=t.`id`
+    where m.`id` = #{id}
 </select>
-
+<!--查询上上级名称-->
+<select id="findInviterUpperName" resultType="com.thinkingFruit.admin.entity.Commision">
+    select 
+    `name`
+    from `t_thinkingfruit_mall_member`
+    where id = #{inviterUpperId}
+</select>
+<!--根据id查询代理详情-->
+<select id="findInviterName" resultType="com.thinkingFruit.admin.entity.Commision">
+    select 
+    `name`
+    from `t_thinkingfruit_mall_member`
+    where id = #{inviterId}
+</select>
 <insert id="addTotalCommision">
    insert into `t_thinkingfruit_mall_commision`(`orderNo`,`totalAmount`,`commision`,`percent`,`createTime`)
    values(#{commision.orderNo},#{commision.totalAmount},#{commision.commision},#{commision.percent},now())
 </insert>
-
+<!-- 查询个人佣金列表 -->
+<select id="personCommision" resultType="com.thinkingFruit.admin.entity.Commision">
+	select m.`id` as `id`,m.`orderNo` as `orderNo`,m.`totalAmount` as `totalAmount`,m.`commision` as `commision`,m.`createTime` as `createTime`,m.`updateTime` as `updateTime`,m.`memberId` as `memberId`,m.`inviterMoney` as `inviterMoney`,
+	(select
+	  c.`name` as name
+	  from `t_thinkingfruit_mall_member` as c
+	  where
+	 c.`id`=(select `inviterId` from `t_thinkingfruit_mall_member`as b where b.`id`=(select `inviterId` from `t_thinkingfruit_mall_member`as a where m.`memberId`=a.`id`))) as `inviterUpperName`
+	from `t_thinkingfruit_mall_commision_person` as m 
+	left join `t_thinkingfruit_mall_member` as t on m.`memberId`=t.`id`
+	<where>
+	   1=1
+	   <if test="queryMap.orderNo!=null and queryMap.orderNo!= ''">
+	      and m.`orderNo` like CONCAT('%',#{queryMap.orderNo},'%')
+	   </if>
+	   <if test="queryMap.startTime != null and queryMap.startTime != ''">
+      <![CDATA[ and m.`createTime` > #{queryMap.startTime} ]]>
+	   </if>
+	   <if test="queryMap.endTime != null and queryMap.endTime != ''">
+      <![CDATA[ and m.`createTime` < #{queryMap.endTime} ]]>
+	   </if>
+	</where>
+</select>
 <insert id="addPersonCommision">
    insert into `t_thinkingfruit_mall_commision_person`(`orderNo`,`totalAmount`,`commision`,`nickname`,`createTime`,`memberId`)
    values
@@ -53,43 +83,7 @@
    </foreach>
 </insert>
 
-<select id="getCountByQueryPerson" resultType="java.lang.Integer">
-   select count(`id`)
-   from `t_thinkingfruit_mall_commision_person`
-   where 1=1
-   <if test="queryMap.orderNo != null and queryMap.orderNo != ''">
-      and `orderNo` = #{queryMap.orderNo}
-   </if>
-   <if test="queryMap.nickname != null and queryMap.nickname != ''">
-      and `nickname` like CONCAT('%',#{queryMap.nickname},'%') 
-   </if>
-   <if test="queryMap.startTime != null and queryMap.startTime != ''">
-      <![CDATA[ and `createTime` > #{queryMap.startTime} ]]>
-			</if>
-			<if test="queryMap.endTime != null and queryMap.endTime != ''">
-       <![CDATA[ and `createTime` < #{queryMap.endTime} ]]>
-   </if>
-</select>
 
-<select id="paginationCommisionPerson" resultType="com.thinkingFruit.admin.entity.Commision">
-   select `id`,`orderNo`,`totalAmount`,`commision`,`nickname`,`createTime`
-   from `t_thinkingfruit_mall_commision_person`
-   where 1=1
-   <if test="queryMap.orderNo != null and queryMap.orderNo != ''">
-      and `orderNo` = #{queryMap.orderNo}
-   </if>
-   <if test="queryMap.nickname != null and queryMap.nickname != ''">
-      and `nickname` like CONCAT('%',#{queryMap.nickname},'%') 
-   </if>
-   <if test="queryMap.startTime != null and queryMap.startTime != ''">
-      <![CDATA[ and `createTime` > #{queryMap.startTime} ]]>
-			</if>
-			<if test="queryMap.endTime != null and queryMap.endTime != ''">
-       <![CDATA[ and `createTime` < #{queryMap.endTime} ]]>
-   </if>
-   limit
-	#{pagination.start},#{pagination.pageSize}
-</select>
 
 <select id="findMemberCommisionByOrderNo" resultType="com.thinkingFruit.admin.entity.Commision">
    select `memberId`,`commision`,`orderNo`

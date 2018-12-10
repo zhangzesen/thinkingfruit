@@ -30,10 +30,30 @@ public class Commision extends BaseEntity {
 	private Double percent;//佣金占总金额的百分比
 	
 	private Double personTotalCommision;//个人总佣金
+	
+    private String inviterName;//上级姓名
+	
+	private String inviterUpperName;//上上级姓名 
 
 	
 	
 	
+	public String getInviterName() {
+		return inviterName;
+	}
+
+	public void setInviterName(String inviterName) {
+		this.inviterName = inviterName;
+	}
+
+	public String getInviterUpperName() {
+		return inviterUpperName;
+	}
+
+	public void setInviterUpperName(String inviterUpperName) {
+		this.inviterUpperName = inviterUpperName;
+	}
+
 	public Double getInviterTotalMoney() {
 		return inviterTotalMoney;
 	}

@@ -1,5 +1,6 @@
 package com.thinkingFruit.admin.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,10 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageInfo;
 import com.thinkingFruit.admin.entity.Commision;
 import com.thinkingFruit.admin.service.CommisionRankingService;
 import com.ysdevelop.common.page.Pagination;
 import com.ysdevelop.common.result.Result;
+import com.ysdevelop.common.result.Results;
 import com.ysdevelop.common.utils.HttpUtils;
 import com.ysdevelop.common.utils.JSONHelper;
 
@@ -44,12 +47,12 @@ public class CommisionRankingController {
 	 * 佣金排名表
 	 * @return
 	 */
-	@RequestMapping(value = "/pagination", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
+	@RequestMapping(value="/pagination",method=RequestMethod.GET,produces = "application/json;charset=utf-8")
 	@ResponseBody
-	public String pagination(HttpServletRequest request,Pagination<Commision> pagination){
+	public Results<List<Commision>> pagination(HttpServletRequest request){
 		Map<String, String> queryMap = HttpUtils.getParameterMap(request);
-		commisionRankingService.pagination(pagination,queryMap);
-		return JSONHelper.bean2json(Result.successPaginationData(pagination.getItems(), pagination.getTotalItemsCount()));
+		PageInfo<Commision> pageInfo= commisionRankingService.paginationCommision(queryMap);
+		return Results.successPaginationData(pageInfo.getList(), pageInfo.getTotal());
 	}
 	
 }
