@@ -76,4 +76,10 @@ public interface AgentService {
 	 * @param agent 代理信息
 	 */
 	void updateAgentAddress(Agent agent);
+
+	/**
+	 * 查出头部信息
+	 * @param agent 代理信息
+	 */
+	Agent findInfo(Long id);
 }

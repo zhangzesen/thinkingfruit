@@ -32,11 +32,9 @@
 		<section class="aui-scrollView">
 			<div class="aui-member-head">
 				<div class="aui-member-user">
-					<img src="<%=basePath%>/static/plugin/aui/images/gril.jpg" alt="">
+					<img id="balance" src="<%=basePath%>/static/plugin/aui/images/gril.jpg" alt="">
 				</div>
-				<div class="aui-member-text" id="name">
-					<h1>小脑斧</h1>
-					<p style="color:#333;">id：18519232894</p>
+				<div class="aui-member-text" id="head">
 				</div>
 			</div>
 			

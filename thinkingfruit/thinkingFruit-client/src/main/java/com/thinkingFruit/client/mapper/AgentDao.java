@@ -93,4 +93,10 @@ public interface AgentDao {
 	Integer updateAgentAddress(Agent agent);
 
 	CommissionRatio getAgentLevel(Long memberLevelId);
+/**
+ * 查出头部信息
+ * @param id
+ * @return
+ */
+	Agent findInfo(Long id);
 }

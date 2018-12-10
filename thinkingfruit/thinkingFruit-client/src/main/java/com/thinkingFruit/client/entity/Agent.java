@@ -73,9 +73,15 @@ public class Agent extends BaseEntity implements Serializable {
 	private Double teamSales;
 	/** 升级状态默认0(0为未申请状态),1代表升级申请**/
 	private Long upStatus;
+	//余额
+	private Double balance;
 	
-	
-	
+	public Double getBalance() {
+		return balance;
+	}
+	public void setBalance(Double balance) {
+		this.balance = balance;
+	}
 	public Long getUpStatus() {
 		return upStatus;
 	}

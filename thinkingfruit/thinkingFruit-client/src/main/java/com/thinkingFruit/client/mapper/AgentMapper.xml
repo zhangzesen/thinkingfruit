@@ -25,7 +25,17 @@
 		where t.`loginName` = #{loginName}
 		and t.`status` = 1
 	</select>
-
+	
+	<!-- 寻找用户头部信息-->
+    <select id="findInfo" resultType="com.thinkingFruit.client.entity.Agent">
+		select
+		t.`name` as `name`,
+		t.`avatar` as `avatar`,
+		t.`balance` as `balance`
+		from
+		`t_thinkingfruit_mall_member` t
+		where t.`id` = #{id}
+	</select>
 
 	<!-- 通过代理ID查询代理详情 -->
 	<select id="getAgentById" resultType="com.thinkingFruit.client.entity.Agent">

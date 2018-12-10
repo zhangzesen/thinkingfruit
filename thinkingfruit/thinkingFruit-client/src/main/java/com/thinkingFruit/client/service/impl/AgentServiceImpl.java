@@ -193,5 +193,13 @@ public class AgentServiceImpl implements AgentService {
 			throw new WebServiceException(CodeMsg.ADDRESS_UPDATE_ERROR);
 		}
 	}
+/**
+ * 查出头部信息
+ */
+	@Override
+	public Agent findInfo(Long id) {
+		Agent agent=agentDao.findInfo(id);
+		return agent;
+	}
 
 }

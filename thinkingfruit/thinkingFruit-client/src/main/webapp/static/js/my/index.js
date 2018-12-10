@@ -6,6 +6,17 @@ var my_index_ops = {
 		this.share();
 	},
 	initComponent : function() {
+		$.ajax({
+			url:WEB_ROOT+'/my/info',
+			data:{},
+			type:'GET',
+			dataType:'json'
+		}).done(function(res){
+			console.log(res.data);
+				$('#head').append("<h1>"+res.data.name+"</h1>"
+				+'<p style="color:#757575">'+"余额:"+res.data.balance+"</p>");
+				
+		})
 		//修改完善信息
 		$("#information").click(function(){
 			window.location.href = WEB_ROOT+'/my/information';

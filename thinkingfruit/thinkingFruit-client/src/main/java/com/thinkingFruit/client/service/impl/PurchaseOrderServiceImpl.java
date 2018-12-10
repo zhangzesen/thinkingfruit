@@ -94,6 +94,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 	@Override
 	public List<ClientPurchaseOrder> purchaseOrderList(Long id) {
        List<ClientPurchaseOrder> purchaseOrder = clientPurchaseOrderDao.findList(id);
+       System.out.println("purchaseOrder--->"+purchaseOrder);
        return purchaseOrder;
 	}
 	

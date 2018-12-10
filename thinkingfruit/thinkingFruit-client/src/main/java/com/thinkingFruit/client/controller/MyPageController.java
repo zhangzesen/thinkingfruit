@@ -50,6 +50,19 @@ public class MyPageController {
 		return "my/upgrade";
 	}
 	/**
+	 * 个人头部信息
+	 * @param agent 代理
+	 * @return
+	 */
+	@RequestMapping(value = "/info", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Results<Agent> info(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		Long id = (Long)session.getAttribute("agentId");
+		Agent agent=agentService.findInfo(id);
+		return Results.successData(agent);
+	}
+	/**
 	 * 修改完善信息
 	 * @param agent 代理
 	 * @return

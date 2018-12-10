@@ -20,7 +20,7 @@ var order_index_ops = {
 		                    +'<img src="'+res.data[i].name+'" alt="">'+"</div>"+'<div class="aui-flex-box">'+"<h2>"+res.data[i].name+"</h2>"
 		                    +"<h4>"+"共"+'<i class="count" value="'+res.data[i].count+'">'+res.data[i].count+"</i>"+"件商品"+"</h4>"+"</div>"+"</div>"+'<div class="aui-flex aui-flex-button">'
 		                    +'<div class="aui-flex-box time">'+"<h3>"+res.data[i].name+"</h3>"+"</div>"+'<div class="aui-flex-box">'
-		                    +'<button class="extract" value="'+res.data[i].commodityId+'">'+"提货"+"</button>"+'<button class="supplement">'+"补充货物"+"</button>"+"</div>"+"</div>"+"</div>")
+		                    +'<button class="extract" value="'+res.data[i].commodityId+'">'+"提货"+"</button>"+"</div>"+'<div class="aui-flex-box" style="margin-left:-20%;">'+'<button class="supplement">'+"补充"+"</button>"+"</div>"+"</div>"+"</div>")
 				
 				}
 				$(".supplement").bind("click",function(){
