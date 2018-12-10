@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.thinkingFruit.client.entity.Agent;
 import com.thinkingFruit.client.entity.Cash;
+import com.thinkingFruit.client.service.AgentService;
 import com.thinkingFruit.client.service.CashService;
 import com.ysdevelop.common.result.Result;
 
@@ -30,6 +32,8 @@ public class CashController {
 	
 	@Autowired
 	CashService cashService;
+	@Autowired
+	private AgentService agentService;
 	
 	/**
 	 *提现首页跳转
@@ -61,6 +65,19 @@ public class CashController {
 		cash.setMemberId((Long)session.getAttribute("agentId"));
 		cashService.withdrawal(cash);
 		return Result.success("提现发起成功");
+	}
+	/**
+	 * 查询余额
+	 * @param request
+	 * @return 余额
+	 */
+	@RequestMapping(value="/balance",method=RequestMethod.GET,produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Result<Agent> balance(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		Long id = (Long)session.getAttribute("agentId");
+		Agent agent=agentService.findInfo(id);
+		return Result.successData(agent);
 	}
 	
 	/**

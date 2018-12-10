@@ -38,6 +38,8 @@ float:none;
  input{
      text-align: center;
  }
+ h4{height:40px;line-height:40px;text-indent:10px;color:#bbb;font-size:16px;}
+ p{height:80px;line-height:60px;text-align:center;color:#666;font-size:24px;}
 </style>
 </head>
 <body>
@@ -51,9 +53,7 @@ float:none;
                 </div>
             </header>
             <section class="aui-scrollView">
-            <div style="background:#fff;margin-bottom:10px" id="yysb">
-	    		<h4 style="height:40px;line-height:40px;text-indent:10px;color:#bbb;font-size:16px">可提现余额(元)</h4>
-	    		<p id="balabce" style="height:80px;line-height:60px;text-align:center;color:#666;font-size:24px">19000元</p>
+            <div style="background:#fff;margin-bottom:10px" id="balance">
 	    	</div>
             <div class="aui-content aui-margin-b-15">
         <ul class="aui-list aui-form-list">
@@ -116,6 +116,10 @@ float:none;
 		src="<%=basePath%>/static/plugin/themes/tab.js"></script>
 	<script type="text/javascript"
 		src="<%=basePath%>/static/js/cash/index.js"></script>
+		<script type="text/javascript"
+		src="<%=basePath%>/static/js/common/common.js"></script>
+		<script type="text/javascript"
+		src="<%=basePath%>/static/plugin/layui/layui.all.js"></script>
 	<script>WEB_ROOT="<%=basePath%>"
 	</script>
 </body>

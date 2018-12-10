@@ -9,8 +9,6 @@
 		t.`InviteMoney` as `InviteMoney`,
 		t.`createTime` as `createTime`,
 		t.`commodityId` as `commodityId`,
-		t.`orderAmout` as `orderAmout`,
-		t.`status` as `status`,
 		c.`name` as `name`,
 		c.`coverImagePath` as `coverImagePath`
 		from

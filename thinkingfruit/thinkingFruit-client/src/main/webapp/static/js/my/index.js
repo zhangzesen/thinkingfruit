@@ -14,7 +14,7 @@ var my_index_ops = {
 		}).done(function(res){
 			console.log(res.data);
 				$('#head').append("<h1>"+res.data.name+"</h1>"
-				+'<p style="color:#757575">'+"余额:"+res.data.balance+"</p>");
+				+'<p style="color:#757575">'+"余额:"+'<em style="color:#f39c26">'+res.data.balance+"</em>"+"元"+"</p>");
 				
 		})
 		//修改完善信息

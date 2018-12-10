@@ -24,6 +24,11 @@
 	href="<%=basePath%>/static/plugin/aui/css/aui.css" />
 <link rel="stylesheet"
 	href="<%=basePath%>/static/plugin/layui/css/layui.css" media="all">
+	<style type="text/css">
+ #home{
+   height:41px;
+   margin-bottom:1px;}
+</style>
 </head>
 <body>
 

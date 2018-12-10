@@ -14,6 +14,7 @@ import com.thinkingFruit.admin.service.CommisionService;
 import com.ysdevelop.common.exception.WebServiceException;
 import com.ysdevelop.common.page.Pagination;
 import com.ysdevelop.common.result.CodeMsg;
+import com.ysdevelop.common.utils.Constant;
 
 @Service
 public class CommisionServiceImpl implements CommisionService {
@@ -49,14 +50,32 @@ public class CommisionServiceImpl implements CommisionService {
 	// 通过id查询
 	@Override
 	public Commision findCommisionById(Long id) {
+		String inviterName;
+		String inviterUpperName;
 		Commision commision =commisionDao.findCommisionById(id);
 		Long inviterId =commision.getInviterId();
 		Long inviterUpperId=commision.getInviterUpperId();
-		String inviterName=commisionDao.findInviterName(inviterId);
-		String inviterUpperName=commisionDao.findInviterUpperName(inviterUpperId);
+		if(inviterId==Constant.DEFALULT_ZERO_INT){
+			System.out.println("11111");
+			inviterName="公司";
+			inviterUpperName="无";
+			commision.setInviterName(inviterName);
+			commision.setInviterUpperName(inviterUpperName);
+			return commision;
+		}else if(inviterUpperId==Constant.DEFALULT_ZERO_INT){
+			System.out.println("1123232");
+			inviterName=commisionDao.findInviterName(inviterId);
+			inviterUpperName="公司";
+			commision.setInviterName(inviterName);
+			commision.setInviterUpperName(inviterUpperName);
+			return commision;
+		}else{
+			System.out.println("178787");
+		inviterName=commisionDao.findInviterName(inviterId);
+		inviterUpperName=commisionDao.findInviterUpperName(inviterUpperId);
 		commision.setInviterName(inviterName);
 		commision.setInviterUpperName(inviterUpperName);
-		return commision;
+		return commision;}
 	}
 
 	// 佣金总和

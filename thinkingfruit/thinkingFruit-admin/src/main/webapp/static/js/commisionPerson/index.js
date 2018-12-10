@@ -37,7 +37,7 @@ var commision_person_index_ops = {
 				    , limits :[10]
 				    , loading: false
 				    , done: function (res, curr, count) {
-				    	console.log(res);
+				    	console.log(res.data);
                           
 				        //得到当前页码
 				        console.log(curr);

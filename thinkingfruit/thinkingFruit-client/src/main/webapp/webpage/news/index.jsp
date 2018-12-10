@@ -21,7 +21,12 @@
 <link rel="stylesheet" type="text/css" href="<%=basePath%>/static/plugin/aui/css/aui.css" />
 <link href="iTunesArtwork@2x.png" sizes="114x114"
 	rel="apple-touch-icon-precomposed">
-
+<style type="text/css">
+ #my{
+   margin-bottom:-1px;}
+   #news{
+   margin-bottom:-1px;}
+</style>
 </head>
 <body>
 
@@ -30,7 +35,7 @@
     <div class="aui-title">文章</div>
 </header>
 		<section class="aui-content">
-			<div class="aui-card-list">
+			<div class="aui-card-list" style="margin-top:0.75rem;">
 				<div class="aui-card-list-header">卡片布局头部区域</div>
 				<div class="aui-card-list-content">
 					<img src="<%=basePath%>/static/images/l2.png" />
@@ -45,9 +50,8 @@
 				</div>
 				<div class="aui-card-list-footer">2016年7月12日</div>
 			</div>
+</section>
 
-
-		</section>
 		<footer class="aui-footer aui-footer-fixed">
 			<div id="home" class="aui-tabBar-item "> <span
 				class="aui-tabBar-item-icon"> <i class="icon icon-home"></i>
@@ -61,7 +65,6 @@
 			</span> <span class="aui-tabBar-item-text">我的</span> </span> </div>
 		</footer>
 	</section>
-
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/themes/jquery.min.js"></script>
 	<script type="text/javascript"

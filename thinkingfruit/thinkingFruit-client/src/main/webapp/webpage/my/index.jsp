@@ -21,7 +21,12 @@
 <link href="iTunesArtwork@2x.png" sizes="114x114"
 	rel="apple-touch-icon-precomposed">
 <link rel="stylesheet" type="text/css" href="<%=basePath%>/static/plugin/aui/css/aui.css" />
-
+<style type="text/css">
+ #my{
+   margin-bottom:-1px;}
+   #news{
+   margin-bottom:-1px;}
+</style>
 </head>
 <body>
 
