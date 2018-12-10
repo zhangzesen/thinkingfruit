@@ -22,11 +22,11 @@ var member_upExamine_ops = {
 				   var tableIns = table.render({
 				       elem: '#dateTable'                  //指定原始表格元素选择器（推荐id选择器）  //容器高度
 				       , cols: [[                  //标题栏
-	                       {field: 'id', title: 'ID',align: 'center', width:70}
-				           , {field: 'loginName', title: '登录名', align: 'center',width:130}
-				           , {field: 'mobile',title: '手机号',align: 'center',width:120}
-				           , {field: 'inviterId',title: '上级id',align: 'center',width:90}
-				           , {fixed: 'right', title: '操作', width: 320,height: 40, align: 'center', templet: '#barOption'} 
+	                       {field: 'id', title: 'ID',align: 'center', width:'20%'}
+				           , {field: 'loginName', title: '登录名', align: 'center',width:'20%'}
+				           , {field: 'mobile',title: '手机号',align: 'center',width:'20%'}
+				           , {field: 'inviterId',title: '上级id',align: 'center',width:'20%'}
+				           , {fixed: 'right', title: '操作', width:'20%',height: 40, align: 'center', templet: '#barOption'} 
 				       ]]
 //				       , id: 'dataCheck'
 				       , url: WEB_ROOT + "/member/upExamineList"

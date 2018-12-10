@@ -29,7 +29,7 @@ var member_index_ops = {
 				           , {field: 'identityNo',title: '身份证',align: 'center',width:'11%'}
 				           , {field: 'mobile',title: '手机号',align: 'center',width:'11%'}
 				           , {field: 'memberLevelId',title: '代理级别',align: 'center',width:'11%'}
-				           , {field: 'inviterId',title: '上级id',align: 'center',width:'11%'}
+				           , {field: 'inviterId',title: '邀请者id',align: 'center',width:'11%'}
 				           , {fixed: 'right', title: '操作', width:'20%',height: 40, align: 'center', templet: '#barOption'} 
 				       ]]
 //				       , id: 'dataCheck'

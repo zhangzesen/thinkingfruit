@@ -42,6 +42,7 @@ var order_index_ops = {
 		});
 	},
 	inintComponent : function() {
+		
 
 		layui.use([ 'table', 'layer', 'laydate', 'laypage' ,'form'],function() {
 							laydate = layui.laydate;// 日期插件
@@ -66,7 +67,7 @@ var order_index_ops = {
 				           , {field: 'orderStatus', title: '订单状态', width:'11%',align: 'center'}
 				           , {field: 'commodityCount', title: '商品数量', width:'7%',align: 'center'}
 				           , {field: 'createTime', title: '创建时间', width:'15%',align: 'center',templet:'#date_formate'}
-				           , {fixed: 'right',title: '操作',width:'20%',align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
+				           , {fixed: 'right',title: '操作',width:'22%',align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
 				       ]]
 			       , id: 'dataCheck'
 			       , url: WEB_ROOT + "/order/pagination"
@@ -81,14 +82,6 @@ var order_index_ops = {
 			           //得到当前页码
 			           console.log(curr);
 			           
-			           //时间进行处理
-			           $("[data-field='createTime']").children().each(function(){
-			        		if($(this).text()=='[object Object]'){
-			        			var atime = res.data[$(this).parent().parent().attr("data-index")].createTime;
-			        			var time = 1900+atime.year+"-"+(atime.month+1)+"-"+atime.date+" "+atime.hours+":"+atime.minutes
-			        			$(this).text(time);  
-			        		}
-			           })
 
 			           //得到数据总量
 			           console.log(count);

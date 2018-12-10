@@ -12,6 +12,9 @@
 .laytable-cell-1-coverImagePath{
     height: auto;
 }
+.layui-table-cell{
+    height:40px;
+}
 body{overflow-y: scroll;}
 </style>
 </head>

@@ -51,23 +51,41 @@
 				</div>
 				
 				<div class="layui-form-item">
-					<label class="layui-form-label">佣金占比</label>
+					<label class="layui-form-label">佣金比例</label>
 					<div class="layui-input-inline input-custom-width">
-						<input type="text" name="percent" 
+						<input type="text" name="commisionProportion" 
 							value="" autocomplete="off" readonly="readonly"
 							class="layui-input">
 					</div>
 				</div>
 				
 				<div class="layui-form-item">
-					<label class="layui-form-label">佣金受益人</label>
+					<label class="layui-form-label">代理</label>
 					<div class="layui-input-inline input-custom-width">
-					    <textarea name="nicknames" class="layui-textarea" readonly="readonly"></textarea>
-<!-- 						<input type="text" name="nicknames"  -->
-<!-- 							value="" autocomplete="off" readonly="readonly" -->
-<!-- 							class="layui-input"> -->
+						<input type="text" name="name" 
+							value="" autocomplete="off" readonly="readonly"
+							class="layui-input">
 					</div>
 				</div>
+				
+				<div class="layui-form-item">
+					<label class="layui-form-label">邀请者</label>
+					<div class="layui-input-inline input-custom-width">
+						<input type="text" name="pinviterName" 
+							value="" autocomplete="off" readonly="readonly"
+							class="layui-input">
+					</div>
+				</div>
+				
+				<div class="layui-form-item">
+					<label class="layui-form-label">邀请者上级</label>
+					<div class="layui-input-inline input-custom-width">
+						<input type="text" name="inviterUpperName" 
+							value="" autocomplete="off" readonly="readonly"
+							class="layui-input">
+					</div>
+				</div>
+				
 				
 			</div>
 		</div>

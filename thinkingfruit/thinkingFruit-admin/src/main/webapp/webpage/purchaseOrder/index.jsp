@@ -70,9 +70,9 @@ height:auto;
 			<!-- 表格 -->
             <div id="dateTable" lay-filter="table-data"></div>
 			<script type="text/html" id="barOption">
-			<a class='layui-btn layui-btn-small layui-btn-normal add_btn' lay-event='deliver' style='display:none;'><i class='layui-icon'>发货</i></a>
-			<a class="layui-btn layui-btn-small cancel_btn" lay-event="cancel" style='display:none;'><i class='layui-icon'>取消</i></a>
-			<a class='layui-btn layui-btn-small layui-btn-warm look_btn' lay-event='detail' style='display:none;'><i class='layui-icon'>查看</i></a>
+			<a class='layui-btn layui-btn-small layui-btn-normal add_btn' lay-event='deliver' style='display:none;' title='发货' ><i class='layui-icon'>&#xe657;</i></a>
+			<a class='layui-btn layui-btn-small layui-btn-warm look_btn' lay-event='detail' style='display:none;' title='查看' ><i class='layui-icon'>&#xe615;</i></a>
+    		<a class="layui-btn layui-btn-small cancel_btn" lay-event="cancel" style='display:none;' title='取消' ><i class='layui-icon'>&#xe640;</i></a>
 			</script>
 			
 		</div>

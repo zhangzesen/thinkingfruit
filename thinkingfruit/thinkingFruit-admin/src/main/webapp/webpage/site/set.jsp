@@ -37,7 +37,7 @@ color:#666!important;
 								<div class="layui-form-item">
 									<label class="layui-form-label">代理名称</label>
 									<div class="layui-input-inline input-custom-width">
-										<input type="text" name="levelName"
+										<input type="text" name="levelName" readonly="readonly"
 											value="" required="true" diyCheck="代理名称不能为空"
 											autocomplete="off" placeholder="请输入代理名称" class="layui-input">
 									</div>
