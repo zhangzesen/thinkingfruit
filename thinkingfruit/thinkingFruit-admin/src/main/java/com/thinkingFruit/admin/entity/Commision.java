@@ -31,16 +31,43 @@ public class Commision extends BaseEntity {
 	
 	private Double personTotalCommision;//个人总佣金
 	
+	private Double personTotalInviteMoney;//个人总邀请金
+	
     private String inviterName;//上级姓名
 	
 	private String inviterUpperName;//上上级姓名 
 
-	
-	
+	private Double personTotal;//个人总业绩
 	
 	public String getInviterName() {
 		return inviterName;
 	}
+
+	
+	
+	public Double getPersonTotalInviteMoney() {
+		return personTotalInviteMoney;
+	}
+
+
+
+	public void setPersonTotalInviteMoney(Double personTotalInviteMoney) {
+		this.personTotalInviteMoney = personTotalInviteMoney;
+	}
+
+
+
+	public Double getPersonTotal() {
+		return personTotal;
+	}
+
+
+
+	public void setPersonTotal(Double personTotal) {
+		this.personTotal = personTotal;
+	}
+
+
 
 	public void setInviterName(String inviterName) {
 		this.inviterName = inviterName;

@@ -54,19 +54,11 @@
 </insert>
 <!-- 查询个人佣金列表 -->
 <select id="personCommision" resultType="com.thinkingFruit.admin.entity.Commision">
-	select m.`id` as `id`,m.`orderNo` as `orderNo`,m.`totalAmount` as `totalAmount`,m.`commision` as `commision`,m.`createTime` as `createTime`,m.`updateTime` as `updateTime`,m.`memberId` as `memberId`,m.`inviterMoney` as `inviterMoney`,
-	(select
-	  c.`name` as name
-	  from `t_thinkingfruit_mall_member` as c
-	  where
-	 c.`id`=(select `inviterId` from `t_thinkingfruit_mall_member`as b where b.`id`=(select `inviterId` from `t_thinkingfruit_mall_member`as a where m.`memberId`=a.`id`))) as `inviterUpperName`
-	from `t_thinkingfruit_mall_commision_person` as m 
-	left join `t_thinkingfruit_mall_member` as t on m.`memberId`=t.`id`
+	select sum(m.`commision`) as `personTotalCommision`,sum(select a.inviteMoney from `t_thinkingfruit_mall_commision` as a where a.`inviterId`= )
+	from `t_thinkingfruit_mall_commision` as m 
+	left join `t_thinkingfruit_mall_member` as t on m.`inviterUpperId`=t.`id`
 	<where>
 	   1=1
-	   <if test="queryMap.orderNo!=null and queryMap.orderNo!= ''">
-	      and m.`orderNo` like CONCAT('%',#{queryMap.orderNo},'%')
-	   </if>
 	   <if test="queryMap.startTime != null and queryMap.startTime != ''">
       <![CDATA[ and m.`createTime` > #{queryMap.startTime} ]]>
 	   </if>
@@ -74,7 +66,9 @@
       <![CDATA[ and m.`createTime` < #{queryMap.endTime} ]]>
 	   </if>
 	</where>
+	order by `id`
 </select>
+<!--添加佣金-->
 <insert id="addPersonCommision">
    insert into `t_thinkingfruit_mall_commision_person`(`orderNo`,`totalAmount`,`commision`,`nickname`,`createTime`,`memberId`)
    values

@@ -22,15 +22,15 @@ var cash_index_ops={
 				   var tableIns = table.render({
 				       elem: '#dateTable'                  //指定原始表格元素选择器（推荐id选择器）  //容器高度
 				       , cols: [[                  //标题栏
-	                       {field: 'id', title: '编号',align: 'center', width: 80}
-				           , {field: 'loginName', title: '登录名', align: 'center'}
-				           , {field: 'cash', title: '提现金额',align: 'center'}
-				           , {field: 'account', title: '真实姓名', align: 'center'}
-				           , {field: 'openBank', title: '开户银行',align: 'center'}
-				           , {field: 'bankNumber', title: '银行卡号',align: 'center'}
-				           , {field: 'status', title: '状态',align: 'center'}
-				           , {field: 'createTime', title: '申请时间',align: 'center'}
-				           , {fixed: 'right', title: '操作',height: 40, align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
+	                       {field: 'id', title: '编号',align: 'center',width:'7%'}
+				           , {field: 'loginName', title: '登录名', align: 'center',width:'10%'}
+				           , {field: 'cash', title: '提现金额',align: 'center',width:'10%'}
+				           , {field: 'account', title: '真实姓名', align: 'center',width:'10%'}
+				           , {field: 'openBank', title: '开户银行',align: 'center',width:'11%'}
+				           , {field: 'bankNumber', title: '银行卡号',align: 'center',width:'11%'}
+				           , {field: 'status', title: '状态',align: 'center',width:'11%'}
+				           , {field: 'createTime', title: '申请时间',align: 'center',width:'14%'}
+				           , {fixed: 'right',width:'17%', title: '操作',height: 40, align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
 				       ]]
 //				       , id: 'dataCheck'
 				       , url: WEB_ROOT + "/cash/pagination"
@@ -63,10 +63,10 @@ var cash_index_ops={
 				      
 				        		if($(this).text()=='0'){
 				        			$(this).empty();
-				        			$(this).append("<a class='layui-btn layui-btn-danger layui-btn-small'>未提现</a>");
+				        			$(this).append("未提现");
 				        		}else if($(this).text()=='1'){
 				        			$(this).empty();
-				        			$(this).append("<a class='layui-btn layui-btn-warm layui-btn-small'>已提现</a>");
+				        			$(this).append("已提现");
 				        		}
 				           })
 				       }

@@ -23,12 +23,11 @@ var commision_person_index_ops = {
 				var tableIns = table.render({
 				    elem: '#dateTable'                  //指定原始表格元素选择器（推荐id选择器）  //容器高度
 				    , cols: [[                          //标题栏
-                        {field: 'id', title: '编号',align: 'center', width:'16%'}
-                        , {field: 'inviterUpperName', title: '姓名',align: 'center', width:'16%'}
-				        , {field: 'orderNo', title: '订单号', align: 'center', width:'16%'}
-				        , {field: 'totalAmount', title: '总金额', align: 'center', width:'16%'}
-				        , {field: 'commision', title: '总佣金',align: 'center', width:'16%'}
-				        , {field: 'createTime', title: '订单时间',align: 'center', width:'20%'}
+                        {field: 'id', title: '编号',align: 'center', width:'20%'}
+                        , {field: 'inviterUpperName', title: '受益人',align: 'center', width:'20%'}
+				        , {field: 'personTotalCommision', title: '总佣金', align: 'center', width:'20%'}
+				        , {field: 'personTotalInviteMoney', title: '总邀请金',align: 'center', width:'20%'}
+				        , {field: 'personTotal', title: '总收益',align: 'center', width:'20%'}
 				    ]]
 				    , url: WEB_ROOT + "/commision/person/pagination"
 				    , method: 'get'
@@ -44,6 +43,15 @@ var commision_person_index_ops = {
 
 				        //得到数据总量
 				        console.log(count);
+				        
+				      //状态处理
+				           $("[data-field='inviterUpperName']").children().each(function(){
+				                 console.log("123"+$(this).text());
+				        		if($(this).text()=="undefined"||$(this).text() == null||$(this).text() == ""){
+				        			$(this).empty();
+				        			$(this).append("公司");
+				        		}
+				           })
 				        
 				        //时间进行处理
 				        $("[data-field='createTime']").children().each(function(){

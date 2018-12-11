@@ -10,7 +10,7 @@
 color:red;
 }
 input{
-color:#666!important;
+color:black;
 }
 </style>
 </head>

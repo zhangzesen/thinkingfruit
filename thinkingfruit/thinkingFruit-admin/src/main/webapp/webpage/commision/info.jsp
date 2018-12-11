@@ -71,7 +71,7 @@
 				<div class="layui-form-item">
 					<label class="layui-form-label">邀请者</label>
 					<div class="layui-input-inline input-custom-width">
-						<input type="text" name="pinviterName" 
+						<input type="text" name="inviterName" 
 							value="" autocomplete="off" readonly="readonly"
 							class="layui-input">
 					</div>

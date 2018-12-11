@@ -27,12 +27,12 @@ var news_index_ops={
 				   var tableIns = table.render({
 				       elem: '#dateTable'                  //指定原始表格元素选择器（推荐id选择器）  //容器高度
 				       , cols: [[                          //标题栏
-                             {field: 'id', title: '编号',align: 'center', width: 70}
-				           , {field: 'name', title: '资讯名称', align: 'center',width: 250}
-				           , {field: 'title', title: '资讯标题', width: 250,align: 'center'}
-				           , {field: 'coverImagePath', title: '封面图片', align: 'center',width: 150,templet:'<div><img src="'+WEB_ROOT+'{{d.coverImagePath}}"></div>'}
-				           , {field: 'description', title: '资讯描述',align: 'center'}
-				           , {title: '操作', width: 250,height: 40, align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
+                             {field: 'id', title: '编号',align: 'center',width:'7%'}
+				           , {field: 'name', title: '资讯名称', align: 'center',width:'20%'}
+				           , {field: 'title', title: '资讯标题',width:'20%',align: 'center'}
+				           , {field: 'coverImagePath', title: '封面图片', align: 'center',width:'17%',templet:'<div><img src="'+WEB_ROOT+'{{d.coverImagePath}}"></div>'}
+				           , {field: 'createTime', title: '创建时间',align: 'center',width:'20%'}
+				           , {title: '操作',width:'17%',height: 40, align: 'center', templet: '#barOption',width:'17%'} //这里的toolbar值是模板元素的选择器
 				       ]]
 				       , id: 'dataCheck'
 				       , url: WEB_ROOT + "/news/pagination"
@@ -43,12 +43,20 @@ var news_index_ops={
 				       , loading: false
 				       , done: function (res, curr, count) {
 				    	   console.log(res);
-
 				           //得到当前页码
 				           console.log(curr);
 
 				           //得到数据总量
 				           console.log(count);
+				           //对时间进行处理
+				           $("[data-field='createTime']").children().each(function(){
+							      
+				        		if($(this).text()=='[object Object]'){
+				        			var atime = res.data[$(this).parent().parent().attr("data-index")].createTime;
+				        			var time = 1900+atime.year+"-"+(atime.month+1)+"-"+atime.date+" "+atime.hours+":"+atime.minutes
+				        			$(this).text(time);  
+				        		}
+				           })
 				       }
 				   });
 				   

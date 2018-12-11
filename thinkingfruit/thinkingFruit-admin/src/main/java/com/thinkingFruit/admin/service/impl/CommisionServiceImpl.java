@@ -78,7 +78,7 @@ public class CommisionServiceImpl implements CommisionService {
 		return commision;}
 	}
 
-	// 佣金总和
+	// 添加佣金
 	@Override
 	public void addTotalCommision(Commision commision) {
 		commisionDao.addTotalCommision(commision);

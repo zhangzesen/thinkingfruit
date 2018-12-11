@@ -7,7 +7,6 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 
 import com.thinkingFruit.admin.entity.Commision;
-import com.ysdevelop.common.page.Pagination;
 
 public interface CommisionDao {
 

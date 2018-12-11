@@ -27,10 +27,6 @@ body{overflow-y: scroll;}
 								value="" placeholder="截止日" name="endTime">
 						</div>
 						<div class="layui-input-inline xbs768">
-								<input type="text" name="orderNo"
-									value="" placeholder="订单号" autocomplete="off" class="layui-input">
-						</div>
-						<div class="layui-input-inline xbs768">
 								<input type="text" name="nickname"
 									value="" placeholder="昵称" autocomplete="off" class="layui-input">
 						</div>

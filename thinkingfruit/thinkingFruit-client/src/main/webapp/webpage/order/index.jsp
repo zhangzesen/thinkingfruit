@@ -67,80 +67,10 @@ input{
                     </ul>
                     <div class="tab-panel tab-panel-clear-line">
                         <div class="tab-panel-item tab-active" id="tab1">
-                            <div class="aui-order-list">
-                                <div class="aui-flex">
-                                    <div class="aui-flex-box">
-                                        <h3>已买入</h3>
-                                    </div>
-                                </div>
-                                <div class="aui-flex aui-flex-order">
-                                    <div class="aui-order-img">
-                                        <img src="<%=basePath%>/static/images/banner/shili1.jpg" alt="">
-                                    </div>
-                                    <div class="aui-flex-box">
-                                        <h2>商品1</h2>
-                                        <h4>共 <i>10</i> 件商品 </h4>
-                                    </div>
-                                </div>
-                                <div class="aui-flex aui-flex-button">
-                                <div class="aui-flex-box time">
-                                        <h3>时间</h3>
-                                    </div>
-                                    <div class="aui-flex-box">
-                                        <button id="extract">提货</button>
-                                        <button id="supplement">补充货物</button>
-                                    </div>
-                                </div>
-                            </div>
                             </div>
                             <div class="tab-panel-item" id="tab2">
-                            <div class="aui-order-list">
-                                <div class="aui-flex">
-                                    <div class="aui-flex-box">
-                                        <h3>已提交的订单</h3>
-                                    </div>
-                                </div>
-                                <div class="aui-flex aui-flex-order">
-                                    <div class="aui-order-img">
-                                        <img src="<%=basePath%>/static/images/banner/shili1.jpg" alt="">
-                                    </div>
-                                    <div class="aui-flex-box">
-                                        <h2>商品1</h2>
-                                        <h4>共 <i>10</i> 件商品 </h4>
-                                    </div>
-                                </div>
-                                <div class="aui-flex aui-flex-button">
-                                <div class="aui-flex-box time">
-                                        <h3>时间</h3>
-                                    </div>
-                                </div>
-                            </div>
                             </div>
                               <div class="tab-panel-item" id="tab3">
-                            <div class="aui-order-list">
-                                <div class="aui-flex">
-                                    <div class="aui-flex-box">
-                                        <h3>已发货的订单</h3>
-                                    </div>
-                                </div>
-                                <div class="aui-flex aui-flex-order">
-                                    <div class="aui-order-img">
-                                        <img src="<%=basePath%>/static/images/banner/shili1.jpg" alt="">
-                                    </div>
-                                    <div class="aui-flex-box">
-                                        <h2>商品1</h2>
-                                        <h4>共 <i>10</i> 件商品 </h4>
-                                    </div>
-                                </div>
-                                <div class="aui-flex aui-flex-button">
-                                <div class="aui-flex-box time">
-                                        <h3>时间</h3>
-                                    </div>
-                                    <div class="aui-flex-box">
-                                        <button>确认收货</button>
-                                    </div>
-                                </div>
-                            </div>
                      </div>
                     </div>
                     </div>

@@ -19,7 +19,7 @@ var commision_info_ops = {
 				},
 				dataType:'json',
 				success:function(res){
-					console.dir("res"+res);
+					console.log("res"+res.data.inviterName);
 					
 					$("input[name='orderNo']").attr("value",res.data.orderNo);
 					
