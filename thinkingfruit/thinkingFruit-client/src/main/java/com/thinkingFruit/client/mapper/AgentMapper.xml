@@ -209,4 +209,13 @@
 	    </set> 
 	    where `m`.id = #{id}
 	</update>
+	
+	<update id="updateSalesVolume">
+		update `t_thinkingfruit_mall_member` as `m`
+	    <set>
+	    `salesVolume` =`salesVolume`+ #{salesVolume},
+	    updateTime=now()
+	    </set> 
+	    where `m`.id = #{id}
+	</update>
 </mapper>

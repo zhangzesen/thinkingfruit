@@ -217,7 +217,11 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 				throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
 			}
 		}
-		
+		//购买商品增加销售额
+		Integer updateSalesVolume=agentDao.updateSalesVolume(clientPurchaseOrder.getOrderTotalPrice(),agentId);
+		if(updateSalesVolume==Constant.DEFALULT_ZERO_INT) {
+			throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
+		}
 		Integer updatePurchaseStatus=clientPurchaseOrderDao.updatePurchaseStatus((long) Constant.DEFALULT_TWO_INT,orderNo);
 		if(addClientCommision==Constant.DEFALULT_ZERO_INT||updatePurchaseStatus==Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.PURCHASE_FAIL);

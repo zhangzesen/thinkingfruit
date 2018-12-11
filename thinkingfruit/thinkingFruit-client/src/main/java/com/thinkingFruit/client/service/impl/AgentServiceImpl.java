@@ -1,6 +1,5 @@
 package com.thinkingFruit.client.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -150,24 +149,15 @@ public class AgentServiceImpl implements AgentService {
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public List<Agent> agentList(Long id){
-		Agent agentById = agentDao.getAgentById(id);
-		Long teamNumbers = agentDao.getTeamNumbers(id);
-		System.out.println("teamNumbers:"+teamNumbers);
-		Double teamSales = agentDao.getTeamSales(id);
-		System.out.println("teamSales:"+teamSales);
-		agentById.setTeamSales(teamSales);
-		agentById.setTeamNumbers(teamNumbers);
-		List<Agent> agentList=new ArrayList<>();
-		agentList.add(agentById);
-		agentList.addAll(agentDao.findAgentList(id));
-		return agentList;
+		List<Agent> findAgentList = agentDao.findAgentList(id);
+		return findAgentList;
 	}
 	/**
 	* 寻找邀请人
 	*/
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public Agent getInvite(Long id) {
+	public Agent getInviter(Long id) {
 		Agent agent =agentDao.findinvite(id);
 		return agent;
 	}
@@ -193,13 +183,26 @@ public class AgentServiceImpl implements AgentService {
 			throw new WebServiceException(CodeMsg.ADDRESS_UPDATE_ERROR);
 		}
 	}
-/**
- * 查出头部信息
- */
+	/**
+	 * 查出头部信息
+	 */
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public Agent findInfo(Long id) {
 		Agent agent=agentDao.findInfo(id);
 		return agent;
+	}
+	
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public Agent teamAgent(Long id) {
+		Agent agentById = agentDao.getAgentById(id);
+		Long teamNumbers = agentDao.getTeamNumbers(id);
+		Double teamSales = agentDao.getTeamSales(id);
+		agentById.setTeamNumbers(teamNumbers);
+		agentById.setTeamSales(teamSales);
+		
+		return agentById;
 	}
 
 }

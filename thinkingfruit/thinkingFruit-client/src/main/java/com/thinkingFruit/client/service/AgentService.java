@@ -62,7 +62,7 @@ public interface AgentService {
 	 * 寻找邀请人
 	 * @param agent 代理
 	 */
-	Agent getInvite(Long id);
+	Agent getInviter(Long id);
 	
 	/**
 	 * 获取代理地址
@@ -82,4 +82,6 @@ public interface AgentService {
 	 * @param agent 代理信息
 	 */
 	Agent findInfo(Long id);
+
+	Agent teamAgent(Long id);
 }

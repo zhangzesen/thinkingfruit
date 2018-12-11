@@ -140,15 +140,25 @@ public class AgentController {
 		List<Agent> agentList = agentService.agentList(id);
 		return Results.successData(agentList);
 	}
-	/**
-	 * 团队列表
-	 * */
-	@RequestMapping(value = "/invite", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	
+	@RequestMapping(value = "/teamAgent", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public Result<Agent> invite(HttpServletRequest request){
+	public Results<Agent> teamAgent(HttpServletRequest request){
 		HttpSession session = request.getSession();
 		Long id = (Long)session.getAttribute("agentId");
-		Agent agent = agentService.getInvite(id);
+		Agent agent= agentService.teamAgent(id);
+		return Results.successData(agent);
+	}
+	/**
+	 * 查看邀请者
+	 * */
+	@RequestMapping(value = "/inviter", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Result<Agent> inviter(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		Long id = (Long)session.getAttribute("agentId");
+		Agent agentById = agentService.getAgentById(id);
+		Agent agent = agentService.getInviter(agentById.getInviterId());
 		return Result.successData(agent);
 	}
 	

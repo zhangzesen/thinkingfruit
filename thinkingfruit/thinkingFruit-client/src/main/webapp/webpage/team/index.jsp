@@ -66,6 +66,14 @@ input{
                             <div class="aui-order-list">
                                 <div class="aui-flex">
                                     <div class="aui-flex-box">
+                                        <h3>姓名</h3>
+                                    </div>
+                                    <div class="aui-order-pay">
+                                        <p id="name"></p>
+                                    </div>
+                                </div>
+                                <div class="aui-flex">
+                                    <div class="aui-flex-box">
                                         <h3>级别：</h3>
                                     </div>
                                     <div class="aui-order-pay">
@@ -78,15 +86,12 @@ input{
                                     </div>
                                     <div class="aui-flex-box">
                                         <h2 id="name"></h2>
-                                        <h4>本月佣金共 <i id="salesVolume"></i>元</h4>
+                                        <h4>总佣金共 <i id="salesVolume"></i>元</h4>
                                     </div>
                                 </div>
                                <div class="aui-flex aui-flex-button">
                                 	<div class="aui-flex-box count">
                                         <h3>团队人数:<i></i></h3>
-                                    </div>
-                                    <div class="aui-flex-box time">
-                                        <h3 id="createTime">时间</h3>
                                     </div>
                                 </div>
                             </div>
@@ -103,19 +108,16 @@ input{
                                 </div>
                                 <div class="aui-flex aui-flex-order">
                                     <div class="aui-order-img">
-                                        <img src="<%=basePath%>/static/plugin/aui/images/gril.jpg" alt="">
+                                        <img id="avatar" src="<%=basePath%>/static/plugin/aui/images/gril.jpg" alt="">
                                     </div>
                                     <div class="aui-flex-box">
-                                        <h2>梅发鹿</h2>
-                                        <h4>本月佣金共 <i>1</i>元</h4>
+                                        <h2 id="name">梅发鹿</h2>
+                                        <h4>个人销售额共 <i id="salesVolume">0</i>元</h4>
                                     </div>
                                 </div>
                                <div class="aui-flex aui-flex-button">
                                 	<div class="aui-flex-box count">
-                                        <h3>团队人数:<i></i></h3>
-                                    </div>
-                                    <div class="aui-flex-box time">
-                                        <h3>时间</h3>
+                                        <h3>级别:<i id="memberLevelName">0</i></h3>
                                     </div>
                                 </div>
                             </div>

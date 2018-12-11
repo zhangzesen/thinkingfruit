@@ -101,4 +101,6 @@ public interface AgentDao {
 	Agent findInfo(Long id);
 
 	Integer addBalance(@Param("id")Long id,@Param("price") Double price);
+
+	Integer updateSalesVolume(@Param("salesVolume")Double salesVolume,@Param("id")Long id);
 }
