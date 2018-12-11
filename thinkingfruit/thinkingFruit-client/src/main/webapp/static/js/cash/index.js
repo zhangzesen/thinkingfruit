@@ -12,7 +12,7 @@ var cash_index_ops = {
 		}).done(function(res){
 			console.log(res.data);
 			$('#balance').append("<h4>"+"可提现余额(元)"+"</h4>"+
-    		'<p type="text" name="balance" value="'+res.data.balance+'">'+res.data.balance+"</input>")
+    		'<p type="text" id="balance" value="'+res.data.balance+'">'+res.data.balance+"</input>")
 			
 		});
 		$("#withdrawal").click(function(){

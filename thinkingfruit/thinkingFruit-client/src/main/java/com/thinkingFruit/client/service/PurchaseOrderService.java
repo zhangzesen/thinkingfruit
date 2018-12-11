@@ -41,7 +41,7 @@ public interface PurchaseOrderService {
 	 * @param request
 	 * @param orderNo 订单号
 	 */
-	void confirmPurchaseOrder(HttpServletRequest request,String orderNo);
+	void confirmPurchaseOrder(String orderNo);
 	
 	/**
 	 * 	取消向上级购买订单

@@ -23,7 +23,6 @@
         c.`name` as `name`,
         c.`coverImagePath` as `coverImagePath`,
         c.`description` as `description`,
-        c.`stock` as `stock`,
         c.`approvalNumber` as `approvalNumber`,
         c.`fifthPrice` as `fifthPrice`,
         c.`fourthPrice` as `fourthPrice`,

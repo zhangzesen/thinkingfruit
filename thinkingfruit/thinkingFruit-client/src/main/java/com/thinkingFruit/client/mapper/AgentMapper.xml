@@ -201,5 +201,12 @@
 		where l.`level` = #{memberLevelId}
 	</select>
 	
-	
+	<update id="addBalance">
+		update `t_thinkingfruit_mall_member` as `m`
+	    <set>
+	    `balance` =`balance`+ #{price},
+	    updateTime=now()
+	    </set> 
+	    where `m`.id = #{id}
+	</update>
 </mapper>

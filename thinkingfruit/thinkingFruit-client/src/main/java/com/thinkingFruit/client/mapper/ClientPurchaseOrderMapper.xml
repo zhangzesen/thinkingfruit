@@ -7,13 +7,13 @@
 		`t_thinkingfruit_mall_order_purchase`(
 			`orderNo`,`orderMemberId`,`memberLevel`,`orderMemberName`,
 			`commodityId`,`commodityCount`,`commodityName`,`commodityPrice`,`isFirst`,
-			`orderStatus`,`createTime`,`orderTotalPrice`
+			`orderStatus`,`createTime`,`orderTotalPrice`,`inviterId`
 		)
 		values
 		(
 			#{orderNo},#{orderMemberId},#{memberLevel},#{orderMemberName},
 			#{commodityId},#{commodityCount},#{commodityName},#{commodityPrice},#{isFirst},
-			1,now(),#{orderTotalPrice}
+			1,now(),#{orderTotalPrice},#{inviterId}
 		)
 	</insert>
 	
@@ -141,4 +141,6 @@
 	    </set> 
 	    where `p`.orderNo = #{orderNo}
 	</update>
+	
+	
 </mapper>

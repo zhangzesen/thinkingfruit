@@ -67,8 +67,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		//通过代理id获取代理信息
 		Agent agentById = agentDao.getAgentById(agentId);
 				
-		
-				
+		clientPurchaseOrder.setInviterId(agentById.getInviterId());
 		//生成订单号
 		String orderNo=OrderNumberGeneratorUtil.get().toString();
 		System.out.println("orderNo"+orderNo);
@@ -113,23 +112,30 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 	 */
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public void confirmPurchaseOrder(HttpServletRequest request,String orderNo) {
+	public void confirmPurchaseOrder(String orderNo) {
 		ClientPurchaseOrder clientPurchaseOrder=clientPurchaseOrderDao.getPurchaseByorderNo(orderNo);
 		//通过代理id获取代理信息
-		HttpSession session = request.getSession();
-		agentId=(Long) session.getAttribute("agentId");
-		System.out.println("agentId"+agentId);
-		Agent agentById = agentDao.getAgentById(agentId);
-		
+		//邀请者id
+		Long inviterId=clientPurchaseOrder.getInviterId();
+		Agent inviterIdById = agentDao.getAgentById(inviterId);
+		//邀请者上级
+		//邀请者上级id
+		Long inviterUpperId = inviterIdById.getInviterId();
+		Agent inviterUpperIdById = agentDao.getAgentById(inviterUpperId);
+		//订单发起者id
+		Long agentId=clientPurchaseOrder.getOrderMemberId();
+		Long inviterLevelId =0L;
+		Long inviterUpperLevelId =0L;
 		//判断上级商品库存是否充足，如果是公司则默认无限
-		if(agentById.getInviterId()!=Constant.DEFALULT_ZERO_INT) {
+		if(inviterId!=Constant.DEFALULT_ZERO_INT) {
 		//判断上级库存是否充足,充足则需要减少库存
-		ClientDepot Depot=clientPurchaseOrderDao.getDepot(agentById.getInviterId(),clientPurchaseOrder.getCommodityId());
+		ClientDepot Depot=clientPurchaseOrderDao.getDepot(inviterId,clientPurchaseOrder.getCommodityId());
 		if(Depot!=null&&Depot.getId()!=null) {
 			if(Depot.getCount()-clientPurchaseOrder.getCommodityCount()>=0) {
-				Depot.setMemberId(agentById.getInviterId());
+				Depot.setMemberId(inviterId);
 				Depot.setCommodityId(clientPurchaseOrder.getCommodityId());
 				Depot.setCount(Depot.getCount()-clientPurchaseOrder.getCommodityCount());
+				System.out.println("Count"+Depot.getCount());
 				Integer updateInviterDepot=clientPurchaseOrderDao.updateDepot(Depot);
 				if(updateInviterDepot==Constant.DEFALULT_ZERO_INT) {
 					throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
@@ -140,6 +146,14 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		}else {
 			throw new WebServiceException(CodeMsg.INVITER_DEPOT_LOW);
 		}
+			//判断订单创建者的上级和上上级的关系
+			
+			inviterLevelId = inviterIdById.getMemberLevelId();
+			if(inviterUpperId==Constant.DEFALULT_ZERO_INT) {
+				inviterUpperLevelId=0L;
+			}else {
+				inviterUpperLevelId = inviterUpperIdById.getMemberLevelId();
+			}
 							
 		}
 		
@@ -165,14 +179,8 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 			}
 		}
 						
-		//判断订单创建者的上级和上上级的关系
-		Long inviterId = agentById.getInviterId();
-		Long inviterUpperId = agentById.getInviterUpperId();
-		Long memberLevelId = agentById.getMemberLevelId();
-		Agent inviterById = agentDao.getAgentById(inviterId);
-		Long inviterLevelId = inviterById.getMemberLevelId();
-		//如果上上级级别比上级级别高或者平级
-		CommissionRatio commissionRatio=agentDao.getAgentLevel(agentById.getMemberLevelId());
+		
+		CommissionRatio commissionRatio=agentDao.getAgentLevel(inviterLevelId);
 		ClientCommision clientCommision=new ClientCommision();
 		
 		//上级如果是公司
@@ -180,9 +188,9 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 			clientCommision.setCommisionProportion(0.0);
 			clientCommision.setCommision(0.0);
 		}else {
-			if(memberLevelId>inviterLevelId) {
+			if(inviterUpperLevelId<inviterLevelId) {
 				clientCommision.setCommisionProportion(commissionRatio.getCrossLevelDiscount());
-			}else if(memberLevelId==inviterLevelId) {
+			}else if(inviterUpperLevelId==inviterLevelId) {
 				clientCommision.setCommisionProportion(commissionRatio.getLevelingDiscount());
 			}
 			clientCommision.setCommision(clientPurchaseOrder.getOrderTotalPrice()*clientCommision.getCommisionProportion());
@@ -196,6 +204,20 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		clientCommision.setInviterId(inviterId);
 		clientCommision.setInviterUpperId(inviterUpperId);
 		Integer addClientCommision=clientCommisionDao.addClientCommision(clientCommision);
+		if(inviterId!=Constant.DEFALULT_ZERO_INT&&inviterUpperId==Constant.DEFALULT_ZERO_INT) {
+			Integer updateBalance=agentDao.addBalance(inviterId,clientCommision.getInviterTotalMoney());
+			if(updateBalance==Constant.DEFALULT_ZERO_INT) {
+				throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
+			}
+		}else if(inviterId!=Constant.DEFALULT_ZERO_INT&&inviterUpperId!=Constant.DEFALULT_ZERO_INT){
+			Integer updateBalance=agentDao.addBalance(inviterId,clientCommision.getInviterTotalMoney());
+			Integer addBalance=agentDao.addBalance(inviterUpperId,clientCommision.getCommision());
+				
+			if(updateBalance==Constant.DEFALULT_ZERO_INT||addBalance==Constant.DEFALULT_ZERO_INT) {
+				throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
+			}
+		}
+		
 		Integer updatePurchaseStatus=clientPurchaseOrderDao.updatePurchaseStatus((long) Constant.DEFALULT_TWO_INT,orderNo);
 		if(addClientCommision==Constant.DEFALULT_ZERO_INT||updatePurchaseStatus==Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.PURCHASE_FAIL);

@@ -62,8 +62,8 @@ public class PurchaseOrderController {
 	 */
 	@RequestMapping(value = "/confirm", method = RequestMethod.PUT, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public Results<String> confirm(HttpServletRequest request,String orderNo){
-		purchaseOrderService.confirmPurchaseOrder(request,orderNo);
+	public Results<String> confirm(String orderNo){
+		purchaseOrderService.confirmPurchaseOrder(orderNo);
 		return Results.success("发货成功");
 	}
 	
