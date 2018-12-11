@@ -43,6 +43,7 @@ public class CodeMsg {
 	public static CodeMsg AGENT_TO_COMPANY_FAIL = new CodeMsg(500060, "代理等级高于邀请人,但划入公司管理失败");
 	public static CodeMsg CANCEL_REGISTERED_FAIL = new CodeMsg(500061, "取消注册失败");
 	public static CodeMsg CANCEL_UPGRADE_FAIL = new CodeMsg(500062, "取消升级失败");
+	public static CodeMsg UPGRADE_FAIL = new CodeMsg(500063, "申请升级失败");
 
 	
 	//分类
@@ -88,7 +89,6 @@ public class CodeMsg {
 
 	//用户
 	public static CodeMsg PARENT_ID_EQUAL = new CodeMsg(500023,"上级ID不能与自己ID相同");
-	public static CodeMsg PEAS_NOT_NULL = new CodeMsg(500025,"充值的豆豆值不能为空");
 	public static CodeMsg INFORMATION_UPDATE_ERROR = new CodeMsg(500026,"个人信息修改/完善失败");
 	public static CodeMsg AGENT_CANCEL_ERROR = new CodeMsg(500027,"代理删除失败");
 	public static CodeMsg ADDRESS_UPDATE_ERROR = new CodeMsg(500028,"代理地址修改失败");

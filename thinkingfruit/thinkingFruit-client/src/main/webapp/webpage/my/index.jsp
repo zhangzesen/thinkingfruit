@@ -26,6 +26,11 @@
    margin-bottom:-1px;}
    #news{
    margin-bottom:-1px;}
+   .layui-layer-btn0{
+   border-color:#86be00;
+    background-color:#86be00;
+    color: #fff;
+   }
 </style>
 </head>
 <body>
@@ -68,7 +73,7 @@
 					<div class="aui-flex-box">
 						<h5>完善信息</h5>
 					</div>
-				</a> <a href="<%=basePath%>/my/upgrade" class="aui-flex">
+				</a> <a href="javascript:;" class="aui-flex" id="upLevel" data-method="notice">
 					<div class="aui-course-icon">
 						<img src="<%=basePath%>/static/images/icon/6.png" alt="">
 					</div>
@@ -165,5 +170,7 @@
 	<script>memberId="<%=session.getAttribute("agentId")%>"</script>
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/layui/layui.all.js"></script>
+		<script type="text/javascript"
+		src="<%=basePath%>/static/js/common/common.js"></script>
 </body>
 </html>

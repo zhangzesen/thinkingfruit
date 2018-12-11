@@ -84,4 +84,9 @@ public interface AgentService {
 	Agent findInfo(Long id);
 
 	Agent teamAgent(Long id);
+	/**
+	 * 改变状态为申请升级
+	 * @param agent 
+	 */
+	void updateUpLevel(Long id);
 }

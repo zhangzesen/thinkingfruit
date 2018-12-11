@@ -204,5 +204,17 @@ public class AgentServiceImpl implements AgentService {
 		
 		return agentById;
 	}
-
+	/**
+	 * 改变状态为升级
+	 */
+	@Override
+	public void updateUpLevel(Long id) {
+		if (id == null) {
+			throw new WebServiceException(CodeMsg.SERVER_ERROR);
+		}
+		Integer update= agentDao.updateUpLevel(id);
+		if(update==Constant.DEFALULT_ZERO_INT) {
+			throw new WebServiceException(CodeMsg.UPGRADE_FAIL);
+		}	
+	}
 }

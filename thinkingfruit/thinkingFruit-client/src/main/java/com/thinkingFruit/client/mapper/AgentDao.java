@@ -103,4 +103,11 @@ public interface AgentDao {
 	Integer addBalance(@Param("id")Long id,@Param("price") Double price);
 
 	Integer updateSalesVolume(@Param("salesVolume")Double salesVolume,@Param("id")Long id);
+    
+	 /**
+     * 改变状态为升级
+     * @param id
+     * @return
+     */
+	Integer updateUpLevel(Long id);
 }

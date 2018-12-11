@@ -65,6 +65,40 @@ var my_index_ops = {
 		});
     },
 	eventBind : function() {
+		layui.use('layer', function(){ //独立版的layer无需执行这一句
+			  var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+			  console.log("sfddsfd ")
+			  $('#upLevel').click(function(){
+				  console.log("12346487")
+			      //示范一个公告层
+			      layer.open({
+			        type: 1
+			        ,title: false //不显示标题栏
+			        ,closeBtn: false
+			        ,area: '300px;'
+			        ,shade: 0.8
+			        ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
+			        ,btn: ['我要升级', '取消']
+			        ,btnAlign: 'b'
+			        ,moveType: 1 //拖拽模式，0或者1
+			        ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">确认要升级吗？亲!<br>升级规则：~~~~~~~~~~~<br><br>请保持手机畅通^_^</div>'
+			        ,success: function(layero){
+			          var btn = layero.find('.layui-layer-btn');
+			          btn.find('.layui-layer-btn0').click(function(){
+			        	  $.ajax({
+			      			url:WEB_ROOT+'/my/upLevel',
+			      			data:{},
+			      			type:'GET',
+			      			dataType:'json'
+			      		}).done(function(res){
+			      			common_ops.alert("申请成功，请等待客服联系！")
+			      			window.location.href = WEB_ROOT+'/my';
+			      		})
+			          });
+			        }
+			      });
+			  })
+			});
 		
 	},
 	

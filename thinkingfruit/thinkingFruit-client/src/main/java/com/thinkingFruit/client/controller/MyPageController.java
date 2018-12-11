@@ -43,13 +43,6 @@ public class MyPageController {
 		return "my/address";
 	}
 	/**
-	 *跳转地址页面
-	 * */
-	@RequestMapping(value="/upgrade",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
-	public String about(){
-		return "my/upgrade";
-	}
-	/**
 	 * 个人头部信息
 	 * @param agent 代理
 	 * @return
@@ -71,6 +64,19 @@ public class MyPageController {
 	@ResponseBody
 	public Results<String> update(Agent agent){
 		agentService.updateInformation(agent);
+		return Results.success("信息修改成功");
+	}
+	/**
+	 * 用户升级申请
+	 * @param agent 代理
+	 * @return
+	 */
+	@RequestMapping(value = "/upLevel", method = RequestMethod.PUT, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Results<String> upLevel(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		Long id = (Long)session.getAttribute("agentId");
+		agentService.updateUpLevel(id);
 		return Results.success("信息修改成功");
 	}
 	

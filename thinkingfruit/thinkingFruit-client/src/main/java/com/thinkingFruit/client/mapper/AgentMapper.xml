@@ -218,4 +218,12 @@
 	    </set> 
 	    where `m`.id = #{id}
 	</update>
+	<!--修改状态为升级-->
+	<update id="updateUpLevel">
+		update `t_thinkingfruit_mall_member` as `m`
+	    <set>
+	    m.upStatus =1
+	    </set> 
+	    where `m`.id = #{id}
+	</update>
 </mapper>

@@ -74,103 +74,13 @@ input{
                     </ul>
                     <div class="tab-panel tab-panel-clear-line">
                         <div class="tab-panel-item tab-active" id="tab1">
-                            <div class="aui-order-list">
-                                <div class="aui-flex">
-                                    <div class="aui-flex-box">
-                                        <h3>待上级确认订单 </h3>
-                                    </div>
-                                </div>
-                                <div class="aui-flex aui-flex-order">
-                                    <div class="aui-order-img">
-                                        <img src="<%=basePath%>/static/images/banner/shili1.jpg" alt="">
-                                    </div>
-                                    <div class="aui-flex-box">
-                                        <h2>商品1</h2>
-                                        <h4>共 <i>1</i> 件商品 需付款 <em>￥9.9</em></h4>
-                                    </div>
-                                </div>
-                                <div class="aui-flex aui-flex-button">
-                                <div class="aui-flex-box time">
-                                        <h3>购买时间</h3>
-                                    </div>
-                                    <div class="aui-flex-box">
-                                        <button class="aui-order-cancel">取消订单</button>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div class="tab-panel-item" id="tab2">
-                            <div class="aui-order-list">
-                                <div class="aui-flex">
-                                    <div class="aui-flex-box">
-                                        <h3>上级已确认订单</h3>
-                                    </div>
-                                </div>
-                                <div class="aui-flex aui-flex-order">
-                                    <div class="aui-order-img">
-                                        <img src="<%=basePath%>/static/images/banner/shili1.jpg" alt="">
-                                    </div>
-                                    <div class="aui-flex-box">
-                                        <h2>商品1</h2>
-                                        <h4>共 <i>1</i> 件商品 需付款 <em>￥9.9</em></h4>
-                                    </div>
-                                </div>
-                                <div class="aui-flex aui-flex-button">
-                                 <div class="aui-flex-box time">
-                                        <h3>确认时间</h3>
-                                    </div>
-                                    </div>
-                            </div>
                         </div>
                         <div class="tab-panel-item" id="tab3">
-                            <div class="aui-order-list">
-                                <div class="aui-flex">
-                                    <div class="aui-flex-box">
-                                        <h4>下级申请购买订单</h4>
-                                    </div>
-                                </div>
-                                <div class="aui-flex aui-flex-order">
-                                    <div class="aui-order-img">
-                                        <img src="<%=basePath%>/static/images/banner/shili1.jpg" alt="">
-                                    </div>
-                                    <div class="aui-flex-box">
-                                        <h2>商品1</h2>
-                                        <h4>共 <i>1</i> 件商品 需付款 <em>￥9.9</em></h4>
-                                    </div>
-                                </div>
-                                <div class="aui-flex aui-flex-button">
-                                <div class="aui-flex-box time">
-                                        <h3>购买时间</h3>
-                                    </div>
-                                    <div class="aui-flex-box">
-                                        <button>发货</button>
-                                    </div>
-                                </div>
-                            </div>
 
                         </div>
                         <div class="tab-panel-item" id="tab4">
-                            <div  class="aui-order-list">
-                                <div class="aui-flex">
-                                    <div class="aui-flex-box">
-                                       <h4>已确认下级订单</h4>
-                                    </div>
-                                </div>
-                                <div class="aui-flex aui-flex-order">
-                                    <div class="aui-order-img">
-                                        <img src="<%=basePath%>/static/images/banner/shili1.jpg" alt="">
-                                    </div>
-                                    <div class="aui-flex-box">
-                                        <h2>商品1</h2>
-                                        <h4>共 <i>1</i> 件商品 需付款 <em>￥9.9</em></h4>
-                                    </div>
-                                </div>
-                                <div class="aui-flex aui-flex-button">
-                                <div class="aui-flex-box time">
-                                        <h3>确认时间</h3>
-                                    </div>
-                                </div>
-                            </div>
 
                         </div>
                     </div>
