@@ -100,8 +100,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void putForward(MemberBalance memberBalance) {
 		int result = memberDao.putForward(memberBalance);
-		Integer cashRecord=memberDao.cashRecord(memberBalance);
-		if(result<=0||cashRecord<=Constant.DEFALULT_ZERO_INT){
+		if(result<=Constant.DEFALULT_ZERO_INT){
 			throw new WebServiceException(CodeMsg.CASH_NOT_ENOUGH);
 		}
 	}

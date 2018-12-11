@@ -5,8 +5,9 @@
 <!-- 查询所有代理 -->
 <select id="paginationMember" resultType="com.thinkingFruit.admin.entity.Member">
 	select m.`id`,m.`gender`,m.`mobile`,m.`loginName`,m.`name`,m.`status`,m.`avatar`,m.`inviterUpperId`,m.`identityNo`,
-	m.`inviterId`,m.`memberLevelId`
-	from `t_thinkingfruit_mall_member`as m 
+	m.`inviterId`,m.`memberLevelId`,`l`.levelName as `memberLevelName`
+	from `t_thinkingfruit_mall_member`as `m`
+	left join `t_thinkingfruit_mall_member_level` as `l` on `l`.level=`m`.memberLevelId
 	<where>
 	   1=1
 	   <if test="queryMap.loginName !=null and queryMap.loginName != ''">
@@ -82,17 +83,7 @@
     </set>
     where `id` = #{memberId}
 </update>
-<!-- 插入提现记录 -->
-<insert id="cashRecord">
-	insert into
-	`t_thinkingfruit_mall_member_balance`(
-		`memberId`,`balance`,`createTime`,`status`
-	)
-	values
-	(
-		#{memberId},#{balance},now(),1
-	)
-</insert>
+
 <!-- 获取所有注册待审核的代理列表 -->
 <select id="paginationExamine" resultType="com.thinkingFruit.admin.entity.Member">
 	select m.`id`,m.`mobile`,m.`loginName`,m.`status`,m.`inviterUpperId`,
@@ -176,7 +167,7 @@
 <update id="cancelUpgrade">
     update `t_thinkingfruit_mall_member`
     <set>
-        `upStatus` =1,
+        `upStatus` =0,
         `updateTime` = now()
     </set>
     where `id` = #{id}

@@ -69,6 +69,10 @@ public class Member extends BaseEntity{
 	/**
 	 * 代理级别名
 	 */
+	private String memberLevelName;
+	/**
+	 * 升级状态默认0(0为未申请状态),1代表升级申请
+	 */
 	private Long upStatus;
 	
 	public Long getUpStatus() {
@@ -77,7 +81,6 @@ public class Member extends BaseEntity{
 	public void setUpStatus(Long upStatus) {
 		this.upStatus = upStatus;
 	}
-	private String memberLevelName;
 	
 	public String getMemberLevelName() {
 		return memberLevelName;

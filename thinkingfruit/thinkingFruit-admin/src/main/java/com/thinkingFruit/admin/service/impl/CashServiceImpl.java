@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.thinkingFruit.admin.entity.Cash;
 import com.thinkingFruit.admin.entity.MemberBalance;
@@ -26,6 +27,7 @@ public class CashServiceImpl implements CashService {
 	@Autowired
 	MemberService memberService;
 	
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public Pagination<Cash> paginationCash(Pagination<Cash> pagination, Map<String, String> queryMap) {
 		Integer page = null;
@@ -45,16 +47,19 @@ public class CashServiceImpl implements CashService {
 		return pagination;
 	}
 
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void editCash(Long id) {
 		//根据id查询cash信息
 		Cash cashReplace = cashDao.findCashById(id);
-		
-		if(cashReplace.getStatus() == Constant.DEFALULT_ZERO){
+		System.out.println("cash"+cashReplace.getCash());
+		if(cashReplace.getStatus() == Constant.DEFALULT_ZERO_INT){
 			MemberBalance memberBalance = new MemberBalance();
 			memberBalance.setMemberId(cashReplace.getMemberId());
 			memberBalance.setBalance((double)cashReplace.getCash());
 			memberService.putForward(memberBalance);
+		}else if(cashReplace.getStatus() == Constant.DEFALULT_ONE_INT) {
+			throw new WebServiceException(CodeMsg.CASH_WITHDRAWALS);
 		}
 		cashDao.editCash(id);
 	}
