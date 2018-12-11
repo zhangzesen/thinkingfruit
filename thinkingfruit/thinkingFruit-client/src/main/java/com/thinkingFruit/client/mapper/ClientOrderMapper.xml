@@ -8,7 +8,8 @@
 		t.`commodityId` as `commodityId`,
 		t.`count` as `count`,
 		t.`createTime` as `createTime`,
-		c.`coverImagePath` as `coverImagePath`
+		c.`coverImagePath` as `coverImagePath`,
+		c.`name` as `name`
 		from
 		`t_thinkingfruit_mall_depot` as t left join
 		`t_thinkingfruit_mall_commodity` as c on t.`commodityId`=c.`id`
@@ -19,11 +20,12 @@
 	   select
 		t.`id` as `id`,
 		t.`commodityId` as `commodityId`,
-		c.`name` as `name`,
+		t.`orderMemberName` as `orderMemberName`,
 		t.`commodityCount` as `commodityCount`,
 		t.`createTime` as `createTime`,
 		t.`orderStatus` as `orderStatus`,
-		c.`coverImagePath` as `coverImagePath`
+		c.`coverImagePath` as `coverImagePath`,
+		t.`confirmTime` as `confirmTime`
 		from
 		`t_thinkingfruit_mall_order` as t
 		left join `t_thinkingfruit_mall_commodity` as c
@@ -34,11 +36,11 @@
 	<select id="extractList" resultType="com.thinkingFruit.client.entity.ClientAddress">
 	   select
 	   m.`mobile` as mobile,
-	    t.`province` as province,
-	     t.`city` as city,
-	      t.`town` as town, 
-	       t.`address` as address,
-	         m.`name` as `memberName`
+	   t.`province` as province,
+	   t.`city` as city,
+	   t.`town` as town, 
+	   t.`address` as address,
+	   m.`name` as `memberName`
 		from
 		`t_thinkingfruit_mall_address` as t left join
 		`t_thinkingfruit_mall_member` as m on t.`memberId` =m.`id`

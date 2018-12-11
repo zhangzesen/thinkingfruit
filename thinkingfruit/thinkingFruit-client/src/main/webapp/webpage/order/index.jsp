@@ -86,5 +86,6 @@ input{
 		src="<%=basePath%>/static/js/order/index.js"></script>
 	<script>WEB_ROOT="<%=basePath%>"
 	</script>
+	<script type="text/javascript" src="<%=basePath%>/static/js/common/date.js"></script>
 </body>
 </html>
