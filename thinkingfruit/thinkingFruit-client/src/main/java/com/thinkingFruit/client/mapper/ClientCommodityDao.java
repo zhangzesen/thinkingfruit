@@ -36,5 +36,11 @@ public interface ClientCommodityDao {
 	 * @return 商品详情图地址
 	 */
 	List<String> findCommodityImagesById(@Param("id")Long id);
+	/**
+	 * 查询轮播图
+	 * @param 
+	 * @return 商品详情图地址
+	 */
+	List<ClientCommodity> findImgList();
 	
 }

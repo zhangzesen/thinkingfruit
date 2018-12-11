@@ -31,5 +31,10 @@ public interface ClientCommodityService {
 	 * @return 商品
 	 */
 	ClientCommodity findCommodityById(HttpServletRequest request, Long id);
+	/**
+	 * 	查看所有轮播图
+	 * @return 轮播图集合
+	 */
+	List<ClientCommodity> fingImgList();
 	
 }

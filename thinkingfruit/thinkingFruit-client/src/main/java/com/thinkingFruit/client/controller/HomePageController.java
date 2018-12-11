@@ -53,7 +53,16 @@ public class HomePageController {
 		List<ClientCommodity> clientCommodityList = clientCommodityService.ClientCommodityList();
 		return Results.successData(clientCommodityList);
 	}
-	
+	/**
+	 * 	查出所有轮播图
+	 * @return 所有轮播图图片
+	 */
+	@RequestMapping(value = "/imgList", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Results<List<ClientCommodity>> imgList(){
+		List<ClientCommodity> imgList = clientCommodityService.fingImgList();
+		return Results.successData(imgList);
+	}
 	/**
 	 * 	跳转到详情页
 	 * @return

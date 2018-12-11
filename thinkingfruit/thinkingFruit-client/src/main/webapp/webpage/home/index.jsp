@@ -46,8 +46,6 @@
 						</a>
 					</div>
 
-
-
 					<div class="slider-item">
 						<a href="javascript:;"> <img
 							src="<%=basePath%>/static/images/banner/shili2.jpg">

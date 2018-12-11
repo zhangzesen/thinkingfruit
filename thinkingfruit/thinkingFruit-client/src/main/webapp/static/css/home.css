@@ -2056,11 +2056,11 @@
 }
 
 .aui-button-btn {
-    background-image: -webkit-gradient(linear,left top,right top,from(#ff6143),to(#ff1767));
-    background-image: -webkit-linear-gradient(left,#ff6143,#ff1767);
-    background-image: -moz-linear-gradient(left,#ff6143,#ff1767);
-    background-image: linear-gradient(to right,#ff6143,#ff1767);
-    background-color: #ff6143;
+    background-image: -webkit-gradient(linear,left top,right top,from(#86be00),to(#86be00));
+    background-image: -webkit-linear-gradient(left,#86be00,#86be00);
+    background-image: -moz-linear-gradient(left,#86be00,#86be00);
+    background-image: linear-gradient(to right,#86be00,#86be00);
+    background-color:#86be00;
     height: 45px;
     width: 79%;
     color: #fff;

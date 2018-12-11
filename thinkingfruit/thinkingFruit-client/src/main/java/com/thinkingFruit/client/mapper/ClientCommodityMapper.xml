@@ -42,4 +42,12 @@
 		and `i`.commodityId=#{id}
 	</select>
 	
+	 <!-- 查询商品详情 -->
+    <select id="findImgList" resultType="com.thinkingFruit.client.entity.ClientCommodity">
+        select
+        c.`id` as `id`, 
+        c.`coverImagePath` as `coverImagePath`
+        from `t_thinkingfruit_mall_commodity` as c 
+    </select>
+	
 </mapper>
