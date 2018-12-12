@@ -9,4 +9,5 @@ public interface StatisticsTask {
 
 	//初始化
 	void initialization();
+
 }

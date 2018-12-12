@@ -4,34 +4,34 @@
 
 	<insert id="addStatistics">
 		 insert into `t_thinkingfruit_mall_panel_statistics`
-	    (`memberTotal`,`transactionTotal`,`orderTotal`,`commisionTotal`,`createTime`,`day`,`month`) 
+	    (`memberTotal`,`transactionTotal`,`orderTotal`,`commodityTotal`,`cashTotal`,`createTime`,`day`,`month`) 
 	    values (
-	    (select count(`id`)	from `t_thinkingfruit_mall_member` WHERE DATEDIFF(`createTime`,NOW())),
-	    (SELECT SUM(orderTotalPrice) FROM `t_thinkingfruit_mall_order_purchase` WHERE DATEDIFF(`confirmTime`,NOW())),
-		(select count(`id`)	from `t_thinkingfruit_mall_order_purchase` as `r` WHERE DATEDIFF(`confirmTime`,NOW())),
-        (select sum(c.`commision`) from `t_thinkingfruit_mall_order_purchase` as `r` left join 
-		`t_thinkingfruit_mall_commision` as `c` on r.`orderNo` = c.`orderNo`
-		WHERE DATEDIFF(r.`confirmTime`,NOW())),
+	    (select count(m.`id`)	from `t_thinkingfruit_mall_member` as `m` WHERE DATEDIFF(m.`createTime`,NOW())),
+	    (SELECT SUM(p.`orderTotalPrice`) FROM `t_thinkingfruit_mall_order_purchase` as `p` WHERE DATEDIFF(p.`confirmTime`,NOW())),
+		(select count(r.`id`)	from `t_thinkingfruit_mall_order_purchase` as `r` WHERE DATEDIFF(r.`confirmTime`,NOW())),
+        (select sum(o.`commodityCount`) from `t_thinkingfruit_mall_order_purchase` as `o` WHERE DATEDIFF(o.`confirmTime`,NOW()) and `o`.orderStatus=2),
+		(select sum(c.`cash`) from `t_thinkingfruit_mall_cash` as `c` WHERE DATEDIFF(c.`updateTime`,NOW()) and `c`.status=1),
 		now(),DAY (DATE_ADD(NOW() ,Interval -1 day)),
 		MONTH (DATE_ADD(NOW() ,Interval -1 day)))
 	</insert>
 	
 	<select id="findStatisticsAll" resultType="com.thinkingFruit.admin.entity.PanelStatistics">
-			SELECT *from(	select `id`,`memberTotal`,`transactionTotal`,`orderTotal`,`createTime`,`day`
+			SELECT *from(	select `id`,`memberTotal`,`transactionTotal`,`orderTotal`,`commodityTotal`,`cashTotal`,`createTime`,`day`
 		from `t_thinkingfruit_mall_panel_statistics` order BY `createTime` DESC LIMIT 0, 10)tal 
 		ORDER BY `createTime` 
 	</select>
 	
 	<select id="findStatisticsTotal" resultType="com.thinkingFruit.admin.entity.PanelStatistics">
-		SELECT SUM(`memberTotal`) as memberTotal,
-		SUM(`transactionTotal`) as transactionTotal,
-		SUM(`orderTotal`) as orderTotal,
-		SUM(`commisionTotal`) as commisionTotal
+		SELECT SUM(`memberTotal`) as `memberTotal`,
+		SUM(`transactionTotal`) as `transactionTotal`,
+		SUM(`orderTotal`) as `orderTotal`,
+		SUM(`cashTotal`) as `cashTotal`,
+		SUM(`commodityTotal`) as `commodityTotal`
 		FROM `t_thinkingfruit_mall_panel_statistics`
 	</select>
 	
 	<select id="dayStatistics" resultType="com.thinkingFruit.admin.entity.PanelStatistics">
-		select `memberTotal`,`commisionTotal`
+		select `memberTotal`,`transactionTotal`
 		from `t_thinkingfruit_mall_panel_statistics` 
 		WHERE DAY(`createTime`)=DAY(NOW()) 
 		and Month(`createTime`) = Month(now()) 
@@ -39,7 +39,7 @@
 	</select>
 	
 	<select id="monthStatistics" resultType="com.thinkingFruit.admin.entity.PanelStatistics">
-		select SUM(`commisionTotal`) as `commisionTotal`
+		select SUM(`transactionTotal`) as `transactionTotal`
 		from `t_thinkingfruit_mall_panel_statistics` 
 		WHERE `month`=MONTH(NOW()) and YEAR(`createTime`) = YEAR(now())
 	</select>

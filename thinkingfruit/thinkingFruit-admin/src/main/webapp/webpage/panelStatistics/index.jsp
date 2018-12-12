@@ -61,7 +61,7 @@ legend {
 				<div class="layui-col-sm6 layui-col-md3">
 					<div class="layui-card">
 						<div class="layui-card-header">
-							商城用户 <span class="layui-badge layui-bg-blue layuiadmin-badge">总</span>
+							总代理数 <span class="layui-badge layui-bg-blue layuiadmin-badge">总</span>
 						</div>
 						<div class="layui-card-body layuiadmin-card-list">
 							<p class="layuiadmin-big-font memberTotal">9,999,666</p>
@@ -71,7 +71,7 @@ legend {
 				<div class="layui-col-sm6 layui-col-md3">
 					<div class="layui-card">
 						<div class="layui-card-header">
-							订单量 <span class="layui-badge layui-bg-blue layuiadmin-badge">总</span>
+							总订单量 <span class="layui-badge layui-bg-blue layuiadmin-badge">总</span>
 						</div>
 						<div class="layui-card-body layuiadmin-card-list">
 							<p class="layuiadmin-big-font orderTotal">33,555</p>
@@ -92,37 +92,37 @@ legend {
 				<div class="layui-col-sm6 layui-col-md3">
 					<div class="layui-card">
 						<div class="layui-card-header">
-							总佣金 <span class="layui-badge layui-bg-blue layuiadmin-badge">总</span>
+							销售总商品 <span class="layui-badge layui-bg-blue layuiadmin-badge">总</span>
 						</div>
 						<div class="layui-card-body layuiadmin-card-list">
-							<p class="layuiadmin-big-font commisionTotal">66,666</p>
+							<p class="layuiadmin-big-font commodityTotal">66,666</p>
 						</div>
 					</div>
 				</div>
 				<div class="layui-col-sm6 layui-col-md3">
 					<div class="layui-card">
 						<div class="layui-card-header">
-							本月佣金<span class="layui-badge layui-bg-green layuiadmin-badge">月</span>
+							本月销售金额<span class="layui-badge layui-bg-green layuiadmin-badge">月</span>
 						</div>
 						<div class="layui-card-body layuiadmin-card-list">
-							<p class="layuiadmin-big-font commisionTotalMonth">9,999,666</p>
+							<p class="layuiadmin-big-font transactionTotalMonth">9,999,666</p>
 						</div>
 					</div>
 				</div>
 				<div class="layui-col-sm6 layui-col-md3">
 					<div class="layui-card">
 						<div class="layui-card-header">
-							昨日佣金 <span class="layui-badge layui-bg-cyan layuiadmin-badge">日</span>
+							昨日销售金额 <span class="layui-badge layui-bg-cyan layuiadmin-badge">日</span>
 						</div>
 						<div class="layui-card-body layuiadmin-card-list">
-							<p class="layuiadmin-big-font commisionTotalDay">33,555</p>
+							<p class="layuiadmin-big-font transactionTotalDay">33,555</p>
 						</div>
 					</div>
 				</div>
 				<div class="layui-col-sm6 layui-col-md3">
 					<div class="layui-card">
 						<div class="layui-card-header">
-							新加会员数 <span class="layui-badge layui-bg-cyan layuiadmin-badge">日</span>
+							新加代理数 <span class="layui-badge layui-bg-cyan layuiadmin-badge">日</span>
 						</div>
 						<div class="layui-card-body layuiadmin-card-list">
 
@@ -133,11 +133,11 @@ legend {
 				<div class="layui-col-sm6 layui-col-md3">
 					<div class="layui-card">
 						<div class="layui-card-header">
-							总代理数<span class="layui-badge layui-bg-blue layuiadmin-badge">总</span>
+							总提现数<span class="layui-badge layui-bg-blue layuiadmin-badge">总</span>
 						</div>
 						<div class="layui-card-body layuiadmin-card-list">
 
-							<p class="layuiadmin-big-font agent">66,666</p>
+							<p class="layuiadmin-big-font cashTotal">66,666</p>
 						</div>
 					</div>
 				</div>

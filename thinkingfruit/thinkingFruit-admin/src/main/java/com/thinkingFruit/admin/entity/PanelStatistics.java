@@ -20,7 +20,26 @@ public class PanelStatistics extends BaseEntity {
 	
 	private String day;
 	
+	private Long commodityTotal;
 	
+	private Double cashTotal;
+	
+	
+	public Long getCommodityTotal() {
+		return commodityTotal;
+	}
+
+	public void setCommodityTotal(Long commodityTotal) {
+		this.commodityTotal = commodityTotal;
+	}
+
+	public Double getCashTotal() {
+		return cashTotal;
+	}
+
+	public void setCashTotal(Double cashTotal) {
+		this.cashTotal = cashTotal;
+	}
 
 	public Double getCommisionTotal() {
 		return commisionTotal;

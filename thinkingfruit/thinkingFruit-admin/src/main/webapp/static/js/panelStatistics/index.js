@@ -26,15 +26,13 @@ var statistics_index_ops = {
 				   $(".memberTotal").text(res.data.allTotal.memberTotal);
 				   $(".transactionTotal").text(res.data.allTotal.transactionTotal);
 				   $(".orderTotal").text(res.data.allTotal.orderTotal);
-				   $(".commisionTotal").text(res.data.allTotal.commisionTotal);
-				   $(".agent").text(res.data.agent);
-				   $(".guest").text(res.data.guest);
+				   $(".commodityTotal").text(res.data.allTotal.commodityTotal);
+				   $(".cashTotal").text(res.data.allTotal.cashTotal);
 				   //日
+				   $(".transactionTotalDay").text(res.data.dayStatistics.transactionTotal);
 				   $(".newMember").text(res.data.dayStatistics.memberTotal);
-				   console.log("res.data.newMember:"+res.data.dayStatistics.memberTotal);
-				   $(".commisionTotalDay").text(res.data.dayStatistics.commisionTotal);
 				   //月
-				   $(".commisionTotalMonth").text(res.data.monthStatistics.commisionTotal);
+				   $(".transactionTotalMonth").text(res.data.monthStatistics.transactionTotal);
 				   //折线
 				   var arr= [];//交易金额数组
 					var arrTime=[];//时间数组
