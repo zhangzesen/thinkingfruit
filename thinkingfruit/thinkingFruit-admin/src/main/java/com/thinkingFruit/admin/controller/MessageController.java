@@ -94,6 +94,7 @@ public class MessageController {
 	@RequestMapping(value = "/redisPolling", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String redisPolling(){
+		System.out.println("redis轮询");
 		boolean isExists = redisService.exists(MessageKey.messageKey, "Message");
 		redisService.delete(MessageKey.messageKey, "Message");
 		return JSONHelper.bean2json(Result.successData(isExists));

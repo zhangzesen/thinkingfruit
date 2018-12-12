@@ -79,7 +79,11 @@ public class MessageServiceImpl implements MessageService{
 		redisService.set(MessageKey.messageKey, "Message", arg);
 	}
 
-
+	@Override
+	public void addMessageList(List<String> contents,Object arg) {
+		messageDao.addMessageList(contents);
+		redisService.set(MessageKey.messageKey, "Message", arg);
+	}
 
 
 }

@@ -5,12 +5,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.thinkingFruit.client.entity.Agent;
 import com.thinkingFruit.client.entity.ClientAddress;
+import com.thinkingFruit.client.entity.ClientMessage;
 import com.thinkingFruit.client.entity.ClientOrder;
+import com.thinkingFruit.client.mapper.AgentDao;
 import com.thinkingFruit.client.mapper.ClientOrderDao;
+import com.thinkingFruit.client.service.ClientMessageService;
 import com.thinkingFruit.client.service.ClientOrderService;
 import com.ysdevelop.common.exception.WebServiceException;
 import com.ysdevelop.common.result.CodeMsg;
+import com.ysdevelop.common.utils.Constant;
 import com.ysdevelop.common.utils.OrderNumberGeneratorUtil;
 
 /**
@@ -27,6 +32,12 @@ public class ClientOrderServiceImpl implements ClientOrderService {
 
 	@Autowired
 	private ClientOrderDao clientOrderDao;
+	
+	@Autowired
+	ClientMessageService messageService;
+	
+	@Autowired
+	private AgentDao agentDao;
 
 	/**
 	 * 查询仓库列表
@@ -69,6 +80,14 @@ public class ClientOrderServiceImpl implements ClientOrderService {
 		System.out.println("clientOrder--->"+clientOrder.getOrderNo());
 		Integer changeCount1 = clientOrderDao.addOrder(clientOrder, memberId);
 		Integer changeCount2 = clientOrderDao.updateDepot(clientOrder, memberId);
+	
+		if (changeCount1 == Constant.DEFALULT_ZERO_INT||changeCount2== Constant.DEFALULT_ZERO_INT) {
+			throw new WebServiceException(CodeMsg.DELIVERY_APPLICATION_FAILURE);
+		}
+		
+		Agent agentById = agentDao.getAgentById(memberId);
+		String content="代理:"+agentById.getLoginName()+"已申请提货";
+		messageService.addMessage(content,new ClientMessage());
 	}
 
 }

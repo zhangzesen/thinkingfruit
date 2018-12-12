@@ -8,8 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import com.thinkingFruit.admin.entity.Message;
 import com.thinkingFruit.admin.entity.Order;
-import com.thinkingFruit.admin.mapper.MessageDao;
+import com.thinkingFruit.admin.service.MessageService;
 import com.thinkingFruit.admin.service.OrderService;
 import com.thinkingFruit.admin.task.OrderTask;
 import com.ysdevelop.common.utils.Constant;
@@ -30,7 +31,7 @@ public class OrderTaskImpl implements OrderTask{
 	OrderService orderService;
 	
 	@Autowired
-	MessageDao messageDao;
+	MessageService messageService;
 	/**
 	 * 提货订单完成消息，修改订单状态
 	 */
@@ -52,7 +53,7 @@ public class OrderTaskImpl implements OrderTask{
         	}
         	if(orders.size() >= Constant.DEFALULT_ONE){
         		orderService.updateBatchByOrders(orders);
-        		messageDao.addMessageList(contents);
+        		messageService.addMessageList(contents,new Message());
         	}
         }
 	}

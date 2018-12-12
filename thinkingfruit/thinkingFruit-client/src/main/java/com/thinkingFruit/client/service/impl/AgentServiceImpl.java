@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.thinkingFruit.client.entity.Agent;
+import com.thinkingFruit.client.entity.ClientMessage;
 import com.thinkingFruit.client.helper.PasswordAgentHelper;
 import com.thinkingFruit.client.mapper.AgentDao;
 import com.thinkingFruit.client.service.AgentService;
+import com.thinkingFruit.client.service.ClientMessageService;
 import com.ysdevelop.common.exception.WebServiceException;
 import com.ysdevelop.common.result.CodeMsg;
 import com.ysdevelop.common.utils.Constant;
@@ -32,6 +34,9 @@ public class AgentServiceImpl implements AgentService {
 	
 	@Autowired
 	private PasswordAgentHelper passwordAgentHelper;
+	
+	@Autowired
+	ClientMessageService messageService;
 	
 	/**
 	 * 	向数据库中添加一条代理数据
@@ -56,6 +61,9 @@ public class AgentServiceImpl implements AgentService {
 		if(addAgent==Constant.DEFALULT_ZERO_INT||addAgentAddress==Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.REGISTER_FAIL);
 		}
+		
+		String content="代理:"+agent.getLoginName()+"已申请注册";
+		messageService.addMessage(content,new ClientMessage());
 	}
 	
 	/**
@@ -216,5 +224,8 @@ public class AgentServiceImpl implements AgentService {
 		if(update==Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.UPGRADE_FAIL);
 		}	
+		Agent agentById = agentDao.getAgentById(id);
+		String content="代理:"+agentById.getLoginName()+"已申请升级";
+		messageService.addMessage(content,new ClientMessage());
 	}
 }

@@ -12,12 +12,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.thinkingFruit.client.entity.Agent;
 import com.thinkingFruit.client.entity.ClientCommision;
 import com.thinkingFruit.client.entity.ClientDepot;
+import com.thinkingFruit.client.entity.ClientMessage;
 import com.thinkingFruit.client.entity.ClientPurchaseOrder;
 import com.thinkingFruit.client.entity.CommissionRatio;
 import com.thinkingFruit.client.mapper.AgentDao;
 import com.thinkingFruit.client.mapper.ClientCommisionDao;
 import com.thinkingFruit.client.mapper.ClientPurchaseOrderDao;
 import com.thinkingFruit.client.service.AgentService;
+import com.thinkingFruit.client.service.ClientMessageService;
 import com.thinkingFruit.client.service.PurchaseOrderService;
 import com.ysdevelop.common.exception.WebServiceException;
 import com.ysdevelop.common.result.CodeMsg;
@@ -46,6 +48,9 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 	
 	@Autowired
 	private ClientCommisionDao clientCommisionDao;
+	
+	@Autowired
+	ClientMessageService messageService;
 	
 	private static Long agentId;
 
@@ -83,7 +88,10 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 			throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
 		}
 				
-		
+		if(agentById.getInviterId()==Constant.DEFALULT_ZERO_INT) {
+			String content="直属代理:"+agentById.getLoginName()+"已申请向公司买货";
+			messageService.addMessage(content,new ClientMessage());
+		}
 	}
 	
 	/**

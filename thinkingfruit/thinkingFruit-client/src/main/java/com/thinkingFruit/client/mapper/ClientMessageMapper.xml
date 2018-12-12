@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkingFruit.client.mapper.ClientMessageDao">
+
+
+<!-- 添加信息 -->
+<insert id="addMessage">
+    insert into `t_thinkingfruit_mall_message`(`content`,`createTime`)
+    value(#{content},now())
+</insert>
+
+<!-- 批量添加消息 -->
+<insert id="addMessageList" parameterType="com.thinkingFruit.admin.entity.Message">
+	insert into `t_thinkingfruit_mall_message`(`content`,`createTime`)
+	values
+	<foreach collection="list" index="index" item="contents" separator=",">
+		(#{contents.content},
+		now())
+	</foreach>
+</insert>
+</mapper>

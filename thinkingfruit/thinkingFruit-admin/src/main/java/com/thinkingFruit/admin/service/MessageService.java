@@ -44,4 +44,6 @@ public interface MessageService {
 	 */
 	void addMessage(String string,Object arg);
 
+	void addMessageList(List<String> contents, Object arg);
+
 }
