@@ -59,11 +59,13 @@ var my_information_ops = {
 				type:'PUT',
 				dataType:'json'
 			}).done(function(res){
-				console.log(res.data);
+				console.log(res.data.msg);
 				if(res.code == 0){
-					window.location.href = WEB_ROOT+'/my';
+					callback = function() {
+						window.location.href = WEB_ROOT+'/my';
+					};
+					common_ops.alert(res.msg, callback);
 				}
-				
 			});
 		});
 	},

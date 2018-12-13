@@ -1,5 +1,7 @@
 package com.thinkingFruit.client.entity;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import com.ysdevelop.common.entity.BaseEntity;
 
 
@@ -17,20 +19,26 @@ public class ClientAddress extends BaseEntity{
 	/**会员名称*/
 	private String memberName;
 	/** 电话 */
+	@NotBlank(message = "联系方式不能为空")
 	private String mobile;
 	/** 省 **/
+	@NotBlank(message = "省 不能为空")
 	private String province;
 	/** 市 **/
+	@NotBlank(message = "市 不能为空")
 	private String city;
 	/** 县区 **/
+	@NotBlank(message = "区 用户名不能为空")
 	private String town;
 	/** 用户状态0启用，1禁用 **/
 	private Long status;
 	/** 详细地址**/
+	@NotBlank(message = "详细地址不能为空")
 	private String address;
 	/** 会员id **/
 	private Long memberId;
 	/**提取物品数量**/
+	@NotBlank(message = "提取数量不能为空")
 	private Long count;
 	public String getMemberName() {
 		return memberName;

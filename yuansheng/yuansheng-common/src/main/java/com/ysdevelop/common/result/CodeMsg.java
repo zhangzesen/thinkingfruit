@@ -71,7 +71,7 @@ public class CodeMsg {
 	public static CodeMsg PURCHASE_FAIL = new CodeMsg(500032,"订单购买失败");
 	public static CodeMsg EXAMINE_FAIL = new CodeMsg(500033,"审核失败");
 	public static CodeMsg DEPOT_FAIL = new CodeMsg(500034,"无法生成代理仓库,审核失败");
-	public static CodeMsg INVITER_DEPOT_LOW = new CodeMsg(500035,"上级仓库商品不足");
+	public static CodeMsg INVITER_DEPOT_LOW = new CodeMsg(500035,"仓库商品不足，请补充货物");
 	public static CodeMsg DELIVERY_APPLICATION_FAILURE = new CodeMsg(500036,"提货订单申请失败");
 	//统计
 	public static CodeMsg NEWMEMBER_EXIST = new CodeMsg(500012,"新增会员数量为空");

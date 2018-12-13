@@ -76,13 +76,13 @@ outline:none;
                 </div>
                 <div class="aui-page-box">
                     <p>
-                        <img src="<%=basePath%>/static/images/banner/shili1.jpg" alt="">
+                        <img src="<%=basePath%>/static/images/banner/shili9.jpg" alt="">
                     </p>
                     <p>
-                        <img src="<%=basePath%>/static/images/banner/shili2.jpg" alt="">
+                        <img src="<%=basePath%>/static/images/banner/shili6.jpg" alt="">
                     </p>
                     <p>
-                        <img src="<%=basePath%>/static/images/banner/shili3.jpg" alt="">
+                        <img src="<%=basePath%>/static/images/banner/shili4.jpg" alt="">
                     </p>
                      <p id="description">致力于打造更好的产品为更好的你</p>
                 </div>

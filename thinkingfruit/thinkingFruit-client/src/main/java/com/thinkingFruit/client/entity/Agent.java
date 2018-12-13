@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.ysdevelop.common.entity.BaseEntity;
+import com.ysdevelop.common.validator.IsChinese;
 import com.ysdevelop.common.validator.IsMobile;
 
 
@@ -27,16 +28,20 @@ public class Agent extends BaseEntity implements Serializable {
 	@NotBlank(message = "登录名不能为空")
 	private String loginName;
 	/** 性别 */
+	@NotBlank(message = "性别不能为空")
 	private Long gender;
 	/** 真实姓名 */
+	@NotBlank(message = "真实姓名不能为空")
+	@IsChinese(message = "姓名只能为汉字")
 	private String name;
 	/** 密码 */
-	@NotBlank(message = "用户名不能为空")
+	@NotBlank(message = "密码不能为空")
 	@Length(min = 6, max = 16, message = "密码长度必须在6-16之间")
 	private transient String pswd;
 	/** 盐值 **/
 	private String salt;
 	/** 角色头像 */
+	@NotBlank(message = "用户头像不能为空")
 	private String avatar;
 	/** 邀请者id */
 	@NotNull(message = "邀请者不能为空")
@@ -55,7 +60,7 @@ public class Agent extends BaseEntity implements Serializable {
 	private String town;
 	/** 具体地址**/
 	private String address;
-	@IsMobile
+	@IsMobile(message = "请输入正确的手机号码")
 	private String mobile;
 	/** 用户状态0启用，1禁用 **/
 	private Long status;

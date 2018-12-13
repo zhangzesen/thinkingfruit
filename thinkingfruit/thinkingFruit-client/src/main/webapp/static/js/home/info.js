@@ -26,6 +26,7 @@ var home_index_ops = {
 				$('#count').bind('input propertychange', function() {
 					var temp=/^[0-9]*$/;
 					var Booleans=temp.test($('#count').val());
+					console.log($('#count').val())
 					if(Booleans==false){
 						common_ops.alert("请输入数字");
 						$('#count').val("");
