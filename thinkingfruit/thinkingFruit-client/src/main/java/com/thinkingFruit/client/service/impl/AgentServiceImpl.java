@@ -36,7 +36,7 @@ public class AgentServiceImpl implements AgentService {
 	private PasswordAgentHelper passwordAgentHelper;
 	
 	@Autowired
-	ClientMessageService messageService;
+	private ClientMessageService messageService;
 	
 	/**
 	 * 	向数据库中添加一条代理数据

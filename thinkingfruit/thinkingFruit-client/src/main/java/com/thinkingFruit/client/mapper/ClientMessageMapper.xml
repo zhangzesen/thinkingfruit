@@ -10,7 +10,7 @@
 </insert>
 
 <!-- 批量添加消息 -->
-<insert id="addMessageList" parameterType="com.thinkingFruit.admin.entity.Message">
+<insert id="addMessageList" parameterType="com.thinkingFruit.client.entity.ClientMessage">
 	insert into `t_thinkingfruit_mall_message`(`content`,`createTime`)
 	values
 	<foreach collection="list" index="index" item="contents" separator=",">

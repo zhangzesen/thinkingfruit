@@ -3,16 +3,17 @@ package com.thinkingFruit.client.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.thinkingFruit.client.key.MessageKey;
 import com.thinkingFruit.client.mapper.ClientMessageDao;
 import com.thinkingFruit.client.service.ClientMessageService;
 import com.ysdevelop.common.redis.RedisService;
-
+@Service
 public class ClientMessageServiceImpl implements ClientMessageService {
 
 	@Autowired
-	ClientMessageDao messageDao;
+	private ClientMessageDao messageDao;
 	
 	@Autowired
 	private RedisService redisService;
