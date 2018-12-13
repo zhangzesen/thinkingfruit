@@ -38,15 +38,15 @@ var order_index_ops = {
                     +'<div class="aui-flex-box">'+"<h3>"+"待上级确认订单"+"</h3>"+"</div>"+"</div>"+"<div class='aui-flex aui-flex-order'>"+"<div class='aui-order-img'>"
                     +'<img src="'+res.data[i].coverImagePath+'" alt="">'+"</div>"+'<div class="aui-flex-box">'+"<h2>"+res.data[i].commodityName+"</h2>"
                     +"<h4>"+"共"+"<i>"+res.data[i].commodityCount+"</i>"+"件商品 需付款"+"<em>"+"￥"+res.data[i].orderTotalPrice+"</em>"+"</h4>"+"</div>"+"</div>"+'<div class="aui-flex aui-flex-button">'
-                    +'<div class="aui-flex-box time">'+"<h3>购买时间:"+dateFtt("yyyy-MM-dd hh:mm:ss",new Date(res.data[i].createTime))+"</h3>"+"</div>"+'<div class="aui-flex-box">'
-                    +'<button  class="cancel" value="'+res.data[i].orderNo+'">'+"取消订单"+"</button>"+"</div>"+"</div>"+"</div>")
+                    +'<div class="aui-flex-box time">'+"<h3>"+dateFtt("yyyy-MM-dd hh:mm:ss",new Date(res.data[i].createTime))+"</h3>"+"</div>"+'<div class="aui-flex-box">'
+                    +'<button  class="cancel" value="'+res.data[i].orderNo+'" style="text-align: right;">'+"取消订单"+"</button>"+"</div>"+"</div>"+"</div>")
 					break;
 				    case "2":
 				    $("#tab2").append('<div class="aui-order-list">'+'<div class="aui-flex">'
 		                    +'<div class="aui-flex-box">'+"<h3>"+"上级已确认订单"+"</h3>"+"</div>"+"</div>"+"<div class='aui-flex aui-flex-order'>"+"<div class='aui-order-img'>"
 		                    +'<img src="'+res.data[i].coverImagePath+'" alt="" value="'+res.data[i].commodityId+'">'+"</div>"+'<div class="aui-flex-box">'+"<h2>"+res.data[i].commodityName+"</h2>"
 		                    +"<h4>"+"共"+"<i>"+res.data[i].commodityCount+"</i>"+"件商品 需付款"+"<em>"+"￥"+res.data[i].orderTotalPrice+"</em>"+"</h4>"+"</div>"+"</div>"+'<div class="aui-flex aui-flex-button">'
-		                    +'<div class="aui-flex-box time">'+"<h3>确认时间:"+dateFtt("yyyy-MM-dd hh:mm:ss",new Date(res.data[i].confirmTime))+"</h3>"+"</div>"+"</div>"
+		                    +'<div class="aui-flex-box time">'+"<h3>"+dateFtt("yyyy-MM-dd hh:mm:ss",new Date(res.data[i].confirmTime))+"</h3>"+"</div>"+"</div>"
 		                    +"</div>")
 				    break;
 				}
@@ -92,15 +92,15 @@ var order_index_ops = {
 		                    +'<div class="aui-flex-box">'+"<h4>"+"下级申请购买订单"+"<i>"+res.data[i].orderMemberName+"</i>"+"的需求"+"</h4>"+"</div>"+"</div>"+"<div class='aui-flex aui-flex-order'>"+"<div class='aui-order-img'>"
 		                    +'<img src="'+res.data[i].coverImagePath+'" alt="" >'+"</div>"+'<div class="aui-flex-box">'+"<h2>"+res.data[i].commodityName+"</h2>"
 		                    +"<h4>"+"共"+"<i>"+res.data[i].commodityCount+"</i>"+"件商品 需付款"+"<em>"+"￥"+res.data[i].orderTotalPrice+"</em>"+"</h4>"+"</div>"+"</div>"+'<div class="aui-flex aui-flex-button">'
-		                    +'<div class="aui-flex-box time">'+"<h3>购买时间:"+dateFtt("yyyy-MM-dd hh:mm:ss",new Date(res.data[i].createTime))+"</h3>"+"</div>"+'<div class="aui-flex-box" >'
+		                    +'<div class="aui-flex-box time">'+"<h3>"+dateFtt("yyyy-MM-dd hh:mm:ss",new Date(res.data[i].createTime))+"</h3>"+"</div>"+'<div class="aui-flex-box" >'
 		                    +'<button class="confirm" value="'+res.data[i].orderNo+'">'+"发货"+"</button>"+"</div>"+"</div>"+"</div>")
 		            break;
 				    case "2":
 				    $("#tab4").append('<div class="aui-order-list">'+'<div class="aui-flex">'
 		                    +'<div class="aui-flex-box">'+"<h4>"+"已确认下级订单"+"<i>"+res.data[i].orderMemberName+"</i>"+"的需求"+"</h4>"+"</div>"+"</div>"+"<div class='aui-flex aui-flex-order'>"+"<div class='aui-order-img'>"
 		                    +'<img src="'+res.data[i].coverImagePath+'" alt="" value="'+res.data[i].commodityId+'">'+"</div>"+'<div class="aui-flex-box">'+"<h2>"+res.data[i].commodityName+"</h2>"
-		                    +"<h4>"+"共"+"<i>"+res.data[i].commodityCount+"</i>"+"件商品 需付款"+"<em>"+"￥"+res.data[i].orderTotalPrice+"</em>"+"</h4>"+'<div class="aui-flex aui-flex-button">'
-		                    +'<div class="aui-flex-box time">'+"<h3>确认时间:"+dateFtt("yyyy-MM-dd hh:mm:ss",new Date(res.data[i].confirmTime))+"</h3>"+"</div>"+"</div>"
+		                    +"<h4>"+"共"+"<i>"+res.data[i].commodityCount+"</i>"+"件商品 需付款"+"<em>"+"￥"+res.data[i].orderTotalPrice+"</em>"+"</h4>"+"</div>"+"</div>"+'<div class="aui-flex aui-flex-button">'
+		                    +'<div class="aui-flex-box time">'+"<h3>"+dateFtt("yyyy-MM-dd hh:mm:ss",new Date(res.data[i].confirmTime))+"</h3>"+"</div>"+"</div>"
 		                    +"</div>")
 		            break;
 				}

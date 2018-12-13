@@ -53,10 +53,10 @@
 	</insert>
 	<!-- 更新个人云仓库-->
      <update id="updateDepot" parameterType="com.thinkingFruit.client.entity.ClientOrder">
-		update `t_thinkingfruit_mall_depot`
-		set `count`=(`count`-(#{ClientOrder.cashCount}))
+		update `t_thinkingfruit_mall_depot` as m
+		set m.`count`=(m.`count`-(#{ClientOrder.cashCount}))
 		where
-		`id`=#{memberId}
-		and `commodityId`=#{ClientOrder.commodityId}
+		m.`memberId`=#{memberId}
+		and m.`commodityId`=#{ClientOrder.commodityId}
 	 </update>
 </mapper>

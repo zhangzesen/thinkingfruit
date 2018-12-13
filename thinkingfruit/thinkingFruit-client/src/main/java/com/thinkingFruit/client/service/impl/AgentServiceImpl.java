@@ -49,7 +49,10 @@ public class AgentServiceImpl implements AgentService {
 		passwordAgentHelper.encryptPassword(agent);	
 		System.out.println("agent.getLoginName()"+agent.getLoginName());
 		//添加代理
-		if(agent.getInviterId()==Constant.DEFALULT_ZERO_INT) {
+		if(agent.getInviterId()==null){
+			throw new WebServiceException(CodeMsg.REGISTER_CANT);
+		}
+		else if(agent.getInviterId()==Constant.DEFALULT_ZERO_INT) {
 			agent.setInviterUpperId(0L);
 		}else {
 			Agent agentById = agentDao.getAgentById(agent.getInviterId());

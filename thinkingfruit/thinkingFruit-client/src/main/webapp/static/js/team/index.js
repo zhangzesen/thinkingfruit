@@ -16,8 +16,8 @@ var team_index_ops = {
 					$("#tab1").append('<div class="aui-order-list">'+'<div class="aui-flex">'
                     +'<div class="aui-flex-box">'+"<h3>"+"级别"+"</h3>"+"</div>"+"<div class='aui-order-pay'>"
                     +"<p>"+res.data[i].memberLevelName+"</p>"+"</div>"+"</div>"+"<div class='aui-flex aui-flex-order'>"+"<div class='aui-order-img'>"
-                    +'<img src="'+res.data[i].avatar+'" alt="">'+"</div>"+'<div class="aui-flex-box">'+"<h2>"+res.data[i].name+"</h2>"
-                    +"<h4>"+"个人销售额"+"<i>"+res.data[i].salesVolume+"</i>"+"元"+"</h4>"+"</div>"+"</div>"+'<div class="aui-flex aui-flex-button">'
+                    +'<img src="'+res.data[i].avatar+'" alt="">'+"</div>"+'<div class="aui-flex-box">'+"<h2>"+res.data[i].name+"</h2>"+"<h2>"+"联系方式："+"<i>"+res.data[i].mobile+"</i>"+"</h>"
+                    +"<h4>"+"销售额："+"<i>"+res.data[i].salesVolume+"</i>"+"元"+"</h4>"+"</div>"+"</div>"+'<div class="aui-flex aui-flex-button">'
                 	+"</div>"+"</div>")
 			    }
 			}
@@ -40,13 +40,13 @@ var team_index_ops = {
 				if(res.data==null){
 					$("#inviter #memberLevelName").text("最高级别");
 					$("#inviter #name").text("公司");
-					$("#inviter #salesVolume").text("未统计");
+					$("#inviter #mobile").text("123456798");
 				}else if(res.data!=null){
 					
 					$("#inviter #memberLevelName").text(res.data.memberLevelName);
 					$("#inviter #name").text(res.data.name);
 					$("#inviter #avatar").attr("src",res.data.avatar);
-					$("#inviter #salesVolume").text(res.data.salesVolume);
+					$("#inviter #mobile").text(res.data.mobile);
 				}
 			}
 		});

@@ -28,8 +28,28 @@ public class ClientCommision extends BaseEntity {
 	
 	private Double inviterTotalMoney;//上级获得的总金额
 	
+	private Double totalCommision;//个人总佣金
+	
+	private Double totalInviteMoney;//个人总邀请金
 	
 	
+	
+	public Double getTotalCommision() {
+		return totalCommision;
+	}
+
+	public void setTotalCommision(Double totalCommision) {
+		this.totalCommision = totalCommision;
+	}
+
+	public Double getTotalInviteMoney() {
+		return totalInviteMoney;
+	}
+
+	public void setTotalInviteMoney(Double totalInviteMoney) {
+		this.totalInviteMoney = totalInviteMoney;
+	}
+
 	public Double getInviterTotalMoney() {
 		return inviterTotalMoney;
 	}
@@ -125,6 +145,15 @@ public class ClientCommision extends BaseEntity {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "ClientCommision [orderNo=" + orderNo + ", totalAmount=" + totalAmount + ", commision=" + commision
+				+ ", commisionProportion=" + commisionProportion + ", status=" + status + ", commodityId=" + commodityId
+				+ ", InviteMoney=" + InviteMoney + ", memberId=" + memberId + ", inviterId=" + inviterId + ", name="
+				+ name + ", inviterUpperId=" + inviterUpperId + ", inviterTotalMoney=" + inviterTotalMoney
+				+ ", totalCommision=" + totalCommision + ", totalInviteMoney=" + totalInviteMoney + "]";
 	}
 
 

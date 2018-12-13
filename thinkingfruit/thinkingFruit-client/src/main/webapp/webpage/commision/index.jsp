@@ -59,14 +59,13 @@ input{
                     </ul>
                     <div class="tab-panel tab-panel-clear-line">
                         <div class="tab-panel-item tab-active" id="tab1">
-                        <div style="background:#fff;margin-bottom:10px" id="yysb">
-	    		<h4 style="height:40px;line-height:40px;text-indent:10px;color:#bbb;font-size:16px">本月佣金(元)</h4>
-	    		<p id="balabce" style="height:80px;line-height:60px;text-align:center;color:#666;font-size:24px">19000元</p>
+                        <div style="background:#fff;margin-bottom:10px" id="totalCommision">
+	    		
+	    	           </div>
 	    	           </div>
                         <div class="tab-panel-item" id="tab2">
-                        <div style="background:#fff;margin-bottom:10px" id="yysb">
-	    		<h4 style="height:40px;line-height:40px;text-indent:10px;color:#bbb;font-size:16px">本月邀请金(元)</h4>
-	    		<p id="balabce" style="height:80px;line-height:60px;text-align:center;color:#666;font-size:24px">19000元</p>
+                        <div style="background:#fff;margin-bottom:10px" id="totalInviteMoney">
+	    	           
 	    	           </div>
                         </div>
                     </div>

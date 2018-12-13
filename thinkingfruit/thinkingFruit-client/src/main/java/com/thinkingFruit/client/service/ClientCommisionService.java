@@ -21,5 +21,23 @@ public interface ClientCommisionService {
 	 * @param purchaseOrderList 交易订单集合
 	 */
 	List<ClientCommision> ClientCommisionList(Long id);
+	/**
+	 * 	获取邀请金列表
+	 * @param request
+	 * @param purchaseOrderList 邀请金集合
+	 */
+	List<ClientCommision> inviteMoneyList(Long id);
+	/**
+	 * 	统计个人总佣金
+	 * @param request
+	 * @param purchaseOrderList 交易订单集合
+	 */
+	ClientCommision getTotalClientCommision(Long id);
+	/**
+	 * 统计个人总邀请金
+	 * @param request
+	 * @param purchaseOrderList 交易订单集合
+	 */
+	ClientCommision getTotalClientInviteMoney(Long id);
 	
 }

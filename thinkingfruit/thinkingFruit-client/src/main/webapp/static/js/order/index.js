@@ -16,22 +16,23 @@ var order_index_ops = {
 					$("#tab1").append('<div class="aui-order-list">'+'<div class="aui-flex">'
 		                    +'<div class="aui-flex-box">'+"<h3>"+"已买入"+"</h3>"+"</div>"+"</div>"+"<div class='aui-flex aui-flex-order'>"+"<div class='aui-order-img'>"
 		                    +'<img src="'+res.data[i].coverImagePath+'" alt="">'+"</div>"+'<div class="aui-flex-box">'+"<h2>"+res.data[i].name+"</h2>"
-		                    +"<h4>"+"共"+'<i class="count" value="'+res.data[i].count+'">'+res.data[i].count+"</i>"+"件商品"+"</h4>"+"</div>"+"</div>"+'<div class="aui-flex aui-flex-button">'
-		                    +'<div class="aui-flex-box">'
-		                    +'<button class="extract" value="'+res.data[i].commodityId+'">'+"提货"+"</button>"+"</div>"+'<div class="aui-flex-box" style="margin-left:-20%;">'+'<button class="supplement">'+"补充"+"</button>"+"</div>"+"</div>"+"</div>")
+		                    +"<h4>"+"共"+'<i class="count">'+res.data[i].count+"</i>"+"件商品"+"</h4>"+"</div>"+"</div>"+'<div class="aui-flex aui-flex-button">'
+		                    +'<div class="aui-flex-box" value="'+res.data[i].count+'">'
+		                    +'<button class="extract" value="'+res.data[i].commodityId+'">'+"提货"+"</button>"+"</div>"+'<div class="aui-flex-box" style="margin-left:-60%;">'+'<button class="supplement" value="'+res.data[i].commodityId+'">'+"补充"+"</button>"+"</div>"+"</div>"+"</div>")
 				
-				}
 				$(".supplement").bind("click",function(){
-					window.location.href = WEB_ROOT+'/home';
+					var commodityId=$(this).attr("value");
+					window.location.href = WEB_ROOT+'/home/info?id='+commodityId;
 				})
 				$(".extract").bind("click",function(){
-					var count=$(".count").attr("value");
+					var count=$(this).parent().attr("value");
 					var commodityId=$(this).attr("value");
 					console.log("count"+count);
-					alert("commodityId"+commodityId);
-					alert("count"+count);
+					console.log("commodityId"+commodityId);
+					console.log("count"+count);
 					window.location.href = WEB_ROOT+'/order/extract?commodityId='+commodityId+"&count="+count;
 				})
+				}
 			}
 		}),
 		//订单列表

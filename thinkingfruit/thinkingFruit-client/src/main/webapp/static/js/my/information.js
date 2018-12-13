@@ -57,6 +57,16 @@ var my_information_ops = {
 		$("#update").click(function(){
 			var id=$('#id').val();
 			var gender=$('#gender').val();
+			
+			//绑定监听事件
+			$('#mobile').bind('input propertychange', function() {
+				var temp=/^[1][3,4,5,7,8][0-9]{9}$/;
+				var Booleans=temp.test($('#mobile').val());
+				if(Booleans==false){
+					common_ops.alert("请输入正确的号码");
+					$('#mobile').val("");
+				}
+	        });
 			var mobile=$('#mobile').val();
 			var name=$('#name').val();
 			var identityNo=$('#identityNo').val();

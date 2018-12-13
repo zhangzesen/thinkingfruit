@@ -117,6 +117,7 @@
         m.`name` as `name`,
         m.`memberLevelId` as `memberLevelId`,
         m.`avatar` as `avatar`,
+        m.`mobile` as `mobile`,
         l.`levelName` as `memberLevelName`,
         m.`salesVolume` as `salesVolume`
         from `t_thinkingfruit_mall_member` as `m`
@@ -131,6 +132,7 @@
         m.`name` as `name`,
         m.`memberLevelId` as `memberLevelId`,
         m.`avatar` as `avatar`,
+        m.`mobile` as `mobile`,
         l.`levelName` as `memberLevelName`,
         m.`salesVolume` as `salesVolume`
         from `t_thinkingfruit_mall_member` as `m`

@@ -16,7 +16,7 @@ var home_index_ops = {
 			    }
 				$(".aui-card-list").bind("click",function(){
 					var id= $(this).find('img').attr("value");
-					alert("id"+id);
+					console.log("id--->"+id)
 					window.location.href = WEB_ROOT + '/home/info?id='+id;
 				});
 			}

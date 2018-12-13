@@ -22,10 +22,18 @@ var home_index_ops = {
 					$(".aui-page-box").append('<p><img src="'+res.data.detailsImagePaths[i]+'/>"</p>');
 				}
 				$(".aui-page-box #description").text(res.data.description);
+				//绑定监听事件
 				$('#count').bind('input propertychange', function() {
-		            $('#priceTall').html($(this).val()*res.data.price);
+					var temp=/^[0-9]*$/;
+					var Booleans=temp.test($('#count').val());
+					if(Booleans==false){
+						common_ops.alert("请输入数字");
+						$('#count').val("");
+					}else{
+		            $('#priceTall').html($(this).val()*res.data.price);}
 		        });
 
+				
 			}
 		});
 		

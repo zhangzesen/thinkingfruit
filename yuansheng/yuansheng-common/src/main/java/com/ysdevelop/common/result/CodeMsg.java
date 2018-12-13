@@ -40,6 +40,7 @@ public class CodeMsg {
 	public static CodeMsg INFORMATION_NOT_NULL = new CodeMsg(500057, "信息未完善，请先完善信息");
 	public static CodeMsg UNREGISTERED = new CodeMsg(500058, "该用户未注册");
 	public static CodeMsg REGISTER_FAIL = new CodeMsg(500059, "注册失败");
+	public static CodeMsg REGISTER_CANT = new CodeMsg(500064, "没有邀请人，无效注册！");
 	public static CodeMsg AGENT_TO_COMPANY_FAIL = new CodeMsg(500060, "代理等级高于邀请人,但划入公司管理失败");
 	public static CodeMsg CANCEL_REGISTERED_FAIL = new CodeMsg(500061, "取消注册失败");
 	public static CodeMsg CANCEL_UPGRADE_FAIL = new CodeMsg(500062, "取消升级失败");

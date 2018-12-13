@@ -9,12 +9,30 @@
 		t.`InviteMoney` as `InviteMoney`,
 		t.`createTime` as `createTime`,
 		t.`commodityId` as `commodityId`,
+		t.`memberId` as `memberId`,
 		c.`name` as `name`,
-		c.`coverImagePath` as `coverImagePath`
+		c.`avatar` as `avatar`
 		from
 		`t_thinkingfruit_mall_commision` as t left join
-		`t_thinkingfruit_mall_commodity` as c on t.`commodityId`=c.`id`
-		where t.`memberId` = #{id}
+		`t_thinkingfruit_mall_member` as c on t.`memberId`=c.`id`
+		where t.`inviterUpperId` = #{id}
+	</select>
+	<!--获取总邀请金-->
+	<select id="findInviteMoney" resultType="com.thinkingFruit.client.entity.ClientCommision">
+	   select
+		t.`orderNo` as `orderNo`,
+		t.`totalAmount` as `totalAmount`,
+		t.`commision` as `commision`,
+		t.`InviteMoney` as `InviteMoney`,
+		t.`createTime` as `createTime`,
+		t.`commodityId` as `commodityId`,
+		t.`memberId` as `memberId`,
+		c.`name` as `name`,
+		c.`avatar` as `avatar`
+		from
+		`t_thinkingfruit_mall_commision` as t left join
+		`t_thinkingfruit_mall_member` as c on t.`memberId`=c.`id`
+		where t.`inviterId` = #{id}
 	</select>
 	
 	<!-- 添加佣金记录 -->
@@ -32,4 +50,21 @@
 			now()
 		)
 	</insert>
+	<!-- 获取个人总佣金 -->
+	<select id="getTotalClientCommision" resultType="com.thinkingFruit.client.entity.ClientCommision">
+	   select
+	    sum(t.`commision`) as `totalCommision`
+		from
+		`t_thinkingfruit_mall_commision` as t
+		where t.`inviterUpperId` = #{id}
+	</select>
+	<!--获取个人总邀请金-->
+	<select id="getTotalClientInviteMoney" resultType="com.thinkingFruit.client.entity.ClientCommision">
+	   select
+		sum(t.`inviteMoney`) as `totalInviteMoney`
+		from
+		`t_thinkingfruit_mall_commision` as t
+		where t.`inviterId` = #{id}
+	</select>
+	
 </mapper>

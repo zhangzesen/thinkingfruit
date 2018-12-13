@@ -29,7 +29,11 @@ var order_extract_ops = {
 	eventBind : function() {
 		var commodityId= common_ops.g_getQueryString('commodityId');
 		var count = common_ops.g_getQueryString('count');
+		console.log("count--->"+count);
 		$("button").click(function(){
+			$that = $(this);
+			// 在点击事件之间需要讲按钮置灰
+			$that.attr("disabled","true");
 			var cashCount=$('.cashCount').val();
 			console.log("cashCount"+cashCount)
 			var name=$('.name').val();
@@ -54,15 +58,19 @@ var order_extract_ops = {
 				type:'PUT',
 				dataType:'json'
 			}).done(function(res){
-				alert("订单已生成，等待发货")
+				
 				console.log(res.data);
 				if(res.code == 0){
-					window.location.href = WEB_ROOT+'/order/depot';
+					callback = function() {
+						window.location.href = WEB_ROOT+'/order/depot';
+					};
+					common_ops.alert(res.msg, callback);
 				}
 				
 			});
 		}else{
 			common_ops.alert("提取数量大于余额！");
+			$that.removeAttr("disabled");
 		};
 		});
 		

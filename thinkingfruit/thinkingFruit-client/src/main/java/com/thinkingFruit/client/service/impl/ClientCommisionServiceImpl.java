@@ -28,6 +28,31 @@ public class ClientCommisionServiceImpl implements ClientCommisionService {
 	@Override
 	public List<ClientCommision> ClientCommisionList(Long id) {
 		List<ClientCommision> ClientCommisionList = ClientCommisionDao.findCommisionList(id);
+		System.out.println("ClientCommisionList--->"+ClientCommisionList);
+		return ClientCommisionList;
+	}
+	/**
+	 * 获取总佣金
+	 */
+	@Override
+	public ClientCommision getTotalClientCommision(Long id) {
+		ClientCommision ClientCommision=ClientCommisionDao.getTotalClientCommision(id);
+		return ClientCommision;
+	}
+	/**
+	 * 获取总邀请金
+	 */
+	@Override
+	public ClientCommision getTotalClientInviteMoney(Long id) {
+		ClientCommision ClientCommision=ClientCommisionDao.getTotalClientInviteMoney(id);
+		return ClientCommision;
+	}
+	/**
+	 * 获取邀请金列表
+	 */
+	@Override
+	public List<ClientCommision> inviteMoneyList(Long id) {
+		List<ClientCommision> ClientCommisionList = ClientCommisionDao.findInviteMoney(id);
 		return ClientCommisionList;
 	}
 

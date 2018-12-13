@@ -88,11 +88,10 @@ var my_index_ops = {
 			        	  $.ajax({
 			      			url:WEB_ROOT+'/my/upLevel',
 			      			data:{},
-			      			type:'GET',
+			      			type:'PUT',
 			      			dataType:'json'
 			      		}).done(function(res){
 			      			common_ops.alert("申请成功，请等待客服联系！")
-			      			window.location.href = WEB_ROOT+'/my';
 			      		})
 			          });
 			        }

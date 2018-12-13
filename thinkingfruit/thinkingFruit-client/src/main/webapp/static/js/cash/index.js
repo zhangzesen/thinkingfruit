@@ -12,12 +12,14 @@ var cash_index_ops = {
 		}).done(function(res){
 			console.log(res.data);
 			$('#balance').append("<h4>"+"可提现余额(元)"+"</h4>"+
-    		'<p type="text" id="balance" value="'+res.data.balance+'">'+res.data.balance+"</input>")
+    		'<p type="text" id="balance">'+res.data.balance+"</input>")
 			
 		});
 		$("#withdrawal").click(function(){
-			var balance=$('#balance').val()
+			var balance=$('p').text();
+			console.log("balance"+balance);
 			var cash=$('#cash').val();
+			console.log("cash"+cash);
 			var openBank=$('#openBank').val();
 			var bankNumber=$('#bankNumber').val();
 			var account=$('#account').val();
@@ -37,7 +39,7 @@ var cash_index_ops = {
 			}).done(function(res){
 				console.log(res.data);
 				if(res.code == 0){
-					window.location.href = WEB_ROOT+'/cash';
+					common_ops.alert("提现成功，等待转账")
 				}
 				
 			});
