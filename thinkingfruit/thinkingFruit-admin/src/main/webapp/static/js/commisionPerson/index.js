@@ -23,11 +23,12 @@ var commision_person_index_ops = {
 				var tableIns = table.render({
 				    elem: '#dateTable'                  //指定原始表格元素选择器（推荐id选择器）  //容器高度
 				    , cols: [[                          //标题栏
-                        {field: 'id', title: '编号',align: 'center', width:'20%'}
-                        , {field: 'inviterUpperName', title: '受益人',align: 'center', width:'20%'}
-				        , {field: 'personTotalCommision', title: '总佣金', align: 'center', width:'20%'}
-				        , {field: 'personTotalInviteMoney', title: '总邀请金',align: 'center', width:'20%'}
-				        , {field: 'personTotal', title: '总收益',align: 'center', width:'20%'}
+                        {field: 'id', title: '编号',align: 'center', width:'10%'}
+                        , {field: 'name', title: '受益人',align: 'center', width:'15%'}
+				        , {field: 'personTotalInviteMoney', title: '总邀请金', align: 'center', width:'15%'}
+				        , {field: 'personTotalCommodity', title: '总商品销售额',align: 'center', width:'15%'}
+				        , {field: 'personTotalCommision', title: '总佣金',align: 'center', width:'15%'}
+				        , {field: 'personTotal', title: '总金额',align: 'center', width:'15%'}
 				    ]]
 				    , url: WEB_ROOT + "/commision/person/pagination"
 				    , method: 'get'
@@ -44,38 +45,20 @@ var commision_person_index_ops = {
 				        //得到数据总量
 				        console.log(count);
 				        
-				      //状态处理
-				           $("[data-field='inviterUpperName']").children().each(function(){
-				                 console.log("123"+$(this).text());
-				        		if($(this).text()=="undefined"||$(this).text() == null||$(this).text() == ""){
-				        			$(this).empty();
-				        			$(this).append("公司");
-				        		}
-				           })
 				        
-				        //时间进行处理
-				        $("[data-field='createTime']").children().each(function(){
-			        		if($(this).text()=='[object Object]'){
-			        			var atime = res.data[$(this).parent().parent().attr("data-index")].createTime;
-			        			var time = 1900+atime.year+"-"+(atime.month+1)+"-"+atime.date+" "+atime.hours+":"+atime.minutes
-			        			$(this).text(time);  
-			        		}
-				        })
 				    }
 				});
 				
 				//查询信息
 				$(".btn-serach").on('click',function(){						
-					var orderNo = $("input[ name='orderNo']").val();	
-					var nickname = $("input[ name='nickname']").val();
+					var name = $("input[ name='name']").val();
 						
 					var startTime = $("input[ name='startTime']").val();
 					var endTime = $("input[ name='endTime']").val();
 						
 					tableIns.reload({
 							where: { //设定异步数据接口的额外参数，任意设
-								orderNo : orderNo,
-								nickname:nickname,
+								name:name,
 								startTime : startTime,
 								endTime : endTime
 							}

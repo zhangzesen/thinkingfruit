@@ -137,6 +137,6 @@ public interface OrderDao {
 
 	Integer updateDepot(Depot depot);
 
-	Depot getDepot(Long orderMemberId);
+	Depot getDepot(@Param("orderMemberId")Long orderMemberId,@Param("commodityId") Long commodityId);
 	
 }

@@ -234,6 +234,11 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		if(addClientCommision==Constant.DEFALULT_ZERO_INT||updatePurchaseStatus==Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
 		}
+		Integer updateCommision=clientCommisionDao.updateInviterIdCommision(clientCommision);
+		Integer update=clientCommisionDao.updateInviterUpperIdCommision(clientCommision);
+		if(updateCommision==Constant.DEFALULT_ZERO_INT||update==Constant.DEFALULT_ZERO_INT) {
+			throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
+		}
 	}
 
 	/**

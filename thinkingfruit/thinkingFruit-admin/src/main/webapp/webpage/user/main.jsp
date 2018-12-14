@@ -106,10 +106,10 @@
 					       </a>
 						<dl class="layui-nav-child">
 							<dd class="">
-								<a href="<%=basePath%>/order" target="main">代理交易订单</a>
+								<a href="<%=basePath%>/order" target="main">公司发货订单</a>
 							</dd>
 							<dd class="">
-								<a href="<%=basePath%>/purchase" target="main">公司发货订单</a>
+								<a href="<%=basePath%>/purchase" target="main">代理交易订单</a>
 							</dd>
 						</dl>
 					</li>
@@ -247,6 +247,7 @@
 		</div>
 	</div>
 	<jsp:include page="/context/js-tags.jsp" />
+	<script type="text/javascript" src="<%=basePath%>/static/js/common/date.js"></script>
 	<script type="text/javascript"
 		src="<%=basePath%>/static/js/main/main.js"></script>
 </body>

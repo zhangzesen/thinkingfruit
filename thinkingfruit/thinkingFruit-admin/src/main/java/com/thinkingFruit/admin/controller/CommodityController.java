@@ -1,5 +1,6 @@
 package com.thinkingFruit.admin.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 
@@ -18,7 +19,7 @@ import com.thinkingFruit.admin.entity.Commodity;
 import com.thinkingFruit.admin.service.CommodityService;
 import com.ysdevelop.common.result.Result;
 import com.ysdevelop.common.result.Results;
-import com.ysdevelop.common.utils.HttpUtils;
+import com.ysdevelop.common.utils.HttpUtil;
 import com.ysdevelop.common.utils.JSONHelper;
 
 
@@ -52,11 +53,13 @@ public class CommodityController {
 	 * @param request
 	 * @param pagination
 	 * @return 所有商品分页
+	 * @throws UnsupportedEncodingException 
 	 */
-	@RequestMapping(value = "/pagination", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "/pagination", produces = "application/json;charset=utf-8")
 	@ResponseBody
-	public Results<List<Commodity>> pagination(HttpServletRequest request){
-		Map<String, String> queryMap = HttpUtils.getParameterMap(request);
+	public Results<List<Commodity>> pagination(HttpServletRequest request) throws UnsupportedEncodingException{
+		Map<String, String> queryMap = HttpUtil.getParameterMap(request);
+		
 		PageInfo<Commodity> pageInfo=commodityService.paginationCommodity(queryMap);
 		return Results.successPaginationData(pageInfo.getList(), pageInfo.getTotal());
 	}
@@ -136,4 +139,6 @@ public class CommodityController {
 		List<Commodity> listCommodity=commodityService.listCommodity();
 		return Results.successData(listCommodity);
 	}
+	
+	
 }

@@ -18,7 +18,7 @@ var member_upExamineSet_ops={
 				console.log("commodityId"+commodityId);
 				console.log("commodityCount"+commodityCount);
 				var id = common_ops.g_getQueryString("id");
-				console.log(id);
+				console.log("id"+id);
 				$(".layui-input-block .layui-btn").addClass('layui-btn-disabled');
 					$.ajax({
 						type :'POST',

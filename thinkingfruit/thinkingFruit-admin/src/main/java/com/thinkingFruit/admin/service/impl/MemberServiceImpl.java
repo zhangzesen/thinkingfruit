@@ -44,7 +44,6 @@ public class MemberServiceImpl implements MemberService {
 		if (pageSize == null || pageNum == null) {
 			throw new WebServiceException(CodeMsg.SERVER_ERROR);
 		}
-		
 		Integer integerPageSize = Integer.parseInt(pageSize);
 		Integer integerPageNum = Integer.parseInt(pageNum);
 		PageHelper.startPage(integerPageNum, integerPageSize, Boolean.TRUE);

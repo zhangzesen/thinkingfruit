@@ -17,7 +17,7 @@ import com.github.pagehelper.PageInfo;
 import com.thinkingFruit.admin.entity.CommissionRatio;
 import com.thinkingFruit.admin.service.SiteService;
 import com.ysdevelop.common.result.Results;
-import com.ysdevelop.common.utils.HttpUtils;
+import com.ysdevelop.common.utils.HttpUtil;
 
 /**
  * @author zhangzesen
@@ -51,7 +51,7 @@ public class SiteController {
 	@RequestMapping(value = "/pagination", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public Results<List<CommissionRatio>> pagination(HttpServletRequest request){		
-		Map<String, String> queryMap = HttpUtils.getParameterMap(request);
+		Map<String, String> queryMap = HttpUtil.getParameterMap(request);
 		PageInfo<CommissionRatio> pageInfo =siteService.paginationOrder(queryMap);
 		return Results.successPaginationData(pageInfo.getList(), pageInfo.getTotal());
 	}

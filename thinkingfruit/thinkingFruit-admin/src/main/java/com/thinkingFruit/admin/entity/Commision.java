@@ -15,7 +15,7 @@ public class Commision extends BaseEntity {
 	
 	private Long commodityId; //商品id
 	
-	private Double InviteMoney;//邀请金
+	private Double inviteMoney;//邀请金
 	
 	private Long memberId;//会员id
 	
@@ -33,18 +33,28 @@ public class Commision extends BaseEntity {
 	
 	private Double personTotalInviteMoney;//个人总邀请金
 	
+	private Double personTotalCommodity;
+	
     private String inviterName;//上级姓名
 	
 	private String inviterUpperName;//上上级姓名 
 
 	private Double personTotal;//个人总业绩
 	
+	
+	
+	public Double getPersonTotalCommodity() {
+		return personTotalCommodity;
+	}
+
+	public void setPersonTotalCommodity(Double personTotalCommodity) {
+		this.personTotalCommodity = personTotalCommodity;
+	}
+
 	public String getInviterName() {
 		return inviterName;
 	}
 
-	
-	
 	public Double getPersonTotalInviteMoney() {
 		return personTotalInviteMoney;
 	}
@@ -146,13 +156,15 @@ public class Commision extends BaseEntity {
 	public void setCommodityId(Long commodityId) {
 		this.commodityId = commodityId;
 	}
+	
+	
 
 	public Double getInviteMoney() {
-		return InviteMoney;
+		return inviteMoney;
 	}
 
 	public void setInviteMoney(Double inviteMoney) {
-		InviteMoney = inviteMoney;
+		this.inviteMoney = inviteMoney;
 	}
 
 	public Long getInviterId() {

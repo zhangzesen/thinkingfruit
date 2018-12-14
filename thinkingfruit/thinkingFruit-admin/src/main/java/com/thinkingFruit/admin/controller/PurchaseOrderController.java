@@ -30,6 +30,7 @@ import com.ysdevelop.common.result.Result;
 import com.ysdevelop.common.result.Results;
 import com.ysdevelop.common.utils.DateUtil;
 import com.ysdevelop.common.utils.ExportExcel;
+import com.ysdevelop.common.utils.HttpUtil;
 import com.ysdevelop.common.utils.HttpUtils;
 
 /**
@@ -65,7 +66,7 @@ public class PurchaseOrderController {
 	@RequestMapping(value = "/pagination", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public Results<List<PurchaseOrder>> pagination(HttpServletRequest request){		
-		Map<String, String> queryMap = HttpUtils.getParameterMap(request);
+		Map<String, String> queryMap = HttpUtil.getParameterMap(request);
 		PageInfo<PurchaseOrder> pageInfo =orderService.paginationPurchaseOrder(queryMap);
 		return Results.successPaginationData(pageInfo.getList(), pageInfo.getTotal());
 	}
@@ -175,6 +176,7 @@ public class PurchaseOrderController {
 	@RequestMapping(value = "/examineUpdate", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public Result<String> examineUpdate(PurchaseOrder purchaseOrder){
+		System.out.println("注册");
 		orderService.examineUpdate(purchaseOrder);
 		return Result.success("审核通过,生成第一笔订单");
 	}
@@ -186,6 +188,7 @@ public class PurchaseOrderController {
 	@RequestMapping(value = "/upExamineUpdate", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public Result<String> upExamineUpdate(PurchaseOrder purchaseOrder){
+		System.out.println("升级");
 		orderService.upExamineUpdate(purchaseOrder);
 		return Result.success("代理升级成功");
 	}

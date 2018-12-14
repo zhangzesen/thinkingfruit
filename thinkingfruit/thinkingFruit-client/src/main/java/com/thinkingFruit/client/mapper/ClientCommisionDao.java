@@ -41,4 +41,9 @@ public interface ClientCommisionDao {
 	 * @return
 	 */
 	ClientCommision getTotalClientInviteMoney(@Param("id")Long id);
+	
+	Integer updateInviterIdCommision(@Param(value="commision")ClientCommision clientCommision);
+	
+	Integer updateInviterUpperIdCommision(@Param(value="commision")ClientCommision clientCommision);
+	
 }

@@ -139,7 +139,7 @@ var purchaseOrder_index_ops = {
 				var startTime = $(".layui-form-pane .startTime").val();
 				var endTime = $(".layui-form-pane .endTime").val();
 				var orderMemberName = $(".layui-form-pane .orderMemberName").val();
-				var orderStatus = $(".layui-this").attr("lay-value");
+				var orderStatus =$(".layui-form-pane .orderStatus").val();
 				console.log(orderNo+"     "+startTime+"      "+endTime+"      "+orderStatus+"     "+orderMemberName);
 				$(".btn-export-excel").attr("href",WEB_ROOT+"/purchase/export?orderNo="+orderNo+"&startTime="+startTime+"&endTime="+endTime+"&orderMemberName="+orderMemberName+"&orderStatus="+orderStatus);
 				

@@ -28,26 +28,67 @@ public class ClientCommision extends BaseEntity {
 	
 	private Double inviterTotalMoney;//上级获得的总金额
 	
-	private Double totalCommision;//个人总佣金
+	private Double personTotalCommision;//个人总佣金
 	
-	private Double totalInviteMoney;//个人总邀请金
+	private Double personTotalInviteMoney;//个人总邀请金
+	
+	private Double personTotalCommodity;
+	
+	private Double personTotal;//个人总业绩
+	
+	private String inviterName;//上级姓名
+	
+	private String inviterUpperName;//上上级姓名 
 	
 	
 	
-	public Double getTotalCommision() {
-		return totalCommision;
+
+	public Double getPersonTotalCommision() {
+		return personTotalCommision;
 	}
 
-	public void setTotalCommision(Double totalCommision) {
-		this.totalCommision = totalCommision;
+	public void setPersonTotalCommision(Double personTotalCommision) {
+		this.personTotalCommision = personTotalCommision;
 	}
 
-	public Double getTotalInviteMoney() {
-		return totalInviteMoney;
+	public Double getPersonTotalInviteMoney() {
+		return personTotalInviteMoney;
 	}
 
-	public void setTotalInviteMoney(Double totalInviteMoney) {
-		this.totalInviteMoney = totalInviteMoney;
+	public void setPersonTotalInviteMoney(Double personTotalInviteMoney) {
+		this.personTotalInviteMoney = personTotalInviteMoney;
+	}
+
+	public Double getPersonTotalCommodity() {
+		return personTotalCommodity;
+	}
+
+	public void setPersonTotalCommodity(Double personTotalCommodity) {
+		this.personTotalCommodity = personTotalCommodity;
+	}
+
+	public Double getPersonTotal() {
+		return personTotal;
+	}
+
+	public void setPersonTotal(Double personTotal) {
+		this.personTotal = personTotal;
+	}
+
+	public String getInviterName() {
+		return inviterName;
+	}
+
+	public void setInviterName(String inviterName) {
+		this.inviterName = inviterName;
+	}
+
+	public String getInviterUpperName() {
+		return inviterUpperName;
+	}
+
+	public void setInviterUpperName(String inviterUpperName) {
+		this.inviterUpperName = inviterUpperName;
 	}
 
 	public Double getInviterTotalMoney() {
@@ -153,7 +194,8 @@ public class ClientCommision extends BaseEntity {
 				+ ", commisionProportion=" + commisionProportion + ", status=" + status + ", commodityId=" + commodityId
 				+ ", InviteMoney=" + InviteMoney + ", memberId=" + memberId + ", inviterId=" + inviterId + ", name="
 				+ name + ", inviterUpperId=" + inviterUpperId + ", inviterTotalMoney=" + inviterTotalMoney
-				+ ", totalCommision=" + totalCommision + ", totalInviteMoney=" + totalInviteMoney + "]";
+				+ ", personTotalCommision=" + personTotalCommision + ", personTotalInviteMoney=" + personTotalInviteMoney 
+				+", personTotalCommodity=" + personTotalCommodity+", personTotal=" + personTotal + "]";
 	}
 
 

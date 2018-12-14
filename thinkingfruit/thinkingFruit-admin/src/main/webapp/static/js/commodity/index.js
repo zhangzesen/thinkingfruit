@@ -59,7 +59,7 @@ var commodity_index_ops = {
 				$(".btn-serach").on('click',function(){						
 					var name = $("input[ name='name']").val();
 					var description = $("input[ name='description']").val();
-					
+					console.log("name");
 					tableIns.reload({
 							where: { //设定异步数据接口的额外参数，任意设
 								name: name,
@@ -68,6 +68,7 @@ var commodity_index_ops = {
 							,page: {
 							  curr: 1 //重新从第 1 页开始
 							}
+							
 					});
 				});
 				

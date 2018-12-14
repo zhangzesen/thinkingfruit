@@ -97,4 +97,6 @@ public interface MemberDao {
 	Integer cancellation(@Param(value="id")Long id);
 
 	Integer cancelUpgrade(@Param(value="id")Long id);
+
+	
 }

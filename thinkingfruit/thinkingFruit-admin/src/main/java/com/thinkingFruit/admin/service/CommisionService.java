@@ -5,7 +5,6 @@ import java.util.Map;
 
 import com.github.pagehelper.PageInfo;
 import com.thinkingFruit.admin.entity.Commision;
-import com.ysdevelop.common.page.Pagination;
 
 public interface CommisionService {
 	/**
@@ -26,8 +25,6 @@ public interface CommisionService {
 	//添加总佣金
 	void addTotalCommision(Commision commision);
 
-	//添加个人佣金
-	void addPersonCommision(List<Commision> personCommisions);
     //查询个人佣金
 	PageInfo<Commision> personCommision(Map<String, String> queryMap);
 	//通过订单号来查询该笔订单佣金受益人群信息

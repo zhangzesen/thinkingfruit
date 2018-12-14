@@ -12,7 +12,6 @@ import com.thinkingFruit.admin.entity.Commision;
 import com.thinkingFruit.admin.mapper.CommisionDao;
 import com.thinkingFruit.admin.service.CommisionService;
 import com.ysdevelop.common.exception.WebServiceException;
-import com.ysdevelop.common.page.Pagination;
 import com.ysdevelop.common.result.CodeMsg;
 import com.ysdevelop.common.utils.Constant;
 
@@ -84,11 +83,6 @@ public class CommisionServiceImpl implements CommisionService {
 		commisionDao.addTotalCommision(commision);
 	}
 
-	// 个人佣金
-	@Override
-	public void addPersonCommision(List<Commision> personCommisions) {
-		commisionDao.addPersonCommision(personCommisions);
-	}
     //个人佣金列表
 	@Override
 	public PageInfo<Commision> personCommision(Map<String, String> queryMap) {

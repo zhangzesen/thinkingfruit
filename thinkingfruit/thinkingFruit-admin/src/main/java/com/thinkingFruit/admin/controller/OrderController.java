@@ -30,6 +30,7 @@ import com.ysdevelop.common.result.Result;
 import com.ysdevelop.common.result.Results;
 import com.ysdevelop.common.utils.DateUtil;
 import com.ysdevelop.common.utils.ExportExcel;
+import com.ysdevelop.common.utils.HttpUtil;
 import com.ysdevelop.common.utils.HttpUtils;
 
 /**
@@ -74,7 +75,7 @@ public class OrderController {
 	@RequestMapping(value = "/pagination", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public Results<List<Order>> pagination(HttpServletRequest request){		
-		Map<String, String> queryMap = HttpUtils.getParameterMap(request);
+		Map<String, String> queryMap = HttpUtil.getParameterMap(request);
 		PageInfo<Order> pageInfo =orderService.paginationOrder(queryMap);
 		return Results.successPaginationData(pageInfo.getList(), pageInfo.getTotal());
 	}

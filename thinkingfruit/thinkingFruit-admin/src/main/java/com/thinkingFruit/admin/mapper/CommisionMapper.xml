@@ -6,7 +6,7 @@
 <select id="paginationCommision" resultType="com.thinkingFruit.admin.entity.Commision">
 	select 
 	m.`id`,m.`orderNo`,m.`totalAmount`,m.`inviterTotalMoney`,m.`commision`,m.`createTime`,m.`commisionProportion`,
-	m.`inviterTotalMoney`,m.`InviteMoney`,t.`name` as name,m.`commodityId`,m.`memberId`,m.`inviterId`,m.`inviterUpperId`,m.`updateTime`
+	m.`inviterTotalMoney`,m.`inviteMoney`,t.`name` as name,m.`commodityId`,m.`memberId`,m.`inviterId`,m.`inviterUpperId`,m.`updateTime`
 	from
 	`t_thinkingfruit_mall_commision`as m
 	left join `t_thinkingfruit_mall_member` as t
@@ -27,7 +27,7 @@
 <!--根据id查询代理详情-->
 <select id="findCommisionById" resultType="com.thinkingFruit.admin.entity.Commision">
     select m.`id` as `id`,m.`orderNo` as `orderNo`,m.`totalAmount` as `totalAmount`,m.`inviterTotalMoney` as `inviterTotalMoney`,m.`commision` as `commision`,m.`createTime` as `createTime`,m.`commisionProportion` as `commisionProportion`,
-	m.`inviterTotalMoney` as `inviterTotalMoney`,m.`InviteMoney` as `InviteMoney`,m.`commodityId` as `commodityId`,m.`memberId` as `memberId`,m.`inviterId` as `inviterId`,m.`inviterUpperId` as `inviterUpperId`,m.`updateTime` as `updateTime`,
+	m.`inviterTotalMoney` as `inviterTotalMoney`,m.`inviteMoney` as `inviteMoney`,m.`commodityId` as `commodityId`,m.`memberId` as `memberId`,m.`inviterId` as `inviterId`,m.`inviterUpperId` as `inviterUpperId`,m.`updateTime` as `updateTime`,
 	t.`name` as name
     from `t_thinkingfruit_mall_commision` as m 
     left join `t_thinkingfruit_mall_member` as t
@@ -52,30 +52,31 @@
    insert into `t_thinkingfruit_mall_commision`(`orderNo`,`totalAmount`,`commision`,`percent`,`createTime`)
    values(#{commision.orderNo},#{commision.totalAmount},#{commision.commision},#{commision.percent},now())
 </insert>
-<!-- 查询个人佣金列表 -->
-<select id="personCommision" resultType="com.thinkingFruit.admin.entity.Commision">
-	select sum(m.`commision`) as `personTotalCommision`,sum(select a.inviteMoney from `t_thinkingfruit_mall_commision` as a where a.`inviterId`= )
-	from `t_thinkingfruit_mall_commision` as m 
-	left join `t_thinkingfruit_mall_member` as t on m.`inviterUpperId`=t.`id`
+	<!-- 查询个人佣金列表 -->
+	<select id="personCommision" resultType="com.thinkingFruit.admin.entity.Commision">
+		select
+		p.`id` as `id`,
+    	p.`personTotalInviteMoney` as `personTotalInviteMoney`,
+    	p.`personTotalCommodity` as `personTotalCommodity`,
+    	p.`personTotalCommision` as `personTotalCommision`,
+    	p.`personTotalInviteMoney`+p.`personTotalCommodity`+p.`personTotalCommision` as `personTotal`,
+    	p.`createTime` as `createTime`,
+    	m.`name` as `name`
+    	from `t_thinkingfruit_mall_commision_person` as `p`
+    	left join `t_thinkingfruit_mall_member` as `m` on `m`.id=`p`.memberId
 	<where>
 	   1=1
+	   <if test="queryMap.name!=null and queryMap.name!= ''">
+	      and m.`name` like CONCAT('%',#{queryMap.name},'%')
+	   </if>
 	   <if test="queryMap.startTime != null and queryMap.startTime != ''">
-      <![CDATA[ and m.`createTime` > #{queryMap.startTime} ]]>
+      		<![CDATA[ and p.`createTime` > #{queryMap.startTime} ]]>
 	   </if>
 	   <if test="queryMap.endTime != null and queryMap.endTime != ''">
-      <![CDATA[ and m.`createTime` < #{queryMap.endTime} ]]>
+      		<![CDATA[ and p.`createTime` < #{queryMap.endTime} ]]>
 	   </if>
 	</where>
-	order by `id`
 </select>
-<!--添加佣金-->
-<insert id="addPersonCommision">
-   insert into `t_thinkingfruit_mall_commision_person`(`orderNo`,`totalAmount`,`commision`,`nickname`,`createTime`,`memberId`)
-   values
-   <foreach collection="commisions" item="commision" separator=",">
-      (#{commision.orderNo},#{commision.totalAmount},#{commision.commision},#{commision.nickname},now(),#{commision.memberId})
-   </foreach>
-</insert>
 
 
 
@@ -88,11 +89,51 @@
 	<insert id="addCommision">
 		insert into
 		`t_thinkingfruit_mall_commision`(
-			`orderNo`,`totalAmount`,`inviterTotalMoney`,`commision`,`commisionProportion`,`InviteMoney`,`commodityId`,`memberId`,`inviterId`,`inviterUpperId`,`createTime`
+			`orderNo`,`totalAmount`,`inviterTotalMoney`,`commision`,`commisionProportion`,`inviteMoney`,`commodityId`,`memberId`,`inviterId`,`inviterUpperId`,`createTime`
 		)
 		values
 		(
-			#{orderNo},#{totalAmount},#{inviterTotalMoney},#{commision},#{commisionProportion},#{InviteMoney},#{commodityId},#{memberId},#{inviterId},#{inviterUpperId},now()
+			#{orderNo},#{totalAmount},#{inviterTotalMoney},#{commision},#{commisionProportion},#{inviteMoney},#{commodityId},#{memberId},#{inviterId},#{inviterUpperId},now()
 		)
 	</insert>
+	
+	<insert id="addCommosionPerson">
+    	insert into `t_thinkingfruit_mall_commision_person`(`memberId`,`personTotalInviteMoney`,`personTotalCommodity`,`personTotalCommision`,`personTotal`,`createTime`)
+    	values(#{memberId},0,0,0,0,now())
+	</insert>
+	<select id="getCommosionPerson" resultType="com.thinkingFruit.admin.entity.Commision">
+    	select 
+    	p.`id` as `id`,
+    	p.`personTotalInviteMoney` as `personTotalInviteMoney`,
+    	p.`personTotalCommodity` as `personTotalCommodity`,
+    	p.`personTotalCommision` as `personTotalCommision`,
+    	p.`personTotalInviteMoney`+p.`personTotalCommodity`+p.`personTotalCommision` as `personTotal`,
+    	p.`createTime` as `createTime`
+    	from `t_thinkingfruit_mall_commision_person` as `p`
+    	where p.`memberId` = #{memberId}
+	</select>
+	
+	<update id="updateInviterIdCommision" parameterType="com.thinkingFruit.admin.entity.Commision">
+    	update `t_thinkingfruit_mall_commision_person` as `p`
+    	<trim prefix="set" suffixOverrides="," suffix="where `p`.`memberId` = #{commision.inviterId}">
+			<if test="commision.inviteMoney != null ">
+				p.`personTotalInviteMoney` = p.`personTotalInviteMoney`+ #{commision.inviteMoney},
+			</if>
+			<if test="commision.inviterTotalMoney != null">
+				p.`personTotalCommodity` = p.`personTotalCommodity`+ #{commision.inviterTotalMoney},
+			</if>
+		</trim>
+	</update>
+	
+	<update id="updateInviterUpperIdCommision" parameterType="com.thinkingFruit.admin.entity.Commision">
+    	update `t_thinkingfruit_mall_commision_person` as `p`
+    	<trim prefix="set" suffixOverrides="," suffix="where `p`.`memberId` = #{commision.inviterUpperId}">
+			<if test="commision.commision != null ">
+				p.`personTotalCommision` = p.`personTotalCommision`+ #{commision.commision},
+			</if>
+			<if test="commision.inviterId != null">
+				p.`updateTime`=now()
+			</if>
+		</trim>
+	</update>
 </mapper>

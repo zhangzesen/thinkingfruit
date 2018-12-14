@@ -74,7 +74,7 @@ var member_upExamine_ops = {
 					switch (event) {
 					case 'examine':
 						//一级分类编辑事件
-						window.location.href = WEB_ROOT + '/member/examineSet?id='+id;
+						window.location.href = WEB_ROOT + '/member/upExamineSet?id='+id;
 						break;
 					case 'del':
 						$.ajax({

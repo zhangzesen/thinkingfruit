@@ -18,6 +18,7 @@ import com.thinkingFruit.admin.entity.Member;
 import com.thinkingFruit.admin.service.MemberService;
 import com.ysdevelop.common.result.Result;
 import com.ysdevelop.common.result.Results;
+import com.ysdevelop.common.utils.HttpUtil;
 import com.ysdevelop.common.utils.HttpUtils;
 
 
@@ -79,7 +80,7 @@ public class MemberController {
 	@RequestMapping(value="/pagination",method=RequestMethod.GET,produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public Results<List<Member>> pagination(HttpServletRequest request){
-		Map<String, String> queryMap = HttpUtils.getParameterMap(request);
+		Map<String, String> queryMap = HttpUtil.getParameterMap(request);
 		PageInfo<Member> pageInfo= memberService.paginationMember(queryMap);
 		return Results.successPaginationData(pageInfo.getList(), pageInfo.getTotal());
 	}
@@ -125,6 +126,11 @@ public class MemberController {
 	@RequestMapping(value = "/examineSet", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
 	public String examineSet() {
 		return "member/examineSet";
+	}
+	
+	@RequestMapping(value = "/upExamineSet", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
+	public String upExamineSet() {
+		return "member/upExamineSet";
 	}
 	
 	/**

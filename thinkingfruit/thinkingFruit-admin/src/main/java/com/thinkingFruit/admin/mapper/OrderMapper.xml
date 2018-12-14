@@ -349,6 +349,7 @@
 		from
 		`t_thinkingfruit_mall_depot` as `d`
 		where `d`.memberId = #{orderMemberId}
+		and `d`.commodityId=#{commodityId}
     </select>
     
     <update id="updateDepot">

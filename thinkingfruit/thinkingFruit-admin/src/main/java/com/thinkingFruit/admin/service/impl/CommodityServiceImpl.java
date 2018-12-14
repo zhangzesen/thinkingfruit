@@ -47,6 +47,8 @@ public class CommodityServiceImpl implements CommodityService {
 		String pageNum = queryMap.get("page");
 		System.out.println("pageSize"+pageSize);
 		System.out.println("pageNum"+pageNum);
+		String name = queryMap.get("name");
+		System.out.println("name:"+name);
 		if (pageSize == null || pageNum == null) {
 			throw new WebServiceException(CodeMsg.SERVER_ERROR);
 		}

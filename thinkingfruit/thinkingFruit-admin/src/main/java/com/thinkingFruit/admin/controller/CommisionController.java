@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.github.pagehelper.PageInfo;
 import com.thinkingFruit.admin.entity.Commision;
 import com.thinkingFruit.admin.service.CommisionService;
-import com.ysdevelop.common.page.Pagination;
 import com.ysdevelop.common.result.Result;
 import com.ysdevelop.common.result.Results;
+import com.ysdevelop.common.utils.HttpUtil;
 import com.ysdevelop.common.utils.HttpUtils;
 import com.ysdevelop.common.utils.JSONHelper;
 /**
@@ -59,7 +59,7 @@ public class CommisionController {
 	@RequestMapping(value="/pagination",method=RequestMethod.GET,produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public Results<List<Commision>> pagination(HttpServletRequest request){
-		Map<String, String> queryMap = HttpUtils.getParameterMap(request);
+		Map<String, String> queryMap = HttpUtil.getParameterMap(request);
 		PageInfo<Commision> pageInfo= commisionService.paginationCommision(queryMap);
 		return Results.successPaginationData(pageInfo.getList(), pageInfo.getTotal());
 	}

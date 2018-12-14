@@ -1,0 +1,318 @@
+package com.ysdevelop.common.utils;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+/**
+ * 
+ * @author oldHuang
+ * 
+ * @Package com.ysdevelop.cms.util
+ * 
+ * @Description: HttpUtil 工具类:Http常用的方法,准发,从定向...
+ * 
+ * @date 2017年10月23日
+ * 
+ * @version 1.0.0
+ * 
+ */
+public class HttpUtil {
+	/**
+	 * 得到请求的IP
+	 * 
+	 * @param request
+	 * @return
+	 */
+
+	public static String getIp(HttpServletRequest request) {
+		String ip = request.getHeader("x-forwarded-for");
+		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+			ip = request.getHeader("Proxy-Client-IP");
+		}
+		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+			ip = request.getHeader("WL-Proxy-Client-IP");
+		}
+		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+			ip = request.getRemoteAddr();
+		}
+		if (ip.equals("0:0:0:0:0:0:0:1")) {
+			ip = "本地";
+		}
+		return ip;
+
+	}
+
+	public static String getContextHttpUri(HttpServletRequest request) {
+		String basePath = null;
+		String path = request.getContextPath();
+		if (request.getServerPort() == 80 || request.getServerPort() == 443) {
+			if (path.equals("/")) {
+				basePath = request.getScheme() + "://" + request.getServerName();
+			} else {
+				basePath = request.getScheme() + "://" + request.getServerName() + "/" + request.getServletContext().getContextPath() + "/";
+			}
+
+		} else {
+			if (path.equals("/")) {
+				basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
+			} else {
+				basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+						+ request.getServletContext().getContextPath() + "/";
+			}
+		}
+		return basePath;
+	}
+
+	public static String getOsAndBrowserInfo(HttpServletRequest request) {
+		String browserDetails = request.getHeader("User-Agent");
+		String userAgent = browserDetails;
+		String user = userAgent.toLowerCase();
+		String os = "";
+		String browser = "";
+
+		// =================OS Info=======================
+		if (userAgent.toLowerCase().indexOf("windows") >= 0) {
+			os = "Windows";
+		} else if (userAgent.toLowerCase().indexOf("mac") >= 0) {
+			os = "Mac";
+		} else if (userAgent.toLowerCase().indexOf("x11") >= 0) {
+			os = "Unix";
+		} else if (userAgent.toLowerCase().indexOf("android") >= 0) {
+			os = "Android";
+		} else if (userAgent.toLowerCase().indexOf("iphone") >= 0) {
+			os = "IPhone";
+		} else {
+			os = "UnKnown, More-Info: " + userAgent;
+		}
+		// ===============Browser===========================
+		if (user.contains("edge")) {
+			browser = (userAgent.substring(userAgent.indexOf("Edge")).split(" ")[0]).replace("/", "-");
+		} else if (user.contains("msie")) {
+			String substring = userAgent.substring(userAgent.indexOf("MSIE")).split(";")[0];
+			browser = substring.split(" ")[0].replace("MSIE", "IE") + "-" + substring.split(" ")[1];
+		} else if (user.contains("safari") && user.contains("version")) {
+			browser = (userAgent.substring(userAgent.indexOf("Safari")).split(" ")[0]).split("/")[0] + "-"
+					+ (userAgent.substring(userAgent.indexOf("Version")).split(" ")[0]).split("/")[1];
+		} else if (user.contains("opr") || user.contains("opera")) {
+			if (user.contains("opera")) {
+				browser = (userAgent.substring(userAgent.indexOf("Opera")).split(" ")[0]).split("/")[0] + "-"
+						+ (userAgent.substring(userAgent.indexOf("Version")).split(" ")[0]).split("/")[1];
+			} else if (user.contains("opr")) {
+				browser = ((userAgent.substring(userAgent.indexOf("OPR")).split(" ")[0]).replace("/", "-")).replace("OPR", "Opera");
+			}
+
+		} else if (user.contains("chrome")) {
+			browser = (userAgent.substring(userAgent.indexOf("Chrome")).split(" ")[0]).replace("/", "-");
+		} else if ((user.indexOf("mozilla/7.0") > -1) || (user.indexOf("netscape6") != -1) || (user.indexOf("mozilla/4.7") != -1)
+				|| (user.indexOf("mozilla/4.78") != -1) || (user.indexOf("mozilla/4.08") != -1) || (user.indexOf("mozilla/3") != -1)) {
+			browser = "Netscape-?";
+
+		} else if (user.contains("firefox")) {
+			browser = (userAgent.substring(userAgent.indexOf("Firefox")).split(" ")[0]).replace("/", "-");
+		} else if (user.contains("rv")) {
+			String IEVersion = (userAgent.substring(userAgent.indexOf("rv")).split(" ")[0]).replace("rv:", "-");
+			browser = "IE" + IEVersion.substring(0, IEVersion.length() - 1);
+		} else {
+			browser = "UnKnown, More-Info: " + userAgent;
+		}
+
+		return os + " --- " + browser;
+
+	}
+
+	// 判断当前请求是否为Ajax
+	public static boolean isAjaxRequest(HttpServletRequest request) {
+		String header = request.getHeader("X-Requested-With");
+		return !StringUtils.isEmpty(header) && "XMLHttpRequest".equals(header);
+	}
+
+	/**
+	 * 
+	 * @param request
+	 * @return
+	 */
+	public static boolean isWechatBrowser(HttpServletRequest request) {
+		String userAgent = request.getHeader("user-agent").toLowerCase();
+		if (userAgent.indexOf("micromessenger") > -1) {// 微信客户端
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * 
+	 * @param request
+	 * @return
+	 */
+	public static boolean isApi(HttpServletRequest request) {
+		String requestUri = request.getRequestURI();
+		if (requestUri.indexOf("api") > -1) {// 微信客户端
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public static String getRealPath(HttpServletRequest request) {
+		return request.getSession().getServletContext().getRealPath("/");
+	}
+
+	public static String getRequestParamterInfo(HttpServletRequest request) {
+		Map<String, String[]> paramterMap = request.getParameterMap();
+		return JSONHelper.toJSONString(paramterMap);
+	}
+
+	public static String getRequestParamterUtf8(String requestName) {
+		if (StringUtils.isBlank(requestName)) {
+			return "";
+		}
+		try {
+			return new String(requestName.getBytes("utf-8"), "utf-8");
+		} catch (UnsupportedEncodingException e) {
+			return "";
+		}
+	}
+
+	
+	
+	 /**
+    * 向指定 URL 发送POST方法的请求     
+    * @param url 发送请求的 URL    
+    * @param params 请求的参数集合     
+    * @return 远程资源的响应结果
+    */
+	public static String httpsRequest(String url, Map<String, String> params) {
+       OutputStreamWriter out = null;
+       BufferedReader in = null;        
+       StringBuilder result = new StringBuilder(); 
+       try {
+           URL realUrl = new URL(url);
+           HttpURLConnection conn =(HttpURLConnection) realUrl.openConnection();
+           // 发送POST请求必须设置如下两行
+           conn.setDoOutput(true);
+           conn.setDoInput(true);
+           // POST方法
+           conn.setRequestMethod("POST");
+           // 设置通用的请求属性
+           conn.setRequestProperty("accept", "*/*");
+           conn.setRequestProperty("connection", "Keep-Alive");
+           conn.setRequestProperty("user-agent",
+                   "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
+           conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+           conn.connect();
+           // 获取URLConnection对象对应的输出流
+           out = new OutputStreamWriter(conn.getOutputStream(), "UTF-8");
+           // 发送请求参数            
+           if (params != null) {
+		          StringBuilder param = new StringBuilder(); 
+		          for (Map.Entry<String, String> entry : params.entrySet()) {
+		        	  if(param.length()>0){
+		        		  param.append("&");
+		        	  }	        	  
+		        	  param.append(entry.getKey());
+		        	  param.append("=");
+		        	  param.append(entry.getValue());		        	  
+		        	  System.out.println(entry.getKey()+":"+entry.getValue());
+		          }
+		          System.out.println("param:"+param.toString());
+		          out.write(param.toString());
+           }
+           // flush输出流的缓冲
+           out.flush();
+           // 定义BufferedReader输入流来读取URL的响应
+           in = new BufferedReader(
+                   new InputStreamReader(conn.getInputStream(), "UTF-8"));
+           String line;
+           while ((line = in.readLine()) != null) {
+               result.append(line);
+           }
+       } catch (Exception e) {            
+           e.printStackTrace();
+       }
+       //使用finally块来关闭输出流、输入流
+       finally{
+           try{
+               if(out!=null){
+                   out.close();
+               }
+               if(in!=null){
+                   in.close();
+               }
+           }
+           catch(IOException ex){
+               ex.printStackTrace();
+           }
+       }
+       return result.toString();
+   }
+	
+
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public static Map<String, String> getParameterMap(HttpServletRequest request) {
+		// 参数Map
+		Map properties = request.getParameterMap();
+		// 返回值Map
+		Map returnMap = new HashMap();
+		Iterator entries = properties.entrySet().iterator();
+		Map.Entry entry;
+		String name = "";
+		String value = "";
+		while (entries.hasNext()) {
+			entry = (Map.Entry) entries.next();
+			name = (String) entry.getKey();
+			Object valueObj = entry.getValue();
+			if (null == valueObj) {
+				value = "";
+			} else if (valueObj instanceof String[]) {
+				String[] values = (String[]) valueObj;
+				for (int i = 0; i < values.length; i++) {
+					value = values[i] + ",";
+				}
+				value = HttpUtil.getRequestParamterUtf8(value.substring(0, value.length() - 1));
+			} else {
+				value = HttpUtil.getRequestParamterUtf8(valueObj.toString());
+			}
+			returnMap.put(name, value);
+		}
+		return returnMap;
+	}
+
+	/**
+	 * SpringMvc下获取request
+	 * 
+	 * @return
+	 */
+	public static HttpServletRequest getRequest() {
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		return request;
+	}
+
+	/**
+	 * SpringMvc下获取session
+	 * 
+	 * @return
+	 */
+	public static HttpSession getSession() {
+		HttpSession session = getRequest().getSession();
+		return session;
+	}
+
+
+}

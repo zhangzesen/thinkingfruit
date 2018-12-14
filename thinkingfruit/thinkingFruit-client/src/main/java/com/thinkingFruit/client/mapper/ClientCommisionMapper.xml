@@ -67,4 +67,23 @@
 		where t.`inviterId` = #{id}
 	</select>
 	
+	<update id="updateInviterIdCommision">
+		update `t_thinkingfruit_mall_commision_person`
+	    <set>
+	    `personTotalInviteMoney` +=#{commision.inviteMoney},
+	    `personTotalCommodity` += #{commision.inviterTotalMoney},
+	    `personTotal` = `personTotalCommision`+`personTotalCommodity`+`personTotalInviteMoney`
+	    </set> 
+	    where `memberId` = #{inviterId}
+	</update>
+	
+	<update id="updateInviterUpperIdCommision">
+		update `t_thinkingfruit_mall_commision_person`
+	    <set>
+	    `personTotalCommision` +=#{commision.commision},
+	    `personTotal` = `personTotalCommision`+`personTotalCommodity`+`personTotalInviteMoney`
+	    `updateTime`=now()
+	    </set> 
+	    where `memberId` = #{inviterUpperId}
+	</update>
 </mapper>

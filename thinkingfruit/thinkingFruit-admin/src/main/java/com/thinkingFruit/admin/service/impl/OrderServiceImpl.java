@@ -322,8 +322,6 @@ public class OrderServiceImpl implements OrderService{
 		Long inviterUpperId = memberById.getInviterUpperId();
 		Long memberLevelId = purchaseOrder.getMemberLevel();
 		Long inviterLevelId;
-		System.out.println("memberById.getInviterId()"+memberById.getInviterId());
-		System.out.println("inviterById.getId()"+inviterById.getId());
 		if(inviterId==Constant.DEFALULT_ZERO_INT) {
 			inviterLevelId=0L;
 		}else {
@@ -339,22 +337,19 @@ public class OrderServiceImpl implements OrderService{
 		System.out.println("memberLevelId"+memberLevelId);
 		//获取佣金比例
 		if(memberLevelId>=inviterLevelId) {
-			System.out.println("上级级别大于代理注册级别");
 			if(memberLevelId>inviterLevelId) {
 				commision.setCommisionProportion(commissionRatio.getCrossLevelDiscount());
 			}else if(memberLevelId==inviterLevelId) {
 				commision.setCommisionProportion(commissionRatio.getLevelingDiscount());
 			}
-			System.out.println("commision.getTotalAmount()"+commision.getTotalAmount());
-			System.out.println("commision.getCommisionProportion()"+commision.getCommisionProportion());
 			commision.setCommision(commision.getTotalAmount()*commision.getCommisionProportion());
 			commision.setInviterTotalMoney(commision.getTotalAmount()-commision.getCommision());
 			//插入代理余额
 			memberDao.addBalance(inviterId, commision.getInviterTotalMoney());
 			memberDao.addBalance(inviterUpperId, commision.getCommision());
 			//判断上级库存是否充足
-			Depot depot=orderDao.getDepot(purchaseOrder.getInviterId());
-			
+			Depot depot=orderDao.getDepot(purchaseOrder.getInviterId(),purchaseOrder.getCommodityId());
+			System.out.println(depot.getId());
 			if(depot!=null&&depot.getId()!=null) {
 				if(depot.getCount()-purchaseOrder.getCommodityCount()>=0) {
 					depot.setMemberId(inviterId);
@@ -373,7 +368,6 @@ public class OrderServiceImpl implements OrderService{
 			}
 			
 		}else if(memberLevelId<inviterLevelId) {
-			System.out.println("上级级别小于代理注册级别");
 			purchaseOrder.setInviterId(0L);
 			purchaseOrder.setInviterUpperId(0L);
 			memberById.setInviterId(0L);
@@ -384,8 +378,6 @@ public class OrderServiceImpl implements OrderService{
 				throw new WebServiceException(CodeMsg.AGENT_TO_COMPANY_FAIL);
 			}
 			commision.setInviteMoney(commision.getTotalAmount()*commissionRatio.getReverseLevelDiscount());
-			System.out.println("commision.getInviteMoney()"+commision.getInviteMoney());
-			System.out.println("inviterId"+inviterId);
 			memberDao.addBalance(inviterId,commision.getInviteMoney());
 		}
 		//插入佣金表
@@ -397,17 +389,28 @@ public class OrderServiceImpl implements OrderService{
 		
 		//生成注册交易订单
 		Integer addFirstPurchase=orderDao.addFirstPurchase(purchaseOrder);
-		
 		//修改代理为审核通过
 		Integer examineUpdate=memberDao.examineUpdate(purchaseOrder.getOrderMemberId(),purchaseOrder.getMemberLevel());
 		if (addFirstPurchase == Constant.DEFALULT_ZERO_INT||examineUpdate== Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.EXAMINE_FAIL);
 		}
+		Integer addCommosionPerson=commisionDao.addCommosionPerson(purchaseOrder.getOrderMemberId());
 		Integer addDepot=orderDao.addDepot(purchaseOrder);
-		if(addDepot== Constant.DEFALULT_ZERO_INT) {
+		if(addDepot== Constant.DEFALULT_ZERO_INT||addCommosionPerson== Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.DEPOT_FAIL);
 		}
-			
+		Commision commosionPerson = commisionDao.getCommosionPerson(0L);
+		if(commosionPerson==null||commosionPerson.getId()==null) {
+			Integer add=commisionDao.addCommosionPerson(0L);
+			if(add== Constant.DEFALULT_ZERO_INT) {
+				throw new WebServiceException(CodeMsg.DEPOT_FAIL);
+			}
+		}
+		Integer updateCommision=commisionDao.updateInviterIdCommision(commision);
+		Integer update=commisionDao.updateInviterUpperIdCommision(commision);
+		if(updateCommision==Constant.DEFALULT_ZERO_INT||update==Constant.DEFALULT_ZERO_INT) {
+			throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
+		}	
 			
 		
 	}
@@ -425,7 +428,6 @@ public class OrderServiceImpl implements OrderService{
 		purchaseOrder.setInviterId(memberById.getInviterId());
 		purchaseOrder.setInviterUpperId(memberById.getInviterUpperId());
 		String orderNo=OrderNumberGeneratorUtil.get().toString();
-		System.out.println("orderNo"+orderNo);
 		purchaseOrder.setOrderNo(orderNo);
 		Commodity findCommodityById = commodityDao.findCommodityById(purchaseOrder.getCommodityId());
 		purchaseOrder.setCommodityName(findCommodityById.getName());
@@ -458,7 +460,6 @@ public class OrderServiceImpl implements OrderService{
 		//生成佣金
 		Commision commision=new Commision();
 		commision.setOrderNo(orderNo);
-		System.out.println("purchaseOrder.getOrderTotalPrice()"+purchaseOrder.getOrderTotalPrice());
 		commision.setTotalAmount(purchaseOrder.getOrderTotalPrice());
 		//自己的id，邀请者id，邀请者上级id
 		Long orderMemberId = purchaseOrder.getOrderMemberId();
@@ -466,8 +467,6 @@ public class OrderServiceImpl implements OrderService{
 		Long inviterUpperId = memberById.getInviterUpperId();
 		Long memberLevelId = purchaseOrder.getMemberLevel();
 		Long inviterLevelId;
-		System.out.println("memberById.getInviterId()"+memberById.getInviterId());
-		System.out.println("inviterById.getId()"+inviterById.getId());
 		if(inviterId==Constant.DEFALULT_ZERO_INT) {
 			inviterLevelId=0L;
 		}else {
@@ -479,8 +478,6 @@ public class OrderServiceImpl implements OrderService{
 		commision.setInviterId(inviterId);
 		commision.setInviterUpperId(inviterUpperId);
 		commision.setCommodityId(purchaseOrder.getCommodityId());
-		System.out.println("inviterLevelId"+inviterLevelId);
-		System.out.println("memberLevelId"+memberLevelId);
 		//获取佣金比例
 		if(memberLevelId>=inviterLevelId) {
 			System.out.println("上级级别大于代理注册级别");
@@ -489,21 +486,24 @@ public class OrderServiceImpl implements OrderService{
 			}else if(memberLevelId==inviterLevelId) {
 				commision.setCommisionProportion(commissionRatio.getLevelingDiscount());
 			}
-			System.out.println("commision.getTotalAmount()"+commision.getTotalAmount());
-			System.out.println("commision.getCommisionProportion()"+commision.getCommisionProportion());
 			commision.setCommision(commision.getTotalAmount()*commision.getCommisionProportion());
 			commision.setInviterTotalMoney(commision.getTotalAmount()-commision.getCommision());
 			//插入代理余额
 			memberDao.addBalance(inviterId, commision.getInviterTotalMoney());
 			memberDao.addBalance(inviterUpperId, commision.getCommision());
+			System.out.println("zzz"+purchaseOrder.getInviterId());
+			System.out.println(purchaseOrder.getCommodityId());
 			//判断上级库存是否充足
-			Depot depot=orderDao.getDepot(purchaseOrder.getInviterId());
+			Depot depot=orderDao.getDepot(purchaseOrder.getInviterId(),purchaseOrder.getCommodityId());
 			
 			if(depot!=null&&depot.getId()!=null) {
 				if(depot.getCount()-purchaseOrder.getCommodityCount()>=0) {
 					depot.setMemberId(inviterId);
 					depot.setCommodityId(purchaseOrder.getCommodityId());
-					depot.setCount(depot.getCount()-purchaseOrder.getCommodityCount());
+					depot.setCount(depot.getCount().longValue()-purchaseOrder.getCommodityCount().longValue());
+					System.out.println("zz"+depot.getCount());
+					System.out.println(purchaseOrder.getCommodityCount());
+					System.out.println("count"+depot.getCount());
 					//充足则减少邀请者库存
 					Integer updateDepot=orderDao.updateDepot(depot);
 					if(updateDepot==Constant.DEFALULT_ZERO_INT) {
@@ -517,7 +517,6 @@ public class OrderServiceImpl implements OrderService{
 			}
 			
 		}else if(memberLevelId<inviterLevelId) {
-			System.out.println("上级级别小于代理升级级别");
 			purchaseOrder.setInviterId(0L);
 			purchaseOrder.setInviterUpperId(0L);
 			memberById.setInviterId(0L);
@@ -528,8 +527,6 @@ public class OrderServiceImpl implements OrderService{
 				throw new WebServiceException(CodeMsg.AGENT_TO_COMPANY_FAIL);
 			}
 			commision.setInviteMoney(commision.getTotalAmount()*commissionRatio.getReverseLevelDiscount());
-			System.out.println("commision.getInviteMoney()"+commision.getInviteMoney());
-			System.out.println("inviterId"+inviterId);
 			memberDao.addBalance(inviterId,commision.getInviteMoney());
 		}
 		//插入佣金表
@@ -546,9 +543,10 @@ public class OrderServiceImpl implements OrderService{
 		if (addFirstPurchase == Constant.DEFALULT_ZERO_INT||examineUpdate== Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.EXAMINE_FAIL);
 		}
-		Depot depot = orderDao.getDepot(inviterId);
+		Depot depot = orderDao.getDepot(inviterId,purchaseOrder.getCommodityId());
 		if(depot!=null&&depot.getId()!=null) {
 			depot.setCount(depot.getCount()+purchaseOrder.getCommodityCount());
+			System.out.println("Count2:"+depot.getCount());
 			Integer updateDepot=orderDao.updateDepot(depot);
 			if(updateDepot==Constant.DEFALULT_ZERO_INT) {
 				throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
@@ -563,6 +561,12 @@ public class OrderServiceImpl implements OrderService{
 				
 		}
 		
+		
+		Integer updateCommision=commisionDao.updateInviterIdCommision(commision);
+		Integer update=commisionDao.updateInviterUpperIdCommision(commision);
+		if(updateCommision==Constant.DEFALULT_ZERO_INT||update==Constant.DEFALULT_ZERO_INT) {
+			throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
+		}
 	}
 	
 }

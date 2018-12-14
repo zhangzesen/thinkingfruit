@@ -28,22 +28,22 @@ height:auto;
 					<div class="layui-input-inline xbs768" >
 						<input type="text" readonly="readonly" class="layui-input startTime"
 							value="" placeholder="开始日"
-							name="startTime" id="start">
+							name="startTime" id="startTime">
 					</div>
 					<div class="layui-input-inline xbs768" >
 						<input type="text" readonly="readonly" class="layui-input endTime"
 							value="" placeholder="截止日" name="endTime"
-							id="end">
+							id="endTime">
 					</div>
 					<div class="layui-input-inline xbs768" >
 						<input type="text" class="orderNo layui-input" lay-verify="required"
-							value="" autocomplete="off" name="orderNo"
+							value="" autocomplete="off" id="orderNo"
 							placeholder="请输入订单号" class="layui-input">
 					</div>
 					
 					<div class="layui-input-inline xbs768" >
 						<input type="text" class="orderMemberName layui-input" lay-verify="required"
-							value="" autocomplete="off" name="orderMemberName"
+							value="" autocomplete="off" id="orderMemberName"
 							placeholder="请输入代理名" class="layui-input">
 					</div>
 					

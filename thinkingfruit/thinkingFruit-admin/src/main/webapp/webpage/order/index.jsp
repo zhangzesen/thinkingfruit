@@ -28,22 +28,22 @@ height:auto;
 					<div class="layui-input-inline xbs768" >
 						<input type="text" readonly="readonly" class="layui-input startTime"
 							value="" placeholder="开始日"
-							name="startTime" id="start">
+							name="startTime" id="startTime">
 					</div>
 					<div class="layui-input-inline xbs768" >
 						<input type="text" readonly="readonly" class="layui-input endTime"
 							value="" placeholder="截止日" name="endTime"
-							id="end">
+							id="endTime">
 					</div>
 					<div class="layui-input-inline xbs768" >
 						<input type="text" class="orderNo layui-input" lay-verify="required"
-							value="" autocomplete="off" name="orderNo"
+							value="" autocomplete="off" id="orderNo"
 							placeholder="请输入订单号" class="layui-input">
 					</div>
 					
 					<div class="layui-input-inline xbs768" >
 						<input type="text" class="orderMemberName layui-input" lay-verify="required"
-							value="" autocomplete="off" name="orderMemberName"
+							value="" autocomplete="off" id="orderMemberName"
 							placeholder="请输入收货人" class="layui-input">
 					</div>
 					
@@ -78,6 +78,12 @@ height:auto;
 		</div>
 	</div>
 	<jsp:include page="/context/js-tags.jsp" />
+	<script type="text/html" id="date_formate">
+    {{#  
+     console.log("dateTime--->"+d.createTime);
+     return new Date(d.createTime).format("yyyy-MM-dd hh:mm:ss");
+    }} 
+    </script>
 	<script type="text/javascript"
 		src="<%=basePath%>/static/js/order/index.js"></script>
 </body>
