@@ -30,7 +30,7 @@ color:black;
 									<label class="layui-form-label">商品标题</label>
 									<div class="layui-input-inline input-custom-width">
 										<input type="text" name="name"
-											value="" required="true" diyCheck="商品名称不能为空"
+											value="" required="true" diyCheck="商品名称不能为空" diyRule="^[\u4E00-\u9FA5A-Za-z0-9_]+$"
 											autocomplete="off" placeholder="请输入商品名称" class="layui-input">
 									</div>
 								</div>

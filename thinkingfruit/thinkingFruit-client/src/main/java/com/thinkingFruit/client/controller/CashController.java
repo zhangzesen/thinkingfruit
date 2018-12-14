@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -60,7 +61,7 @@ public class CashController {
 	 */
 	@RequestMapping(value = "/withdrawal", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public Result<String> withdrawal(HttpServletRequest request, Cash cash) {
+	public Result<String> withdrawal(HttpServletRequest request,@Valid Cash cash) {
 		HttpSession session = request.getSession();
 		cash.setMemberId((Long)session.getAttribute("agentId"));
 		cashService.withdrawal(cash);

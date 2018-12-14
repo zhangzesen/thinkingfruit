@@ -22,6 +22,7 @@ width:300px;
 					<br/>
 							<div class="layui-form">
 								<input name="id" value="" hidden="hidden">
+								
 								<div class="layui-form-item">
 									<label class="layui-form-label">订单编号</label>
 									<div class="layui-input-inline input-custom-width">

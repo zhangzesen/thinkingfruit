@@ -16,6 +16,9 @@ var cash_index_ops = {
 			
 		});
 		$("#withdrawal").click(function(){
+			// 在点击事件之间需要讲按钮置灰
+			$that = $(this);
+			$that.attr("disabled","true");
 			var balance=$('p').text();
 			console.log("balance"+balance);
 			var cash=$('#cash').val();
@@ -37,9 +40,15 @@ var cash_index_ops = {
 				type:'POST',
 				dataType:'json'
 			}).done(function(res){
-				console.log(res.data);
+				console.log(res);
 				if(res.code == 0){
-					common_ops.alert("提现成功，等待转账")
+					callback = function() {
+						window.location.href = WEB_ROOT+'/cash';
+					};
+					common_ops.alert(res.msg, callback);
+				}else if(res.code == -1){
+					common_ops.alert(res.msg);
+					$that.removeAttr("disabled");
 				}
 				
 			});

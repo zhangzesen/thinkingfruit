@@ -1,5 +1,9 @@
 package com.thinkingFruit.client.entity;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
+
 import com.ysdevelop.common.entity.BaseEntity;
 
 /**
@@ -20,6 +24,7 @@ public class Cash extends BaseEntity {
 	/**
 	 * 提现金额
 	 */
+	@NotNull(message = "提现金额不能为空")
 	private Double cash;
 	
 	/**
@@ -35,11 +40,13 @@ public class Cash extends BaseEntity {
 	/**
 	 * 开户银行
 	 */
+	@NotBlank(message = "开户银行不能为空")
 	private String openBank;
 	
 	/**
 	 * 银行卡号
 	 */
+	@NotNull(message = "银行卡号不能为空")
 	private String bankNumber;
 
 	public Long getMemberId() {

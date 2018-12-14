@@ -4,6 +4,16 @@ var commodity_set_ops = {
 			this.inintComponent();
 			this.eventBind();
 		},
+		// 校验表单
+		validateForm : function() {
+			return $(".formarea").validate();
+		},
+		renderFrom:function(){
+			 layui.use('form', function(){
+				   var form = layui.form;//高版本建议把括号去掉，有的低版本，需要加()
+				   form.render();
+			 });
+		},
 		eventBind:function(){
 			var id;
 			var previewImagePaths=new Array();

@@ -55,6 +55,9 @@ var my_information_ops = {
 	
 	eventBind : function() {
 		$("#update").click(function(){
+			// 在点击事件之间需要讲按钮置灰
+			$that = $(this);
+			$that.attr("disabled","true");
 			var id=$('#id').val();
 			var gender=$('#gender').val();
 			var mobile=$('#mobile').val();
@@ -81,9 +84,15 @@ var my_information_ops = {
 				type:'PUT',
 				dataType:'json'
 			}).done(function(res){
-				console.log(res.data);
+				console.log(res);
 				if(res.code == 0){
-					window.location.href = WEB_ROOT+'/my';
+					callback = function() {
+						window.location.href = WEB_ROOT+'/my/information';
+					};
+					common_ops.alert(res.msg, callback);
+				}else if(res.code == -1){
+					common_ops.alert(res.msg);
+					$that.removeAttr("disabled");
 				}
 				
 			});

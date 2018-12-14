@@ -106,10 +106,10 @@
 					       </a>
 						<dl class="layui-nav-child">
 							<dd class="">
-								<a href="<%=basePath%>/order" target="main">提货订单</a>
+								<a href="<%=basePath%>/order" target="main">代理交易订单</a>
 							</dd>
 							<dd class="">
-								<a href="<%=basePath%>/purchase" target="main">购买订单</a>
+								<a href="<%=basePath%>/purchase" target="main">公司发货订单</a>
 							</dd>
 						</dl>
 					</li>

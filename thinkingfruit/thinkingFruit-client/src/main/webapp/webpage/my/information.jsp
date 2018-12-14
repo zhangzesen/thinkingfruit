@@ -193,6 +193,8 @@ input{
 	<script>WEB_ROOT="<%=basePath%>"</script>
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/layui/layui.all.js"></script>
+		<script type="text/javascript"
+		src="<%=basePath%>/static/js/common/common.js"></script>
 	
 </body>
 </html>
