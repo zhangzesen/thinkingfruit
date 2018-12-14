@@ -5,19 +5,24 @@ var my_information_ops = {
 		this.eventBind();
 	},
 	initComponent : function() {
-		 layui.use('upload', function() {
-			 var upload = layui.upload;
-			//封面图片上传
-			 upload.render({
-					elem: '#set',
-					url : WEB_ROOT+'/upload/image?imageType=2',
-					done : function(res) {
-						// 上传成功返回值，必须为json格式
-						console.log("res"+res);
-						$("img[name='HeadPortrait']").attr('src',WEB_ROOT + res.data.imagePath); 
-					}
-			 });
-		 });
+		var id;
+		var previewImagePaths=new Array();
+		var detailsImagePaths=new Array();
+		var that = this;
+		   //layui组件
+		   layui.use('upload', function() {
+				 var upload = layui.upload;
+				 
+				//封面图片上传
+				 upload.render({
+						elem: '#uploadImage',
+						url : WEB_ROOT+'/upload/image?imageType=2',
+						done : function(res) {
+							// 上传成功返回值，必须为json格式
+							$("img[name='avatar']").attr('src',WEB_ROOT + res.data.imagePath); 
+						}
+				});
+		   }),		
 		$.ajax({
 			url:WEB_ROOT+'/agent/information',
 			data:{},
@@ -28,7 +33,9 @@ var my_information_ops = {
 			if(res.code == 0){
 				$('#id').val(res.data.id);
 				$('#loginName').val(res.data.loginName);
-				$('#gender').val(res.data.gender);
+				var sex=res.data.gender;
+				if(sex==0){$("input[name='sex'][value=0]").attr("checked",true);}
+				if(sex==1){$("input[name='sex'][value=1]").attr("checked",true);}
 				$('#mobile').val(res.data.mobile);
 				$('#name').val(res.data.name);
 				$('#inviterId').val(res.data.inviterId);
@@ -59,7 +66,7 @@ var my_information_ops = {
 			$that = $(this);
 			$that.attr("disabled","true");
 			var id=$('#id').val();
-			var gender=$('#gender').val();
+			var gender= $('input[type="radio"]:checked').val();
 			var mobile=$('#mobile').val();
 			var name=$('#name').val();
 			var identityNo=$('#identityNo').val();
