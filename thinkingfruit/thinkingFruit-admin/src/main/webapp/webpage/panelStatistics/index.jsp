@@ -9,7 +9,8 @@
 	href="<%=basePath%>/static/css/statistics/count.css">
 <link rel="stylesheet"
 	href="<%=basePath%>/static/css/statistics/border.css">
-
+<link rel="stylesheet"
+ 	href="<%=basePath%>/static/plugin/layui/css/modules/font.css">
 <style>
 .bottom-left-table {
 	width: 100%;
@@ -101,6 +102,17 @@ legend {
 				<div class="layui-col-sm6 layui-col-md3">
 					<div class="layui-card">
 						<div class="layui-card-header">
+							新加代理数 <span class="layui-badge layui-bg-cyan layuiadmin-badge">日</span>
+						</div>
+						<div class="layui-card-body layuiadmin-card-list">
+
+							<p class="layuiadmin-big-font newMember">999,666</p>
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-sm6 layui-col-md3">
+					<div class="layui-card">
+						<div class="layui-card-header">
 							本月销售金额<span class="layui-badge layui-bg-green layuiadmin-badge">月</span>
 						</div>
 						<div class="layui-card-body layuiadmin-card-list">
@@ -118,17 +130,7 @@ legend {
 						</div>
 					</div>
 				</div>
-				<div class="layui-col-sm6 layui-col-md3">
-					<div class="layui-card">
-						<div class="layui-card-header">
-							新加代理数 <span class="layui-badge layui-bg-cyan layuiadmin-badge">日</span>
-						</div>
-						<div class="layui-card-body layuiadmin-card-list">
-
-							<p class="layuiadmin-big-font newMember">999,666</p>
-						</div>
-					</div>
-				</div>
+				
 				<div class="layui-col-sm6 layui-col-md3">
 					<div class="layui-card">
 						<div class="layui-card-header">
