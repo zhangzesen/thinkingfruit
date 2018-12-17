@@ -7,13 +7,13 @@
         values(#{name},#{coverImagePath},#{description},0,#{approvalNumber},0,#{firstPrice},#{secondPrice},#{thirdPrice},#{fourthPrice},#{fifthPrice},now())
     </insert>
      <!-- 添加商品详情图片 -->
-    <insert id="addCommoditydDetailsImage">
-    	insert into t_thinkingfruit_mall_commodity_images(`imagePath`,`status`,`commodityId`,`createTime`)
+    <insert id="addCommodityDetailsImage" parameterType="com.thinkingFruit.admin.entity.Commodity">
+    	insert into `t_thinkingfruit_mall_commodity_images`(`imagePath`,`status`,`commodityId`,`createTime`)
     	values
-    	<foreach collection="detailsImagePath" index="index" item="imagePath" separator=",">
-			(#{imagePath},
+    	<foreach collection="commoditys" index="index" item="commodity" separator=",">
+			(#{commodity.detailsImagePath},
 			0,
-			#{id},
+			#{commodity.id},
 			now())
 		</foreach>
     </insert>
@@ -82,7 +82,6 @@
            `coverImagePath` = #{coverImagePath},
            `description` = #{description},
            `approvalNumber` = #{approvalNumber},
-           `stock` = #{stock},
            `fifthPrice` = #{fifthPrice},
            `fourthPrice` = #{fourthPrice},
            `thirdPrice` = #{thirdPrice},

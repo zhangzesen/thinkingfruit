@@ -9,8 +9,7 @@
 	href="<%=basePath%>/static/css/statistics/count.css">
 <link rel="stylesheet"
 	href="<%=basePath%>/static/css/statistics/border.css">
-<link rel="stylesheet"
-	href="<%=basePath%>/static/plugin/layui/css/modules/font.css">
+
 <style>
 .bottom-left-table {
 	width: 100%;
@@ -220,7 +219,6 @@ legend {
 			</div>
 	</div>
 	</shiro:hasPermission>
-	</div>
 	<jsp:include page="/context/js-tags.jsp" />
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/echarts/echarts.min.js"></script>

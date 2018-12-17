@@ -1,5 +1,6 @@
 package com.thinkingFruit.admin.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -84,11 +85,15 @@ public class CommodityServiceImpl implements CommodityService {
 		commodity.setDetailsImagePaths(JSON.parseArray(commodity.getDetailsImagePath(), String.class));
 
 		List<String> detailsImagePath = commodity.getDetailsImagePaths();
-		for (String string : detailsImagePath) {
-			System.out.println("string:"+string);
+		List<Commodity> commoditys=new ArrayList<Commodity>();
+		for (Commodity comm : commoditys) {
+			for (String imagePath : detailsImagePath) {
+				comm.setDetailsImagePath(imagePath);
+				comm.setId(id);
+			}
 		}
 		//添加商品详情图
-		Integer addCommoditydDetailsImage = commodityDao.addCommoditydDetailsImage(id,detailsImagePath);
+		Integer addCommoditydDetailsImage = commodityDao.addCommodityDetailsImage(commoditys);
 		if(addCommoditydDetailsImage==Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.COMMODITYNAME_ERROR);
 		}
@@ -137,19 +142,25 @@ public class CommodityServiceImpl implements CommodityService {
 		//修改商品
 		commodityDao.editCommodity(commodity);
 		Long id = commodity.getId();
-		System.out.println("commodityId"+id);
 		//先删除商品图片
 		Integer deleteCommodityImagesById = commodityDao.deleteCommodityImagesById(id);
 		if(deleteCommodityImagesById==Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.COMMODITYNAME_UPDATE_ERROR);
 		}
-		System.out.println("====================="+id);
 		//再从js获取商品图片
 		commodity.setDetailsImagePaths(JSON.parseArray(commodity.getDetailsImagePath(), String.class));
-
 		List<String> detailsImagePath = commodity.getDetailsImagePaths();
-		//重新添加商品图片
-		Integer addCommoditydDetailsImage = commodityDao.addCommoditydDetailsImage(id,detailsImagePath);
+		List<Commodity> commoditys=new ArrayList<>();
+		System.out.println("zz:"+detailsImagePath.size());
+		
+		for(int i=0;i<detailsImagePath.size();i++) {
+				commodity.setDetailsImagePath(detailsImagePath.get(i));
+				commodity.setId(id);
+				commoditys.add(commodity);
+		}
+		commodityDao.editCommodity(commodity);
+		//添加商品详情图
+		Integer addCommoditydDetailsImage = commodityDao.addCommodityDetailsImage(commoditys);
 		if(addCommoditydDetailsImage==Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.COMMODITYNAME_UPDATE_ERROR);
 		}

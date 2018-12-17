@@ -30,7 +30,7 @@ public interface CommodityDao {
 	 * @param id 商品id
 	 * @return
 	 */
-	Integer addCommoditydDetailsImage(@Param("id")Long id,@Param("detailsImagePath")List<String> detailsImagePath);
+	Integer addCommodityDetailsImage(@Param("commoditys")List<Commodity> commoditys);
 	
 	
 	/**

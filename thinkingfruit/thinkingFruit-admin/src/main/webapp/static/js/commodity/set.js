@@ -1,6 +1,7 @@
 ;
 var commodity_set_ops = {
 		init:function(){
+			
 			this.inintComponent();
 			this.eventBind();
 		},
@@ -16,7 +17,6 @@ var commodity_set_ops = {
 		},
 		eventBind:function(){
 			var id;
-			var previewImagePaths=new Array();
 			var detailsImagePaths=new Array();
 			var that = this;
 			
@@ -47,9 +47,9 @@ var commodity_set_ops = {
 					      obj.preview(function(index, file, result){
 					        $('#details').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
 					      });
-					    }
-					    ,done: function(res){
-					    	detailsImagePaths.push(res.data.imagePath);
+					    },done: function(res){
+					    	console.log(res.data);
+					    	$('#detailsImagth').append("<input value='"+res.data.imagePath+"' readonly='readonly' type='hidden' class='imagePath'/>")
 					    }
 					  });
 				});
@@ -59,7 +59,7 @@ var commodity_set_ops = {
 				// 重置商品详情图的按钮
 				$("button[name='detailsReset']").click(function() {
 					$("#details img").remove();
-					$("input[name='detailsImagePath']").val('');
+					$(".imagePath").val('');
 				});
 				
 			   
@@ -70,7 +70,6 @@ var commodity_set_ops = {
 				   var name = $("input[name='name']").val();
 				   var coverImagePath = $("input[name='coverImagePath']").val();
 				   var description = $("textarea[name='description']").val();
-				   var stock = $("input[name='stock']").val();
 				   var fifthPrice = $("input[name='fifthPrice']").val();
 				   var fourthPrice = $("input[name='fourthPrice']").val();
 				   var thirdPrice = $("input[name='thirdPrice']").val();
@@ -82,6 +81,12 @@ var commodity_set_ops = {
 				   var type = rf.isEmpty(id) ? 'POST' : 'PUT';
 				   
 				   $(".layui-input-block .layui-btn").addClass('layui-btn-disabled');
+				   
+				   $(".imagePath").each(function(){
+					   detailsImagePaths.push($(this).val());
+					   console.log("zz:"+$(this).val())
+				   });
+				   console.log(detailsImagePaths);
 				   var detailsImagePath=JSON.stringify(detailsImagePaths);
 				   $.ajax({
 					   url:WEB_ROOT+ url,
@@ -97,7 +102,6 @@ var commodity_set_ops = {
 						   secondPrice:secondPrice,
 						   firstPrice:firstPrice,
 						   detailsImagePath:detailsImagePath,
-						   stock:stock,
 						   approvalNumber:approvalNumber
 					   },
 					   dataType:'json',
@@ -119,7 +123,8 @@ var commodity_set_ops = {
 		},
 		inintComponent:function(){
 			//获取商品id
-			id = common_ops.g_getQueryString("id");
+			var id = common_ops.g_getQueryString("id");
+			
 			if(id != null){
 				
 				$("#btn").empty();
@@ -153,6 +158,7 @@ var commodity_set_ops = {
 						
 						for (var i = 0; i < res.data.detailsImagePaths.length; i++) {
 							$("#details").append("<img alt='' border='none' name='details' src='"+WEB_ROOT+res.data.detailsImagePaths[i]+"' style='max-width:100px;'>");
+							$('#detailsImagth').append("<input value='"+res.data.detailsImagePaths[i]+"' readonly='readonly' type='hidden' class='imagePath'/>")
 						}
 						layui.use('form', function() {
 					        var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
@@ -166,5 +172,6 @@ var commodity_set_ops = {
 		}
 }
 $(function(){
+	
 	commodity_set_ops.init();
 })

@@ -148,6 +148,10 @@ color:black;
 								
 
 							</div>
+							
+							<div  id="detailsImagth">
+                                            
+                             </div>
 							<div class="layui-form-item">
 								<div class="layui-input-block" id="btn">
 									<button class="layui-btn brand-set" lay-submit=""
