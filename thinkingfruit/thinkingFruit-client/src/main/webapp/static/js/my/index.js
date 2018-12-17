@@ -3,7 +3,6 @@ var my_index_ops = {
 	init : function() {
 		this.initComponent();
 		this.eventBind();
-		this.share();
 	},
 	initComponent : function() {
 		$.ajax({
@@ -46,10 +45,12 @@ var my_index_ops = {
 			window.location.href = WEB_ROOT+'/my';
 		});
 	},
-	//二维码
-	share:function(){ 
+	
+  
+	eventBind : function() {
+		//二维码
 		$("#invite").click(function(){
-			 var html="<img src='http://qr.liantu.com/api.php?&bg=ffffff&fg=000000&text="+"http://localhost:8080/thinkingFruit-client/agent/login?memberId=" + memberId+"'>";
+			 var html="<img src='http://qr.liantu.com/api.php?&bg=ffffff&fg=000000&text="+"http://localhost:8080/thinkingFruit-client/agent/register?memberId=" + memberId+"'>";
         layer.open({
               type: 1,
               skin: '', //样式类名
@@ -63,11 +64,6 @@ var my_index_ops = {
               content:html
             });
 		});
-    },
-	eventBind : function() {
-		layui.use('layer', function(){ //独立版的layer无需执行这一句
-			  var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
-			  console.log("sfddsfd ")
 			  $('#upLevel').click(function(){
 				  console.log("12346487")
 			      //示范一个公告层
@@ -96,9 +92,31 @@ var my_index_ops = {
 			          });
 			        }
 			      });
-			  })
-			});
-		
+			  }),
+		$("#information").click(function(){
+			window.location.href = WEB_ROOT+'/my/information';
+		}),
+		$("#balance").click(function(){
+			window.location.href = WEB_ROOT+'/cash';
+		}),
+		$("#team").click(function(){
+			window.location.href = WEB_ROOT+'/agent/team';
+		}),
+		$("#commision").click(function(){
+			window.location.href = WEB_ROOT+'/commision';
+		}),
+		$("#address").click(function(){
+			window.location.href = WEB_ROOT+'/my/address';
+		}),
+		$("#order").click(function(){
+			window.location.href = WEB_ROOT+'/purchaseOrder';
+		}),
+		$("#depot").click(function(){
+			window.location.href = WEB_ROOT+'/order/depot';
+		}),
+		$("#about").click(function(){
+			window.location.href = WEB_ROOT+'/home';
+		})
 	},
 	
 

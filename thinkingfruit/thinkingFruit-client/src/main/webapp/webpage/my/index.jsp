@@ -13,151 +13,156 @@
 <meta content="black" name="apple-mobile-web-app-status-bar-style" />
 <meta content="telephone=no" name="format-detection" />
 <link type="text/css" rel="stylesheet"
-	href="<%=basePath%>/static/css/base.css">
-<link type="text/css" rel="stylesheet"
-	href="<%=basePath%>/static/css/icon.css">
-<link type="text/css" rel="stylesheet"
-	href="<%=basePath%>/static/css/home.css">
+	href="<%=basePath%>/static/plugin/aui/css/aui.css">
 <link href="iTunesArtwork@2x.png" sizes="114x114"
 	rel="apple-touch-icon-precomposed">
 <link rel="stylesheet" type="text/css" href="<%=basePath%>/static/plugin/aui/css/aui.css" />
 <style type="text/css">
- #my{
+      .text-white {
+            color: black !important;
+        }
+        .aui-grid [class*=aui-col-] {
+            padding: 0.75rem 0;
+        }
+        .aui-bg-info {
+    background-color: #fff!important;
+}
+.aui-text-number{color:#f39c26;}
+.icon {
+    width: 20px;
+    height: 20px;
+    display: block;
+    border: none;
+    float: left;
+    background-size: 20px;
+    background-repeat: no-repeat;
+}
+#my{
    margin-bottom:-1px;}
    #news{
    margin-bottom:-1px;}
-   .layui-layer-btn0{
-   border-color:#86be00;
-    background-color:#86be00;
-    color: #fff;
-   }
 </style>
 </head>
 <body>
-
-	<section class="aui-flexView">
+ <!-- 顶部 -->
+ <section class="aui-flexView">
 		<header class="aui-bar aui-bar-nav aui-bar-light" style="color: black;">
     <div class="aui-title">个人中心</div>
 </header>
-		<section class="aui-scrollView">
-			<div class="aui-member-head">
-				<div class="aui-member-user">
-					<img id="balance" src="<%=basePath%>/static/plugin/aui/images/gril.jpg" alt="">
-				</div>
-				<div class="aui-member-text" id="head">
-				</div>
-			</div>
-			
-			<div class="divHeight"></div>
-			<div class="aui-course-list">
-				<a href="<%=basePath%>/purchaseOrder" class="aui-flex b-line">
-					<div class="aui-course-icon">
-						<img src="<%=basePath%>/static/images/icon/4.png" alt="">
-					</div>
-					<div class="aui-flex-box">
-						<h5>我的订单</h5>
-					</div>
-				</a> 
-				<div class="divHeight"></div>
-				<a href="<%=basePath%>/my/address" class="aui-flex b-line">
-					<div class="aui-course-icon">
-						<img src="<%=basePath%>/static/images/icon/1.png" alt="">
-					</div>
-					<div class="aui-flex-box">
-						<h5>收货地址</h5>
-					</div>
-				</a> <a href="<%=basePath%>/my/information" class="aui-flex b-line">
-					<div class="aui-course-icon">
-						<img src="<%=basePath%>/static/images/icon/5.png" alt="">
-					</div>
-					<div class="aui-flex-box">
-						<h5>完善信息</h5>
-					</div>
-				</a> <a href="javascript:;" class="aui-flex" id="upLevel" data-method="notice">
-					<div class="aui-course-icon">
-						<img src="<%=basePath%>/static/images/icon/6.png" alt="">
-					</div>
-					<div class="aui-flex-box">
-						<h5>升级</h5>
-					</div>
-				</a>
-				<div class="divHeight"></div>
-				<a href="<%=basePath%>/agent/team" class="aui-flex b-line">
-					<div class="aui-course-icon">
-						<img src="<%=basePath%>/static/images/icon/8.png" alt="">
-					</div>
-					<div class="aui-flex-box">
-						<h5>我的团队</h5>
-					</div>
+    <section class="aui-content" id="user-info">
+        <div class="aui-list aui-media-list aui-list-noborder aui-bg-info">
+            <div class="aui-list-item aui-list-item-middle" style="height:4.5rem;" id="information">
+                <div class="aui-media-list-item-inner ">
+                    <div class="aui-list-item-media" style="width:4rem;">
+                        <img id="avatar" src="<%=basePath%>/static/plugin/aui/images/gril.jpg" class="aui-img-round" >
+                    </div>
+                    <div class="aui-list-item-inner aui-list-item-arrow">
+                        <div class="aui-list-item-text text-white aui-font-size-18" id="name">小脑斧</div>
+                        <div class="aui-list-item-text text-white">
+                           <div id="mobile">152****0989</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="aui-content aui-grid aui-margin-b-15" style="margin-top: 2px;">
+        <div class="aui-row">
+            <div class="aui-col-xs-4 aui-border-r" id="balance">
+                <big class="aui-text-number">0.00<small> 元</small></big>
+                <div class="aui-gird-lable aui-font-size-10">余额</div>
+            </div>
+            <div class="aui-col-xs-4 aui-border-r" id="team">
+                <big class="aui-text-number">0<small> 人</small></big>
+                <div class="aui-gird-lable aui-font-size-10">团队</div>
+            </div>
+            <div class="aui-col-xs-4">
+                <big class="aui-text-number" id="commision">0.00<small> 元</small></big>
+                <div class="aui-gird-lable aui-font-size-10">佣金</div>
+            </div>
+        </div>
+    </section>
+    <section class="aui-content">
+        <ul class="aui-list aui-list-in aui-margin-b-15">
+            <li class="aui-list-item aui-flex" id="address">
+                <div class="aui-course-icon">
+                   <img src="<%=basePath%>/static/images/icon/1.png" alt="">
+                </div>
+                <div class="aui-list-item-inner aui-list-item-arrow">
+                    <div class="aui-list-item-title">收货地址</div>
+                </div>
+            </li>
+            <li class="aui-list-item aui-flex" id="order">
+                <div class="aui-course-icon">
+                    <img src="<%=basePath%>/static/images/icon/4.png" alt="">
+                </div>
+                <div class="aui-list-item-inner aui-list-item-arrow">
+                    <div class="aui-list-item-title">订单列表</div>
+                </div>
+            </li>
+            <li class="aui-list-item aui-flex" id="depot">
+                <div class="aui-course-icon">
+                    <img src="<%=basePath%>/static/images/icon/14.png" alt="">
+                </div>
+                <div class="aui-list-item-inner aui-list-item-arrow">
+                    <div class="aui-list-item-title">我的商品</div>
+                </div>
+            </li>
+        </ul>
+        <ul class="aui-list aui-list-in aui-margin-b-15">
+           <li class="aui-list-item aui-flex"  id="invite">
+                <div class="aui-course-icon">
+                    <img src="<%=basePath%>/static/images/icon/3.png" alt="">
+                </div>
+                <div class="aui-list-item-inner aui-list-item-arrow">
+                    <div class="aui-list-item-title">邀请好友</div>
+                    <div class="aui-list-item-right">~</div>
+                </div>
+            </li>
+            
+             <li class="aui-list-item aui-flex" id="upLevel">
+                <div class="aui-course-icon">
+                    <img src="<%=basePath%>/static/images/icon/6.png" alt="">
 
-				</a>
-				<div class="divHeight"></div>
-				<a href="<%=basePath%>/commision" class="aui-flex b-line">
-					<div class="aui-course-icon">
-						<img src="<%=basePath%>/static/images/icon/2.png" alt="">
-					</div>
-					<div class="aui-flex-box">
-						<h5>佣金详情</h5>
-					</div>
-
-				</a> <a href="<%=basePath%>/cash" class="aui-flex b-line">
-					<div class="aui-course-icon">
-						<img src="<%=basePath%>/static/images/icon/9.png" alt="">
-					</div>
-					<div class="aui-flex-box">
-						<h5>提现</h5>
-					</div>
-					<a href="<%=basePath%>/cash/cashList" class="aui-flex b-line">
-					<div class="aui-course-icon">
-						<img src="<%=basePath%>/static/images/icon/7.png" alt="">
-					</div>
-					<div class="aui-flex-box">
-						<h5>提现记录</h5>
-					</div>
-				</a><a href="<%=basePath%>/order/depot" class="aui-flex b-line">
-					<div class="aui-course-icon">
-						<img src="<%=basePath%>/static/images/icon/10.png" alt="">
-					</div>
-					<div class="aui-flex-box">
-						<h5>云仓库</h5>
-					</div>
-
-				</a>
-				<div class="divHeight"></div>
-				<div id="invite" class="aui-flex b-line">
-					<div class="aui-course-icon">
-						<img src="<%=basePath%>/static/images/icon/3.png" alt="">
-					</div>
-					<div class="aui-flex-box">
-						<h5>邀请好友</h5>
-					</div>
-				</div>
-                    <img src="" alt="" id="shareDiv">
-                    
-	
-				<div class="divHeight"></div>
-					<div class="aui-flex-box" style="text-align: center;" id="loginOut">
-						<h5 style="color: #ff3366;">用户退出</h5>
-					</div>
-
-			</div>
-
-
-
-		</section>
-		<footer class="aui-footer aui-footer-fixed">
-			<div id="home" class="aui-tabBar-item "> <span
-				class="aui-tabBar-item-icon"> <i class="icon icon-home"></i>
-			</span> <span class="aui-tabBar-item-text">首页</span> </div>
-			<div id="news" class="aui-tabBar-item "> <span
-				class="aui-tabBar-item-icon"> <i class="icon icon-collage"></i>
-			</span> <span class="aui-tabBar-item-text">文章</span> </div>
-			<div id="my" class="aui-tabBar-item aui-tabBar-item-active">
-			<span class="aui-tabBar-item-icon"> <i class="icon icon-my"></i>
-			</span> <span class="aui-tabBar-item-text">我的</span> </span> </div>
-		</footer>
-	</section>
-
+                </div>
+                <div class="aui-list-item-inner aui-list-item-arrow">
+                    <div class="aui-list-item-title">升级</div>
+                </div>
+            </li>
+            <li class="aui-list-item aui-flex" id="about">
+                <div class="aui-course-icon">
+                    <img src="<%=basePath%>/static/images/icon/12.png" alt="">
+                </div>
+                <div class="aui-list-item-inner aui-list-item-arrow">
+                    <div class="aui-list-item-title">关于</div>
+                    <div class="aui-list-item-right"></div>
+                </div>
+            </li>
+        </ul>
+            <ul class="aui-list aui-list-in aui-margin-b-15" id="loginOut">
+            <li class="aui-list-item aui-flex">
+                <div class="aui-course-icon">
+                    <img src="<%=basePath%>/static/images/icon/11.png" alt="">
+                </div>
+                <div class="aui-list-item-inner aui-list-item-arrow">
+                    <div class="aui-list-item-title">用户退出</div>
+                    <div class="aui-list-item-right"></div>
+                </div>
+            </li>
+        </ul>
+    </section>
+    </section>
+    <footer class="aui-footer aui-footer-fixed">
+        <div id="home" class="aui-tabBar-item "> <span
+                class="aui-tabBar-item-icon"> <i class="icon icon-home"></i>
+            </span> <span class="aui-tabBar-item-text">首页</span> </div>
+            <div id="news" class="aui-tabBar-item "> <span
+                class="aui-tabBar-item-icon"> <i class="icon icon-collage"></i>
+            </span> <span class="aui-tabBar-item-text">文章</span> </div>
+            <div id="my" class="aui-tabBar-item aui-tabBar-item-active">
+            <span class="aui-tabBar-item-icon"> <i class="icon icon-my"></i>
+            </span> <span class="aui-tabBar-item-text">我的</span> </span> </div>
+    </footer>
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/themes/jquery.min.js"></script>
 	<script type="text/javascript"
