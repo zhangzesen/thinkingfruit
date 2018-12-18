@@ -98,8 +98,8 @@
 	</insert>
 	
 	<insert id="addCommosionPerson">
-    	insert into `t_thinkingfruit_mall_commision_person`(`memberId`,`personTotalInviteMoney`,`personTotalCommodity`,`personTotalCommision`,`personTotal`,`createTime`)
-    	values(#{memberId},0,0,0,0,now())
+    	insert into `t_thinkingfruit_mall_commision_person`(`memberId`,`personTotalInviteMoney`,`personTotalCommodity`,`personTotalCommision`,`createTime`)
+    	values(#{memberId},0,0,0,now())
 	</insert>
 	<select id="getCommosionPerson" resultType="com.thinkingFruit.admin.entity.Commision">
     	select 

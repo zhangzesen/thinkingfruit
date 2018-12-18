@@ -1,5 +1,7 @@
 package com.thinkingFruit.admin.entity;
 
+import java.util.Date;
+
 import com.ysdevelop.common.entity.BaseEntity;
 
 
@@ -74,7 +76,19 @@ public class Member extends BaseEntity{
 	 * 升级状态默认0(0为未申请状态),1代表升级申请
 	 */
 	private Long upStatus;
+	/**
+	 * 升级发起时间
+	 */
+	private Date upgradeTime;
 	
+	
+	
+	public Date getUpgradeTime() {
+		return upgradeTime;
+	}
+	public void setUpgradeTime(Date upgradeTime) {
+		this.upgradeTime = upgradeTime;
+	}
 	public Long getUpStatus() {
 		return upStatus;
 	}

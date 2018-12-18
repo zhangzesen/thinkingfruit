@@ -35,7 +35,7 @@ var member_upExamineSet_ops={
 							var callback = null;
 							if (res.code == 0) {
 								callback = function() {
-									window.location.href = WEB_ROOT + '/member';
+									window.location.href = WEB_ROOT + '/member/upExamine';
 								};
 							}
 							common_ops.alert(res.msg, callback);

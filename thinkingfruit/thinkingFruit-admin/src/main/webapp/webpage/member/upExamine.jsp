@@ -63,6 +63,20 @@ body{overflow-y: scroll;}
     return barOption;
    }} 
     </script>
+    <script type="text/javascript"
+		src="<%=basePath%>/static/js/common/date.js"></script>
+    <script type="text/html" id="date_formate">
+    {{#  
+     console.log("dateTime--->"+d.createTime);
+     return new Date(d.createTime).format("yyyy-MM-dd hh:mm:ss");
+    }} 
+    </script>
+    <script type="text/html" id="date_formate2">
+    {{#  
+     console.log("dateTime--->"+d.upgradeTime);
+     return new Date(d.upgradeTime).format("yyyy-MM-dd hh:mm:ss");
+    }} 
+    </script>
 	<script type="text/javascript"
 		src="<%=basePath%>/static/js/member/upExamine.js"></script>
 </body>

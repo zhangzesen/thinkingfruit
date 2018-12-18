@@ -87,8 +87,10 @@
 <!-- 获取所有注册待审核的代理列表 -->
 <select id="paginationExamine" resultType="com.thinkingFruit.admin.entity.Member">
 	select m.`id`,m.`mobile`,m.`loginName`,m.`status`,m.`inviterUpperId`,
-	m.`inviterId`,m.`createTime`
+	m.`inviterId`,m.`createTime`,`l`.levelName as `memberLevelName`
 	from `t_thinkingfruit_mall_member`as `m`
+	left join `t_thinkingfruit_mall_member` as `r` on `r`.id=`m`.inviterId
+	left join `t_thinkingfruit_mall_member_level` as `l` on `l`.level=`r`.memberLevelId
 	<where>
 	   1=1
 	   <if test="queryMap.loginName !=null and queryMap.loginName != ''">
@@ -106,8 +108,10 @@
 <!-- 获取所有升级待审核的代理列表 -->
 <select id="PaginationUpExamine" resultType="com.thinkingFruit.admin.entity.Member">
 	select m.`id`,m.`mobile`,m.`loginName`,m.`upStatus`,m.`inviterUpperId`,
-	m.`inviterId`,m.`createTime`
+	m.`inviterId`,m.`createTime`,m.`upgradeTime`,`l`.levelName as `memberLevelName`
 	from `t_thinkingfruit_mall_member`as `m`
+	left join `t_thinkingfruit_mall_member` as `r` on `r`.id=`m`.inviterId
+	left join `t_thinkingfruit_mall_member_level` as `l` on `l`.level=`r`.memberLevelId
 	<where>
 	   1=1
 	   <if test="queryMap.loginName !=null and queryMap.loginName != ''">

@@ -276,6 +276,7 @@ public class OrderServiceImpl implements OrderService{
 	public void examineUpdate(PurchaseOrder purchaseOrder) {
 		String isFirst="0";
 		Member memberById = memberDao.memberById(purchaseOrder.getOrderMemberId());
+		memberById.setMemberLevelId(purchaseOrder.getMemberLevel());
 		Member inviterById = memberDao.memberById(memberById.getInviterId());
 		purchaseOrder.setOrderMemberName(memberById.getLoginName());
 		purchaseOrder.setInviterId(memberById.getInviterId());
@@ -311,6 +312,8 @@ public class OrderServiceImpl implements OrderService{
 		purchaseOrder.setIsFirst(isFirst);
 		//获取佣金/邀请费比例表
 		CommissionRatio commissionRatio = siteDao.getById(memberById.getMemberLevelId());
+		System.out.println(memberById.getMemberLevelId());
+		
 		//生成佣金
 		Commision commision=new Commision();
 		commision.setOrderNo(orderNo);
@@ -347,24 +350,27 @@ public class OrderServiceImpl implements OrderService{
 			//插入代理余额
 			memberDao.addBalance(inviterId, commision.getInviterTotalMoney());
 			memberDao.addBalance(inviterUpperId, commision.getCommision());
-			//判断上级库存是否充足
-			Depot depot=orderDao.getDepot(purchaseOrder.getInviterId(),purchaseOrder.getCommodityId());
-			System.out.println(depot.getId());
-			if(depot!=null&&depot.getId()!=null) {
-				if(depot.getCount()-purchaseOrder.getCommodityCount()>=0) {
-					depot.setMemberId(inviterId);
-					depot.setCommodityId(purchaseOrder.getCommodityId());
-					depot.setCount(depot.getCount()-purchaseOrder.getCommodityCount());
-					//充足则减少邀请者库存
-					Integer updateDepot=orderDao.updateDepot(depot);
-					if(updateDepot==Constant.DEFALULT_ZERO_INT) {
-						throw new WebServiceException(CodeMsg.EXAMINE_FAIL);
+			if(inviterId!=Constant.DEFALULT_ZERO_INT) {
+				Depot depot=orderDao.getDepot(purchaseOrder.getInviterId(),purchaseOrder.getCommodityId());
+				System.out.println(depot.getId());
+				
+				//判断上级库存是否充足
+				if(depot!=null&&depot.getId()!=null) {
+					if(depot.getCount()-purchaseOrder.getCommodityCount()>=0) {
+						depot.setMemberId(inviterId);
+						depot.setCommodityId(purchaseOrder.getCommodityId());
+						depot.setCount(depot.getCount()-purchaseOrder.getCommodityCount());
+						//充足则减少邀请者库存
+						Integer updateDepot=orderDao.updateDepot(depot);
+						if(updateDepot==Constant.DEFALULT_ZERO_INT) {
+							throw new WebServiceException(CodeMsg.EXAMINE_FAIL);
+						}
+					}else {
+						throw new WebServiceException(CodeMsg.INVITER_DEPOT_LOW);
 					}
 				}else {
 					throw new WebServiceException(CodeMsg.INVITER_DEPOT_LOW);
 				}
-			}else {
-				throw new WebServiceException(CodeMsg.INVITER_DEPOT_LOW);
 			}
 			
 		}else if(memberLevelId<inviterLevelId) {

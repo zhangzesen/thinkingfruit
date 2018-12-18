@@ -22,12 +22,14 @@ var member_upExamine_ops = {
 				   var tableIns = table.render({
 				       elem: '#dateTable'                  //指定原始表格元素选择器（推荐id选择器）  //容器高度
 				       , cols: [[                  //标题栏
-	                       {field: 'id', title: 'ID',align: 'center', width:'17%'}
-				           , {field: 'loginName', title: '登录名', align: 'center',width:'17%'}
-				           , {field: 'mobile',title: '手机号',align: 'center',width:'17%'}
-				           , {field: 'inviterId',title: '上级id',align: 'center',width:'17%'}
-				           , {field: 'createTime',title: '申请时间',align: 'center',width:"18%"}
-				           , {fixed: 'right', title: '操作', width:'15%',height: 40, align: 'center', templet: '#barOption'} 
+	                       {field: 'id', title: 'ID',align: 'center', width:'5%'}
+				           , {field: 'loginName', title: '登录名', align: 'center',width:'10%'}
+				           , {field: 'mobile',title: '手机号',align: 'center',width:'15%'}
+				           , {field: 'inviterId',title: '邀请者id',align: 'center',width:'10%'}
+				           , {field: 'memberLevelName',title: '邀请者等级',align: 'center',width:"10%"}
+				           , {field: 'createTime',title: '注册时间',templet: '#date_formate',align: 'center',width:"15%"}
+				           , {field: 'upgradeTime',title: '升级时间',templet: '#date_formate2',align: 'center',width:"15%"}
+				           , {fixed: 'right', title: '操作', width:'20%',height: 40, align: 'center', templet: '#barOption'} 
 				       ]]
 //				       , id: 'dataCheck'
 				       , url: WEB_ROOT + "/member/upExamineList"
@@ -44,7 +46,13 @@ var member_upExamine_ops = {
 
 				           //得到数据总量
 				           console.log(count);
-				           
+				           $("[data-field='memberLevelName']").children().each(function(){
+							      
+				        		if($(this).text()==0){
+				        			$(this).empty();
+				        			$(this).text("公司"); 
+				        		}
+				           });
 				       }
 				   });
 				
@@ -89,7 +97,7 @@ var member_upExamine_ops = {
 								var callback = null;
 								if (res.code == 0) {
 									callback = function() {
-										window.location.href = WEB_ROOT + '/member/examine';
+										window.location.href = WEB_ROOT + '/member/upExamine';
 									};
 								}
 								common_ops.alert(res.msg, callback);

@@ -85,12 +85,13 @@ public class CommodityServiceImpl implements CommodityService {
 		commodity.setDetailsImagePaths(JSON.parseArray(commodity.getDetailsImagePath(), String.class));
 
 		List<String> detailsImagePath = commodity.getDetailsImagePaths();
-		List<Commodity> commoditys=new ArrayList<Commodity>();
-		for (Commodity comm : commoditys) {
-			for (String imagePath : detailsImagePath) {
-				comm.setDetailsImagePath(imagePath);
-				comm.setId(id);
-			}
+		List<Commodity> commoditys=new ArrayList<>();
+		System.out.println("zz:"+detailsImagePath.size());
+		
+		for(int i=0;i<detailsImagePath.size();i++) {
+				commodity.setDetailsImagePath(detailsImagePath.get(i));
+				commodity.setId(id);
+				commoditys.add(commodity);
 		}
 		//添加商品详情图
 		Integer addCommoditydDetailsImage = commodityDao.addCommodityDetailsImage(commoditys);

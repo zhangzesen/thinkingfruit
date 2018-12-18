@@ -23,7 +23,7 @@
 		from
 		`t_thinkingfruit_mall_member` t
 		where t.`loginName` = #{loginName}
-		and t.`status` = 1
+		and t.`status` != 2
 	</select>
 	
 	<!-- 寻找用户头部信息-->
@@ -70,14 +70,14 @@
 		insert into
 		`t_thinkingfruit_mall_member`(
 			`loginName`,`mobile`,`pswd`,`salt`,
-			`inviterId`,`inviterUpperId`,`balance`
-			`createTime`,`status`
+			`inviterId`,`inviterUpperId`,`balance`,
+			`createTime`,`status`,`upStatus`,`salesVolume`
 		)
 		values
 		(
 			#{loginName},#{mobile},#{pswd},#{salt},
-			#{inviterId},#{inviterUpperId},0
-			now(),0
+			#{inviterId},#{inviterUpperId},0,
+			now(),0,0,0
 		)
 	</insert>
 	<!-- 添加地址 -->
@@ -224,7 +224,8 @@
 	<update id="updateUpLevel">
 		update `t_thinkingfruit_mall_member` as `m`
 	    <set>
-	    m.upStatus =1
+	    m.`upStatus` =1,
+	    m.`upgradeTime`=now()
 	    </set> 
 	    where `m`.id = #{id}
 	</update>

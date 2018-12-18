@@ -45,7 +45,7 @@ public class CodeMsg {
 	public static CodeMsg CANCEL_REGISTERED_FAIL = new CodeMsg(500061, "取消注册失败");
 	public static CodeMsg CANCEL_UPGRADE_FAIL = new CodeMsg(500062, "取消升级失败");
 	public static CodeMsg UPGRADE_FAIL = new CodeMsg(500063, "申请升级失败");
-
+	public static CodeMsg REGISTER_UNAUDITED = new CodeMsg(500064, "注册未审核，请联系管理员");
 	
 	//分类
 	public static CodeMsg CLASSNAME_EMPTY = new CodeMsg(500007,"分类名不能为空");
