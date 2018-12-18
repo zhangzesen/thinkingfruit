@@ -70,10 +70,21 @@ public class NewsServiceImpl implements NewsService {
 	public void editNews(News news) {
 		newsDao.editNews(news);
 	}
-
+//修改关于
 	@Override
 	public void editAbout(News news) {
+		System.out.println("111111111111111"+news.getName());
 		newsDao.editAbout(news);
+	}
+//添加关于
+	@Override
+	public void addAbout(News news) {
+		newsDao.addAbout(news);
+	}
+//查询关于
+	@Override
+	public News findAbout() {
+		return newsDao.findAbout();
 	}
 
 }

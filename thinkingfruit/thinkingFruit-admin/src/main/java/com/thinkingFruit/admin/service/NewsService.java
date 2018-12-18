@@ -32,5 +32,9 @@ public interface NewsService {
 	void editNews(News news);
 	//根据id修改关于我们
 	void editAbout(News news);
+    //添加关于我们
+	void addAbout(News news);
+	//搜索关于我们
+	News findAbout();
 
 }

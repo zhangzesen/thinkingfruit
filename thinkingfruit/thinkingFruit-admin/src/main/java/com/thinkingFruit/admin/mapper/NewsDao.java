@@ -38,6 +38,10 @@ public interface NewsDao {
 	//修改新闻信息
 	void editNews(@Param("news")News news);
 	//修改关于我们
-	void editAbout(News news);
+	void editAbout(@Param("news")News news);
+	//查询关于我们
+	News findAbout();
+	//添加关于我们
+   void addAbout(@Param("news") News news);
 
 }

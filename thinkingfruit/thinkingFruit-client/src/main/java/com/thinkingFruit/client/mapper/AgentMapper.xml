@@ -29,6 +29,7 @@
 	<!-- 寻找用户头部信息-->
     <select id="findInfo" resultType="com.thinkingFruit.client.entity.Agent">
 		select
+		t.`mobile` as `mobile`,
 		t.`name` as `name`,
 		t.`avatar` as `avatar`,
 		t.`balance` as `balance`

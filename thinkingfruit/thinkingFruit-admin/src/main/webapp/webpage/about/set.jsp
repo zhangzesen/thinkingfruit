@@ -89,7 +89,7 @@
 							<div class="layui-form-item">
 								<div class="layui-input-block">
 									<button class="layui-btn news-set" lay-submit=""
-											lay-filter="cate_add">立即添加</button>
+											lay-filter="cate_add">确认</button>
 								</div>
 							</div>
 						</div>
@@ -107,7 +107,7 @@
 	<script type="text/javascript" charset="utf-8"
 		src="<%=basePath%>/static/plugin/ueditor/lang/zh-cn/zh-cn.js"></script>
 	<script type="text/javascript"
-		src="<%=basePath%>/static/js/site/set.js"></script>
+		src="<%=basePath%>/static/js/site/aboutSet.js"></script>
 </body>
 </html>
 

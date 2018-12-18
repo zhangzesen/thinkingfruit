@@ -54,6 +54,13 @@ public class MyPageController {
 		return "my/address";
 	}
 	/**
+	 *跳转关于页面
+	 * */
+	@RequestMapping(value="/about",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
+	public String about(){
+		return "my/about";
+	}
+	/**
 	 * 个人头部信息
 	 * @param agent 代理
 	 * @return
@@ -64,6 +71,7 @@ public class MyPageController {
 		HttpSession session = request.getSession();
 		Long id = (Long)session.getAttribute("agentId");
 		Agent agent=agentService.findInfo(id);
+		System.out.println("11111111111111"+agent.getName());
 		return Results.successData(agent);
 	}
 	//头部团队信息
@@ -111,11 +119,10 @@ public class MyPageController {
 	/**
 	 * 通过查找关于我们
 	 * */
-	@RequestMapping(value = "/about", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "/findAbout", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public Results<ClientNews> about(){
+	public Results<ClientNews> findAbout(){
 		ClientNews findNewsById = clientNewsService.about();
-		
 		return Results.successData(findNewsById);
 	}
 	/**

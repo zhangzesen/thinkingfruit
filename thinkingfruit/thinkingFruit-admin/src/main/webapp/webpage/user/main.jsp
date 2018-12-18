@@ -176,7 +176,7 @@
 								<a href="<%=basePath%>/site" target="main">分佣比例</a>
 							</dd>
 							<dd class="">
-								<a href="<%=basePath%>/about" target="main">关于我们</a>
+								<a href="<%=basePath%>/site/about" target="main">关于我们</a>
 							</dd>
 						</dl>
 					</li>
@@ -244,7 +244,7 @@
 		<div class="layui-footer footer">
 			<div class="layui-main">
 				<p>
-					2018 © <a href="<%=basePath%>/main">死因思果后台管理系统</a>
+					2018 © <a href="<%=basePath%>/main">爱因思果后台管理系统</a>
 				</p>
 			</div>
 		</div>

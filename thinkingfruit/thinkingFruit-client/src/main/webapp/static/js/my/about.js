@@ -7,7 +7,7 @@ var my_about_ops = {
 	initComponent : function() {
 		var id = common_ops.g_getQueryString('id');
 		$.ajax({
-			url:WEB_ROOT + "/my/about",
+			url:WEB_ROOT + "/my/findAbout",
 			type:'get',
 			data:{
 				id:id

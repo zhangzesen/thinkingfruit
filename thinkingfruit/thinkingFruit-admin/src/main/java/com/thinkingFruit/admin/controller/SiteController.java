@@ -21,6 +21,7 @@ import com.thinkingFruit.admin.service.SiteService;
 import com.ysdevelop.common.result.Result;
 import com.ysdevelop.common.result.Results;
 import com.ysdevelop.common.utils.HttpUtil;
+import com.ysdevelop.common.utils.JSONHelper;
 
 /**
  * @author zhangzesen
@@ -47,7 +48,7 @@ public class SiteController {
 		return "site/index";
 	}
 	/**
-	 * 调到关于我们
+	 * 跳到关于我们
 	 * @return
 	 */
 	@RequestMapping(value = "about", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
@@ -55,14 +56,34 @@ public class SiteController {
 		return "about/set";
 	}
 	/**
-	 * 修改新闻信息
+	 *添加关于我们
 	 * @return
 	 */
-	@RequestMapping(value = "/aboutSet", method = RequestMethod.PUT, produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "addAbout", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Result<String> addNews(@Valid News news){
+		newsService.addAbout(news);
+		return Result.success("添加成功");
+	}
+	/**
+	 * 查找关于我们
+	 * @return
+	 */
+	@RequestMapping(value = "/findAbout", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public String findAbout(){
+		News news = newsService.findAbout();
+		return JSONHelper.bean2json(Result.successData(news));
+	}
+	/**
+	 * 修改关于我们信息
+	 * @return
+	 */
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public Result<String> edit(@Valid News news){
 		newsService.editAbout(news);
-		return Result.success("修改成功");
+		return Result.success("更改成功");
 	}
 	/**
 	 * 	获取订单分页

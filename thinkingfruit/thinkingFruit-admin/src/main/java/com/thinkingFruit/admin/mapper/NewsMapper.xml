@@ -30,6 +30,7 @@
 			<if test="queryMap.endTime != null and queryMap.endTime != ''">
        <![CDATA[ and `createTime` < #{queryMap.endTime} ]]>
    </if>
+   and `status`=0
 </select>
 
 <delete id="deleteNews">
@@ -45,7 +46,7 @@
 <select id="findNewsById" resultType="com.thinkingFruit.admin.entity.News">
    select `id`,`name`,`title`,`description`,`coverImagePath`,`content`,`createTime`
    from `t_thinkingfruit_mall_news`
-   where `id` = #{id}
+   where `id` = #{id} and `status`=0
 </select>
 
 <update id="editNews">
@@ -59,6 +60,17 @@
    </set>
    where `id` = #{news.id}
 </update>
+<!--查找关于我们-->
+<select id="findAbout" resultType="com.thinkingFruit.admin.entity.News">
+   select `id`,`name`,`title`,`description`,`coverImagePath`,`content`,`createTime`
+   from `t_thinkingfruit_mall_news`
+   where `status`=1
+</select>
+ <!--添加关于我们-->
+<insert id="addAbout">
+   insert into `t_thinkingfruit_mall_news`(`name`,`title`,`description`,`coverImagePath`,`content`,`createTime`,`status`)
+   values(#{news.name},#{news.title},#{news.description},#{news.coverImagePath},#{news.content},now(),1)
+</insert>
    <!--修改关于我们-->
    <update id="editAbout">
    update `t_thinkingfruit_mall_news`
@@ -68,9 +80,8 @@
       `description` = #{news.description},
       `coverImagePath` = #{news.coverImagePath},
       `content` = #{news.content},
-      `status` = 1,
-      `createTime` = now()
+      `updateTime` = now()
    </set>
-   where `id` = #{news.id}
+   where `status` = 1
 </update>
 </mapper>
