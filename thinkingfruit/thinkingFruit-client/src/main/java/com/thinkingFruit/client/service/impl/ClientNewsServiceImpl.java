@@ -29,6 +29,11 @@ public class ClientNewsServiceImpl implements ClientNewsService {
 		ClientNews findNewsById = clientNewsDao.findNewsById(id);
 		return findNewsById;
 	}
+	@Override
+	public ClientNews about() {
+		ClientNews ClientNews=clientNewsDao.findAbout();
+		return ClientNews;
+	}
 
 	
 

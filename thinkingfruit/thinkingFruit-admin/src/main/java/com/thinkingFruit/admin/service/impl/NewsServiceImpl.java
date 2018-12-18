@@ -71,4 +71,9 @@ public class NewsServiceImpl implements NewsService {
 		newsDao.editNews(news);
 	}
 
+	@Override
+	public void editAbout(News news) {
+		newsDao.editAbout(news);
+	}
+
 }

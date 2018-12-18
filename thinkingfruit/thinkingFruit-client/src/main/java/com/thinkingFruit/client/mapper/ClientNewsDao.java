@@ -24,8 +24,7 @@ public interface ClientNewsDao {
 	
 	//通过id查看新闻详情
 	ClientNews findNewsById(@Param("id")Long id);
-	
-	
-
+	//寻找关于我们详情
+    ClientNews findAbout();
 	
 }

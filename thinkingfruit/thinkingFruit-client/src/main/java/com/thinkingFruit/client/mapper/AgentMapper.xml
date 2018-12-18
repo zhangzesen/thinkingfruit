@@ -142,12 +142,7 @@
     
     <!-- 获取代理团队人数 -->
     <select id="getTeamNumbers" resultType="Long">
-		SELECT COUNT(*)+( SELECT COUNT(*) FROM `t_thinkingfruit_mall_member` as `m2` WHERE `m2`.inviterId=#{id})
-		FROM `t_thinkingfruit_mall_member` as `m`
-		WHERE `m`.inviterId IN( 
-		SELECT id FROM `t_thinkingfruit_mall_member` as `m2` 
-		WHERE `m2`.inviterId=#{id}
-		)
+		select count(*) as `teamNumbers` from t_thinkingfruit_mall_member where FIND_IN_SET(id,getChildrenList(#{id}))
 	</select>
 	
 	<!-- 获取团队总销售额 -->

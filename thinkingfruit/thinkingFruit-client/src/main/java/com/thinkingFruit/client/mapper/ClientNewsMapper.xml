@@ -22,9 +22,18 @@
         c.`coverImagePath` as `coverImagePath`,
         c.`createTime` as `createTime`
         from `t_thinkingfruit_mall_news` as c 
-        where c.`id` = #{id}
+        where c.`id` = #{id} and c.`status`= 0
     </select>
-	
-
+	<!--关于我们-->
+<select id="findAbout" resultType="com.thinkingFruit.client.entity.ClientNews">
+        select 
+        c.`content` as `content`,
+        c.`name` as `name`,
+        c.`description` as `description`,
+        c.`coverImagePath` as `coverImagePath`,
+        c.`createTime` as `createTime`
+        from `t_thinkingfruit_mall_news` as c
+        where c.`status`= 1
+    </select>
 	
 </mapper>

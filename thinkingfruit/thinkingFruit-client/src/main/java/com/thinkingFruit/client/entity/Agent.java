@@ -66,7 +66,7 @@ public class Agent extends BaseEntity implements Serializable {
 	private String memberLevelName;
 	/** 个人销售额**/
 	private Double salesVolume;
-	/** 团队总人数包括自己,下级,下下级**/
+	/** 团队总人数（不包括自己）**/
 	private Long teamNumbers;
 	/**团队销售额,包括自己及所有下级的**/
 	private Double teamSales;

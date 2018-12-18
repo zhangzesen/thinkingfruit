@@ -138,7 +138,7 @@ var my_index_ops = {
 			window.location.href = WEB_ROOT+'/order/depot';
 		}),
 		$("#about").click(function(){
-			window.location.href = WEB_ROOT+'/home';
+			window.location.href = WEB_ROOT+'/my/about';
 		})
 	},
 	

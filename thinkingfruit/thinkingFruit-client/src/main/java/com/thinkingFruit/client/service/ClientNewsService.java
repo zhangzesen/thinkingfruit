@@ -25,5 +25,8 @@ public interface ClientNewsService {
 	
 	
 	ClientNews findNewsById(HttpServletRequest request, Long id);
+
+    //查找关于我们
+	ClientNews about();
 	
 }

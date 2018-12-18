@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageInfo;
 import com.thinkingFruit.admin.entity.CommissionRatio;
+import com.thinkingFruit.admin.entity.News;
+import com.thinkingFruit.admin.service.NewsService;
 import com.thinkingFruit.admin.service.SiteService;
+import com.ysdevelop.common.result.Result;
 import com.ysdevelop.common.result.Results;
 import com.ysdevelop.common.utils.HttpUtil;
 
@@ -33,7 +36,8 @@ import com.ysdevelop.common.utils.HttpUtil;
 public class SiteController {
 	@Autowired
 	SiteService siteService;
-	
+	@Autowired
+	NewsService newsService;
 	/**
 	 * 	跳到订单首页
 	 * @return
@@ -42,7 +46,24 @@ public class SiteController {
 	public String orderIndex(){
 		return "site/index";
 	}
-	
+	/**
+	 * 调到关于我们
+	 * @return
+	 */
+	@RequestMapping(value = "about", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
+	public String about(){
+		return "about/set";
+	}
+	/**
+	 * 修改新闻信息
+	 * @return
+	 */
+	@RequestMapping(value = "/aboutSet", method = RequestMethod.PUT, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Result<String> edit(@Valid News news){
+		newsService.editAbout(news);
+		return Result.success("修改成功");
+	}
 	/**
 	 * 	获取订单分页
 	 * @param request

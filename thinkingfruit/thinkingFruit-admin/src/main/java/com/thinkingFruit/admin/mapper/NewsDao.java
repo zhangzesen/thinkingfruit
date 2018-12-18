@@ -37,5 +37,7 @@ public interface NewsDao {
 
 	//修改新闻信息
 	void editNews(@Param("news")News news);
+	//修改关于我们
+	void editAbout(News news);
 
 }

@@ -166,14 +166,17 @@
 					</li>
 					</shiro:hasPermission>
 <shiro:hasPermission name="user:manager">
-					<li name="left_mall" class="layui-nav-item edging"><a
-						name="left_a" href="javascript:;" target="main"> <i
+					<li name="left_mall" class="layui-nav-item edging">
+					<a name="left_a" href="javascript:;" target="main"> <i
 							class="layui-icon">&#xe614;</i><cite>设置</cite>
 					<span class="layui-nav-more"></span>
 					       </a>
 						<dl class="layui-nav-child">
 							<dd class="">
 								<a href="<%=basePath%>/site" target="main">分佣比例</a>
+							</dd>
+							<dd class="">
+								<a href="<%=basePath%>/about" target="main">关于我们</a>
 							</dd>
 						</dl>
 					</li>

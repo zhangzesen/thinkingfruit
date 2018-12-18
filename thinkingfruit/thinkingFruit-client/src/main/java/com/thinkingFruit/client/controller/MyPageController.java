@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.thinkingFruit.client.entity.Agent;
 import com.thinkingFruit.client.entity.ClientCommision;
+import com.thinkingFruit.client.entity.ClientNews;
 import com.thinkingFruit.client.service.AgentService;
 import com.thinkingFruit.client.service.ClientCommisionService;
+import com.thinkingFruit.client.service.ClientNewsService;
 import com.ysdevelop.common.result.Results;
 
 @Controller
@@ -25,6 +27,9 @@ public class MyPageController {
 	
 	@Autowired
 	private ClientCommisionService clientCommisionService;
+	
+	@Autowired
+	ClientNewsService clientNewsService;
 	
 	/**
 	 *首页跳转
@@ -103,7 +108,16 @@ public class MyPageController {
 		agentService.updateUpLevel(id);
 		return Results.success("信息修改成功");
 	}
-	
+	/**
+	 * 通过查找关于我们
+	 * */
+	@RequestMapping(value = "/about", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Results<ClientNews> about(){
+		ClientNews findNewsById = clientNewsService.about();
+		
+		return Results.successData(findNewsById);
+	}
 	/**
 	 * 退出
 	 * @param request
