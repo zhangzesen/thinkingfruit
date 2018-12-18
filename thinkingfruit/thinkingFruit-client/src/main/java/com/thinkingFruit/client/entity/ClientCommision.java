@@ -40,8 +40,18 @@ public class ClientCommision extends BaseEntity {
 	
 	private String inviterUpperName;//上上级姓名 
 	
+	private Double totalCost;//推广费（总佣金+总邀请金）
+
 	
 	
+
+	public Double getTotalCost() {
+		return totalCost;
+	}
+
+	public void setTotalCost(Double totalCost) {
+		this.totalCost = totalCost;
+	}
 
 	public Double getPersonTotalCommision() {
 		return personTotalCommision;

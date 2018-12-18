@@ -45,6 +45,10 @@ var commsion_index_ops = {
 			dataType:'json',
 			success:function(res){
 				console.log(res.data);
+				if(res.data.length==0){
+					$("#tab1").append('<div class="aui-login-line" id="info">'+
+                    "<h2>"+"暂无佣金"+"</h2>"+"</div>");
+				}else{
 				for (var i = 0; i < res.data.length; i++) {
 					if(res.data[i].commision!=null){
  					$("#tab1").append('<div class="aui-order-list">'+'<div class="aui-flex">'
@@ -54,6 +58,7 @@ var commsion_index_ops = {
                     +'<div class="aui-flex-box time">'+"<h3>"+dateFtt("yyyy-MM-dd hh:mm:ss",new Date(res.data[i].createTime))+"</h3>"+"</div>"+"</div>"+"</div>"+"</div>")
 					};
 				}
+				}
 			}
 		});
 		$.ajax({
@@ -62,6 +67,10 @@ var commsion_index_ops = {
 			dataType:'json',
 			success:function(res){
 				console.log(res.data);
+				if(res.data.length==0){
+					$("#tab2").append('<div class="aui-login-line" id="info">'+
+                    "<h2>"+"暂无佣金"+"</h2>"+"</div>");
+				}else{
 				for (var i = 0; i < res.data.length; i++) {
 					if(res.data[i].commision!=null){
  					$("#tab2").append('<div class="aui-order-list">'+'<div class="aui-flex">'
@@ -70,6 +79,7 @@ var commsion_index_ops = {
                     +"<h4>"+"订单金额￥"+"<i>"+res.data[i].totalAmount+"</i>"+"邀请金"+"<em>"+"￥"+res.data[i].inviteMoney+"</em>"+"</h4>"+"</div>"+"</div>"+'<div class="aui-flex aui-flex-button">'
                     +'<div class="aui-flex-box time">'+"<h3>"+dateFtt("yyyy-MM-dd hh:mm:ss",new Date(res.data[i].createTime))+"</h3>"+"</div>"+"</div>"+"</div>"+"</div>")
 					};
+				}
 				}
 			}
 		});

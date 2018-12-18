@@ -41,6 +41,12 @@ public interface ClientCommisionDao {
 	 * @return
 	 */
 	ClientCommision getTotalClientInviteMoney(@Param("id")Long id);
+	/**
+	 * 	获取推广费（总佣金+总邀请金）
+	 * @param TotalCost 推广费
+	 * @return
+	 */
+	ClientCommision getTotalCost(@Param("id")Long id);
 	
 	Integer updateInviterIdCommision(@Param(value="commision")ClientCommision clientCommision);
 	

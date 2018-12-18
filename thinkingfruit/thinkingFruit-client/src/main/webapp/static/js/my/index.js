@@ -5,6 +5,7 @@ var my_index_ops = {
 		this.eventBind();
 	},
 	initComponent : function() {
+		//头部信息
 		$.ajax({
 			url:WEB_ROOT+'/my/info',
 			data:{},
@@ -12,9 +13,31 @@ var my_index_ops = {
 			dataType:'json'
 		}).done(function(res){
 			console.log(res.data);
-				$('#head').append("<h1>"+res.data.name+"</h1>"
-				+'<p style="color:#757575">'+"余额:"+'<em style="color:#f39c26">'+res.data.balance+"</em>"+"元"+"</p>");
-				
+				$('#mobile').html(res.data.mobile);
+				$('#name').html(res.data.name);
+				$('#balanceNumber').html(res.data.balance);
+				$('#avatar').attr("src",res.data.avatar);
+		})
+		$.ajax({
+			url:WEB_ROOT+'/my/commisionInfo',
+			data:{},
+			type:'GET',
+			dataType:'json'
+		}).done(function(res){
+			console.log("推广费"+res.data);
+				$('#commisionNumber').html(res.data.totalCost);
+		})
+		$.ajax({
+			url:WEB_ROOT+'/my/teamInfo',
+			data:{},
+			type:'GET',
+			dataType:'json'
+		}).done(function(res){
+			console.log("人数"+res.data);
+			if(res.data.teamNumbers==0){
+				res.data.teamNumbers=1;
+			}
+				$('#teamNumber').html(res.data.teamNumbers);
 		})
 		//修改完善信息
 		$("#information").click(function(){
@@ -50,7 +73,7 @@ var my_index_ops = {
 	eventBind : function() {
 		//二维码
 		$("#invite").click(function(){
-			 var html="<img src='http://qr.liantu.com/api.php?&bg=ffffff&fg=000000&text="+"http://localhost:8080/thinkingFruit-client/agent/register?memberId=" + memberId+"'>";
+			 var html="<img src='http://qr.liantu.com/api.php?&bg=ffffff&fg=000000&text="+"http://localhost:8080/thinkingFruit-client/agent/register?inviterId="+memberId+"'>";
         layer.open({
               type: 1,
               skin: '', //样式类名

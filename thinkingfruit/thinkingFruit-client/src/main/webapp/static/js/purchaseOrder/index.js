@@ -29,6 +29,12 @@ var order_index_ops = {
 			dataType:'json',
 			success:function(res){
 				console.log(res.data);
+				if(res.data.length==0){
+					$("#tab1").append('<div class="aui-login-line" id="info">'+
+                    "<h2>"+"暂无订单"+"</h2>"+"</div>");
+					$("#tab2").append('<div class="aui-login-line" id="info">'+
+		                    "<h2>"+"暂无订单"+"</h2>"+"</div>");
+				}else{
 				for (var i = 0; i < res.data.length; i++) {
 					console.log(res.data[i].orderStatus);
 					var status = res.data[i].orderStatus;
@@ -51,7 +57,7 @@ var order_index_ops = {
 				    break;
 				}
 				}
-				
+				}
 				$(".cancel").bind("click",function(){
 					console.log($(this).attr("value"));
 					var that=$(this);
@@ -83,6 +89,12 @@ var order_index_ops = {
 			dataType:'json',
 			success:function(res){
 				console.log(res.data);
+				if(res.data.length==0){
+					$("#tab3").append('<div class="aui-login-line" id="info">'+
+                    "<h2>"+"暂无订单"+"</h2>"+"</div>");
+					$("#tab4").append('<div class="aui-login-line" id="info">'+
+		                    "<h2>"+"暂无订单"+"</h2>"+"</div>");
+				}else{
 				for (var i = 0; i < res.data.length; i++) {
 					console.log(res.data[i].orderStatus);
 					var status = res.data[i].orderStatus;
@@ -103,6 +115,7 @@ var order_index_ops = {
 		                    +'<div class="aui-flex-box time">'+"<h3>"+dateFtt("yyyy-MM-dd hh:mm:ss",new Date(res.data[i].confirmTime))+"</h3>"+"</div>"+"</div>"
 		                    +"</div>")
 		            break;
+				}
 				}
 				}
 				$(".confirm").bind("click",function(){

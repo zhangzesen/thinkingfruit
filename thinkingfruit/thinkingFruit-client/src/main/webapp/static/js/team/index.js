@@ -6,12 +6,29 @@ var team_index_ops = {
 	},
 	initComponent : function() {
 		$.ajax({
+			url:WEB_ROOT + "/agent/teamAgent",
+			type:'get',
+			dataType:'json',
+			success:function(res){
+				console.log(res.data);
+				if(res.data.salesVolume==null){res.data.salesVolume=0}
+				$("#tab1").append('<div class="aui-order-list">'+'<div class="aui-flex">'
+	                    +'<div class="aui-flex-box">'+"<h3>"+"级别"+"</h3>"+"</div>"+"<div class='aui-order-pay'>"
+	                    +"<p>"+res.data.memberLevelName+"</p>"+"</div>"+"</div>"+"<div class='aui-flex aui-flex-order'>"+"<div class='aui-order-img'>"
+	                    +'<img src="'+res.data.avatar+'" alt="">'+"</div>"+'<div class="aui-flex-box">'+"<h2>"+res.data.name+"</h2>"+"<h2>"+"联系方式："+"<i>"+res.data.mobile+"</i>"+"</h>"
+	                    +"<h4>"+"销售额："+"<i>"+res.data.salesVolume+"</i>"+"元"+"</h4>"+"<h4>"+"团队销售额："+"<i>"+res.data.salesVolume+"</i>"+"元"+"</h4>"+"</div>"+"</div>"+'<div class="aui-flex aui-flex-button">'
+	                	+"</div>"+"</div>")
+				
+			}
+		}),
+		$.ajax({
 			url:WEB_ROOT + "/agent/teamList",
 			type:'get',
 			dataType:'json',
 			success:function(res){
 				console.log(res.data);
 				for (var i = 0; i < res.data.length; i++) {
+					if(res.data[i].salesVolume==null){res.data[i].salesVolume=0}
 					console.log(res.data[i].name);
 					$("#tab1").append('<div class="aui-order-list">'+'<div class="aui-flex">'
                     +'<div class="aui-flex-box">'+"<h3>"+"级别"+"</h3>"+"</div>"+"<div class='aui-order-pay'>"
@@ -20,15 +37,6 @@ var team_index_ops = {
                     +"<h4>"+"销售额："+"<i>"+res.data[i].salesVolume+"</i>"+"元"+"</h4>"+"</div>"+"</div>"+'<div class="aui-flex aui-flex-button">'
                 	+"</div>"+"</div>")
 			    }
-			}
-		}),
-		$.ajax({
-			url:WEB_ROOT + "/agent/teamAgent",
-			type:'get',
-			dataType:'json',
-			success:function(res){
-				console.log(res.data);
-				
 			}
 		}),
 		$.ajax({

@@ -39,5 +39,11 @@ public interface ClientCommisionService {
 	 * @param purchaseOrderList 交易订单集合
 	 */
 	ClientCommision getTotalClientInviteMoney(Long id);
+	/**
+	 * 获取推广费用
+	 * @param request
+	 * @param purchaseOrderList 总佣金+总邀请金
+	 */
+	ClientCommision getTotalCost(Long id);
 	
 }

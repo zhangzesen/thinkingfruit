@@ -41,6 +41,7 @@
    margin-bottom:-1px;}
    #news{
    margin-bottom:-1px;}
+   .aui-flexView{overflow:visible;}
 </style>
 </head>
 <body>
@@ -49,10 +50,11 @@
 		<header class="aui-bar aui-bar-nav aui-bar-light" style="color: black;">
     <div class="aui-title">个人中心</div>
 </header>
+<section class="aui-scrollView">
     <section class="aui-content" id="user-info">
         <div class="aui-list aui-media-list aui-list-noborder aui-bg-info">
-            <div class="aui-list-item aui-list-item-middle" style="height:4.5rem;" id="information">
-                <div class="aui-media-list-item-inner ">
+            <div class="aui-list-item aui-list-item-middle" style="height:4.5rem;padding-top: 1%;" id="information">
+                <div class="aui-media-list-item-inner" style="height: 4rem;">
                     <div class="aui-list-item-media" style="width:4rem;">
                         <img id="avatar" src="<%=basePath%>/static/plugin/aui/images/gril.jpg" class="aui-img-round" >
                     </div>
@@ -69,16 +71,16 @@
     <section class="aui-content aui-grid aui-margin-b-15" style="margin-top: 2px;">
         <div class="aui-row">
             <div class="aui-col-xs-4 aui-border-r" id="balance">
-                <big class="aui-text-number">0.00<small> 元</small></big>
+                <big class="aui-text-number" id="balanceNumber">0.00</big><small> 元</small>
                 <div class="aui-gird-lable aui-font-size-10">余额</div>
             </div>
             <div class="aui-col-xs-4 aui-border-r" id="team">
-                <big class="aui-text-number">0<small> 人</small></big>
+                <big class="aui-text-number" id="teamNumber">0</big><small> 人</small>
                 <div class="aui-gird-lable aui-font-size-10">团队</div>
             </div>
-            <div class="aui-col-xs-4">
-                <big class="aui-text-number" id="commision">0.00<small> 元</small></big>
-                <div class="aui-gird-lable aui-font-size-10">佣金</div>
+            <div class="aui-col-xs-4" id="commision">
+                <big class="aui-text-number" id="commisionNumber">0.00</big><small> 元</small>
+                <div class="aui-gird-lable aui-font-size-10">推广费</div>
             </div>
         </div>
     </section>
@@ -163,6 +165,7 @@
             <span class="aui-tabBar-item-icon"> <i class="icon icon-my"></i>
             </span> <span class="aui-tabBar-item-text">我的</span> </span> </div>
     </footer>
+    </section>
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/themes/jquery.min.js"></script>
 	<script type="text/javascript"

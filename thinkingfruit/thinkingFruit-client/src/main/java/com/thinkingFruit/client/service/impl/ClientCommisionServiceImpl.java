@@ -55,6 +55,13 @@ public class ClientCommisionServiceImpl implements ClientCommisionService {
 		List<ClientCommision> ClientCommisionList = ClientCommisionDao.findInviteMoney(id);
 		return ClientCommisionList;
 	}
-
+	/**
+	 * 获取总推广费用（总佣金+总邀请金）
+	 */
+	@Override
+	public ClientCommision getTotalCost(Long id) {
+		ClientCommision clientCommision=ClientCommisionDao.getTotalCost(id);
+		return clientCommision;
+	}
 
 }

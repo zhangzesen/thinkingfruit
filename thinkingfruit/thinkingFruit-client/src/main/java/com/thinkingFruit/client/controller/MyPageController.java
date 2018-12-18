@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.thinkingFruit.client.entity.Agent;
+import com.thinkingFruit.client.entity.ClientCommision;
 import com.thinkingFruit.client.service.AgentService;
+import com.thinkingFruit.client.service.ClientCommisionService;
 import com.ysdevelop.common.result.Results;
 
 @Controller
@@ -20,6 +22,9 @@ public class MyPageController {
 	
 	@Autowired
 	private AgentService agentService;
+	
+	@Autowired
+	private ClientCommisionService clientCommisionService;
 	
 	/**
 	 *首页跳转
@@ -55,6 +60,24 @@ public class MyPageController {
 		Long id = (Long)session.getAttribute("agentId");
 		Agent agent=agentService.findInfo(id);
 		return Results.successData(agent);
+	}
+	//头部团队信息
+	@RequestMapping(value = "/teamInfo", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Results<Agent> teamInfo(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		Long id = (Long)session.getAttribute("agentId");
+		Agent agent=agentService.teamAgent(id);
+		return Results.successData(agent);
+	}
+	//头部推广费信息
+	@RequestMapping(value = "/commisionInfo", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Results<ClientCommision> commisionInfo(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		Long id = (Long)session.getAttribute("agentId");
+		ClientCommision ClientCommision =clientCommisionService.getTotalCost(id);
+		return Results.successData(ClientCommision);
 	}
 	/**
 	 * 修改完善信息

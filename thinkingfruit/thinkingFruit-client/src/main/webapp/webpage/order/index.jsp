@@ -34,6 +34,9 @@ input{
     .time{
         text-align: left;
     }
+    .tab-nav-item{
+    width:25%;
+    }
 </style>
 </head>
 <body>
@@ -84,8 +87,7 @@ input{
 		src="<%=basePath%>/static/plugin/themes/tab.js"></script>
 	<script type="text/javascript"
 		src="<%=basePath%>/static/js/order/index.js"></script>
-	<script>WEB_ROOT="<%=basePath%>"
-	</script>
+	<script>WEB_ROOT="<%=basePath%>"</script>
 	<script type="text/javascript" src="<%=basePath%>/static/js/common/date.js"></script>
 </body>
 </html>

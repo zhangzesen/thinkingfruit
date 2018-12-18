@@ -53,7 +53,7 @@
 	<!-- 获取个人总佣金 -->
 	<select id="getTotalClientCommision" resultType="com.thinkingFruit.client.entity.ClientCommision">
 	   select
-	    sum(t.`commision`) as `totalCommision`
+	    sum(t.`commision`) as `personTotalCommision`
 		from
 		`t_thinkingfruit_mall_commision` as t
 		where t.`inviterUpperId` = #{id}
@@ -61,7 +61,7 @@
 	<!--获取个人总邀请金-->
 	<select id="getTotalClientInviteMoney" resultType="com.thinkingFruit.client.entity.ClientCommision">
 	   select
-		sum(t.`inviteMoney`) as `totalInviteMoney`
+		sum(t.`inviteMoney`) as `personTotalInviteMoney`
 		from
 		`t_thinkingfruit_mall_commision` as t
 		where t.`inviterId` = #{id}
@@ -86,4 +86,11 @@
 	    </set> 
 	    where `memberId` = #{inviterUpperId}
 	</update>
+	<select id="getTotalCost" resultType="com.thinkingFruit.client.entity.ClientCommision">
+	   select
+	    (sum(t.`personTotalInviteMoney`)+sum(t.`personTotalCommision`)) as `totalCost`
+		from
+		`t_thinkingfruit_mall_commision_person` as t
+		where t.`memberId` = #{id}
+	</select>
 </mapper>

@@ -12,6 +12,10 @@ var order_index_ops = {
 			dataType:'json',
 			success:function(res){
 				console.log(res.data);
+				if(res.data.length==0){
+					$("#tab1").append('<div class="aui-login-line" id="info">'+
+                    "<h2>"+"暂无货物"+"</h2>"+"</div>");
+				}else{
 				for (var i = 0; i < res.data.length; i++) {
 					$("#tab1").append('<div class="aui-order-list">'+'<div class="aui-flex">'
 		                    +'<div class="aui-flex-box">'+"<h3>"+"已买入"+"</h3>"+"</div>"+"</div>"+"<div class='aui-flex aui-flex-order'>"+"<div class='aui-order-img'>"
@@ -33,6 +37,7 @@ var order_index_ops = {
 					window.location.href = WEB_ROOT+'/order/extract?commodityId='+commodityId+"&count="+count;
 				})
 				}
+				}
 			}
 		}),
 		//订单列表
@@ -42,6 +47,12 @@ var order_index_ops = {
 			dataType:'json',
 			success:function(res){
 				console.log(res.data);
+				if(res.data.length==0){
+					$("#tab3").append('<div class="aui-login-line" id="info">'+
+                    "<h2>"+"暂无订单"+"</h2>"+"</div>");
+					$("#tab2").append('<div class="aui-login-line" id="info">'+
+		                    "<h2>"+"暂无订单"+"</h2>"+"</div>");
+				}else{
 				for (var i = 0; i < res.data.length; i++) {
 					var status = res.data[i].orderStatus;
 					
@@ -64,6 +75,8 @@ var order_index_ops = {
 					$(".Confirm").bind("click",function(){
 						window.location.href = WEB_ROOT+'/home';
 					})
+				}
+				
 				}
 			}
 		});
