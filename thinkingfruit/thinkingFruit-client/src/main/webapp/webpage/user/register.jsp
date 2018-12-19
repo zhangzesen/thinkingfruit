@@ -33,7 +33,7 @@ color:black
 	
 	<form action="" method="post" id="registerForm">
 		<div>
-			<input type="text" name="loginName" class="username" placeholder="您的用户名" autocomplete="off"/>
+			<input type="text" name="loginName" class="loginName" placeholder="您的用户名" autocomplete="off"/>
 		</div>
 		<div>
 			<input type="password" name="loginPassword" class="password" placeholder="输入密码" oncontextmenu="return false" onpaste="return false" />
@@ -42,7 +42,7 @@ color:black
 			<input type="password" name="confirm_password" class="confirm_password" placeholder="再次输入密码" oncontextmenu="return false" onpaste="return false" />
 		</div>
 		<div>
-			<input type="text" name="mobile" class="mobile" placeholder="请输入手机号" oncontextmenu="return false" onpaste="return false" />
+			<input type="text" name="mobile" class="mobile" placeholder="请输入手机号"autocomplete="off" />
 		</div>
 		<div class="classification">
 			

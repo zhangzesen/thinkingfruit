@@ -53,7 +53,7 @@ $(document).ready(function(){
 				minlength:3,
 				equalTo:'.password'
 			},
-			moblie:{
+			mobile:{
 				required:true,
 				phone_number:true,//自定义的规则
 				digits:true,//整数
