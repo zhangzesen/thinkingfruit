@@ -42,9 +42,10 @@ color:black
 			<input type="password" name="confirm_password" class="confirm_password" placeholder="再次输入密码" oncontextmenu="return false" onpaste="return false" />
 		</div>
 		<div>
-			<input type="text" name="mobile" class="mobile" placeholder="请输入手机号" autocomplete="off" />
+			<input type="text" name="mobile" class="mobile" placeholder="请输入手机号" oncontextmenu="return false" onpaste="return false" />
 		</div>
 		<div class="classification">
+			
 				<input type="verification" class="verification" name="verification" autocomplete="off"
 					 placeholder="请输入验证码">
 				<div class="code">	
@@ -53,7 +54,7 @@ color:black
 				</div>
 			<div class="clear"></div>	
 		</div>
-		<button id="submit" type="button">注册</button>
+		<button id="submit" type="submit">注册</button>
 	</form>
 	<button id="login" type="button" class="register-tis" >已经有账号？</button>
 </div>
