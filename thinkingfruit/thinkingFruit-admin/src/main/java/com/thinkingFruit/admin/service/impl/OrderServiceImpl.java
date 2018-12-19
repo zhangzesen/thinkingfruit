@@ -347,6 +347,7 @@ public class OrderServiceImpl implements OrderService{
 			}
 			commision.setCommision(commision.getTotalAmount()*commision.getCommisionProportion());
 			commision.setInviterTotalMoney(commision.getTotalAmount()-commision.getCommision());
+			commision.setInviteMoney(0.0);
 			//插入代理余额
 			memberDao.addBalance(inviterId, commision.getInviterTotalMoney());
 			memberDao.addBalance(inviterUpperId, commision.getCommision());
@@ -384,6 +385,9 @@ public class OrderServiceImpl implements OrderService{
 				throw new WebServiceException(CodeMsg.AGENT_TO_COMPANY_FAIL);
 			}
 			commision.setInviteMoney(commision.getTotalAmount()*commissionRatio.getReverseLevelDiscount());
+			commision.setCommisionProportion(0.0);
+			commision.setInviterTotalMoney(0.0);
+			commision.setCommision(commision.getTotalAmount()-commision.getInviteMoney());
 			memberDao.addBalance(inviterId,commision.getInviteMoney());
 		}
 		//插入佣金表
