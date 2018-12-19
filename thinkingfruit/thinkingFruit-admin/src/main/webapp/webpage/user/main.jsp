@@ -12,7 +12,7 @@
 			<div class="layui-main">
 				<a class="logo" href="javascript:;"> <img
 					style="padding-top: 7px; height: 52px;"
-					src="<%=basePath%>/static/images/ljl-top.jpg">
+					src="<%=basePath%>/static/images/ljl-top.png">
 				</a>
 				<ul class="layui-nav"
 					style="margin-right: 5%; text-align: right; left: 90%;"
@@ -127,9 +127,6 @@
 							</dd>
 							<dd class="">
 								<a href="<%=basePath%>/commision/person" target="main">个人佣金</a>
-							</dd>
-							<dd class="">
-								<a href="<%=basePath%>/ranking" target="main">佣金排名</a>
 							</dd>
 						</dl>
 					</li>

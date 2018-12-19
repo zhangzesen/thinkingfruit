@@ -49,7 +49,7 @@ color:black
 				</div>
 			<div class="clear"></div>	
 		</div>
-		<button id="submit" type="button">登 陆</button>
+		<button id="submit" type="submit">登 陆</button>
 	</form>
 	<button id="register" type="button" class="register-tis" >还有没有账号？</button>
 

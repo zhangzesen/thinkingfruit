@@ -47,14 +47,14 @@ height:auto;
 							placeholder="请输入代理名" class="layui-input">
 					</div>
 					
-					<div class="layui-input-inline xbs768" >
+					<div class="layui-input-inline xbs768" style="margin-top:1%;">
 						<div class="layui-form">
 							<select id="orderStatus" name="orderStatus" lay-filter="orderStatus">
 								<option value="">请选择订单状态</option>
 							</select>
 						</div>
 					</div>
-					<div class="layui-input-inline xbs768" style="width: 50px">
+					<div class="layui-input-inline xbs768" style="width: 50px;margin-top:1%;">
 						<button class="layui-btn btn-serach" lay-filter="sreach">
 							<i class="layui-icon">&#xe615;</i>
 						</button>

@@ -6,13 +6,16 @@
 <head>
 <link rel="stylesheet" href="<%=basePath%>/static/css/user/login.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>思维果实登录</title>
+<title>爱因思果登录</title>
 </head>
 <body>
 	<div class="container">
 	    <form class="formarea">
 		<div class="header">
-			<a href="#"> <img src="<%=basePath%>/static/icon/icon.png"> 思维果实
+			<a href="#"> <img src="<%=basePath%>/static/images/ljl-top.png">
+			<div>
+			思维果实
+			</div>
 			</a>
 			<div id="option">登录</div>
 		</div>
