@@ -14,7 +14,7 @@ var my_index_ops = {
 		}).done(function(res){
 			console.log(res.data);
 				$('#mobile').html(res.data.mobile);
-				$('#name').html(res.data.name);
+				$('#name').html(res.data.loginName);
 				$('#balanceNumber').html(res.data.balance);
 				$('#avatar').attr("src",res.data.avatar);
 		})

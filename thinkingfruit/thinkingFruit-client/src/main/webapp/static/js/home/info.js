@@ -61,7 +61,7 @@ var home_index_ops = {
 				dataType:'json',
 				success:function(res){
 					callback = function() {
-						window.location.href = WEB_ROOT+'/home';
+						window.location.href = WEB_ROOT+'/my/information';
 					};
 					common_ops.alert(res.msg, callback);
 				}

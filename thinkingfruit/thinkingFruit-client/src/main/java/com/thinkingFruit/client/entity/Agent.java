@@ -39,7 +39,7 @@ public class Agent extends BaseEntity implements Serializable {
 	/** 盐值 **/
 	private String salt;
 	/** 角色头像 */
-	//@NotBlank(message = "用户头像不能为空")
+	@NotNull(message = "用户头像不能为空")
 	private String avatar;
 	/** 邀请者id */
 	private Long inviterId;
@@ -59,6 +59,7 @@ public class Agent extends BaseEntity implements Serializable {
 	/** 用户状态0启用，1禁用 **/
 	private Long status;
 	/** 身份证 **/
+	@NotNull(message = "身份证号码不能为空")
 	private String identityNo;
 	/** 代理等级id **/
 	private Long memberLevelId;

@@ -32,6 +32,7 @@ var my_information_ops = {
 			console.log(res.data);
 			if(res.code == 0){
 				$('#id').val(res.data.id);
+				$("img[name='avatar']").attr("src",res.data.avatar);
 				$('#loginName').val(res.data.loginName);
 				var sex=res.data.gender;
 				if(sex==0){$("input[name='sex'][value=0]").attr("checked",true);}
@@ -65,6 +66,7 @@ var my_information_ops = {
 			// 在点击事件之间需要讲按钮置灰
 			$that = $(this);
 			$that.attr("disabled","true");
+			var avatar=$("img[name='avatar']").attr("src");
 			var id=$('#id').val();
 			var gender= $('input[type="radio"]:checked').val();
 			var mobile=$('#mobile').val();
@@ -83,6 +85,7 @@ var my_information_ops = {
 				url:WEB_ROOT+'/my/update',
 				data:{
 					id:id,
+					avatar:avatar,
 					gender:gender,
 					mobile:mobile,
 					name:name,
