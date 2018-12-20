@@ -25,7 +25,7 @@
 			<div class="classification">
 				<div class="label">登录名</div>
 				<input type="text" class="loginName" name="loginName"
-				  required="true"	placeholder="注册时填写的手机号">
+				  required="true"	placeholder="请输入用户名">
 				<div class="clear"></div>
 			</div>
 

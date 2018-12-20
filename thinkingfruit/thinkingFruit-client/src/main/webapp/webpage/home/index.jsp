@@ -40,48 +40,13 @@
 		<section class="aui-scrollView">
 			<div class="m-slider" data-ydui-slider>
 				<div class="slider-wrapper">
-					<div class="slider-item">
-						<a href="javascript:;"> <img
-							src="<%=basePath%>/static/images/banner/shili10.jpg">
-						</a>
-					</div>
-
-					<div class="slider-item">
-						<a href="javascript:;"> <img
-							src="<%=basePath%>/static/images/banner/shili1.jpg">
-						</a>
-					</div>
-					<div class="slider-item">
-						<a href="javascript:;"> <img
-							src="<%=basePath%>/static/images/banner/shili.jpg">
-						</a>
-					</div>
 
 				</div>
 				<div class="slider-pagination"></div>
 			</div>
 			<section class="aui-content">
 
-				<div class="aui-card-list">
-					<div class="aui-card-list-header">商品1</div>
-					<div class="aui-card-list-content">
-						<img src="<%=basePath%>/static/images/banner/shili1.jpg" value="8" />
-					</div>
-				</div>
-
-				<div class="aui-card-list">
-					<div class="aui-card-list-header">商品2</div>
-					<div class="aui-card-list-content">
-						<img src="<%=basePath%>/static/images/banner/shili10.jpg" />
-					</div>
-				</div>
-
-				<div class="aui-card-list">
-					<div class="aui-card-list-header">商品3</div>
-					<div class="aui-card-list-content">
-						<img src="<%=basePath%>/static/images/banner/shili.jpg" />
-					</div>
-				</div>
+				
 
 			</section>
 		</section>

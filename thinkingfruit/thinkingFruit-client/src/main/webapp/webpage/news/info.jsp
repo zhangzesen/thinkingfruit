@@ -41,18 +41,6 @@
             <section class="aui-scrollView">
 		
 		</section>
-		<footer class="aui-footer aui-footer-fixed">
-			<botton id="home" class="aui-tabBar-item "> <span
-				class="aui-tabBar-item-icon"> <i class="icon icon-home"></i>
-			</span> <span class="aui-tabBar-item-text">首页</span> </botton>
-			<botton id="news" class="aui-tabBar-item aui-tabBar-item-active">
-			<span class="aui-tabBar-item-icon"> <i
-				class="icon icon-collage"></i>
-			</span> <span class="aui-tabBar-item-text">文章</span> </botton>
-			<botton id="my" class="aui-tabBar-item "> <span
-				class="aui-tabBar-item-icon"> <i class="icon icon-my"></i>
-			</span> <span class="aui-tabBar-item-text">我的</span> </span> </botton>
-		</footer>
 	</section>
 <jsp:include page="/context/js-tags.jsp" />
 	<script type="text/javascript"

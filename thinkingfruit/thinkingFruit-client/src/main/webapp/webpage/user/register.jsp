@@ -21,6 +21,12 @@
 .layui-layer-content{
 color:black
 }
+.buttonStyle{
+    position: relative;
+    width: 305px;
+    margin: 15px auto 0 auto;
+    text-align: center;
+}
 </style>
 </head>
 <body>
@@ -54,9 +60,11 @@ color:black
 				</div>
 			<div class="clear"></div>	
 		</div>
-		<button id="submit" type="submit">注册</button>
 	</form>
+	<div class="buttonStyle">
+		<button id="submit" type="submit">注册</button>
 	<button id="login" type="button" class="register-tis" >已经有账号？</button>
+   </div>
 </div>
 
 

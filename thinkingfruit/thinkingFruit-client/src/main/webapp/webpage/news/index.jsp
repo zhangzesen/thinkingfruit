@@ -35,30 +35,8 @@
     <div class="aui-title">文章</div>
 </header>
 		<section class="aui-scrollView">
-			<div class="aui-card-list" style="margin-top:0.75rem;">
-				<div class="aui-card-list-header">卡片布局头部区域</div>
-				<div class="aui-card-list-content">
-					<img src="<%=basePath%>/static/images/l2.png" />
-				</div>
-				<div class="aui-card-list-footer">2016年7月12日</div>
-			</div>
-			
-			<div class="aui-card-list">
-				<div class="aui-card-list-header">卡片布局头部区域</div>
-				<div class="aui-card-list-content">
-					<img src="<%=basePath%>/static/images/l2.png" />
-				</div>
-				<div class="aui-card-list-footer">2016年7月12日</div>
-			</div>
-			
-			<div class="aui-card-list">
-				<div class="aui-card-list-header">卡片布局头部区域</div>
-				<div class="aui-card-list-content">
-					<img src="<%=basePath%>/static/images/l2.png" />
-				</div>
-				<div class="aui-card-list-footer">2016年7月12日</div>
-			</div>
-</section>
+		
+         </section>
 
 		<footer class="aui-footer aui-footer-fixed">
 			<div id="home" class="aui-tabBar-item "> <span
