@@ -31,7 +31,7 @@ var commodity_index_ops = {
 				    , cols: [[                          //标题栏
 	                    {field: 'id', title: '编号',align: 'center', width: 70}
 				        , {field: 'name', title: '商品名', align: 'center'}
-				        , {field: 'coverImagePath', title: '展示图片', align: 'center',templet:'<div><img src="'+WEB_ROOT+'{{d.coverImagePath}}"></div>'}
+				        , {field: 'coverImagePath', title: '展示图片', align: 'center',templet:'<div><img src="'+'{{d.coverImagePath}}"></div>'}
 				        , {field: 'sales', title: '商品销量', align: 'center'}
 				        , {field: 'createTime', title: '创建时间', align: 'center'}
 				        , {field: 'description', title: '商品卖点',align: 'center'}

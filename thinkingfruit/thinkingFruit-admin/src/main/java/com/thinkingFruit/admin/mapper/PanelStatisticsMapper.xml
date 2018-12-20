@@ -7,10 +7,10 @@
 	    (`memberTotal`,`transactionTotal`,`orderTotal`,`commodityTotal`,`cashTotal`,`createTime`,`day`,`month`) 
 	    values (
 	    (select count(m.`id`)	from `t_thinkingfruit_mall_member` as `m` WHERE DATEDIFF(m.`createTime`,NOW())),
-	    (SELECT SUM(p.`orderTotalPrice`) FROM `t_thinkingfruit_mall_order_purchase` as `p` WHERE DATEDIFF(p.`confirmTime`,NOW())),
+	    (SELECT IFNULL(SUM(p.`orderTotalPrice`),0) FROM `t_thinkingfruit_mall_order_purchase` as `p` WHERE DATEDIFF(p.`confirmTime`,NOW())),
 		(select count(r.`id`)	from `t_thinkingfruit_mall_order_purchase` as `r` WHERE DATEDIFF(r.`confirmTime`,NOW())),
-        (select sum(o.`commodityCount`) from `t_thinkingfruit_mall_order_purchase` as `o` WHERE DATEDIFF(o.`confirmTime`,NOW()) and `o`.orderStatus=2),
-		(select sum(c.`cash`) from `t_thinkingfruit_mall_cash` as `c` WHERE DATEDIFF(c.`updateTime`,NOW()) and `c`.status=1),
+        (select IFNULL(sum(o.`commodityCount`),0) from `t_thinkingfruit_mall_order_purchase` as `o` WHERE DATEDIFF(o.`confirmTime`,NOW()) and `o`.orderStatus=2),
+		(select IFNULL(sum(c.`cash`),0) from `t_thinkingfruit_mall_cash` as `c` WHERE DATEDIFF(c.`updateTime`,NOW()) and `c`.status=1),
 		now(),DAY (DATE_ADD(NOW() ,Interval -1 day)),
 		MONTH (DATE_ADD(NOW() ,Interval -1 day)))
 	</insert>

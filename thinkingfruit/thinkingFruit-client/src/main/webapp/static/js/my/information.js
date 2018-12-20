@@ -16,7 +16,7 @@ var my_information_ops = {
 				//封面图片上传
 				 upload.render({
 						elem: '#uploadImage',
-						url : WEB_ROOT+'/upload/image?imageType=2',
+						url : WEB_ROOT+'/upload/image?imageType=15',
 						done : function(res) {
 							// 上传成功返回值，必须为json格式
 							$("img[name='avatar']").attr('src',WEB_ROOT + res.data.imagePath); 

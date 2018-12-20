@@ -82,7 +82,7 @@ var news_set_ops={
 						$("input[name='name']").val(res.data.name);
 						$("input[name='title']").val(res.data.title);
 						$("input[name='coverImagePath']").val(res.data.coverImagePath);
-						$('img').attr('src',WEB_ROOT + res.data.coverImagePath);
+						$('img').attr('src', res.data.coverImagePath);
 						$("input[name='description']").val(res.data.description);
 						
 						//初始化赋值ueditor
@@ -101,8 +101,8 @@ var news_set_ops={
 				     elem: '#uploadImage',
 				     url : WEB_ROOT+'/upload/image?imageType=6',
 				     done : function(res) {
-					     $("input[name='coverImagePath']").attr("value",res.data.imagePath);
-					     $('img').attr('src',WEB_ROOT + res.data.imagePath);
+					     $("input[name='coverImagePath']").attr("value",WEB_ROOT +res.data.imagePath);
+					     $('img').attr('src',WEB_ROOT +res.data.imagePath);
 					     console.log('上传完毕'); // 上传成功返回值，必须为json格式
 				     }
 			      });

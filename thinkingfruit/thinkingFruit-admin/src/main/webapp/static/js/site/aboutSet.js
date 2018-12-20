@@ -27,10 +27,10 @@ var about_set_ops={
 				var id = $("input[name='id']").val();
 				//判断是添加还是修改
 				console.log("title"+title)
-				console.log("111111"+rf.isEmpty(name))
-				var url = rf.isEmpty(name) ? "/site/addAbout" : "/site/setAbout"+ id;
+				console.log("111111"+rf.isEmpty(id))
+				var url = rf.isEmpty(id) ? "/site/addAbout" : "/site/setAbout"+ id;
 				console.log("url-->"+url);
-				var type = rf.isEmpty(name) ? 'POST' : 'PUT';
+				var type = rf.isEmpty(id) ? 'POST' : 'PUT';
 				console.log("type-->"+type);
 				$(".layui-input-block .layui-btn").addClass('layui-btn-disabled');
 				$.ajax({
@@ -80,11 +80,14 @@ var about_set_ops={
 					type:'get',
 					dataType:'json',
 					success:function(res){
-						$("input[name='name']").val(res.data.name);
-						$("input[name='title']").val(res.data.title);
-						$("input[name='coverImagePath']").val(res.data.coverImagePath);
-						$('img').attr('src',WEB_ROOT + res.data.coverImagePath);
-						$("input[name='description']").val(res.data.description);
+						if(res.data!=null){
+							
+							$("input[name='name']").val(res.data.name);
+							$("input[name='title']").val(res.data.title);
+							$("input[name='coverImagePath']").val(res.data.coverImagePath);
+							$('img').attr('src',WEB_ROOT + res.data.coverImagePath);
+							$("input[name='description']").val(res.data.description);
+						}
 						
 						//初始化赋值ueditor
 						var ue = UE.getEditor('editor');
@@ -102,7 +105,7 @@ var about_set_ops={
 				     elem: '#uploadImage',
 				     url : WEB_ROOT+'/upload/image?imageType=6',
 				     done : function(res) {
-					     $("input[name='coverImagePath']").attr("value",res.data.imagePath);
+					     $("input[name='coverImagePath']").attr("value",WEB_ROOT +res.data.imagePath);
 					     $('img').attr('src',WEB_ROOT + res.data.imagePath);
 					     console.log('上传完毕'); // 上传成功返回值，必须为json格式
 				     }

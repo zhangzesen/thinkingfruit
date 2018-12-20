@@ -30,7 +30,7 @@ var news_index_ops={
                              {field: 'id', title: '编号',align: 'center',width:'7%'}
 				           , {field: 'name', title: '资讯名称', align: 'center',width:'20%'}
 				           , {field: 'title', title: '资讯标题',width:'20%',align: 'center'}
-				           , {field: 'coverImagePath', title: '封面图片', align: 'center',width:'17%',templet:'<div><img src="'+WEB_ROOT+'{{d.coverImagePath}}"></div>'}
+				           , {field: 'coverImagePath', title: '封面图片', align: 'center',width:'17%',templet:'<div><img src="'+'{{d.coverImagePath}}"></div>'}
 				           , {field: 'createTime', title: '创建时间',align: 'center',width:'20%'}
 				           , {title: '操作',width:'17%',height: 40, align: 'center', templet: '#barOption',width:'17%'} //这里的toolbar值是模板元素的选择器
 				       ]]

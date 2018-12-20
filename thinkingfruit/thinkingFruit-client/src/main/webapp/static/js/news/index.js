@@ -17,7 +17,6 @@ var news_index_ops = {
 			    }
 				$(".aui-card-list").bind("click",function(){
 					var id= $(this).find('img').attr("value");
-					alert("id"+id);
 					window.location.href = WEB_ROOT + '/news/info?id='+id;
 					});
 			}

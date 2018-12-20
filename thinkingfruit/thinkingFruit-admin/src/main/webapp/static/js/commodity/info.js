@@ -30,10 +30,10 @@ var commodity_info_ops = {
 					$("input[name='coverImagePath']").val(res.data.coverImagePath);
 					
 					//添加展示图片
-					$("img[name='cover']").attr("src", WEB_ROOT+res.data.coverImagePath);
+					$("img[name='cover']").attr("src",res.data.coverImagePath);
 					
 					for (var i = 0; i < res.data.detailsImagePaths.length; i++) {
-						$("#details").append("<img alt='' border='none' name='details' src='"+WEB_ROOT+res.data.detailsImagePaths[i]+"' style='max-width:100px;'>");
+						$("#details").append("<img alt='' border='none' name='details' src='"+res.data.detailsImagePaths[i]+"' style='max-width:100px;'>");
 					}
 					layui.use('form', function() {
 				        var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
