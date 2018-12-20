@@ -27,6 +27,9 @@
 		<property name="port">
 			<value>${redis.port}</value>
 		</property>
+		<property name="password">
+			<value>${redis.password}</value>
+		</property>
 		<property name="timeout">
 			<value>${redis.timeout}</value>
 		</property>

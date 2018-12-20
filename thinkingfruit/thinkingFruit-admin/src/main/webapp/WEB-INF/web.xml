@@ -18,7 +18,7 @@
 
 	<context-param>
 		<param-name>webAppRootKey</param-name>
-		<param-value>app.root</param-value>
+		<param-value>thinkingFruit.admin</param-value>
 	</context-param>
 
 

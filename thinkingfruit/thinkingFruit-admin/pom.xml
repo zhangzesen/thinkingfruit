@@ -7,9 +7,7 @@
     <artifactId>thinkingFruit</artifactId>
     <version>1.0.0</version>
   </parent>
-  <groupId>com.thinkingFruit</groupId>
   <artifactId>thinkingFruit-admin</artifactId>
-  <version>1.0.0</version>
   <name>thinkingFruit-admin</name>
 
   <dependencies>
@@ -26,7 +24,7 @@
   </dependencies>
   
   <build>
-	<finalName>thinkFruit-admin</finalName>
+	<finalName>thinkingFruit-admin</finalName>
 	<resources>
 		<resource>
 			<directory>src/main/java</directory>

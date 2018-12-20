@@ -15,7 +15,7 @@
 	}
 %>
 <meta charset="UTF-8">
-<title>揽菁灵管理后台</title>
+<title>爱因思果后台管理</title>
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport"
@@ -24,4 +24,3 @@
 <link rel="stylesheet"
 	href="<%=basePath%>/static/plugin/layui/css/layui.css">
 <link rel="stylesheet" href="<%=basePath%>/static/css/common/global.css">
-<link rel="shortcut icon" type="image/x-icon" href="<%=basePath %>/static/images/log.icon" media="screen" />

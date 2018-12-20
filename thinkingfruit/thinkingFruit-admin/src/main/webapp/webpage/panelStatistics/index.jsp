@@ -64,7 +64,7 @@ legend {
 							总代理数 <span class="layui-badge layui-bg-blue layuiadmin-badge">总</span>
 						</div>
 						<div class="layui-card-body layuiadmin-card-list">
-							<p class="layuiadmin-big-font memberTotal">9,999,666</p>
+							<p class="layuiadmin-big-font memberTotal">0</p>
 						</div>
 					</div>
 				</div>
@@ -74,7 +74,7 @@ legend {
 							总订单量 <span class="layui-badge layui-bg-blue layuiadmin-badge">总</span>
 						</div>
 						<div class="layui-card-body layuiadmin-card-list">
-							<p class="layuiadmin-big-font orderTotal">33,555</p>
+							<p class="layuiadmin-big-font orderTotal">0</p>
 						</div>
 					</div>
 				</div>
@@ -85,7 +85,7 @@ legend {
 						</div>
 						<div class="layui-card-body layuiadmin-card-list">
 
-							<p class="layuiadmin-big-font transactionTotal">999,666</p>
+							<p class="layuiadmin-big-font transactionTotal">0</p>
 						</div>
 					</div>
 				</div>
@@ -95,7 +95,7 @@ legend {
 							销售总商品 <span class="layui-badge layui-bg-blue layuiadmin-badge">总</span>
 						</div>
 						<div class="layui-card-body layuiadmin-card-list">
-							<p class="layuiadmin-big-font commodityTotal">66,666</p>
+							<p class="layuiadmin-big-font commodityTotal">0</p>
 						</div>
 					</div>
 				</div>
@@ -106,7 +106,7 @@ legend {
 						</div>
 						<div class="layui-card-body layuiadmin-card-list">
 
-							<p class="layuiadmin-big-font newMember">999,666</p>
+							<p class="layuiadmin-big-font newMember">0</p>
 						</div>
 					</div>
 				</div>
@@ -116,7 +116,7 @@ legend {
 							本月销售金额<span class="layui-badge layui-bg-green layuiadmin-badge">月</span>
 						</div>
 						<div class="layui-card-body layuiadmin-card-list">
-							<p class="layuiadmin-big-font transactionTotalMonth">9,999,666</p>
+							<p class="layuiadmin-big-font transactionTotalMonth">0</p>
 						</div>
 					</div>
 				</div>
@@ -126,7 +126,7 @@ legend {
 							昨日销售金额 <span class="layui-badge layui-bg-cyan layuiadmin-badge">日</span>
 						</div>
 						<div class="layui-card-body layuiadmin-card-list">
-							<p class="layuiadmin-big-font transactionTotalDay">33,555</p>
+							<p class="layuiadmin-big-font transactionTotalDay">0</p>
 						</div>
 					</div>
 				</div>
@@ -138,7 +138,7 @@ legend {
 						</div>
 						<div class="layui-card-body layuiadmin-card-list">
 
-							<p class="layuiadmin-big-font cashTotal">66,666</p>
+							<p class="layuiadmin-big-font cashTotal">0</p>
 						</div>
 					</div>
 				</div>
