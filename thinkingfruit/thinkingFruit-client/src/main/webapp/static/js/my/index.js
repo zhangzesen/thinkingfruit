@@ -16,7 +16,7 @@ var my_index_ops = {
 				$('#mobile').html(res.data.mobile);
 				$('#name').html(res.data.loginName);
 				$('#balanceNumber').html(res.data.balance);
-				$('#avatar').attr("src",res.data.avatar);
+				$('#avatar').attr("src",WEB_ROOT_ADMIN+res.data.avatar);
 		})
 		$.ajax({
 			url:WEB_ROOT+'/my/commisionInfo',

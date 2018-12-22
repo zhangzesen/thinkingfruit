@@ -13,7 +13,7 @@ var news_index_ops = {
 				console.log(res.data);
 				for (var i = 0; i < res.data.length; i++) {
 					console.log(res.data[i].name);
-					$(".aui-scrollView").append('<div class="aui-card-list">'+'<div class="aui-card-list-header">'+res.data[i].name+'</div>'+'<div class="aui-card-list-content">'+'<img src="'+res.data[i].coverImagePath+'"'+'value="'+res.data[i].id+'" />'+'</div>'+'<div class="aui-card-list-footer">'+res.data[i].createTime+'</div>'+'</div>')
+					$(".aui-scrollView").append('<div class="aui-card-list">'+'<div class="aui-card-list-header">'+res.data[i].name+'</div>'+'<div class="aui-card-list-content">'+'<img src="'+WEB_ROOT_ADMIN+res.data[i].coverImagePath+'"'+'value="'+res.data[i].id+'" />'+'</div>'+'<div class="aui-card-list-footer">'+res.data[i].createTime+'</div>'+'</div>')
 			    }
 				$(".aui-card-list").bind("click",function(){
 					var id= $(this).find('img').attr("value");

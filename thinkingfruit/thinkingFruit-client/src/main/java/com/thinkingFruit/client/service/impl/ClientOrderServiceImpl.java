@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.thinkingFruit.client.entity.Agent;
 import com.thinkingFruit.client.entity.ClientAddress;
+import com.thinkingFruit.client.entity.ClientDepot;
 import com.thinkingFruit.client.entity.ClientMessage;
 import com.thinkingFruit.client.entity.ClientOrder;
 import com.thinkingFruit.client.mapper.AgentDao;
@@ -43,9 +44,9 @@ public class ClientOrderServiceImpl implements ClientOrderService {
 	 * 查询仓库列表
 	 */
 	@Override
-	public List<ClientOrder> depotList(Long id) {
-		List<ClientOrder> ClientOrderList = clientOrderDao.findList(id);
-		return ClientOrderList;
+	public List<ClientDepot> depotList(Long id) {
+		List<ClientDepot> clientDepot = clientOrderDao.findList(id);
+		return clientDepot;
 	}
 
 	/**

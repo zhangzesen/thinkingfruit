@@ -339,6 +339,7 @@
 		)
 	</insert>
 	
+	<!-- 获取代理下该商品的库存 -->
 	<select id="getDepot" resultType="com.thinkingFruit.admin.entity.Depot">
        select
        	`d`.id as `id`,	
@@ -351,7 +352,7 @@
 		where `d`.memberId = #{orderMemberId}
 		and `d`.commodityId=#{commodityId}
     </select>
-    
+    <!--  修改库存 -->
     <update id="updateDepot">
 		update `t_thinkingfruit_mall_depot`
 	    <set>

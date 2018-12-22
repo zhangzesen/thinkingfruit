@@ -18,6 +18,9 @@
 		}
 	}
 %>
+<%
+	String admin="http://47.96.104.24:8080/thinkingFruit-admin";
+%>
 <input type="hidden" name="basePath" value="<%=basePath%>" />
 <script type="text/javascript"
 	src="<%=basePath%>/static/plugin/jquery/1.12.1/jquery-1.12.1.min.js"></script>
@@ -27,4 +30,4 @@
 	src="<%=basePath%>/static/plugin/layui/layui.js"></script>
 <%-- <script type="text/javascript" src="<%=basePath %>static/js/plugin/index/index.js"></script> --%>
 <script>WEB_ROOT="<%=basePath%>"</script>
-
+<script>WEB_ROOT_ADMIN="<%=admin%>"</script>

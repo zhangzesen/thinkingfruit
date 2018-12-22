@@ -25,13 +25,14 @@ public class UploadUtil {
 	}
 
 	public static String doUpload(FileType fileType, String realPath, String modulePath, MultipartFile file) {
-
 		String fileName = file.getOriginalFilename();
 		if (!StringUtils.isEmpty(fileName)) {
 			String ext = fileName.substring(fileName.indexOf("."));
 			fileName = Calendar.getInstance().getTimeInMillis() + ext;
 
-			File targetFile = new File(realPath + modulePath + fileName);
+			File targetFile = new File(realPath+modulePath + fileName);
+			System.out.println("targetFile");
+			System.out.println(targetFile);
 			if (!targetFile.exists()) {
 				targetFile.mkdirs();
 			}
@@ -75,7 +76,7 @@ public class UploadUtil {
 
 	public static String byteToImg(String realPath, byte[] bytes) {
 		if (bytes != null && bytes.length > 0) {
-			String imagePath = "/res/upload/" + UUID.randomUUID().toString() + ".jpg";
+			String imagePath = "/upload/" + UUID.randomUUID().toString() + ".jpg";
 			FileImageOutputStream imageOutput;
 			try {
 				File file = new File(realPath + imagePath);

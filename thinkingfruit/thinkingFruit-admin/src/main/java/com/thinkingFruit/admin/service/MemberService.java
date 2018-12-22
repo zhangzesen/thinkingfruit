@@ -62,7 +62,15 @@ public interface MemberService {
 	 */
 	PageInfo<Member> upPaginationUpExamine(Map<String, String> queryMap);
 
+	/**
+	 * 取消代理注册
+	 * @param id 代理id
+	 */
 	void cancellation(Long id);
 
+	/**
+	 * 取消代理升级
+	 * @param id 代理id
+	 */
 	void cancelUpgrade(Long id);
 }

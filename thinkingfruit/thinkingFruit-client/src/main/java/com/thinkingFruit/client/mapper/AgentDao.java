@@ -91,7 +91,12 @@ public interface AgentDao {
 	 * @return
 	 */
 	Integer updateAgentAddress(Agent agent);
-
+	
+	/**
+	 * 通过代理级别获取代理分佣比例
+	 * @param memberLevelId 代理级别
+	 * @return 分佣比例
+	 */
 	CommissionRatio getAgentLevel(Long memberLevelId);
 	/**
 	 * 查出头部信息
@@ -100,12 +105,24 @@ public interface AgentDao {
 	 */
 	Agent findInfo(Long id);
 
+	/**
+	 * 添加代理余额
+	 * @param id 代理id
+	 * @param price 增加的余额
+	 * @return
+	 */
 	Integer addBalance(@Param("id")Long id,@Param("price") Double price);
-
+	
+	/**
+	 * 修改销售额
+	 * @param salesVolume 修改的销售额
+	 * @param id 代理id
+	 * @return
+	 */
 	Integer updateSalesVolume(@Param("salesVolume")Double salesVolume,@Param("id")Long id);
     
 	 /**
-     * 改变状态为升级
+	  * 改变状态为升级
      * @param id
      * @return
      */

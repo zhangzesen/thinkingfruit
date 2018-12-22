@@ -55,12 +55,5 @@ public class PasswordAgentHelper {
     }
 
     
-    public static void main(String[] args) {
-    	Agent agent = new Agent();
-    	agent.setLoginName("老黄");
-    	agent.setPswd("123456");
-		new PasswordAgentHelper().encryptPassword(agent);
-	}
-	
 	
 }

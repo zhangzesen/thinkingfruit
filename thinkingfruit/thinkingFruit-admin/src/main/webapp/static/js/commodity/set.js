@@ -30,7 +30,8 @@ var commodity_set_ops = {
 							url : WEB_ROOT+'/upload/image?imageType=2',
 							done : function(res) {
 								// 上传成功返回值，必须为json格式
-								$("input[name='coverImagePath']").attr("value",WEB_ROOT +res.data.imagePath);
+								$("img[name='cover']").removeAttr("style");
+								$("input[name='coverImagePath']").attr("value",res.data.imagePath);
 								$("img[name='cover']").attr('src',WEB_ROOT + res.data.imagePath); 
 							}
 					});
@@ -45,11 +46,12 @@ var commodity_set_ops = {
 					    ,multiple: true
 					    ,before: function(obj){
 					      obj.preview(function(index, file, result){
-					        $('#details').append('<img src="'+ WEB_ROOT +result +'" alt="'+ file.name +'" class="layui-upload-img">')
+					        $('#details').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
 					      });
+					      
 					    },done: function(res){
 					    	console.log(res.data);
-					    	$('#detailsImagth').append("<input value='"+WEB_ROOT +res.data.imagePath+"' readonly='readonly' type='hidden' class='imagePath'/>")
+					    	$('#detailsImagth').append("<input value='"+res.data.imagePath+"' readonly='readonly' type='hidden' class='imagePath'/>")
 					    }
 					  });
 				});
@@ -59,7 +61,9 @@ var commodity_set_ops = {
 				// 重置商品详情图的按钮
 				$("button[name='detailsReset']").click(function() {
 					$("#details img").remove();
+					
 					$(".imagePath").val('');
+					$(".imagePath").remove();
 				});
 				
 			   
@@ -153,10 +157,10 @@ var commodity_set_ops = {
 						$("input[name='coverImagePath']").val(res.data.coverImagePath);
 						
 						//添加展示图片
-						$("img[name='cover']").attr("src", res.data.coverImagePath);
-						
+						$("img[name='cover']").removeAttr("style");
+						$("img[name='cover']").attr("src", WEB_ROOT+res.data.coverImagePath);
 						for (var i = 0; i < res.data.detailsImagePaths.length; i++) {
-							$("#details").append("<img alt='' border='none' name='details' src='"+res.data.detailsImagePaths[i]+"' style='max-width:100px;'>");
+							$("#details").append("<img alt='' border='none' name='details' src='"+WEB_ROOT+res.data.detailsImagePaths[i]+"' style='max-width:100px;'>");
 							$('#detailsImagth').append("<input value='"+res.data.detailsImagePaths[i]+"' readonly='readonly' type='hidden' class='imagePath'/>")
 						}
 						layui.use('form', function() {

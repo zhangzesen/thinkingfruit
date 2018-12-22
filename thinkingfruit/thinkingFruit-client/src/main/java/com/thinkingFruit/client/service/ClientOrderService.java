@@ -3,6 +3,7 @@ package com.thinkingFruit.client.service;
 import java.util.List;
 
 import com.thinkingFruit.client.entity.ClientAddress;
+import com.thinkingFruit.client.entity.ClientDepot;
 import com.thinkingFruit.client.entity.ClientOrder;
 
 /**
@@ -27,7 +28,7 @@ public interface ClientOrderService {
 	 * @param request
 	 * @param List云仓库列表
 	 */
-	List<ClientOrder> depotList(Long id);
+	List<ClientDepot> depotList(Long id);
 	/**
 	 * 	
 	 * @param request

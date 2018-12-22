@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.thinkingFruit.client.entity.ClientAddress;
+import com.thinkingFruit.client.entity.ClientDepot;
 import com.thinkingFruit.client.entity.ClientOrder;
 
 /**
@@ -20,7 +21,7 @@ import com.thinkingFruit.client.entity.ClientOrder;
 public interface ClientOrderDao {
 
 	// 查找云仓库列表
-	List<ClientOrder> findList(Long id);
+	List<ClientDepot> findList(Long id);
 
 	// 查找发货订单列表
 	List<ClientOrder> findOrderList(Long id);

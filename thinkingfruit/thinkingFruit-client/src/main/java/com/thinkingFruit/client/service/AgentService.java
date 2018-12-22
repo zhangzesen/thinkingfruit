@@ -82,8 +82,14 @@ public interface AgentService {
 	 * @param agent 代理信息
 	 */
 	Agent findInfo(Long id);
-
+	
+	/**
+	 * 团队中我的代理信息
+	 * @param id 代理id
+	 * @return 代理
+	 */
 	Agent teamAgent(Long id);
+	
 	/**
 	 * 改变状态为申请升级
 	 * @param agent 

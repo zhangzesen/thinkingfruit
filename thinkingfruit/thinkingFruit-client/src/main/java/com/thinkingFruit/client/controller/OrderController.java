@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.thinkingFruit.client.entity.ClientAddress;
+import com.thinkingFruit.client.entity.ClientDepot;
 import com.thinkingFruit.client.entity.ClientOrder;
 import com.thinkingFruit.client.service.ClientOrderService;
 import com.ysdevelop.common.result.Results;
@@ -41,11 +42,11 @@ public class OrderController {
 	 * */
 	@RequestMapping(value = "/depotList", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public Results<List<ClientOrder>> list(HttpServletRequest request){
+	public Results<List<ClientDepot>> list(HttpServletRequest request){
 		HttpSession session = request.getSession();
 		Long id = (Long)session.getAttribute("agentId");
-		List<ClientOrder> ClientOrderList = clientOrderService.depotList(id);
-		return Results.successData(ClientOrderList);
+		List<ClientDepot> clientDepot = clientOrderService.depotList(id);
+		return Results.successData(clientDepot);
 	}
 	/**
 	 *订单详情

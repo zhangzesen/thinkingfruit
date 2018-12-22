@@ -61,7 +61,7 @@
                     <div class="aui-list-item-inner aui-list-item-arrow">
                         <div class="aui-list-item-text text-white aui-font-size-18" id="name">小脑斧</div>
                         <div class="aui-list-item-text text-white">
-                           <div id="mobile">152****0989</div>
+                           <div id="mobile">暂未设置电话号码</div>
                         </div>
                     </div>
                 </div>

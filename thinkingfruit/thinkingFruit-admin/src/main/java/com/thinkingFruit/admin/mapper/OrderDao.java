@@ -135,8 +135,19 @@ public interface OrderDao {
 	 */
 	Integer addDepot(PurchaseOrder purchaseOrder);
 
+	/**
+	 * 修改库存
+	 * @param depot 库存实体类
+	 * @return
+	 */
 	Integer updateDepot(Depot depot);
 
+	/**
+	 * 获取代理下该商品的库存
+	 * @param orderMemberId 代理id
+	 * @param commodityId 商品id
+	 * @return 库存
+	 */
 	Depot getDepot(@Param("orderMemberId")Long orderMemberId,@Param("commodityId") Long commodityId);
 	
 }

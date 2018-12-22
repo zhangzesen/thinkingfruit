@@ -43,6 +43,12 @@ import com.ysdevelop.common.utils.Constant.FileType;
 public class UploadFileController {
 	Logger logger = Logger.getLogger(this.getClass());
 
+	/**
+	 * 上传图片
+	 * @param requestFile
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "/image", method = RequestMethod.POST, produces = "text/json;charset=UTF-8")
 	@ResponseBody
 	public String uploadImage(MultipartHttpServletRequest requestFile, HttpServletRequest request) {
@@ -77,12 +83,11 @@ public class UploadFileController {
 		if (file != null && file.getSize() > 0) {
 			imagePath = UploadUtil.doUpload(FileType.IMAGE, realPath, modulePath, file);
 		}
-
+		
 		if (imagePath == null) {
 			//上传失败
 			return JSONHelper.bean2json(Result.error(CodeMsg.UPLOAD_FAILURE));
 		}
-
 		//上传成功
 		Map<String, Object> msgMap = new HashMap<>();
 		msgMap.put("imagePath", imagePath);

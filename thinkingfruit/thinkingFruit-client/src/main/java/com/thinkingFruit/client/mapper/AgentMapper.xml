@@ -188,6 +188,7 @@
 		</trim>
 	</update>
 	
+	<!-- 通过代理级别获取代理分佣比例 -->
 	<select id="getAgentLevel" resultType="com.thinkingFruit.client.entity.CommissionRatio">
 		select
 		l.`id` as `id`,
@@ -202,6 +203,7 @@
 		where l.`level` = #{memberLevelId}
 	</select>
 	
+	<!-- 添加代理余额 -->
 	<update id="addBalance">
 		update `t_thinkingfruit_mall_member` as `m`
 	    <set>
@@ -211,6 +213,7 @@
 	    where `m`.id = #{id}
 	</update>
 	
+	<!--修改销售额 -->
 	<update id="updateSalesVolume">
 		update `t_thinkingfruit_mall_member` as `m`
 	    <set>
@@ -219,6 +222,7 @@
 	    </set> 
 	    where `m`.id = #{id}
 	</update>
+	
 	<!--修改状态为升级-->
 	<update id="updateUpLevel">
 		update `t_thinkingfruit_mall_member` as `m`

@@ -92,10 +92,26 @@ public interface MemberDao {
 	 */
 	Integer upExamineUpdate(Long orderMemberId);
 
+	/**
+	 * 订单完成，增加代理余额
+	 * @param inviterId 代理id
+	 * @param balance 增加的余额
+	 * @return
+	 */
 	Integer addBalance(@Param(value="inviterId")Long inviterId, @Param(value="balance")Double balance);
 
+	/**
+	 * 取消代理注册
+	 * @param id 代理id
+	 * @return 
+	 */
 	Integer cancellation(@Param(value="id")Long id);
 
+	/**
+	 * 取消代理升级
+	 * @param id 代理id
+	 * @return
+	 */
 	Integer cancelUpgrade(@Param(value="id")Long id);
 
 	

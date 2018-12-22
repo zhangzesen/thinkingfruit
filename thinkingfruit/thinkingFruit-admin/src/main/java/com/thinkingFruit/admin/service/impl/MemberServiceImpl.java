@@ -53,7 +53,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
     /**
-      * 查询代理信息
+              * 查询代理信息
      */
 	@Transactional(rollbackFor = Exception.class)
 	@Override
@@ -69,6 +69,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void updateById(Member member) {
 		System.out.println("member.getInviterId()"+member.getInviterId());
+		//将查出来的邀请者idset进代理实体类
 		if(member.getInviterId()==Constant.DEFALULT_ZERO_INT) {
 			member.setInviterUpperId(0L);
 		}else {
@@ -144,6 +145,9 @@ public class MemberServiceImpl implements MemberService {
 		return pageInfo;
 	}
 
+	/**
+	 *  取消代理注册
+	 */
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void cancellation(Long id) {
@@ -153,6 +157,9 @@ public class MemberServiceImpl implements MemberService {
 		}
 	}
 
+	/**
+	 * 取消代理升级
+	 */
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void cancelUpgrade(Long id) {

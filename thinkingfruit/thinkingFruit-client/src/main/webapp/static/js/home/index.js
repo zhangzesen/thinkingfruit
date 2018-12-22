@@ -4,6 +4,9 @@ var home_index_ops = {
 		this.initComponent();
 	},
 	initComponent : function() {
+		console.log("zz");
+		console.log(WEB_ROOT);
+		console.log(WEB_ROOT_ADMIN);
 		$.ajax({
 			url:WEB_ROOT + "/home/list",
 			type:'get',
@@ -12,7 +15,7 @@ var home_index_ops = {
 				console.log(res.data);
 				for (var i = 0; i < res.data.length; i++) {
 					console.log(res.data[i].name);
-					$(".aui-content").append('<div class="aui-card-list">'+'<div class="aui-card-list-header">'+res.data[i].name+'</div>'+'<div class="aui-card-list-content">'+'<img src="'+res.data[i].coverImagePath+'"'+'value="'+res.data[i].id+'" />'+'</div>'+'</div>')
+					$(".aui-content").append('<div class="aui-card-list">'+'<div class="aui-card-list-header">'+res.data[i].name+'</div>'+'<div class="aui-card-list-content">'+'<img src="'+WEB_ROOT_ADMIN+res.data[i].coverImagePath+'"'+'value="'+res.data[i].id+'" />'+'</div>'+'</div>')
 			    }
 				$(".aui-card-list").bind("click",function(){
 					var id= $(this).find('img').attr("value");
@@ -30,7 +33,7 @@ var home_index_ops = {
 				for (var i = 0; i < res.data.length; i++) {
 					console.log(res.data[i].coverImagePath);
 					$(".slider-wrapper").append('<div class="slider-item">'
-					+'<a href="<%=basePath%>/home/info?id='+res.data[i].id+'">'+'<img src="'+res.data[i].coverImagePath+'">'+
+					+'<a href="<%=basePath%>/home/info?id='+res.data[i].id+'">'+'<img src="'+WEB_ROOT_ADMIN+res.data[i].coverImagePath+'">'+
 				     "</a>"+"</div>")
 			    }
 			}

@@ -87,6 +87,9 @@ public class ClientCommodityServiceImpl implements ClientCommodityService {
 		return findCommodityById;
 	}
 
+	/**
+	 * 返回商品图片集合
+	 */
 	@Override
 	public List<ClientCommodity> fingImgList() {
 		List<ClientCommodity> imgList=clientCommodityDao.findImgList();

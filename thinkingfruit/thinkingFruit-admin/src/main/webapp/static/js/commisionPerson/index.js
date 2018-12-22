@@ -45,7 +45,14 @@ var commision_person_index_ops = {
 				        //得到数据总量
 				        console.log(count);
 				        
-				        
+				        $("[data-field='name']").children().each(function(){
+						      
+			        		if($(this).text()==null){
+			        			$(this).empty();
+			        			$(this).text("公司"); 
+			        		}
+			        		
+			           });
 				    }
 				});
 				

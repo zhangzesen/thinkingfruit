@@ -39,11 +39,16 @@ public interface MessageService {
 
 	/**
 	 * 添加消息
-	 * @param string
+	 * @param string 消息内容
 	 * @param arg
 	 */
 	void addMessage(String string,Object arg);
 
+	/**
+	 * 批量添加消息
+	 * @param contents 消息内容集合
+	 * @param arg
+	 */
 	void addMessageList(List<String> contents, Object arg);
 
 }

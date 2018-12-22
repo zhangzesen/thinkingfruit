@@ -204,6 +204,9 @@ public class AgentServiceImpl implements AgentService {
 		return agent;
 	}
 	
+	/**
+	 * 团队中我的代理信息
+	 */
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public Agent teamAgent(Long id) {

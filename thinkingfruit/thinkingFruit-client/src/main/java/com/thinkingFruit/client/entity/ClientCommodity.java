@@ -101,7 +101,7 @@ public class ClientCommodity {
 	private Integer status;
 	
 	/**
-	 * 	当前介个
+	 * 	当前价格
 	 */
 	private Double price;
 

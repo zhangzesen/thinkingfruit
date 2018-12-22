@@ -26,10 +26,10 @@ var member_index_ops = {
 				           , {field: 'loginName', title: '登录名', align: 'center',width:'11%'}
 				           , {field: 'name', title: '姓名', align: 'center',width:'11%'}
 				           , {field: 'gender', title: '性别',align: 'center', width:'7%'}
-				           , {field: 'identityNo',title: '身份证',align: 'center',width:'11%'}
+				           , {field: 'identityNo',title: '身份证',align: 'center',width:'13%'}
 				           , {field: 'mobile',title: '手机号',align: 'center',width:'11%'}
 				           , {field: 'memberLevelName',title: '代理级别',align: 'center',width:'11%'}
-				           , {field: 'inviterId',title: '邀请者id',align: 'center',width:'11%'}
+				           , {field: 'inviterId',title: '邀请者id',align: 'center',width:'9%'}
 				           , {fixed: 'right', title: '操作', width:'20%',height: 40, align: 'center', templet: '#barOption'} 
 				       ]]
 //				       , id: 'dataCheck'

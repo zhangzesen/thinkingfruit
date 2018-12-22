@@ -81,19 +81,21 @@ var about_set_ops={
 					dataType:'json',
 					success:function(res){
 						if(res.data!=null){
-							
+							console.log("进入赋值")
+							$("img").removeAttr("style");
 							$("input[name='name']").val(res.data.name);
 							$("input[name='title']").val(res.data.title);
 							$("input[name='coverImagePath']").val(res.data.coverImagePath);
 							$('img').attr('src',WEB_ROOT + res.data.coverImagePath);
 							$("input[name='description']").val(res.data.description);
+							
+							//初始化赋值ueditor
+							var ue = UE.getEditor('editor');
+							ue.ready(function() {//编辑器初始化完成再赋值  
+								ue.setContent(res.data.content);  //赋值给UEditor  
+							}); 
 						}
 						
-						//初始化赋值ueditor
-						var ue = UE.getEditor('editor');
-						ue.ready(function() {//编辑器初始化完成再赋值  
-				            ue.setContent(res.data.content);  //赋值给UEditor  
-				        }); 
 					}
 				})
 //			}
@@ -105,7 +107,8 @@ var about_set_ops={
 				     elem: '#uploadImage',
 				     url : WEB_ROOT+'/upload/image?imageType=6',
 				     done : function(res) {
-					     $("input[name='coverImagePath']").attr("value",WEB_ROOT +res.data.imagePath);
+				    	 $("img").removeAttr("style");
+					     $("input[name='coverImagePath']").attr("value",res.data.imagePath);
 					     $('img').attr('src',WEB_ROOT + res.data.imagePath);
 					     console.log('上传完毕'); // 上传成功返回值，必须为json格式
 				     }

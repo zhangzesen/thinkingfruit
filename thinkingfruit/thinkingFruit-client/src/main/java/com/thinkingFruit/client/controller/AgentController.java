@@ -146,7 +146,11 @@ public class AgentController {
 		List<Agent> agentList = agentService.agentList(id);
 		return Results.successData(agentList);
 	}
-	
+	/**
+	 * 代理信息
+	 * @param request
+	 * @return 在团队中我的代理信息
+	 */
 	@RequestMapping(value = "/teamAgent", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public Results<Agent> teamAgent(HttpServletRequest request){

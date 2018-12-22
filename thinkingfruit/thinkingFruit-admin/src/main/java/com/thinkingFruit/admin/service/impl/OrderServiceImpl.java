@@ -274,6 +274,7 @@ public class OrderServiceImpl implements OrderService{
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void examineUpdate(PurchaseOrder purchaseOrder) {
+		//表明注册订单
 		String isFirst="0";
 		Member memberById = memberDao.memberById(purchaseOrder.getOrderMemberId());
 		memberById.setMemberLevelId(purchaseOrder.getMemberLevel());
@@ -281,11 +282,13 @@ public class OrderServiceImpl implements OrderService{
 		purchaseOrder.setOrderMemberName(memberById.getLoginName());
 		purchaseOrder.setInviterId(memberById.getInviterId());
 		purchaseOrder.setInviterUpperId(memberById.getInviterUpperId());
+		//生成订单号
 		String orderNo=OrderNumberGeneratorUtil.get().toString();
 		System.out.println("orderNo"+orderNo);
 		purchaseOrder.setOrderNo(orderNo);
 		Commodity findCommodityById = commodityDao.findCommodityById(purchaseOrder.getCommodityId());
 		purchaseOrder.setCommodityName(findCommodityById.getName());
+		//通过后台选择的代理级别，给商品价格赋值
 		Double price;
 		switch (purchaseOrder.getMemberLevel().toString()) {
         case "1":
@@ -416,7 +419,9 @@ public class OrderServiceImpl implements OrderService{
 				throw new WebServiceException(CodeMsg.DEPOT_FAIL);
 			}
 		}
+		//修改上级佣金
 		Integer updateCommision=commisionDao.updateInviterIdCommision(commision);
+		//修改上上级佣金
 		Integer update=commisionDao.updateInviterUpperIdCommision(commision);
 		if(updateCommision==Constant.DEFALULT_ZERO_INT||update==Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
@@ -431,16 +436,19 @@ public class OrderServiceImpl implements OrderService{
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void upExamineUpdate(PurchaseOrder purchaseOrder) {
+		//表明升级订单
 		String isFirst="2";
 		Member memberById = memberDao.memberById(purchaseOrder.getOrderMemberId());
 		Member inviterById = memberDao.memberById(memberById.getInviterId());
 		purchaseOrder.setOrderMemberName(memberById.getLoginName());
 		purchaseOrder.setInviterId(memberById.getInviterId());
 		purchaseOrder.setInviterUpperId(memberById.getInviterUpperId());
+		//生成订单号
 		String orderNo=OrderNumberGeneratorUtil.get().toString();
 		purchaseOrder.setOrderNo(orderNo);
 		Commodity findCommodityById = commodityDao.findCommodityById(purchaseOrder.getCommodityId());
 		purchaseOrder.setCommodityName(findCommodityById.getName());
+		//通过不同的代理级别给商品价格赋值
 		Double price;
 		switch (purchaseOrder.getMemberLevel().toString()) {
         case "1":
@@ -504,28 +512,31 @@ public class OrderServiceImpl implements OrderService{
 			System.out.println("zzz"+purchaseOrder.getInviterId());
 			System.out.println(purchaseOrder.getCommodityId());
 			//判断上级库存是否充足
-			Depot depot=orderDao.getDepot(purchaseOrder.getInviterId(),purchaseOrder.getCommodityId());
+			if(inviterId!=Constant.DEFALULT_ZERO_INT) {
+				Depot depot=orderDao.getDepot(purchaseOrder.getInviterId(),purchaseOrder.getCommodityId());
+				System.out.println(depot.getId());
 			
-			if(depot!=null&&depot.getId()!=null) {
-				if(depot.getCount()-purchaseOrder.getCommodityCount()>=0) {
-					depot.setMemberId(inviterId);
-					depot.setCommodityId(purchaseOrder.getCommodityId());
-					depot.setCount(depot.getCount().longValue()-purchaseOrder.getCommodityCount().longValue());
-					System.out.println("zz"+depot.getCount());
-					System.out.println(purchaseOrder.getCommodityCount());
-					System.out.println("count"+depot.getCount());
-					//充足则减少邀请者库存
-					Integer updateDepot=orderDao.updateDepot(depot);
-					if(updateDepot==Constant.DEFALULT_ZERO_INT) {
-						throw new WebServiceException(CodeMsg.EXAMINE_FAIL);
+				if(depot!=null&&depot.getId()!=null) {
+					if(depot.getCount()-purchaseOrder.getCommodityCount()>=0) {
+						depot.setMemberId(inviterId);
+						depot.setCommodityId(purchaseOrder.getCommodityId());
+						depot.setCount(depot.getCount().longValue()-purchaseOrder.getCommodityCount().longValue());
+						System.out.println("zz"+depot.getCount());
+						System.out.println(purchaseOrder.getCommodityCount());
+						System.out.println("count"+depot.getCount());
+						//充足则减少邀请者库存
+						Integer updateDepot=orderDao.updateDepot(depot);
+						if(updateDepot==Constant.DEFALULT_ZERO_INT) {
+							throw new WebServiceException(CodeMsg.EXAMINE_FAIL);
+						}
+					}else {
+						throw new WebServiceException(CodeMsg.INVITER_DEPOT_LOW);
 					}
 				}else {
 					throw new WebServiceException(CodeMsg.INVITER_DEPOT_LOW);
 				}
-			}else {
-				throw new WebServiceException(CodeMsg.INVITER_DEPOT_LOW);
 			}
-			
+			commision.setInviteMoney(0.0);
 		}else if(memberLevelId<inviterLevelId) {
 			purchaseOrder.setInviterId(0L);
 			purchaseOrder.setInviterUpperId(0L);
@@ -536,6 +547,7 @@ public class OrderServiceImpl implements OrderService{
 			if(updataById==Constant.DEFALULT_ZERO_INT) {
 				throw new WebServiceException(CodeMsg.AGENT_TO_COMPANY_FAIL);
 			}
+			commision.setCommisionProportion(0.0);
 			commision.setInviteMoney(commision.getTotalAmount()*commissionRatio.getReverseLevelDiscount());
 			memberDao.addBalance(inviterId,commision.getInviteMoney());
 		}
@@ -571,8 +583,9 @@ public class OrderServiceImpl implements OrderService{
 				
 		}
 		
-		
+		//修改上级佣金
 		Integer updateCommision=commisionDao.updateInviterIdCommision(commision);
+		//修改上上级佣金
 		Integer update=commisionDao.updateInviterUpperIdCommision(commision);
 		if(updateCommision==Constant.DEFALULT_ZERO_INT||update==Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.PURCHASE_FAIL);

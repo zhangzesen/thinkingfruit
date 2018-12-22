@@ -14,6 +14,9 @@
 		}
 	}
 %>
+<%
+	String admin="http://47.96.104.24:8080/thinkingFruit-admin";
+%>
 <meta charset="UTF-8">
 <title>揽菁灵管理后台</title>
 <meta name="renderer" content="webkit">

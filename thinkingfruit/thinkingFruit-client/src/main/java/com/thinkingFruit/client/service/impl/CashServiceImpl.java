@@ -16,6 +16,15 @@ import com.thinkingFruit.client.service.ClientMessageService;
 import com.ysdevelop.common.exception.WebServiceException;
 import com.ysdevelop.common.result.CodeMsg;
 import com.ysdevelop.common.utils.Constant;
+/**
+ * @author zhangzesen
+ *
+ * @date 2018年12月22日
+ *
+ * @package com.thinkingFruit.client.service.impl
+ *
+ * @description 提现
+ */
 @Service
 public class CashServiceImpl implements CashService {
 	

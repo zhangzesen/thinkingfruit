@@ -49,7 +49,7 @@ color:black;
 											autocomplete="off" style="opacity: 0;">
 									</div>
 									<div class="layui-input-inline input-custom-width">
-										<img alt=" " border="none" name="cover"
+										<img alt=" " border="none" name="cover" style="display: none;"
 											src="" width="70px"
 											height="40px">
 									</div>

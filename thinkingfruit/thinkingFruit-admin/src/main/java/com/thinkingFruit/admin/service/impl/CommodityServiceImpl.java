@@ -80,18 +80,17 @@ public class CommodityServiceImpl implements CommodityService {
 			throw new WebServiceException(CodeMsg.COMMODITYNAME_ERROR);
 		}
 		Long id = commodity.getId();
-		System.out.println("====================="+id);
 		//获取从ajax传过来的图片路径，从json数据转为list
 		commodity.setDetailsImagePaths(JSON.parseArray(commodity.getDetailsImagePath(), String.class));
 
 		List<String> detailsImagePath = commodity.getDetailsImagePaths();
 		List<Commodity> commoditys=new ArrayList<>();
-		System.out.println("zz:"+detailsImagePath.size());
-		
+		//将图片set进商品实体类
 		for(int i=0;i<detailsImagePath.size();i++) {
-				commodity.setDetailsImagePath(detailsImagePath.get(i));
-				commodity.setId(id);
-				commoditys.add(commodity);
+				Commodity comm=new Commodity();
+				comm.setDetailsImagePath(detailsImagePath.get(i));
+				comm.setId(id);
+				commoditys.add(comm);
 		}
 		//添加商品详情图
 		Integer addCommoditydDetailsImage = commodityDao.addCommodityDetailsImage(commoditys);

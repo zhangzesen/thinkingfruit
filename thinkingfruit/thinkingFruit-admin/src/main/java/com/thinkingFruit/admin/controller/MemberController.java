@@ -120,14 +120,17 @@ public class MemberController {
 	}
 	
 	/**
-	 * 跳转代理审核页面
+	 * 跳转代理注册审核页面
 	 * @return
 	 */
 	@RequestMapping(value = "/examineSet", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
 	public String examineSet() {
 		return "member/examineSet";
 	}
-	
+	/**
+	 * 跳转代理升级审核页面
+	 * @return
+	 */
 	@RequestMapping(value = "/upExamineSet", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
 	public String upExamineSet() {
 		return "member/upExamineSet";
@@ -178,7 +181,11 @@ public class MemberController {
 		memberService.deleteById(id);
 		return Result.success("代理注销成功");
 	}
-	
+	/**
+	 * 取消代理注册
+	 * @param id 代理id
+	 * @return
+	 */
 	@RequestMapping(value = "/cancellation", method = RequestMethod.PUT, produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public Results<String> cancellation(Long id) {
@@ -186,6 +193,11 @@ public class MemberController {
 		return Results.success("取消代理注册成功");
 	}
 	
+	/**
+	 * 取消代理升级
+	 * @param id 代理id
+	 * @return
+	 */
 	@RequestMapping(value = "/cancelUpgrade", method = RequestMethod.PUT, produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public Results<String> cancelUpgrade(Long id) {
