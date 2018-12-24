@@ -28,6 +28,7 @@
  #home{
    height:41px;
    margin-bottom:1px;}
+   img{height:240px;}
 </style>
 </head>
 <body>
@@ -38,7 +39,7 @@
 			<div class="aui-title">爱因思果</div>
 		</header>
 		<section class="aui-scrollView">
-			<div class="m-slider" data-ydui-slider>
+			<div class="m-slider" data-ydui-slider style="margin-bottom:10px;">
 				<div class="slider-wrapper">
 
 				</div>
@@ -65,12 +66,13 @@
 
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/themes/jquery.min.js"></script>
-	<script type="text/javascript"
-		src="<%=basePath%>/static/plugin/themes/slider.js"></script>
+	
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/themes/tab.js"></script>
 	<script type="text/javascript"
 		src="<%=basePath%>/static/js/home/index.js"></script>
+		<script type="text/javascript"
+		src="<%=basePath%>/static/plugin/themes/slider.js"></script>
 	<script>WEB_ROOT="<%=basePath%>"</script>
 	<script>WEB_ROOT_ADMIN="<%=admin%>"</script>
 </body>
