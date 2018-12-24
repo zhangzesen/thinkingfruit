@@ -18,5 +18,5 @@ public class MessageKey extends BasePrefix {
 		super(expireSeconds, prefix);
 	}
 
-	public static MessageKey messageKey = new MessageKey(0, "Cash");
+	public static MessageKey messageKey = new MessageKey(0, "Message");
 }

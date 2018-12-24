@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.thinkingFruit.client.entity.Agent;
 import com.thinkingFruit.client.entity.ClientAddress;
 import com.thinkingFruit.client.entity.ClientDepot;
-import com.thinkingFruit.client.entity.ClientMessage;
 import com.thinkingFruit.client.entity.ClientOrder;
 import com.thinkingFruit.client.mapper.AgentDao;
 import com.thinkingFruit.client.mapper.ClientOrderDao;
@@ -88,7 +87,7 @@ public class ClientOrderServiceImpl implements ClientOrderService {
 		
 		Agent agentById = agentDao.getAgentById(memberId);
 		String content="代理:"+agentById.getLoginName()+"已申请提货";
-		messageService.addMessage(content,new ClientMessage());
+		messageService.addMessage("Message",content);
 	}
 
 }

@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.thinkingFruit.client.entity.Agent;
 import com.thinkingFruit.client.entity.ClientCommision;
 import com.thinkingFruit.client.entity.ClientDepot;
-import com.thinkingFruit.client.entity.ClientMessage;
 import com.thinkingFruit.client.entity.ClientPurchaseOrder;
 import com.thinkingFruit.client.entity.CommissionRatio;
 import com.thinkingFruit.client.mapper.AgentDao;
@@ -90,7 +89,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 				
 		if(agentById.getInviterId()==Constant.DEFALULT_ZERO_INT) {
 			String content="直属代理:"+agentById.getLoginName()+"已申请向公司买货";
-			messageService.addMessage(content,new ClientMessage());
+			messageService.addMessage("Message",content);
 		}
 	}
 	

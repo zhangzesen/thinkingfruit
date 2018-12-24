@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.thinkingFruit.client.entity.Agent;
-import com.thinkingFruit.client.entity.ClientMessage;
 import com.thinkingFruit.client.helper.PasswordAgentHelper;
 import com.thinkingFruit.client.mapper.AgentDao;
 import com.thinkingFruit.client.service.AgentService;
@@ -66,7 +65,7 @@ public class AgentServiceImpl implements AgentService {
 		}
 		
 		String content="代理:"+agent.getLoginName()+"已申请注册";
-		messageService.addMessage(content,new ClientMessage());
+		messageService.addMessage("Message",content);
 	}
 	
 	/**
@@ -232,6 +231,6 @@ public class AgentServiceImpl implements AgentService {
 		}	
 		Agent agentById = agentDao.getAgentById(id);
 		String content="代理:"+agentById.getLoginName()+"已申请升级";
-		messageService.addMessage(content,new ClientMessage());
+		messageService.addMessage("Message",content);
 	}
 }

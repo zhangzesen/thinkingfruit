@@ -96,6 +96,7 @@ public class MessageController {
 	public String redisPolling(){
 		System.out.println("redis轮询");
 		boolean isExists = redisService.exists(MessageKey.messageKey, "Message");
+		System.out.println("isExists"+isExists);
 		redisService.delete(MessageKey.messageKey, "Message");
 		return JSONHelper.bean2json(Result.successData(isExists));
 	}

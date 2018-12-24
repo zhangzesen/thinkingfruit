@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.thinkingFruit.admin.entity.Message;
 import com.thinkingFruit.admin.entity.Order;
 import com.thinkingFruit.admin.service.MessageService;
 import com.thinkingFruit.admin.service.OrderService;
@@ -53,7 +52,7 @@ public class OrderTaskImpl implements OrderTask{
         	}
         	if(orders.size() >= Constant.DEFALULT_ONE){
         		orderService.updateBatchByOrders(orders);
-        		messageService.addMessageList(contents,new Message());
+        		messageService.addMessageList(contents,orders);
         	}
         }
 	}

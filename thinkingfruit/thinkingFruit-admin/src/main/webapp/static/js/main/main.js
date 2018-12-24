@@ -269,6 +269,7 @@ var user_main_ops = {
 				dataType:'json',
 				success:function(res){
 					console.log(res);
+					console.log("消息");
 					if (res.data == true) {
 						common_ops.alert('您有新的未读消息',null);
 						$("a[name='loginName']").append("<span class='layui-badge-dot'></span>");

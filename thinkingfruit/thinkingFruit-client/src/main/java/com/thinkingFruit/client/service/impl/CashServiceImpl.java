@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.thinkingFruit.client.entity.Agent;
 import com.thinkingFruit.client.entity.Cash;
-import com.thinkingFruit.client.entity.ClientMessage;
 import com.thinkingFruit.client.mapper.AgentDao;
 import com.thinkingFruit.client.mapper.CashDao;
 import com.thinkingFruit.client.service.CashService;
@@ -49,7 +48,7 @@ public class CashServiceImpl implements CashService {
 			throw new WebServiceException(CodeMsg.CASH_FAILURE);
 		}
 		String content="代理:"+agentById.getLoginName()+"已申请提现";
-		messageService.addMessage(content,new ClientMessage());
+		messageService.addMessage("Message",content);
 	}
 	
 	/**
