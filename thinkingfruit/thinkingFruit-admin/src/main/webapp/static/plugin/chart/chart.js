@@ -10,16 +10,31 @@ var echarts_ops = {
 	line : function(heading, divId, amountName, xAxis, counts) {
 		var dayChart = echarts.init(document.getElementById(divId));
 		// 指定图表的配置项和数据
+		console.log("调用唱歌还能够拱")
 		var option = {
 			title : {
 				text : heading
 			},
+            axisLabel: {
+                interval:0,
+                rotate:40
+             },
+             grid: {
+            	 left: '10%',
+            	 bottom:'35%'
+            	 },
 			tooltip : {},
 			legend : {
 				data : [ amountName ]
 			},
 			xAxis : {
-				data : xAxis
+				data : xAxis,
+		            axisLabel: {
+		                interval: 0,//横轴信息全部显示
+		                rotate: 38,//角度倾斜显示
+		                textStyle: {
+		                    color: 'black',
+		                }}
 			},
 			yAxis : {},
 			toolbox : {

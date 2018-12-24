@@ -12,7 +12,7 @@
 			<div class="layui-tab-item layui-show">
 				<div class="layui-tab layui-tab-card">
 					<ul class="layui-tab-title">
-						<li class="layui-this">添加资讯</li>
+						<li class="layui-this">添加公司信息</li>
 						
 					</ul>
 					<div class="layui-tab-content">
@@ -22,19 +22,19 @@
 								<input name="id" value="" hidden="hidden">
 								
 								<div class="layui-form-item">
-									<label class="layui-form-label">资讯名</label>
+									<label class="layui-form-label">公司名</label>
 									<div class="layui-input-inline input-custom-width">
 										<input type="text" name="name" value="" required="true" diyCheck="资讯名不能为空"
-											autocomplete="off" placeholder="请输入咨询名"
+											autocomplete="off" placeholder="请输入公司名"
 											class="layui-input">
 									</div>
 								</div>
 								<div class="layui-form-item">
-									<label class="layui-form-label">资讯标题</label>
+									<label class="layui-form-label">标题</label>
 									<div class="layui-input-inline input-custom-width">
 										<input type="text" name="title" value=""
 											autocomplete="off" required="true" diyCheck="标题不能为空"
-											placeholder="请输入咨询标题" class="layui-input">
+											placeholder="请输入标题" class="layui-input">
 									</div>
 								</div>
 								<div class="layui-form-item">
@@ -67,15 +67,15 @@
 <!-- 								</div> -->
 								
 								<div class="layui-form-item">
-									<label class="layui-form-label">资讯描述</label>
+									<label class="layui-form-label">公司概述</label>
 									<div class="layui-input-inline input-custom-width">
 										<input type="text" name="description"
-											value="" required="true" diyCheck="资讯描述不能为空"
-											autocomplete="off" placeholder="请输入咨询描述" class="layui-input">
+											value="" required="true" diyCheck="公司概述不能为空"
+											autocomplete="off" placeholder="请输入公司概述" class="layui-input">
 									</div>
 								</div>
 								<div class="layui-form-item">
-									<label class="layui-form-label">资讯内容</label>
+									<label class="layui-form-label">具体内容</label>
 									<form class="layui-form">
 										<div class="layui-form-item">
 											<script id="editor" name="content" type="text/plain"

@@ -106,7 +106,7 @@
 					       </a>
 						<dl class="layui-nav-child">
 							<dd class="">
-								<a href="<%=basePath%>/order" target="main">公司发货订单</a>
+								<a href="<%=basePath%>/order" target="main">公司总仓发货订单</a>
 							</dd>
 							<dd class="">
 								<a href="<%=basePath%>/purchase" target="main">代理交易订单</a>
@@ -162,7 +162,7 @@
 						</dl>
 					</li>
 					</shiro:hasPermission>
-<shiro:hasPermission name="user:manager">
+<shiro:hasPermission name="site:manager">
 					<li name="left_mall" class="layui-nav-item edging">
 					<a name="left_a" href="javascript:;" target="main"> <i
 							class="layui-icon">&#xe614;</i><cite>设置</cite>
@@ -178,10 +178,10 @@
 						</dl>
 					</li>
 					</shiro:hasPermission>
-					<shiro:hasPermission name="user:manager">
+					<shiro:hasPermission name="cash:manager">
 					<li name="left_mall" class="layui-nav-item edging"><a
 						name="left_a" href="<%=basePath%>/cash" target="main"> <i
-							class="layui-icon">&#xe629;</i> <cite>提取</cite>
+							class="layui-icon">&#xe629;</i> <cite>提现管理</cite>
 					</a></li>
 </shiro:hasPermission>
 				</ul>
@@ -241,7 +241,7 @@
 		<div class="layui-footer footer">
 			<div class="layui-main">
 				<p>
-					2018 © <a href="<%=basePath%>/main">爱因思果后台管理系统</a>
+					2019 © <a href="<%=basePath%>/main">爱因思果后台管理系统</a>
 				</p>
 			</div>
 		</div>

@@ -89,22 +89,22 @@ var user_main_ops = {
 						});
 					});
 
-			// 左边菜单点击
-//			$('.left_menu_ul .layui-nav-item').click(function() {
-//				if ($(this).hasClass('layui-nav-title')) {
-//					$(this).removeClass('layui-this');
-//					return false;
-//				}
-//				$('.left_menu_ul .layui-nav-item').removeClass('layui-this');
-//				$('.layui-nav .layui-nav-child dd').removeClass('layui-this');
-//				$(this).addClass('layui-this');
-//				// 出现遮罩层
-//				$("#iframe-mask").show();
-//				// 遮罩层消失
-//				$("#admin-iframe").load(function() {
-//					$("#iframe-mask").fadeOut(100);
-//				});
-//			});
+			 //左边菜单点击
+			$('.left_menu_ul .layui-nav-item').click(function() {
+				if ($(this).hasClass('layui-nav-title')) {
+					$(this).removeClass('layui-this');
+					return false;
+				}
+				$('.left_menu_ul .layui-nav-item').removeClass('layui-this');
+				$('.layui-nav .layui-nav-child dd').removeClass('layui-this');
+				$(this).addClass('layui-this');
+				// 出现遮罩层
+				$("#iframe-mask").show();
+				// 遮罩层消失
+				$("#admin-iframe").load(function() {
+					$("#iframe-mask").fadeOut(100);
+				});
+			});
 
 			// 用户菜单点击
 			$('.layui-nav .layui-nav-child dd').click(

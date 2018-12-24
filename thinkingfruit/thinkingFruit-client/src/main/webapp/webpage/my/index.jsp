@@ -180,5 +180,6 @@
 		src="<%=basePath%>/static/plugin/layui/layui.all.js"></script>
 		<script type="text/javascript"
 		src="<%=basePath%>/static/js/common/common.js"></script>
+		<script>WEB_ROOT_ADMIN="<%=admin%>"</script>
 </body>
 </html>
