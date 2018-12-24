@@ -15,11 +15,12 @@ var home_index_ops = {
 			dataType:'json',
 			success:function(res){
 				console.log(res.data);
-				$(".aui-content").append('<div class="aui-card-list">'+'<div class="aui-card-list-header" id="name">'+res.data.name+'</div>'+'<div class="aui-card-list-content">'+'<img src="'+res.data.coverImagePath+'"'+'value="'+res.data.id+'" />'+'</div>'+'</div>')
+				$(".goods").append('<div class="aui-card-list-header">'+res.data.name+'</div>'+'<div class="aui-card-list-content">'
+				+'<img src="'+res.data.coverImagePath+'"'+'value="'+res.data.id+'"/>'+"</div>")
 				$(".aui-card-list-footer #price").text(res.data.price);
 				for (var i = 0; i < res.data.detailsImagePaths.length; i++) {
 					console.log("detailsImagePaths==="+res.data.detailsImagePaths[i]);
-					$(".aui-page-box").append('<p><img src="'+WEB_ROOT_ADMIN+res.data.detailsImagePaths[i]+'/>"</p>');
+					$(".descriptionImg").append('<p><img src="'+WEB_ROOT_ADMIN+res.data.detailsImagePaths[i]+'/>"</p>');
 				}
 				$(".aui-page-box #description").text(res.data.description);
 				//绑定监听事件

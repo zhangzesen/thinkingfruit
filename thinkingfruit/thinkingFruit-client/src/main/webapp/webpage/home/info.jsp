@@ -55,11 +55,9 @@ outline:none;
 		<section class="aui-scrollView">
 			<section class="aui-content">
 			<div class="aui-card-list">
-				<div class="aui-card-list-header">商品1</div>
-				<div class="aui-card-list-content">
-					<img src="<%=basePath%>/static/images/banner/shili1.jpg" />
-				</div>
-			
+			<div class="goods">
+				
+			</div>
 			<div class="aui-card-list-footer">
 				<div><h5>价格：<i>¥</i><i id="price">0</i></h5><div>
 				<div><h5>数量：<input placeholder="输入数量"id="count"></input></h5><div>
@@ -75,15 +73,7 @@ outline:none;
                     <h2>商品详情</h2>
                 </div>
                 <div class="aui-page-box">
-                    <p>
-                        <img src="<%=basePath%>/static/images/banner/shili9.jpg" alt="">
-                    </p>
-                    <p>
-                        <img src="<%=basePath%>/static/images/banner/shili6.jpg" alt="">
-                    </p>
-                    <p>
-                        <img src="<%=basePath%>/static/images/banner/shili4.jpg" alt="">
-                    </p>
+                <div class="descriptionImg"></div>
                      <p id="description">致力于打造更好的产品为更好的你</p>
                 </div>
 		</section>
