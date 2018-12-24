@@ -86,11 +86,12 @@ public interface MemberDao {
 	 */
 	List<Member> PaginationUpExamine(@Param(value="queryMap")Map<String, String> queryMap);
 	/**
-	 * 获取所有升级待审核的代理列表
-	 * @param queryMap
-	 * @return 升级待审核的代理集合
+	 * 修改待审核的代理通过
+	 * @param orderMemberId 待审核的代理id
+	 * @param memberLevel 代理等级
+	 * @return
 	 */
-	Integer upExamineUpdate(Long orderMemberId);
+	Integer upExamineUpdate(@Param(value="id")Long orderMemberId,@Param(value="memberLevelId")Long memberLevelId);
 
 	/**
 	 * 订单完成，增加代理余额

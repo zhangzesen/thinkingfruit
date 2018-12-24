@@ -356,7 +356,6 @@ public class OrderServiceImpl implements OrderService{
 			memberDao.addBalance(inviterUpperId, commision.getCommision());
 			if(inviterId!=Constant.DEFALULT_ZERO_INT) {
 				Depot depot=orderDao.getDepot(purchaseOrder.getInviterId(),purchaseOrder.getCommodityId());
-				System.out.println(depot.getId());
 				
 				//判断上级库存是否充足
 				if(depot!=null&&depot.getId()!=null) {
@@ -561,7 +560,7 @@ public class OrderServiceImpl implements OrderService{
 		//生成升级交易订单
 		Integer addFirstPurchase=orderDao.addFirstPurchase(purchaseOrder);
 		
-		Integer examineUpdate=memberDao.upExamineUpdate(purchaseOrder.getOrderMemberId());
+		Integer examineUpdate=memberDao.upExamineUpdate(purchaseOrder.getOrderMemberId(),purchaseOrder.getMemberLevel());
 		if (addFirstPurchase == Constant.DEFALULT_ZERO_INT||examineUpdate== Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.EXAMINE_FAIL);
 		}

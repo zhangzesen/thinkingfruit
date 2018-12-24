@@ -141,6 +141,7 @@
     update `t_thinkingfruit_mall_member`
     <set>
         `upStatus` = 0,
+        `memberLevelId`=#{memberLevelId},
         `updateTime` = now()
     </set>
     where `id` = #{id}
