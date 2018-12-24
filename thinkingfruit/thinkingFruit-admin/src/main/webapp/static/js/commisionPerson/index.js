@@ -23,12 +23,12 @@ var commision_person_index_ops = {
 				var tableIns = table.render({
 				    elem: '#dateTable'                  //指定原始表格元素选择器（推荐id选择器）  //容器高度
 				    , cols: [[                          //标题栏
-                        {field: 'id', title: '编号',align: 'center', width:'10%'}
-                        , {field: 'name', title: '受益人',align: 'center', width:'15%'}
-				        , {field: 'personTotalInviteMoney', title: '总邀请金', align: 'center', width:'15%'}
-				        , {field: 'personTotalCommodity', title: '总商品销售额',align: 'center', width:'15%'}
-				        , {field: 'personTotalCommision', title: '总佣金',align: 'center', width:'15%'}
-				        , {field: 'personTotal', title: '总金额',align: 'center', width:'15%'}
+                        {field: 'id', title: '编号',align: 'center', width:'17%'}
+                        , {field: 'name', title: '受益人',align: 'center', width:'17%'}
+				        , {field: 'personTotalInviteMoney', title: '总邀请金', align: 'center', width:'17%'}
+				        , {field: 'personTotalCommodity', title: '总商品销售额',align: 'center', width:'17%'}
+				        , {field: 'personTotalCommision', title: '总佣金',align: 'center', width:'17%'}
+				        , {field: 'personTotal', title: '总金额',align: 'center', width:'17%'}
 				    ]]
 				    , url: WEB_ROOT + "/commision/person/pagination"
 				    , method: 'get'

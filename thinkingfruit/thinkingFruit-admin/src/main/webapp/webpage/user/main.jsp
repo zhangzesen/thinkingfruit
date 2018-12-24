@@ -74,8 +74,8 @@
 						target="main"> <i class="layui-icon">&#xe611;</i> <cite>消息</cite>
 					</a></li>
                     </shiro:hasPermission>
-                    <li name="left_message" class="layui-nav-item message edging"><a
-						name="left_a" id="left_information" href="<%=basePath%>/help"
+                    <li name="left_message" class="layui-nav-item edging"><a
+						name="left_a" href="<%=basePath%>/help"
 						target="main"> <i class="layui-icon">&#xe60c;</i> <cite>帮助</cite>
 					</a></li>
 
