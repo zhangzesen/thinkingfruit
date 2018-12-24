@@ -47,7 +47,7 @@ var commision_person_index_ops = {
 				        
 				        $("[data-field='name']").children().each(function(){
 						      
-			        		if($(this).text()==null){
+			        		if($(this).text()==''){
 			        			$(this).empty();
 			        			$(this).text("公司"); 
 			        		}

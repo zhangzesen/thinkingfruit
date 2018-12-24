@@ -18,7 +18,7 @@ var about_set_ops={
 				
 				var coverImagePathTarget = $("input[name='coverImagePath']");
 				var coverImagePath = coverImagePathTarget.val();
-				
+				console.log("coverImagePath"+coverImagePath);
 				var descriptionTarget = $("input[name='description']");
 				var description = descriptionTarget.val();
 				
@@ -83,6 +83,7 @@ var about_set_ops={
 						if(res.data!=null){
 							console.log("进入赋值")
 							$("img").removeAttr("style");
+							$("input[name='id']").val(res.data.id);
 							$("input[name='name']").val(res.data.name);
 							$("input[name='title']").val(res.data.title);
 							$("input[name='coverImagePath']").val(res.data.coverImagePath);
@@ -108,9 +109,11 @@ var about_set_ops={
 				     url : WEB_ROOT+'/upload/image?imageType=6',
 				     done : function(res) {
 				    	 $("img").removeAttr("style");
-					     $("input[name='coverImagePath']").attr("value",res.data.imagePath);
+					     $("input[name='coverImagePath']").val(res.data.imagePath);
 					     $('img').attr('src',WEB_ROOT + res.data.imagePath);
 					     console.log('上传完毕'); // 上传成功返回值，必须为json格式
+					     console.log(res.data.imagePath);
+					     console.log($("input[name='coverImagePath']").val());
 				     }
 			      });
 				  

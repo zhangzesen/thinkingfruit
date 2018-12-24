@@ -103,7 +103,7 @@ var news_set_ops={
 				     url : WEB_ROOT+'/upload/image?imageType=6',
 				     done : function(res) {
 				    	 $("img").removeAttr("style");
-					     $("input[name='coverImagePath']").attr("value",res.data.imagePath);
+					     $("input[name='coverImagePath']").val(res.data.imagePath);
 					     $('img').attr('src',WEB_ROOT +res.data.imagePath);
 					     console.log('上传完毕'); // 上传成功返回值，必须为json格式
 				     }

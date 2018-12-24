@@ -73,7 +73,6 @@ public class NewsServiceImpl implements NewsService {
 //修改关于
 	@Override
 	public void editAbout(News news) {
-		System.out.println("111111111111111"+news.getName());
 		newsDao.editAbout(news);
 	}
 //添加关于
