@@ -25,7 +25,7 @@ import com.ysdevelop.common.utils.OrderNumberGeneratorUtil;
  *
  * @package com.thinkingFruit.client.service.impl
  *
- * @description 交易订单
+ * @description 仓库订单
  */
 @Service
 public class ClientOrderServiceImpl implements ClientOrderService {
@@ -87,7 +87,7 @@ public class ClientOrderServiceImpl implements ClientOrderService {
 		
 		Agent agentById = agentDao.getAgentById(memberId);
 		String content="代理:"+agentById.getLoginName()+"已申请提货";
-		messageService.addMessage("Message",content);
+		messageService.addMessage(content);
 	}
 
 }

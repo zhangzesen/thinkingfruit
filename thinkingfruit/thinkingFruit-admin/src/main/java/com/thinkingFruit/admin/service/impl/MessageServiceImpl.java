@@ -74,15 +74,15 @@ public class MessageServiceImpl implements MessageService{
 	 * 添加消息
 	 */
 	@Override
-	public void addMessage(String content,Object arg) {
+	public void addMessage(String content) {
 		messageDao.addMessage(content);
-		redisService.set(MessageKey.messageKey, "Message", arg);
+		redisService.set(MessageKey.messageKey, "Message", content);
 	}
 
 	@Override
-	public void addMessageList(List<String> contents,Object arg) {
+	public void addMessageList(List<String> contents) {
 		messageDao.addMessageList(contents);
-		redisService.set(MessageKey.messageKey, "Message", arg);
+		redisService.set(MessageKey.messageKey, "Message", contents);
 	}
 
 

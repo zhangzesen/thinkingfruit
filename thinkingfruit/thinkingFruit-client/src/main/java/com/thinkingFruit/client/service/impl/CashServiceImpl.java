@@ -48,7 +48,7 @@ public class CashServiceImpl implements CashService {
 			throw new WebServiceException(CodeMsg.CASH_FAILURE);
 		}
 		String content="代理:"+agentById.getLoginName()+"已申请提现";
-		messageService.addMessage("Message",content);
+		messageService.addMessage(content);
 	}
 	
 	/**

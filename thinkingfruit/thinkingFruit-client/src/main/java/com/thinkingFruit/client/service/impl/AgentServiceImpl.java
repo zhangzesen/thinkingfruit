@@ -65,7 +65,7 @@ public class AgentServiceImpl implements AgentService {
 		}
 		
 		String content="代理:"+agent.getLoginName()+"已申请注册";
-		messageService.addMessage("Message",content);
+		messageService.addMessage(content);
 	}
 	
 	/**
@@ -231,6 +231,6 @@ public class AgentServiceImpl implements AgentService {
 		}	
 		Agent agentById = agentDao.getAgentById(id);
 		String content="代理:"+agentById.getLoginName()+"已申请升级";
-		messageService.addMessage("Message",content);
+		messageService.addMessage(content);
 	}
 }

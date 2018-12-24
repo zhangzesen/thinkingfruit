@@ -89,7 +89,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 				
 		if(agentById.getInviterId()==Constant.DEFALULT_ZERO_INT) {
 			String content="直属代理:"+agentById.getLoginName()+"已申请向公司买货";
-			messageService.addMessage("Message",content);
+			messageService.addMessage(content);
 		}
 	}
 	

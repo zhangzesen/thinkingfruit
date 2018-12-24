@@ -52,7 +52,7 @@ public class OrderTaskImpl implements OrderTask{
         	}
         	if(orders.size() >= Constant.DEFALULT_ONE){
         		orderService.updateBatchByOrders(orders);
-        		messageService.addMessageList(contents,orders);
+        		messageService.addMessageList(contents);
         	}
         }
 	}
