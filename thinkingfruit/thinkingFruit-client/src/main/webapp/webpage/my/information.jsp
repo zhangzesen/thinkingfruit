@@ -189,6 +189,7 @@ img{
 	<script type="text/javascript"
 		src="<%=basePath%>/static/js/my/information.js"></script>
 	<script>WEB_ROOT="<%=basePath%>"</script>
+	<script>WEB_ROOT_ADMIN="<%=admin%>"</script>
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/layui/layui.all.js"></script>
 	<script type="text/javascript"

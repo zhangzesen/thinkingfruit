@@ -152,5 +152,6 @@ float:none;
 		src="<%=basePath%>/static/js/common/common.js"></script>
 	<script>WEB_ROOT="<%=basePath%>"
 	</script>
+	<script>WEB_ROOT_ADMIN="<%=admin%>"</script>
 </body>
 </html>

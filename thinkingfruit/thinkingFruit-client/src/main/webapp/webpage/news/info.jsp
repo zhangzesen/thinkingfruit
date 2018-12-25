@@ -52,5 +52,6 @@
 		<script type="text/javascript"
 		src="<%=basePath%>/static/js/news/info.js"></script>
 <script>WEB_ROOT="<%=basePath%>"</script>
+<script>WEB_ROOT_ADMIN="<%=admin%>"</script>
 </body>
 </html>

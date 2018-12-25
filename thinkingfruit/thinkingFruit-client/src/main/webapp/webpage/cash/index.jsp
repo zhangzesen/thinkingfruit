@@ -122,5 +122,6 @@ float:none;
 		src="<%=basePath%>/static/plugin/layui/layui.all.js"></script>
 	<script>WEB_ROOT="<%=basePath%>"
 	</script>
+	<script>WEB_ROOT_ADMIN="<%=admin%>"</script>
 </body>
 </html>

@@ -84,5 +84,6 @@ input{
 		src="<%=basePath%>/static/js/commision/index.js"></script>
 	<script>WEB_ROOT="<%=basePath%>"
 	</script>
+	<script>WEB_ROOT_ADMIN="<%=admin%>"</script>
 </body>
 </html>

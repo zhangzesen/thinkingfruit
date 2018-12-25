@@ -120,5 +120,6 @@ input{
 		src="<%=basePath%>/static/js/cash/cashList.js"></script>
 	<script>WEB_ROOT="<%=basePath%>"
 	</script>
+	<script>WEB_ROOT_ADMIN="<%=admin%>"</script>
 </body>
 </html>

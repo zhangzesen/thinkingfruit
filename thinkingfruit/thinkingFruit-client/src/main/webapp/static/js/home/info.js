@@ -20,7 +20,7 @@ var home_index_ops = {
 				$(".aui-card-list-footer #price").text(res.data.price);
 				for (var i = 0; i < res.data.detailsImagePaths.length; i++) {
 					console.log("detailsImagePaths==="+res.data.detailsImagePaths[i]);
-					$(".descriptionImg").append('<p><img src="'+WEB_ROOT_ADMIN+res.data.detailsImagePaths[i]+'/>"</p>');
+					$(".descriptionImg").append('<p><img src="'+WEB_ROOT_ADMIN+'/'+res.data.detailsImagePaths[i]+'/>"</p>');
 				}
 				$(".aui-page-box #description").text(res.data.description);
 				//绑定监听事件

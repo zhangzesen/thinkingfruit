@@ -21,7 +21,7 @@
 <%
 	String admin="http://47.96.104.24:8080/thinkingFruit-admin";
 %>
-<input type="hidden" name="basePath" value="<%=basePath%>" />
+<input type="hidden" name="basePath" value="<%=basePath%>"/>
 <script type="text/javascript"
 	src="<%=basePath%>/static/plugin/jquery/1.12.1/jquery-1.12.1.min.js"></script>
 <script type="text/javascript"
