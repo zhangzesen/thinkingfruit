@@ -59,7 +59,6 @@ var order_extract_ops = {
 				dataType:'json'
 			}).done(function(res){
 				
-				console.log(res.data);
 				if(res.code == 0){
 					callback = function() {
 						window.location.href = WEB_ROOT+'/order/depot';

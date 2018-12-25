@@ -11,6 +11,7 @@ import com.thinkingFruit.client.entity.ClientDepot;
 import com.thinkingFruit.client.entity.ClientOrder;
 import com.thinkingFruit.client.mapper.AgentDao;
 import com.thinkingFruit.client.mapper.ClientOrderDao;
+import com.thinkingFruit.client.service.AgentService;
 import com.thinkingFruit.client.service.ClientMessageService;
 import com.thinkingFruit.client.service.ClientOrderService;
 import com.ysdevelop.common.exception.WebServiceException;
@@ -38,6 +39,9 @@ public class ClientOrderServiceImpl implements ClientOrderService {
 	
 	@Autowired
 	private AgentDao agentDao;
+	
+	@Autowired
+	private AgentService agentService;
 
 	/**
 	 * 查询仓库列表
@@ -74,6 +78,8 @@ public class ClientOrderServiceImpl implements ClientOrderService {
 		if (clientOrder == null) {
 			throw new WebServiceException(CodeMsg.SERVER_ERROR);
 		}
+		//判断信息是否完善
+		agentService.checkInformation(memberId);
 		String orderNo=OrderNumberGeneratorUtil.get().toString();
 		System.out.println("CashCount---->"+clientOrder.getCashCount());
 		clientOrder.setOrderNo(orderNo);

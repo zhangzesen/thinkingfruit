@@ -16,7 +16,7 @@ var home_index_ops = {
 			success:function(res){
 				console.log(res.data);
 				$(".goods").append('<div class="aui-card-list-header">'+res.data.name+'</div>'+'<div class="aui-card-list-content">'
-				+'<img src="'+res.data.coverImagePath+'"'+'value="'+res.data.id+'"/>'+"</div>")
+				+'<img src="'+WEB_ROOT_ADMIN+res.data.coverImagePath+'"'+'value="'+res.data.id+'"/>'+"</div>")
 				$(".aui-card-list-footer #price").text(res.data.price);
 				for (var i = 0; i < res.data.detailsImagePaths.length; i++) {
 					console.log("detailsImagePaths==="+res.data.detailsImagePaths[i]);

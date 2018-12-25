@@ -37,6 +37,7 @@ public class AgentServiceImpl implements AgentService {
 	@Autowired
 	private ClientMessageService messageService;
 	
+	
 	/**
 	 * 	向数据库中添加一条代理数据
 	 * @param agent 代理
