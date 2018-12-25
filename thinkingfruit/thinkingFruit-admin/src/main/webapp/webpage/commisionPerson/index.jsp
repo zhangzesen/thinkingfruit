@@ -7,6 +7,7 @@
 <jsp:include page="/context/css-tags.jsp" />
 <style type="text/css">
 body{overflow-y: scroll;}
+.layui-table-cell {height:40px}
 </style>
 </head>
 <body>
