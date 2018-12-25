@@ -13,25 +13,6 @@ var commision_index_ops = {
 			});
 		},
 		inintComponent:function(){
-			 //时间格式
-			   function dateFtt(fmt,date)   
-			   {  
-			     var o = {   
-			       "M+" : date.getMonth()+1,                 //月份   
-			       "d+" : date.getDate(),                    //日   
-			       "h+" : date.getHours(),                   //小时   
-			       "m+" : date.getMinutes(),                 //分   
-			       "s+" : date.getSeconds(),                 //秒   
-			       "q+" : Math.floor((date.getMonth()+3)/3), //季度   
-			       "S"  : date.getMilliseconds()             //毫秒   
-			     };   
-			     if(/(y+)/.test(fmt))   
-			       fmt=fmt.replace(RegExp.$1, (date.getFullYear()+"").substr(4 - RegExp.$1.length));   
-			     for(var k in o)   
-			       if(new RegExp("("+ k +")").test(fmt))   
-			     fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
-			     return fmt;   
-			   } 
 			layui.use([ 'table', 'layer', 'laydate', 'laypage' ], function() {
 				laydate = layui.laydate;// 日期插件
 				laypage = layui.laypage;// 分页
@@ -48,7 +29,7 @@ var commision_index_ops = {
 				        , {field: 'name', title: '代理姓名',align: 'center', width:'14%'}
 				        , {field: 'commision', title: '佣金',align: 'center', width:'14%'}
 				        , {field: 'inviteMoney', title: '邀请金',align: 'center', width:'14%'}
-				        , {field: 'createTime', title: '订单时间',align: 'center', width:'12%'}
+				        , {field: 'createTime', title: '订单时间',align: 'center', width:'12%',templet:'#date_formate'}
 				        , {fixed: 'right', title: '操作', width:'20%',height: 40, align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
 				    ]]
 				    , url: WEB_ROOT + "/commision/pagination"
@@ -65,16 +46,12 @@ var commision_index_ops = {
 
 				        //得到数据总量
 				        console.log(count);
-				        
-				        //时间进行处理
-				        $("[data-field='createTime']").children().each(function(){
-				      
-			        		if($(this).text()=='[object Object]'){
-			        			var atime = res.data[$(this).parent().parent().attr("data-index")].createTime;
-			        			var time = 1900+atime.year+"-"+(atime.month+1)+"-"+atime.date+" "+atime.hours+":"+atime.minutes
-			        			$(this).text(time);  
-			        		}
-				        })
+				        $("[data-field='name']").children().each(function(){  
+				               if($(this).text()==''){  
+				            	  $(this).empty();
+				                  $(this).text("暂未设置真实姓名");
+				               }
+				           }) 
 				    }
 				});
 				

@@ -56,11 +56,13 @@
 	<select id="personCommision" resultType="com.thinkingFruit.admin.entity.Commision">
 		select
 		p.`id` as `id`,
+		p.`memberId` as `memberId`,
     	p.`personTotalInviteMoney` as `personTotalInviteMoney`,
     	p.`personTotalCommodity` as `personTotalCommodity`,
     	p.`personTotalCommision` as `personTotalCommision`,
     	p.`personTotalInviteMoney`+p.`personTotalCommodity`+p.`personTotalCommision` as `personTotal`,
     	p.`createTime` as `createTime`,
+		m.`loginName` as `loginName`,
     	m.`name` as `name`
     	from `t_thinkingfruit_mall_commision_person` as `p`
     	left join `t_thinkingfruit_mall_member` as `m` on `m`.id=`p`.memberId
@@ -82,7 +84,7 @@
 
 <select id="findMemberCommisionByOrderNo" resultType="com.thinkingFruit.admin.entity.Commision">
    select `memberId`,`commision`,`orderNo`
-   from `t_thinkingfruit_mall_commision_person`
+   from `t_thinkingfruit_mall_commision`
    where `orderNo` = #{orderNo}
 </select>
 

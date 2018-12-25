@@ -288,7 +288,7 @@
 	    sales = sales + #{commodityCount},
 	    updateTime = now()
 	    </set> 
-	    where id = (select `p`.commodityId from `t_thinkingfruit_mall_order_purchase` as `p` where `p`.id=#{id})
+	    where id = #{id}
 	</update>
 	
 	<!-- 减少销量 -->

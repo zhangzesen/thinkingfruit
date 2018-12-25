@@ -41,8 +41,18 @@ public class Commision extends BaseEntity {
 
 	private Double personTotal;//个人总业绩
 	
+	private String loginName;
 	
 	
+	
+	public String getLoginName() {
+		return loginName;
+	}
+
+	public void setLoginName(String loginName) {
+		this.loginName = loginName;
+	}
+
 	public Double getPersonTotalCommodity() {
 		return personTotalCommodity;
 	}

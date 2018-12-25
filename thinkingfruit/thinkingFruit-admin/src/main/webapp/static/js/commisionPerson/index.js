@@ -23,12 +23,13 @@ var commision_person_index_ops = {
 				var tableIns = table.render({
 				    elem: '#dateTable'                  //指定原始表格元素选择器（推荐id选择器）  //容器高度
 				    , cols: [[                          //标题栏
-                        {field: 'id', title: '编号',align: 'center', width:'17%'}
-                        , {field: 'name', title: '受益人',align: 'center', width:'17%'}
-				        , {field: 'personTotalInviteMoney', title: '总邀请金', align: 'center', width:'17%'}
-				        , {field: 'personTotalCommodity', title: '总商品销售额',align: 'center', width:'17%'}
-				        , {field: 'personTotalCommision', title: '总佣金',align: 'center', width:'17%'}
-				        , {field: 'personTotal', title: '总金额',align: 'center', width:'17%'}
+                        {field: 'memberId', title: '编号',align: 'center', width:'10%'}
+                        , {field: 'name', title: '受益人',align: 'center', width:'15%'}
+                        , {field: 'loginName', title: '登录名',align: 'center', width:'15%'}
+				        , {field: 'personTotalInviteMoney', title: '总邀请金', align: 'center', width:'15%'}
+				        , {field: 'personTotalCommodity', title: '总商品销售额',align: 'center', width:'15%'}
+				        , {field: 'personTotalCommision', title: '总佣金',align: 'center', width:'15%'}
+				        , {field: 'personTotal', title: '总金额',align: 'center', width:'15%'}
 				    ]]
 				    , url: WEB_ROOT + "/commision/person/pagination"
 				    , method: 'get'
@@ -46,12 +47,18 @@ var commision_person_index_ops = {
 				        console.log(count);
 				        
 				        $("[data-field='name']").children().each(function(){
-						      
 			        		if($(this).text()==''){
+			        			$(this).empty();
+			        			$(this).text("暂未设置真实姓名"); 
+			        		}
+			        		
+			           });
+				        $("[data-field='memberId']").children().each(function(){
+						      
+			        		if($(this).text()==0){
 			        			$(this).empty();
 			        			$(this).text("公司"); 
 			        		}
-			        		
 			           });
 				    }
 				});

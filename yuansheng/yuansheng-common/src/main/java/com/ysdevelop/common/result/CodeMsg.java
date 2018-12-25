@@ -67,12 +67,12 @@ public class CodeMsg {
 	public static CodeMsg ORDERID_EXCL = new CodeMsg(500014,"EXCL无数据");
 	public static CodeMsg IS_DELIVERY = new CodeMsg(500030,"订单已派送或无法派送");
 	public static CodeMsg DELIVER_FAIL = new CodeMsg(500031,"订单已派送或非直属下级");
-	public static CodeMsg CANCEL_FAIL = new CodeMsg(500031,"订单已完成或非直属下级");
 	public static CodeMsg PURCHASE_FAIL = new CodeMsg(500032,"订单购买失败");
 	public static CodeMsg EXAMINE_FAIL = new CodeMsg(500033,"审核失败");
 	public static CodeMsg DEPOT_FAIL = new CodeMsg(500034,"无法生成代理仓库,审核失败");
 	public static CodeMsg INVITER_DEPOT_LOW = new CodeMsg(500035,"仓库商品不足，请补充货物");
 	public static CodeMsg DELIVERY_APPLICATION_FAILURE = new CodeMsg(500036,"提货订单申请失败");
+	public static CodeMsg CANCEL_FAIL = new CodeMsg(500037,"取消失败");
 	//统计
 	public static CodeMsg NEWMEMBER_EXIST = new CodeMsg(500012,"新增会员数量为空");
 	
