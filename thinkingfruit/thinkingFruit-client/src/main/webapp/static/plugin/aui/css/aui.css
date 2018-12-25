@@ -1,10 +1,10 @@
 /*
  * =========================================================================
- * APIClud - AUI UI 框架    流浪男  QQ：343757327  http://www.auicss.com
+ * APIClud - AUI UI 妗嗘灦    娴佹氮鐢�  QQ锛�343757327  http://www.auicss.com
  * Verson 2.1
  * =========================================================================
  */
- /*初始化类*/
+ /*鍒濆鍖栫被*/
 @charset "UTF-8";
 html{
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
@@ -78,7 +78,7 @@ button,input,select,textarea {
 	font: inherit;
 	color: inherit;
 }
-/*自动隐藏文字*/
+/*鑷姩闅愯棌鏂囧瓧*/
 .aui-ellipsis-1 {
 	overflow: hidden;
 	white-space: nowrap;
@@ -104,7 +104,7 @@ button,input,select,textarea {
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
 }
-/*水平线*/
+/*姘村钩绾�*/
 .aui-hr {
 	width: 100%;
 	position: relative;
@@ -121,7 +121,7 @@ button,input,select,textarea {
         background-image: -webkit-linear-gradient(90deg,#dddddd,#dddddd 50%,transparent 50%);
 	}
 }
-/*内外边距类*/
+/*鍐呭杈硅窛绫�*/
 .aui-padded-0 {
 	padding: 0 !important;
 }
@@ -252,7 +252,7 @@ button,input,select,textarea {
 .aui-clearfix:after {
 	clear: both;
 }
-/*文字对齐*/
+/*鏂囧瓧瀵归綈*/
 .aui-text-left {
 	text-align: left !important;
 }
@@ -265,7 +265,7 @@ button,input,select,textarea {
 .aui-text-right {
 	text-align: right !important;
 }
-/*文字、背景颜色*/
+/*鏂囧瓧銆佽儗鏅鑹�*/
 h1,h2,h3,h4,h5,h6 {
 	font-weight: 400;
 }
@@ -383,7 +383,7 @@ img {
 .aui-bg-indigo {
 	background-color: #3f51b5 !important;
 }
-/*警告、成功颜色*/
+/*璀﹀憡銆佹垚鍔熼鑹�*/
 .aui-warning,
 .aui-warning label,
 .aui-warning .aui-input,
@@ -396,7 +396,7 @@ img {
 .aui-success .aui-iconfont {
 	color: #009688 !important;
 }
-/*对齐,显示，隐藏等*/
+/*瀵归綈,鏄剧ず锛岄殣钘忕瓑*/
 .aui-pull-right {
 	float: right !important;
 }
@@ -439,7 +439,7 @@ img {
 img.aui-img-round {
 	border-radius: 50%;
 }
-/*基本容器*/
+/*鍩烘湰瀹瑰櫒*/
 .aui-content {
 	-webkit-overflow-scrolling: touch;
 	overflow-x: hidden;
@@ -451,7 +451,7 @@ img.aui-img-round {
   	word-break: break-all;
   	-webkit-overflow-scrolling: touch;
 }
-/*栅格类*/
+/*鏍呮牸绫�*/
 .aui-row {
 	overflow: hidden;
 	margin: 0;
@@ -507,7 +507,7 @@ img.aui-img-round {
 .aui-col-5 {
 	width: 20%;
 }
-/*标签*/
+/*鏍囩*/
 .aui-label {
 	display: inline-block;
 	padding: 0.2em 0.25em;
@@ -590,7 +590,7 @@ img.aui-img-round {
 .aui-label .aui-iconfont {
 	font-size: 0.6rem;
 }
-/*角标*/
+/*瑙掓爣*/
 .aui-badge {
 	display: inline-block;
 	width: auto;
@@ -619,7 +619,7 @@ img.aui-img-round {
     right: 20%;
     z-index: 99;
 }
-/*按钮样式*/
+/*鎸夐挳鏍峰紡*/
 button, .aui-btn {
 	position: relative;
 	display: inline-block;
@@ -737,7 +737,7 @@ button, .aui-btn {
 	border: 1px solid #e51c23 !important;
 }
 /*
-*表单类\输入框\radio\checkbox
+*琛ㄥ崟绫籠杈撳叆妗哱radio\checkbox
 **/
 .aui-input,
 input[type="text"],
@@ -788,7 +788,7 @@ input[type="search"]::-webkit-search-cancel-button {
 ::-webkit-scrollbar{
 	width:0px;
 }
-/*列表*/
+/*鍒楄〃*/
 .aui-list {
     position: relative;
     font-size: 0.8rem;
@@ -873,8 +873,8 @@ input[type="search"]::-webkit-search-cancel-button {
     display: -webkit-flex;
     display: flex;
     -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-            justify-content: space-between;
+    -webkit-justify-content: baseline;
+            justify-content: baseline;
     -webkit-align-items: center;
     		align-items: center;
 }
@@ -1108,7 +1108,7 @@ input[type="search"]::-webkit-search-cancel-button {
         background-image: none;
 	}
 }
-/*tab切换类*/
+/*tab鍒囨崲绫�*/
 .aui-tab {
 	position: relative;
     background-color: #ffffff;
@@ -1136,7 +1136,7 @@ input[type="search"]::-webkit-search-cancel-button {
     color: #039be5;
     border-bottom: 2px solid #039be5;
 }
-/*卡片列表布局*/
+/*鍗＄墖鍒楄〃甯冨眬*/
 .aui-card-list {
 	position: relative;
     margin-bottom: 0.75rem;
@@ -1239,7 +1239,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .aui-card-list-footer .aui-iconfont {
 	font-size: 0.9rem;
 }
-/*宫格布局*/
+/*瀹牸甯冨眬*/
 .aui-grid {
 	width: 100%;
 	background-color: #ffffff;
@@ -1282,7 +1282,7 @@ input[type="search"]::-webkit-search-cancel-button {
     right: 20%;
     z-index: 99;
 }
-/*单选、多选、开关*/
+/*鍗曢�夈�佸閫夈�佸紑鍏�*/
 .aui-radio,
 .aui-checkbox {
     width: 1.2rem;
@@ -1416,7 +1416,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .aui-switch:checked:before {
     left: 1.1rem;
 }
-/*导航栏*/
+/*瀵艰埅鏍�*/
 .aui-bar {
 	position: relative;
 	top: 0;
@@ -1541,7 +1541,7 @@ input[type="search"]::-webkit-search-cancel-button {
         background-image: -webkit-linear-gradient(90deg,#dddddd,#dddddd 50%,transparent 50%);
 	}
 }
-/*底部切换栏*/
+/*搴曢儴鍒囨崲鏍�*/
 .aui-bar-tab {
 	position: fixed;
 	top: auto;
@@ -1586,7 +1586,7 @@ input[type="search"]::-webkit-search-cancel-button {
     right: 30%;
     z-index: 99;
 }
-/*按钮工具栏*/
+/*鎸夐挳宸ュ叿鏍�*/
 .aui-bar-btn {
 	position: relative;
     font-size: 0.7rem;
@@ -1720,7 +1720,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	display: inherit;
 	position: relative;
 }
-/*进度条*/
+/*杩涘害鏉�*/
 .aui-progress {
 	width: 100%;
 	height: 1rem;
@@ -1768,7 +1768,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .aui-progress-xxs .progress-bar {
 	border-radius: 1px;
 }
-/*滑块*/
+/*婊戝潡*/
 .aui-range {
     position: relative;
     display: inline-block;
@@ -1807,7 +1807,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	width: 90%;
 	margin-left: 5%;
 }
-/*搜索条*/
+/*鎼滅储鏉�*/
 .aui-searchbar {
     display: -webkit-box;
     -webkit-box-pack: center;
@@ -1890,7 +1890,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .aui-searchbar .aui-searchbar-btn .aui-iconfont {
 	color: #666666;
 }
-/*信息提示条*/
+/*淇℃伅鎻愮ず鏉�*/
 .aui-tips {
     padding: 0 0.75rem;
     width: 100%;
@@ -2258,7 +2258,7 @@ input[type="search"]::-webkit-search-cancel-button {
     text-align: center;
     font-size: 0.7rem;
 }
-/*折叠菜单*/
+/*鎶樺彔鑿滃崟*/
 .aui-collapse-header.aui-active {
     background: #ececec;
 }
@@ -2302,7 +2302,7 @@ input[type="search"]::-webkit-search-cancel-button {
     transform: rotate(180deg);
     -webkit-transform: rotate(180deg);
 }
-/*聊天气泡*/
+/*鑱婂ぉ姘旀场*/
 .aui-chat {
     width: 100%;
     height: 100%;
@@ -2435,7 +2435,7 @@ input[type="search"]::-webkit-search-cancel-button {
     float: right;
     right: 0.5rem;
 }
-/*边框样式*/
+/*杈规鏍峰紡*/
 .aui-border-l {
     border-left: 1px solid #dddddd;
 }
@@ -2493,7 +2493,7 @@ input[type="search"]::-webkit-search-cancel-button {
         background-position: top, right top, bottom, left top;
     }
 }
-/*时间轴*/
+/*鏃堕棿杞�*/
 .aui-timeline {
     position: relative;
     padding: 0;
@@ -2552,7 +2552,7 @@ input[type="search"]::-webkit-search-cancel-button {
     padding: 0;
     position: relative;
 }
-/*基础动画类*/
+/*鍩虹鍔ㄧ敾绫�*/
 @keyframes rotate {
     0% {
         -webkit-transform: rotate(0deg) scale(1);
@@ -2672,7 +2672,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .aui-icon-pencil:before { content: "\e615"; }
 .aui-icon-flag:before { content: "\e6f1"; }
 .aui-icon-cert:before { content: "\e704"; }
-/**footer设置*/
+/**footer璁剧疆*/
 .aui-footer {
     width: 100%;
     position: relative;
@@ -2745,7 +2745,7 @@ input[type="search"]::-webkit-search-cancel-button {
     left: 0;
     z-index: 49;
 }
-/**图标*/
+/**鍥炬爣*/
 .aui-course-icon {
     width: 20px;
     height: 20px;

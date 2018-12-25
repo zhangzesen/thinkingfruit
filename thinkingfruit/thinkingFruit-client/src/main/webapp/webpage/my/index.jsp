@@ -17,6 +17,7 @@
 <link href="iTunesArtwork@2x.png" sizes="114x114"
 	rel="apple-touch-icon-precomposed">
 <link rel="stylesheet" type="text/css" href="<%=basePath%>/static/plugin/aui/css/aui.css" />
+<link rel="stylesheet" type="text/css" href="<%=basePath%>/static/plugin/aui/font/aui-iconfont.ttf" />
 <style type="text/css">
       .text-white {
             color: black !important;
@@ -62,8 +63,10 @@
                     <div class="aui-list-item-inner aui-list-item-arrow">
                         <div class="aui-list-item-text text-white aui-font-size-18" id="name">小脑斧</div>
                         <div class="aui-list-item-text text-white">
+                        <div><i class="aui-iconfont aui-icon-mobile aui-font-size-14"></i></div>
                            <div id="mobile">暂未设置电话号码</div>
                         </div>
+                         <div class="aui-label aui-label-outlined"><i class="aui-iconfont aui-icon-my"></i>完善资料</div>
                     </div>
                     
                 </div>
