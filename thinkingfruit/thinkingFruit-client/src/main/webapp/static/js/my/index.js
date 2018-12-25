@@ -73,7 +73,7 @@ var my_index_ops = {
 	eventBind : function() {
 		//二维码
 		$("#invite").click(function(){
-			 var html="<img src='http://qr.liantu.com/api.php?&bg=ffffff&fg=000000&text="+"http://localhost:8080/thinkingFruit-client/agent/register?inviterId="+memberId+"'>";
+			 var html="<img src='http://qr.liantu.com/api.php?&bg=ffffff&fg=000000&text="+"http://47.96.104.24:8080/thinkingFruit-client/agent/register?inviterId="+memberId+"'>";
         layer.open({
               type: 1,
               skin: '', //样式类名

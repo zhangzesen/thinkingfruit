@@ -15,7 +15,7 @@
 			</ul>
 		    <div class="layui-form" style="margin-top:50px;">
 		    <h1>点击右键保存二维码</h1>
-		    <img src="<%=basePath%>/static/images/qrTest.png"  alt="公司邀请二维码" style="height:300px;width:300px;"/>
+		    <img src="<%=basePath%>/static/images/qr.png"  alt="公司邀请二维码" style="height:300px;width:300px;"/>
 			</div>
 		</div>
 		</div>
