@@ -176,7 +176,7 @@ public class MemberServiceImpl implements MemberService {
 	 */
 	@Override
 	public void updatePswd(Member member) {
-//		passwordHelper.encryptPassword(member);
+		PasswordHelper.encryptPassword(member);
 		System.out.println("pswd"+member.getPswd());
 		System.out.println("pswd"+member.getId());
 		memberDao.updatePswd(member);

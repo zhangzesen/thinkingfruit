@@ -9,11 +9,11 @@ import com.thinkingFruit.admin.entity.Member;
 
 public class PasswordHelper {
 
-	private RandomNumberGenerator randomNumberGenerator =new SecureRandomNumberGenerator();
+	private static RandomNumberGenerator randomNumberGenerator =new SecureRandomNumberGenerator();
 	
-	private String algorithmName = "md5";
+	private static String algorithmName = "md5";
 	
-	private int hashIterations = 2;
+	private static int hashIterations = 2;
 	
 	public void setRandomNumberGenerator(RandomNumberGenerator randomNumberGenerator) {
         this.randomNumberGenerator = randomNumberGenerator;
@@ -27,7 +27,7 @@ public class PasswordHelper {
         this.hashIterations = hashIterations;
     }
 
-    public  void encryptPassword(Member member) {
+    public static  void encryptPassword(Member member) {
 
         member.setSalt(randomNumberGenerator.nextBytes().toHex());
 

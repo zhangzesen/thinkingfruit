@@ -2487,31 +2487,31 @@
 }
 
 .icon-home {
-		background-image:url('http://localhost:8080/thinkingFruit-client/static/images/icon/home.png')
+		background-image:url('http://47.96.104.24:8080/thinkingFruit-client/static/images/icon/home.png')
 	
 }
 
 .icon-collage {
-			background-image:url('http://localhost:8080/thinkingFruit-client/static/images/icon/news.png')
+			background-image:url('http://47.96.104.24:8080/thinkingFruit-client/static/images/icon/news.png')
 	
 }
 
 .icon-my {
-			background-image:url('http://localhost:8080/thinkingFruit-client/static/images/icon/my.png')
+			background-image:url('http://47.96.104.24:8080/thinkingFruit-client/static/images/icon/my.png')
 	
 }
 
 .aui-tabBar-item-active .icon-home {
-	background-image:url('http://localhost:8080/thinkingFruit-client/static/images/icon/home1.png')
+	background-image:url('http://47.96.104.24:8080/thinkingFruit-client/static/images/icon/home1.png')
 }
 
 .aui-tabBar-item-active .icon-collage {
-			background-image:url('http://localhost:8080/thinkingFruit-client/static/images/icon/news1.png')
+			background-image:url('http://47.96.104.24:8080/thinkingFruit-client/static/images/icon/news1.png')
 	
 }
 
 .aui-tabBar-item-active .icon-my {
-			background-image:url('http://localhost:8080/thinkingFruit-client/static/images/icon/my1.png')
+			background-image:url('http://47.96.104.24:8080/thinkingFruit-client/static/images/icon/my1.png')
 	
 }
 
