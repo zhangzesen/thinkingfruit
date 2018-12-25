@@ -6,7 +6,7 @@
     "imageCompressEnable": true, 
     "imageCompressBorder": 1600, 
     "imageInsertAlign": "none", 
-    "imageUrlPrefix": "https://www.thinkingFruit.com", 
+    "imageUrlPrefix": "http://47.96.104.24:8080/thinkingFruit-admin", 
     "imagePathFormat":"/ueditor/jsp/",
 
     

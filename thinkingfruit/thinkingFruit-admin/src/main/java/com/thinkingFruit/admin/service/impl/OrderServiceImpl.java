@@ -336,8 +336,6 @@ public class OrderServiceImpl implements OrderService{
 		}
 		commision.setOrderNo(orderNo);
 		commision.setMemberId(orderMemberId);
-		commision.setInviterId(inviterId);
-		commision.setInviterUpperId(inviterUpperId);
 		commision.setCommodityId(purchaseOrder.getCommodityId());
 		System.out.println("inviterLevelId"+inviterLevelId);
 		System.out.println("memberLevelId"+memberLevelId);
@@ -348,6 +346,8 @@ public class OrderServiceImpl implements OrderService{
 			}else if(memberLevelId==inviterLevelId) {
 				commision.setCommisionProportion(commissionRatio.getLevelingDiscount());
 			}
+			commision.setInviterId(inviterId);
+			commision.setInviterUpperId(inviterUpperId);
 			commision.setCommision(commision.getTotalAmount()*commision.getCommisionProportion());
 			commision.setInviterTotalMoney(commision.getTotalAmount()-commision.getCommision());
 			commision.setInviteMoney(0.0);
@@ -381,6 +381,8 @@ public class OrderServiceImpl implements OrderService{
 			purchaseOrder.setInviterUpperId(0L);
 			memberById.setInviterId(0L);
 			memberById.setInviterUpperId(0L);
+			commision.setInviterId(0L);
+			commision.setInviterUpperId(0L);
 			//修改代理邀请人id和邀请人上级id
 			Integer updataById = memberDao.updataById(memberById);
 			if(updataById==Constant.DEFALULT_ZERO_INT) {
@@ -492,8 +494,7 @@ public class OrderServiceImpl implements OrderService{
 		}
 		commision.setOrderNo(orderNo);
 		commision.setMemberId(orderMemberId);
-		commision.setInviterId(inviterId);
-		commision.setInviterUpperId(inviterUpperId);
+		
 		commision.setCommodityId(purchaseOrder.getCommodityId());
 		//获取佣金比例
 		if(memberLevelId>=inviterLevelId) {
@@ -503,6 +504,8 @@ public class OrderServiceImpl implements OrderService{
 			}else if(memberLevelId==inviterLevelId) {
 				commision.setCommisionProportion(commissionRatio.getLevelingDiscount());
 			}
+			commision.setInviterId(inviterId);
+			commision.setInviterUpperId(inviterUpperId);
 			commision.setCommision(commision.getTotalAmount()*commision.getCommisionProportion());
 			commision.setInviterTotalMoney(commision.getTotalAmount()-commision.getCommision());
 			//插入代理余额
@@ -541,6 +544,8 @@ public class OrderServiceImpl implements OrderService{
 			purchaseOrder.setInviterUpperId(0L);
 			memberById.setInviterId(0L);
 			memberById.setInviterUpperId(0L);
+			commision.setInviterId(0L);
+			commision.setInviterUpperId(0L);
 			//修改代理邀请人id和邀请人上级id
 			Integer updataById = memberDao.updataById(memberById);
 			if(updataById==Constant.DEFALULT_ZERO_INT) {
