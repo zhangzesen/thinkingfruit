@@ -18,7 +18,7 @@
 	String admin="http://47.96.104.24:8080/thinkingFruit-admin";
 %>
 <meta charset="UTF-8">
-<title>揽菁灵管理后台</title>
+<title>爱因斯果后台</title>
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport"
