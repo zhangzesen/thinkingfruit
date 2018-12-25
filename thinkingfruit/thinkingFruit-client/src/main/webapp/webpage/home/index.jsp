@@ -29,6 +29,7 @@
    height:41px;
    margin-bottom:1px;}
    img{height:240px;}
+   .aui-scrollView{margin-top:1px}
 </style>
 </head>
 <body>
@@ -36,7 +37,7 @@
 	<section class="aui-flexView">
 		<header class="aui-bar aui-bar-nav aui-bar-light"
 			style="color: black;">
-			<div class="aui-title">爱因思果</div>
+			<div class="aui-title">商品</div>
 		</header>
 		<section class="aui-scrollView">
 			<div class="m-slider" data-ydui-slider style="margin-bottom:10px;">

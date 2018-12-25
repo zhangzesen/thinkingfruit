@@ -12,7 +12,7 @@ var team_index_ops = {
 			success:function(res){
 				console.log(res.data);
 				if(res.data.salesVolume==null){res.data.salesVolume=0}
-				$("#tab1").append('<div class="aui-order-list">'+'<div class="aui-flex">'
+				$("#me").append('<div class="aui-order-list">'+'<div class="aui-flex">'
 	                    +'<div class="aui-flex-box">'+"<h3>"+"级别"+"</h3>"+"</div>"+"<div class='aui-order-pay'>"
 	                    +"<p>"+res.data.memberLevelName+"</p>"+"</div>"+"</div>"+"<div class='aui-flex aui-flex-order'>"+"<div class='aui-order-img'>"
 	                    +'<img src="'+res.data.avatar+'" alt="">'+"</div>"+'<div class="aui-flex-box">'+"<h2>"+res.data.name+"</h2>"+"<h2>"+"联系方式："+"<i>"+res.data.mobile+"</i>"+"</h>"
@@ -29,8 +29,9 @@ var team_index_ops = {
 				console.log(res.data);
 				for (var i = 0; i < res.data.length; i++) {
 					if(res.data[i].salesVolume==null){res.data[i].salesVolume=0}
+					if(res.data[i].name==null){res.data[i].name="暂未完善信息"}
 					console.log(res.data[i].name);
-					$("#tab1").append('<div class="aui-order-list">'+'<div class="aui-flex">'
+					$("#team").append('<div class="aui-order-list">'+'<div class="aui-flex">'
                     +'<div class="aui-flex-box">'+"<h3>"+"级别"+"</h3>"+"</div>"+"<div class='aui-order-pay'>"
                     +"<p>"+res.data[i].memberLevelName+"</p>"+"</div>"+"</div>"+"<div class='aui-flex aui-flex-order'>"+"<div class='aui-order-img'>"
                     +'<img src="'+res.data[i].avatar+'" alt="">'+"</div>"+'<div class="aui-flex-box">'+"<h2>"+res.data[i].name+"</h2>"+"<h2>"+"联系方式："+"<i>"+res.data[i].mobile+"</i>"+"</h>"

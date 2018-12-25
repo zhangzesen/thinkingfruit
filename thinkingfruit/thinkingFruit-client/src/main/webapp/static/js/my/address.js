@@ -59,7 +59,7 @@ var my_information_ops = {
 				type:'PUT',
 				dataType:'json'
 			}).done(function(res){
-				console.log(res.data.msg);
+				console.log(res.data);
 				if(res.code == 0){
 					callback = function() {
 						window.location.href = WEB_ROOT+'/my';

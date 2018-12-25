@@ -38,7 +38,7 @@
                     <span class="aui-center-title">关于</span>
                 </div>
             </header>
-            <section class="aui-scrollView">
+            <section class="aui-scrollView" style="background-color: #fff;margin-top: 1px;">
 		
 		</section>
 	</section>

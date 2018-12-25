@@ -55,6 +55,7 @@
         <div class="aui-list aui-media-list aui-list-noborder aui-bg-info" style="margin-top: 1px;">
             <div class="aui-list-item aui-list-item-middle" style="height:4.5rem;padding-top: 1%;" id="information">
                 <div class="aui-media-list-item-inner" style="height: 4rem;">
+                
                     <div class="aui-list-item-media" style="width:4rem;">
                         <img id="avatar" src="<%=basePath%>/static/plugin/aui/images/gril.jpg" class="aui-img-round" >
                     </div>
@@ -64,6 +65,7 @@
                            <div id="mobile">暂未设置电话号码</div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>

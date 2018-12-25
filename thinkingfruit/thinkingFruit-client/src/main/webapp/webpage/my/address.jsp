@@ -104,7 +104,7 @@ button{
 
             </section>
         </section>
-
+        <jsp:include page="/context/js-tags.jsp" />
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/themes/jquery.min.js"></script>
 	<script type="text/javascript"
@@ -113,6 +113,7 @@ button{
 		src="<%=basePath%>/static/plugin/themes/tab.js"></script>
 	<script type="text/javascript"
 		src="<%=basePath%>/static/js/my/address.js"></script>
+    <script type="text/javascript" src="<%=basePath%>/static/js/common/common.js"></script>
 	<script>WEB_ROOT="<%=basePath%>"</script>
 </body>
 </html>

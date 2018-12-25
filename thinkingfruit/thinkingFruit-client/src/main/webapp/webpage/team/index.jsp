@@ -63,6 +63,8 @@ input{
                     </ul>
                     <div class="tab-panel tab-panel-clear-line">
                         <div class="tab-panel-item tab-active" id="tab1">
+                        <div id="me"></div>
+                        <div id="team"></div>
                         </div>
                         <div class="tab-panel-item" id="inviter">
                         <div class="aui-order-list">

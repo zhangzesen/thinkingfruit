@@ -193,7 +193,7 @@ public class AgentController {
 	 */
 	@RequestMapping(value = "/update", method = RequestMethod.PUT, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public Results<String> update(@Valid Agent agent){
+	public Results<String> update(Agent agent){
 		agentService.updateAgentAddress(agent);
 		return Results.success("信息修改成功");
 	}

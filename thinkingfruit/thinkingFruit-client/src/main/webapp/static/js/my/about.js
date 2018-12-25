@@ -14,9 +14,13 @@ var my_about_ops = {
 			},
 			dataType:'json',
 			success:function(res){
+				if(res.data==null){
+					$(".aui-scrollView").append('<div class="aui-login-line" id="info">'+
+		                    "<h2>"+"暂无信息"+"</h2>"+"</div>")
+				}else{
 				console.log(res.data);
 				console.log("11111"+res.data.content);
-				$(".aui-scrollView").append(res.data.content)
+				$(".aui-scrollView").append(res.data.content)}
 			}
 		});
 	},

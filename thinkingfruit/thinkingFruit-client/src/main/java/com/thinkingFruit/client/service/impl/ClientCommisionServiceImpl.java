@@ -23,7 +23,7 @@ public class ClientCommisionServiceImpl implements ClientCommisionService {
 	@Autowired
 	private ClientCommisionDao ClientCommisionDao;
     /**
-     * 订单列表
+     * 佣金列表
      * */
 	@Override
 	public List<ClientCommision> ClientCommisionList(Long id) {

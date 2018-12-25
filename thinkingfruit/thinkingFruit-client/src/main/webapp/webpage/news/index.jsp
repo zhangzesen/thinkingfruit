@@ -26,6 +26,7 @@
    margin-bottom:-1px;}
    #news{
    margin-bottom:-1px;}
+   .aui-scrollView{margin-top:1px}
 </style>
 </head>
 <body>
@@ -51,7 +52,6 @@
 			</span> <span class="aui-tabBar-item-text">我的</span> </span> </div>
 		</footer>
 	</section>
-<script type="text/javascript" src="<%=basePath%>/context/js-tags.jsp"></script>
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/themes/jquery.min.js"></script>
 	<script type="text/javascript"

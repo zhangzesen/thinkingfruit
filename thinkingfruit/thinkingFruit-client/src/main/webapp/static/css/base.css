@@ -165,7 +165,7 @@ a {
     color: #333;
 }
 
-/* 分层结构 ----------------北京索引时代工作室(AUI素材网http://a-ui.cn/) */
+/* 鍒嗗眰缁撴瀯 ----------------鍖椾含绱㈠紩鏃朵唬宸ヤ綔瀹�(AUI绱犳潗缃慼ttp://a-ui.cn/) */
 .aui-flexView {
     width: 100%;
     height: 100%;
@@ -182,6 +182,7 @@ a {
 }
 
 .aui-scrollView {
+	
     width: 100%;
     height: 100%;
     -webkit-box-flex: 1;
@@ -192,7 +193,7 @@ a {
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     position: relative;
-    margin-top: 0;
+    margin-top:1px;
     padding-bottom: 65px;
 }
 
@@ -283,7 +284,7 @@ a {
     font-size: 0.95rem;
     color: #333;
 }
-/* 全局弹窗样式 ----------------北京索引时代工作室(AUI素材网http://a-ui.cn/) */
+/* 鍏ㄥ眬寮圭獥鏍峰紡 ----------------鍖椾含绱㈠紩鏃朵唬宸ヤ綔瀹�(AUI绱犳潗缃慼ttp://a-ui.cn/) */
 .mask-black-dialog {
     background-color: rgba(0, 0, 0, 0.4);
     position: fixed;

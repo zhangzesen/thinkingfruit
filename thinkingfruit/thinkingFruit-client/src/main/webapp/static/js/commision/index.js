@@ -28,16 +28,18 @@ var commsion_index_ops = {
 			type:'get',
 			dataType:'json',
 			success:function(res){
+				if(res.data.personTotalCommision==null){res.data.personTotalCommision=0}
 				$('#totalCommision').append('<h4 style="height:40px;line-height:40px;text-indent:10px;color:#bbb;font-size:16px">'+"总佣金(元)"+"</h4>"
-	    		+'<p style="height:80px;line-height:60px;text-align:center;color:#666;font-size:24px">'+res.data.totalCommision+"</p>")
+	    		+'<p style="height:80px;line-height:60px;text-align:center;color:#666;font-size:24px">'+res.data.personTotalCommision+"</p>")
 			}}),
 			$.ajax({
 				url:WEB_ROOT + "/commision/totalInviteMoney",
 				type:'get',
 				dataType:'json',
 				success:function(res){
+					if(res.data.personTotalInviteMoney==null){res.data.personTotalInviteMoney=0}
 					$('#totalInviteMoney').append('<h4 style="height:40px;line-height:40px;text-indent:10px;color:#bbb;font-size:16px">'+"总邀请金(元)"+"</h4>"
-				    		+'<p style="height:80px;line-height:60px;text-align:center;color:#666;font-size:24px">'+res.data.totalInviteMoney+"</p>")
+				    		+'<p style="height:80px;line-height:60px;text-align:center;color:#666;font-size:24px">'+res.data.personTotalInviteMoney+"</p>")
 				}}),
 		$.ajax({
 			url:WEB_ROOT + "/commision/list",

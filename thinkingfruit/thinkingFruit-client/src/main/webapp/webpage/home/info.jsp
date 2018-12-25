@@ -74,7 +74,7 @@ outline:none;
                 </div>
                 <div class="aui-page-box">
                 <div class="descriptionImg"></div>
-                     <p id="description">致力于打造更好的产品为更好的你</p>
+                     <p id="description"style="text-align: center; margin-top: 2%;">致力于打造更好的产品为更好的你</p>
                 </div>
 		</section>
 		<footer class="aui-footer aui-footer-fixed">

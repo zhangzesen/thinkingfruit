@@ -5,6 +5,8 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.ysdevelop.common.entity.BaseEntity;
+import com.ysdevelop.common.validator.IsBankNo;
+import com.ysdevelop.common.validator.IsDecimals;
 
 /**
  * @author zhangzesen
@@ -47,6 +49,7 @@ public class Cash extends BaseEntity {
 	 * 银行卡号
 	 */
 	@NotNull(message = "银行卡号不能为空")
+	@IsBankNo(message = "请输入正确的银行卡格式")
 	private String bankNumber;
 
 	public Long getMemberId() {
