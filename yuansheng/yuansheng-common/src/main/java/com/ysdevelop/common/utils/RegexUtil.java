@@ -225,6 +225,14 @@ public class RegexUtil {
 		String regex = "^-?\\d+$";
 		return Pattern.matches(regex, value);
 	}
+	
+	/**
+	 *判断是否为百分数^0\\.([0-9]){1,2}$
+	 */
+	public static boolean checkPercentage(String value) {
+		String regex = "^0\\.([0-9]){1,2}$";
+		return Pattern.matches(regex, value);
+	}
 
 	/**
 	 * 判断价格是否为数字^(0|[1-9][0-9]{0,9})(\\.[0-9]{1,2})?$

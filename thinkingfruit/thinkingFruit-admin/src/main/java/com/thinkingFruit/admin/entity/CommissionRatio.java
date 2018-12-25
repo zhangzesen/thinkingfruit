@@ -1,6 +1,9 @@
 package com.thinkingFruit.admin.entity;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import com.ysdevelop.common.entity.BaseEntity;
+import com.ysdevelop.common.validator.IsPercentage;
 
 /**
  * @author zhangzesen
@@ -26,16 +29,22 @@ public class CommissionRatio extends BaseEntity{
 	/**
 	 * 平级分佣/邀请奖比例
 	 */
+	@IsPercentage(message="请填写有效比例（不包含0和1）")
+	@NotEmpty(message="不能为空")
 	private Double levelingDiscount;
 	
 	/**
 	 * 跨级分佣/邀请奖比例
 	 */
+	@IsPercentage(message="请填写有效比例（不包含0和1）")
+	@NotEmpty(message="不能为空")
 	private Double crossLevelDiscount;
 	
 	/**
 	 * 反向级别分佣/邀请奖比例
 	 */
+	@IsPercentage(message="请填写有效比例（不包含0和1）")
+	@NotEmpty(message="不能为空")
 	private Double reverseLevelDiscount;
 
 	public Long getLevel() {
