@@ -121,7 +121,7 @@ public class AgentController {
 		agentService.checkName(queryMap);
 		//添加代理
 		agentService.addAgent(agent);
-		return Result.success("注册成功");
+		return Result.success("注册成功,等待公司审核");
 	}
 	/**
 	 * 个人信息

@@ -118,7 +118,14 @@ public class MemberController {
 	public String set() {
 		return "member/set";
 	}
-	
+	/**
+	 * 跳转密码修改页面
+	 * @return
+	 */
+	@RequestMapping(value = "/setPswd", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
+	public String setPswd() {
+		return "member/setPswd";
+	}
 	/**
 	 * 跳转代理注册审核页面
 	 * @return
@@ -166,6 +173,17 @@ public class MemberController {
 	@ResponseBody
 	public Results<String> update(@Valid Member member) {
 		memberService.updateById(member);
+		return Results.success("修改成功");
+	}
+	/**
+	 * 通过代理的id修改代理密码
+	 * @param member 代理
+	 * @return
+	 */
+	@RequestMapping(value = "/updatePswd", method = RequestMethod.PUT, produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public Results<String> updatePswd(@Valid Member member) {
+		memberService.updatePswd(member);
 		return Results.success("修改成功");
 	}
 	

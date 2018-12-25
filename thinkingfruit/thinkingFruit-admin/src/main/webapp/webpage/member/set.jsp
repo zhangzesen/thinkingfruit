@@ -42,7 +42,6 @@ color:#666!important;
 								class="layui-input" onkeyup="value=value.replace(/[^\d]/g,'')">
 						</div>
 					</div>
-
 					<input name="id" value="" hidden="hidden">
 
 					<div class="layui-form-item" style="margin-left: 100px;">

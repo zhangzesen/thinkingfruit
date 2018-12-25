@@ -114,6 +114,11 @@ public interface MemberDao {
 	 * @return
 	 */
 	Integer cancelUpgrade(@Param(value="id")Long id);
-
+	/**
+	 *修改密码
+	 * @param id 代理id
+	 * @return
+	 */
+	Integer updatePswd(@Param(value="member")Member member);
 	
 }

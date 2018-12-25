@@ -73,4 +73,9 @@ public interface MemberService {
 	 * @param id 代理id
 	 */
 	void cancelUpgrade(Long id);
+	/**
+	 * 修改密码
+	 * @param id 代理id
+	 */
+	void updatePswd(Member member);
 }

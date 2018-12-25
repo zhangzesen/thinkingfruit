@@ -80,9 +80,16 @@ public class Member extends BaseEntity{
 	 * 升级发起时间
 	 */
 	private Date upgradeTime;
+	/** 盐值 **/
+	private String salt;
 	
 	
-	
+	public String getSalt() {
+		return salt;
+	}
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
 	public Date getUpgradeTime() {
 		return upgradeTime;
 	}

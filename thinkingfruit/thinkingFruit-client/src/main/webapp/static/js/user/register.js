@@ -60,14 +60,16 @@ var user_login_ops = {
 			dataType : 'json',
 			success : function(res) {
 				btnTarget.removeClass('layui-btn-disabled');
-				var callback = null;
 				if (res.code == 0) {
-					window.location.href = WEB_ROOT + "/agent/login";
-				} else {
 					callback = function() {
-						$(".code img").attr('src',WEB_ROOT + '/randCodeImage?id='+ Math.random());
+						window.location.href = WEB_ROOT+'/agent/login';
 					};
 					common_ops.alert(res.msg, callback);
+				} else {
+					callback1 = function() {
+						$(".code img").attr('src',WEB_ROOT + '/randCodeImage?id='+ Math.random());
+					};
+					common_ops.alert(res.msg, callback1);
 				}
 			},
 			error : btnTarget.removeClass('layui-btn-diabled')

@@ -43,7 +43,9 @@
     m.`identityNo`,
     m.`status`,
     m.`upStatus`,
-    m.`updateTime`
+    m.`updateTime`,
+    m.`pswd`,
+    m.`salt`
     from `t_thinkingfruit_mall_member` as `m`
     where m.`id` = #{id}
 </select>
@@ -178,6 +180,15 @@
     </set>
     where `id` = #{id}
 </update>
-
+<!--修改密码 -->
+<update id="updatePswd">
+    update `t_thinkingfruit_mall_member`
+    <set>
+        `pswd` =#{pswd},
+        `salt`=#{salt},
+        `updateTime` = now()
+    </set>
+    where `id` = #{id}
+</update>
 
 </mapper>

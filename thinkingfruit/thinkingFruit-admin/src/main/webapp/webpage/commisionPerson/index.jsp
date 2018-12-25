@@ -33,7 +33,7 @@ body{overflow-y: scroll;}
 						<div class="layui-input-inline xbs768" style="width: 80px">
 							<button class="layui-btn btn-serach" lay-submit=""
 								lay-filter="sreach">
-								<i class="layui-icon">&#xe615;</i>
+								<i class="layui-icon">&#xe615;</i>搜索
 							</button>
 						</div>
 					</div>

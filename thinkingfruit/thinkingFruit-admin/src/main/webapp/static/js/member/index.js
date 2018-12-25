@@ -22,15 +22,15 @@ var member_index_ops = {
 				   var tableIns = table.render({
 				       elem: '#dateTable'                  //指定原始表格元素选择器（推荐id选择器）  //容器高度
 				       , cols: [[                  //标题栏
-	                       {field: 'id', title: 'ID',align: 'center', width:'7%'}
+	                       {field: 'id', title: 'ID',align: 'center', width:'5%'}
 				           , {field: 'loginName', title: '登录名', align: 'center',width:'11%'}
-				           , {field: 'name', title: '姓名', align: 'center',width:'11%'}
+				           , {field: 'name', title: '姓名', align: 'center',width:'8%'}
 				           , {field: 'gender', title: '性别',align: 'center', width:'7%'}
 				           , {field: 'identityNo',title: '身份证',align: 'center',width:'13%'}
 				           , {field: 'mobile',title: '手机号',align: 'center',width:'11%'}
 				           , {field: 'memberLevelName',title: '代理级别',align: 'center',width:'11%'}
 				           , {field: 'inviterId',title: '邀请者id',align: 'center',width:'9%'}
-				           , {fixed: 'right', title: '操作', width:'20%',height: 40, align: 'center', templet: '#barOption'} 
+				           , {fixed: 'right', title: '操作', width:'26%',height: 40, align: 'center', templet: '#barOption'} 
 				       ]]
 //				       , id: 'dataCheck'
 				       , url: WEB_ROOT + "/member/pagination"
@@ -92,6 +92,9 @@ var member_index_ops = {
 					var id = data.id;
 					var event = obj.event;
 					switch (event) {
+					case 'setPswd':
+						window.location.href = WEB_ROOT + '/member/setPswd?id='+id;
+						break;
 					case 'edit':
 						//一级分类编辑事件
 						window.location.href = WEB_ROOT + '/member/set?id='+id;

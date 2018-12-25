@@ -201,7 +201,7 @@ body .layui-layer-msg {
 	z-index: 10;
 	display: none;
 	background-image:
-		url('../../layui/css/modules/layer/default/loading-2.gif');
+		url();
 	background-position: center;
 	background-repeat: no-repeat;
 }

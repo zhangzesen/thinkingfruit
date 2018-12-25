@@ -11,6 +11,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.thinkingFruit.admin.entity.Member;
 import com.thinkingFruit.admin.entity.MemberBalance;
+import com.thinkingFruit.admin.helper.PasswordHelper;
 import com.thinkingFruit.admin.mapper.MemberDao;
 import com.thinkingFruit.admin.service.MemberService;
 import com.ysdevelop.common.exception.WebServiceException;
@@ -33,6 +34,8 @@ public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	MemberDao memberDao;
+//	@Autowired
+//	PasswordHelper passwordHelper;
 	/**
 	 * 获取所有代理
 	 */
@@ -167,6 +170,16 @@ public class MemberServiceImpl implements MemberService {
 		if(cancelUpgrade==Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.CANCEL_UPGRADE_FAIL);
 		}
+	}
+	/**
+	 * 修改密码
+	 */
+	@Override
+	public void updatePswd(Member member) {
+//		passwordHelper.encryptPassword(member);
+		System.out.println("pswd"+member.getPswd());
+		System.out.println("pswd"+member.getId());
+		memberDao.updatePswd(member);
 	}
 	
 }
