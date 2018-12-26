@@ -51,7 +51,7 @@ input{
             <section class="aui-scrollView">
                 <div class="aui-tab" data-ydui-tab>
                     <ul class="tab-nav b-line">
-                        <li class="tab-nav-item">
+                        <li class="tab-nav-item tab-active">
                             <a href="javascript:;">
                                 <span>待上级确认</span>
                             </a>
