@@ -212,6 +212,7 @@
         `o`.commodityName as `commodityName`,
         `o`.commodityPrice as `commodityPrice`,
         `c`.inviterId as `inviterId`,
+        `c`.orderTotalPrice as `orderTotalPrice`,
         `c`.inviterTotalMoney as `inviterTotalMoney`,
         `c`.inviteMoney as `inviteMoney`,
         `c`.inviterUpperId as `inviterUpperId`,

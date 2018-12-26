@@ -212,9 +212,8 @@ public class OrderServiceImpl implements OrderService{
 		commision.setCommision(purchaseOrderById.getOrderTotalPrice());
 		commision.setCommodityId(purchaseOrderById.getCommodityId());
 		commision.setMemberId(purchaseOrderById.getOrderMemberId());
-		commision.setInviterId(purchaseOrderById.getInviterId());
-		Member InviterById = memberDao.memberById(purchaseOrderById.getInviterId());
-		commision.setInviterUpperId(InviterById.getInviterId());
+		commision.setInviterId(0L);
+		commision.setInviterUpperId(0L);
 		commisionDao.addCommision(commision);
 		
 		//修改上级佣金
