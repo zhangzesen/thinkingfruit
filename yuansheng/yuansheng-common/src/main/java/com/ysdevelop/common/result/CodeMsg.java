@@ -132,6 +132,7 @@ public class CodeMsg {
 	// 提现失败
 	public static CodeMsg CASH_FAILURE = new CodeMsg(500601, "提现失败!");
 	public static CodeMsg CASH_WITHDRAWALS = new CodeMsg(500602, "已提现，请勿重复提现!");
+	public static CodeMsg BALANCE_LOW = new CodeMsg(500603, "余额不足");
 	//上传的图片类型有误
 	public static CodeMsg TYPE_WRONG = new CodeMsg(500901, "上传的图片类型有误!");
 	//上传的图片找不到
