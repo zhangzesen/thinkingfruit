@@ -43,13 +43,16 @@ var order_extract_ops = {
 			var town=$('.town').val();
 			var address=$('.address').val();
 			var remark=$('.remark').val();
-			if(parseInt(cashCount)<=parseInt(count)){
+			if(!(/(^[1-9]\d*$)/.test(cashCount))||parseInt(cashCount)==0){
+				common_ops.alert("请输入大于0的提取数量");
+				$that.removeAttr("disabled");
+			}else if(parseInt(cashCount)<=parseInt(count)){
 			$.ajax({
 				url:WEB_ROOT+'/order/update',
 				data:{
 					commodityId:commodityId,
 					cashCount:cashCount,
-					name:name,
+					orderMemberName:name,
 					mobile:mobile,
 					province:province,
 					city:city,
@@ -70,6 +73,7 @@ var order_extract_ops = {
 				
 			});
 		}else{
+			console.log("123456789")
 			common_ops.alert("提货数量大于余额！");
 			$that.removeAttr("disabled");
 		};

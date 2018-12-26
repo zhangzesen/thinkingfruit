@@ -2,7 +2,11 @@ package com.thinkingFruit.client.entity;
 
 import java.util.Date;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import com.ysdevelop.common.entity.BaseEntity;
+import com.ysdevelop.common.validator.IsNum;
 
 /**
  * @author zhangzesen
@@ -23,6 +27,7 @@ public class ClientOrder extends BaseEntity{
 	/**
 	 * 	收件人
 	 */
+	@NotEmpty(message = "收货人不能为空")
 	private String orderMemberName;
 	
 	/**
@@ -38,21 +43,25 @@ public class ClientOrder extends BaseEntity{
 	/**
 	 * 	省
 	 */
+	@NotEmpty(message = "省不能为空")
 	private String province;
 	
 	/**
 	 * 	市
 	 */
+	@NotEmpty(message = "市不能为空")
 	private String city;
 	
 	/**
 	 * 	区
 	 */
+	@NotEmpty(message = "区不能为空")
 	private String town;
 	
 	/**
 	 * 	详细地址
 	 */
+	@NotEmpty(message = "详细地址不能为空")
 	private String address;
 	
 	/**

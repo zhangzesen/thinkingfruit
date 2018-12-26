@@ -37,6 +37,9 @@ var my_information_ops = {
 	},
 	eventBind : function() {
 		$("#update").click(function(){
+			$that = $(this);
+			// 在点击事件之间需要讲按钮置灰
+			$that.attr("disabled","true");
 			var id=$('#id').val();
 			var province=$('#province').val();
 			var city=$('#city').val();
@@ -47,6 +50,9 @@ var my_information_ops = {
 			console.log("city"+city);
 			console.log("town"+town);
 			console.log("address"+address);
+			if(province.length==0||city.length==0 ||town.length==0 ||address.length==0)
+				{common_ops.alert("请填写完整信息");$that.removeAttr("disabled");}
+			else{
 			$.ajax({
 				url:WEB_ROOT+'/agent/update',
 				data:{
@@ -65,8 +71,9 @@ var my_information_ops = {
 						window.location.href = WEB_ROOT+'/my';
 					};
 					common_ops.alert(res.msg, callback);
+					$that.removeAttr("disabled");
 				}
-			});
+			});};
 		});
 	},
 	
