@@ -80,12 +80,12 @@ var purchaseOrder_index_ops = {
 	                       {field: 'id', title: '编号',align: 'center', width:'5%'}
 				           , {field: 'orderNo', title: '订单号', width:'17%',align: 'center'}
 				           , {field: 'orderMemberName', title: '代理人', width:'10%',align: 'center'}
-				           , {field: 'memberLevel', title: '代理等级', width:'10%',align: 'center'}
-				           , {field: 'orderStatus', title: '订单状态', width:'10%',align: 'center'}
+				           , {field: 'memberLevel', title: '代理等级', width:'9%',align: 'center'}
+				           , {field: 'orderStatus', title: '订单状态', width:'9%',align: 'center'}
 				           , {field: 'commodityName', title: '商品名', width:'10%',align: 'center'}
 				           , {field: 'commodityCount', title: '商品数量', width:'8%',align: 'center'}
-				           , {field: 'createTime', title: '订单时间',align: 'center', width:'16%',templet:'#date_formate'}
-				           , {fixed: 'right',title: '操作',width:'15%',align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
+				           , {field: 'createTime', title: '订单时间',align: 'center', width:'18%',templet:'#date_formate'}
+				           , {fixed: 'right',title: '操作',width:'22%',align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
 				       ]]
 			       , id: 'dataCheck'
 			       , url: WEB_ROOT + "/purchase/pagination"

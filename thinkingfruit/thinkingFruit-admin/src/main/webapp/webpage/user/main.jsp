@@ -110,7 +110,7 @@
 										<a href="<%=basePath%>/order" target="main">公司总仓发货订单</a>
 									</dd>
 									<dd class="">
-										<a href="<%=basePath%>/purchase" target="main">公司直属代理交易订单</a>
+										<a href="<%=basePath%>/purchase" target="main">上下级代理交易订单</a>
 									</dd>
 								</dl></li>
 						</shiro:hasPermission>
