@@ -25,7 +25,7 @@ var cash_index_ops={
 	                       {field: 'id', title: '编号',align: 'center',width:'7%'}
 				           , {field: 'loginName', title: '登录名', align: 'center',width:'10%'}
 				           , {field: 'cash', title: '提现金额',align: 'center',width:'10%'}
-				           , {field: 'account', title: '真实姓名', align: 'center',width:'10%'}
+				           , {field: 'name', title: '真实姓名', align: 'center',width:'10%'}
 				           , {field: 'openBank', title: '开户银行',align: 'center',width:'11%'}
 				           , {field: 'bankNumber', title: '银行卡号',align: 'center',width:'11%'}
 				           , {field: 'status', title: '状态',align: 'center',width:'11%'}

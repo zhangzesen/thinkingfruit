@@ -15,11 +15,23 @@ public class Cash extends BaseEntity {
 	
 	private Integer status;//提现状态
 	
-	private String account;// 真实姓名
+	private String account;// 备注
 	
 	private String bankNumber;//银行卡号
 	
 	private String openBank;//开户银行
+
+	private String name;
+	
+	
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public String getOpenBank() {
 		return openBank;

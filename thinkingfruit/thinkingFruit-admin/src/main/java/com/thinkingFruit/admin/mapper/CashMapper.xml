@@ -26,7 +26,7 @@
 	</select>
 	
 	<select id="paginationCash" resultType="com.thinkingFruit.admin.entity.Cash">
-	    select c.`id`,c.`cash`,c.`status`,c.`bankNumber`,c.`account`,c.`createTime`,m.`loginName`,c.`openBank`
+	    select c.`id`,c.`cash`,c.`status`,c.`bankNumber`,c.`account`,c.`createTime`,m.`loginName`,c.`openBank`,m.`name`
 		from `t_thinkingfruit_mall_cash` as c
 		left join `t_thinkingfruit_mall_member` as m
 		on c.`memberId` = m.`id`
