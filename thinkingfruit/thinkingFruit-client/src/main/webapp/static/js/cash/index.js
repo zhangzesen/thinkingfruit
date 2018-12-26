@@ -26,7 +26,7 @@ var cash_index_ops = {
 			var openBank=$('#openBank').val();
 			var bankNumber=$('#bankNumber').val();
 			var account=$('#account').val();
-			if(cash>balance){
+			if(parseInt(cash)>parseInt(balance)){
 				common_ops.alert("余额不足！")
 			}else{
 			$.ajax({

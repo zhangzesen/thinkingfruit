@@ -43,7 +43,7 @@ var order_extract_ops = {
 			var town=$('.town').val();
 			var address=$('.address').val();
 			var remark=$('.remark').val();
-			if(cashCount<=count){
+			if(parseInt(cashCount)<=parseInt(count)){
 			$.ajax({
 				url:WEB_ROOT+'/order/update',
 				data:{
@@ -70,7 +70,7 @@ var order_extract_ops = {
 				
 			});
 		}else{
-			common_ops.alert("提取数量大于余额！");
+			common_ops.alert("提货数量大于余额！");
 			$that.removeAttr("disabled");
 		};
 		});
