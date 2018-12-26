@@ -204,6 +204,26 @@ public class OrderServiceImpl implements OrderService{
 		//订单发货
 		Integer update=orderDao.updatePurchaseOrderStatus(id);
 		
+		Commision commision=new Commision();
+		commision.setOrderNo(purchaseOrderById.getOrderNo());
+		commision.setTotalAmount(purchaseOrderById.getOrderTotalPrice());
+		commision.setInviteMoney(0.0);
+		commision.setCommisionProportion(0.0);
+		commision.setCommision(purchaseOrderById.getOrderTotalPrice());
+		commision.setCommodityId(purchaseOrderById.getCommodityId());
+		commision.setMemberId(purchaseOrderById.getOrderMemberId());
+		commision.setInviterId(purchaseOrderById.getInviterId());
+		Member InviterById = memberDao.memberById(purchaseOrderById.getInviterId());
+		commision.setInviterUpperId(InviterById.getInviterId());
+		commisionDao.addCommision(commision);
+		
+		//修改上级佣金
+		Integer updateCommision=commisionDao.updateInviterIdCommision(commision);
+		//修改上上级佣金
+		Integer updateUpperIdCommision=commisionDao.updateInviterUpperIdCommision(commision);
+		if(updateCommision==Constant.DEFALULT_ZERO_INT||updateUpperIdCommision==Constant.DEFALULT_ZERO_INT) {
+			throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
+		}
 		//添加销量
 		Integer addSales=orderDao.addSales(purchaseOrderById.getCommodityId(),commodityCount);
 		if(update==Constant.DEFALULT_ZERO_INT||addSales==Constant.DEFALULT_ZERO_INT) {

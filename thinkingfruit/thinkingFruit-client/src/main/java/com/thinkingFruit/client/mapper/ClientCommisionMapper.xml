@@ -70,8 +70,8 @@
 	<update id="updateInviterIdCommision">
 		update `t_thinkingfruit_mall_commision_person`
 	    <set>
-	    `personTotalInviteMoney` +=#{commision.inviteMoney},
-	    `personTotalCommodity` += #{commision.inviterTotalMoney}
+	    `personTotalInviteMoney` =`personTotalInviteMoney`+ #{commision.inviteMoney},
+	    `personTotalCommodity` =`personTotalCommodity`+ #{commision.inviterTotalMoney}
 	    </set> 
 	    where `memberId` = #{commision.inviterId}
 	</update>
@@ -79,7 +79,7 @@
 	<update id="updateInviterUpperIdCommision">
 		update `t_thinkingfruit_mall_commision_person`
 	    <set>
-	    `personTotalCommision` +=#{commision.commision}
+	    `personTotalCommision` =`personTotalCommision`+  #{commision.commision},
 	    `updateTime`=now()
 	    </set> 
 	    where `memberId` = #{commision.inviterUpperId}
