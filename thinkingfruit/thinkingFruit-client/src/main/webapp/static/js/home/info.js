@@ -15,7 +15,7 @@ var home_index_ops = {
 			dataType:'json',
 			success:function(res){
 				console.log(res.data);
-				$(".goods").append('<div class="aui-card-list-header">'+res.data.name+'</div>'+'<div class="aui-card-list-content">'
+				$(".goods").append('<div class="aui-card-list-header" id="name">'+res.data.name+'</div>'+'<div class="aui-card-list-content">'
 				+'<img src="'+WEB_ROOT_ADMIN+res.data.coverImagePath+'"'+'value="'+res.data.id+'"/>'+"</div>")
 				$(".aui-card-list-footer #price").text(res.data.price);
 				for (var i = 0; i < res.data.detailsImagePaths.length; i++) {
@@ -50,8 +50,7 @@ var home_index_ops = {
 			var commodityCount=$("#count").val();
 			var orderTotalPrice=$("#priceTall").text();
 			console.log("commodityCount")
-			if(commodityCount.length!==0){
-				console.log("123132")
+			if(commodityCount.length!=0){
 			$.ajax({
 				url:WEB_ROOT + "/home/purchase",
 				type:'POST',

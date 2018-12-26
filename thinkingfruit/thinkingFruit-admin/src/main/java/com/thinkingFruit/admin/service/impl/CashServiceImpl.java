@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.thinkingFruit.admin.entity.Cash;
+import com.thinkingFruit.admin.entity.Member;
 import com.thinkingFruit.admin.entity.MemberBalance;
 import com.thinkingFruit.admin.mapper.CashDao;
 import com.thinkingFruit.admin.service.CashService;
@@ -52,6 +53,11 @@ public class CashServiceImpl implements CashService {
 	public void editCash(Long id) {
 		//根据id查询cash信息
 		Cash cashReplace = cashDao.findCashById(id);
+		Member memberById = memberService.memberById(cashReplace.getMemberId());
+		if((double)memberById.getBalance()<(double)cashReplace.getCash()) {
+			throw new WebServiceException(CodeMsg.BALANCE_LOW);
+		}
+		
 		System.out.println("cash"+cashReplace.getCash());
 		if(cashReplace.getStatus() == Constant.DEFALULT_ZERO_INT){
 			MemberBalance memberBalance = new MemberBalance();

@@ -77,6 +77,14 @@ height:auto;
 			
 		</div>
 	</div>
+	<script type="text/javascript"
+		src="<%=basePath%>/static/js/common/date.js"></script>
+	<script type="text/html" id="date_formate">
+    {{#  
+     console.log("dateTime--->"+d.createTime);
+     return new Date(d.createTime).format("yyyy-MM-dd hh:mm:ss");
+    }} 
+    </script>
 	<jsp:include page="/context/js-tags.jsp" />
 	<script type="text/javascript"
 		src="<%=basePath%>/static/js/purchaseOrder/index.js"></script>

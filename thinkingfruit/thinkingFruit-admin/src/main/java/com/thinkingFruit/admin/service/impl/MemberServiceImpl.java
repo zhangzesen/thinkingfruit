@@ -56,7 +56,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
     /**
-              * 查询代理信息
+     * 查询代理信息
      */
 	@Transactional(rollbackFor = Exception.class)
 	@Override

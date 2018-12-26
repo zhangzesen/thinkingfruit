@@ -65,7 +65,7 @@ public class CashController {
 		HttpSession session = request.getSession();
 		cash.setMemberId((Long)session.getAttribute("agentId"));
 		cashService.withdrawal(cash);
-		return Result.success("提现发起成功");
+		return Result.success("提现发起成功,余额提现成功后扣除，请勿重复提交");
 	}
 	/**
 	 * 查询余额

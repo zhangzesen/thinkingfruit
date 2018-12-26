@@ -26,7 +26,7 @@ color:#666!important;
 							<select name="memberLevelId" lay-filter="reportType" required="true" diyCheck="请选择等级">
 								<option value="">请选择级别</option>
 								<option value="1">联创</option>
-								<option value="2">春事</option>
+								<option value="2">董事</option>
 								<option value="3">总监</option>
 								<option value="4">svip</option>
 								<option value="5">vip</option>
