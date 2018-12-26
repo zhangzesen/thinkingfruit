@@ -195,7 +195,6 @@
 				and o.`orderMemberName` like CONCAT('%',#{queryMap.orderMemberName},'%')
 			</if>
 			and orderStatus!=3
-			and inviterId=0
 		</where>
 	</select>
 	
@@ -208,6 +207,7 @@
         `o`.orderMemberName as `orderMemberName`,
         `o`.orderStatus as `orderStatus`,     
         `o`.memberLevel as `memberLevel`,
+        `o`.commodityId as `commodityId`,
         `o`.commodityCount as `commodityCount`,
         `o`.commodityName as `commodityName`,
         `o`.commodityPrice as `commodityPrice`,

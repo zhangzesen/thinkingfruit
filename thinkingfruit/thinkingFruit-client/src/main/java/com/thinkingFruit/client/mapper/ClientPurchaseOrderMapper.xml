@@ -32,12 +32,14 @@
 		t.`orderTotalPrice` as `orderTotalPrice`,
 		t.`createTime` as `createTime`,
 		c.`coverImagePath` as `coverImagePath`,
+		t.`confirmTime` as `confirmTime`,
 		t.`updateTime` as `updateTime`
 		from
 		`t_thinkingfruit_mall_order_purchase` as `t`
 		left join `t_thinkingfruit_mall_commodity` as `c` on `t`.commodityId=`c`.id
 		where t.`orderMemberId` = #{id}
 		and t.`orderStatus` != 3
+		ORDER BY `t`.id DESC
 	</select>
 	
 	<!-- 订单列表 -->
@@ -53,11 +55,16 @@
 		t.`commodityPrice` as `commodityPrice`,
 		t.`orderStatus` as `orderStatus`,
 		t.`orderTotalPrice` as `orderTotalPrice`,
-		t.`createTime` as `createTime`
+		t.`createTime` as `createTime`,
+		c.`coverImagePath` as `coverImagePath`,
+		t.`confirmTime` as `confirmTime`,
+		t.`updateTime` as `updateTime`
 		from
 		`t_thinkingfruit_mall_order_purchase` as t
+		left join `t_thinkingfruit_mall_commodity` as `c` on `t`.commodityId=`c`.id
 		where t.`inviterId` = #{id}
 		and t.`orderStatus` != 3
+		ORDER BY `t`.id DESC
 	</select>
 	
 	<!-- 获取仓库 -->
