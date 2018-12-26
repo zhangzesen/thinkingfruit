@@ -80,13 +80,6 @@ width:300px;
 									</div>
 								</div>
 								
-								<div class="layui-form-item">
-									<label class="layui-form-label">配送方式</label>
-									<div class="layui-input-inline input-custom-width">
-										<input type="text" name="sendMethod"  
-											autocomplete="off" class="layui-input" readonly="readonly">
-									</div>
-								</div>
 								
 								<div class="layui-form-item">
 									<label class="layui-form-label">订单状态</label>

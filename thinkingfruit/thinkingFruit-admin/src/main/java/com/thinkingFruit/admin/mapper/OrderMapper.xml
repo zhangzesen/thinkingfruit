@@ -30,7 +30,8 @@
 		`o`.commodityCount as `commodityCount`,
 		`o`.commodityId as `commodityId`,
 		`c`.name as `commodityName`,
-		`o`.createTime as `createTime`
+		`o`.createTime as `createTime`,
+		`o`.remark as `remark`
 		from
 		`t_thinkingfruit_mall_order` as `o`
 		left join `t_thinkingfruit_mall_commodity` as `c` on `c`.id=`o`.commodityId
@@ -73,7 +74,8 @@
         `o`.commodityId as `commodityId`,
         `o`.logistics as `logistics`,
         `o`.commodityCount as `commodityCount`,
-        `c`.name as `commodityName`
+        `c`.name as `commodityName`,
+        `o`.remark as `remark`
 		from
 		`t_thinkingfruit_mall_order` as `o`
         left join `t_thinkingfruit_mall_commodity` as `c`

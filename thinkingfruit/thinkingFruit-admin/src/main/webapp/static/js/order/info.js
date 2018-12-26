@@ -133,11 +133,6 @@ var order_info_ops={
 					   $("input[name='commodityName']").attr("value",res.data.commodityName);
 					   $("input[name='commodityCount']").attr("value",res.data.commodityCount);
 					   $("select[name='logistics']").attr("value",res.data.logistics);
-					   if(res.data.sendMethod==0){
-						   $("input[name='sendMethod']").val("邮寄");
-					   }else if(res.data.sendMethod==1){
-						   $("input[name='sendMethod']").val("自取");
-					   }
 					   console.log("id"+id);
 					   console.log("res.data.orderStatus"+res.data.orderStatus)
 					   switch (res.data.orderStatus) {

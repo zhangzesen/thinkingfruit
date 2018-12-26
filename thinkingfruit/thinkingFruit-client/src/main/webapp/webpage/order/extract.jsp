@@ -127,6 +127,16 @@ float:none;
                     </div>
                 </div>
             </li>
+             <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-label">
+                    	备注
+                    </div>
+                    <div class="aui-list-item-input">
+                        <input type="text" placeholder="请填写汉字" class="remark">
+                    </div>
+                </div>
+            </li>
             </ul>
             </div>
                     

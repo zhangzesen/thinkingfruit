@@ -22,7 +22,7 @@ var order_extract_ops = {
 				$('.province').val(res.data.province);
 				$('.city').val(res.data.city);
 				$('.town').val(res.data.town);
-				$('.address').val(res.data.town);
+				$('.address').val(res.data.address);
 			}
 		});
 	},
@@ -42,6 +42,7 @@ var order_extract_ops = {
 			var city=$('.city').val();
 			var town=$('.town').val();
 			var address=$('.address').val();
+			var remark=$('.remark').val();
 			if(cashCount<=count){
 			$.ajax({
 				url:WEB_ROOT+'/order/update',
@@ -53,7 +54,8 @@ var order_extract_ops = {
 					province:province,
 					city:city,
 			        town:town,
-			        address:address
+			        address:address,
+			        remark:remark
 				},
 				type:'PUT',
 				dataType:'json'

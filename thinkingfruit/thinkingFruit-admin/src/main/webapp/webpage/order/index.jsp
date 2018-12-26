@@ -77,6 +77,8 @@ height:auto;
 			
 		</div>
 	</div>
+	<script type="text/javascript"
+		src="<%=basePath%>/static/js/common/date.js"></script>
 	<jsp:include page="/context/js-tags.jsp" />
 	<script type="text/html" id="date_formate">
     {{#  

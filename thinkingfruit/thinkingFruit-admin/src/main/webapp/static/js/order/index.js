@@ -63,7 +63,7 @@ var order_index_ops = {
 				           , {field: 'orderNo', title: '订单号', width:'11%',align: 'center'}
 				           , {field: 'orderMemberName', title: '收件人', width:'11%',align: 'center'}
 				           , {field: 'mobile', title: '手机号', width:'11%',align: 'center'}
-				           , {field: 'sendMethod', title: '配送方式', width:'7%',align: 'center'}
+				           , {field: 'remark', title: '备注', width:'7%',align: 'center'}
 				           , {field: 'orderStatus', title: '订单状态', width:'11%',align: 'center'}
 				           , {field: 'commodityCount', title: '商品数量', width:'7%',align: 'center'}
 				           , {field: 'createTime', title: '创建时间', width:'15%',align: 'center',templet:'#date_formate'}
@@ -105,7 +105,12 @@ var order_index_ops = {
 			               }else if($(this).text()=='1'){  
 			                  $(this).text("自取")  
 			               }
-			           })  
+			           }) 
+			           $("[data-field='remark']").children().each(function(){  
+			               if($(this).text()==''){  
+			                  $(this).text("无备注")  
+			               }
+			           }) 
 			           
 			       }
 			   });

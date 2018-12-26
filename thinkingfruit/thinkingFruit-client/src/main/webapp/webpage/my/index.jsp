@@ -17,7 +17,7 @@
 <link href="iTunesArtwork@2x.png" sizes="114x114"
 	rel="apple-touch-icon-precomposed">
 <link rel="stylesheet" type="text/css" href="<%=basePath%>/static/plugin/aui/css/aui.css" />
-<link rel="stylesheet" type="text/css" href="<%=basePath%>/static/plugin/aui/font/aui-iconfont.ttf" />
+<link rel="stylesheet" type="text/css" href="<%=basePath%>/static/plugin/aui/css/aui-iconfont.ttf" />
 <style type="text/css">
       .text-white {
             color: black !important;
