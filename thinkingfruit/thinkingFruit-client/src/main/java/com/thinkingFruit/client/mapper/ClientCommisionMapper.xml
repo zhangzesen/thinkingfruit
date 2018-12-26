@@ -71,20 +71,18 @@
 		update `t_thinkingfruit_mall_commision_person`
 	    <set>
 	    `personTotalInviteMoney` +=#{commision.inviteMoney},
-	    `personTotalCommodity` += #{commision.inviterTotalMoney},
-	    `personTotal` = `personTotalCommision`+`personTotalCommodity`+`personTotalInviteMoney`
+	    `personTotalCommodity` += #{commision.inviterTotalMoney}
 	    </set> 
-	    where `memberId` = #{inviterId}
+	    where `memberId` = #{commision.inviterId}
 	</update>
 	
 	<update id="updateInviterUpperIdCommision">
 		update `t_thinkingfruit_mall_commision_person`
 	    <set>
-	    `personTotalCommision` +=#{commision.commision},
-	    `personTotal` = `personTotalCommision`+`personTotalCommodity`+`personTotalInviteMoney`
+	    `personTotalCommision` +=#{commision.commision}
 	    `updateTime`=now()
 	    </set> 
-	    where `memberId` = #{inviterUpperId}
+	    where `memberId` = #{commision.inviterUpperId}
 	</update>
 	<select id="getTotalCost" resultType="com.thinkingFruit.client.entity.ClientCommision">
 	   select
