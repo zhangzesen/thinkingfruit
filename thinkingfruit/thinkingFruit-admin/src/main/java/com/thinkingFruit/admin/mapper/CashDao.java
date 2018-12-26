@@ -18,7 +18,7 @@ public interface CashDao {
 	List<Cash> paginationCash(@Param("queryMap") Map<String, String> queryMap,@Param("pagination") Pagination<Cash> pagination);
 
 	//修改提现状态
-	void editCash(@Param("id")Long id);
+	Integer editCash(@Param("id")Long id);
 
 	//根据id查询cash信息
 	Cash findCashById(@Param("id")Long id);
