@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.thinkingFruit.client.entity.Agent;
+import com.thinkingFruit.client.entity.Cash;
 import com.thinkingFruit.client.entity.CommissionRatio;
 
 
@@ -127,4 +128,11 @@ public interface AgentDao {
      * @return
      */
 	Integer updateUpLevel(Long id);
+
+	 /**
+	  * 修改用户余额
+    * @param id
+    * @return
+    */
+	void updataBalance(@Param("cash")Cash cash);
 }

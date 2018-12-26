@@ -108,7 +108,7 @@ var purchaseOrder_index_ops = {
 			                  
 			                  $("[data-field='orderStatus']").children().each(function(){  
 					        	   if($(this).text()=='1'){  
-					                  $(this).text("已下单");
+					                  $(this).text("已下单").css("color","#FF5722");
 					                  $(".add_btn").css("display","inline-block");
 					                  $(".cancel_btn").css("display","inline-block");
 					               }else if($(this).text()=='2'){  

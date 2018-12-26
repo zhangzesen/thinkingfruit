@@ -47,6 +47,7 @@ public class CashServiceImpl implements CashService {
 		if (withdrawal == Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.CASH_FAILURE);
 		}
+		agentDao.updataBalance(cash);
 		String content="代理:"+agentById.getLoginName()+"已申请提现";
 		messageService.addMessage(content);
 	}

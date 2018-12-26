@@ -33,11 +33,6 @@ var order_index_ops = {
 				$(".layui-this").attr("class",'');
 			});
 			
-	/*		$("#play").click(function(){
-				$("#bgMusic").get(0).play();
-				$("#play").value="播放";
-			})*/
-			
 			
 		});
 	},
@@ -87,11 +82,11 @@ var order_index_ops = {
 			           console.log(count);
 			           $("[data-field='orderStatus']").children().each(function(){  
 			               if($(this).text()=='0'){  
-			                  $(this).text("待发货");
+			                  $(this).text("待发货").css("color","#FF5722");
 			                  $(".add_btn").css("display","inline-block");
 			                  $(".cancel_btn").css("display","inline-block");
 			               }else if($(this).text()=='1'){  
-			                  $(this).text("待收货");
+			                  $(this).text("已发货");
 			                  $(".cancel_btn").css("display","inline-block");
 			               }else if($(this).text()=='2'){  
 			                  $(this).text("已完成")  
@@ -99,13 +94,6 @@ var order_index_ops = {
 			               $(".look_btn").css("display","inline-block");
 			           }) 
 			           
-			           $("[data-field='sendMethod']").children().each(function(){  
-			               if($(this).text()=='0'){  
-			                  $(this).text("邮寄")  
-			               }else if($(this).text()=='1'){  
-			                  $(this).text("自取")  
-			               }
-			           }) 
 			           $("[data-field='remark']").children().each(function(){  
 			               if($(this).text()==''){  
 			                  $(this).text("无备注")  

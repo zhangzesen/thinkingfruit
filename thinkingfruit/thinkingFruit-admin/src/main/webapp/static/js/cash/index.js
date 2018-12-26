@@ -63,7 +63,7 @@ var cash_index_ops={
 				      
 				        		if($(this).text()=='0'){
 				        			$(this).empty();
-				        			$(this).append("未提现");
+				        			$(this).append("未提现").css("color","#FF5722");
 				        		}else if($(this).text()=='1'){
 				        			$(this).empty();
 				        			$(this).append("已提现");

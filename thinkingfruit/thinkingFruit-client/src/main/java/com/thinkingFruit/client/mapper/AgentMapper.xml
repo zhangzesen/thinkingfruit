@@ -232,4 +232,13 @@
 	    </set> 
 	    where `m`.id = #{id}
 	</update>
+	<!--修改余额 -->
+	<update id="updataBalance">
+		update `t_thinkingfruit_mall_member` as `m`
+	    <set>
+	    `balance` =`balance`- #{cash.cash},
+	    updateTime=now()
+	    </set> 
+	    where `m`.id = #{cash.memberId}
+	</update>
 </mapper>
