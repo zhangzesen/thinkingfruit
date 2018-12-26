@@ -35,7 +35,7 @@ var team_index_ops = {
                     +'<div class="aui-flex-box">'+"<h3>"+"级别"+"</h3>"+"</div>"+"<div class='aui-order-pay'>"
                     +"<p>"+res.data[i].memberLevelName+"</p>"+"</div>"+"</div>"+"<div class='aui-flex aui-flex-order'>"+"<div class='aui-order-img'>"
                     +'<img src="'+res.data[i].avatar+'" alt="">'+"</div>"+'<div class="aui-flex-box">'+"<h2>"+res.data[i].name+"</h2>"+"<h2>"+"联系方式："+"<i>"+res.data[i].mobile+"</i>"+"</h>"
-                    +"<h4>"+"销售额："+"<i>"+res.data[i].salesVolume+"</i>"+"元"+"</h4>"+"</div>"+"</div>"+'<div class="aui-flex aui-flex-button">'
+                    +"<h4>"+"销售额："+"<i>"+res.data[i].salesVolume+"</i>"+"元"+"</h4>"+"<h4>"+"团队人数："+"<i>"+res.data[i].teamNumbers+"</i>"+"人"+"</h4>"+"</div>"+"</div>"+'<div class="aui-flex aui-flex-button">'
                 	+"</div>"+"</div>")
 			    }
 			}

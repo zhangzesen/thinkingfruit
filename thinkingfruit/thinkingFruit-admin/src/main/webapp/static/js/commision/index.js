@@ -29,8 +29,8 @@ var commision_index_ops = {
 				        , {field: 'name', title: '代理姓名',align: 'center', width:'14%'}
 				        , {field: 'commision', title: '佣金',align: 'center', width:'14%'}
 				        , {field: 'inviteMoney', title: '邀请金',align: 'center', width:'14%'}
-				        , {field: 'createTime', title: '订单时间',align: 'center', width:'12%',templet:'#date_formate'}
-				        , {fixed: 'right', title: '操作', width:'20%',height: 40, align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
+				        , {field: 'createTime', title: '订单时间',align: 'center', width:'17%',templet:'#date_formate'}
+				        , {fixed: 'right', title: '操作', width:'15%',height: 40, align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
 				    ]]
 				    , url: WEB_ROOT + "/commision/pagination"
 				    , method: 'get'

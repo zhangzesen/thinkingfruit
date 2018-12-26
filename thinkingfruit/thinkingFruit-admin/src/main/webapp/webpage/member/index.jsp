@@ -75,7 +75,7 @@ body{overflow-y: scroll;}
    {{#
     var barOption ="<a class='layui-btn layui-btn-small layui-btn-warm look_btn' title='查看' lay-event='info'><i class='layui-icon'>&#xe615;</i></a>";
     barOption+="<a class='layui-btn layui-btn-small edit_btn' title='修改' lay-event='edit'><i class='layui-icon'>&#xe642;</i></a>";
-    barOption+= "<a class='layui-btn layui-btn-small layui-btn-normal add_btn' title='修改密码' lay-event='setPswd'><i class='layui-icon'>&#xe673;</i></a>";
+    barOption+= "<a class='layui-btn layui-btn-small layui-btn-normal add_btn' title='修改密码' lay-event='setPswd'><i class='layui-icon'>&#xe631;</i></a>";
     barOption+= "<a class='layui-btn layui-btn-small layui-btn-danger add_btn' title='删除' lay-event='delete'><i class='layui-icon'>&#xe640;</i></a>";
     return barOption;
    }} 

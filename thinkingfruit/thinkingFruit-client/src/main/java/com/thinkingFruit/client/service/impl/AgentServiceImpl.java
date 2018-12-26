@@ -1,5 +1,6 @@
 package com.thinkingFruit.client.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -161,6 +162,11 @@ public class AgentServiceImpl implements AgentService {
 	@Override
 	public List<Agent> agentList(Long id){
 		List<Agent> findAgentList = agentDao.findAgentList(id);
+		for (Agent agent : findAgentList) {
+			Long nextId = agent.getId();
+			Long teamNumbers = agentDao.getTeamNumbers(nextId);
+			agent.setTeamNumbers(teamNumbers);
+		}
 		return findAgentList;
 	}
 	/**
