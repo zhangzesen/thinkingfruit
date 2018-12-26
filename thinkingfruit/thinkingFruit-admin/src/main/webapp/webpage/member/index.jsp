@@ -71,6 +71,14 @@ body{overflow-y: scroll;}
 		</div>
 	</div>
 	<jsp:include page="/context/js-tags.jsp" />
+	<script type="text/javascript"
+		src="<%=basePath%>/static/js/common/date.js"></script>
+	<script type="text/html" id="date_formate">
+    {{#  
+     console.log("dateTime--->"+d.createTime);
+     return new Date(d.createTime).format("yyyy-MM-dd hh:mm:ss");
+    }} 
+    </script>
 	<script id="barOption" type="text/html">
    {{#
     var barOption ="<a class='layui-btn layui-btn-small layui-btn-warm look_btn' title='查看' lay-event='info'><i class='layui-icon'>&#xe615;</i></a>";

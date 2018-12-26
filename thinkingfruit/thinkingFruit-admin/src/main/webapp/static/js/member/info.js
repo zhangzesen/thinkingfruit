@@ -43,7 +43,8 @@ var member_info_ops = {
 					$("input[name='id']").attr("value",res.data.id);
 					$("input[name='loginName']").attr("value",res.data.loginName);
 					$("input[name='name']").attr("value",res.data.name);
-					$("input[name='gender']").attr("value",res.data.gender);
+					var gender=res.data.gender==0 ? '女':'男';
+					$("input[name='gender']").attr("value",gender);
 					$("input[name='mobile']").attr("value",res.data.mobile);
 					$("input[name='identityNo']").attr("value",res.data.identityNo);
 					$("input[name='memberLevelId']").attr("value",memberLevelName);

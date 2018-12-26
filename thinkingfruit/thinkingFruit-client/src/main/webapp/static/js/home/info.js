@@ -49,6 +49,9 @@ var home_index_ops = {
 			var commodityName=$("#name").text();
 			var commodityCount=$("#count").val();
 			var orderTotalPrice=$("#priceTall").text();
+			console.log("commodityCount")
+			if(commodityCount.length!==0){
+				console.log("123132")
 			$.ajax({
 				url:WEB_ROOT + "/home/purchase",
 				type:'POST',
@@ -67,6 +70,8 @@ var home_index_ops = {
 					common_ops.alert(res.msg, callback);
 				}
 			});
+			}else{
+			common_ops.alert("请填写商品数量");}
 		})
 	},
 	eventBind : function() {

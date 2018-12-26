@@ -5,7 +5,7 @@
 <!-- 查询所有代理 -->
 <select id="paginationMember" resultType="com.thinkingFruit.admin.entity.Member">
 	select m.`id`,m.`gender`,m.`mobile`,m.`loginName`,m.`name`,m.`status`,m.`avatar`,m.`inviterUpperId`,m.`identityNo`,
-	m.`inviterId`,m.`memberLevelId`,`l`.levelName as `memberLevelName`
+	m.`inviterId`,m.`memberLevelId`,`l`.levelName as `memberLevelName`,m.`createTime`
 	from `t_thinkingfruit_mall_member`as `m`
 	left join `t_thinkingfruit_mall_member_level` as `l` on `l`.level=`m`.memberLevelId
 	<where>

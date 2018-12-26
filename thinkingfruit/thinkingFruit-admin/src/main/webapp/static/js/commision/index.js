@@ -24,10 +24,10 @@ var commision_index_ops = {
 				    elem: '#dateTable'                  //指定原始表格元素选择器（推荐id选择器）  //容器高度
 				    , cols: [[                          //标题栏
                         {field: 'id', title: '编号',align: 'center', width:'7%'}
-				        , {field: 'orderNo', title: '订单号', align: 'center', width:'12%'}
+				        , {field: 'orderNo', title: '订单号', align: 'center', width:'17%'}
 				        , {field: 'totalAmount', title: '总金额', align: 'center', width:'8%'}
-				        , {field: 'name', title: '代理姓名',align: 'center', width:'14%'}
-				        , {field: 'commision', title: '佣金',align: 'center', width:'14%'}
+				        , {field: 'name', title: '代理姓名',align: 'center', width:'12%'}
+				        , {field: 'commision', title: '佣金',align: 'center', width:'12%'}
 				        , {field: 'inviteMoney', title: '邀请金',align: 'center', width:'14%'}
 				        , {field: 'createTime', title: '订单时间',align: 'center', width:'17%',templet:'#date_formate'}
 				        , {fixed: 'right', title: '操作', width:'15%',height: 40, align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
