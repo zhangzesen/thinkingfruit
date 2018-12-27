@@ -149,5 +149,16 @@ public interface OrderDao {
 	 * @return 库存
 	 */
 	Depot getDepot(@Param("orderMemberId")Long orderMemberId,@Param("commodityId") Long commodityId);
+
+	/**
+	 * 取消审核订单 
+	 * @param id 订单id 
+	 * @return
+	 */
+	Integer cancelCheck(Long id);
+
+	List<PurchaseOrder> paginationCheck(@Param(value="queryMap")Map<String, String> queryMap);
+
+	Integer checkStatus(@Param(value="id")Long id);
 	
 }

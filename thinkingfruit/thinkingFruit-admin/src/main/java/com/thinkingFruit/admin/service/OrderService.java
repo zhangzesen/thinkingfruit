@@ -108,4 +108,20 @@ public interface OrderService {
 	 */
 	void upExamineUpdate(PurchaseOrder purchaseOrder);
 
+	/**
+	 * 取消审核订单
+	 * @param id 订单id 
+	 * @param commodityCount 商品数量
+	 */
+	void cancelCheck(Long id, Long commodityCount);
+
+	/**
+	 * 获取购买审核订单分页
+	 * @param queryMap
+	 * @return 购买审核订单分页
+	 */
+	PageInfo<PurchaseOrder> paginationCheck(Map<String, String> queryMap);
+
+	void checkStatus(Long id);
+
 }

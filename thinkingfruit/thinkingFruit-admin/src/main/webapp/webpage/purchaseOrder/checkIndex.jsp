@@ -49,8 +49,8 @@ height:auto;
 					
 					<div class="layui-input-inline xbs768" style="margin-top:1%;">
 						<div class="layui-form">
-							<select id="orderStatus" name="orderStatus" lay-filter="orderStatus">
-								<option value="">请选择订单状态</option>
+							<select id="checkStatus" name="checkStatus" lay-filter="checkStatus">
+								<option value="">请选择订单审核状态</option>
 							</select>
 						</div>
 					</div>

@@ -119,6 +119,26 @@
 	    and `orderStatus`=1
 	</update>
 	
+	<update id="cancelCheck" parameterType="com.thinkingFruit.admin.entity.PurchaseOrder">
+		update `t_thinkingfruit_mall_order_purchase`
+	    <set>
+	    orderStatus = 3 ,
+	    updateTime = now()
+	    </set> 
+	    where `id` = #{id}
+	    and `checkStatus`=0
+	</update>
+	
+	<update id="checkStatus" parameterType="com.thinkingFruit.admin.entity.PurchaseOrder">
+		update `t_thinkingfruit_mall_order_purchase`
+	    <set>
+	    checkStatus = 1 ,
+	    updateTime = now()
+	    </set> 
+	    where `id` = #{id}
+	    and `checkStatus`=0
+	</update>
+	
 	<!-- 导出提货订单excel -->
 	<select id="findOrderExcl" resultType="com.thinkingFruit.admin.entity.Order">
 		select 
@@ -179,7 +199,7 @@
 		`t_thinkingfruit_mall_order_purchase` as `o`
 		<where>
 			1 = 1
-			<if test="queryMap.orderStatus !=null">
+			<if test="queryMap.orderStatus !=null and queryMap.orderStatus != ''">
 				and o.`orderStatus` =#{queryMap.orderStatus}
 			</if>
 			<if test="queryMap.startTime != null and queryMap.startTime != ''">
@@ -194,7 +214,44 @@
 		 	<if test="queryMap.orderMemberName !=null and queryMap.orderMemberName != ''">
 				and o.`orderMemberName` like CONCAT('%',#{queryMap.orderMemberName},'%')
 			</if>
+			and o.orderStatus!=3
+			and o.checkStatus=1
+		</where>
+	</select>
+	
+	<!-- 查看所有交易订单 -->
+	<select id="paginationCheck" resultType="com.thinkingFruit.admin.entity.PurchaseOrder">
+		select
+		`o`.id as `id`,
+		`o`.orderNo as `orderNo`,
+		`o`.orderMemberName as `orderMemberName`,
+		`o`.memberLevel as `memberLevel`,
+		`o`.commodityName as `commodityName`,
+		`o`.orderMemberId as `orderMemberId`,
+		`o`.commodityCount as `commodityCount`,
+		`o`.checkStatus as `checkStatus`,
+		`o`.createTime as `createTime`
+		from
+		`t_thinkingfruit_mall_order_purchase` as `o`
+		<where>
+			1 = 1
+			<if test="queryMap.checkStatus !=null and queryMap.checkStatus != ''">
+				and o.`checkStatus` =#{queryMap.checkStatus}
+			</if>
+			<if test="queryMap.startTime != null and queryMap.startTime != ''">
+                <![CDATA[ and `o`.createTime > #{queryMap.startTime} ]]>
+			</if>
+			<if test="queryMap.endTime != null and queryMap.endTime != ''">
+                <![CDATA[ and `o`.createTime < #{queryMap.endTime} ]]>
+		 	</if>
+			<if test="queryMap.orderNo !=null and queryMap.orderNo != ''">
+				and o.`orderNo` =#{queryMap.orderNo}
+			</if>
+		 	<if test="queryMap.orderMemberName !=null and queryMap.orderMemberName != ''">
+				and o.`orderMemberName` like CONCAT('%',#{queryMap.orderMemberName},'%')
+			</if>
 			and orderStatus!=3
+			and o.checkStatus=0
 		</where>
 	</select>
 	

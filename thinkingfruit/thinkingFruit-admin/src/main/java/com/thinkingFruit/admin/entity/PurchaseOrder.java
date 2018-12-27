@@ -118,8 +118,21 @@ public class PurchaseOrder extends BaseEntity{
 	 */
 	private Double orderTotalPrice;
 	
+	/**
+	 * 订单审核状态，0表示未审核，1表示已审核
+	 */
+	private Long checkStatus;
 	
 	
+	
+	public Long getCheckStatus() {
+		return checkStatus;
+	}
+
+	public void setCheckStatus(Long checkStatus) {
+		this.checkStatus = checkStatus;
+	}
+
 	public Double getInviteMoney() {
 		return inviteMoney;
 	}

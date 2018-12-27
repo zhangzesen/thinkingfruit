@@ -181,6 +181,31 @@ public class OrderServiceImpl implements OrderService{
 	}
 	
 	/**
+	 * 交易订单分页
+	 */
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public PageInfo<PurchaseOrder> paginationCheck(Map<String, String> queryMap) {
+		if (queryMap == null) {
+			throw new WebServiceException(CodeMsg.SERVER_ERROR);
+		}
+		// 获取分页条件的
+		String pageSize = queryMap.get("limit");
+		String pageNum = queryMap.get("page");
+		if (pageSize == null || pageNum == null) {
+			throw new WebServiceException(CodeMsg.SERVER_ERROR);
+		}
+		Integer integerPageSize = Integer.parseInt(pageSize);
+		Integer integerPageNum = Integer.parseInt(pageNum);
+		PageHelper.startPage(integerPageNum, integerPageSize, Boolean.TRUE);
+		//获取订单集合
+		List<PurchaseOrder> order = orderDao.paginationCheck(queryMap);
+
+		PageInfo<PurchaseOrder> pageInfo = new PageInfo<>(order);
+		return pageInfo;
+	}
+	
+	/**
 	 * 交易订单详情
 	 */
 	@Transactional(rollbackFor = Exception.class)
@@ -237,6 +262,21 @@ public class OrderServiceImpl implements OrderService{
 		}
 	}
 
+	
+	/**
+	 *	 交易订单审核通过
+	 */
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public void checkStatus(Long id) {
+		if(id==null) {
+			throw new WebServiceException(CodeMsg.SERVER_ERROR);
+		}
+		Integer checkStatus=orderDao.checkStatus(id);
+		if (checkStatus==Constant.DEFALULT_ZERO_INT) {
+			throw new WebServiceException(CodeMsg.SERVER_ERROR);
+		}
+	}
 	/**
 	 * 交易订单取消
 	 */
@@ -248,6 +288,24 @@ public class OrderServiceImpl implements OrderService{
 		}
 		//取消订单
 		Integer update=orderDao.cancelPurchaseOrderStatus(id);
+		//减少销量
+		Integer reduceSales=orderDao.reduceSales(id,commodityCount);
+		if(update==Constant.DEFALULT_ZERO_INT||reduceSales==Constant.DEFALULT_ZERO_INT) {
+			throw new WebServiceException(CodeMsg.CANCEL_FAIL);
+		}		
+	}
+	
+	/**
+	 * 交易审核订单取消
+	 */
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public void cancelCheck(Long id,Long commodityCount) {
+		if (id == null) {
+			throw new WebServiceException(CodeMsg.SERVER_ERROR);
+		}
+		//取消订单
+		Integer update=orderDao.cancelCheck(id);
 		//减少销量
 		Integer reduceSales=orderDao.reduceSales(id,commodityCount);
 		if(update==Constant.DEFALULT_ZERO_INT||reduceSales==Constant.DEFALULT_ZERO_INT) {

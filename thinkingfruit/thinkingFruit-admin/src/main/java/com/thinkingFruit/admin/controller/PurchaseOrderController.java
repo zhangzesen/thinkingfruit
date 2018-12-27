@@ -78,6 +78,19 @@ public class PurchaseOrderController {
 	}
 	
 	/**
+	 * 	获取购买审核订单分页
+	 * @param request
+	 * @return 订单集合
+	 */
+	@RequestMapping(value = "/paginationCheck", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public Results<List<PurchaseOrder>> paginationCheck(HttpServletRequest request){		
+		Map<String, String> queryMap = HttpUtils.getParameterMap(request);
+		PageInfo<PurchaseOrder> pageInfo =orderService.paginationCheck(queryMap);
+		return Results.successPaginationData(pageInfo.getList(), pageInfo.getTotal());
+	}
+	
+	/**
 	 * 跳转到查看详情，发货购买订单界面
 	 * @return
 	 */
@@ -111,6 +124,18 @@ public class PurchaseOrderController {
 	}
 	
 	/**
+	 * 审核通过
+	 * @param id 订单id
+	 * @return
+	 */
+	@RequestMapping(value = "/check", method = RequestMethod.PUT, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Result<String> checkStatus(@RequestParam(value = "id") Long id){
+		orderService.checkStatus(id);
+		return Result.success("发货成功");
+	}
+	
+	/**
 	 * 取消订单
 	 * @param id 订单id
 	 * @return
@@ -120,6 +145,18 @@ public class PurchaseOrderController {
 	public Result<String> cancel(@RequestParam(value = "id") Long id,@RequestParam(value = "commodityCount")Long commodityCount){
 		orderService.cancelPurchaseOrderStatus(id,commodityCount);
 		return Result.success("取消订单成功");
+	}
+	
+	/**
+	 * 取消审核订单
+	 * @param id 订单id
+	 * @return
+	 */
+	@RequestMapping(value = "/cancelCheck", method = RequestMethod.PUT, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Result<String> cancelCheck(@RequestParam(value = "id") Long id,@RequestParam(value = "commodityCount")Long commodityCount){
+		orderService.cancelCheck(id,commodityCount);
+		return Result.success("取消审核订单成功");
 	}
 	
 	/**

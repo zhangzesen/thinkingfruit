@@ -14,13 +14,10 @@ var purchaseOrder_checkIndex_ops = {
 				var id = data.id;
 				var commodityCount=data.commodityCount;
 				console.log("commodityCount"+commodityCount);
-				if(obj.event == 'detail'){
-					//查看详情
-					window.location.href = WEB_ROOT + '/purchase/set?id='+id+'&type=detail';
-				}else if(obj.event == 'cancel'){
+				if(obj.event == 'cancel'){
 					//取消订单
 					$.ajax({
-		  				url:WEB_ROOT + "/purchase/cancel",
+		  				url:WEB_ROOT + "/purchase/cancelCheck",
 			  			type:'PUT',
 			  			data:{
 							id:id,
@@ -38,9 +35,26 @@ var purchaseOrder_checkIndex_ops = {
 						console.log(res);
 						common_ops.alert(res.msg, callback);
 		  			});
-				}else if(obj.event == 'deliver'){
-					//发货
-					window.location.href = WEB_ROOT + '/purchase/set?id='+id+'&type=deliver';
+				}else if(obj.event == 'check'){
+					//审核通过
+					$.ajax({
+		  				url:WEB_ROOT + "/purchase/check",
+			  			type:'PUT',
+			  			data:{
+							id:id
+						},
+			  			dataType:'json'
+		  			}).done(function(res){
+		  				$(".layui-input-block .layui-btn").removeClass("layui-btn-disabled");
+						var callback = null;
+						if (res.code == 0) {
+							callback = function() {
+								window.location.href = WEB_ROOT + '/purchase';
+							};
+						}
+						console.log(res);
+						common_ops.alert(res.msg, callback);
+		  			});
 				}
 			})
 			
@@ -70,8 +84,8 @@ var purchaseOrder_checkIndex_ops = {
 							table = layui.table;
 							var form = layui.form;
 								
-				$("#orderStatus").append("<option value='1'>已下单</option>");
-				$("#orderStatus").append("<option value='2'>已完成</option>");
+				$("#orderStatus").append("<option value='0'>未审核</option>");
+				$("#orderStatus").append("<option value='1'>已审核</option>");
 				form.render();
 			   // 表格渲染
 			   var tableIns = table.render({
@@ -80,14 +94,14 @@ var purchaseOrder_checkIndex_ops = {
 	                       {field: 'id', title: '编号',align: 'center', width:'8%'}
 				           , {field: 'orderNo', title: '订单号', width:'17%',align: 'center'}
 				           , {field: 'orderMemberName', title: '代理人', width:'11%',align: 'center'}
-				           , {field: 'orderStatus', title: '订单状态', width:'9%',align: 'center'}
+				           , {field: 'checkStatus', title: '订单审核状态', width:'9%',align: 'center'}
 				           , {field: 'commodityName', title: '商品名', width:'10%',align: 'center'}
 				           , {field: 'commodityCount', title: '商品数量', width:'9%',align: 'center'}
 				           , {field: 'createTime', title: '订单时间',align: 'center', width:'19%',templet:'#date_formate'}
 				           , {fixed: 'right',title: '操作',width:'18%',align: 'center', templet:'#barOption'} //这里的toolbar值是模板元素的选择器
 				       ]]
 			       , id: 'dataCheck'
-			       , url: WEB_ROOT + "/purchase/pagination"
+			       , url: WEB_ROOT + "/purchase/paginationCheck"
 			       , method: 'get'
 			       , page: true
 			       , limit: 10 //默认采用30
@@ -101,13 +115,13 @@ var purchaseOrder_checkIndex_ops = {
 
 			           //得到数据总量
 			           console.log(count);
-			           $("[data-field='orderStatus']").children().each(function(){  
-			        	   if($(this).text()=='1'){  
-			        		   $(this).text("已下单").css("color","#FF5722");
+			           $("[data-field='checkStatus']").children().each(function(){  
+			        	   if($(this).text()=='0'){  
+			        		   $(this).text("未审核").css("color","#FF5722");
 			        		   $(".add_btn").css("display","inline-block");
 			        		   $(".cancel_btn").css("display","inline-block");
-			        	   }else if($(this).text()=='2'){  
-			        		   $(this).text("已完成")  
+			        	   }else if($(this).text()=='1'){  
+			        		   $(this).text("已审核")  
 			        	   }
 			           })
 			           
@@ -123,14 +137,13 @@ var purchaseOrder_checkIndex_ops = {
 				var startTime = $(".layui-form-pane .startTime").val();
 				var endTime = $(".layui-form-pane .endTime").val();
 				var orderMemberName = $(".layui-form-pane .orderMemberName").val();
-				var orderStatus =$("#orderStatus").val();
+				var checkStatus =$("#checkStatus").val();
 				console.log(orderNo+"     "+startTime+"      "+endTime+"      "+orderStatus+"     "+orderMemberName);
-				$(".btn-export-excel").attr("href",WEB_ROOT+"/purchase/export?orderNo="+orderNo+"&startTime="+startTime+"&endTime="+endTime+"&orderMemberName="+orderMemberName+"&orderStatus="+orderStatus);
 				
 				tableIns.reload({
 						where: { //设定异步数据接口的额外参数，任意设
 							orderNo: orderNo,
-							orderStatus: orderStatus,
+							checkStatus: checkStatus,
 							startTime : startTime,
 							endTime : endTime,
 							orderMemberName: orderMemberName
