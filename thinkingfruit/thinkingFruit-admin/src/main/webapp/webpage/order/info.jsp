@@ -123,7 +123,7 @@
 				<div class="layui-form-item">
 					<label class="layui-form-label">快递类型</label>
 					<div class="layui-input-inline">
-						<select name="logistics" id="logistics" lay-filter="logistics">
+						<select name="logistics" id="logistics" readonly="readonly" lay-filter="logistics">
 							<option value="">请选择快递类型</option>
 						</select>
 					</div>
@@ -132,7 +132,7 @@
 				<div class="layui-form-item">
 					<label class="layui-form-label">运单编号</label>
 					<div class="layui-input-inline input-custom-width">
-						<input type="text" name="expressNo" autocomplete="off"
+						<input type="text" name="expressNo" readonly="readonly" autocomplete="off"
 							class="layui-input">
 					</div>
 				</div>
