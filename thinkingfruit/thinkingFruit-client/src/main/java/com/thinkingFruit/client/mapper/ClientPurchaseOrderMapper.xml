@@ -7,13 +7,13 @@
 		`t_thinkingfruit_mall_order_purchase`(
 			`orderNo`,`orderMemberId`,`memberLevel`,`orderMemberName`,
 			`commodityId`,`commodityCount`,`commodityName`,`commodityPrice`,`isFirst`,
-			`orderStatus`,`createTime`,`orderTotalPrice`,`inviterId`
+			`orderStatus`,`createTime`,`orderTotalPrice`,`inviterId`,`checkStatus`
 		)
 		values
 		(
 			#{orderNo},#{orderMemberId},#{memberLevel},#{orderMemberName},
 			#{commodityId},#{commodityCount},#{commodityName},#{commodityPrice},#{isFirst},
-			1,now(),#{orderTotalPrice},#{inviterId}
+			1,now(),#{orderTotalPrice},#{inviterId},#{checkStatus}
 		)
 	</insert>
 	
@@ -30,6 +30,7 @@
 		t.`commodityPrice` as `commodityPrice`,
 		t.`orderStatus` as `orderStatus`,
 		t.`orderTotalPrice` as `orderTotalPrice`,
+		t.`checkStatus` as `checkStatus`,
 		t.`createTime` as `createTime`,
 		c.`coverImagePath` as `coverImagePath`,
 		t.`confirmTime` as `confirmTime`,
@@ -57,6 +58,7 @@
 		t.`orderTotalPrice` as `orderTotalPrice`,
 		t.`createTime` as `createTime`,
 		c.`coverImagePath` as `coverImagePath`,
+		t.`checkStatus` as `checkStatus`,
 		t.`confirmTime` as `confirmTime`,
 		t.`updateTime` as `updateTime`
 		from

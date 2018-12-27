@@ -102,20 +102,18 @@ var purchaseOrder_index_ops = {
 
 			           //得到数据总量
 			           console.log(count);
+			           $("[data-field='orderStatus']").children().each(function(){  
+			        	   if($(this).text()=='1'){  
+			        		   $(this).text("已下单").css("color","#FF5722");
+			        		   $(".add_btn").css("display","inline-block");
+			        		   $(".cancel_btn").css("display","inline-block");
+			        	   }else if($(this).text()=='2'){  
+			        		   $(this).text("已完成")  
+			        	   }
+			           })
 			           	$("[data-field='memberLevel']").children().each(function(){  
 			        	   if($(this).text()=='1'){  
 			                  $(this).text("联创");
-			                  
-			                  $("[data-field='orderStatus']").children().each(function(){  
-					        	   if($(this).text()=='1'){  
-					                  $(this).text("已下单").css("color","#FF5722");
-					                  $(".add_btn").css("display","inline-block");
-					                  $(".cancel_btn").css("display","inline-block");
-					               }else if($(this).text()=='2'){  
-					                  $(this).text("已完成")  
-					               }
-					           })
-			                  
 			               }else if($(this).text()=='2'){  
 			                  $(this).text("董事")  
 			               }else if($(this).text()=='3'){  
