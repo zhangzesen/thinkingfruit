@@ -56,7 +56,14 @@ public class PurchaseOrderController {
 	public String orderIndex(){
 		return "purchaseOrder/index";
 	}
-	
+	/**
+	 * 	跳到审核订单首页
+	 * @return
+	 */
+	@RequestMapping(value = "checkOrder", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
+	public String checkIndex(){
+		return "purchaseOrder/checkIndex";
+	}
 	/**
 	 * 	获取购买订单分页
 	 * @param request

@@ -112,6 +112,9 @@
 									<dd class="">
 										<a href="<%=basePath%>/purchase" target="main">代理交易订单</a>
 									</dd>
+									<dd class="">
+										<a href="<%=basePath%>/purchase/checkOrder" target="main">交易订单审核</a>
+									</dd>
 								</dl></li>
 						</shiro:hasPermission>
 
