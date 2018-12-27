@@ -64,7 +64,7 @@ input{
                         </li>
                         <li class="tab-nav-item">
                             <a href="javascript:;">
-                                <span>已发货订单</span>
+                                <span>待收货订单</span>
                             </a>
                         </li>
                     </ul>

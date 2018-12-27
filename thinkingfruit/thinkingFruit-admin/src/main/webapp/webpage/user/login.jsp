@@ -14,7 +14,7 @@
 		<div class="header">
 			<a href="#"> <img src="<%=basePath%>/static/images/ljl-top.png">
 			<div>
-			思维果实
+			爱因思果
 			</div>
 			</a>
 			<div id="option">登录</div>
