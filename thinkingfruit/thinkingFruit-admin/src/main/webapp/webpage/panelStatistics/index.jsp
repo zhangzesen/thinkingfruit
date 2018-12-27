@@ -155,7 +155,7 @@ legend {
 						<table class="list-table" style="table-layout: fixed;">
 							<thead>
 								<tr>
-									<th>日订单量</th>
+									<th>近七日每日订单量</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -174,7 +174,7 @@ legend {
 						<table class="list-table" style="table-layout: fixed;">
 							<thead>
 								<tr>
-									<th>日交易金额</th>
+									<th>近七日每日交易金额</th>
 								</tr>
 							</thead>
 							<tbody>

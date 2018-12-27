@@ -11,7 +11,6 @@ var member_set_ops={
 			// 立即添加按钮的点击事件
 			console.log("even")
 			$(".layui-input-block .layui-btn").on("click",function(){
-					
 				var memberLevelId = $("select[name='memberLevelId']").val();
 				var inviterId = $("input[name='inviterId']").val();
 				console.log("inviterId"+inviterId);
@@ -20,28 +19,43 @@ var member_set_ops={
 				console.log(id);
 						$(".layui-input-block .layui-btn").addClass('layui-btn-disabled');
 						$.ajax({
-							type :'PUT',
-							url : WEB_ROOT + "/member/update",
+							type :'GET',
+							url : WEB_ROOT + "/member/details",
 							dataType : 'json',
 							data : {
-								id:id,
-								memberLevelId: memberLevelId,
-								inviterId : inviterId
+								id: inviterId
 							},
 							success:function(res){
-								$(".layui-input-block .layui-btn").removeClass("layui-btn-disabled");
-								var callback = null;
-								if (res.code == 0) {
-									callback = function() {
-										window.location.href = WEB_ROOT + '/member';
-									};
-								}
-								common_ops.alert(res.msg, callback);
-							},
-							error:function(){
-								$(".layui-input-block .layui-btn").removeClass("layui-btn-disabled");
+							if(res.data.memberLevelId<=memberLevelId||inviterId==0){
+								$.ajax({
+									type :'PUT',
+									url : WEB_ROOT + "/member/update",
+									dataType : 'json',
+									data : {
+										id:id,
+										memberLevelId: memberLevelId,
+										inviterId : inviterId
+									},
+									success:function(res){
+										$(".layui-input-block .layui-btn").removeClass("layui-btn-disabled");
+										var callback = null;
+										if (res.code == 0) {
+											callback = function() {
+												window.location.href = WEB_ROOT + '/member';
+											};
+										}
+										common_ops.alert(res.msg, callback);
+									},
+									error:function(){
+										$(".layui-input-block .layui-btn").removeClass("layui-btn-disabled");
+									}
+								});
+							}else{
+								common_ops.alert("邀请人级别必须大于等于本级别");
 							}
+							},
 						});
+					
 		   });
 		},
 		inintComponent:function(){
