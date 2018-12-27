@@ -174,6 +174,7 @@ public class MemberServiceImpl implements MemberService {
 	/**
 	 * 修改密码
 	 */
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void updatePswd(Member member) {
 		PasswordHelper.encryptPassword(member);

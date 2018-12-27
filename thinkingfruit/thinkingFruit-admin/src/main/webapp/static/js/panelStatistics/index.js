@@ -44,6 +44,7 @@ var statistics_index_ops = {
 						/*arrTime.push(res.data.lineChart[i].createTime.year+1900+"-"+(res.data.lineChart[i].createTime.month+1)+"-"+
 								(res.data.lineChart[i].createTime.date-1));*/
 						a = timestampToTime(res.data.lineChart[i].createTime)
+						console.log(res.data.lineChart[i].createTime)
 						console.log(a)
 						arrTime.push(a)
 						orderArr.push(res.data.lineChart[i].orderTotal);
@@ -56,7 +57,7 @@ var statistics_index_ops = {
 		   });
 		   
 		   function timestampToTime(timestamp) {
-		        var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+		        var date = new Date(timestamp-24*60*60*1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
 		        Y = date.getFullYear() + '-';
 		        M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
 		        D = date.getDate() + ' ';

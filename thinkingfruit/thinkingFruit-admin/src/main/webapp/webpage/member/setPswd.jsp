@@ -57,6 +57,6 @@ input {
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/jquery-validation/additional-methods.min.js"></script>
 	<script type="text/javascript"
-		src="<%=basePath%>/static/js/member/set.js"></script>
+		src="<%=basePath%>/static/js/member/setPswd.js"></script>
 </body>
 </html>

@@ -184,11 +184,11 @@
 <update id="updatePswd">
     update `t_thinkingfruit_mall_member`
     <set>
-        `pswd` =#{pswd},
-        `salt`=#{salt},
+        `pswd` =#{member.pswd},
+        `salt`=#{member.salt},
         `updateTime` = now()
     </set>
-    where `id` = #{id}
+    where `id` = #{member.id}
 </update>
 
 </mapper>

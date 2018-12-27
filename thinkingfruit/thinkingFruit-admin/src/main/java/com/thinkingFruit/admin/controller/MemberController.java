@@ -183,6 +183,7 @@ public class MemberController {
 	@RequestMapping(value = "/updatePswd", method = RequestMethod.PUT, produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public Results<String> updatePswd(@Valid Member member) {
+		System.out.println("修改密码");
 		memberService.updatePswd(member);
 		return Results.success("修改成功");
 	}
