@@ -24,6 +24,7 @@ var order_index_ops = {
 		     return fmt;   
 		   } 
 		$.ajax({
+			async: false,
 			url:WEB_ROOT + "/purchaseOrder/list",
 			type:'get',
 			dataType:'json',
@@ -84,6 +85,7 @@ var order_index_ops = {
 			}
 		});
 		$.ajax({
+			async: false,
 			url:WEB_ROOT + "/purchaseOrder/needList",
 			type:'get',
 			dataType:'json',

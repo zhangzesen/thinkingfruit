@@ -6,6 +6,7 @@ var team_index_ops = {
 	},
 	initComponent : function() {
 		$.ajax({
+			async: false,
 			url:WEB_ROOT + "/agent/teamAgent",
 			type:'get',
 			dataType:'json',
@@ -22,6 +23,7 @@ var team_index_ops = {
 			}
 		}),
 		$.ajax({
+			async: false,
 			url:WEB_ROOT + "/agent/teamList",
 			type:'get',
 			dataType:'json',
@@ -41,6 +43,7 @@ var team_index_ops = {
 			}
 		}),
 		$.ajax({
+			async: false,
 			url:WEB_ROOT + "/agent/inviter",
 			type:'get',
 			dataType:'json',

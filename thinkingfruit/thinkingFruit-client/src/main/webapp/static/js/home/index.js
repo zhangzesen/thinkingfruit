@@ -7,6 +7,7 @@ var home_index_ops = {
 	},
 	initComponent : function() {
 		$.ajax({
+			async: false,
 			url:WEB_ROOT + "/home/imgList",
 			type:'get',
 			dataType:'json',
@@ -25,6 +26,7 @@ var home_index_ops = {
 		console.log(WEB_ROOT);
 		console.log(WEB_ROOT_ADMIN);
 		$.ajax({
+			async: false,
 			url:WEB_ROOT + "/home/list",
 			type:'get',
 			dataType:'json',

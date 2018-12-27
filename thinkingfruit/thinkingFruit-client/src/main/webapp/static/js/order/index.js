@@ -7,6 +7,7 @@ var order_index_ops = {
 	initComponent : function() {
 		//云仓库列表
 		$.ajax({
+			async: false,
 			url:WEB_ROOT + "/order/depotList",
 			type:'get',
 			dataType:'json',
@@ -42,6 +43,7 @@ var order_index_ops = {
 		}),
 		//订单列表
 		$.ajax({
+			async: false,
 			url:WEB_ROOT + "/order/orderList",
 			type:'get',
 			dataType:'json',

@@ -24,6 +24,7 @@ var news_index_ops = {
 		     return fmt;   
 		   } 
 		$.ajax({
+			async: false,
 			url:WEB_ROOT + "/news/list",
 			type:'get',
 			dataType:'json',

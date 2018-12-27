@@ -23,6 +23,7 @@ var cash_cashList_ops = {
 		     return fmt;   
 		   }
 		$.ajax({
+			async: false,
 			url:WEB_ROOT+'/cash/list',
 			data:{},
 			type:'GET',

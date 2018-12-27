@@ -7,6 +7,7 @@ var my_index_ops = {
 	initComponent : function() {
 		//头部信息
 		$.ajax({
+			async: false,
 			url:WEB_ROOT+'/my/info',
 			data:{},
 			type:'GET',
@@ -74,6 +75,7 @@ var my_index_ops = {
 		//二维码
 		$("#invite").click(function(){
 			 var html="<img src='http://qr.liantu.com/api.php?&bg=ffffff&fg=000000&text="+"http://47.96.104.24:8080/thinkingFruit-client/agent/register?inviterId="+memberId+"'>";
+			 console.log("html"+html)
         layer.open({
               type: 1,
               skin: '', //样式类名

@@ -33,6 +33,7 @@ var commsion_index_ops = {
 	    		+'<p style="height:80px;line-height:60px;text-align:center;color:#666;font-size:24px">'+res.data.personTotalCommision+"</p>")
 			}}),
 			$.ajax({
+				async: false,
 				url:WEB_ROOT + "/commision/totalInviteMoney",
 				type:'get',
 				dataType:'json',
@@ -42,6 +43,7 @@ var commsion_index_ops = {
 				    		+'<p style="height:80px;line-height:60px;text-align:center;color:#666;font-size:24px">'+res.data.personTotalInviteMoney+"</p>")
 				}}),
 		$.ajax({
+			async: false,
 			url:WEB_ROOT + "/commision/list",
 			type:'get',
 			dataType:'json',
@@ -64,6 +66,7 @@ var commsion_index_ops = {
 			}
 		});
 		$.ajax({
+			async: false,
 			url:WEB_ROOT + "/commision/inviteMoneyList",
 			type:'get',
 			dataType:'json',

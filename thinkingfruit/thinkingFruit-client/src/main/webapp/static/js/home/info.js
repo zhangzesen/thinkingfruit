@@ -31,6 +31,9 @@ var home_index_ops = {
 					if(Booleans==false){
 						common_ops.alert("请输入数字");
 						$('#count').val("");
+					}else if($(this).val().lenght<=5){
+						common_ops.alert("购买数量不能超过五位数");
+						$('#count').val("");
 					}else{
 		            $('#priceTall').html($(this).val()*res.data.price);}
 		        });
@@ -63,10 +66,17 @@ var home_index_ops = {
 				},
 				dataType:'json',
 				success:function(res){
+					if(res.code==500057){
+						callback = function() {
+							window.location.href = WEB_ROOT+'my/information';
+						};
+						common_ops.alert(res.msg, callback);
+					}else{
 					callback = function() {
 						window.location.href = WEB_ROOT+'/home';
 					};
 					common_ops.alert(res.msg, callback);
+					};
 				}
 			});
 			}else{
