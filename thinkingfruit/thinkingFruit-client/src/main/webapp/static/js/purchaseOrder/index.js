@@ -107,7 +107,7 @@ var order_index_ops = {
 		                    +'<img src="'+WEB_ROOT_ADMIN+res.data[i].coverImagePath+'" alt="" >'+"</div>"+'<div class="aui-flex-box">'+"<h2>"+res.data[i].commodityName+"</h2>"
 		                    +"<h4>"+"共"+"<i>"+res.data[i].commodityCount+"</i>"+"件商品 需付款"+"<em>"+"￥"+res.data[i].orderTotalPrice+"</em>"+"</h4>"+"</div>"+"</div>"+'<div class="aui-flex aui-flex-button">'
 		                    +'<div class="aui-flex-box time">'+"<h3>"+dateFtt("yyyy-MM-dd hh:mm:ss",new Date(res.data[i].createTime))+"</h3>"+"</div>"+'<div class="aui-flex-box" >'
-		                    +'<button class="confirm" value="'+res.data[i].orderNo+'">'+"确认"+"</button>"+"</div>"+"</div>"+"</div>")
+		                    +'<button class="confirm" value="'+res.data[i].orderNo+'"><input class="checkStatus" readonly="readonly" hidden="hidden" value="'+res.data[i].checkStatus+'">'+"确认"+"</button>"+"</div>"+"</div>"+"</div>")
 		            break;
 				    case "2":
 				    $("#tab4").append('<div class="aui-order-list">'+'<div class="aui-flex">'
@@ -124,24 +124,33 @@ var order_index_ops = {
 					console.log($(this).attr("value"));
 					var that=$(this);
 					var orderNo=$(this).attr("value");
-					$.ajax({
-		  				url:WEB_ROOT + "/purchaseOrder/confirm",
-			  			type:'PUT',
-			  			data:{
-			  				orderNo:orderNo
-						},
-			  			dataType:'json'
-		  			}).done(function(res){
-		  				that.removeClass("layui-btn-disabled");
-						var callback = null;
-						if (res.code == 0) {
-							callback = function() {
-								window.location.href = WEB_ROOT + '/purchaseOrder';
-							};
-						}
-						console.log(res);
-						common_ops.alert(res.msg, callback);
-		  			});
+					var checkStatus=$(this).find(".checkStatus").val();
+					console.log("checkStatus"+checkStatus);
+					if(checkStatus==0){
+						common_ops.alert("公司暂未审核,请先联系公司");
+					}else if(checkStatus==1){
+						
+						$.ajax({
+							url:WEB_ROOT + "/purchaseOrder/confirm",
+							type:'PUT',
+							data:{
+								orderNo:orderNo
+							},
+							dataType:'json'
+						}).done(function(res){
+							that.removeClass("layui-btn-disabled");
+							var callback = null;
+							if (res.code == 0) {
+								callback = function() {
+									window.location.href = WEB_ROOT + '/purchaseOrder';
+								};
+							}
+							console.log(res);
+							common_ops.alert(res.msg, callback);
+						});
+					}else{
+						common_ops.alert("审核状态出问题了");
+					}
 				});
 			}
 		
