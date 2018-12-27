@@ -17,7 +17,7 @@
 	<!-- 查询折线图 -->
 	<select id="findStatisticsAll" resultType="com.thinkingFruit.admin.entity.PanelStatistics">
 			SELECT *from(	select `id`,`memberTotal`,`transactionTotal`,`orderTotal`,`commodityTotal`,`cashTotal`,`createTime`,`day`
-		from `t_thinkingfruit_mall_panel_statistics` order BY `createTime` DESC LIMIT 0, 10)tal 
+		from `t_thinkingfruit_mall_panel_statistics` order BY `createTime` DESC LIMIT 0, 7)tal 
 		ORDER BY `createTime` 
 	</select>
 	<!-- 查找总统计 -->

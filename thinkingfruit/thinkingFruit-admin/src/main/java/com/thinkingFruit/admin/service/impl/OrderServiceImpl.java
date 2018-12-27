@@ -103,9 +103,15 @@ public class OrderServiceImpl implements OrderService{
 		if(order==null) {
 			throw new WebServiceException(CodeMsg.SERVER_ERROR);
 		}
-		Integer updateOrderStatus = orderDao.updateOrderStatus(order);
-		if(updateOrderStatus==Constant.DEFALULT_ZERO_INT) {
-			throw new WebServiceException(CodeMsg.DELIVER_FAIL);
+		Order byId = orderDao.getById(order.getId());
+		if(Integer.parseInt(byId.getOrderStatus())==Constant.DEFALULT_ZERO_INT) {
+			
+			Integer updateOrderStatus = orderDao.updateOrderStatus(order);
+			if(updateOrderStatus==Constant.DEFALULT_ZERO_INT) {
+				throw new WebServiceException(CodeMsg.IS_DELIVERY);
+			}
+		}else {
+			throw new WebServiceException(CodeMsg.IS_DELIVERY);
 		}
 	}
 	
