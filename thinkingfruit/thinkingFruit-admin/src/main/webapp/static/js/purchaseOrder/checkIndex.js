@@ -49,7 +49,7 @@ var purchaseOrder_checkIndex_ops = {
 						var callback = null;
 						if (res.code == 0) {
 							callback = function() {
-								window.location.href = WEB_ROOT + '/purchase';
+								window.location.href = WEB_ROOT + '/purchase/checkOrder';
 							};
 						}
 						console.log(res);

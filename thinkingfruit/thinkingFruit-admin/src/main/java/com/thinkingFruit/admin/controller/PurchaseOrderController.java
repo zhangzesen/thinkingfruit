@@ -132,7 +132,7 @@ public class PurchaseOrderController {
 	@ResponseBody
 	public Result<String> checkStatus(@RequestParam(value = "id") Long id){
 		orderService.checkStatus(id);
-		return Result.success("发货成功");
+		return Result.success("审核通过");
 	}
 	
 	/**
