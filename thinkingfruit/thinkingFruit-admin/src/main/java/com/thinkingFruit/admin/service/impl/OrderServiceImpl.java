@@ -208,6 +208,7 @@ public class OrderServiceImpl implements OrderService{
 		commision.setOrderNo(purchaseOrderById.getOrderNo());
 		commision.setTotalAmount(purchaseOrderById.getOrderTotalPrice());
 		commision.setInviteMoney(0.0);
+		commision.setInviterTotalMoney(0.0);
 		commision.setCommisionProportion(0.0);
 		commision.setCommision(purchaseOrderById.getOrderTotalPrice());
 		commision.setCommodityId(purchaseOrderById.getCommodityId());
