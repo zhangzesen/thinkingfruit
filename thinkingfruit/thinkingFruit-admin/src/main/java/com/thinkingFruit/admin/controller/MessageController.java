@@ -18,7 +18,7 @@ import com.thinkingFruit.admin.service.MessageService;
 import com.ysdevelop.common.page.Pagination;
 import com.ysdevelop.common.redis.RedisService;
 import com.ysdevelop.common.result.Result;
-import com.ysdevelop.common.utils.HttpUtil;
+import com.ysdevelop.common.utils.HttpUtils;
 import com.ysdevelop.common.utils.JSONHelper;
 
 /**
@@ -58,7 +58,7 @@ public class MessageController {
 	@RequestMapping(value = "/pagination", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String pagination(HttpServletRequest request,Pagination<Message> pagination){
-		Map<String, String> queryMap = HttpUtil.getParameterMap(request);
+		Map<String, String> queryMap = HttpUtils.getParameterMap(request);
 		messageService.paginationMessage(pagination,queryMap);
 		return JSONHelper.bean2json(Result.successPaginationData(pagination.getItems(), pagination.getTotalItemsCount()));
 	}

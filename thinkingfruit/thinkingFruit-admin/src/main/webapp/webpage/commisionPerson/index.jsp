@@ -28,8 +28,8 @@ body{overflow-y: scroll;}
 								value="" placeholder="截止日" name="endTime">
 						</div>
 						<div class="layui-input-inline xbs768">
-								<input type="text" name="nickname"
-									value="" placeholder="昵称" autocomplete="off" class="layui-input">
+								<input type="text" name="name"
+									value="" placeholder="真实姓名" autocomplete="off" class="layui-input">
 						</div>
 						<div class="layui-input-inline xbs768" style="width: 80px">
 							<button class="layui-btn btn-serach" lay-submit=""

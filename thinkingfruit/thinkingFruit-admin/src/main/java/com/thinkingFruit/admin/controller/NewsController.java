@@ -16,7 +16,7 @@ import com.thinkingFruit.admin.entity.News;
 import com.thinkingFruit.admin.service.NewsService;
 import com.ysdevelop.common.page.Pagination;
 import com.ysdevelop.common.result.Result;
-import com.ysdevelop.common.utils.HttpUtil;
+import com.ysdevelop.common.utils.HttpUtils;
 import com.ysdevelop.common.utils.JSONHelper;
 
 @Controller
@@ -57,7 +57,7 @@ public class NewsController {
 	@RequestMapping(value = "/pagination", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String pagination(HttpServletRequest request,Pagination<News> pagination){
-		Map<String, String> queryMap = HttpUtil.getParameterMap(request);
+		Map<String, String> queryMap = HttpUtils.getParameterMap(request);
 		newsService.paginationNews(pagination,queryMap);
 		return JSONHelper.bean2json(Result.successPaginationData(pagination.getItems(), pagination.getTotalItemsCount()));
 	}

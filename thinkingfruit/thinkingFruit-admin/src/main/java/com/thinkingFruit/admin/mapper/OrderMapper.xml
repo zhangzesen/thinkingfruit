@@ -37,7 +37,7 @@
 		left join `t_thinkingfruit_mall_commodity` as `c` on `c`.id=`o`.commodityId
 		<where>
 			1 = 1
-			<if test="queryMap.orderStatus !=null">
+			<if test="queryMap.orderStatus !=null and queryMap.orderStatus != ''">
 				and o.`orderStatus` =#{queryMap.orderStatus}
 			</if>
 			<if test="queryMap.startTime != null and queryMap.startTime != ''">
@@ -47,7 +47,7 @@
                 <![CDATA[ and `o`.createTime < #{queryMap.endTime} ]]>
 		 	</if>
 			<if test="queryMap.orderNo !=null and queryMap.orderNo != ''">
-				and o.`orderNo` =#{queryMap.orderNo}
+				and o.`orderNo` like CONCAT('%',#{queryMap.orderNo},'%')
 			</if>
 		 	<if test="queryMap.orderMemberName !=null and queryMap.orderMemberName != ''">
 				and o.`orderMemberName` like CONCAT('%',#{queryMap.orderMemberName},'%')

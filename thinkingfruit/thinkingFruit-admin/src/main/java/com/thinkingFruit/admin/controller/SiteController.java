@@ -20,7 +20,7 @@ import com.thinkingFruit.admin.service.NewsService;
 import com.thinkingFruit.admin.service.SiteService;
 import com.ysdevelop.common.result.Result;
 import com.ysdevelop.common.result.Results;
-import com.ysdevelop.common.utils.HttpUtil;
+import com.ysdevelop.common.utils.HttpUtils;
 import com.ysdevelop.common.utils.JSONHelper;
 
 /**
@@ -93,7 +93,7 @@ public class SiteController {
 	@RequestMapping(value = "/pagination", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public Results<List<CommissionRatio>> pagination(HttpServletRequest request){		
-		Map<String, String> queryMap = HttpUtil.getParameterMap(request);
+		Map<String, String> queryMap = HttpUtils.getParameterMap(request);
 		PageInfo<CommissionRatio> pageInfo =siteService.paginationOrder(queryMap);
 		return Results.successPaginationData(pageInfo.getList(), pageInfo.getTotal());
 	}

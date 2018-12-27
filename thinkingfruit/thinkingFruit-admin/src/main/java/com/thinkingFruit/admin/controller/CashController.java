@@ -15,7 +15,7 @@ import com.thinkingFruit.admin.entity.Cash;
 import com.thinkingFruit.admin.service.CashService;
 import com.ysdevelop.common.page.Pagination;
 import com.ysdevelop.common.result.Result;
-import com.ysdevelop.common.utils.HttpUtil;
+import com.ysdevelop.common.utils.HttpUtils;
 import com.ysdevelop.common.utils.JSONHelper;
 
 
@@ -48,7 +48,7 @@ public class CashController {
 	@RequestMapping(value = "/pagination", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String pagination(HttpServletRequest request,Pagination<Cash> pagination){
-		Map<String, String> queryMap = HttpUtil.getParameterMap(request);
+		Map<String, String> queryMap = HttpUtils.getParameterMap(request);
 		cashService.paginationCash(pagination,queryMap);
 		return JSONHelper.bean2json(Result.successPaginationData(pagination.getItems(), pagination.getTotalItemsCount()));
 	}
