@@ -95,6 +95,6 @@ public class HomePageController {
 	@ResponseBody
 	public Results<String> purchase(HttpServletRequest request,ClientPurchaseOrder clientPurchaseOrder){
 		purchaseOrderService.addPurchaseOrder(request,clientPurchaseOrder);
-		return Results.success("商品购买成功");
+		return Results.success("商品购买成功,等待公司审核");
 	}
 }

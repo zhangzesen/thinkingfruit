@@ -53,7 +53,10 @@ var my_index_ops = {
 				dataType:'json'
 			}).done(function(res){
 				if(res.code == 0){
-					window.location.href = WEB_ROOT+'/agent/login';
+					callback = function() {
+						window.location.href = WEB_ROOT+'/agent/login';
+					};
+					common_ops.confirm(res.msg, callback);
 				}
 				
 			});
@@ -102,7 +105,7 @@ var my_index_ops = {
 			        ,btn: ['我要升级', '取消']
 			        ,btnAlign: 'b'
 			        ,moveType: 1 //拖拽模式，0或者1
-			        ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">确认要升级吗？亲!<br>升级规则务必请仔细阅读</br><br>详情请看[关于]选项<br><br>请保持手机畅通^_^</div>'
+			        ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">确认要升级吗？亲!<br>升级规则务必请仔细阅读！</br><br>升级详情请看[关于]选项<br><br>请保持手机畅通等待客服联系^_^</div>'
 			        ,success: function(layero){
 			          var btn = layero.find('.layui-layer-btn');
 			          btn.find('.layui-layer-btn0').click(function(){
