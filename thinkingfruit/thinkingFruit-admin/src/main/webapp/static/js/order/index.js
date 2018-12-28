@@ -47,7 +47,7 @@ var order_index_ops = {
 							var form = layui.form;
 								
 				$("#orderStatus").append("<option value='0'>待发货</option>");
-				$("#orderStatus").append("<option value='1'>待收货</option>");
+				$("#orderStatus").append("<option value='1'>已发货</option>");
 				$("#orderStatus").append("<option value='2'>已完成</option>");
 				form.render();
 			   // 表格渲染
@@ -56,11 +56,10 @@ var order_index_ops = {
 			    	   , cols: [[                  //标题栏
 	                       {field: 'id', title: '编号',align: 'center', width:'6%'}
 				           , {field: 'orderNo', title: '订单号', width:'17%',align: 'center'}
-				           , {field: 'orderMemberName', title: '收件人', width:'9%',align: 'center'}
-				           , {field: 'mobile', title: '手机号', width:'11%',align: 'center'}
-				           , {field: 'remark', title: '备注', width:'7%',align: 'center'}
+				           , {field: 'orderMemberName', title: '收件人', width:'10%',align: 'center'}
+				           , {field: 'mobile', title: '手机号', width:'12%',align: 'center'}
 				           , {field: 'orderStatus', title: '订单状态', width:'9%',align: 'center'}
-				           , {field: 'commodityCount', title: '商品数量', width:'7%',align: 'center'}
+				           , {field: 'commodityCount', title: '商品数量', width:'10%',align: 'center'}
 				           , {field: 'createTime', title: '创建时间', width:'15%',align: 'center',templet:'#date_formate'}
 				           , {fixed: 'right',title: '操作',width:'22%',align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
 				       ]]
