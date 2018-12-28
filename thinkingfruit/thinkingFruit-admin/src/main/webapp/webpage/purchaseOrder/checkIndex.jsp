@@ -41,15 +41,15 @@ height:auto;
 							placeholder="请输入订单号" class="layui-input">
 					</div>
 					
-					<div class="layui-input-inline xbs768" style="margin-right:10%;">
+					<div class="layui-input-inline xbs768">
 						<input type="text" class="orderMemberName layui-input" lay-verify="required"
 							value="" autocomplete="off" id="orderMemberName"
 							placeholder="请输入代理名" class="layui-input">
 					</div>
 					
-					<div class="layui-input-inline xbs768" style="width: 50px;margin-top:1%;">
+					<div class="layui-input-inline xbs768" style="width: 50px;">
 						<button class="layui-btn btn-serach" lay-filter="sreach">
-							<i class="layui-icon">&#xe615;</i>
+							<i class="layui-icon">&#xe615;</i>搜索
 						</button>
 					</div>
 				</div>

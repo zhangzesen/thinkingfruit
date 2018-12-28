@@ -133,17 +133,15 @@ var purchaseOrder_checkIndex_ops = {
 			   
 			 //查询信息
 			$(".btn-serach").on('click',function(){
+			    console.log("点击事件")
 				var orderNo = $(".layui-form-pane .orderNo").val();
 				var startTime = $(".layui-form-pane .startTime").val();
 				var endTime = $(".layui-form-pane .endTime").val();
 				var orderMemberName = $(".layui-form-pane .orderMemberName").val();
-				var checkStatus =$("#checkStatus").val();
-				console.log(orderNo+"     "+startTime+"      "+endTime+"      "+orderStatus+"     "+orderMemberName);
 				
 				tableIns.reload({
 						where: { //设定异步数据接口的额外参数，任意设
 							orderNo: orderNo,
-							checkStatus: checkStatus,
 							startTime : startTime,
 							endTime : endTime,
 							orderMemberName: orderMemberName
