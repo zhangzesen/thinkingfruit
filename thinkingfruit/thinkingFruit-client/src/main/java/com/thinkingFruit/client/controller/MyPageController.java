@@ -1,6 +1,8 @@
 package com.thinkingFruit.client.controller;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -132,9 +134,15 @@ public class MyPageController {
 	 */
 	@RequestMapping(value = "/loginOut", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public Results<String> loginOut(HttpServletRequest request){
+	public Results<String> loginOut(HttpServletRequest request ,HttpServletResponse response){
 		HttpSession session = request.getSession();
 		session.invalidate();
+		Cookie[] cookies = request.getCookies();
+		for (Cookie cookie : cookies) {
+            cookie.setMaxAge(0);
+            cookie.setPath("/");
+            response.addCookie(cookie);
+        }
 		return Results.success("用户退出成功");
 	}
 }
