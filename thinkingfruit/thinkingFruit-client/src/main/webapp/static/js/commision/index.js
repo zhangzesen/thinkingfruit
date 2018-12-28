@@ -54,13 +54,16 @@ var commsion_index_ops = {
                     "<h2>"+"暂无佣金"+"</h2>"+"</div>");
 				}else{
 				for (var i = 0; i < res.data.length; i++) {
-					if(res.data[i].commision!=null){
+					if(res.data[i].commision!=null&&res.data[i].commision!=0){
  					$("#tab1").append('<div class="aui-order-list">'+'<div class="aui-flex">'
                     +'<div class="aui-flex-box">'+"<h3>"+"订单号:"+"<i>"+res.data[i].orderNo+"</i>"+"</h3>"+"</div>"+"</div>"+"<div class='aui-flex aui-flex-order'>"+"<div class='aui-order-img'>"
                     +'<img src="'+res.data[i].avatar+'" alt="">'+"</div>"+'<div class="aui-flex-box">'+"<h2>"+res.data[i].name+"</h2>"
                     +"<h4>"+"订单金额￥"+"<i>"+res.data[i].totalAmount+"</i>"+" 佣金"+"<em>"+"￥"+res.data[i].commision+"</em>"+"</h4>"+"</div>"+"</div>"+'<div class="aui-flex aui-flex-button">'
                     +'<div class="aui-flex-box time">'+"<h3>"+dateFtt("yyyy-MM-dd hh:mm:ss",new Date(res.data[i].createTime))+"</h3>"+"</div>"+"</div>"+"</div>"+"</div>")
-					};
+					}else{
+						$("#tab1").append('<div class="aui-login-line" id="info">'+
+			                    "<h2>"+"暂无佣金"+"</h2>"+"</div>");
+					}
 				}
 				}
 			}
@@ -74,16 +77,16 @@ var commsion_index_ops = {
 				console.log(res.data);
 				if(res.data.length==0){
 					$("#tab2").append('<div class="aui-login-line" id="info">'+
-                    "<h2>"+"暂无佣金"+"</h2>"+"</div>");
+                    "<h2>"+"暂无邀请金"+"</h2>"+"</div>");
 				}else{
 				for (var i = 0; i < res.data.length; i++) {
-					if(res.data[i].commision!=null){
+					if(res.data[i].inviteMoney!=null&&res.data[i].inviteMoney!=0){
  					$("#tab2").append('<div class="aui-order-list">'+'<div class="aui-flex">'
                     +'<div class="aui-flex-box">'+"<h3>"+"订单号:"+"<i>"+res.data[i].orderNo+"</i>"+"</h3>"+"</div>"+"</div>"+"<div class='aui-flex aui-flex-order'>"+"<div class='aui-order-img'>"
                     +'<img src="'+res.data[i].avatar+'" alt="">'+"</div>"+'<div class="aui-flex-box">'+"<h2>"+res.data[i].name+"</h2>"
                     +"<h4>"+"订单金额￥"+"<i>"+res.data[i].totalAmount+"</i>"+"邀请金"+"<em>"+"￥"+res.data[i].inviteMoney+"</em>"+"</h4>"+"</div>"+"</div>"+'<div class="aui-flex aui-flex-button">'
                     +'<div class="aui-flex-box time">'+"<h3>"+dateFtt("yyyy-MM-dd hh:mm:ss",new Date(res.data[i].createTime))+"</h3>"+"</div>"+"</div>"+"</div>"+"</div>")
-					};
+					}
 				}
 				}
 			}

@@ -41,9 +41,18 @@ public class ClientCommision extends BaseEntity {
 	private String inviterUpperName;//上上级姓名 
 	
 	private Double totalCost;//推广费（总佣金+总邀请金）
+	
+	private String avatar;//用户头像
+	
 
-	
-	
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
 
 	public Double getTotalCost() {
 		return totalCost;
