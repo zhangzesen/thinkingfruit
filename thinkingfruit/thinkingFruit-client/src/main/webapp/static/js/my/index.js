@@ -46,21 +46,22 @@ var my_index_ops = {
 		}),
 		//用户退出
 		$("#loginOut").click(function(){
-			$.ajax({
-				url:WEB_ROOT+'/my/loginOut',
-				data:{},
-				type:'GET',
-				dataType:'json'
-			}).done(function(res){
-				if(res.code == 0){
-					callback = function() {
-						window.location.href = WEB_ROOT+'/agent/login';
-					};
-					common_ops.confirm(res.msg, callback);
-				}
-				
-			});
+			var outMsg=common_ops.confirm("是否确认退出?",
+					{'ok':function(){
+						console.log("确认退出！")
+						$.ajax({
+							url:WEB_ROOT+'/my/loginOut',
+							data:{},
+							type:'GET',
+							dataType:'json'
+						}).done(function(res){
+							window.location.href = WEB_ROOT+'/agent/login';
+						});
+					},
+					'cancel':null});
 		}),
+		
+		
 		$("#home").click(function(){
 			window.location.href = WEB_ROOT+'/home';
 		}),
