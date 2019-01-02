@@ -58,7 +58,7 @@
                 <div class="aui-media-list-item-inner" style="height: 4rem;">
                 
                     <div class="aui-list-item-media" style="width:4rem;">
-                        <img id="avatar" src="http://47.96.104.24:8080/thinkingFruit-client/static/plugin/aui/images/gril.jpg" class="aui-img-round" >
+                        <img id="avatar" src="http://www.517310.com/thinkingFruit-client/static/plugin/aui/images/gril.jpg" class="aui-img-round" >
                     </div>
                     <div class="aui-list-item-inner aui-list-item-arrow">
                         <div class="aui-list-item-text text-white aui-font-size-18" id="name">暂无姓名</div>

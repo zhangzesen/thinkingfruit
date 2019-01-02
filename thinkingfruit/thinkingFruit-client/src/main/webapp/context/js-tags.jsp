@@ -19,7 +19,7 @@
 	}
 %>
 <%
-	String admin="http://47.96.104.24:8080/thinkingFruit-admin";
+	String admin="http://www.517310.com/thinkingFruit-admin";
 %>
 <input type="hidden" name="basePath" value="<%=basePath%>"/>
 <script type="text/javascript"
