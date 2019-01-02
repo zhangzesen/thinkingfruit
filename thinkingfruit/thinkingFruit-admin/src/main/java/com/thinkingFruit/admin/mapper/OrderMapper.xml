@@ -53,6 +53,7 @@
 				and o.`orderMemberName` like CONCAT('%',#{queryMap.orderMemberName},'%')
 			</if>
 			and orderStatus!=3
+			ORDER BY `o`.createTime DESC
 		</where>
 	</select>	
 	<!--查询单个提货订单-->
@@ -216,10 +217,11 @@
 			</if>
 			and o.orderStatus!=3
 			and o.checkStatus=1
+			ORDER BY `o`.createTime DESC
 		</where>
 	</select>
 	
-	<!-- 查看所有交易订单 -->
+	<!-- 查看所有交易订单审核 -->
 	<select id="paginationCheck" resultType="com.thinkingFruit.admin.entity.PurchaseOrder">
 		select
 		`o`.id as `id`,
@@ -252,6 +254,7 @@
 			</if>
 			and orderStatus!=3
 			and o.checkStatus=0
+			ORDER BY `o`.createTime DESC
 		</where>
 	</select>
 	

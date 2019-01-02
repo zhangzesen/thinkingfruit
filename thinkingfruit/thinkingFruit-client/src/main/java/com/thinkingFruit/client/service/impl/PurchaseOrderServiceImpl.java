@@ -159,11 +159,8 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 			throw new WebServiceException(CodeMsg.INVITER_DEPOT_LOW);
 		}
 			//判断订单创建者的上级和上上级的关系
-			
-			inviterLevelId = inviterIdById.getMemberLevelId();
-			if(inviterUpperId==Constant.DEFALULT_ZERO_INT) {
-				inviterUpperLevelId=0L;
-			}else {
+			if(inviterUpperIdById!=null) {
+				inviterLevelId = inviterIdById.getMemberLevelId();
 				inviterUpperLevelId = inviterUpperIdById.getMemberLevelId();
 			}
 							

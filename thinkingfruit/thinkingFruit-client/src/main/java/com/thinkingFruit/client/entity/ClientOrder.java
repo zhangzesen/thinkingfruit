@@ -2,11 +2,9 @@ package com.thinkingFruit.client.entity;
 
 import java.util.Date;
 
-import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.ysdevelop.common.entity.BaseEntity;
-import com.ysdevelop.common.validator.IsNum;
 
 /**
  * @author zhangzesen

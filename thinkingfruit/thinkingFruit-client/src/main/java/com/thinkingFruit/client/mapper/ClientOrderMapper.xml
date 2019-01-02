@@ -31,6 +31,7 @@
 		left join `t_thinkingfruit_mall_commodity` as c
 		on t.`commodityId`=c.`id`
 		where t.`orderMemberId` = #{id}
+		ORDER BY `t`.createTime DESC
 	</select>
 	<!--发货订单信息-->
 	<select id="extractList" resultType="com.thinkingFruit.client.entity.ClientAddress">

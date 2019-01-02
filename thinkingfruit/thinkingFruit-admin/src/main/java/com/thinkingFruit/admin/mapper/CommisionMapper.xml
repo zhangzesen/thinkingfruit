@@ -23,6 +23,7 @@
       <![CDATA[ and m.`createTime` < #{queryMap.endTime} ]]>
 	   </if>
 	</where>
+	   ORDER BY `t`.createTime DESC
 </select>
 <!--根据id查询代理详情-->
 <select id="findCommisionById" resultType="com.thinkingFruit.admin.entity.Commision">

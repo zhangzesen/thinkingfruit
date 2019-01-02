@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.thinkingFruit.client.entity.ClientCommision;
-import com.thinkingFruit.client.entity.ClientOrder;
 import com.thinkingFruit.client.service.ClientCommisionService;
 import com.ysdevelop.common.result.Results;
 
