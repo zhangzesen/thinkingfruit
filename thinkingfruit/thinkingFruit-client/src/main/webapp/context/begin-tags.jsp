@@ -25,7 +25,7 @@
 	}
 %>
 <%
-	String admin="http://47.96.104.24:8080/thinkingFruit-admin";
+	String admin="http://www.517310.com/thinkingFruit-admin";
 %>
 <c:set var="webRoot" value="<%=basePath%>" />
 <c:set var="WEB_ROOT_ADMIN" value="<%=admin%>" />

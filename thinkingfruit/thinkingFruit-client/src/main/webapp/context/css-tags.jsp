@@ -15,7 +15,7 @@
 	}
 %>
 <%
-	String admin="http://47.96.104.24:8080/thinkingFruit-admin";
+	String admin="http://www.517310.com/thinkingFruit-admin";
 %>
 <meta charset="UTF-8">
 <title>爱因斯果后台</title>
