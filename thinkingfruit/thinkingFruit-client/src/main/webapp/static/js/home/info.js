@@ -45,15 +45,29 @@ var home_index_ops = {
 		$(".aui-footer #home").click(function(){
 			window.location.href = WEB_ROOT+'/home';
 		});
-		
+		layui.use('upload', function() {
+			 var upload = layui.upload;
+			//凭证图片上传
+			 upload.render({
+					elem: '#uploadImage',
+					url : WEB_ROOT+'/upload/image?imageType=16',
+					done : function(res) {
+						console.log("res.data.imagePath"+res.data.imagePath);
+						// 上传成功返回值，必须为json格式
+						$("#uploadImage").attr("value",res.data.imagePath); 
+						$("#certificateImage").attr("src",WEB_ROOT + res.data.imagePath); 
+					}
+			});
+	   }),
 		$("#purchase").click(function(){
 			console.log("购买");
 			var commodityPrice=$("#price").text();
 			var commodityName=$("#name").text();
 			var commodityCount=$("#count").val();
 			var orderTotalPrice=$("#priceTall").text();
-			console.log("commodityCount")
-			if(commodityCount.length!=0){
+			var certificateImage=$("#uploadImage").attr("value");
+			console.log("certificateImage"+certificateImage)
+			if(commodityCount.length!=0&&certificateImage!=null){
 			$.ajax({
 				url:WEB_ROOT + "/home/purchase",
 				type:'POST',
@@ -62,6 +76,7 @@ var home_index_ops = {
 					commodityName:commodityName,
 					commodityCount:commodityCount,
 					commodityPrice:commodityPrice,
+					certificateImage:certificateImage,
 					orderTotalPrice:orderTotalPrice
 				},
 				dataType:'json',
@@ -80,7 +95,7 @@ var home_index_ops = {
 				}
 			});
 			}else{
-			common_ops.alert("请填写商品数量");}
+			common_ops.alert("请填写商品数量并上传交易凭证");}
 		})
 	},
 	eventBind : function() {

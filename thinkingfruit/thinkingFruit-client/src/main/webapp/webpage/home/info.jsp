@@ -59,11 +59,17 @@ outline:none;
 				
 			</div>
 			<div class="aui-card-list-footer">
-				<div><h5>价格：<i>¥</i><i id="price">0</i></h5><div>
-				<div><h5>数量：<input placeholder="输入数量"id="count"></input></h5><div>
-				<div><h5>总价：<i>¥</i><i id="priceTall">0</i></div>
-			</div>	
+			<div style="width:100%">
+				<div><h5>价格：<i>¥</i><i id="price">0</i></h5></div>
+				<div><h5>数量：<input placeholder="输入数量"id="count"></input></h5></div>
+				<div><h5>总价：<i>¥</i><i id="priceTall">0</i></h5></div>
+				<div>
+				<h5 style="width:40%;position: absolute;bottom:0">点击上传交易凭证</h5>
+				<input id="uploadImage" placeholder="请点击" name="uploadImage" type="file" autocomplete="off" style="opacity: 0;float: right;width: 100%;" value=""></input>
+				</div>
 			</div>
+			</div>	
+				<div><img style="min-height:200px;" id="certificateImage" alt="" src=""></div>
 			</section>
 			
 				
@@ -84,7 +90,7 @@ outline:none;
                 </span>
                 <span class="aui-tabBar-item-text" id="home">首页</span>
             </a>
-            <button class="aui-button-btn" id="purchase">
+            <button class="aui-button-btn" id="purchase" type="file">
                                                             立即购买
             </button>
 		</footer>

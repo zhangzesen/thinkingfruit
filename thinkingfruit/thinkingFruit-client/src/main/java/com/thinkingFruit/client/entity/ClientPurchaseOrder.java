@@ -70,7 +70,10 @@ public class ClientPurchaseOrder extends BaseEntity{
 	 * 	商品展示图
 	 */
 	private String coverImagePath;
-	
+	/**
+	 *  交易凭证图片
+	 * */
+	private String certificateImage;
 	/**
 	 *	 订单总价
 	 */
@@ -263,6 +266,14 @@ public class ClientPurchaseOrder extends BaseEntity{
 
 	public void setMemberLevelName(String memberLevelName) {
 		this.memberLevelName = memberLevelName;
+	}
+
+	public String getCertificateImage() {
+		return certificateImage;
+	}
+
+	public void setCertificateImage(String certificateImage) {
+		this.certificateImage = certificateImage;
 	}
 	
 	
