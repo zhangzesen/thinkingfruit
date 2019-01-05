@@ -52,6 +52,9 @@ var commodity_index_ops = {
 
 				        //得到数据总量
 				        console.log(count);
+				        
+				        //放大图片
+				        hoverOpenImg();
 				    }
 				});
 				

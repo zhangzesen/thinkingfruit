@@ -48,6 +48,8 @@ var news_index_ops={
 
 				           //得到数据总量
 				           console.log(count);
+				           
+				           hoverOpenImg();
 				           //对时间进行处理
 				           $("[data-field='createTime']").children().each(function(){
 							      

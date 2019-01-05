@@ -111,14 +111,9 @@ var purchaseOrder_info_ops={
 						   $("input[name='orderStatus']").val("已完成");
 					     break;
 					   }
-					   switch (res.data.isFirst) {
-					   case "0":
-						   $("input[name='isFirst']").val("首单");
-					     break;
-					   case "1":
-						   $("input[name='isFirst']").val("非首单");
-					     break;
-					   }
+					   
+					   //添加凭证图片
+					   $("img[name='certificate']").attr("src",WEB_ROOT+res.data.certificateImage);
 					   
 					   var atime = res.data.createTime;
 					   console.log(dateFtt("yyyy-MM-dd hh:mm:ss",new Date(atime)));

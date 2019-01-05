@@ -94,6 +94,7 @@ var purchaseOrder_checkIndex_ops = {
 	                       {field: 'id', title: '编号',align: 'center', width:'8%'}
 				           , {field: 'orderNo', title: '订单号', width:'17%',align: 'center'}
 				           , {field: 'orderMemberName', title: '代理人', width:'11%',align: 'center'}
+					       , {field: 'certificateImage' ,style:'height:100%;', title: '凭证图片', align: 'center',templet:'<div><img style="height:100%;width:100%" src="'+WEB_ROOT+'{{d.certificateImage}}'+'"></div>'}
 				           , {field: 'checkStatus', title: '订单审核状态', width:'9%',align: 'center'}
 				           , {field: 'commodityName', title: '商品名', width:'10%',align: 'center'}
 				           , {field: 'commodityCount', title: '商品数量', width:'9%',align: 'center'}
@@ -115,6 +116,10 @@ var purchaseOrder_checkIndex_ops = {
 
 			           //得到数据总量
 			           console.log(count);
+			           
+			           //放大图片
+			           hoverOpenImg();
+			           
 			           $("[data-field='checkStatus']").children().each(function(){  
 			        	   if($(this).text()=='0'){  
 			        		   $(this).text("未审核").css("color","#FF5722");

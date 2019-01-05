@@ -60,14 +60,14 @@ var news_set_ops={
 		   });
 		},
 		inintComponent:function(){
-			//获取商品分类id
+			//获取新闻id
 			var id = common_ops.g_getQueryString("id");
 			$("input[name='id']").attr("value",id);
 			
 			if(id != null){
 				
 				$(".layui-tab-title").empty();
-				$(".layui-tab-title").append("<li class='layui-this'>修改品牌</li>");
+				$(".layui-tab-title").append("<li class='layui-this'>修改新闻</li>");
 				$(".layui-input-block").empty();
 				$(".layui-input-block").append("<button class='layui-btn news-set' lay-submit='' lay-filter='cate_add'>立即修改</button>");
 				

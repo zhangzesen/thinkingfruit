@@ -195,6 +195,7 @@
 		`o`.commodityName as `commodityName`,
 		`o`.orderMemberId as `orderMemberId`,
 		`o`.commodityCount as `commodityCount`,
+		`o`.certificateImage as `certificateImage`,
 		`o`.createTime as `createTime`
 		from
 		`t_thinkingfruit_mall_order_purchase` as `o`
@@ -232,6 +233,7 @@
 		`o`.orderMemberId as `orderMemberId`,
 		`o`.commodityCount as `commodityCount`,
 		`o`.checkStatus as `checkStatus`,
+		`o`.certificateImage as `certificateImage`,
 		`o`.createTime as `createTime`
 		from
 		`t_thinkingfruit_mall_order_purchase` as `o`
@@ -278,6 +280,7 @@
         `c`.inviterUpperId as `inviterUpperId`,
         `c`.commision as `commision`,
         `c`.commisionProportion as `commisionProportion`,
+        `o`.certificateImage as `certificateImage`,
         `o`.createTime as `createTime`,
         `o`.confirmTime as `confirmTime`
 		from

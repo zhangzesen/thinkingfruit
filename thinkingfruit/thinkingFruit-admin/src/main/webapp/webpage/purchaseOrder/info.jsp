@@ -50,6 +50,13 @@
 							class="layui-input" readonly="readonly">
 					</div>
 				</div>
+				
+				<div class="layui-form-item">
+					<label class="layui-form-label">凭证图片</label>
+						<div class="layui-input-inline input-custom-width">
+							<img alt=" " border="none" name="certificate" src="" width="300px" height="120px">
+						</div>
+				</div>
 				<fieldset class="layui-elem-field layui-field-title"
 					style="margin-top: 30px;">
 					<legend>分佣信息</legend>

@@ -84,6 +84,7 @@ var purchaseOrder_index_ops = {
 				           , {field: 'orderStatus', title: '订单状态', width:'9%',align: 'center'}
 				           , {field: 'commodityName', title: '商品名', width:'10%',align: 'center'}
 				           , {field: 'commodityCount', title: '商品数量', width:'8%',align: 'center'}
+					       , {field: 'certificateImage' ,style:'height:100%;', title: '凭证图片', align: 'center',templet:'<div><img style="height:100%;width:100%" src="'+WEB_ROOT+'{{d.certificateImage}}'+'"></div>'}
 				           , {field: 'createTime', title: '订单时间',align: 'center', width:'18%',templet:'#date_formate'}
 				           , {fixed: 'right',title: '操作',width:'22%',align: 'center', templet:'#barOption'} //这里的toolbar值是模板元素的选择器
 				       ]]
@@ -102,6 +103,9 @@ var purchaseOrder_index_ops = {
 
 			           //得到数据总量
 			           console.log(count);
+			           
+			           //放大图片
+			           hoverOpenImg();
 			           $("[data-field='orderStatus']").children().each(function(){  
 			        	   if($(this).text()=='1'){  
 			        		   $(this).text("已下单").css("color","#FF5722");
