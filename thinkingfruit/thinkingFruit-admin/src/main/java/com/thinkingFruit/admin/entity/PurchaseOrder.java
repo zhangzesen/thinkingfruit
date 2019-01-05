@@ -123,8 +123,21 @@ public class PurchaseOrder extends BaseEntity{
 	 */
 	private Long checkStatus;
 	
+	/**
+	 * 凭证图片
+	 */
+	private String certificateImage;
 	
 	
+	
+	public String getCertificateImage() {
+		return certificateImage;
+	}
+
+	public void setCertificateImage(String certificateImage) {
+		this.certificateImage = certificateImage;
+	}
+
 	public Long getCheckStatus() {
 		return checkStatus;
 	}

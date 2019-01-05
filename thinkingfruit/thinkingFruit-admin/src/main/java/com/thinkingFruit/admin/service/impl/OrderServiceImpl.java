@@ -500,8 +500,8 @@ public class OrderServiceImpl implements OrderService{
 				commision.setInviteMoney(0.0);
 			}
 			commision.setCommisionProportion(0.0);
-			commision.setInviterTotalMoney(0.0);
-			commision.setCommision(commision.getTotalAmount()-commision.getInviteMoney());
+			commision.setCommision(0.0);
+			commision.setInviterTotalMoney(commision.getTotalAmount()-commision.getInviteMoney());
 			memberDao.addBalance(inviterId,commision.getInviteMoney());
 		}
 		//插入佣金表
@@ -682,8 +682,8 @@ public class OrderServiceImpl implements OrderService{
 			}
 			commision.setCommisionProportion(0.0);
 			commision.setInviteMoney(0.0);
-			commision.setCommision(purchaseOrder.getOrderTotalPrice());
-			commision.setInviterTotalMoney(0.0);
+			commision.setInviterTotalMoney(purchaseOrder.getOrderTotalPrice());
+			commision.setCommision(0.0);
 			memberDao.addBalance(inviterId,commision.getInviteMoney());
 		}
 		//插入佣金表

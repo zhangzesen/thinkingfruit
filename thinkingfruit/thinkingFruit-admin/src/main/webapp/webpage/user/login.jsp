@@ -12,7 +12,7 @@
 	<div class="container">
 	    <form class="formarea">
 		<div class="header">
-			<a href="#"> <img src="<%=basePath%>/static/images/ljl-top.png">
+			<a href="javasript:;"> <img src="<%=basePath%>/static/images/ljl-top.png">
 			<div>
 			爱因思果
 			</div>

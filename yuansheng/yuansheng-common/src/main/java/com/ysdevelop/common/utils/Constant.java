@@ -256,6 +256,8 @@ public class Constant {
 	public static final String IMAGE_ARTICLE = "/upload/images/article/";
 	public static final String IMAGE_MINISTRY = "/upload/images/ministry/";
 	public static final String IMAGE_AVATAR = "/upload/images/avatar/";
+	public static final String IMAGE_CERTIFICATE = "/upload/images/certificate/";
+
 	//源盛官网图片路径
 	public static final String IMAGE_PRODUCT = "/upload/images/product/";
 	public static final String IMAGE_THEME = "/upload/images/theme/";
@@ -283,6 +285,8 @@ public class Constant {
 		IMAGE_PATH.put(13, IMAGE_CATEGORY);
 		IMAGE_PATH.put(14, IMAGE_OUTLINE);
 		IMAGE_PATH.put(15, IMAGE_AVATAR);
+		IMAGE_PATH.put(16, IMAGE_CERTIFICATE);
+
 
 		VIDEO_PATH.put(0, VIDEO_COMMODITY);
 		VIDEO_PATH.put(1, VIDEO_MINISTRY);
