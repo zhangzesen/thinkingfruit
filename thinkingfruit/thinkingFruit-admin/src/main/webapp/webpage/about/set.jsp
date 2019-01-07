@@ -50,17 +50,12 @@
 											class="layui-input image-upload" type="file"
 											lay-verify="required" autocomplete="off" style="opacity: 0;">
 									</div>
-									<div class="layui-input-inline input-custom-width">
-										<img alt=" " border="none" style="display: none" 
-											src="" width="70px"
-											height="40px">
-									</div>
 								</div>
 								<div class="layui-form-item">
-									<div class="layui-input-inline input-custom-width">
+									<div class="layui-input-inline input-custom-width" style="margin-left:5%;">
 										<img alt=" " border="none" style="display: none" 
-											src="" width="150px"
-											height="120px">
+											src="" width="300px"
+											height="170px">
 									</div>
 								</div>
 <!-- 								<div class="layui-form-item"> -->
