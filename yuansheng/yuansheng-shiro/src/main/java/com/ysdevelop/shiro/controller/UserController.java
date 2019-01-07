@@ -60,7 +60,10 @@ public class UserController {
 	public Result<String> doLogin(HttpServletRequest request, LoginVo loginVo) {
 		Map<String, String> queryMap = HttpUtils.getParameterMap(request);
 		String randCode = queryMap.get("randCode");
+		System.out.println("2------------>" + request.getSession().getId());
 		String randCodeValidate = (String) request.getSession().getAttribute("randCode");
+		System.out.println("randCode"+randCode);
+		System.out.println("randCodeValidate"+randCodeValidate);
 		if (randCodeValidate == null || !randCodeValidate.equalsIgnoreCase(randCode)) {
 			throw new WebServiceException(CodeMsg.CODE_VALIDATE);
 		}

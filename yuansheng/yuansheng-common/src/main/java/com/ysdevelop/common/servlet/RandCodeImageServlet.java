@@ -111,6 +111,7 @@ public class RandCodeImageServlet extends HttpServlet {
 		}
 
 		// 将认证码存入SESSION
+		System.out.println("1------------>" + request.getSession().getId());
 		request.getSession().setAttribute(SESSION_KEY_OF_RAND_CODE, resultCode);
 
 		String codeRandom = (String) request.getParameter("codeRandom");
