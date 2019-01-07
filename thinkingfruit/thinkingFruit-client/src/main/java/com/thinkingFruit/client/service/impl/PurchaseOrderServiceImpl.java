@@ -81,11 +81,9 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		clientPurchaseOrder.setOrderMemberId(agentById.getId());
 		clientPurchaseOrder.setMemberLevel(agentById.getMemberLevelId());
 		clientPurchaseOrder.setIsFirst(1L);
-		if(agentById.getInviterId()==Constant.DEFALULT_ZERO_INT) {
-			clientPurchaseOrder.setCheckStatus(1L);
-		}else {
-			clientPurchaseOrder.setCheckStatus(0L);
-		}
+		
+		clientPurchaseOrder.setCheckStatus(0L);
+		
 		//添加交易订单
 		Integer addPurchaseOrder = clientPurchaseOrderDao.addPurchaseOrder(clientPurchaseOrder);
 		if(addPurchaseOrder==Constant.DEFALULT_ZERO_INT) {

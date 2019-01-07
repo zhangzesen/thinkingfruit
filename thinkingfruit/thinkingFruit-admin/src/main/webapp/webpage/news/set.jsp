@@ -52,8 +52,8 @@
 									</div>
 									<div class="layui-input-inline input-custom-width">
 										<img alt=" " border="none" style="display: none"
-											src="" width="70px"
-											height="40px">
+											src="" width="150px"
+											height="120px">
 									</div>
 								</div>
 								<div class="layui-form-item">

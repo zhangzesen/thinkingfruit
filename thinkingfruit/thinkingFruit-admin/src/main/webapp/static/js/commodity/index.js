@@ -31,11 +31,11 @@ var commodity_index_ops = {
 				    , cols: [[                          //标题栏
 	                    {field: 'id', title: '编号',align: 'center', width: 70}
 				        , {field: 'name', title: '商品名', align: 'center'}
-				        , {field: 'coverImagePath' ,style:'height:100%;', title: '展示图片', align: 'center',templet:'<div><img style="height:100%;width:100%" src="'+WEB_ROOT+'{{d.coverImagePath}}'+'"></div>'}
+				        , {field: 'coverImagePath' ,style:'height:50px;', title: '展示图片', align: 'center',templet:'<div><img style="height:50px;width:100%" src="'+WEB_ROOT+'{{d.coverImagePath}}'+'"></div>'}
 				        , {field: 'sales', title: '商品销量', align: 'center'}
 				        , {field: 'createTime', title: '创建时间', align: 'center'}
 				        , {field: 'description', title: '商品卖点',align: 'center'}
-				        , {fixed: 'right', title: '操作', width: 250, align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
+				        , {title: '操作', width: 250, align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
 				    ]]
 				    , id: 'dataCheck'
 				    , url: WEB_ROOT + "/commodity/pagination"

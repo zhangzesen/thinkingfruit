@@ -91,15 +91,15 @@ var purchaseOrder_checkIndex_ops = {
 			   var tableIns = table.render({
 			       elem: '#dateTable'                  //指定原始表格元素选择器（推荐id选择器）  //容器高度
 			    	   , cols: [[                  //标题栏
-	                       {field: 'id', title: '编号',align: 'center', width:'8%'}
+	                       {field: 'id', title: '编号',align: 'center', width:'5%'}
 				           , {field: 'orderNo', title: '订单号', width:'17%',align: 'center'}
-				           , {field: 'orderMemberName', title: '代理人', width:'11%',align: 'center'}
-					       , {field: 'certificateImage' ,style:'height:100%;', title: '凭证图片', align: 'center',templet:'<div><img style="height:100%;width:100%" src="'+WEB_ROOT+'{{d.certificateImage}}'+'"></div>'}
-				           , {field: 'checkStatus', title: '订单审核状态', width:'9%',align: 'center'}
-				           , {field: 'commodityName', title: '商品名', width:'10%',align: 'center'}
-				           , {field: 'commodityCount', title: '商品数量', width:'9%',align: 'center'}
-				           , {field: 'createTime', title: '订单时间',align: 'center', width:'19%',templet:'#date_formate'}
-				           , {fixed: 'right',title: '操作',width:'18%',align: 'center', templet:'#barOption'} //这里的toolbar值是模板元素的选择器
+				           , {field: 'orderMemberName', title: '代理人', width:'8%',align: 'center'}
+					       , {field: 'certificateImage', width:'15%' , style:'height:50;',title: '凭证图片', align: 'center',templet:'<div><img style="height:50;width:100%" src="'+WEB_ROOT+'{{d.certificateImage}}'+'"></div>'}
+				           , {field: 'checkStatus', title: '订单审核状态', width:'8%',align: 'center'}
+				           , {field: 'commodityName', title: '商品名', width:'8%',align: 'center'}
+				           , {field: 'commodityCount', title: '商品数量', width:'8%',align: 'center'}
+				           , {field: 'createTime', title: '订单时间',align: 'center', width:'18%',templet:'#date_formate'}
+				           , {title: '操作',width:'15%',align: 'center', templet:'#barOption'} //这里的toolbar值是模板元素的选择器
 				       ]]
 			       , id: 'dataCheck'
 			       , url: WEB_ROOT + "/purchase/paginationCheck"
@@ -129,7 +129,6 @@ var purchaseOrder_checkIndex_ops = {
 			        		   $(this).text("已审核")  
 			        	   }
 			           })
-			           
 			           
 			           
 			           

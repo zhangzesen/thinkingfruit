@@ -59,7 +59,7 @@
 								<div class="layui-form-item">
 									<div class="layui-input-inline input-custom-width">
 										<img alt=" " border="none" style="display: none" 
-											src="" width="300px"
+											src="" width="150px"
 											height="120px">
 									</div>
 								</div>

@@ -69,7 +69,7 @@ outline:none;
 				</div>
 			</div>
 			</div>	
-				<div><img style="min-height:200px;" id="certificateImage" alt="" src=""></div>
+				<div><img id="certificateImage" alt="" src=""></div>
 			</section>
 			
 				

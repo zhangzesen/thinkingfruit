@@ -6,12 +6,6 @@
 <head>
 <jsp:include page="/context/css-tags.jsp" />
 <style>
-.laytable-cell-1-imagePath{
-height:auto;
-}
-td .layui-table-cell{
-height:auto;
-}
 .layui-table-cell{
     height:40px;
 }
