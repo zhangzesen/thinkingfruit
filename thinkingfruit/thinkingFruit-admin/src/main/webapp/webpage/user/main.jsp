@@ -15,11 +15,12 @@
 					src="<%=basePath%>/static/images/ljl-top.png">
 				</a>
 				<ul class="layui-nav"
-					style="margin-right: 5%; text-align: right; left: 90%;"
+					style="margin-right: 5%; text-align: right; left: 85%;"
 					lay-filter="">
-					<li class="layui-nav-item"><a name="loginName"
-						href="javascript:;" style="width: 60px;"> <shiro:principal
-								property="loginName" />
+					<li class="layui-nav-item">
+					<a href="javascript:;" style="width:110px;">
+					欢迎您,<span name="loginName"></span>
+					<shiro:principal property="loginName" />
 					</a>
 						<dl class="layui-nav-child">
 							<!-- 二级菜单 -->
