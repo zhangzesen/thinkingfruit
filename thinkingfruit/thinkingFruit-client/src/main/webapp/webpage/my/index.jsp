@@ -123,7 +123,6 @@
                 </div>
                 <div class="aui-list-item-inner aui-list-item-arrow">
                     <div class="aui-list-item-title">邀请好友</div>
-                    <div class="aui-list-item-right">~</div>
                 </div>
             </li>
             

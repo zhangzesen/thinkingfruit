@@ -89,6 +89,7 @@ var purchaseOrder_info_ops={
 					   
 					   $("input[name='id']").attr("value",res.data.id);
 					   $("input[name='orderNo']").attr("value",res.data.orderNo);
+					   $("input[name='orderTotalPrice']").attr("value",res.data.orderTotalPrice);
 					   $("input[name='orderMemberName']").val(res.data.orderMemberName);
 					   $("input[name='inviterId']").attr("value",res.data.inviterId);
 					   $("input[name='inviterTotalMoney']").attr("value",res.data.inviterTotalMoney);

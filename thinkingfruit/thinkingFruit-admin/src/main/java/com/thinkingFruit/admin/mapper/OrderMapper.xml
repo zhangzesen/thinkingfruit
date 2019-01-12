@@ -265,6 +265,7 @@
        select
        	`o`.id as `id`,	
         `o`.orderNo as `orderNo`,
+        `o`.orderTotalPrice as `orderTotalPrice`,
         `o`.orderMemberId as `orderMemberId`,
         `o`.orderMemberName as `orderMemberName`,
         `o`.orderStatus as `orderStatus`,     

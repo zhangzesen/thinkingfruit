@@ -7,7 +7,7 @@
 <jsp:include page="/context/js-tags.jsp" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>thinkingFruit</title>
+<title>爱因思果</title>
 <link rel="stylesheet" href="<%=basePath%>/static/css/login/style.css" />
 <style type="text/css">
 .classification{

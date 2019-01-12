@@ -34,7 +34,13 @@
 							class="layui-input" readonly="readonly">
 					</div>
 				</div>
-
+				<div class="layui-form-item">
+					<label class="layui-form-label">总金额</label>
+					<div class="layui-input-inline input-custom-width">
+						<input type="text" name="orderTotalPrice" autocomplete="off"
+							class="layui-input" readonly="readonly">
+					</div>
+				</div>
 				<div class="layui-form-item">
 					<label class="layui-form-label">代理人</label>
 					<div class="layui-input-inline input-custom-width">
@@ -42,7 +48,7 @@
 							class="layui-input" readonly="readonly">
 					</div>
 				</div>
-				
+
 				<div class="layui-form-item">
 					<label class="layui-form-label">订单状态</label>
 					<div class="layui-input-inline input-custom-width">
@@ -50,12 +56,13 @@
 							class="layui-input" readonly="readonly">
 					</div>
 				</div>
-				
+
 				<div class="layui-form-item">
 					<label class="layui-form-label">凭证图片</label>
-						<div class="layui-input-inline input-custom-width">
-							<img alt=" " border="none" name="certificate" src="" width="150px" height="120px">
-						</div>
+					<div class="layui-input-inline input-custom-width">
+						<img alt=" " border="none" name="certificate" src="" width="150px"
+							height="120px">
+					</div>
 				</div>
 				<fieldset class="layui-elem-field layui-field-title"
 					style="margin-top: 30px;">
@@ -112,11 +119,11 @@
 					style="margin-top: 30px;">
 					<legend>货物信息</legend>
 				</fieldset>
-				
 
-				
 
-				
+
+
+
 
 
 				<div class="layui-form-item">

@@ -67,7 +67,7 @@ var home_index_ops = {
 			var orderTotalPrice=$("#priceTall").text();
 			var certificateImage=$("#uploadImage").attr("value");
 			console.log("certificateImage"+certificateImage)
-			if(commodityCount.length!=0&&certificateImage!=null){
+			if(commodityCount.length!=0&&certificateImage!=null&&certificateImage.length!=0){
 			$.ajax({
 				url:WEB_ROOT + "/home/purchase",
 				type:'POST',
