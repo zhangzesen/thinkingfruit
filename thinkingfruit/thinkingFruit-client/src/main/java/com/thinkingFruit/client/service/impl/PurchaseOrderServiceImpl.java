@@ -160,6 +160,8 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 			if(inviterUpperIdById!=null) {
 				inviterLevelId = inviterIdById.getMemberLevelId();
 				inviterUpperLevelId = inviterUpperIdById.getMemberLevelId();
+			}else if(inviterUpperIdById==null){
+				inviterLevelId = inviterIdById.getMemberLevelId();
 			}
 							
 		}
@@ -186,7 +188,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 			}
 		}
 						
-		
+		System.out.println("inviterLevelId:"+inviterLevelId);
 		CommissionRatio commissionRatio=agentDao.getAgentLevel(inviterLevelId);
 		ClientCommision clientCommision=new ClientCommision();
 		
