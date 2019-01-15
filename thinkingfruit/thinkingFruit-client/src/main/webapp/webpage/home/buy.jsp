@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>爱因思果</title>
+<title>商品购买</title>
 <meta
 	content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"
 	name="viewport" />
@@ -22,27 +22,16 @@
 	rel="apple-touch-icon-precomposed">
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>/static/plugin/aui/css/aui.css" />
 <style type="text/css">
-#info{
-    background-color: #fff;
-    margin-bottom: 0;
-}
-.aui-page-box{
-    background-color: #fff;
-        padding: 15px 0;
-}
-.aui-page-box p {
-margin:0;
-}
-input{
-outline:none;
-}
  #head{
     width: 15%;
     float: left;}
+   #qty_item_1{
+        height: 27px;
+    width: 50px;
+    }
 </style>
 </head>
 <body>
-
 	<section class="aui-flexView">
 		<header class="aui-bar aui-bar-nav aui-bar-light" style="color: black;">
                 <a id="head" href="javascript:history.back(-1)" class="aui-navBar-item">
@@ -53,46 +42,39 @@ outline:none;
                 </div>
             </header>
 		<section class="aui-scrollView" style="margin-top:1px;">
-			<section class="aui-content">
+		<section class="aui-content">
 			<div class="aui-card-list">
 			<div class="goods">
-				
 			</div>
-			<div class="aui-card-list-footer">
+		<div class="p_number">
+		<div style="height:36px;font-size:16px;">商品单价:￥<strong id="price_item_1">350.00</strong></div>
+		<div class="f_l add_chose">
+			<a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)">
+			-</a>
+			<input type="text" name="qty_item_1" value="1" id="qty_item_1" onKeyUp="setAmount.modify('#qty_item_1')" class="text" />
+			<a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">
+			+</a>
+		</div>
+		<div class="f_l buy">
+			总价：￥<span class="total-font" id="total_item_1">89.00</span>
+			<input type="hidden" name="total_price" id="total_price" value="" onkeyup="value=value.replace(/[^\d]/g,'') " ng-pattern="/[^a-zA-Z]/"/>
+		</div>
+	</div>
+	    <div class="aui-card-list-footer" style="width:100%;">
 			<div style="width:100%">
-				<div><h3 style="color:#f39c26;">商品单价：<i>¥</i><i value="" id="price">0</i></h3></div>
-				<!--<div>
-				<h5 style="width:40%;position: absolute;bottom:0">点击上传交易凭证</h5>
+				<div>
+				<h5 style="width:100%;position: absolute;bottom:0;text-align: center;">点击上传交易凭证</h5>
 				<input id="uploadImage" placeholder="请点击" name="uploadImage" type="file" autocomplete="off" style="opacity: 0;float: right;width: 100%;" value=""></input>
 				</div>
 			</div>
 			</div>	
-				<div><img id="certificateImage" alt="" src=""></div>-->
-				</div>
-				</div>
-				</div>
-			</section>
-			
-				
-				
-				</div>
-				<div class="aui-login-line" id="info">
-                    <h2>商品详情</h2>
-                </div>
-                <div class="aui-page-box">
-                <div class="descriptionImg"></div>
-                     <p id="description"style="text-align: center; margin-top: 2%;">致力于打造更好的产品为更好的你</p>
-                </div>
+				<div><img id="certificateImage" alt="" src=""></div>
+			</div>
+		</section>
 		</section>
 		<footer class="aui-footer aui-footer-fixed">
-			<a href="javascript:;" class="aui-tabBar-item aui-tabBar-item-active">
-            	<span class="aui-tabBar-item-icon">
-                	<i class="icon icon-home"></i>
-                </span>
-                <span class="aui-tabBar-item-text" id="home">首页</span>
-            </a>
-            <button class="aui-button-btn" id="purchase" type="file">
-                                                            立即购买
+            <button class="aui-button-btn" id="purchase" type="file"  style="margin:auto">
+                                                           确认购买
             </button>
 		</footer>
 	</section>
@@ -101,10 +83,12 @@ outline:none;
 		src="<%=basePath%>/static/plugin/themes/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/themes/slider.js"></script>
+		<script type="text/javascript"
+		src="<%=basePath%>/static/plugin/themes/payfor.js"></script>
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/themes/tab.js"></script>
 		<script type="text/javascript"
-		src="<%=basePath%>/static/js/home/info.js"></script>
+		src="<%=basePath%>/static/js/home/buy.js"></script>
 <script>WEB_ROOT="<%=basePath%>"</script>
 </body>
 </html>

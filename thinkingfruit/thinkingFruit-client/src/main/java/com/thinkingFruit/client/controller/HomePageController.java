@@ -39,8 +39,15 @@ public class HomePageController {
 	 *	首页跳转
 	 */
 	@RequestMapping(value="",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
-	public String register(){
+	public String index(){
 		return "home/index";
+	}
+	/**
+	 *	购买页面跳转
+	 */
+	@RequestMapping(value="/buy",method=RequestMethod.GET,produces = "text/html;charset=UTF-8")
+	public String buy(){
+		return "home/buy";
 	}
 	
 	/**
