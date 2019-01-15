@@ -67,9 +67,9 @@ color:black
    </div>
 </div>
 
-
 <script type="text/javascript" src="<%=basePath%>/static/js/user/loginStyle/jquery.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>/static/js/user/loginStyle/common.js"></script>
+<script type="text/javascript" src="<%=basePath%>/static/plugin/jquery-session/jquerySession.js"></script>	
 <!--背景图片自动更换-->
 <script type="text/javascript" src="<%=basePath%>/static/js/user/loginStyle/supersized.3.2.7.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>/static/js/user/loginStyle/supersized-init.js"></script>

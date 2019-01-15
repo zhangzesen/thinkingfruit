@@ -12,10 +12,13 @@ var user_login_ops = {
 				top.location.href = location.href;
 			}
 		});
-
+		
+		var inviterId=common_ops.g_getQueryString('inviterId');
+		console.log("inviterId1:"+inviterId);
+		inviterId==null?inviterId=0:console.log("inviterId2:"+inviterId);
+		$.session.get('inviterId')==null?$.session.set('inviterId', inviterId):console.log("inviterId3:"+$.session.get('inviterId'));
 	},
 	eventBind : function() {
-		console.log("zzz");
 		var that = this;
 		$("#login").click(function(){
 			console.log("登录");
@@ -40,7 +43,8 @@ var user_login_ops = {
 		var loginPassword = $("input[name='loginPassword']").val();
 		var randCode = $("input[name='verification']").val();
 		var mobile = $("input[name='mobile']").val();
-		var inviterId = common_ops.g_getQueryString('inviterId');
+		var inviterId =$.session.get('inviterId');
+		
 		btnTarget.addClass('layui-btn-disabled');
 		console.log("loginName:"+loginName);
 		console.log("password:"+loginPassword);

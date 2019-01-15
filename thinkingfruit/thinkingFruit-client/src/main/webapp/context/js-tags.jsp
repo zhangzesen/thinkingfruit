@@ -27,6 +27,8 @@
 <script type="text/javascript"
 	src="<%=basePath%>/static/js/common/common.js"></script>
 <script type="text/javascript"
+	src="<%=basePath%>/static/plugin/jquery-session/jquerySession.js"></script>	
+<script type="text/javascript"
 	src="<%=basePath%>/static/plugin/layui/layui.js"></script>
 <%-- <script type="text/javascript" src="<%=basePath %>static/js/plugin/index/index.js"></script> --%>
 <script>WEB_ROOT="<%=basePath%>"</script>
