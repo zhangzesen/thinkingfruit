@@ -4,7 +4,6 @@ var user_login_ops = {
 		this.eventBind();
 	},
 	eventBind : function() {
-		console.log("zzz");
 		var that = this;
 		$("#submit").click(function(){
 			console.log("登录");

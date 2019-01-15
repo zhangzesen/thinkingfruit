@@ -185,6 +185,7 @@ var user_main_ops = {
 					dataType : "json",
 					type : "post",
 					success : function(treeMenu) {
+						console.log("--->",treeMenu);
 						layui.tree({
 							elem : '#content_manage_tree' // 传入元素选择器
 							,

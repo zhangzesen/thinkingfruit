@@ -95,6 +95,8 @@
     <mvc:exclude-mapping path="/upload/**"/>
     <mvc:exclude-mapping path="/api/**"/>
     <mvc:exclude-mapping path="/randCodeImage"/>
+    <mvc:exclude-mapping path="/home/**"/>
+    <mvc:exclude-mapping path="/news/**"/>
     <bean class="com.thinkingFruit.client.helper.LoginInterceptor">
     </bean> 
    </mvc:interceptor> 

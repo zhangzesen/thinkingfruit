@@ -22,15 +22,15 @@ var cash_index_ops={
 				   var tableIns = table.render({
 				       elem: '#dateTable'                  //指定原始表格元素选择器（推荐id选择器）  //容器高度
 				       , cols: [[                  //标题栏
-	                       {field: 'id', title: '编号',align: 'center',width:'7%'}
+	                       {field: 'id', title: '编号',align: 'center',width:'5%'}
 				           , {field: 'loginName', title: '登录名', align: 'center',width:'10%'}
 				           , {field: 'cash', title: '提现金额',align: 'center',width:'10%'}
 				           , {field: 'name', title: '真实姓名', align: 'center',width:'10%'}
-				           , {field: 'openBank', title: '开户银行',align: 'center',width:'11%'}
-				           , {field: 'bankNumber', title: '银行卡号',align: 'center',width:'11%'}
-				           , {field: 'status', title: '状态',align: 'center',width:'11%'}
-				           , {field: 'createTime', title: '申请时间',align: 'center',width:'14%'}
-				           , {fixed: 'right',width:'17%', title: '操作',height: 40, align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
+				           , {field: 'openBank', title: '开户银行',align: 'center',width:'13%'}
+				           , {field: 'bankNumber', title: '银行卡号',align: 'center',width:'18%'}
+				           , {field: 'status', title: '状态',align: 'center',width:'8%'}
+				           , {field: 'createTime', title: '申请时间',align: 'center',width:'12%'}
+				           , {width:'15%', title: '操作',height: 40, align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
 				       ]]
 //				       , id: 'dataCheck'
 				       , url: WEB_ROOT + "/cash/pagination"
@@ -64,9 +64,11 @@ var cash_index_ops={
 				        		if($(this).text()=='0'){
 				        			$(this).empty();
 				        			$(this).append("未提现").css("color","#FF5722");
+				        			$(this).parent().parent().find(".edit_btn").css("display","inline-block");
 				        		}else if($(this).text()=='1'){
 				        			$(this).empty();
 				        			$(this).append("已提现");
+				        			$(this).parent().parent().find(".completed_btn").css("display","inline-block").attr('disabled',"true");
 				        		}
 				           })
 				       }

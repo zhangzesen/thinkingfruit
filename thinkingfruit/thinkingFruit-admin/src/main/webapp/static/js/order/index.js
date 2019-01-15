@@ -61,7 +61,7 @@ var order_index_ops = {
 				           , {field: 'orderStatus', title: '订单状态', width:'9%',align: 'center'}
 				           , {field: 'commodityCount', title: '商品数量', width:'10%',align: 'center'}
 				           , {field: 'createTime', title: '创建时间', width:'15%',align: 'center',templet:'#date_formate'}
-				           , {fixed: 'right',title: '操作',width:'22%',align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
+				           , {title: '操作',width:'22%',align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
 				       ]]
 			       , id: 'dataCheck'
 			       , url: WEB_ROOT + "/order/pagination"
@@ -82,15 +82,15 @@ var order_index_ops = {
 			           $("[data-field='orderStatus']").children().each(function(){  
 			               if($(this).text()=='0'){  
 			                  $(this).text("待发货").css("color","#FF5722");
-			                  $(".add_btn").css("display","inline-block");
-			                  $(".cancel_btn").css("display","inline-block");
+			                  $(this).parent().parent().find(".add_btn").css("display","inline-block");
+			                  $(this).parent().parent().find(".cancel_btn").css("display","inline-block");
 			               }else if($(this).text()=='1'){  
 			                  $(this).text("已发货");
-			                  $(".cancel_btn").css("display","inline-block");
+			                  $(this).parent().parent().find(".cancel_btn").css("display","inline-block");
 			               }else if($(this).text()=='2'){  
 			                  $(this).text("已完成")  
 			               }
-			               $(".look_btn").css("display","inline-block");
+			               $(this).parent().parent().find(".look_btn").css("display","inline-block");
 			           }) 
 			           
 			           $("[data-field='remark']").children().each(function(){  

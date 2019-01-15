@@ -1,6 +1,4 @@
 ;
-console.log($(".slider-wrapper").attr("style"));
-console.log($(".m-slider").attr("style"));
 var home_index_ops = {
 	init : function() {
 		this.initComponent();
@@ -13,7 +11,6 @@ var home_index_ops = {
 			dataType:'json',
 			async:false,
 			success:function(res){
-				console.log("123456789",res.data);
 				for (var i = 0; i < res.data.length; i++) {
 					console.log(res.data[i].coverImagePath);
 					$(".slider-wrapper").append('<div class="slider-item">'
@@ -22,9 +19,6 @@ var home_index_ops = {
 			    }
 			}
 		});
-		console.log("zz");
-		console.log(WEB_ROOT);
-		console.log(WEB_ROOT_ADMIN);
 		$.ajax({
 			async: false,
 			url:WEB_ROOT + "/home/list",
@@ -38,7 +32,6 @@ var home_index_ops = {
 			    }
 				$(".aui-card-list").bind("click",function(){
 					var id= $(this).find('img').attr("value");
-					console.log("id--->"+id)
 					window.location.href = WEB_ROOT + '/home/info?id='+id;
 				});
 			}

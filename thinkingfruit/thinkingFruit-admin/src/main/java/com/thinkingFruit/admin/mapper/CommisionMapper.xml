@@ -36,14 +36,14 @@
     where m.`id` = #{id}
 </select>
 <!--查询上上级名称-->
-<select id="findInviterUpperName" resultType="com.thinkingFruit.admin.entity.Commision">
+<select id="findInviterUpperName" resultType="String">
     select 
     `name`
     from `t_thinkingfruit_mall_member`
     where id = #{inviterUpperId}
 </select>
 <!--根据id查询代理详情-->
-<select id="findInviterName" resultType="com.thinkingFruit.admin.entity.Commision">
+<select id="findInviterName" resultType="String">
     select 
     `name`
     from `t_thinkingfruit_mall_member`

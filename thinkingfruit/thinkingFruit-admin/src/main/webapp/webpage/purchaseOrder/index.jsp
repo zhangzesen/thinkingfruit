@@ -69,13 +69,9 @@
 	</div>
 	<jsp:include page="/context/js-tags.jsp" />
 	<script type="text/html" id="barOption">
-			{{#
-			var barOption ="<a class='layui-btn layui-btn-small layui-btn-normal add_btn' lay-event='deliver' title='发货' ><i class='layui-icon'>&#xe657;</i></a>";
-    			barOption+="<a class='layui-btn layui-btn-small layui-btn-warm look_btn' lay-event='detail' title='查看' ><i class='layui-icon'>&#xe615;</i></a>";
-    			barOption+= "<a class='layui-btn layui-btn-small cancel_btn' lay-event='cancel'  title='取消'><i class='layui-icon'>&#xe640;</i></a>";
-    			return barOption;
-
-			}} 
+			<a class='layui-btn layui-btn-small layui-btn-warm look_btn' lay-event='detail' style='display:none;' title='查看' ><i class='layui-icon'>&#xe615;</i></a>
+			<a class='layui-btn layui-btn-small layui-btn-normal edit_btn' lay-event='deliver' style='display:none;' title='发货' ><i class='layui-icon'>&#xe657;</i></a>
+    		<a class="layui-btn layui-btn-small cancel_btn" lay-event="cancel" style='display:none;' title='取消' ><i class='layui-icon'>&#xe640;</i></a>
 	</script>
 	<script type="text/javascript"
 		src="<%=basePath%>/static/js/common/date.js"></script>

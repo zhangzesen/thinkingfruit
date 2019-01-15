@@ -77,7 +77,7 @@ public class HttpUtils {
 			if (path.equals("/")) {
 				basePath = request.getScheme() + "://" + request.getServerName();
 			} else {
-				basePath = request.getScheme() + "://" + request.getServerName() + "/" + request.getServletContext().getContextPath() + "/";
+				basePath = request.getScheme() + "://" + request.getServerName()  + request.getServletContext().getContextPath() + "/";
 			}
 
 		} else {

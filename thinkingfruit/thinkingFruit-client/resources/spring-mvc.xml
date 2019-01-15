@@ -84,14 +84,19 @@
     </bean>
     -->
     
-    <!-- 在实际开发中通常都需配置 mvc:annotation-driven标签,这个标签是开启注解 -->
+  <!-- 在实际开发中通常都需配置 mvc:annotation-driven标签,这个标签是开启注解 -->
   <mvc:annotation-driven></mvc:annotation-driven> 
   <!-- 拦截器 -->
   <mvc:interceptors> 
    <!-- 多个拦截器，顺序执行 -->
    <mvc:interceptor> 
     <mvc:mapping path="/**"/> 
-    <bean class="com.thinkingFruit.client.helper.LoginInterceptor"></bean> 
+    <mvc:exclude-mapping path="/static/**"/>
+    <mvc:exclude-mapping path="/upload/**"/>
+    <mvc:exclude-mapping path="/api/**"/>
+    <mvc:exclude-mapping path="/randCodeImage"/>
+    <bean class="com.thinkingFruit.client.helper.LoginInterceptor">
+    </bean> 
    </mvc:interceptor> 
   </mvc:interceptors>
 </beans>

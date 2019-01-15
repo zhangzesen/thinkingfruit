@@ -55,26 +55,24 @@ public class CommisionServiceImpl implements CommisionService {
 		Long inviterId =commision.getInviterId();
 		Long inviterUpperId=commision.getInviterUpperId();
 		if(inviterId==Constant.DEFALULT_ZERO_INT){
-			System.out.println("11111");
 			inviterName="公司";
-			inviterUpperName="无";
+			inviterUpperName="公司";
 			commision.setInviterName(inviterName);
 			commision.setInviterUpperName(inviterUpperName);
 			return commision;
 		}else if(inviterUpperId==Constant.DEFALULT_ZERO_INT){
-			System.out.println("1123232");
 			inviterName=commisionDao.findInviterName(inviterId);
 			inviterUpperName="公司";
 			commision.setInviterName(inviterName);
 			commision.setInviterUpperName(inviterUpperName);
 			return commision;
 		}else{
-			System.out.println("178787");
-		inviterName=commisionDao.findInviterName(inviterId);
-		inviterUpperName=commisionDao.findInviterUpperName(inviterUpperId);
-		commision.setInviterName(inviterName);
-		commision.setInviterUpperName(inviterUpperName);
-		return commision;}
+			inviterName=commisionDao.findInviterName(inviterId);
+			inviterUpperName=commisionDao.findInviterUpperName(inviterUpperId);
+			commision.setInviterName(inviterName);
+			commision.setInviterUpperName(inviterUpperName);
+			return commision;
+		}
 	}
 
 	// 添加佣金
