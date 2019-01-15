@@ -34,6 +34,7 @@ public class OrderTaskImpl implements OrderTask{
 	/**
 	 * 提货订单完成消息，修改订单状态
 	 */
+	//@Scheduled(cron = "0 0/2 * * * ?")
 	@Scheduled(cron="0 0 2 * * ?")
 	@Override
 	public void orderCompletion() {

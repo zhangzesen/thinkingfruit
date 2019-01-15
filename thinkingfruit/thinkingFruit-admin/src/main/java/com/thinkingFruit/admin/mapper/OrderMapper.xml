@@ -389,9 +389,9 @@
 	    updateTime = now()
 	    </set> 
 	    where `id` in
-		<foreach item="order" collection="list" separator="," open="(" 
+		<foreach item="list" collection="order" separator="," open="(" 
 			close=")" index="">
-			#{order.id}
+			#{list.id}
 		</foreach>
 	</update>
 	

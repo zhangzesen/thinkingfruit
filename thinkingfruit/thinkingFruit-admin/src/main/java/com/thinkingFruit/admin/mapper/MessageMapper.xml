@@ -67,7 +67,7 @@
 	insert into `t_thinkingfruit_mall_message`(`content`,`createTime`)
 	values
 	<foreach collection="list" index="index" item="contents" separator=",">
-		(#{contents.content},
+		(#{list.content},
 		now())
 	</foreach>
 </insert>
