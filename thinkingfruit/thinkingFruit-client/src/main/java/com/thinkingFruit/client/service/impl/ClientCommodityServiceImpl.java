@@ -14,8 +14,6 @@ import com.thinkingFruit.client.entity.ClientCommodity;
 import com.thinkingFruit.client.mapper.AgentDao;
 import com.thinkingFruit.client.mapper.ClientCommodityDao;
 import com.thinkingFruit.client.service.ClientCommodityService;
-import com.ysdevelop.common.exception.WebServiceException;
-import com.ysdevelop.common.result.CodeMsg;
 /**
  * @author zhangzesen
  *
@@ -63,32 +61,32 @@ public class ClientCommodityServiceImpl implements ClientCommodityService {
 		//从session中获取代理id
 		HttpSession session = request.getSession();
 		System.out.println("agentId"+session.getAttribute("agentId"));
-		if((Long) session.getAttribute("agentId")==null) {
-			throw new WebServiceException(CodeMsg.USER_LOGIN_ERROR);
+		if((Long) session.getAttribute("agentId")!=null) {
+			
+			//通过代理id查询代理信息
+			Agent agentById = agentDao.getAgentById((Long) session.getAttribute("agentId"));
+			//根据代理级别判断商品价格
+			switch (agentById.getMemberLevelId().toString()) {
+			case "1":
+				findCommodityById.setPrice(findCommodityById.getFirstPrice());
+				break;
+			case "2":
+				findCommodityById.setPrice(findCommodityById.getSecondPrice());
+				break;
+			case "3":
+				findCommodityById.setPrice(findCommodityById.getThirdPrice());
+				break;
+			case "4":
+				findCommodityById.setPrice(findCommodityById.getFourthPrice());
+				break;
+			case "5":
+				findCommodityById.setPrice(findCommodityById.getFifthPrice());
+				break;
+			default:
+				break;
+			}
+			System.out.println("price"+findCommodityById.getPrice());
 		}
-		//通过代理id查询代理信息
-		Agent agentById = agentDao.getAgentById((Long) session.getAttribute("agentId"));
-		//根据代理级别判断商品价格
-		switch (agentById.getMemberLevelId().toString()) {
-        case "1":
-        	findCommodityById.setPrice(findCommodityById.getFirstPrice());
-			break;
-        case "2":
-        	findCommodityById.setPrice(findCommodityById.getSecondPrice());
-			break;
-        case "3":
-        	findCommodityById.setPrice(findCommodityById.getThirdPrice());
-			break;
-        case "4":
-        	findCommodityById.setPrice(findCommodityById.getFourthPrice());
-			break;
-        case "5":
-        	findCommodityById.setPrice(findCommodityById.getFifthPrice());
-			break;
-        default:
-			break;
-		}
-		System.out.println("price"+findCommodityById.getPrice());
 		return findCommodityById;
 	}
 

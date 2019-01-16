@@ -60,7 +60,7 @@ outline:none;
 			</div>
 			<div class="aui-card-list-footer">
 			<div style="width:100%">
-				<div><h3 style="color:#f39c26;">商品单价：<i>¥</i><i value="" id="price">0</i></h3></div>
+				<div><h3 style="color:#f39c26;">商品单价：<i>¥</i><i value="" id="price">未登录,无法获取价格</i></h3></div>
 				<!--<div>
 				<h5 style="width:40%;position: absolute;bottom:0">点击上传交易凭证</h5>
 				<input id="uploadImage" placeholder="请点击" name="uploadImage" type="file" autocomplete="off" style="opacity: 0;float: right;width: 100%;" value=""></input>

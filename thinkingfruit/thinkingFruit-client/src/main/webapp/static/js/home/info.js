@@ -9,7 +9,7 @@ var home_index_ops = {
 		$.ajax({
 			url:WEB_ROOT + "/home/details",
 			type:'get',
-			async: true,
+			async: false,
 			data:{
 				id:id
 			},
@@ -17,22 +17,19 @@ var home_index_ops = {
 			
 		}).done(function(res){
 			console.log("res.code",res);
-			if(res.code==-1){
-				callback = function() {
-					window.location.href = WEB_ROOT;
-				};
-				common_ops.alert(res.msg, callback);
-			}else{
 				
 				console.log(res.data);
 				$(".goods").append('<div class="aui-card-list-header" id="name">'+res.data.name+'</div>'+'<div class="aui-card-list-content">'
 						+'<img src="'+WEB_ROOT_ADMIN+res.data.coverImagePath+'"'+'value="'+res.data.id+'"/>'+"</div>")
-						$(".aui-card-list-footer #price").text(res.data.price);
 				for (var i = 0; i < res.data.detailsImagePaths.length; i++) {
 					console.log("detailsImagePaths==="+res.data.detailsImagePaths[i]);
 					$(".descriptionImg").append("<p>"+'<img src="'+WEB_ROOT_ADMIN+'/'+res.data.detailsImagePaths[i]+'"/>'+"</p>");
 				}
-				$(".aui-page-box #description").text(res.data.description);
+				$("#description").text(res.data.description);
+				console.log(res.data.price)
+				if(res.data.price!=null){
+					$("#price").text(res.data.price);
+				}
 				$("#price").attr("value",res.data.price);
 				//绑定监听事件
 //			$('#count').bind('input propertychange', function() {
@@ -48,17 +45,8 @@ var home_index_ops = {
 //				}else{
 //	            $('#priceTall').html($(this).val()*res.data.price);}
 //	        });
-			}
 		});
-		var price=$("#price").attr('value');
-		var name=$("#name").text();
-		console.log("price"+price);
-		$("#purchase").click(function(){
-			window.location.href = WEB_ROOT+'/home/buy?id='+id+'&price='+price+'&name='+name;
-		});
-		$(".aui-footer #home").click(function(){
-			window.location.href = WEB_ROOT+'/home';
-		});
+		
 //		layui.use('upload', function() {
 //			 var upload = layui.upload;
 //			//凭证图片上传
@@ -113,7 +101,26 @@ var home_index_ops = {
 //		})
 	},
 	eventBind : function() {
-		
+		var id = common_ops.g_getQueryString('id');
+		var price=$("#price").attr('value');
+		var name=$("#name").text();
+		console.log("price"+price);
+		$("#purchase").click(function(){
+			if(price==null||price==undefined||price==''){
+				callback = function() {
+					window.location.href = WEB_ROOT;
+				};
+				common_ops.alert("暂未登录,请先登录", callback);
+			}else{
+				
+				window.location.href = WEB_ROOT+'/home/buy?id='+id+'&price='+price+'&name='+name;
+			}
+			
+			
+		});
+		$(".aui-footer #home").click(function(){
+			window.location.href = WEB_ROOT+'/home';
+		});
 	},
 	
 
