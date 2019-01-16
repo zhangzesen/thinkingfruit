@@ -113,7 +113,7 @@ var setAmount = {
     min:0,
     max:99999,
     reg:function(x) {
-        return new RegExp("^[1-9]\\d*$").test(x);
+        return new RegExp("^[0-9]\\d*$").test(x);
     },
     amount:function(obj, mode) {
         var x = $(obj).val();

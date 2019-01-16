@@ -7,6 +7,7 @@ var home_buy_ops = {
 	initComponent : function() {
 		var id = common_ops.g_getQueryString('id');
 		var price = common_ops.g_getQueryString('price');
+		console.log("name"+name);
 		$("#price_item_1").text(price);
 		$("#total_item_1").text(price);
 		$.ajax({
@@ -44,14 +45,15 @@ var home_buy_ops = {
 		$("#purchase").click(function(){
 			console.log("购买");
 			var commodityPrice=price;
-			var commodityName=name;
+			var commodityName=$("#name").text();
+			console.log("commodityName"+commodityName)
 			var commodityCount=$("#qty_item_1").val();
 			var orderTotalPrice=$("#total_item_1").text();
 			console.log("orderTotalPrice"+orderTotalPrice);
 			console.log("commodityCount"+commodityCount);
 			var certificateImage=$("#uploadImage").attr("value");
 			console.log("certificateImage"+certificateImage)
-			if(commodityCount.length!=0&&certificateImage!=null&&certificateImage.length!=0){
+			if(commodityCount.length!=0&&certificateImage!=null&&certificateImage.length!=0&&commodityCount!=0){
 			$.ajax({
 				url:WEB_ROOT + "/home/purchase",
 				type:'POST',
