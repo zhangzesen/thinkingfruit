@@ -128,6 +128,7 @@ public class CodeMsg {
 	// 登录
 	public static CodeMsg USER_PASSWORD_ERROR = new CodeMsg(500401, "账号或密码错误");
 	public static CodeMsg CODE_VALIDATE = new CodeMsg(500402, "验证码错误，请重新填写");
+	public static CodeMsg USER_LOGIN_ERROR = new CodeMsg(500403, "暂未登录,请先登录");
 	
 	// 提现失败
 	public static CodeMsg CASH_FAILURE = new CodeMsg(500601, "提现失败!");

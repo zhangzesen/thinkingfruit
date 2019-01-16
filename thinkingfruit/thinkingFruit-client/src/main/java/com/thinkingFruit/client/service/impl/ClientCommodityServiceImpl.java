@@ -14,6 +14,8 @@ import com.thinkingFruit.client.entity.ClientCommodity;
 import com.thinkingFruit.client.mapper.AgentDao;
 import com.thinkingFruit.client.mapper.ClientCommodityDao;
 import com.thinkingFruit.client.service.ClientCommodityService;
+import com.ysdevelop.common.exception.WebServiceException;
+import com.ysdevelop.common.result.CodeMsg;
 /**
  * @author zhangzesen
  *
@@ -61,6 +63,9 @@ public class ClientCommodityServiceImpl implements ClientCommodityService {
 		//从session中获取代理id
 		HttpSession session = request.getSession();
 		System.out.println("agentId"+session.getAttribute("agentId"));
+		if((Long) session.getAttribute("agentId")==null) {
+			throw new WebServiceException(CodeMsg.USER_LOGIN_ERROR);
+		}
 		//通过代理id查询代理信息
 		Agent agentById = agentDao.getAgentById((Long) session.getAttribute("agentId"));
 		//根据代理级别判断商品价格

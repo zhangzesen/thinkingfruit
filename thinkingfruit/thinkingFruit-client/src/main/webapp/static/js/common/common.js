@@ -54,6 +54,7 @@ var common_ops = {
 		}
 		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
 		var r = window.location.search.substr(1).match(reg);
+		//中文乱码可以把unescape换成decodeURI
 		if(r != null) return unescape(r[2]);
 		return null;
 	}

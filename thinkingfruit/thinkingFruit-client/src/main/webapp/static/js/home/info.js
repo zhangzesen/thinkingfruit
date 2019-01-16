@@ -8,17 +8,26 @@ var home_index_ops = {
 		var id = common_ops.g_getQueryString('id');
 		$.ajax({
 			url:WEB_ROOT + "/home/details",
-			 async: false,
 			type:'get',
+			async: true,
 			data:{
 				id:id
 			},
-			dataType:'json',
-			success:function(res){
+			dataType:'json'
+			
+		}).done(function(res){
+			console.log("res.code",res);
+			if(res.code==-1){
+				callback = function() {
+					window.location.href = WEB_ROOT;
+				};
+				common_ops.alert(res.msg, callback);
+			}else{
+				
 				console.log(res.data);
 				$(".goods").append('<div class="aui-card-list-header" id="name">'+res.data.name+'</div>'+'<div class="aui-card-list-content">'
-				+'<img src="'+WEB_ROOT_ADMIN+res.data.coverImagePath+'"'+'value="'+res.data.id+'"/>'+"</div>")
-				$(".aui-card-list-footer #price").text(res.data.price);
+						+'<img src="'+WEB_ROOT_ADMIN+res.data.coverImagePath+'"'+'value="'+res.data.id+'"/>'+"</div>")
+						$(".aui-card-list-footer #price").text(res.data.price);
 				for (var i = 0; i < res.data.detailsImagePaths.length; i++) {
 					console.log("detailsImagePaths==="+res.data.detailsImagePaths[i]);
 					$(".descriptionImg").append("<p>"+'<img src="'+WEB_ROOT_ADMIN+'/'+res.data.detailsImagePaths[i]+'"/>'+"</p>");
@@ -26,19 +35,19 @@ var home_index_ops = {
 				$(".aui-page-box #description").text(res.data.description);
 				$("#price").attr("value",res.data.price);
 				//绑定监听事件
-//				$('#count').bind('input propertychange', function() {
-//					var temp=/^[0-9]*$/;
-//					var Booleans=temp.test($('#count').val());
-//					console.log($('#count').val())
-//					if(Booleans==false){
-//						common_ops.alert("请输入数字");
-//						$('#count').val("");
-//					}else if($(this).val().lenght<=5){
-//						common_ops.alert("购买数量不能超过五位数");
-//						$('#count').val("");
-//					}else{
-//		            $('#priceTall').html($(this).val()*res.data.price);}
-//		        });
+//			$('#count').bind('input propertychange', function() {
+//				var temp=/^[0-9]*$/;
+//				var Booleans=temp.test($('#count').val());
+//				console.log($('#count').val())
+//				if(Booleans==false){
+//					common_ops.alert("请输入数字");
+//					$('#count').val("");
+//				}else if($(this).val().lenght<=5){
+//					common_ops.alert("购买数量不能超过五位数");
+//					$('#count').val("");
+//				}else{
+//	            $('#priceTall').html($(this).val()*res.data.price);}
+//	        });
 			}
 		});
 		var price=$("#price").attr('value');
