@@ -57,7 +57,7 @@
             }
             try {
                 exprValue = eval(expr);
-                if (precision) exprValue = Number(exprValue.toFixed(Math.max(precision, 4)));
+                if (precision) exprValue = Number(exprValue.toFixed(Math.max(precision, 6)));
                 if (jQuery.isFunction(cbFormat)) {
                     var tmp = cbFormat.apply(this, [exprValue]);
                     if (!!tmp) exprValue = tmp;
@@ -110,20 +110,22 @@
 /** ------------- choose -------------------- **/
 /* reduce_add */
 var setAmount = {
-    min:1,
-    max:999,
+    min:0,
+    max:99999,
     reg:function(x) {
         return new RegExp("^[1-9]\\d*$").test(x);
     },
     amount:function(obj, mode) {
         var x = $(obj).val();
-        if (this.reg(x)) {
+        console.log("x_>"+x);
+        if (this.reg(x)||x==null||x=="") {
             if (mode) {
                 x++;
             } else {
                 x--;
             }
         } else {
+        	console.log("走了第一个")
         	common_ops.alert("请输入正确的数量！");
             $(obj).val(1);
             $(obj).focus();
@@ -154,7 +156,7 @@ var setAmount = {
     },
     modify:function(obj) {
         var x = $(obj).val();
-        if (x < this.min || x > this.max || !this.reg(x)) {
+        if (x < this.min || x > this.max) {
         	common_ops.alert("请输入正确的数量！");
             $(obj).val(1);
             $(obj).focus();
