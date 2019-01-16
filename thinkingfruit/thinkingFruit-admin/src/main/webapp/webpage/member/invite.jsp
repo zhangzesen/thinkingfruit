@@ -14,8 +14,11 @@
 				<li class="layui-this">公司邀请代理</li>
 			</ul>
 		    <div class="layui-form" style="margin-top:50px;">
-		    <h1>点击右键保存二维码</h1>
+		    <h1 style="text-align: center;">公司直邀二维码</h1>
+		    <div style="text-align: center;vertical-align: middle;">
 		    <img src="<%=basePath%>/static/images/qr.png"  alt="公司邀请二维码" style="height:300px;width:300px;"/>
+			</div>
+			<h2 style="text-align: center;">（注：点击右键保存图片）</h2>
 			</div>
 		</div>
 		</div>

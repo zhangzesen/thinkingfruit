@@ -78,7 +78,7 @@ var my_index_ops = {
 	eventBind : function() {
 		//二维码
 		$("#invite").click(function(){
-			 var html="<img src='http://qr.liantu.com/api.php?&bg=ffffff&fg=000000&text="+"http://www.517310.com/thinkingFruit-client/agent/register?inviterId="+memberId+"'>";
+			 var html="<img src='http://qr.liantu.com/api.php?&bg=ffffff&fg=005824&gc=00a650&logo="+"http://www.517310.com/thinkingFruit-client/static/images/log.png"+"&text="+"http://www.517310.com/thinkingFruit-client/agent/register?inviterId="+memberId+"'>";
 			 console.log("html"+html)
         layer.open({
               type: 1,
