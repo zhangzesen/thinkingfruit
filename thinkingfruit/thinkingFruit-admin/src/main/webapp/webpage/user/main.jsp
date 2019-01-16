@@ -18,7 +18,7 @@
 					style="margin-right: 5%; text-align: right; left: 85%;"
 					lay-filter="">
 					<li class="layui-nav-item">
-					<a href="javascript:;" style="width:90px;margin: 0;padding-left:0;">
+					<a href="javascript:;" style="width:100px;margin: 0;padding-left:0;">
 					<span>欢迎您,</span>
 					<span name="loginName"></span>
 					<shiro:principal property="loginName" />

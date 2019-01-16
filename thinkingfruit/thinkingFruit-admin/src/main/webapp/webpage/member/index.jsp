@@ -17,6 +17,9 @@ body{overflow-y: scroll;}
 .layui-table-cell{
     height:40px;
 }
+.layui-form{
+    float: left;
+}
 </style>
 </head>
 <body>
@@ -36,11 +39,8 @@ body{overflow-y: scroll;}
 						<div class="layui-input-inline xbs768">
 							<input type="text" name="loginName" value=""
 								placeholder="登录名" autocomplete="off" class="layui-input">
-						</div>
-						<br/>
-						<br/>
-						<br/>	
-					<form class="layui-form" action="">
+						</div>	
+						<form class="layui-form" action="">
 						<div class="layui-input-inline xbs768">
 							<select id="memberLevelId" name="memberLevelId" lay-filter="discount">
 								<option value="">请选择级别</option>

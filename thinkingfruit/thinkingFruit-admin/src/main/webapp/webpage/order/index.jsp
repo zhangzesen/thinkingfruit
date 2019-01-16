@@ -15,6 +15,9 @@ height:auto;
 .layui-table-cell{
     height:40px;
 }
+.layui-form{
+    float: left;
+}
 .layui-input-inline.xbs768{margin-right:2%;}
 </style>
 </head>
@@ -41,7 +44,7 @@ height:auto;
 							placeholder="请输入订单号" class="layui-input">
 					</div>
 					
-					<div class="layui-input-inline xbs768" style="margin-right: 10%;">
+					<div class="layui-input-inline xbs768">
 						<input type="text" class="orderMemberName layui-input" lay-verify="required"
 							value="" autocomplete="off" id="orderMemberName"
 							placeholder="请输入收货人" class="layui-input">

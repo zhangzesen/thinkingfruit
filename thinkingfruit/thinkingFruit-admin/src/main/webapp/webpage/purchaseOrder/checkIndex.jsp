@@ -15,7 +15,10 @@ height:auto;
 .layui-table-cell{
     height:40px;
 }
-.layui-input-inline.xbs768{margin-right:2%;}
+input{
+width:90%
+}
+.layui-input-inline.xbs768{margin-right:1%;}
 </style>
 </head>
 <body>
