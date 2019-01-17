@@ -31,8 +31,6 @@ public class UploadUtil {
 			fileName = Calendar.getInstance().getTimeInMillis() + ext;
 
 			File targetFile = new File(realPath+modulePath + fileName);
-			System.out.println("targetFile");
-			System.out.println(targetFile);
 			if (!targetFile.exists()) {
 				targetFile.mkdirs();
 			}
