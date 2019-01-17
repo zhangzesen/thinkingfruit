@@ -69,6 +69,8 @@ color:#666!important;
 		src="<%=basePath%>/static/plugin/jquery-validation/jquery.validate.min.js"></script>
 	<script type="text/javascript"
 		src="<%=basePath%>/static/plugin/jquery-validation/localization/messages_zh.min.js"></script>
+    <script type="text/javascript"
+		src="<%=basePath%>/static/js/common/common.js"></script>
     <script type="text/javascript" 
        src="<%=basePath%>/static/plugin/jquery-validation/additional-methods.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>/static/js/member/examineSet.js"></script>
