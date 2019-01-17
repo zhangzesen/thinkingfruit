@@ -28,6 +28,7 @@ var team_index_ops = {
 			type:'get',
 			dataType:'json',
 			success:function(res){
+				if(res.data.status=1){
 				console.log(res.data);
 				for (var i = 0; i < res.data.length; i++) {
 					if(res.data[i].salesVolume==null){res.data[i].salesVolume=0}
@@ -40,6 +41,7 @@ var team_index_ops = {
                     +"<h4>"+"销售额："+"<i>"+res.data[i].salesVolume+"</i>"+"元"+"</h4>"+"<h4>"+"团队人数："+"<i>"+res.data[i].teamNumbers+"</i>"+"人"+"</h4>"+"</div>"+"</div>"+'<div class="aui-flex aui-flex-button">'
                 	+"</div>"+"</div>")
 			    }
+				}
 			}
 		}),
 		$.ajax({

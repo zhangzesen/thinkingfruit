@@ -82,7 +82,7 @@
 			<div style="width:100%">
 				<div>
 				<h5 class="head">点击上传交易凭证<em>截图</em></h5>
-				<h5 class="head" style="top:12px;">（注：苹果用户上传截图请<em>双击</em>）选中图片</h5>
+				<h5 class="head" style="top:12px;">（注：苹果用户上传截图请<em>双击</em>选中图片）</h5>
 				<input id="uploadImage" placeholder="请点击" name="uploadImage" type="file" autocomplete="off" style="opacity: 0;float: right;width: 100%;" value=""></input>
 				</div>
 			</div>
