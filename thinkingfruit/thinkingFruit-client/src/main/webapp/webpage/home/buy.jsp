@@ -29,6 +29,15 @@
         height: 27px;
     width: 50px;
     }
+    #btnHide{
+        position: absolute;
+    width: 100%;
+    top: 0px;
+    z-index: -1;
+    }
+    h5{
+        top: -8px;
+    }
 </style>
 </head>
 <body>
@@ -65,6 +74,7 @@
 				<div>
 				<h5 style="width:100%;position: absolute;bottom:0;text-align: center;">点击上传交易凭证</h5>
 				<input id="uploadImage" placeholder="请点击" name="uploadImage" type="file" autocomplete="off" style="opacity: 0;float: right;width: 100%;" value=""></input>
+				<input type="button" id = "btnHide" class="none">
 				</div>
 			</div>
 			</div>	

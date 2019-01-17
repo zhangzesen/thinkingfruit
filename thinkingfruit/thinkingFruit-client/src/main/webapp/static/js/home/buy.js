@@ -34,6 +34,36 @@ var home_buy_ops = {
 			 upload.render({
 					elem: '#uploadImage',
 					url : WEB_ROOT+'/upload/image?imageType=16',
+					auto: false,
+                    bindAction: "#btnHide",
+					choose: function(obj) {
+	                        var files = obj.pushFile();
+	                        var index, file, indexArr = [];
+	                        for(index in files) {
+	                            indexArr.push(index);
+	                        };
+	                        var iaLen = indexArr.length;
+	                        file = files[indexArr[iaLen - 1]];
+	                        for(var i = 0; i < iaLen - 1; i++) {
+	                            delete files[indexArr[i]];
+	                        }
+	                        try {
+	                            if(file.size > 200 * 1024) {
+	                                delete files[index];
+	                                photoCompress(file, {
+	                                    quality: 0.5,
+	                                }, function(base64Codes) {
+	                                    var bl = convertBase64UrlToBlob(base64Codes);
+	                                    obj.resetFile(index, bl, file.name);
+	                                    $("#btnHide").trigger("click");
+	                                });
+	                            } else {
+	                                $("#btnHide").trigger("click");
+	                            }
+	                        } catch(e) {
+	                            $("#btnHide").trigger("click");
+	                        }
+	                    },
 					done : function(res) {
 						console.log("res.data.imagePath"+res.data.imagePath);
 						// 上传成功返回值，必须为json格式
