@@ -35,6 +35,7 @@ var home_buy_ops = {
 					elem: '#uploadImage',
 					url : WEB_ROOT+'/upload/image?imageType=16',
 					auto: true,
+					loading: true,
 					choose: function(obj){  //上传前选择回调方法
 						$('#uploadImage').imageCompress({
 						    'quality':50,
