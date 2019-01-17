@@ -53,7 +53,7 @@ color:#666!important;
 
 					<div class="layui-form-item" style="margin-left: 100px;">
 						<div class="layui-input-block" id="btn">
-							<button class="layui-btn" lay-submit="" lay-filter="cate_add">立即修改</button>
+							<button class="layui-btn" lay-submit="" lay-filter="cate_add">审核通过</button>
 						</div>
 					</div>
 					
