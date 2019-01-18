@@ -64,10 +64,12 @@ var cash_index_ops={
 				        		if($(this).text()=='0'){
 				        			$(this).empty();
 				        			$(this).append("未提现").css("color","#FF5722");
+				        			$(this).parent().parent().find(".completed_btn").remove();
 				        			$(this).parent().parent().find(".edit_btn").css("display","inline-block");
 				        		}else if($(this).text()=='1'){
 				        			$(this).empty();
 				        			$(this).append("已提现");
+				        			$(this).parent().parent().find(".edit_btn").remove();
 				        			$(this).parent().parent().find(".completed_btn").css("display","inline-block").attr('disabled',"true");
 				        		}
 				           })
