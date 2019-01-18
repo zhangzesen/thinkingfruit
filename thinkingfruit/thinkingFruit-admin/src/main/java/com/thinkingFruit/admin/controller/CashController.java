@@ -57,6 +57,6 @@ public class CashController {
 	@ResponseBody
 	public Result<String> set(@RequestParam(value = "id", required = false) Long id){
 		cashService.editCash(id);
-		return Result.success("操作成功");
+		return Result.success("提现成功");
 	}
 }

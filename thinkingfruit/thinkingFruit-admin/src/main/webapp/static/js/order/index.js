@@ -82,15 +82,11 @@ var order_index_ops = {
 			           $("[data-field='orderStatus']").children().each(function(){  
 			               if($(this).text()=='0'){  
 			                  $(this).text("待发货").css("color","#FF5722");
-			                  $(this).parent().parent().find(".add_btn").css("display","inline-block");
-			                  $(this).parent().parent().find(".cancel_btn").css("display","inline-block");
 			               }else if($(this).text()=='1'){  
-			                  $(this).text("已发货");
-			                  $(this).parent().parent().find(".cancel_btn").css("display","inline-block");
+			                  $(this).text("已发货").css("color","#FFB800");
 			               }else if($(this).text()=='2'){  
-			                  $(this).text("已完成")  
+			                  $(this).text("已完成").css("color","#009688");  
 			               }
-			               $(this).parent().parent().find(".look_btn").css("display","inline-block");
 			           }) 
 			           
 			           $("[data-field='remark']").children().each(function(){  

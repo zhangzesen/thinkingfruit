@@ -85,8 +85,10 @@ public class ClientCommodityServiceImpl implements ClientCommodityService {
 			default:
 				break;
 			}
-			System.out.println("price"+findCommodityById.getPrice());
+		}else {
+			findCommodityById.setPrice(findCommodityById.getFifthPrice());
 		}
+		System.out.println("price"+findCommodityById.getPrice());
 		return findCommodityById;
 	}
 

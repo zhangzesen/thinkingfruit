@@ -13,7 +13,7 @@
     height: auto;
 }
 .layui-table-cell{
-    height:40px;
+    height:auto;
 }
 body{overflow-y: scroll;}
 </style>
@@ -31,7 +31,7 @@ body{overflow-y: scroll;}
 	<jsp:include page="/context/js-tags.jsp"/>
 	<script id="barOption" type="text/html">
    {{#
-    var barOption = "<a class='layui-btn layui-btn-small' title='编辑' lay-event='edit'><i class='layui-icon'>&#xe642;编辑</i></a>";
+    var barOption = "<a class='layui-btn layui-btn-sm' title='编辑' lay-event='edit'><i class='layui-icon'>&#xe642;编辑</i></a>";
     return barOption;
    }} 
     </script>

@@ -14,9 +14,21 @@ var order_info_ops={
 				console.log("参数："+id);
 				var expressNo = $("input[name='expressNo']").val();
 				var logistics = $("select[name='logistics']").val();
-				console.log("id"+id);
-				console.log(expressNo);
-				console.log(logistics);
+				var orderStatus=$("input[name='orderStatus']").val();
+				console.log("orderStatus=====>"+orderStatus);
+				
+				var status;
+				switch (orderStatus) {
+				   case "待发货":
+					   status=0;
+				     break;
+				   case "待收货":
+					   status=1;
+				     break;
+				   case "已完成":
+					   status=2;
+				     break;
+				}
 				$(".layui-input-block .layui-btn").addClass('layui-btn-disabled');
 				var type =common_ops.g_getQueryString("type");
 				var url;
@@ -33,7 +45,8 @@ var order_info_ops={
 		  			data:{
 						id:id,
 						expressNo:expressNo,
-						logistics:logistics
+						logistics:logistics,
+						orderStatus:status
 					},
 		  			dataType:'json'
 	  			}).done(function(res){

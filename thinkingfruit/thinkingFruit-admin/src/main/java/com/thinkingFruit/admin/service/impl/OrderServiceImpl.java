@@ -124,6 +124,10 @@ public class OrderServiceImpl implements OrderService{
 		if(order==null) {
 			throw new WebServiceException(CodeMsg.SERVER_ERROR);
 		}
+		if(Constant.DEFALULT_TWO.toString().equals(order.getOrderStatus())) {
+			throw new WebServiceException(CodeMsg.ORDER_DELIVERY);
+		}
+		
 		Integer cancelOrder =orderDao.cancelOrder(order.getId());
 		if(cancelOrder==Constant.DEFALULT_ZERO_INT) {
 			throw new WebServiceException(CodeMsg.CANCEL_FAIL);
@@ -229,7 +233,7 @@ public class OrderServiceImpl implements OrderService{
 		}
 		PurchaseOrder purchaseOrderById = orderDao.getPurchaseOrderById(id);
 		System.out.println("status:"+purchaseOrderById.getOrderStatus());
-		if(Constant.DEFALULT_TWO.toString()==purchaseOrderById.getOrderStatus()||Constant.DEFALULT_TWO.toString().equals(purchaseOrderById.getOrderStatus())) {
+		if(Constant.DEFALULT_TWO.toString()==purchaseOrderById.getOrderStatus()||Constant.DEFALULT_THREE.toString().equals(purchaseOrderById.getOrderStatus())) {
 			throw new WebServiceException(CodeMsg.IS_DELIVERY);
 		}
 		//订单发货
@@ -285,6 +289,11 @@ public class OrderServiceImpl implements OrderService{
 	public void cancelPurchaseOrderStatus(Long id,Long commodityCount) {
 		if (id == null) {
 			throw new WebServiceException(CodeMsg.SERVER_ERROR);
+		}
+		
+		PurchaseOrder purchaseOrderById = orderDao.getPurchaseOrderById(id);
+		if(Constant.DEFALULT_TWO.toString().equals(purchaseOrderById.getOrderStatus())) {
+			throw new WebServiceException(CodeMsg.ORDER_DELIVERY);
 		}
 		//取消订单
 		Integer update=orderDao.cancelPurchaseOrderStatus(id);

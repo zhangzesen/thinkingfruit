@@ -24,13 +24,13 @@ var cash_index_ops={
 				       , cols: [[                  //标题栏
 	                       {field: 'id', title: '编号',align: 'center',width:'5%'}
 				           , {field: 'loginName', title: '登录名', align: 'center',width:'10%'}
-				           , {field: 'cash', title: '提现金额',align: 'center',width:'10%'}
+				           , {field: 'cash', title: '提现金额(元)',align: 'center',width:'10%'}
 				           , {field: 'name', title: '真实姓名', align: 'center',width:'10%'}
-				           , {field: 'openBank', title: '开户银行',align: 'center',width:'13%'}
+				           , {field: 'openBank', title: '开户银行',align: 'center',width:'18%'}
 				           , {field: 'bankNumber', title: '银行卡号',align: 'center',width:'18%'}
 				           , {field: 'status', title: '状态',align: 'center',width:'8%'}
 				           , {field: 'createTime', title: '申请时间',align: 'center',width:'12%'}
-				           , {width:'15%', title: '操作',height: 40, align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
+				           , {field:'right' ,width:'10%', title: '操作', align: 'center', templet: '#barOption'} //这里的toolbar值是模板元素的选择器
 				       ]]
 //				       , id: 'dataCheck'
 				       , url: WEB_ROOT + "/cash/pagination"
@@ -101,20 +101,25 @@ var cash_index_ops={
 					var data = obj.data;
 					var id = data.id;
 					if(obj.event == 'edit'){
-						$.ajax({
-							type:'get',
-							url:WEB_ROOT + '/cash/set?id='+id,
-							dataType:'json',
-							success:function(res){
-								var callback = null;
-								if (res.code == 0) {
-									callback = function() {
-										window.location.href = WEB_ROOT + '/cash';
+						var outMsg=common_ops.confirm("是否确认提现?",
+							{'ok':function(){
+								
+								$.ajax({
+									type:'get',
+									url:WEB_ROOT + '/cash/set?id='+id,
+									dataType:'json',
+									success:function(res){
+										var callback = null;
+										if (res.code == 0) {
+											callback = function() {
+												window.location.href = WEB_ROOT + '/cash';
+											}
+										}
+										common_ops.alert(res.msg, callback);
 									}
-								}
-								common_ops.alert(res.msg, callback);
-							}
-						})
+								})
+							},'cancel':null
+							});
 //						window.location.href = WEB_ROOT + '/cash/set?id='+id;
 					}				
 				});

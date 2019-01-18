@@ -116,7 +116,6 @@
 	    updateTime = now()
 	    </set> 
 	    where `id` = #{id}
-	    and `inviterId`=0
 	    and `orderStatus`=1
 	</update>
 	

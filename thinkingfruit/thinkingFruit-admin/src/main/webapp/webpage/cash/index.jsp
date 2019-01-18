@@ -68,10 +68,8 @@ body{overflow-y: scroll;}
 	</div>
     <jsp:include page="/context/js-tags.jsp"/>
     <script id="barOption" type="text/html">
-  
-	<a class='layui-btn layui-btn-small layui-btn-normal edit_btn' lay-event='edit' style='display:none;'><i class='layui-icon'>确认提现</i></a>
-    <a class='layui-btn layui-btn-small layui-btn-normal completed_btn' lay-event='completed' style='display:none;'><i class='layui-icon'>已提现</i></a>
-  
+	<a class='layui-btn layui-btn-sm layui-btn-warm edit_btn' lay-event='edit' style='display:none;'><i class='layui-icon'>确认提现</i></a>
+    <a class='layui-btn layui-btn-sm completed_btn' lay-event='completed' style='display:none;'><i class='layui-icon'>已提现</i></a>
     </script>
 	<script type="text/javascript"
 		src="<%=basePath%>/static/js/cash/index.js"></script>

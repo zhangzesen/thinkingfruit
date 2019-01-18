@@ -73,6 +73,8 @@ public class CodeMsg {
 	public static CodeMsg INVITER_DEPOT_LOW = new CodeMsg(500035,"仓库商品不足，请补充货物");
 	public static CodeMsg DELIVERY_APPLICATION_FAILURE = new CodeMsg(500036,"提货订单申请失败");
 	public static CodeMsg CANCEL_FAIL = new CodeMsg(500037,"取消失败");
+	public static CodeMsg ORDER_DELIVERY = new CodeMsg(500038,"订单已完成,无法取消");
+	
 	//统计
 	public static CodeMsg NEWMEMBER_EXIST = new CodeMsg(500012,"新增会员数量为空");
 	

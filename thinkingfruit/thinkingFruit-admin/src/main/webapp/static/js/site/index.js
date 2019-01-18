@@ -14,12 +14,12 @@ var site_index_ops = {
 				 elem: '#dateTable',
 				 cols: [[                  //标题栏
 					 {field: 'level',title: '代理级别',align: 'center',width:'12%'},
-					 	{field: 'levelName', title: '代理名称',align: 'center',width:'12%'},
-					    {field: 'levelingDiscount', title: '平级分佣/邀请奖比例',align: 'center', width:'20%'},
-					    {field: 'crossLevelDiscount', title: '跨级分佣/邀请奖比例',align: 'center', width:'20%'},
-						{field: 'reverseLevelDiscount',title: '反向级别分佣/邀请奖比例',align: 'center',width:'20%'},
-						{fixed: 'right', title: '操作', width: '16%',height: 40, align: 'center', templet: '#barOption'}
-					   ]],
+					 {field: 'levelName', title: '代理名称',align: 'center',width:'12%'},
+					 {field: 'levelingDiscount', title: '平级分佣/邀请奖比例',align: 'center', width:'20%'},
+					 {field: 'crossLevelDiscount', title: '跨级分佣/邀请奖比例',align: 'center', width:'20%'},
+					 {field: 'reverseLevelDiscount',title: '反向级别分佣/邀请奖比例',align: 'center',width:'20%'},
+					 {fixed: 'right', title: '操作', width: '16%', align: 'center', templet: '#barOption'}
+					 ]],
 				  url: WEB_ROOT + "/site/pagination",
 				  method: 'get',
 				  page: true,
@@ -36,7 +36,6 @@ var site_index_ops = {
 				var data = obj.data;
 				var id = data.id;
 				var event = obj.event;
-				console.log("zzzzz");
 				switch (event) {
 				case 'edit':
 					//一级分类编辑事件
