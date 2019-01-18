@@ -30,6 +30,12 @@ public class Constant {
 	 * 判断是否2
 	 */
 	public static final Integer DEFALULT_TWO = 2;
+	
+	/**
+	 * 判断是否3
+	 */
+	public static final Integer DEFALULT_THREE = 3;
+	
 
 	/**
 	 * ORACLE、MYSQL
