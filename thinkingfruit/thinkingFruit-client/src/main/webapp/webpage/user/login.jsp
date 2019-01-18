@@ -33,7 +33,7 @@ color:black
 
 <div class="login-container">
     <div class="logo" style="margin-bottom: 10px;">
-		<img style="width:100px;" alt="" src="http://localhost:8080/thinkingFruit-client/static/images/ljl-top.png">
+		<img style="width:100px;" alt="" src="http://www.517310.com/thinkingFruit-client/static/images/ljl-top.png">
 	</div>
 	<h1>爱因思果用户登录</h1>
 	
