@@ -83,9 +83,9 @@ var my_index_ops = {
         layer.open({
               type: 1,
               skin: '', //样式类名
-              title:false,
+              title:"扫一扫，加入爱因思果！",
               offset: 'auto',
-              area: ['300px', '300px'], //宽高
+              area: ['300px', '350px'], //宽高
               closeBtn: 1, //不显示关闭按钮
               shade: 0,
               anim: 2,

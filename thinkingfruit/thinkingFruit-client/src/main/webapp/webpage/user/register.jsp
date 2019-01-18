@@ -39,7 +39,7 @@ color:black
 	
 	<form action="" method="post" id="registerForm">
 		<div>
-			<input type="text" name="loginName" class="loginName" placeholder="您的用户名" autocomplete="off"/>
+			<input type="text" name="loginName" class="loginName" placeholder="您的用户名" autocomplete="off" style="margin-top: 10px;"/>
 		</div>
 		<div>
 			<input type="password" name="loginPassword" class="password" placeholder="输入密码" oncontextmenu="return false" onpaste="return false" />

@@ -22,6 +22,9 @@
       .text-white {
             color: black !important;
         }
+        .layui-layer-title{
+        font-size: 16px;
+        }
         .aui-grid [class*=aui-col-] {
             padding: 0.75rem 0;
         }
