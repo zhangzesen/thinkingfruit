@@ -2561,17 +2561,59 @@
     text-decoration: line-through;
 }
 /* p_number */
-.p_number{border:solid 1px #ddd;padding:10px 0 0 10px;width:480px;height:80px;margin:auto;}	
+.p_number{padding:10px 0 0 10px;width:480px;height:80px;margin:auto;}	
 .p_number .f_l{float:left;}
-.p_number .add_chose{width:105px;}
-.p_number .add_chose a{float:left;margin:5px 0 0 0;display:block;width:15px;height:15px;line-height:99em;overflow:hidden;background:url('http://www.517310.com/thinkingFruit-client/static/images/reduce-add.gif') no-repeat;}
+.p_number .add_chose{width:130px;}
+/*.p_number .add_chose a{float:left;margin:5px 0 0 0;display:block;width:15px;height:15px;line-height:99em;overflow:hidden;background:url('http://www.517310.com/thinkingFruit-client/static/images/reduce-add.gif') no-repeat;}
 .p_number .add_chose a.reduce{background-position:0 0;}
 .p_number .add_chose a.reduce:hover{background-position:0 -16px;}
 .p_number .add_chose a.add{background-position:-16px 0;}
-.p_number .add_chose a.add:hover{background-position: -16px -16px;}
+.p_number .add_chose a.add:hover{background-position: -16px -16px;}*/
 .p_number .add_chose .text{float:left;margin:0 5px;display:inline;border:solid 1px #ccc;padding:4px 3px 4px 8px;width:40px;line-height:18px;font-size:14px;color:#990000;font-weight:800;}
 .p_number .buy{line-height:2em;}
 .p_number .buy .total-font{font-family:Arial;font-size:26px;}
 .p_number .buy .jifen{margin-left:20px;color:#ACACAC;}
 .p_number .buy .jifen b{margin:0 3px;}
-
+.aui-bar-btn-item1{
+	display: table-cell;
+    position: relative;
+    width: 1%;
+    line-height: 1.3rem;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 0;
+    position: relative;
+    border-width: 1px;
+    border-style: solid;
+    border-color:#c2c2c2;
+    border-left-width: 1px;
+    font-size: 0.6rem;
+}
+#qty_item_1{
+	border: none;
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    display: block;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    line-height: normal;
+    color: #424242;
+    font-size: 0.8rem;
+    font-family: inherit;
+    box-sizing: border-box;
+    user-select: text;
+    -webkit-appearance: none;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    height: 1.2rem;
+}
+.aui-iconfont {
+    position: relative;
+    font-family: "aui_iconfont" !important;
+    align-self: center;
+    font-size: 0.8rem;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+}

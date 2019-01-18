@@ -27,7 +27,6 @@
     float: left;}
    #qty_item_1{
         height: 27px;
-    width: 50px;
     }
     #btnHide{
         position: absolute;
@@ -36,16 +35,18 @@
     z-index: -1;
     }
     h5{
-        top: -8px;
+        color:#757575;
+            margin-top: 5px;
+    }
+    h3{
+        font-size: larger;
     }
     .head{
     width:100%;
-    position: absolute;
-    bottom:0;
-    text-align: center
+    text-align: center;
     }
     em{
-    color: #990000;
+ 
     }
 </style>
 </head>
@@ -65,30 +66,34 @@
 			<div class="goods">
 			</div>
 		<div class="p_number">
-		<div style="height:36px;font-size:16px;">商品单价:￥<strong id="price_item_1">350.00</strong></div>
+		<div style="height:36px;font-size:16px;color:#757575;">商品单价:￥<strong id="price_item_1">350.00</strong></div>
 		<div class="f_l add_chose">
-			<a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)">
-			-</a>
-			<input type="text" name="qty_item_1" value="1" id="qty_item_1" onKeyUp="setAmount.modify('#qty_item_1')" class="text" />
-			<a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">
-			+</a>
+		<div class="aui-bar-btn-item1">
+			<i class="aui-iconfont reduce aui-icon-minus" onClick="setAmount.reduce('#qty_item_1')"></i>
+			</div>
+			<div class="aui-bar-btn-item1" style="width:2%;">
+			<input type="text" name="qty_item_1" value="1" id="qty_item_1" onKeyUp="setAmount.modify('#qty_item_1')" class="text" style="border:none;text-align: center;"/>
+			</div>
+			<div class="aui-bar-btn-item1">
+			<i class="aui-iconfont add aui-icon-plus" onClick="setAmount.add('#qty_item_1')"></i>
+	        </div>	
 		</div>
-		<div class="f_l buy">
-			总价：￥<span class="total-font" id="total_item_1">89.00</span>
+		<div class="f_l buy" style="margin-left: 15%;color:#FF5722;">
+			合计：￥<span class="total-font" id="total_item_1">89.00</span>
 			<input type="hidden" name="total_price" id="total_price" value="" onkeyup="value=value.replace(/[^\d]/g,'') " ng-pattern="/[^a-zA-Z]/"/>
 		</div>
 	</div>
-	    <div class="aui-card-list-footer" style="width:100%;">
-			<div style="width:100%">
-				<div>
-				<h5 class="head">点击上传交易凭证<em>截图</em></h5>
-				<h5 class="head" style="top:12px;">（注：苹果用户上传截图请<em>双击</em>选中图片）</h5>
-				<input id="uploadImage" placeholder="请点击" name="uploadImage" type="file" autocomplete="off" style="opacity: 0;float: right;width: 100%;" value=""></input>
-				</div>
+	    <div class="aui-card-list-footer" style="width:100%;border-top: 1px solid #e2e2e2;margin-top: 10px;display:block;">
+		
+			<div style="width:100%" class="aui-btn aui-btn-success aui-btn-block aui-btn-outlined">
+				<h3 class="head">点击上传交易凭证<em>截图</em></h3>
+				<input id="uploadImage" placeholder="请点击" name="uploadImage" type="file" autocomplete="off" style="opacity: 0;position: absolute;top: 0px;left: 0px;width: 100%;" value=""></input>
 			</div>
-			</div>	
-				<div><img id="certificateImage" alt="" src=""></div>
-			</div>
+			<div>
+			<h5 class="head" style="">（注：苹果用户上传截图请<em>双击</em>选中图片）</h5>	
+		    </div>
+			<div><img id="certificateImage" alt="" src=""></div>
+		</div>
 		</section>
 		</section>
 		<footer class="aui-footer aui-footer-fixed">
