@@ -8,13 +8,13 @@ var news_index_ops = {
 		function dateFtt(fmt,date)   
 		   {  
 		     var o = {   
-		       "M+" : date.getMonth()+1,                 //月份   
-		       "d+" : date.getDate(),                    //日   
-		       "h+" : date.getHours(),                   //小时   
-		       "m+" : date.getMinutes(),                 //分   
-		       "s+" : date.getSeconds(),                 //秒   
-		       "q+" : Math.floor((date.getMonth()+3)/3), //季度   
-		       "S"  : date.getMilliseconds()             //毫秒   
+		       "M+" : date.getMonth()+1,                 // 月份
+		       "d+" : date.getDate(),                    // 日
+		       "h+" : date.getHours(),                   // 小时
+		       "m+" : date.getMinutes(),                 // 分
+		       "s+" : date.getSeconds(),                 // 秒
+		       "q+" : Math.floor((date.getMonth()+3)/3), // 季度
+		       "S"  : date.getMilliseconds()             // 毫秒
 		     };   
 		     if(/(y+)/.test(fmt))   
 		       fmt=fmt.replace(RegExp.$1, (date.getFullYear()+"").substr(4 - RegExp.$1.length));   
@@ -30,10 +30,15 @@ var news_index_ops = {
 			dataType:'json',
 			success:function(res){
 				console.log(res.data);
-				for (var i = 0; i < res.data.length; i++) {
+				if(res.data.length==0){
+					$(".aui-scrollView").append('<div class="aui-login-line" id="info">'+
+                    "<h2>"+"暂无资讯"+"</h2>"+"</div>");
+				}else{
+				    for (var i = 0; i < res.data.length; i++) {
 					console.log(res.data[i].name);
 					$(".aui-scrollView").append('<div class="aui-card-list">'+'<div class="aui-card-list-header">'+res.data[i].name+'</div>'+'<div class="aui-card-list-content">'+'<img style="height:250px;" class="aaa" src="'+WEB_ROOT_ADMIN+res.data[i].coverImagePath+'"'+'value="'+res.data[i].id+'" />'+'</div>'+'<div class="aui-card-list-footer">'+dateFtt("yyyy-MM-dd hh:mm:ss",new Date(res.data[i].createTime))+'</div>'+'</div>')
 			    }
+				}
 				$(".aui-card-list").bind("click",function(){
 					var id= $(this).find('img').attr("value");
 					window.location.href = WEB_ROOT + '/news/info?id='+id;

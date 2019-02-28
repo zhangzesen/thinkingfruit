@@ -79,7 +79,7 @@ img{
 			<div class="layui-form-item" style="min-height: 2.2rem;">
 			<div class="layui-input-inline input-custom-width layui-upload" style="min-height: 2.2rem;max-height: 2.2rem;">
 			<div class="aui-list-item-input">
-				<input id="uploadImage" name="uploadImage" class="layui-input image-upload" type="file" autocomplete="off" style="width: 80%;opacity: 0;float: left;margin-left: -17%;">
+				<input id="uploadImage" name="uploadImage" class="layui-input image-upload" type="file" autocomplete="off" style="width: 120%;opacity: 0;float: left;margin-left: -17%;">
 			</div>
 			<div class="aui-flex-arrow" style="width:14%;margin-left:83%;min-height: 2.2rem;">
 				<img alt=" " border="none" name="avatar" src="<%=basePath%>/static/plugin/aui/images/gril.jpg" width="70px" height="40px">
