@@ -10,13 +10,13 @@ var member_examineSet_ops={
 			
 			// 立即添加按钮的点击事件
 			$(".layui-input-block .layui-btn").on("click",function(){
-			    if(memberLevelId.length==0||commodityId.length==0||commodityCount.length==0){
-			    	common_ops.g_getQueryString("请填写完整信息")
-			    }else{
-			    	if(numValid(commodityId)&&numValid(commodityCount)&&commodityId>=0&&commodityCount>=0){
 				var memberLevelId = $("select[name='memberLevelId']").val();
 				var commodityId = $("select[name='commodityId']").val();
 				var commodityCount = $("input[name='commodityCount']").val();
+			    if(memberLevelId.length==0||commodityId.length==0||commodityCount.length==0){
+			    	common_ops.g_getQueryString("请填写完整信息")
+			    }else{
+			    	if(commodityId>=0&&commodityCount>=0){
 				console.log("memberLevelId"+memberLevelId);
 				console.log("commodityId"+commodityId);
 				console.log("commodityCount"+commodityCount);

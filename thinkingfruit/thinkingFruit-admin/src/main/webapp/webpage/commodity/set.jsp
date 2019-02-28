@@ -117,11 +117,11 @@ color:black;
 								</div>
 								
 								<div class="layui-form-item">
-									<label class="layui-form-label">春事价格</label>
+									<label class="layui-form-label">董事价格</label>
 									<div class="layui-input-inline input-custom-width">
 										<input type="text" name="secondPrice"
 											value="" required="true" diyCheck="请输入正确的价格" diyRule="^(0|[1-9][0-9]{0,9})(\.[0-9]{1,2})?$"
-											autocomplete="off" placeholder="请输入春事价格" class="layui-input">
+											autocomplete="off" placeholder="请输入董事价格" class="layui-input">
 									</div>
 								</div>
 								<div class="layui-form-item">
