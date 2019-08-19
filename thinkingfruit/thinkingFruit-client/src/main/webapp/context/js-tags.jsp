@@ -19,7 +19,7 @@
 	}
 %>
 <%
-	String admin="http://www.517310.com/thinkingFruit-admin";
+	String admin="https://www.ysdevelop.cn";
 %>
 <input type="hidden" name="basePath" value="<%=basePath%>"/>
 <script type="text/javascript"
