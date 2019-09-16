@@ -57,6 +57,16 @@ public class Agent extends BaseEntity implements Serializable {
 	 * 余额
 	 */
 	private Double balance;
+	
+	/**
+	 * 直推总佣金
+	 */
+	private Double inviterTotalMoney;
+	
+	/**
+	 * 间推总佣金
+	 */
+	private Double indirectTotalMoney;
 
 	public String getLoginName() {
 		return loginName;
@@ -140,6 +150,22 @@ public class Agent extends BaseEntity implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public Double getInviterTotalMoney() {
+		return inviterTotalMoney;
+	}
+
+	public void setInviterTotalMoney(Double inviterTotalMoney) {
+		this.inviterTotalMoney = inviterTotalMoney;
+	}
+
+	public Double getIndirectTotalMoney() {
+		return indirectTotalMoney;
+	}
+
+	public void setIndirectTotalMoney(Double indirectTotalMoney) {
+		this.indirectTotalMoney = indirectTotalMoney;
 	}
 	
 	
