@@ -10,10 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.thinkingFruit.client.entity.Agent;
-import com.thinkingFruit.client.entity.ClientCommision;
-import com.thinkingFruit.client.entity.ClientDepot;
 import com.thinkingFruit.client.entity.ClientPurchaseOrder;
-import com.thinkingFruit.client.entity.CommissionRatio;
 import com.thinkingFruit.client.mapper.AgentDao;
 import com.thinkingFruit.client.mapper.ClientCommisionDao;
 import com.thinkingFruit.client.mapper.ClientPurchaseOrderDao;
@@ -116,132 +113,18 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		List<ClientPurchaseOrder> purchaseNeedOrder = clientPurchaseOrderDao.findNeedList(id);
 		return purchaseNeedOrder;
 	}
-	
+
 	/**
-	 * 	下级购买订单发货
+	 * 	购买订单完成
 	 */
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void confirmPurchaseOrder(String orderNo) {
+		//通过订单号获取订单
 		ClientPurchaseOrder clientPurchaseOrder=clientPurchaseOrderDao.getPurchaseByorderNo(orderNo);
-		//通过代理id获取代理信息
-		//邀请者id
-		Long inviterId=clientPurchaseOrder.getInviterId();
-		Agent inviterIdById = agentDao.getAgentById(inviterId);
-		//邀请者上级
-		//邀请者上级id
-		Long inviterUpperId = inviterIdById.getInviterId();
-		Agent inviterUpperIdById = agentDao.getAgentById(inviterUpperId);
-		//订单发起者id
-		Long agentId=clientPurchaseOrder.getOrderMemberId();
-		Long inviterLevelId =0L;
-		Long inviterUpperLevelId =0L;
-		//判断上级商品库存是否充足，如果是公司则默认无限
-		if(inviterId!=Constant.DEFALULT_ZERO_INT) {
-		//判断上级库存是否充足,充足则需要减少库存
-		ClientDepot Depot=clientPurchaseOrderDao.getDepot(inviterId,clientPurchaseOrder.getCommodityId());
-		if(Depot!=null&&Depot.getId()!=null) {
-			if(Depot.getCount()-clientPurchaseOrder.getCommodityCount()>=0) {
-				Depot.setMemberId(inviterId);
-				Depot.setCommodityId(clientPurchaseOrder.getCommodityId());
-				Depot.setCount(Depot.getCount()-clientPurchaseOrder.getCommodityCount());
-				System.out.println("Count"+Depot.getCount());
-				Integer updateInviterDepot=clientPurchaseOrderDao.updateDepot(Depot);
-				if(updateInviterDepot==Constant.DEFALULT_ZERO_INT) {
-					throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
-				}
-			}else {
-				throw new WebServiceException(CodeMsg.INVITER_DEPOT_LOW);
-			}
-		}else {
-			throw new WebServiceException(CodeMsg.INVITER_DEPOT_LOW);
-		}
-			//判断订单创建者的上级和上上级的关系
-			if(inviterUpperIdById!=null) {
-				inviterLevelId = inviterIdById.getMemberLevelId();
-				inviterUpperLevelId = inviterUpperIdById.getMemberLevelId();
-			}else if(inviterUpperIdById==null){
-				inviterLevelId = inviterIdById.getMemberLevelId();
-			}
-							
-		}
 		
-		//判断该代理是否有该商品的仓库
-		ClientDepot clientDepot=clientPurchaseOrderDao.getDepot(agentId,clientPurchaseOrder.getCommodityId());
-		//如果该商品的库存,只需要改变该数据的库存
-		if(clientDepot!=null&&clientDepot.getId()!=null) {
-			clientDepot.setCount(clientDepot.getCount()+clientPurchaseOrder.getCommodityCount());
-			Integer updateDepot=clientPurchaseOrderDao.updateDepot(clientDepot);
-			if(updateDepot==Constant.DEFALULT_ZERO_INT) {
-				throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
-			}
-							
-		}else {
-			//如果没有该商品的库存,则新建一个商品库存
-			clientDepot=new ClientDepot();
-			clientDepot.setMemberId(agentId);
-			clientDepot.setCommodityId(clientPurchaseOrder.getCommodityId());
-			clientDepot.setCount(clientPurchaseOrder.getCommodityCount());
-			Integer addDepot=clientPurchaseOrderDao.addDepot(clientDepot);
-			if(addDepot==Constant.DEFALULT_ZERO_INT) {
-				throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
-			}
-		}
-						
-		System.out.println("inviterLevelId:"+inviterLevelId);
-		CommissionRatio commissionRatio=agentDao.getAgentLevel(inviterLevelId);
-		ClientCommision clientCommision=new ClientCommision();
-		
-		//上级如果是公司
-		if(inviterId==Constant.DEFALULT_ZERO_INT) {
-			clientCommision.setCommisionProportion(0.0);
-			clientCommision.setCommision(0.0);
-		}else {
-			if(inviterUpperLevelId<inviterLevelId) {
-				clientCommision.setCommisionProportion(commissionRatio.getCrossLevelDiscount());
-			}else if(inviterUpperLevelId==inviterLevelId) {
-				clientCommision.setCommisionProportion(commissionRatio.getLevelingDiscount());
-			}
-			clientCommision.setCommision(clientPurchaseOrder.getOrderTotalPrice()*clientCommision.getCommisionProportion());
-		}
-		clientCommision.setOrderNo(orderNo);
-		clientCommision.setTotalAmount(clientPurchaseOrder.getOrderTotalPrice());
-		clientCommision.setInviterTotalMoney(clientCommision.getTotalAmount()-clientCommision.getCommision());
-		clientCommision.setInviteMoney(0.0);
-		clientCommision.setCommodityId(clientPurchaseOrder.getCommodityId());
-		clientCommision.setMemberId(agentId);
-		clientCommision.setInviterId(inviterId);
-		clientCommision.setInviterUpperId(inviterUpperId);
-		Integer addClientCommision=clientCommisionDao.addClientCommision(clientCommision);
-		if(inviterId!=Constant.DEFALULT_ZERO_INT&&inviterUpperId==Constant.DEFALULT_ZERO_INT) {
-			Integer updateBalance=agentDao.addBalance(inviterId,clientCommision.getInviterTotalMoney());
-			if(updateBalance==Constant.DEFALULT_ZERO_INT) {
-				throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
-			}
-		}else if(inviterId!=Constant.DEFALULT_ZERO_INT&&inviterUpperId!=Constant.DEFALULT_ZERO_INT){
-			Integer updateBalance=agentDao.addBalance(inviterId,clientCommision.getInviterTotalMoney());
-			Integer addBalance=agentDao.addBalance(inviterUpperId,clientCommision.getCommision());
-				
-			if(updateBalance==Constant.DEFALULT_ZERO_INT||addBalance==Constant.DEFALULT_ZERO_INT) {
-				throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
-			}
-		}
-		//购买商品增加销售额
-		Integer updateSalesVolume=agentDao.updateSalesVolume(clientPurchaseOrder.getOrderTotalPrice(),agentId);
-		if(updateSalesVolume==Constant.DEFALULT_ZERO_INT) {
-			throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
-		}
-		Integer updatePurchaseStatus=clientPurchaseOrderDao.updatePurchaseStatus((long) Constant.DEFALULT_TWO_INT,orderNo);
-		if(addClientCommision==Constant.DEFALULT_ZERO_INT||updatePurchaseStatus==Constant.DEFALULT_ZERO_INT) {
-			throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
-		}
-		Integer updateCommision=clientCommisionDao.updateInviterIdCommision(clientCommision);
-		Integer update=clientCommisionDao.updateInviterUpperIdCommision(clientCommision);
-		if(updateCommision==Constant.DEFALULT_ZERO_INT||update==Constant.DEFALULT_ZERO_INT) {
-			throw new WebServiceException(CodeMsg.PURCHASE_FAIL);
-		}
 	}
-
+	
 	/**
 	 * 	取消向上级购买订单
 	 */

@@ -19,7 +19,6 @@ import com.ysdevelop.common.exception.WebServiceException;
 import com.ysdevelop.common.result.CodeMsg;
 import com.ysdevelop.common.result.Result;
 import com.ysdevelop.common.result.Results;
-import com.ysdevelop.common.utils.Constant;
 import com.ysdevelop.common.utils.HttpUtils;
 
 /**
@@ -85,9 +84,6 @@ public class AgentController {
 		Agent agentByName = agentService.getAgentByName(agent.getLoginName());
 		if(agentByName==null) {
 			throw new WebServiceException(CodeMsg.UNREGISTERED);
-		}
-		if(agentByName.getStatus()==Constant.DEFALULT_ZERO_INT) {
-			throw new WebServiceException(CodeMsg.REGISTER_UNAUDITED);
 		}
 		if(!passwordAgentHelper.checkPassword(agentByName, agent.getPswd())) {
 			throw new WebServiceException(CodeMsg.PASSWORD_WRONG);

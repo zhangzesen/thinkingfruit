@@ -48,16 +48,6 @@ public class AgentServiceImpl implements AgentService {
 		// 密码加密处理
 		passwordAgentHelper.encryptPassword(agent);	
 		System.out.println("agent.getLoginName()"+agent.getLoginName());
-		//添加代理
-		if(agent.getInviterId()==null){
-			throw new WebServiceException(CodeMsg.REGISTER_CANT);
-		}
-		else if(agent.getInviterId()==Constant.DEFALULT_ZERO_INT) {
-			agent.setInviterUpperId(0L);
-		}else {
-			Agent agentById = agentDao.getAgentById(agent.getInviterId());
-			agent.setInviterUpperId(agentById.getInviterId());
-		}
 		Integer addAgent=agentDao.addAgent(agent);
 		Integer addAgentAddress=agentDao.addAgentAddress(agent.getId());
 		
@@ -130,12 +120,8 @@ public class AgentServiceImpl implements AgentService {
 		
 		if(id==null) {
 			throw new WebServiceException(CodeMsg.MEMBER_NOREGISTER);
-		}else {
-			if(agentById==null) {
-				throw new WebServiceException(CodeMsg.SERVER_ERROR);
-			}else if(agentById.getName()==null||"".equals(agentById.getName())||agentById.getName().isEmpty()){
-				throw new WebServiceException(CodeMsg.INFORMATION_NOT_NULL);
-			}
+		}else if(agentById==null) {
+			throw new WebServiceException(CodeMsg.SERVER_ERROR);
 		}
 		
 	}
@@ -217,9 +203,7 @@ public class AgentServiceImpl implements AgentService {
 	public Agent teamAgent(Long id) {
 		Agent agentById = agentDao.getAgentById(id);
 		Long teamNumbers = agentDao.getTeamNumbers(id);
-		Double teamSales = agentDao.getTeamSales(id);
 		agentById.setTeamNumbers(teamNumbers);
-		agentById.setTeamSales(teamSales);
 		
 		return agentById;
 	}

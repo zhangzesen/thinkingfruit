@@ -16,10 +16,16 @@ import com.ysdevelop.common.entity.BaseEntity;
  * @description 提现
  */
 public class Cash extends BaseEntity {
+	
 	/**
 	 * 代理id
 	 */
 	private Long memberId;
+	
+	/**
+	 * 真实姓名
+	 */
+	private String name;
 	
 	/**
 	 * 提现金额
@@ -56,6 +62,14 @@ public class Cash extends BaseEntity {
 
 	public void setMemberId(Long memberId) {
 		this.memberId = memberId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Double getCash() {
@@ -97,6 +111,5 @@ public class Cash extends BaseEntity {
 	public void setBankNumber(String bankNumber) {
 		this.bankNumber = bankNumber;
 	}
-	
 	
 }

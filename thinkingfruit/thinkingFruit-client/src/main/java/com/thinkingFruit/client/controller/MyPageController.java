@@ -73,7 +73,6 @@ public class MyPageController {
 		HttpSession session = request.getSession();
 		Long id = (Long)session.getAttribute("agentId");
 		Agent agent=agentService.findInfo(id);
-		System.out.println("11111111111111"+agent.getName());
 		return Results.successData(agent);
 	}
 	//头部团队信息
