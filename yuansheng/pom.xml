@@ -32,7 +32,7 @@
 		<!-- spring版本号 -->
 		<spring.version>4.1.7.RELEASE</spring.version>
 		<!-- mybatis版本号 -->
-		<mybatis.version>3.2.6</mybatis.version>
+		<mybatis.version>3.5.6</mybatis.version>
 		<mybaits-spring.version>1.2.2</mybaits-spring.version>
 		<!-- shiro版本号 -->
 		<shiro.version>1.2.4</shiro.version>
